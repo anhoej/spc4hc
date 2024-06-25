@@ -15,7 +15,7 @@ description: Mastering statistical process control charts
 
 # {-}
 
-This is the online version of Mastering statistical process control charts, a book currently under early development.
+This is the online version of *Mastering statistical process control charts*, a book currently under early development.
 
 ---
 
