@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [references.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+url: https://anhoej.github.io/spc4hc/index.html
 # cover-image: path to the social sharing image like images/cover.jpg
 link-citations: yes
 github-repo: anhoej/spc4hc
