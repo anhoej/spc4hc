@@ -1,5 +1,5 @@
 --- 
-title: "Mastering statistical process control charts"
+title: "Mastering statistical process control charts in heatlhcare"
 subtitle: "A practical guide for data scientists with worked examples using R"
 author: "Mohammed Amin Mohammed & Jacob Anhøj"
 date: "`r Sys.Date()`"
