@@ -17,13 +17,33 @@ description: Mastering statistical process control charts
 
 This is the online version of *Mastering statistical process control charts*, a book currently under early development.
 
+>Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. [...] It is about the continual improvement of processes and outcomes. And it is, first and foremost, *a way of thinking* with some tools attached.
+>
+> ---  Don Wheeler. [Understanding Variation -- the Key to Managing Chaos](https://www.spcpress.com/book_understanding_variation.php), 2nd ed., p. 152. SPC Press 2000
+
+
 ---
 
-## Book outline
+## Book content {-}
 
-This is a list of suggested chapters and their content to be discussed and decided among the authors.
+Preliminary lists of suggested topics for the book:
 
-### Introduction {-}
+### JA's list {-}
+* Understanding variation
+* The case for SPC in healthcare
+* The anatomy and physiology of SPC charts
+* Looking for non-random variation in time series data
+    - the four canonical patterns of variation in time series data
+    - natural limits of random variation
+    - detecting shifts and trends using runs analysis
+ * Calculating control limits
+ * Building SPC charts with spreadsheet software
+ * Building SPC charts with R
+ * The run vs control chart debate
+
+
+### MAM's outline {-}
+#### Introduction {-}
 - Purpose of the Book
   - Importance of SPC charts in healthcare.
   - Objectives and scope.
@@ -34,7 +54,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Advantages of R.
   - Brief introduction to R.
 
-### Chapter 1: Basics of SPC Charts {-}
+#### Chapter 1: Basics of SPC Charts {-}
 - What are SPC Charts?
   - Control charts and their types.
   - Commonly used SPC charts in healthcare (e.g., P-chart, C-chart, X-bar chart, R-chart).
@@ -43,7 +63,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Control limits and their significance.
   - Phases of control charts (Phase I and Phase II).
 
-### Chapter 2: Getting Started with R {-}
+#### Chapter 2: Getting Started with R {-}
 - Installing R and RStudio
   - Step-by-step installation guide.
 - R Basics
@@ -53,7 +73,7 @@ This is a list of suggested chapters and their content to be discussed and decid
 - Installing Required Packages
   - Introduction to the `qcc` package and other relevant packages.
 
-### Chapter 3: Data Preparation {-}
+#### Chapter 3: Data Preparation {-}
 - Collecting Healthcare Data
   - Sources of data in healthcare settings.
   - Examples of data types: Patient wait times, infection rates, medication errors.
@@ -64,7 +84,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Descriptive statistics.
   - Visualizing data distributions.
 
-### Chapter 4: Creating Basic SPC Charts in R {-}
+#### Chapter 4: Creating Basic SPC Charts in R {-}
 - P-charts for Proportion Data
   - Theory and calculation of P-charts.
   - Plotting P-charts using `qcc`.
@@ -75,7 +95,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Theory and calculation.
   - Plotting X-bar and R charts using `qcc`.
 
-### Chapter 5: Advanced SPC Charting Techniques {-}
+#### Chapter 5: Advanced SPC Charting Techniques {-}
 - CUSUM and EWMA Charts
   - Introduction to cumulative sum (CUSUM) and exponentially weighted moving average (EWMA) charts.
   - Applications and advantages in healthcare.
@@ -84,7 +104,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Theory and application.
   - Plotting multi-vari charts in R.
 
-### Chapter 6: Interpreting SPC Charts {-}
+#### Chapter 6: Interpreting SPC Charts {-}
 - Identifying Signals of Special Causes
   - Rules for detecting out-of-control signals.
   - Practical examples.
@@ -92,7 +112,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Root cause analysis.
   - Corrective actions and quality improvement.
 
-### Chapter 7: Case Studies {-}
+#### Chapter 7: Case Studies {-}
 - Case Study 1: Reducing Patient Wait Times
   - Problem statement.
   - Data collection and analysis.
@@ -102,7 +122,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Data collection and analysis.
   - Implementation and results.
 
-### Chapter 8: Best Practices and Tips {-}
+#### Chapter 8: Best Practices and Tips {-}
 - Common Pitfalls to Avoid
   - Data issues, misinterpretation of charts.
   - Overreacting to common cause variation.
@@ -110,7 +130,7 @@ This is a list of suggested chapters and their content to be discussed and decid
   - Engaging stakeholders.
   - Continuous monitoring and improvement.
 
-### Chapter 9: Resources and Further Reading {-}
+#### Chapter 9: Resources and Further Reading {-}
 - Books and Articles
   - Recommended readings for deeper understanding.
 - Online Resources
@@ -118,7 +138,7 @@ This is a list of suggested chapters and their content to be discussed and decid
 - R Packages and Documentation
   - Comprehensive list of useful R packages and their documentation.
 
-### Conclusion {-}
+#### Conclusion {-}
 - Summary of Key Points
   - Recap of major topics covered.
 - Future Directions
@@ -128,7 +148,7 @@ This is a list of suggested chapters and their content to be discussed and decid
 
 ---
 
-### Appendices {-}
+#### Appendices {-}
 - Appendix A: Glossary of Terms
 - Appendix B: Sample Data Sets
 - Appendix C: Additional R Code Examples
