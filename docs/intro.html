@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction | Mastering statistical process control charts</title>
-  <meta name="description" content="Introduction | Mastering statistical process control charts" />
+  <title>Introduction | Mastering statistical process control in heatlhcare</title>
+  <meta name="description" content="Mastering statistical process control charts" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction | Mastering statistical process control charts" />
+  <meta property="og:title" content="Introduction | Mastering statistical process control in heatlhcare" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Introduction | Mastering statistical process control charts" />
+  <meta property="og:description" content="Mastering statistical process control charts" />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction | Mastering statistical process control charts" />
+  <meta name="twitter:title" content="Introduction | Mastering statistical process control in heatlhcare" />
   
-  <meta name="twitter:description" content="Introduction | Mastering statistical process control charts" />
+  <meta name="twitter:description" content="Mastering statistical process control charts" />
   
 
 <meta name="author" content="Mohammed Amin Mohammed &amp; Jacob Anhøj" />
 
 
-<meta name="date" content="2024-06-26" />
+<meta name="date" content="2024-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -166,9 +166,9 @@ div.csl-indent {
 </li>
 
 <li class="divider"></li>
-<li><a href="index.html#section" id="toc-section"></a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Synopsis</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Book content</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#book-content"><i class="fa fa-check"></i>Book content</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#jas-list"><i class="fa fa-check"></i>JA’s list</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#mams-outline"><i class="fa fa-check"></i>MAM’s outline</a></li>
@@ -222,7 +222,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mastering statistical process control charts</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mastering statistical process control in heatlhcare</a>
           </h1>
         </div>
 
@@ -232,7 +232,56 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="intro" class="section level1 unnumbered hasAnchor">
 <h1>Introduction<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This book is about the practical application of statistical process control (SPC) methodology in healthcare.</p>
+<p>While SPC is often thought of simply as a set of tools – the control chart being its most prominent member – we prefer to think of SPC more broadly as <em>the application of statistical thinking to continuous quality improvement</em>.</p>
+<blockquote>
+<p>Statistical Process Control is not about statistics, it is not about “process-hyphen-control”, and it is not about conformance to specifications. […] It is about the continual improvement of processes and outcomes. And it is, first and foremost, <em>a way of thinking</em> with some tools attached.</p>
+<p>— Don Wheeler <span class="citation">(<a href="#ref-wheeler2000">Wheeler 2000</a>, p 152)</span></p>
+</blockquote>
+<p>Many excellent books have been written about the thinking and the theory behind SPC <span class="citation">(e.g. <a href="#ref-wheeler2000">Wheeler 2000</a>; <a href="#ref-montgomery2009">Montgomery 2009</a>; <a href="#ref-mohammed2024">Mohammed 2024</a>)</span>, but very little has been written about how to actually construct SPC charts – especially using software. Consequently, this book is mostly about the tools, in particular run and control charts, and how to construct and interpret them using modern software.</p>
+<p>For example, a control chart like the one in Figure (<a href="intro.html#fig:intro-ichart">0.1</a>) may be produced using a single line of code in R <span class="citation">(<a href="#ref-r-base">R Core Team 2024</a>)</span>, which is often referred to as the <em>lingua franca</em> of statistical computing and visualisation. And since SPC is all about statistical computing and visualisation, R is our software of choice.</p>
+<div class="figure"><span style="display:block;" id="fig:intro-ichart"></span>
+<img src="_main_files/figure-html/intro-ichart-1.svg" alt="I control chart produced with the R package qicharts2" width="672" />
+<p class="caption">
+Figure 0.1: I control chart produced with the R package qicharts2
+</p>
+</div>
+<p>SPC charts are powerful, intuitive and versatile. First developed in the 1920’s in production industry, the use of SPC in healthcare has grown spectacularly. For instance, the number of papers in the pubmed database went from only 14 in 1971 to 3252 in 2023 [SEARCH CRITERIA?].</p>
+<p>However, a review of SPC in healthcare noted that “it’s easy and not so easy” [CITATION]. The “easy part” is that SPC charts are usually intuitive and easily understood. The “not so easy part” involves the production of these charts.</p>
+<p>This book aims to help people who want to produce SPC charts in practice using modern software. We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, patients, etc.</p>
+<p>So what is different about this book?</p>
+<p>This book stands out by being a specialized, practical, and modern guide specifically tailored for data scientists in the healthcare sector. Its focus on real-world application, combined with comprehensive coverage of SPC techniques and the use of contemporary tools, makes it a unique and valuable resource. This book is a <strong>how to book</strong>.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Target Audience</strong>: This book is specifically tailored for data scientists who want to learn how to produce SPC charts by the R programming language.</p></li>
+<li><p><strong>Use of R</strong>: Our choice of software is R - which is popular, free, and open source. One major advantage of R (and programming languages in general) is that all the steps and procedures involved in analysing data and constructing graphs and other output are documented in readable form in the source code thus making analyses transparent and reproducible, which is rarely the case with “point-and-click” software.<br />
+Another advantage is that R has built-in functions for producing publication ready graphics of very high quality.<br />
+<!-- By emphasizing the use of R this book provides practical, hands-on guidance. This is particularly valuable for data scientists who rely on R for their analytical tasks, making this book more relevant and immediately applicable. Since R can be very readable even by non-specialists, people can take the learning from this book into other software systems.   -->
+By being pro-R we are not anti any other software, and the principles involved in creating SPC chart with R demonstrated in this book may be ported to other software solutions.</p></li>
+<li><p><strong>Healthcare Focus</strong>: While there are many general books on SPC, this book’s focus is on practical applications in healthcare, making it particularly relevant for those working in this field. It addresses the unique challenges and requirements of applying SPC methods in healthcare settings, such as patient safety, clinical outcomes, and operational efficiency as described in an accompanying book <span class="citation">(<a href="#ref-mohammed2024">Mohammed 2024</a>)</span>.</p></li>
+<li><p><strong>Practical Guide</strong>: The book is a practical step-by-step guide, using real-world examples and case studies that enable readers to produce and use SPC charts with confidence. This hands-on approach helps bridge the gap between theory and practice.</p></li>
+<li><p><strong>Comprehensive Coverage</strong>: The book covers a comprehensive range of topics within SPC, from basic concepts to advanced techniques. This ensures that both beginners and experienced data scientists can find valuable insights and techniques that can be applied to their work in healthcare.</p></li>
+<li><p><strong>Resources</strong>: The book comes with additional resources such as R scripts, datasets, and access to an online <a href="https://github.com/anhoej/spc4hc">GitHub repository</a>.</p></li>
+<li><p><strong>Prerequisites</strong>: We assume no prior knowledge of SPC, but a basic familiarity with R is required to understand the processes and algorithms for constructing SPC charts. Mathematical details are relegated to appendices.</p></li>
+</ol>
+<p>We hope you find the book useful and would appreciate your feedback on how it can be continually improved upon.</p>
+<p>JA: <a href="mailto:jacob@anhoej.net" class="email">jacob@anhoej.net</a></p>
+<p>MAM: <a href="mailto:m.a.mohammed5@bradford.ac.uk" class="email">m.a.mohammed5@bradford.ac.uk</a></p>
 
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-mohammed2024" class="csl-entry">
+Mohammed, Mohammed Amin. 2024. <em>Statistical Process Control</em>. Elements of Improving Quality and Safety in Healthcare. Cambridge University Press.
+</div>
+<div id="ref-montgomery2009" class="csl-entry">
+Montgomery, Douglas C. 2009. <em>Statistical Quality Control: A Modern Introduction, Sixth Ed.</em> John Wiley &amp; Sons.
+</div>
+<div id="ref-r-base" class="csl-entry">
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-wheeler2000" class="csl-entry">
+Wheeler, Donald J. 2000. <em>Understanding Variation – the Key to Managing Chaos</em>. Knoxville, Tennessee: SPC Press.
+</div>
 </div>
             </section>
 

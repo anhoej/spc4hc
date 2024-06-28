@@ -1,6 +1,6 @@
 --- 
-title: "Mastering statistical process control charts in heatlhcare"
-subtitle: "A practical guide for data scientists with worked examples using R"
+title: "Mastering statistical process control in heatlhcare"
+subtitle: "A practical, hands-on, step-by-step guide for data scientists using R"
 author: "Mohammed Amin Mohammed & Jacob Anhøj"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -13,14 +13,9 @@ github-repo: anhoej/spc4hc
 description: Mastering statistical process control charts
 ---
 
-# {-}
+# Synopsis {-}
 
 This is the online version of *Mastering statistical process control charts*, a book currently under early development.
-
->Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. [...] It is about the continual improvement of processes and outcomes. And it is, first and foremost, *a way of thinking* with some tools attached.
->
-> ---  Don Wheeler. [Understanding Variation -- the Key to Managing Chaos](https://www.spcpress.com/book_understanding_variation.php), 2nd ed., p. 152. SPC Press 2000
-
 
 ---
 
@@ -40,6 +35,10 @@ Preliminary lists of suggested topics for the book:
  * Building SPC charts with spreadsheet software
  * Building SPC charts with R
  * The run vs control chart debate
+ * BUBBLING UNDER
+    - Principles for visualising data
+    - Runs analysis for pros
+    - Introducing the Bernoulli cusum chart for binary data
 
 
 ### MAM's outline {-}
