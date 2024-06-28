@@ -12,7 +12,7 @@ Many excellent books have been written about the thinking and the theory behind 
 
 For example, a control chart like the one in Figure (\@ref(fig:intro-ichart)) may be produced using a single line of code in R [@r-base], which is often referred to as the *lingua franca* of statistical computing and visualisation. And since SPC is all about statistical computing and visualisation, R is our software of choice.
 
-```{r intro-ichart, fig.cap='I control chart produced with the R package qicharts2', echo=FALSE, dev='svg', fig.asp=0.5}
+```{r intro-ichart, fig.cap='I control chart produced with the R package qicharts2', echo=FALSE, fig.asp=0.5}
 set.seed(11)
 x <- seq(Sys.Date() - 730, length.out = 24, by = 'months')
 y <- rnorm(24, 36, 3)
