@@ -1,154 +1,154 @@
 --- 
-title: "Mastering statistical process control in heatlhcare"
+title: "Mastering Statistical Process Control charts in Healthcare"
 subtitle: "A practical, hands-on, step-by-step guide for data scientists using R"
-author: "Mohammed Amin Mohammed & Jacob Anhøj"
+author: "Jacob Anhøj & Mohammed Amin Mohammed"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [references.bib, packages.bib]
-url: https://anhoej.github.io/spc4hc/index.html
+url: https://anhoej.github.io/spc4hc/
 # cover-image: path to the social sharing image like images/cover.jpg
 link-citations: yes
 github-repo: anhoej/spc4hc
-description: Mastering statistical process control charts
+description: This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare.
 ---
 
 # Synopsis {-}
 
-This is the online version of *Mastering statistical process control charts*, a book currently under early development.
+This is the online version of *Mastering Statistical Process Control Charts in Healthcare*, a book currently under early development.
 
 ---
 
-## Book content {-}
+INTRODUCTION  
+&emsp; What is SPC?  
+&emsp; About the Book
 
-Preliminary lists of suggested topics for the book:
+PART 1: Understanding Variation
 
-### JA's list {-}
-* Understanding variation
-* The case for SPC in healthcare
-* The anatomy and physiology of SPC charts
-* Looking for non-random variation in time series data
-    - the four canonical patterns of variation in time series data
-    - natural limits of random variation
-    - detecting shifts and trends using runs analysis
- * Calculating control limits
- * Building SPC charts with spreadsheet software
- * Building SPC charts with R
- * The run vs control chart debate
- * BUBBLING UNDER
-    - Principles for visualising data
-    - Runs analysis for pros
-    - Introducing the Bernoulli cusum chart for binary data
+1. Understanding Variation
+    1. Given two numbers, one will be bigger
+        1. rolling dies and flipping coins
+        1. when you throw a die and get a seven
+    1. Populations and processes (enumerative vs analytical studies)
+    1. Patterns of non-random variation in time series data and their interpretation
+        1. freaks
+        1. shifts
+        1. trends
+        1. waves
+        1. sawtooths(teeth?)
+        1. repeated patterns
+1. What is SPC?
+    1. History
+    1. A modern definition
+    1. SPC and continuous quality improvement -- neither can live while the other dies
+    1. The Case for SPC in Healthcare  
+1. Introducing SPC Charts
+    1. Anatomy of SPC charts
+    1. What SPC charts do and don't do
+1. Testing for Non-random Variation in SPC Charts
+    1. Tests based on sigma limits
+        1. the 3-sigma test
+        1. the Western Electric rules
+    1. Runs analysis -- tests based on the distribution of data points around the centre line
+        1. identifying unusually long runs
+        1. identifying unusually few crossings
+        1. look mom, no control limits! -- using runs analysis as stand-alone rules with run charts
+    1. Rules to avoid
+        1. the trend rule
+        1. too short longest runs
+1. Responding to SPC Signals
+    1. The voice of the customer vs the voice of the process
+    1. Conciliating the two voices -- or, from RAGs to RICHes  
+        (RAG = Red, Amber, Green; RICH = Respond, Investigate, Celebrate'n Hold)
 
+PART 2: Constructing SPC Charts with R
 
-### MAM's outline {-}
-#### Introduction {-}
-- Purpose of the Book
-  - Importance of SPC charts in healthcare.
-  - Objectives and scope.
-- Overview of SPC (Statistical Process Control)
-  - Definition and history.
-  - Applications in healthcare.
-- Why Use R for SPC?
-  - Advantages of R.
-  - Brief introduction to R.
+1. Your First SPC Charts with Base R
+    1. A run chart from random normal data
+    1. Adding control limits to produce a control chart
+1. Calculating Control Limits for "The Magnificent Seven"
+    1. Xbar chart
+    1. S chart
+    1. I chart (aka X chart)
+    1. MR chart
+    1. C chart
+    1. U chart
+    1. P chart
+1. Highlighting Data Points Outside Control Limits (freaks)
+1. Highlighting Shifts, Trends, and Waves Found by Runs Analysis
+1. One R Function to Rule Them All
+1. Your First SPC Chart with `ggplot2`
+1. Introducing `qicharts2` -- an R Package Tailored Specifically for SPC in Healthcare
 
-#### Chapter 1: Basics of SPC Charts {-}
-- What are SPC Charts?
-  - Control charts and their types.
-  - Commonly used SPC charts in healthcare (e.g., P-chart, C-chart, X-bar chart, R-chart).
-- Fundamental Concepts
-  - Process variation: Common cause vs. special cause.
-  - Control limits and their significance.
-  - Phases of control charts (Phase I and Phase II).
+PART 3: Case Studies
 
-#### Chapter 2: Getting Started with R {-}
-- Installing R and RStudio
-  - Step-by-step installation guide.
-- R Basics
-  - Introduction to R syntax.
-  - Basic data structures: Vectors, matrices, data frames.
-  - Importing and exporting data.
-- Installing Required Packages
-  - Introduction to the `qcc` package and other relevant packages.
+1. Monitoring Infection Rates (C. diff.)
+1. Patient Harm
+1. Reducing Patient Wait Times
+1. Coronary Artery Bypass Grafts
+1. Reducing Response Times for Cecarian Section
+1. Faceting Plots for Multivariate Data (Hospital Infections)
 
-#### Chapter 3: Data Preparation {-}
-- Collecting Healthcare Data
-  - Sources of data in healthcare settings.
-  - Examples of data types: Patient wait times, infection rates, medication errors.
-- Data Cleaning and Formatting
-  - Handling missing data.
-  - Formatting data for SPC analysis.
-- Exploratory Data Analysis (EDA)
-  - Descriptive statistics.
-  - Visualizing data distributions.
+PART 4: Advanced SPC Techniques
 
-#### Chapter 4: Creating Basic SPC Charts in R {-}
-- P-charts for Proportion Data
-  - Theory and calculation of P-charts.
-  - Plotting P-charts using `qcc`.
-- C-charts for Count Data
-  - Theory and calculation of C-charts.
-  - Plotting C-charts using `qcc`.
-- X-bar and R Charts for Continuous Data
-  - Theory and calculation.
-  - Plotting X-bar and R charts using `qcc`.
+1. Phase One and Phase Two Applications of SPC
+1. When to Split SPC Charts
+1. When to Transform Data Before Plotting
+1. Funnel Plots for Categorical Data
+1. Pareto Charts for Ranking Problems
+1. Prime Charts for Count Data with Very Large Sample Sizes
+1. The Standardised Control Chart
+1. The Normalised I Chart
+1. Charts for Rare Events
+    1. T Charts for Time Between Events
+    1. G Charts for Opportunities Between Cases
+    1. Bernoulli CUSUM charts for binary data
+1. CUSUM and EWMA Charts
+1. Multi Variate Charts
+1. The Control Charts vs Run Charts Debate
+1. Runs Analysis Revisited: The Joint Distribution of Longest Run and Number of Crossings  
+    Improving runs analysis using the best box and cut box approaches
 
-#### Chapter 5: Advanced SPC Charting Techniques {-}
-- CUSUM and EWMA Charts
-  - Introduction to cumulative sum (CUSUM) and exponentially weighted moving average (EWMA) charts.
-  - Applications and advantages in healthcare.
-  - Plotting CUSUM and EWMA charts in R.
-- Multi-vari Charts
-  - Theory and application.
-  - Plotting multi-vari charts in R.
+PART 5: Conclusion and Final Thoughts
 
-#### Chapter 6: Interpreting SPC Charts {-}
-- Identifying Signals of Special Causes
-  - Rules for detecting out-of-control signals.
-  - Practical examples.
-- Responding to SPC Signals
-  - Root cause analysis.
-  - Corrective actions and quality improvement.
+1. Summary of Key Points
+1. Future Directions
+1. Final Thoughts
 
-#### Chapter 7: Case Studies {-}
-- Case Study 1: Reducing Patient Wait Times
-  - Problem statement.
-  - Data collection and analysis.
-  - Implementation and results.
-- Case Study 2: Monitoring Infection Rates
-  - Problem statement.
-  - Data collection and analysis.
-  - Implementation and results.
+PART 9&frac34;: Nerd Stuff
 
-#### Chapter 8: Best Practices and Tips {-}
-- Common Pitfalls to Avoid
-  - Data issues, misinterpretation of charts.
-  - Overreacting to common cause variation.
-- Tips for Effective SPC Implementation
-  - Engaging stakeholders.
-  - Continuous monitoring and improvement.
+1. Introducing R
+1. A Basic Statistical Concepts
+    1. Counts and measures
+    1. Distributions
+        1. Centre  
+            mean  
+            median
+        1. Spread  
+            range  
+            percentiles  
+            standard deviation
+        1. Shape  
+            symmetric  
+            skewed
+1. Principles for Data Visualisation
+    1. histograms and boxplots for measurement data distributions  
+    1. barplots for count data distributions  
+    1. scatter plots for relations between measurement data  
+    1. point-and-line plots for time series data
+1. Data Preparation with R
+    1. Sources of healthcare data
+    1. Indicator types: measurements, counts, rates, proportions
+    1. Getting data in shape for visualisation with R
 
-#### Chapter 9: Resources and Further Reading {-}
-- Books and Articles
-  - Recommended readings for deeper understanding.
-- Online Resources
-  - Websites, forums, and communities.
-- R Packages and Documentation
-  - Comprehensive list of useful R packages and their documentation.
+APPENDICES
 
-#### Conclusion {-}
-- Summary of Key Points
-  - Recap of major topics covered.
-- Future Directions
-  - Emerging trends in SPC and healthcare analytics.
-- Final Thoughts
-  - Encouragement for continuous learning and application.
-
----
-
-#### Appendices {-}
-- Appendix A: Glossary of Terms
-- Appendix B: Sample Data Sets
-- Appendix C: Additional R Code Examples
-
+1. Resources and Further Readings
+    1. Recommended books
+    1. Web sites, forums, and communities
+    1. Other R packages SPC (`qcc`, `spc`, ...)
+1. Best Practices and Tips for SPC Implementation
+1. Formulas and R Functions for Calculating Control Limits
+1. Table of Parameters for the Xbar and S Charts
+1. Table of Critical Values for Longest Runs and Number of Crossings
+1. Glossary of Terms
