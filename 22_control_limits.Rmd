@@ -1,0 +1,19 @@
+# Calculating Control Limits for "The Magnificent Seven" {#limits}
+
+## Measurement data
+
+### Xbar chart
+
+### S chart
+
+### I chart (aka X chart)
+
+### MR chart
+
+## Count data
+
+### C chart
+
+### U chart
+
+### P chart
