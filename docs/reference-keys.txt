@@ -1,4 +1,8 @@
 fig:intro-ichart
+fig:first-chart-run1
+fig:first-chart-run2
+fig:first-chart-ctrl1
+fig:first-chart-ctrl2
 fig:nice-fig
 tab:nice-tab
 eq:binom
@@ -7,6 +11,7 @@ variation
 first-chart
 a-run-chart-from-random-normal-data
 adding-control-limits-to-produce-a-control-chart
+thats-all-folks
 limits
 measurement-data
 xbar-chart

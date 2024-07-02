@@ -1,7 +1,0 @@
-# (PART\*) Part 2: Constructing SPC Charts with R {-}
-
-# Your First SPC Chart With Base R {#first-chart}
-
-## A run chart from random normal data
-
-## Adding control limits to produce a control chart
