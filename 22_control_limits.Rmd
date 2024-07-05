@@ -1,19 +1,375 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Calculating Control Limits for "The Magnificent Seven" {#limits}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/3,
+                      dev     = 'svg')
+
+library(knitr)
+library(kableExtra)
+```
+
+In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we will build a function that calculates the empirical standard deviations for the most common control chart types, "The Magnificent Seven".
+
+To avoid repeating ourselves, let's begin by creating a function to automate the plotting for us.
+
+```{r}
+spc <- function(
+    x,           # x axis
+    y   = NULL,  # data
+    cl  = NA,    # centre line
+    lcl = NA,    # lower control limit
+    ucl = NA,    # upper control limit
+    ...          # other parameters passed to the plot() function
+) {
+  # if y is missing, set y to x and make a sequence for x
+  if (is.null(y)) {
+    y <- x
+    x <- seq_along(y)
+  }
+  
+  # repeat line values to match the length of y
+  if (length(cl) == 1)
+    cl <- rep(cl, length(y))
+  
+  if (length(lcl) == 1)
+    lcl <- rep(lcl, length(y))
+  
+  if (length(ucl) == 1)
+    ucl <- rep(ucl, length(y))
+  
+  # plot the dots and draw the lines
+  plot(x, y, 
+       type = 'o',
+       ylim = range(y, lcl, ucl, na.rm = TRUE),
+       ...)
+  lines(x, cl)
+  lines(x, lcl)
+  lines(x, ucl)
+}
+```
+
+The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, one may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
+
+Let's test it:
+
+```{r limits-fig1, fig.cap='Control chart'}
+set.seed(27)
+y <- rnorm(24)
+x <- seq_along(y)
+
+spc(x, y, cl = 0, lcl = -3, ucl = 3)
+```
+
+With few exceptions we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits. 
+
+The formulas for calculation control limits for the most common control charts are provided in Table \@ref(tab:limits-tab1). Don't be alarmed by the number of strange symbols, we will dissect the formulas one by one as we move along.
+
+```{r limits-tab1, echo=FALSE}
+read.delim('input/limit_formulas.tsv', check.names = F) |> 
+  kbl(caption = 'Formulas for calculating control limits') |> 
+  pack_rows('Measurement data', 1, 4) |> 
+  pack_rows('Count data', 5, 7)
+```
+
+Generally, data come in two flavours: measurement data and count data. **Measurements** are data that are measured on a continuous scale and may have decimals, for example height and weight or waiting times. **Counts** are positive integers that represent counts of a property or phenomenon, for example surgical complications, healthy babies, or patient falls.
 
 ## Measurement data
 
-### Xbar chart
+### X-bar chart
+
+The X-bar chart is appropriate when the subgroups consist of samples of two or more measurements. 
+
+For example, at the obstetric department they are striving to improve response times for grade 2 caesarean sections. The goal is keep the times between the decision and delivery below 30 minutes.
+
+```{r}
+# read raw data
+csect <- read.csv('data/csect.csv',
+                  colClasses = c('POSIXct',
+                                 'Date',
+                                 'integer'))
+
+# show the first 6 rows
+head(csect)
+```
+
+The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for `r nrow(csect)` grade 2 section over a two-year period.
+
+First, we aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.
+
+```{r}
+# aggregate data by month
+csect.agg <- aggregate(delay ~ month, csect,
+                       function(x) c(mean = mean(x),
+                                     sd   = sd(x),
+                                     n    = length(x)))
+# make data into a nice data frame
+csect.agg <- do.call(data.frame, csect.agg)
+
+# print the first 6 rows
+head(csect.agg)
+```
+
+Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1) where $\bar{\bar{x}}$ (pronounced x bar bar) is the weighted mean of the subgroup means; $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. See \@ref(limits-constants) at the end of this chapter for the R code involved in calculating $A_3$ and other constants for control chart construction.
+
+Using the `spc()` function we created before, we are now able to construct our first "real" SPC chart (Figure \@ref(fig:limits-xbar)).
+
+```{r, echo=FALSE}
+<<constants>>
+```
+
+```{r limits-xbar, fig.cap='X bar chart'}
+with(csect.agg, {
+  xbarbar <- weighted.mean(delay.mean, delay.n)  # centre line
+  sbar    <- weighted.mean(delay.sd, delay.n)    # pooled standard deviation
+  a3      <- a3(delay.n)                         # A3 constant
+  
+  spc(x   = month,
+      y   = delay.mean,
+      cl  = xbarbar,
+      lcl = xbarbar - a3 * sbar,
+      ucl = xbarbar + a3 * sbar)
+})
+```
+
+Figure \@ref(fig:limits-xbar) shows the *average* delay time per month. On average the delay time is 23 minutes (= centre line) and all data points fall between the control limits suggesting that the process is stable and predictable.
+
+Note how the control limits vary from month to month reflecting the varying subgroup sizes -- small subgroups $\Rightarrow$ wide limits; large subgroups $\Rightarrow$ narrow limits.
+
+Be careful not to fall for the temptation to conclude that since no months are above the target of 30 minutes, all is well. The 30-minute target concerns the delay time of *individual* sections, not the *averages*. Even if the averages are well below the target, individuals may be above, which we will see later when we get to the individuals (I) chart.
 
 ### S chart
 
+The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.
+
+To calculate the centre and control limits for the S chart we need to know the pooled standard deviation, $\bar{S}$ (same as for the X-bar chart), and the two constants $B_3$ and $B_4$ From Table \@ref(tab:limits-tab1).
+
+```{r limits-s, fig.cap='S chart'}
+with(csect.agg, {
+  sbar    <- weighted.mean(delay.sd, delay.n)    # pooled SD, centre line
+  b3      <- b3(delay.n)                         # B3 constant
+  b4      <- b4(delay.n)                         # B4 constant
+  
+  spc(x   = month,
+      y   = delay.sd,
+      cl  = sbar,
+      lcl = b3 * sbar,
+      ucl = b4 * sbar)
+})
+```
+
+Figure \@ref(fig:limits-s) shows the average standard deviation of delay times per month. On average the standard deviation is 4.7 minuts minutes (= centre line) and all data points fall between the control limits suggesting that the process is stable and predictable.
+
+We may plot the X-bar and S charts together (Figure \@ref(fig:limits-xbarands)):
+
+```{r limits-xbarands, fig.cap='X-bar and S charts', fig.asp=3/3}
+with(csect.agg, {
+  xbarbar <- weighted.mean(delay.mean, delay.n)  # pooled average
+  sbar    <- weighted.mean(delay.sd, delay.n)    # pooled standard deviation
+  a3      <- a3(delay.n)                         # A3 constant
+  b3      <- b3(delay.n)                         # B3 constant
+  b4      <- b4(delay.n)                         # B4 constant
+  
+  op <- par(mfrow = c(2, 1),
+            mar = c(3, 5, 2, 1))
+  spc(month, delay.mean,
+      cl   = xbarbar,
+      lcl  = xbarbar - a3 * sbar,
+      ucl  = xbarbar + a3 * sbar,
+      main = 'X-bar Chart',
+      xlab = '')
+  
+  spc(month, delay.sd,
+      cl   = sbar,
+      lcl  = b3 * sbar,
+      ucl  = b4 * sbar,
+      main = 'S chart',
+      xlab = '')
+  par(op)
+})
+
+```
+
+
 ### I chart (aka X chart)
 
-### MR chart
+The "I" in "I chart" stand for "individuals" because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.
+
+I charts are useful when measurements come from individual units, for example waiting times for individual patients or daily measurements of blood pressure from a single patient.
+
+When subgroups consist of single values we use the pairwise absolute difference between data points or the average moving range ($\bar{MR}$) as an estimate of the within subgroup variation. By multiplying this value with 2.66 we get an estimate of the process standard deviation.
+
+Let's have a look at individual delay times for the latest 30 C-sections (Figure \@ref(fig:limits-i)).
+
+```{r limits-i, fig.cap='I-chart'}
+with(tail(csect, 30), {
+  xbar <- mean(delay)
+  amr  <- mean(abs(diff(delay)))
+  
+  spc(delay,
+      cl = xbar,
+      lcl = xbar - 2.66 * amr,
+      ucl = xbar + 2.66 * amr)
+  
+})
+```
+
+On average, the delay time is 23 minutes (as in the X-bar chart). A single data point lies way above the upper control limit suggesting that this case was special and that it might be useful to look for special causes in order to prevent this from happening again in the future.
+
+### MR-chart
+
+The MR-chart is a chart of the moving ranges from individual values. It's the companion to the I-chart estimating the within subgroup variation of individual values.
+
+```{r limits-mr, fig.cap='MR-chart'}
+with(tail(csect, 30), {
+  mr <- c(NA, abs(diff(delay)))
+  amr  <- mean(mr, na.rm = TRUE)
+  
+  spc(mr,
+      cl = amr,
+      lcl = amr - 3.267 * amr,
+      ucl = amr + 3.267 * amr)
+  
+})
+```
+
+Note that there are one less moving range than individual values. To "synchronise" the charts, we add an NA value at the beginning of the MR-chart.
+
+Again, we may plot the two charts alongside each other (Figure \@ref(fig:limits-imr)):
+
+```{r limits-imr, fig.cap='I- and MR-charts', fig.asp=3/3}
+with(tail(csect, 30), {
+  xbar <- mean(delay)
+  mr <- c(NA, abs(diff(delay)))
+  amr  <- mean(mr, na.rm = TRUE)
+  
+  op <- par(mfrow = c(2, 1),
+            mar = c(3, 5, 2, 1))
+  spc(delay,
+      cl = xbar,
+      lcl = xbar - 2.66 * amr,
+      ucl = xbar + 2.66 * amr,
+      main = 'I-chart',
+      xlab = '')
+  
+  spc(mr,
+      cl = amr,
+      lcl = amr - 3.267 * amr,
+      ucl = amr + 3.267 * amr,
+      main = 'MR-chart',
+      xlab = 'Patietn #')
+  par(op) 
+})
+```
+
+In this case the MR-chart adds nothing to the interpretation. But in certain cases the MR-chart may reveal unusually large differences between successive data points, which may warrant further investigation.
 
 ## Count data
 
+Count data come in several flavours depending on the type of counts involved. In this chapter we will limit ourselves to *defects** and **defectives**. Don't take these terms too literally. They are simply statistician jargon for things to count and are contrary to what one might think not always unwanted.
+
+**Defects** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Defects can for example be the number of cancer cells found in a microscopy slide, the number of traffic accidents in a month, or the number of shooting stars observed in the night sky. Defects may often be modelled by the poisson distribution.
+
+Defects may be presented as raw counts or rates.
+
+**Defectives** represent whole units of something that either possess or do not posses a certain property. Alternatively, the terms "successes" and "failures" are often used. Defectives can for example be surgical procedures that had one or more complications, patients who died (or survived), or procedures that completed according to a standard. Defectives may often be modelled by the binomial distribution.
+
+Defectives are usually presented as proportions or percentages.
+
 ### C chart
+
+The C charts is the simplest and the easiest to calculate of all control charts. The standard deviation is simply estimated as the square root of the process mean.
+
+C charts are appropriate when counting phenomena from equally big chunks of time or space.
+
+Figure \@ref(fig:limits-c) shows the monthly number of C-sections per month in a C chart.
+
+```{r limits-c, fig.cap='C chart'}
+with(csect.agg, {
+  cbar    <- mean(delay.n)
+  sigma3 <- 3 * sqrt(cbar)
+  
+  spc(month, delay.n,
+      cl = cbar,
+      lcl = pmax(0, cbar - sigma3),
+      ucl = cbar + sigma3)
+})
+```
+
+The average number of C-sections is 8.7 per month. Note that the lower control limit is censored at 0 even though the formula results in a negative value, $8.7-3*\sqrt{8.7}=-0.15$.
 
 ### U chart
 
+U charts are also used when counting defects. They are especially useful when the chunks of time or space are not equally sized. In our case we might want to adjust for the fact that months do not have equally many days, which (in theory) might skew our data. The U chart adjust for this "unequal area of opportunity" (hence the U) by presenting rates rather than raw counts. A rate differs from a percentage in that the numerator and denominator are different things. In our case number of C-sections and number of days (Figure \@ref(fig:limits-u)).
+
+```{r limits-u, fig.cap='U chart'}
+with(csect.agg, {
+  # number of days in each month
+  days_in_month <- as.integer(diff(c(month, 
+                                     trunc(tail(month, 1) + 31,
+                                           units = 'months'))))
+  ubar   <- mean(delay.n / days_in_month)
+  sigma3 <- 3 * sqrt(ubar / days_in_month)
+  
+  spc(month, delay.n / days_in_month,
+      cl  = ubar,
+      lcl = pmax(0, ubar - sigma3),
+      ucl = ubar + sigma3)
+})
+```
+
+In Figure \@ref(fig:limits-u) we have also censored the lower control limit at zero.
+
 ### P chart
+
+P charts are for proportion or percentage defectives. In our example we could monitor the monthly proportion of C-sections that were on time (< 30 minutes) (Figure \@ref(fig:limits-p).
+
+```{r limits-p, fig.cap='P chart'}
+csect.agg$on_time <- tapply(csect$delay, 
+                            csect$month, 
+                            function(x) sum(x < 30))
+
+with(csect.agg, {
+  pbar   <- sum(on_time) / sum(delay.n)
+  sigma3 <- 3 * sqrt(pbar * (1 - pbar) / delay.n)
+  
+  spc(month, on_time / delay.n,
+      cl  = pbar,
+      lcl = pmax(0, pbar - sigma3),
+      ucl = pmin(1, pbar + sigma3))
+})
+```
+
+As is common with P charts, we have censored the lower and upper control limits at 0 and 1 (100%) respectively.
+
+---
+
+## Control chart constants {-#limits-constants}
+
+```{r constants}
+a3 <- function(n) {
+  3 / (c4(n) * sqrt(n))
+}
+
+b3 <- function(n) {
+  pmax(0, 1 - 3 * c5(n) / c4(n))
+}
+
+b4 <- function(n) {
+  1 + 3 * c5(n) / c4(n)
+}
+
+c4 <- function(n) {
+  n[n <= 1] <- NA
+  sqrt(2 / (n - 1)) * exp(lgamma(n / 2) - lgamma((n - 1) / 2))
+}
+
+c5 <- function(n) {
+  sqrt(1 - c4(n) ^ 2)
+}
+```
+

@@ -1,5 +1,6 @@
 bookdown::gitbook:
   css: style.css
+  # table_css: FALSE
   config:
     toc:
       collapse: section
