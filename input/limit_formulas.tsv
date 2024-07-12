@@ -1,6 +1,6 @@
 Subgroups	Chart type	Control limits	Assumed distribution
 Averrages of 2 or more measurements	X-bar	$\bar{\bar{x}}\pm A_{3}\bar{s}$	Normal
-Standard deviation of 2 or more measurements	S	$B_{3}\bar{s};\ B_{4}\bar{s}$	Normal
+Standard deviations of 2 or more measurements	S	$B_{3}\bar{s};\ B_{4}\bar{s}$	Normal
 Individual measurements	 I	$\bar{x}\pm2.66\overline{MR}$	Normal
 Moving ranges of individual measurements	MR	$\overline{MR}+3.267\overline{MR}$	Normal
 Counts	 C	$\bar{c}\pm3\sqrt{\bar{c}}$	Poisson

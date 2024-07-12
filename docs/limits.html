@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Calculating Control Limits for “The Magnificent Seven” | Mastering Statistical Process Control charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Calculating Control Limits for “The Magnificent Seven” | Mastering Statistical Process Control charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-07-05" />
+<meta name="date" content="2024-07-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,7 +194,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>3.2.2</b> U chart</a></li>
 <li class="chapter" data-level="3.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>3.2.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#limits-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
+<li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Case Studies</b></span></li>
 <li class="chapter" data-level="4" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>4</b> Case 1:</a></li>
@@ -255,11 +255,11 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="limits" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Calculating Control Limits for “The Magnificent Seven”<a href="limits.html#limits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we will build a function that calculates the empirical standard deviations for the most common control chart types, “The Magnificent Seven”.</p>
+<p>In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we will start constructing control charts with real data and demonstrate the most common control chart types, “The Magnificent Seven”.</p>
 <p>To avoid repeating ourselves, let’s begin by creating a function to automate the plotting for us.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="limits.html#cb7-1" tabindex="-1"></a>spc <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<span id="cb7-2"><a href="limits.html#cb7-2" tabindex="-1"></a>    x,           <span class="co"># x axis</span></span>
-<span id="cb7-3"><a href="limits.html#cb7-3" tabindex="-1"></a>    <span class="at">y   =</span> <span class="cn">NULL</span>,  <span class="co"># data</span></span>
+<span id="cb7-2"><a href="limits.html#cb7-2" tabindex="-1"></a>    x,           <span class="co"># x axis values</span></span>
+<span id="cb7-3"><a href="limits.html#cb7-3" tabindex="-1"></a>    <span class="at">y   =</span> <span class="cn">NULL</span>,  <span class="co"># data values</span></span>
 <span id="cb7-4"><a href="limits.html#cb7-4" tabindex="-1"></a>    <span class="at">cl  =</span> <span class="cn">NA</span>,    <span class="co"># centre line</span></span>
 <span id="cb7-5"><a href="limits.html#cb7-5" tabindex="-1"></a>    <span class="at">lcl =</span> <span class="cn">NA</span>,    <span class="co"># lower control limit</span></span>
 <span id="cb7-6"><a href="limits.html#cb7-6" tabindex="-1"></a>    <span class="at">ucl =</span> <span class="cn">NA</span>,    <span class="co"># upper control limit</span></span>
@@ -347,7 +347,7 @@ Normal
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-Standard deviation of 2 or more measurements
+Standard deviations of 2 or more measurements
 </td>
 <td style="text-align:left;">
 S
@@ -436,30 +436,31 @@ Binomial
 </tr>
 </tbody>
 </table>
-<p>Generally, data come in two flavours: measurement data and count data. <strong>Measurements</strong> are data that are measured on a continuous scale and may have decimals, for example height and weight or waiting times. <strong>Counts</strong> are positive integers that represent counts of a property or phenomenon, for example surgical complications, healthy babies, or patient falls.</p>
+<p>Generally, data come in two flavours: measurement data and count data. <strong>Measurements</strong> are data that are measured on continuous scales and may have decimals, for example height and weight or waiting times. <strong>Counts</strong> are positive integers that represent counts of a property or phenomenon, for example surgical complications, healthy babies, or patient falls.</p>
 <div id="measurement-data" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Measurement data<a href="limits.html#measurement-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="x-bar-chart" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> X-bar chart<a href="limits.html#x-bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The X-bar chart is appropriate when the subgroups consist of samples of two or more measurements.</p>
-<p>For example, at the obstetric department they are striving to improve response times for grade 2 caesarean sections. The goal is keep the times between the decision and delivery below 30 minutes.</p>
+<p>For example, at the obstetric department they are monitoring response times for grade 2 caesarean sections. The goal is to keep the times between the decision and delivery below 30 minutes.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="limits.html#cb9-1" tabindex="-1"></a><span class="co"># read raw data</span></span>
-<span id="cb9-2"><a href="limits.html#cb9-2" tabindex="-1"></a>csect <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/csect.csv&#39;</span>,</span>
-<span id="cb9-3"><a href="limits.html#cb9-3" tabindex="-1"></a>                  <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="st">&#39;POSIXct&#39;</span>,</span>
-<span id="cb9-4"><a href="limits.html#cb9-4" tabindex="-1"></a>                                 <span class="st">&#39;Date&#39;</span>,</span>
-<span id="cb9-5"><a href="limits.html#cb9-5" tabindex="-1"></a>                                 <span class="st">&#39;integer&#39;</span>))</span>
-<span id="cb9-6"><a href="limits.html#cb9-6" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="limits.html#cb9-7" tabindex="-1"></a><span class="co"># show the first 6 rows</span></span>
-<span id="cb9-8"><a href="limits.html#cb9-8" tabindex="-1"></a><span class="fu">head</span>(csect)</span></code></pre></div>
+<span id="cb9-2"><a href="limits.html#cb9-2" tabindex="-1"></a>csect <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/csection_delay.csv&#39;</span>,</span>
+<span id="cb9-3"><a href="limits.html#cb9-3" tabindex="-1"></a>                  <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb9-4"><a href="limits.html#cb9-4" tabindex="-1"></a>                  <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="st">&#39;POSIXct&#39;</span>,</span>
+<span id="cb9-5"><a href="limits.html#cb9-5" tabindex="-1"></a>                                 <span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb9-6"><a href="limits.html#cb9-6" tabindex="-1"></a>                                 <span class="st">&#39;integer&#39;</span>))</span>
+<span id="cb9-7"><a href="limits.html#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="limits.html#cb9-8" tabindex="-1"></a><span class="co"># show the first 6 rows</span></span>
+<span id="cb9-9"><a href="limits.html#cb9-9" tabindex="-1"></a><span class="fu">head</span>(csect)</span></code></pre></div>
 <pre><code>##              datetime      month delay
-## 1 2016-01-06 02:55:40 2016-01-01    22
-## 2 2016-01-06 19:52:34 2016-01-01    22
-## 3 2016-01-07 01:50:43 2016-01-01    29
-## 4 2016-01-07 21:32:27 2016-01-01    28
-## 5 2016-01-09 13:56:09 2016-01-01    22
-## 6 2016-01-09 20:21:24 2016-01-01    20</code></pre>
+## 1 2016-01-06 03:55:40 2016-01-01    22
+## 2 2016-01-06 20:52:34 2016-01-01    22
+## 3 2016-01-07 02:50:43 2016-01-01    29
+## 4 2016-01-07 22:32:27 2016-01-01    28
+## 5 2016-01-09 14:56:09 2016-01-01    22
+## 6 2016-01-09 21:21:24 2016-01-01    20</code></pre>
 <p>The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for 208 grade 2 section over a two-year period.</p>
-<p>First, we aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.</p>
+<p>To plot the monthly averages, we must first aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="limits.html#cb11-1" tabindex="-1"></a><span class="co"># aggregate data by month</span></span>
 <span id="cb11-2"><a href="limits.html#cb11-2" tabindex="-1"></a>csect.agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(delay <span class="sc">~</span> month, csect,</span>
 <span id="cb11-3"><a href="limits.html#cb11-3" tabindex="-1"></a>                       <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x),</span>
@@ -477,8 +478,8 @@ Binomial
 ## 4 2016-04-01   22.66667 3.041381       9
 ## 5 2016-05-01   22.50000 3.891382       8
 ## 6 2016-06-01   22.00000 6.204837       5</code></pre>
-<p>Next, we calculate the centre line and the control limits using the formula in Table <a href="limits.html#tab:limits-tab1">3.1</a> where <span class="math inline">\(\bar{\bar{x}}\)</span> (pronounced x bar bar) is the weighted mean of the subgroup means; <span class="math inline">\(\bar{s}\)</span> (s bar) is the weighted mean of the subgroup standard deviations, and <span class="math inline">\(A_3\)</span> is a constant that depends on the subgroup size. See <a href="limits.html#limits-constants"><strong>??</strong></a> at the end of this chapter for the R code involved in calculating <span class="math inline">\(A_3\)</span> and other constants for control chart construction.</p>
-<p>Using the <code>spc()</code> function we created before, we are now able to construct our first “real” SPC chart (Figure <a href="limits.html#fig:limits-xbar">3.2</a>).</p>
+<p>Next, we calculate the centre line and the control limits using the formula in Table <a href="limits.html#tab:limits-tab1">3.1</a> where <span class="math inline">\(\bar{\bar{x}}\)</span> (pronounced x bar bar) is the weighted mean of the subgroup means; <span class="math inline">\(\bar{s}\)</span> (s bar) is the weighted mean of the subgroup standard deviations, and <span class="math inline">\(A_3\)</span> is a constant that depends on the subgroup size. See the section on <a href="limits.html#chart-constants">chart constants</a> at the end of this chapter for the R code involved in calculating <span class="math inline">\(A_3\)</span> and other constants for control chart construction.</p>
+<p>Using the <code>spc()</code> function we created before, we are now able to construct our first SPC chart with “real” data and empirical control limits (Figure <a href="limits.html#fig:limits-xbar">3.2</a>).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="limits.html#cb13-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
 <span id="cb13-2"><a href="limits.html#cb13-2" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.mean, delay.n)  <span class="co"># centre line</span></span>
 <span id="cb13-3"><a href="limits.html#cb13-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># pooled standard deviation</span></span>
@@ -502,7 +503,7 @@ Figure 3.2: X bar chart
 </div>
 <div id="s-chart" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> S chart<a href="limits.html#s-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.</p>
+<p>The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the within subgroup spread of data over time.</p>
 <p>To calculate the centre and control limits for the S chart we need to know the pooled standard deviation, <span class="math inline">\(\bar{S}\)</span> (same as for the X-bar chart), and the two constants <span class="math inline">\(B_3\)</span> and <span class="math inline">\(B_4\)</span> From Table <a href="limits.html#tab:limits-tab1">3.1</a>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="limits.html#cb14-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
 <span id="cb14-2"><a href="limits.html#cb14-2" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># pooled SD, centre line</span></span>
@@ -556,16 +557,17 @@ Figure 3.4: X-bar and S charts
 </div>
 <div id="i-chart-aka-x-chart" class="section level3 hasAnchor" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> I chart (aka X chart)<a href="limits.html#i-chart-aka-x-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The “I” in “I chart” stand for “individuals” because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.</p>
+<p>The I in I chart stand for “individuals” because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.</p>
 <p>I charts are useful when measurements come from individual units, for example waiting times for individual patients or daily measurements of blood pressure from a single patient.</p>
-<p>When subgroups consist of single values we use the pairwise absolute difference between data points or the average moving range (<span class="math inline">\(\bar{MR}\)</span>) as an estimate of the within subgroup variation. By multiplying this value with 2.66 we get an estimate of the process standard deviation.</p>
+<p>As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, I charts are considere the Swiss army knife of SPC.</p>
+<p>When subgroups consist of single values we use the pairwise absolute difference between data points, the average moving range (<span class="math inline">\(\bar{MR}\)</span>) as an estimate of the within subgroup variation. By multiplying this value with 2.66 we get an estimate of the process standard deviation.</p>
 <p>Let’s have a look at individual delay times for the latest 30 C-sections (Figure <a href="limits.html#fig:limits-i">3.5</a>).</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="limits.html#cb16-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">tail</span>(csect, <span class="dv">30</span>), {</span>
 <span id="cb16-2"><a href="limits.html#cb16-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(delay)</span>
 <span id="cb16-3"><a href="limits.html#cb16-3" tabindex="-1"></a>  amr  <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(<span class="fu">diff</span>(delay)))</span>
 <span id="cb16-4"><a href="limits.html#cb16-4" tabindex="-1"></a>  </span>
 <span id="cb16-5"><a href="limits.html#cb16-5" tabindex="-1"></a>  <span class="fu">spc</span>(delay,</span>
-<span id="cb16-6"><a href="limits.html#cb16-6" tabindex="-1"></a>      <span class="at">cl =</span> xbar,</span>
+<span id="cb16-6"><a href="limits.html#cb16-6" tabindex="-1"></a>      <span class="at">cl  =</span> xbar,</span>
 <span id="cb16-7"><a href="limits.html#cb16-7" tabindex="-1"></a>      <span class="at">lcl =</span> xbar <span class="sc">-</span> <span class="fl">2.66</span> <span class="sc">*</span> amr,</span>
 <span id="cb16-8"><a href="limits.html#cb16-8" tabindex="-1"></a>      <span class="at">ucl =</span> xbar <span class="sc">+</span> <span class="fl">2.66</span> <span class="sc">*</span> amr)</span>
 <span id="cb16-9"><a href="limits.html#cb16-9" tabindex="-1"></a>  </span>
@@ -580,13 +582,13 @@ Figure 3.5: I-chart
 </div>
 <div id="mr-chart" class="section level3 hasAnchor" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> MR-chart<a href="limits.html#mr-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The MR-chart is a chart of the moving ranges from individual values. It’s the companion to the I-chart estimating the within subgroup variation of individual values.</p>
+<p>The MR-chart plots the moving ranges of individual values. It’s the companion to the I-chart estimating the within subgroup variation.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="limits.html#cb17-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">tail</span>(csect, <span class="dv">30</span>), {</span>
-<span id="cb17-2"><a href="limits.html#cb17-2" tabindex="-1"></a>  mr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(delay)))</span>
-<span id="cb17-3"><a href="limits.html#cb17-3" tabindex="-1"></a>  amr  <span class="ot">&lt;-</span> <span class="fu">mean</span>(mr, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-2"><a href="limits.html#cb17-2" tabindex="-1"></a>  mr  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(delay)))</span>
+<span id="cb17-3"><a href="limits.html#cb17-3" tabindex="-1"></a>  amr <span class="ot">&lt;-</span> <span class="fu">mean</span>(mr, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb17-4"><a href="limits.html#cb17-4" tabindex="-1"></a>  </span>
 <span id="cb17-5"><a href="limits.html#cb17-5" tabindex="-1"></a>  <span class="fu">spc</span>(mr,</span>
-<span id="cb17-6"><a href="limits.html#cb17-6" tabindex="-1"></a>      <span class="at">cl =</span> amr,</span>
+<span id="cb17-6"><a href="limits.html#cb17-6" tabindex="-1"></a>      <span class="at">cl  =</span> amr,</span>
 <span id="cb17-7"><a href="limits.html#cb17-7" tabindex="-1"></a>      <span class="at">lcl =</span> amr <span class="sc">-</span> <span class="fl">3.267</span> <span class="sc">*</span> amr,</span>
 <span id="cb17-8"><a href="limits.html#cb17-8" tabindex="-1"></a>      <span class="at">ucl =</span> amr <span class="sc">+</span> <span class="fl">3.267</span> <span class="sc">*</span> amr)</span>
 <span id="cb17-9"><a href="limits.html#cb17-9" tabindex="-1"></a>  </span>
@@ -597,7 +599,7 @@ Figure 3.5: I-chart
 Figure 3.6: MR-chart
 </p>
 </div>
-<p>Note that there are one less moving range than individual values. To “synchronise” the charts, we add an NA value at the beginning of the MR-chart.</p>
+<p>Note that there is one less moving range than individual values. To “synchronise” the charts, we add an NA value at the beginning of the MR-chart.</p>
 <p>Again, we may plot the two charts alongside each other (Figure <a href="limits.html#fig:limits-imr">3.7</a>):</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="limits.html#cb18-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">tail</span>(csect, <span class="dv">30</span>), {</span>
 <span id="cb18-2"><a href="limits.html#cb18-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(delay)</span>
@@ -627,27 +629,27 @@ Figure 3.6: MR-chart
 Figure 3.7: I- and MR-charts
 </p>
 </div>
-<p>In this case the MR-chart adds nothing to the interpretation. But in certain cases the MR-chart may reveal unusually large differences between successive data points, which may warrant further investigation.</p>
+<p>In this case the MR-chart adds nothing to the interpretation. But in some cases the MR-chart may reveal unusually large differences between successive data points, which may warrant further investigation.</p>
 </div>
 </div>
 <div id="count-data" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Count data<a href="limits.html#count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Count data come in several flavours depending on the type of counts involved. In this chapter we will limit ourselves to *defects<strong> and </strong>defectives**. Don’t take these terms too literally. They are simply statistician jargon for things to count and are contrary to what one might think not always unwanted.</p>
-<p><strong>Defects</strong> are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Defects can for example be the number of cancer cells found in a microscopy slide, the number of traffic accidents in a month, or the number of shooting stars observed in the night sky. Defects may often be modelled by the poisson distribution.</p>
-<p>Defects may be presented as raw counts or rates.</p>
+<p>Count data come in several flavours depending on the type of counts involved. In this chapter we will limit ourselves to defects and defectives. Don’t take these terms too literally. They are simply statistician jargon for things to count and are not always unwanted.</p>
+<p><strong>Defects</strong> are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Defects can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Defects may often be modelled by the poisson distribution.</p>
+<p>Defects are presented as raw counts or rates.</p>
 <p><strong>Defectives</strong> represent whole units of something that either possess or do not posses a certain property. Alternatively, the terms “successes” and “failures” are often used. Defectives can for example be surgical procedures that had one or more complications, patients who died (or survived), or procedures that completed according to a standard. Defectives may often be modelled by the binomial distribution.</p>
-<p>Defectives are usually presented as proportions or percentages.</p>
+<p>Defectives are presented as proportions or percentages.</p>
 <div id="c-chart" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> C chart<a href="limits.html#c-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The C charts is the simplest and the easiest to calculate of all control charts. The standard deviation is simply estimated as the square root of the process mean.</p>
+<p>The C charts is the simplest of all control charts and the easiest to calculate. The process standard deviation is simply estimated as the square root of the process mean.</p>
 <p>C charts are appropriate when counting phenomena from equally big chunks of time or space.</p>
 <p>Figure <a href="limits.html#fig:limits-c">3.8</a> shows the monthly number of C-sections per month in a C chart.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="limits.html#cb19-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
-<span id="cb19-2"><a href="limits.html#cb19-2" tabindex="-1"></a>  cbar    <span class="ot">&lt;-</span> <span class="fu">mean</span>(delay.n)</span>
+<span id="cb19-2"><a href="limits.html#cb19-2" tabindex="-1"></a>  cbar   <span class="ot">&lt;-</span> <span class="fu">mean</span>(delay.n)</span>
 <span id="cb19-3"><a href="limits.html#cb19-3" tabindex="-1"></a>  sigma3 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>(cbar)</span>
 <span id="cb19-4"><a href="limits.html#cb19-4" tabindex="-1"></a>  </span>
 <span id="cb19-5"><a href="limits.html#cb19-5" tabindex="-1"></a>  <span class="fu">spc</span>(month, delay.n,</span>
-<span id="cb19-6"><a href="limits.html#cb19-6" tabindex="-1"></a>      <span class="at">cl =</span> cbar,</span>
+<span id="cb19-6"><a href="limits.html#cb19-6" tabindex="-1"></a>      <span class="at">cl  =</span> cbar,</span>
 <span id="cb19-7"><a href="limits.html#cb19-7" tabindex="-1"></a>      <span class="at">lcl =</span> <span class="fu">pmax</span>(<span class="dv">0</span>, cbar <span class="sc">-</span> sigma3),</span>
 <span id="cb19-8"><a href="limits.html#cb19-8" tabindex="-1"></a>      <span class="at">ucl =</span> cbar <span class="sc">+</span> sigma3)</span>
 <span id="cb19-9"><a href="limits.html#cb19-9" tabindex="-1"></a>})</span></code></pre></div>
@@ -661,7 +663,7 @@ Figure 3.8: C chart
 </div>
 <div id="u-chart" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> U chart<a href="limits.html#u-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>U charts are also used when counting defects. They are especially useful when the chunks of time or space are not equally sized. In our case we might want to adjust for the fact that months do not have equally many days, which (in theory) might skew our data. The U chart adjust for this “unequal area of opportunity” (hence the U) by presenting rates rather than raw counts. A rate differs from a percentage in that the numerator and denominator are different things. In our case number of C-sections and number of days (Figure <a href="limits.html#fig:limits-u">3.9</a>).</p>
+<p>U charts are also used when counting defects. They are especially useful when the chunks of time or space are not equally sized resulting in “unequal area of opportunity” (hence the U). In our case we might want to adjust for the fact that months do not have equally many days, which (in theory) might skew our data. The U chart adjust for this by presenting rates rather than raw counts. A rate differs from a proportion in that the numerator and denominator are different things, in our case: number of C-sections and number of days respectively (Figure <a href="limits.html#fig:limits-u">3.9</a>).</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="limits.html#cb20-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
 <span id="cb20-2"><a href="limits.html#cb20-2" tabindex="-1"></a>  <span class="co"># number of days in each month</span></span>
 <span id="cb20-3"><a href="limits.html#cb20-3" tabindex="-1"></a>  days_in_month <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">diff</span>(<span class="fu">c</span>(month, </span>
@@ -685,7 +687,7 @@ Figure 3.9: U chart
 </div>
 <div id="p-chart" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> P chart<a href="limits.html#p-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>P charts are for proportion or percentage defectives. In our example we could monitor the monthly proportion of C-sections that were on time (&lt; 30 minutes) (Figure <a href="limits.html#fig:limits-p">3.10</a>.</p>
+<p>P charts are for proportion (or percentage) defectives. In our example we want to monitor the monthly proportion of C-sections that were on time (&lt; 30 minutes) (Figure <a href="limits.html#fig:limits-p">3.10</a>.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="limits.html#cb21-1" tabindex="-1"></a>csect.agg<span class="sc">$</span>on_time <span class="ot">&lt;-</span> <span class="fu">tapply</span>(csect<span class="sc">$</span>delay, </span>
 <span id="cb21-2"><a href="limits.html#cb21-2" tabindex="-1"></a>                            csect<span class="sc">$</span>month, </span>
 <span id="cb21-3"><a href="limits.html#cb21-3" tabindex="-1"></a>                            <span class="cf">function</span>(x) <span class="fu">sum</span>(x <span class="sc">&lt;</span> <span class="dv">30</span>))</span>
@@ -709,8 +711,8 @@ Figure 3.10: P chart
 <hr />
 </div>
 </div>
-<div id="limits-constants" class="section level2 unnumbered hasAnchor">
-<h2>Control chart constants<a href="limits.html#limits-constants" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chart-constants" class="section level2 unnumbered hasAnchor">
+<h2>Control chart constants<a href="limits.html#chart-constants" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="limits.html#cb22-1" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
 <span id="cb22-2"><a href="limits.html#cb22-2" tabindex="-1"></a>  <span class="dv">3</span> <span class="sc">/</span> (<span class="fu">c4</span>(n) <span class="sc">*</span> <span class="fu">sqrt</span>(n))</span>
 <span id="cb22-3"><a href="limits.html#cb22-3" tabindex="-1"></a>}</span>

@@ -13,14 +13,14 @@ library(knitr)
 library(kableExtra)
 ```
 
-In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we will build a function that calculates the empirical standard deviations for the most common control chart types, "The Magnificent Seven".
+In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we will start constructing control charts with real data and demonstrate the most common control chart types, "The Magnificent Seven".
 
 To avoid repeating ourselves, let's begin by creating a function to automate the plotting for us.
 
 ```{r}
 spc <- function(
-    x,           # x axis
-    y   = NULL,  # data
+    x,           # x axis values
+    y   = NULL,  # data values
     cl  = NA,    # centre line
     lcl = NA,    # lower control limit
     ucl = NA,    # upper control limit
@@ -76,7 +76,7 @@ read.delim('input/limit_formulas.tsv', check.names = F) |>
   pack_rows('Count data', 5, 7)
 ```
 
-Generally, data come in two flavours: measurement data and count data. **Measurements** are data that are measured on a continuous scale and may have decimals, for example height and weight or waiting times. **Counts** are positive integers that represent counts of a property or phenomenon, for example surgical complications, healthy babies, or patient falls.
+Generally, data come in two flavours: measurement data and count data. **Measurements** are data that are measured on continuous scales and may have decimals, for example height and weight or waiting times. **Counts** are positive integers that represent counts of a property or phenomenon, for example surgical complications, healthy babies, or patient falls.
 
 ## Measurement data
 
@@ -84,11 +84,12 @@ Generally, data come in two flavours: measurement data and count data. **Measure
 
 The X-bar chart is appropriate when the subgroups consist of samples of two or more measurements. 
 
-For example, at the obstetric department they are striving to improve response times for grade 2 caesarean sections. The goal is keep the times between the decision and delivery below 30 minutes.
+For example, at the obstetric department they are monitoring response times for grade 2 caesarean sections. The goal is to keep the times between the decision and delivery below 30 minutes.
 
 ```{r}
 # read raw data
-csect <- read.csv('data/csect.csv',
+csect <- read.csv('data/csection_delay.csv',
+                  comment.char = '#',
                   colClasses = c('POSIXct',
                                  'Date',
                                  'integer'))
@@ -99,7 +100,7 @@ head(csect)
 
 The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for `r nrow(csect)` grade 2 section over a two-year period.
 
-First, we aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.
+To plot the monthly averages, we must first aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.
 
 ```{r}
 # aggregate data by month
@@ -114,9 +115,9 @@ csect.agg <- do.call(data.frame, csect.agg)
 head(csect.agg)
 ```
 
-Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1) where $\bar{\bar{x}}$ (pronounced x bar bar) is the weighted mean of the subgroup means; $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. See \@ref(limits-constants) at the end of this chapter for the R code involved in calculating $A_3$ and other constants for control chart construction.
+Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1) where $\bar{\bar{x}}$ (pronounced x bar bar) is the weighted mean of the subgroup means; $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. See the section on [chart constants](#chart-constants) at the end of this chapter for the R code involved in calculating $A_3$ and other constants for control chart construction.
 
-Using the `spc()` function we created before, we are now able to construct our first "real" SPC chart (Figure \@ref(fig:limits-xbar)).
+Using the `spc()` function we created before, we are now able to construct our first SPC chart with "real" data and empirical control limits (Figure \@ref(fig:limits-xbar)).
 
 ```{r, echo=FALSE}
 <<constants>>
@@ -144,7 +145,7 @@ Be careful not to fall for the temptation to conclude that since no months are a
 
 ### S chart
 
-The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.
+The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the within subgroup spread of data over time.
 
 To calculate the centre and control limits for the S chart we need to know the pooled standard deviation, $\bar{S}$ (same as for the X-bar chart), and the two constants $B_3$ and $B_4$ From Table \@ref(tab:limits-tab1).
 
@@ -197,11 +198,13 @@ with(csect.agg, {
 
 ### I chart (aka X chart)
 
-The "I" in "I chart" stand for "individuals" because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.
+The I in I chart stand for "individuals" because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.
 
-I charts are useful when measurements come from individual units, for example waiting times for individual patients or daily measurements of blood pressure from a single patient.
+I charts are useful when measurements come from individual units, for example waiting times for individual patients or daily measurements of blood pressure from a single patient. 
 
-When subgroups consist of single values we use the pairwise absolute difference between data points or the average moving range ($\bar{MR}$) as an estimate of the within subgroup variation. By multiplying this value with 2.66 we get an estimate of the process standard deviation.
+As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, I charts are considere the Swiss army knife of SPC.
+
+When subgroups consist of single values we use the pairwise absolute difference between data points, the average moving range ($\bar{MR}$) as an estimate of the within subgroup variation. By multiplying this value with 2.66 we get an estimate of the process standard deviation.
 
 Let's have a look at individual delay times for the latest 30 C-sections (Figure \@ref(fig:limits-i)).
 
@@ -211,7 +214,7 @@ with(tail(csect, 30), {
   amr  <- mean(abs(diff(delay)))
   
   spc(delay,
-      cl = xbar,
+      cl  = xbar,
       lcl = xbar - 2.66 * amr,
       ucl = xbar + 2.66 * amr)
   
@@ -222,22 +225,22 @@ On average, the delay time is 23 minutes (as in the X-bar chart). A single data 
 
 ### MR-chart
 
-The MR-chart is a chart of the moving ranges from individual values. It's the companion to the I-chart estimating the within subgroup variation of individual values.
+The MR-chart plots the moving ranges of individual values. It's the companion to the I-chart estimating the within subgroup variation.
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 30), {
-  mr <- c(NA, abs(diff(delay)))
-  amr  <- mean(mr, na.rm = TRUE)
+  mr  <- c(NA, abs(diff(delay)))
+  amr <- mean(mr, na.rm = TRUE)
   
   spc(mr,
-      cl = amr,
+      cl  = amr,
       lcl = amr - 3.267 * amr,
       ucl = amr + 3.267 * amr)
   
 })
 ```
 
-Note that there are one less moving range than individual values. To "synchronise" the charts, we add an NA value at the beginning of the MR-chart.
+Note that there is one less moving range than individual values. To "synchronise" the charts, we add an NA value at the beginning of the MR-chart.
 
 Again, we may plot the two charts alongside each other (Figure \@ref(fig:limits-imr)):
 
@@ -266,23 +269,23 @@ with(tail(csect, 30), {
 })
 ```
 
-In this case the MR-chart adds nothing to the interpretation. But in certain cases the MR-chart may reveal unusually large differences between successive data points, which may warrant further investigation.
+In this case the MR-chart adds nothing to the interpretation. But in some cases the MR-chart may reveal unusually large differences between successive data points, which may warrant further investigation.
 
 ## Count data
 
-Count data come in several flavours depending on the type of counts involved. In this chapter we will limit ourselves to *defects** and **defectives**. Don't take these terms too literally. They are simply statistician jargon for things to count and are contrary to what one might think not always unwanted.
+Count data come in several flavours depending on the type of counts involved. In this chapter we will limit ourselves to defects and defectives. Don't take these terms too literally. They are simply statistician jargon for things to count and are not always unwanted.
 
-**Defects** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Defects can for example be the number of cancer cells found in a microscopy slide, the number of traffic accidents in a month, or the number of shooting stars observed in the night sky. Defects may often be modelled by the poisson distribution.
+**Defects** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Defects can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Defects may often be modelled by the poisson distribution.
 
-Defects may be presented as raw counts or rates.
+Defects are presented as raw counts or rates.
 
 **Defectives** represent whole units of something that either possess or do not posses a certain property. Alternatively, the terms "successes" and "failures" are often used. Defectives can for example be surgical procedures that had one or more complications, patients who died (or survived), or procedures that completed according to a standard. Defectives may often be modelled by the binomial distribution.
 
-Defectives are usually presented as proportions or percentages.
+Defectives are presented as proportions or percentages.
 
 ### C chart
 
-The C charts is the simplest and the easiest to calculate of all control charts. The standard deviation is simply estimated as the square root of the process mean.
+The C charts is the simplest of all control charts and the easiest to calculate. The process standard deviation is simply estimated as the square root of the process mean.
 
 C charts are appropriate when counting phenomena from equally big chunks of time or space.
 
@@ -290,11 +293,11 @@ Figure \@ref(fig:limits-c) shows the monthly number of C-sections per month in a
 
 ```{r limits-c, fig.cap='C chart'}
 with(csect.agg, {
-  cbar    <- mean(delay.n)
+  cbar   <- mean(delay.n)
   sigma3 <- 3 * sqrt(cbar)
   
   spc(month, delay.n,
-      cl = cbar,
+      cl  = cbar,
       lcl = pmax(0, cbar - sigma3),
       ucl = cbar + sigma3)
 })
@@ -304,7 +307,7 @@ The average number of C-sections is 8.7 per month. Note that the lower control l
 
 ### U chart
 
-U charts are also used when counting defects. They are especially useful when the chunks of time or space are not equally sized. In our case we might want to adjust for the fact that months do not have equally many days, which (in theory) might skew our data. The U chart adjust for this "unequal area of opportunity" (hence the U) by presenting rates rather than raw counts. A rate differs from a percentage in that the numerator and denominator are different things. In our case number of C-sections and number of days (Figure \@ref(fig:limits-u)).
+U charts are also used when counting defects. They are especially useful when the chunks of time or space are not equally sized resulting in "unequal area of opportunity" (hence the U). In our case we might want to adjust for the fact that months do not have equally many days, which (in theory) might skew our data. The U chart adjust for this by presenting rates rather than raw counts. A rate differs from a proportion in that the numerator and denominator are different things, in our case: number of C-sections and number of days respectively (Figure \@ref(fig:limits-u)).
 
 ```{r limits-u, fig.cap='U chart'}
 with(csect.agg, {
@@ -326,7 +329,7 @@ In Figure \@ref(fig:limits-u) we have also censored the lower control limit at z
 
 ### P chart
 
-P charts are for proportion or percentage defectives. In our example we could monitor the monthly proportion of C-sections that were on time (< 30 minutes) (Figure \@ref(fig:limits-p).
+P charts are for proportion (or percentage) defectives. In our example we want to monitor the monthly proportion of C-sections that were on time (< 30 minutes) (Figure \@ref(fig:limits-p).
 
 ```{r limits-p, fig.cap='P chart'}
 csect.agg$on_time <- tapply(csect$delay, 
@@ -348,7 +351,7 @@ As is common with P charts, we have censored the lower and upper control limits 
 
 ---
 
-## Control chart constants {-#limits-constants}
+## Control chart constants {-#chart-constants}
 
 ```{r constants}
 a3 <- function(n) {

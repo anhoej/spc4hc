@@ -1,0 +1,36 @@
+# Bacteremia
+# 
+# Hospital acquired and all cause bacteremias and 30 days mortality
+# 
+# Variables:
+#  month (date): month of infection
+#  hai_cases (numeric): number of hospital acquired infections
+#  risk_days (numeric): number of patient days without infection
+#  deaths (numeric): 30-day mortality after all-cause infection
+#  cases (numeric): number of all-cause infections
+
+month,hai_cases,risk_days,deaths,cases
+2017-01-01,24,32421,23,100
+2017-02-01,29,29349,22,105
+2017-03-01,26,32981,13,99
+2017-04-01,16,29588,14,85
+2017-05-01,28,30856,17,98
+2017-06-01,16,30544,15,85
+2017-07-01,14,26482,15,89
+2017-08-01,18,27637,25,99
+2017-09-01,27,30495,21,103
+2017-10-01,30,30600,24,86
+2017-11-01,28,31770,23,110
+2017-12-01,24,31679,26,98
+2018-01-01,16,32720,18,93
+2018-02-01,25,29698,23,96
+2018-03-01,20,32118,24,115
+2018-04-01,25,30212,25,102
+2018-05-01,22,31612,15,94
+2018-06-01,28,30514,21,94
+2018-07-01,23,26362,26,94
+2018-08-01,23,28131,16,97
+2018-09-01,17,29071,25,114
+2018-10-01,22,28481,22,108
+2018-11-01,21,29223,24,102
+2018-12-01,22,28611,18,104
