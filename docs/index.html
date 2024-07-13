@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Mastering Statistical Process Control charts in Healthcare</title>
+  <title>Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Mastering Statistical Process Control charts in Healthcare" />
+  <meta property="og:title" content="Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Mastering Statistical Process Control charts in Healthcare" />
+  <meta name="twitter:title" content="Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-07-12" />
+<meta name="date" content="2024-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -245,7 +245,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mastering Statistical Process Control charts in Healthcare</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mastering Statistical Process Control Charts in Healthcare</a>
           </h1>
         </div>
 
@@ -254,166 +254,184 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Mastering Statistical Process Control charts in Healthcare</h1>
+<h1 class="title">Mastering Statistical Process Control Charts in Healthcare</h1>
 <h2 class="subtitle"><em>A practical, hands-on, step-by-step guide for data scientists using R</em></h2>
 <p class="author"><em>Jacob Anhøj &amp; Mohammed Amin Mohammed</em></p>
-<p class="date"><em>2024-07-12</em></p>
+<p class="date"><em>2024-07-13</em></p>
 </div>
 <div id="synopsis" class="section level1 unnumbered hasAnchor">
 <h1>Synopsis<a href="index.html#synopsis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This is the online version of <em>Mastering Statistical Process Control Charts in Healthcare</em>, a book currently under early development.</p>
 <hr />
-<p>INTRODUCTION<br />
-  What is SPC?<br />
-  About the Book</p>
+<p>INTRODUCTION</p>
+<ul>
+<li>About the Book (contents, target audience, prerequisites, etc.)</li>
+<li>GitHub</li>
+</ul>
 <p>PART 1: Understanding Variation</p>
 <ol style="list-style-type: decimal">
-<li>Understanding Variation
-<ol style="list-style-type: decimal">
-<li>Given two numbers, one will be bigger
-<ol style="list-style-type: decimal">
-<li>rolling dies and flipping coins</li>
-<li>when you throw a die and get a seven</li>
-</ol></li>
-<li>Populations and processes (enumerative vs analytical studies)</li>
-<li>Patterns of non-random variation in time series data and their interpretation
-<ol style="list-style-type: decimal">
-<li>freaks</li>
-<li>shifts</li>
-<li>trends</li>
-<li>waves</li>
-<li>sawtooths(teeth?)</li>
-<li>repeated patterns</li>
-</ol></li>
-</ol></li>
 <li>What is SPC?
 <ol style="list-style-type: decimal">
 <li>History</li>
 <li>A modern definition</li>
 <li>SPC and continuous quality improvement – neither can live while the other dies</li>
-<li>The Case for SPC in Healthcare<br />
-</li>
+<li>The case for SPC in healthcare</li>
+</ol></li>
+<li>Understanding Variation
+<ol style="list-style-type: decimal">
+<li>Given two numbers, one will be bigger
+<ul>
+<li>different numbers may come from the same process</li>
+<li>same numbers may come from different processes</li>
+<li>rolling dies and flipping coins</li>
+<li>when you throw a die and get a seven</li>
+</ul></li>
+<li>Patterns of non-random variation in time series data and their interpretation
+<ul>
+<li>freaks</li>
+<li>shifts</li>
+<li>trends</li>
+<li>waves</li>
+<li>sawtooths(teeth?) and other repeated patterns</li>
+</ul></li>
 </ol></li>
 <li>Introducing SPC Charts
 <ol style="list-style-type: decimal">
-<li>Anatomy of SPC charts</li>
-<li>What SPC charts do and don’t do</li>
-</ol></li>
+<li>Anatomy and physiology of SPC charts</li>
 <li>Testing for Non-random Variation in SPC Charts
-<ol style="list-style-type: decimal">
+<ul>
 <li>Tests based on sigma limits
-<ol style="list-style-type: decimal">
+<ul>
 <li>the 3-sigma test</li>
 <li>the Western Electric rules</li>
-</ol></li>
+</ul></li>
 <li>Runs analysis – tests based on the distribution of data points around the centre line
-<ol style="list-style-type: decimal">
-<li>identifying unusually long runs</li>
-<li>identifying unusually few crossings</li>
+<ul>
+<li>unusually long runs</li>
+<li>unusually few crossings</li>
 <li>look mom, no control limits! – using runs analysis as stand-alone rules with run charts</li>
-</ol></li>
-<li>Rules to avoid
-<ol style="list-style-type: decimal">
-<li>the trend rule</li>
-<li>too short longest runs</li>
-</ol></li>
+</ul></li>
+</ul></li>
+<li>Introducing “The Magnificent Eight”
+<ul>
+<li>Run chart</li>
+<li>I chart (aka X chart)</li>
+<li>MR chart</li>
+<li>X-bar chart</li>
+<li>S chart</li>
+<li>C chart</li>
+<li>U chart</li>
+<li>P chart</li>
+</ul></li>
 </ol></li>
 <li>Responding to SPC Signals
 <ol style="list-style-type: decimal">
 <li>The voice of the customer vs the voice of the process</li>
-<li>Conciliating the two voices – or, from RAGs to RICHes<br />
-(RAG = Red, Amber, Green; RICH = Respond, Investigate, Celebrate’n Hold)</li>
+<li>Conciliating the two voices – or, from RAGs to RICHes
+<ul>
+<li>RAG = Red, Amber, Green</li>
+<li>RICH = Respond, Investigate, Celebrate’n Hold</li>
+</ul></li>
 </ol></li>
 </ol>
 <p>PART 2: Constructing SPC Charts with R</p>
 <ol style="list-style-type: decimal">
 <li>Your First SPC Charts with Base R
 <ol style="list-style-type: decimal">
-<li>A run chart from random normal data</li>
+<li>A run chart</li>
 <li>Adding control limits to produce a control chart</li>
 </ol></li>
-<li>Calculating Control Limits for “The Magnificent Seven”
-<ol style="list-style-type: decimal">
-<li>Xbar chart</li>
-<li>S chart</li>
-<li>I chart (aka X chart)</li>
+<li>Calculating Control Limits for “The Magnificent Eight” (minus one)
+<ul>
+<li>I chart (to screen or not to screen?)</li>
 <li>MR chart</li>
+<li>Xbar chart (several methods for sbar)</li>
+<li>S chart</li>
 <li>C chart</li>
 <li>U chart</li>
 <li>P chart</li>
-</ol></li>
-<li>Highlighting Data Points Outside Control Limits (freaks)</li>
-<li>Highlighting Shifts, Trends, and Waves Found by Runs Analysis</li>
+</ul></li>
+<li>Highlighting Freaks, Shifts, and Trends</li>
 <li>One R Function to Rule Them All</li>
-<li>Your First SPC Chart with <code>ggplot2</code></li>
+<li>SPC Charts with <code>ggplot2</code></li>
 <li>Introducing <code>qicharts2</code> – an R Package Tailored Specifically for SPC in Healthcare</li>
+<li>A Note on Rational Subgrouping and Sampling</li>
 </ol>
-<p>PART 3: Case Studies</p>
+<p>PART 3: Case Studies and Worked Examples</p>
 <ol style="list-style-type: decimal">
-<li>Monitoring Infection Rates (C. diff.)</li>
-<li>Patient Harm</li>
-<li>Reducing Patient Wait Times</li>
-<li>Coronary Artery Bypass Grafts</li>
-<li>Reducing Response Times for Cecarian Section</li>
-<li>Faceting Plots for Multivariate Data (Hospital Infections)</li>
+<li>Run chart</li>
+<li>P Charts for Proportion Data</li>
+<li>C and U Charts for Count and Rate Data</li>
+<li>I and MR Chart for Individual Measurement Data</li>
+<li>X-bar and S Charts for Multiple Measurement Data</li>
 </ol>
 <p>PART 4: Advanced SPC Techniques</p>
 <ol style="list-style-type: decimal">
-<li>Phase One and Phase Two Applications of SPC</li>
-<li>When to Split SPC Charts</li>
-<li>When to Transform Data Before Plotting</li>
-<li>Funnel Plots for Categorical Data</li>
+<li>Small Multiple Plots</li>
+<li>Funnel Plots for Categorical Subgroups</li>
 <li>Pareto Charts for Ranking Problems</li>
-<li>Prime Charts for Count Data with Very Large Sample Sizes</li>
-<li>The Standardised Control Chart</li>
-<li>The Normalised I Chart</li>
-<li>Charts for Rare Events
-<ol style="list-style-type: decimal">
+<li>SPC Charts for Rare Events
+<ul>
 <li>T Charts for Time Between Events</li>
 <li>G Charts for Opportunities Between Cases</li>
 <li>Bernoulli CUSUM charts for binary data</li>
-</ol></li>
+</ul></li>
+<li>Prime Charts for Count Data with Very Large Sample Sizes</li>
+<li>Screened I chart (eliminating freak moving ranges before calculating limits)</li>
+<li>Improved (normalised) I chart</li>
+<li>Dual charting</li>
+<li>When to Split SPC Charts</li>
+<li>When to Transform Data Before Plotting</li>
+<li>High Frequency/Volume Data</li>
+<li>Scaling Up Charts (technical issues, tabular charts, rid)</li>
 <li>CUSUM and EWMA Charts</li>
-<li>Multi Variate Charts</li>
-<li>The Control Charts vs Run Charts Debate</li>
-<li>Runs Analysis Revisited: The Joint Distribution of Longest Run and Number of Crossings<br />
-Improving runs analysis using the best box and cut box approaches</li>
+<li>Multivariate charts</li>
+<li>Phase One and Phase Two Applications of SPC</li>
 </ol>
-<p>PART 5: Conclusion and Final Thoughts</p>
+<p>PART 5: Best Practices and Tips</p>
+<ol style="list-style-type: decimal">
+<li>Tips for Effective SPC Implementation
+<ul>
+<li>Automating production of SPC charts</li>
+<li>Engaging stakeholders</li>
+<li>Continuous monitoring and improvement.</li>
+<li>Problems with SPC (challenges)</li>
+</ul></li>
+<li>Common Pitfalls to Avoid
+<ul>
+<li>Data issues, misinterpretation of charts</li>
+<li>Overreacting to common cause variation (too many or over-sensitive runs rules, too tight control limits)</li>
+<li>Automating recalculation of control limits</li>
+<li>One-to-one relation between PDSA cycles and dots on the plot</li>
+</ul></li>
+</ol>
+<p>PART 6: Conclusion and Final Thoughts</p>
 <ol style="list-style-type: decimal">
 <li>Summary of Key Points</li>
-<li>Future Directions</li>
+<li>The Control Charts vs Run Charts Debate</li>
+<li>Emerging trends in SPC and healthcare analytics</li>
+<li>Encouragement for Continuous Learning and Application</li>
 <li>Final Thoughts</li>
 </ol>
 <p>PART 9¾: Nerd Stuff</p>
 <ol style="list-style-type: decimal">
 <li>Introducing R</li>
-<li>A Basic Statistical Concepts
+<li>Basic Statistical Concepts
 <ol style="list-style-type: decimal">
-<li>Counts and measures</li>
+<li>Data types (counts and measurements)</li>
 <li>Distributions
-<ol style="list-style-type: decimal">
-<li>Centre<br />
-mean<br />
-median</li>
-<li>Spread<br />
-range<br />
-percentiles<br />
-standard deviation</li>
-<li>Shape<br />
-symmetric<br />
-skewed</li>
-</ol></li>
+<ul>
+<li>centre (mean, median)</li>
+<li>spread (range, percentiles, standard deviation)</li>
+<li>shape (symmetric, skewed)</li>
+</ul></li>
 </ol></li>
 <li>Principles for Data Visualisation
 <ol style="list-style-type: decimal">
-<li>histograms and boxplots for measurement data distributions<br />
-</li>
-<li>barplots for count data distributions<br />
-</li>
-<li>scatter plots for relations between measurement data<br />
-</li>
-<li>point-and-line plots for time series data</li>
+<li>Histograms and boxplots for measurement data distributions</li>
+<li>Barplots for count data distributions</li>
+<li>Scatter plots for relations between measurement data</li>
+<li>Point-and-line plots for time series data</li>
 </ol></li>
 <li>Data Preparation with R
 <ol style="list-style-type: decimal">
@@ -421,6 +439,11 @@ skewed</li>
 <li>Indicator types: measurements, counts, rates, proportions</li>
 <li>Getting data in shape for visualisation with R</li>
 </ol></li>
+<li>Runs Analysis Revisited
+<ul>
+<li>The joint distribution of longest run and Number of crossings</li>
+<li>Improving runs analysis using the bestbox and cutbox rules</li>
+</ul></li>
 </ol>
 <p>APPENDICES</p>
 <ol style="list-style-type: decimal">
@@ -428,14 +451,23 @@ skewed</li>
 <ol style="list-style-type: decimal">
 <li>Recommended books</li>
 <li>Web sites, forums, and communities</li>
-<li>Other R packages SPC (<code>qcc</code>, <code>spc</code>, …)</li>
+<li>Other R packages for SPC (<code>qcc</code>, <code>spc</code>, …)</li>
 </ol></li>
-<li>Best Practices and Tips for SPC Implementation</li>
 <li>Formulas and R Functions for Calculating Control Limits</li>
 <li>Table of Parameters for the Xbar and S Charts</li>
 <li>Table of Critical Values for Longest Runs and Number of Crossings</li>
 <li>Glossary of Terms</li>
 </ol>
+<hr />
+<ul>
+<li>Ideas for papers
+<ul>
+<li>RAGs to RICHes (two voices)</li>
+<li>Big data issues – CUSUM vs 3000 SPC charts</li>
+<li>Improved I chart</li>
+<li>The problem with SPC</li>
+</ul></li>
+</ul>
 
 </div>
             </section>
