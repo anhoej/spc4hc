@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 5 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 5 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 5 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-07-13" />
+<meta name="date" content="2024-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="variation.html"/>
+<link rel="prev" href="responding.html"/>
 <link rel="next" href="limits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -171,65 +171,50 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Synopsis</a></li>
 <li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
+<li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is SPC</a></li>
+<li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
+<li class="chapter" data-level="3" data-path="charts_intro.html"><a href="charts_intro.html"><i class="fa fa-check"></i><b>3</b> Introducing SPC Charts</a></li>
+<li class="chapter" data-level="4" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>4</b> Responding to SPC Signals</a></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
-<li class="chapter" data-level="2" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>2</b> Your First SPC Charts With Base R</a>
+<li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-from-random-normal-data"><i class="fa fa-check"></i><b>2.1</b> A run chart from random normal data</a></li>
-<li class="chapter" data-level="2.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>2.2</b> Adding control limits to produce a control chart</a></li>
-<li class="chapter" data-level="2.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>2.3</b> That’s all, Folks!</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-from-random-normal-data"><i class="fa fa-check"></i><b>5.1</b> A run chart from random normal data</a></li>
+<li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>3</b> Calculating Control Limits for “The Magnificent Seven”</a>
+<li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits for “The Magnificent Seven”</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>3.1</b> Measurement data</a>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.1</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>3.1.1</b> X-bar chart</a></li>
-<li class="chapter" data-level="3.1.2" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>3.1.2</b> S chart</a></li>
-<li class="chapter" data-level="3.1.3" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>3.1.3</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="3.1.4" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>3.1.4</b> MR-chart</a></li>
+<li class="chapter" data-level="6.1.1" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.1.1</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.1.2" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.1.2</b> S chart</a></li>
+<li class="chapter" data-level="6.1.3" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.1.3</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="6.1.4" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.1.4</b> MR-chart</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>3.2</b> Count data</a>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.2</b> Count data</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>3.2.1</b> C chart</a></li>
-<li class="chapter" data-level="3.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>3.2.2</b> U chart</a></li>
-<li class="chapter" data-level="3.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>3.2.3</b> P chart</a></li>
+<li class="chapter" data-level="6.2.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.2.1</b> C chart</a></li>
+<li class="chapter" data-level="6.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.2.2</b> U chart</a></li>
+<li class="chapter" data-level="6.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.2.3</b> P chart</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
-<li class="part"><span><b>Part 3: Case Studies</b></span></li>
-<li class="chapter" data-level="4" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>4</b> Case 1:</a></li>
-<li class="chapter" data-level="5" data-path="case-2.html"><a href="case-2.html"><i class="fa fa-check"></i><b>5</b> Case 2:</a></li>
-<li class="appendix"><span><b>Appendix: Bookdown instructions</b></span></li>
-<li class="chapter" data-level="A" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>A</b> Hello bookdown</a>
-<ul>
-<li class="chapter" data-level="A.1" data-path="hello-bookdown.html"><a href="hello-bookdown.html#a-section"><i class="fa fa-check"></i><b>A.1</b> A section</a>
-<ul>
-<li class="chapter" data-level="" data-path="hello-bookdown.html"><a href="hello-bookdown.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="B" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>B</b> Cross-references</a>
-<ul>
-<li class="chapter" data-level="B.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>B.1</b> Chapters and sub-chapters</a></li>
-<li class="chapter" data-level="B.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>B.2</b> Captioned figures and tables</a></li>
-</ul></li>
-<li class="chapter" data-level="C" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>C</b> Parts</a></li>
-<li class="chapter" data-level="D" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>D</b> Footnotes and citations</a>
-<ul>
-<li class="chapter" data-level="D.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>D.1</b> Footnotes</a></li>
-<li class="chapter" data-level="D.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>D.2</b> Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>E</b> Blocks</a>
-<ul>
-<li class="chapter" data-level="E.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>E.1</b> Equations</a></li>
-<li class="chapter" data-level="E.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>E.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="E.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>E.3</b> Callout blocks</a></li>
-</ul></li>
-<li class="chapter" data-level="F" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>F</b> Sharing your book</a>
-<ul>
-<li class="chapter" data-level="F.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>F.1</b> Publishing</a></li>
-<li class="chapter" data-level="F.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>F.2</b> 404 pages</a></li>
-<li class="chapter" data-level="F.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>F.3</b> Metadata for sharing</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a></li>
+<li class="chapter" data-level="8" data-path="r_function.html"><a href="r_function.html"><i class="fa fa-check"></i><b>8</b> One R Function to Rule Them All</a></li>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing <code>qicharts2</code></a></li>
+<li class="chapter" data-level="11" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>11</b> A Note on Rational Subgrouping and Sampling</a></li>
+<li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
+<li class="chapter" data-level="12" data-path="case_run.html"><a href="case_run.html"><i class="fa fa-check"></i><b>12</b> Run Chart for Any Type of Data</a></li>
+<li class="chapter" data-level="13" data-path="case_p.html"><a href="case_p.html"><i class="fa fa-check"></i><b>13</b> P Chart for Proportion Data</a></li>
+<li class="chapter" data-level="14" data-path="case_c_u.html"><a href="case_c_u.html"><i class="fa fa-check"></i><b>14</b> C and U Charts for Counts and Rates</a></li>
+<li class="chapter" data-level="15" data-path="case_i_mr.html"><a href="case_i_mr.html"><i class="fa fa-check"></i><b>15</b> I and MR Chart for Individual Measurement Data</a></li>
+<li class="chapter" data-level="16" data-path="case_xbar_s.html"><a href="case_xbar_s.html"><i class="fa fa-check"></i><b>16</b> X-bar and S Charts for Multiple Measurement Data</a></li>
+<li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
+<li class="part"><span><b>Part 5: Best Practices and Tips</b></span></li>
+<li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
+<li class="part"><span><b>Part 9¾: Nerd Stuff</b></span></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -253,8 +238,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="first-chart" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Your First SPC Charts With Base R<a href="first-chart.html#first-chart" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="first-chart" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Your First SPC Charts With Base R<a href="first-chart.html#first-chart" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>From part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC chart. We begin using only functions from base R. Later we will move to <code>ggplot2</code>and <code>qicharts2</code>.</p>
 <p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower bounds of the natural variation in data.</p>
 <p>To construct an SPC chart, all we need are four vectors with the y-coordinates of the data points and lines.</p>
@@ -264,20 +249,20 @@ div.csl-indent {
 <span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a><span class="co"># Create a vector of 24 random numbers from a normal distribution</span></span>
 <span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">24</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<div id="a-run-chart-from-random-normal-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> A run chart from random normal data<a href="first-chart.html#a-run-chart-from-random-normal-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>First we plot a simple run chart without any helper lines (Figure <a href="first-chart.html#fig:first-chart-run1">2.1</a>):</p>
+<div id="a-run-chart-from-random-normal-data" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> A run chart from random normal data<a href="first-chart.html#a-run-chart-from-random-normal-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First we plot a simple run chart without any helper lines (Figure <a href="first-chart.html#fig:first-chart-run1">5.1</a>):</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="first-chart.html#cb2-1" tabindex="-1"></a><span class="co"># Make point-and-line plot</span></span>
 <span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run1"></span>
 <img src="_main_files/figure-html/first-chart-run1-1.svg" alt="Simple run chart" width="672" />
 <p class="caption">
-Figure 2.1: Simple run chart
+Figure 5.1: Simple run chart
 </p>
 </div>
 <p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
 <p>Then we add the the centre line to the plot. Since we know the parameters of the distribution data come from, we can use the theoretical population mean/median (= 0) as the centre line.</p>
-<p>With the centre line in place, we can apply runs analysis to identify unnatural patterns suggesting sustained shifts or trends in data over time (Figure <a href="first-chart.html#fig:first-chart-run2">2.2</a>):</p>
+<p>With the centre line in place, we can apply runs analysis to identify unnatural patterns suggesting sustained shifts or trends in data over time (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create y-coordinates for the centre line</span></span>
 <span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,  <span class="fu">length</span>(y))</span>
 <span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a></span>
@@ -287,20 +272,20 @@ Figure 2.1: Simple run chart
 <div class="figure"><span style="display:block;" id="fig:first-chart-run2"></span>
 <img src="_main_files/figure-html/first-chart-run2-1.svg" alt="Run chart with centre line" width="672" />
 <p class="caption">
-Figure 2.2: Run chart with centre line
+Figure 5.2: Run chart with centre line
 </p>
 </div>
 <p>We find that the longest runs (there are two of them, 6:10 and 15:19) have 5 data points and that the curve crosses the centre line 9 times. With 24 data points and using the runs rules proposed previously, the upper limit for longest run is 8 as is (coincidentally) the lower limit for number of crossings. Consequently, these data seem to come from a random process (which we already knew).</p>
 </div>
-<div id="adding-control-limits-to-produce-a-control-chart" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="adding-control-limits-to-produce-a-control-chart" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We use the same technique to add the lower and upper control limits.</p>
 <p>Remember that the control limits are usually set to <span class="math inline">\(CL \pm 3 SD\)</span>, where CL is the centre line and SD is the estimated standard deviation – that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.</p>
 <p>Again, since we know the parameters of the distribution, we use the theoretical population standard deviation (= 1) to calculate the control limits.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="first-chart.html#cb4-1" tabindex="-1"></a><span class="co"># Create y-coordinates for the control limits</span></span>
 <span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="fu">length</span>(y))</span>
 <span id="cb4-3"><a href="first-chart.html#cb4-3" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span>,  <span class="fu">length</span>(y))</span></code></pre></div>
-<p>Finally, we need to expand the y-axis limits to make room not only for the data points but also the lines (Figure <a href="first-chart.html#fig:first-chart-ctrl1">2.3</a>):</p>
+<p>Finally, we need to expand the y-axis limits to make room not only for the data points but also the lines (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="first-chart.html#cb5-1" tabindex="-1"></a><span class="co"># Plot data expanding y-axis to make room for all data and lines</span></span>
 <span id="cb5-2"><a href="first-chart.html#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(y, lcl, ucl))</span>
 <span id="cb5-3"><a href="first-chart.html#cb5-3" tabindex="-1"></a></span>
@@ -311,11 +296,11 @@ Figure 2.2: Run chart with centre line
 <div class="figure"><span style="display:block;" id="fig:first-chart-ctrl1"></span>
 <img src="_main_files/figure-html/first-chart-ctrl1-1.svg" alt="Standardised control chart" width="672" />
 <p class="caption">
-Figure 2.3: Standardised control chart
+Figure 5.3: Standardised control chart
 </p>
 </div>
 <p>As expected, all data points fall within the control limits suggesting only random variation.</p>
-<p>Now, let’s mimic a shift in data by introducing four data points (21:24) from a normal distribution with mean = 3 (Figure <a href="first-chart.html#fig:first-chart-ctrl2">2.4</a>):</p>
+<p>Now, let’s mimic a shift in data by introducing four data points (21:24) from a normal distribution with mean = 3 (Figure <a href="first-chart.html#fig:first-chart-ctrl2">5.4</a>):</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="first-chart.html#cb6-1" tabindex="-1"></a><span class="co"># Initialise random number generator to make results reproducible</span></span>
 <span id="cb6-2"><a href="first-chart.html#cb6-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">19</span>)</span>
 <span id="cb6-3"><a href="first-chart.html#cb6-3" tabindex="-1"></a></span>
@@ -330,13 +315,13 @@ Figure 2.3: Standardised control chart
 <div class="figure"><span style="display:block;" id="fig:first-chart-ctrl2"></span>
 <img src="_main_files/figure-html/first-chart-ctrl2-1.svg" alt="Control chart with data points outside the upper control limit (freaks)" width="672" />
 <p class="caption">
-Figure 2.4: Control chart with data points outside the upper control limit (freaks)
+Figure 5.4: Control chart with data points outside the upper control limit (freaks)
 </p>
 </div>
 <p>Note that only one of the four data points from the shift is above the upper control limit. This is a reminder that even large shifts in data are not guaranteed to show up immediately. Rather, shifts in data increases the <em>chance</em> that future data point will fall outside the limits. The chance of discovering a shift depends on two things: 1. the size of the shift; 2. how long we are willing to wait for a shift to show itself.</p>
 </div>
-<div id="thats-all-folks" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> That’s all, Folks!<a href="first-chart.html#thats-all-folks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="thats-all-folks" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> That’s all, Folks!<a href="first-chart.html#thats-all-folks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So constructing an SPC chart using R may be done using only a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.</p>
 <p>Later we will wrap all the steps in a function that also automates the calculation of empirical centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.</p>
 <p>In the next chapter we will calculate control limits for the control charts that are most commonly used in healthcare, “The Magnificent Seven”. This is all about estimating the standard deviation in data, which depends on the type of data.</p>
@@ -348,7 +333,7 @@ Figure 2.4: Control chart with data points outside the upper control limit (frea
           </div>
         </div>
       </div>
-<a href="variation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="responding.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -1,0 +1,1 @@
+# P Chart for Proportion Data {#case_p}

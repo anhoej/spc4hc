@@ -53,7 +53,7 @@ PART 1: Understanding Variation
           - unusually long runs
           - unusually few crossings
           - look mom, no control limits! -- using runs analysis as stand-alone rules with run charts
-    1. Introducing "The Magnificent Eight"
+    1. The Magnificent Eight
         - Run chart
         - I chart (aka X chart)
         - MR chart
@@ -97,7 +97,7 @@ PART 3: Case Studies and Worked Examples
 
 PART 4: Advanced SPC Techniques
 
-1. Small Multiple Plots
+1. Small Multiple Plots for Multivariate Data
 1. Funnel Plots for Categorical Subgroups
 1. Pareto Charts for Ranking Problems
 1. SPC Charts for Rare Events
