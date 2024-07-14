@@ -1,3 +1,1 @@
 # (PART\*) Part 1: Understanding Variation {-}
-
-# Understanding Variation {#variation}
