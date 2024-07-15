@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Preface | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Preface | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Preface | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="responding.html"/>
-<link rel="next" href="limits.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="what.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -244,94 +244,87 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="first-chart" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Your First SPC Charts With Base R<a href="first-chart.html#first-chart" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>From part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC chart. We begin using only functions from base R. Later we will move to <code>ggplot2</code>and <code>qicharts2</code>.</p>
-<p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower bounds of the natural variation in data.</p>
-<p>To construct an SPC chart, all we need are four vectors with the y-coordinates of the data points and lines.</p>
-<p>Let’s start by creating some artificial data to work with. We draw 24 random numbers from a normal distribution with mean = 0 and standard deviation (sd) = 1.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a><span class="co"># Initialise random number generator to make results reproducible</span></span>
-<span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">27</span>)</span>
-<span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a><span class="co"># Create a vector of 24 random numbers from a normal distribution</span></span>
-<span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">24</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<div id="a-run-chart-from-random-normal-data" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> A run chart from random normal data<a href="first-chart.html#a-run-chart-from-random-normal-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>First we plot a simple run chart without any helper lines (Figure <a href="first-chart.html#fig:first-chart-run1">5.1</a>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="first-chart.html#cb2-1" tabindex="-1"></a><span class="co"># Make point-and-line plot</span></span>
-<span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-run1"></span>
-<img src="_main_files/figure-html/first-chart-run1-1.svg" alt="Simple run chart" width="672" />
-<p class="caption">
-Figure 5.1: Simple run chart
-</p>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="preface.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This book is about the practical application of statistical process control (SPC) methodology in healthcare.</p>
+<p>SPC is based on a fundamental intuitive insight – that processes are subject to two sources of variation: common cause and special cause variation. This simple yet profound insight enables us to monitor, understand, and improve a wide range of processes.</p>
+<p>With this insight comes a set of intuitive visual tools, run and control charts, that make it easy to tell common from special cause variation.</p>
+<!-- The notion of common and special cause variation is best illustrated by a control chart, which is one of the tools of SPC. The chart in Figure \@ref(fig:intro-ichart) shows daily measurements of blood pressure in a patient. The centre line marks the mean of the measurements, and the two horizontal lines (control limits) mark the boundaries of the natural common cause variation in data. Most data points are located randomly around the centre and between the control limits, but one data point (#6) lies outside the limits and represents a special cause -- that is, this data points has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement. -->
+<!-- ```{r intro-ichart, fig.cap='I control chart produced with the R package qicharts2', echo=FALSE, dev='svg', fig.asp=0.5} -->
+<!-- x <- c(169, 172, 175, 174, -->
+<!--        161, 142, 174, 171, -->
+<!--        168, 174, 180, 194, -->
+<!--        161, 181, 175, 176, -->
+<!--        186, 166, 157, 183, -->
+<!--        177, 171, 185, 176, -->
+<!--        181, 174) -->
+<!-- options(qic.clshade = F) -->
+<!-- qicharts2::qic(x, -->
+<!--                chart = 'i', -->
+<!--                title = 'Systolic blood pressure', -->
+<!--                ylab = 'mmHg', -->
+<!--                xlab = 'Day #') -->
+<!-- ``` -->
+<!-- SPC was introduced in production industry in the 1920s. In healthcare SPC started to appear together with the quality movement in the early 1990s. A PubMed search on the term "statistical process control" finds one paper from 1990. Since then publications have been steadily increasing to around 170 a year in the early 2020s. -->
+<!-- The rise of SPC in healthcare has been spectacular - the number of papers relating to SPC in the PubMed database went from only 14 in 1971 to 3252 in 2023 [SEARCH TERM].  -->
+<p>Nevertheless a systematic review concluded</p>
+<blockquote>
+<p>… although SPC charts may be easy to use even for patients, clinicians or managers without extensive SPC training, they may not be equally simple to <em>construct correctly</em>. To apply SPC is, paradoxically, both simple and difficult at the same time.</p>
+<p>— <span class="citation">Thor et al. (<a href="#ref-thor2007">2007</a>)</span></p>
+</blockquote>
+<p>Consequently, this book aims to ease the construction and production of SPC charts in healthcare using modern software.</p>
+<!-- While SPC is often thought of simply as a set of tools -- the control chart being its most prominent member -- we prefer to think of SPC more broadly as *the application of statistical thinking to continuous quality improvement*. -->
+<!-- >Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. [...] It is about the continual improvement of processes and outcomes. And it is, first and foremost, *a way of thinking* with some tools attached. -->
+<!-- > -->
+<!-- > ---  Don Wheeler [@wheeler2000, p 152] -->
+<!-- Many excellent books have been written about the thinking and the theory behind SPC  [e.g.  @wheeler2000; @montgomery2009; @mohammed2024], but very little has been written about how to actually construct SPC charts -- especially using software. Consequently, this book is mostly about the tools, in particular run and control charts, and how to construct and interpret them using modern software.  -->
+<!-- SPC charts are powerful, intuitive and versatile. First developed in the 1920's in production industry, the use of SPC in healthcare has grown spectacularly. For instance, the number of papers in the pubmed database went from only 14 in 1971 to 3252 in 2023 [SEARCH CRITERIA?].  -->
+<!-- However, a review of SPC in healthcare noted that "it's easy and not so easy" [CITATION]. The "easy part" is that SPC charts are usually intuitive and easily understood. The "not so easy part" involves the production of these charts. -->
+<!-- This book aims to help people who want to produce SPC charts in practice using modern software. We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, patients, etc. -->
+<div id="so-what-is-different-about-this-book" class="section level3 unnumbered hasAnchor">
+<h3>So what is different about this book?<a href="preface.html#so-what-is-different-about-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This book is a <em>how to easily produce SPC charts book</em>. Since this involves statistics, computing, and visualisation our software of choice is R – which is often referred to as the <em>lingua franca</em> of statistical computing and visualisation.</p>
+<p>This book stands out by being a <em>specialized</em>, <em>practical</em>, and <em>modern</em> guide specifically tailored for data scientists in the healthcare sector. Its focus on real-world application, combined with comprehensive coverage of SPC techniques and the use of contemporary tools, makes it a unique and valuable resource.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Target Audience</strong>: This book aims to help people who want to produce SPC charts in practice using modern software. This book is specifically tailored for data scientists who want to learn how to produce SPC charts using the R programming language. We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, clinicians or patients.</p></li>
+<li><p><strong>Use of R</strong>: Our choice of software is R, which is popular, free, and open source. By being pro-R we are not anti any other software. Indeed we encourage readers to use this book with their preferred software and share it with the world. One major advantage of R (and programming languages in general) is that all the steps and procedures involved in analysing data and constructing graphs and other output are documented in readable form in the source code thus making analyses transparent and reproducible, which is rarely the case with “point-and-click” software. Another advantage of R is that it enables the automation of repeated tasks such as monthly reports, slide decks and dashboards of SPC charts with high quality customisable graphics.</p></li>
+<li><p><strong>Healthcare Focus</strong>: While there are many general books on SPC, this book’s focus is on practical applications in healthcare, making it particularly relevant for those working in this field. It addresses the unique challenges and requirements of applying SPC methods in healthcare settings, such as patient safety, clinical outcomes, and operational efficiency as described in an accompanying book <span class="citation">(<a href="#ref-mohammed2024">Mohammed 2024</a>)</span>.</p></li>
+<li><p><strong>Practical Guide</strong>: The book is a practical step-by-step guide, using real-world examples and case studies that enable readers to produce and use SPC charts with confidence. This hands-on approach helps bridge the gap between theory and practice.</p></li>
+<li><p><strong>Comprehensive Coverage</strong>: The book covers a comprehensive range of topics within SPC, from basic concepts to advanced techniques. This ensures that both beginners and experienced data scientists can find valuable insights and techniques that can be applied to their work in healthcare.</p></li>
+<li><p><strong>Resources</strong>: The book comes with additional resources such as R scripts, datasets, and access to an online <a href="https://github.com/anhoej/spc4hc">GitHub repository</a>.</p></li>
+</ol>
 </div>
-<p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
-<p>Then we add the the centre line to the plot. Since we know the parameters of the distribution data come from, we can use the theoretical population mean/median (= 0) as the centre line.</p>
-<p>With the centre line in place, we can apply runs analysis to identify unnatural patterns suggesting sustained shifts or trends in data over time (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create y-coordinates for the centre line</span></span>
-<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,  <span class="fu">length</span>(y))</span>
-<span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="first-chart.html#cb3-4" tabindex="-1"></a><span class="co"># Plot data and add centre line</span></span>
-<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
-<span id="cb3-6"><a href="first-chart.html#cb3-6" tabindex="-1"></a><span class="fu">lines</span>(cl)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-run2"></span>
-<img src="_main_files/figure-html/first-chart-run2-1.svg" alt="Run chart with centre line" width="672" />
-<p class="caption">
-Figure 5.2: Run chart with centre line
-</p>
+<div id="prerequisites" class="section level3 unnumbered hasAnchor">
+<h3>Prerequisites<a href="preface.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We assume no prior knowledge of SPC, but a basic familiarity with R is required to understand the steps and algorithms for constructing SPC charts. For readers not familiar with R we refer you to some excellent (free) resources for getting started with R including the amazing <a href="https://nhsrcommunity.com/">NHS-R Community</a>.</p>
 </div>
-<p>We find that the longest runs (there are two of them, 6:10 and 15:19) have 5 data points and that the curve crosses the centre line 9 times. With 24 data points and using the runs rules proposed previously, the upper limit for longest run is 8 as is (coincidentally) the lower limit for number of crossings. Consequently, these data seem to come from a random process (which we already knew).</p>
+<div id="how-to-use-this-book" class="section level3 unnumbered hasAnchor">
+<h3>How to use this book<a href="preface.html#how-to-use-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you are new to SPC, then start with Chapter <a href="what.html#what">1</a>. If you are eager to get started with plotting then skip to chapters <a href="first-chart.html#first-chart">5</a> and <a href="limits.html#limits">6</a>. Later chapters move to more advanced types of charts and topics for newbies and knowbies. Further resources and datasets can be found on our <a href="https://github.com/anhoej/spc4hc">GitHub repository</a>.</p>
+<p>We hope you find the book of some use and would appreciate your feedback on how it can be continually improved.</p>
 </div>
-<div id="adding-control-limits-to-produce-a-control-chart" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We use the same technique to add the lower and upper control limits.</p>
-<p>Remember that the control limits are usually set to <span class="math inline">\(CL \pm 3 SD\)</span>, where CL is the centre line and SD is the estimated standard deviation – that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.</p>
-<p>Again, since we know the parameters of the distribution, we use the theoretical population standard deviation (= 1) to calculate the control limits.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="first-chart.html#cb4-1" tabindex="-1"></a><span class="co"># Create y-coordinates for the control limits</span></span>
-<span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="fu">length</span>(y))</span>
-<span id="cb4-3"><a href="first-chart.html#cb4-3" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span>,  <span class="fu">length</span>(y))</span></code></pre></div>
-<p>Finally, we need to expand the y-axis limits to make room not only for the data points but also the lines (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="first-chart.html#cb5-1" tabindex="-1"></a><span class="co"># Plot data expanding y-axis to make room for all data and lines</span></span>
-<span id="cb5-2"><a href="first-chart.html#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(y, lcl, ucl))</span>
-<span id="cb5-3"><a href="first-chart.html#cb5-3" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="first-chart.html#cb5-4" tabindex="-1"></a><span class="co"># Add lines</span></span>
-<span id="cb5-5"><a href="first-chart.html#cb5-5" tabindex="-1"></a><span class="fu">lines</span>(ucl)</span>
-<span id="cb5-6"><a href="first-chart.html#cb5-6" tabindex="-1"></a><span class="fu">lines</span>(cl)</span>
-<span id="cb5-7"><a href="first-chart.html#cb5-7" tabindex="-1"></a><span class="fu">lines</span>(lcl)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-ctrl1"></span>
-<img src="_main_files/figure-html/first-chart-ctrl1-1.svg" alt="Standardised control chart" width="672" />
-<p class="caption">
-Figure 5.3: Standardised control chart
-</p>
-</div>
-<p>As expected, all data points fall within the control limits suggesting only random variation.</p>
-<p>Now, let’s mimic a shift in data by introducing four data points (21:24) from a normal distribution with mean = 3 (Figure <a href="first-chart.html#fig:first-chart-ctrl2">5.4</a>):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="first-chart.html#cb6-1" tabindex="-1"></a><span class="co"># Initialise random number generator to make results reproducible</span></span>
-<span id="cb6-2"><a href="first-chart.html#cb6-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">19</span>)</span>
-<span id="cb6-3"><a href="first-chart.html#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="first-chart.html#cb6-4" tabindex="-1"></a><span class="co"># Introduce a shift in data</span></span>
-<span id="cb6-5"><a href="first-chart.html#cb6-5" tabindex="-1"></a>y[<span class="dv">21</span><span class="sc">:</span><span class="dv">24</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">3</span>)</span>
-<span id="cb6-6"><a href="first-chart.html#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Plot control chart</span></span>
-<span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(y, lcl, ucl))</span>
-<span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a><span class="fu">lines</span>(ucl)</span>
-<span id="cb6-10"><a href="first-chart.html#cb6-10" tabindex="-1"></a><span class="fu">lines</span>(cl)</span>
-<span id="cb6-11"><a href="first-chart.html#cb6-11" tabindex="-1"></a><span class="fu">lines</span>(lcl)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-ctrl2"></span>
-<img src="_main_files/figure-html/first-chart-ctrl2-1.svg" alt="Control chart with data points outside the upper control limit (freaks)" width="672" />
-<p class="caption">
-Figure 5.4: Control chart with data points outside the upper control limit (freaks)
-</p>
-</div>
-<p>Note that only one of the four data points from the shift is above the upper control limit. This is a reminder that even large shifts in data are not guaranteed to show up immediately. Rather, shifts in data increases the <em>chance</em> that future data point will fall outside the limits. The chance of discovering a shift depends on two things: 1. the size of the shift; 2. how long we are willing to wait for a shift to show itself.</p>
-</div>
-<div id="thats-all-folks" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> That’s all, Folks!<a href="first-chart.html#thats-all-folks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>So constructing an SPC chart using R may be done using only a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.</p>
-<p>Later we will wrap all the steps in a function that also automates the calculation of empirical centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.</p>
-<p>In the next chapter we will calculate control limits for the control charts that are most commonly used in healthcare, “The Magnificent Seven”. This is all about estimating the standard deviation in data, which depends on the type of data.</p>
+<div id="about-us" class="section level3 unnumbered hasAnchor">
+<h3>About us<a href="preface.html#about-us" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Jacob Anhøj</strong> is a medical doctor with 30+ years of experience along with a diploma in Information Technology. He has published 45+ papers and two books and has extensive teaching experience. His main professional interest is patient safety and healthcare quality in general and statistical methods for quality improvement in particular. He has contributed to the development of statistical methods for testing for non-random variation in time series data. He is an experienced R user and has published several R packages including <code>qicharts2</code> for construction and analysis of statistical process control charts.</p>
+<p><strong>Mohammed Amin Mohammed</strong> is Emeritus Professor of Healthcare Quality
+and Effectiveness at the Faculty of Health Studies, University of Bradford, and
+Principal Consultant at the Strategy Unit. He has 100+ peer-reviewed publications, including a landmark paper in the Lancet introducing SPC to healthcare (2001) and author of the “Statistical Process Control: Elements of Improving Quality and Safety in Healthcare (2024)”. He founded the NHS-R Community which promotes the use of R in healthcare.</p>
+<p>JA: <a href="mailto:jacob@anhoej.net" class="email">jacob@anhoej.net</a>
+MAM: <a href="mailto:m.a.mohammed5@bradford.ac.uk" class="email">m.a.mohammed5@bradford.ac.uk</a></p>
 
+</div>
+</div>
+
+
+
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-mohammed2024" class="csl-entry">
+Mohammed, M A. 2024. <em>Statistical Process Control</em>. Elements of Improving Quality and Safety in Healthcare. Cambridge University Press. <a href="https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10">https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10</a>.
+</div>
+<div id="ref-thor2007" class="csl-entry">
+Thor, Johan, Jonas Lundberg, Jakob Ask, Jesper Olsson, Cheryl Carli, Karin Pukk Härenstam, and Mats Brommels. 2007. <span>“Application of Statistical Process Control in Healthcare Improvement: Systematic Review.”</span> <em>BMJ Qual Saf</em> 16: 387–99. <a href="https://doi.org/10.1136/qshc.2006.022194">https://doi.org/10.1136/qshc.2006.022194</a>.
 </div>
 </div>
             </section>
@@ -339,8 +332,8 @@ Figure 5.4: Control chart with data points outside the upper control limit (frea
           </div>
         </div>
       </div>
-<a href="responding.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="what.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

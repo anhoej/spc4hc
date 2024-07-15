@@ -1,4 +1,3 @@
-fig:intro-ichart
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
