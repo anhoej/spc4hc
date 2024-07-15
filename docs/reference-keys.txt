@@ -1,7 +1,6 @@
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
-fig:first-chart-ctrl2
 fig:limits-fig1
 tab:limits-tab1
 fig:limits-xbar
@@ -18,7 +17,7 @@ variation
 charts_intro
 responding
 first-chart
-a-run-chart-from-random-normal-data
+a-run-chart-blood-pressure-data
 adding-control-limits-to-produce-a-control-chart
 thats-all-folks
 limits

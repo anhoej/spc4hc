@@ -5,25 +5,23 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 ```
 
-From part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC chart. We begin using only functions from base R. Later we will move to `ggplot2`and `qicharts2`.
+From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using only functions from base R. In later chapters we will move to `ggplot2`and `qicharts2`.
 
 In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and -- in case of a control chart -- two lines to represent the estimated upper and lower bounds of the natural variation in data.
 
-To construct an SPC chart, all we need are four vectors with the y-coordinates of the data points and lines. 
+## A run chart blood pressure data
 
-Let's start by creating some artificial data to work with. We draw 24 random numbers from a normal distribution with mean = 0 and standard deviation (sd) = 1. 
+To construct an SPC chart, all we need are vectors with the y-coordinates of the data points and lines. Consider these data, which show systolic blood pressure measurements (mmHg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
 
 ```{r}
-# Initialise random number generator to make results reproducible
-set.seed(27)
-
-# Create a vector of 24 random numbers from a normal distribution
-y <- rnorm(24, mean = 0, sd = 1)
+y <- c(169, 172, 175, 174, 161, 142,
+       174, 171, 168, 174, 180, 194,
+       161, 181, 175, 176, 186, 166,
+       157, 183, 177, 171, 185, 176,
+       181, 174)
 ```
 
-## A run chart from random normal data
-
-First we plot a simple run chart without any helper lines (Figure \@ref(fig:first-chart-run1)):
+First we plot a simple point-and-line chart without any helper lines (Figure \@ref(fig:first-chart-run1)):
 
 ```{r first-chart-run1, fig.cap='Simple run chart'}
 # Make point-and-line plot
@@ -32,36 +30,49 @@ plot(y, type = 'o')
 
 (As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time." &#128513;)
 
-Then we add the the centre line to the plot. Since we know the parameters of the distribution data come from, we can use the theoretical population mean/median (= 0) as the centre line.
-
-With the centre line in place, we can apply runs analysis to identify unnatural patterns suggesting sustained shifts or trends in data over time (Figure \@ref(fig:first-chart-run2)):
+To guide the runs analysis we will add the centre line, which in run charts will normally be the median of data points (Figure \@ref(fig:first-chart-run2)):
 
 ```{r first-chart-run2, fig.cap='Run chart with centre line'}
 # Create y-coordinates for the centre line
-cl  <- rep(0,  length(y))
+cl  <- rep(median(y), length(y))
 
 # Plot data and add centre line
 plot(y, type = 'o')
 lines(cl)
 ```
 
-We find that the longest runs (there are two of them, 6:10 and 15:19) have 5 data points and that the curve crosses the centre line 9 times. With 24 data points and using the runs rules proposed previously, the upper limit for longest run is 8 as is (coincidentally) the lower limit for number of crossings. Consequently, these data seem to come from a random process (which we already knew).
+We find that the longest runs (there are two of them, 14:17 and 23:26) have 5 data points and that the curve crosses the centre line 10 times. With 26 data points and using the runs rules proposed previously, the upper limit for longest run is 8 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *persistent* shifts or trends in data over time.
 
 ## Adding control limits to produce a control chart
 
 We use the same technique to add the lower and upper control limits. 
 
-Remember that the control limits are usually set to $CL \pm 3 SD$, where CL is the centre line and SD is the estimated standard deviation -- that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.
+Remember that the control limits are usually set to $CL \pm 3 SD$, where CL is the centre line, usually the mean, and SD is the estimated standard deviation -- that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.
 
-Again, since we know the parameters of the distribution, we use the theoretical population standard deviation (= 1) to calculate the control limits.
+With data consisting of single measurements, we may estimate the common cause standard deviation using the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter \@ref(limits).
 
 ```{r}
+# Calulate the centre line (mean)
+cl  <- rep(mean(y), length(y))
+
+# Calculate the average moving range of data
+mr <- abs(diff(y))
+
+# Print the moving ranges for our viewing pleasure
+mr
+
+# Calculate the average moving range
+amr <- mean(mr)
+
+# Calculate the process standard deviation
+s <- amr / 1.128
+
 # Create y-coordinates for the control limits
-lcl <- rep(-3, length(y))
-ucl <- rep(3,  length(y))
+lcl <- rep(cl - 3 * s, length(y))
+ucl <- rep(cl + 3 * s, length(y))
 ```
 
-Finally, we need to expand the y-axis limits to make room not only for the data points but also the lines (Figure \@ref(fig:first-chart-ctrl1)):
+Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
 
 ```{r first-chart-ctrl1, fig.cap='Standardised control chart'}
 # Plot data expanding y-axis to make room for all data and lines
@@ -73,30 +84,12 @@ lines(cl)
 lines(lcl)
 ```
 
-As expected, all data points fall within the control limits suggesting only random variation.
- 
-Now, let's mimic a shift in data by introducing four data points (21:24) from a normal distribution with mean = 3 (Figure \@ref(fig:first-chart-ctrl2)):
- 
-```{r first-chart-ctrl2, fig.cap='Control chart with data points outside the upper control limit (freaks)'}
-# Initialise random number generator to make results reproducible
-set.seed(19)
-
-# Introduce a shift in data
-y[21:24] <- rnorm(4, mean = 3)
-
-# Plot control chart
-plot(y, type = 'o', ylim = range(y, lcl, ucl))
-lines(ucl)
-lines(cl)
-lines(lcl)
-```
-
-Note that only one of the four data points from the shift is above the upper control limit. This is a reminder that even large shifts in data are not guaranteed to show up immediately. Rather, shifts in data increases the *chance* that future data point will fall outside the limits. The chance of discovering a shift depends on two things: 1. the size of the shift; 2. how long we are willing to wait for a shift to show itself.
+One (freak) data point is below the lower control limit suggesting that this reading has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement.
 
 ## That's all, Folks!
 
-So constructing an SPC chart using R may be done using only a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.
+So constructing an SPC chart using R may be done using a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.
 
-Later we will wrap all the steps in a function that also automates the calculation of empirical centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.
+Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.
 
-In the next chapter we will calculate control limits for the control charts that are most commonly used in healthcare, "The Magnificent Seven". This is all about estimating the standard deviation in data, which depends on the type of data.
+In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, "The Magnificent Eight".
