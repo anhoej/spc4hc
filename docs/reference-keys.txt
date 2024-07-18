@@ -4,6 +4,7 @@ fig:first-chart-ctrl1
 fig:limits-fig1
 tab:limits-tab1
 fig:limits-c
+fig:limits-u
 fig:limits-p
 fig:limits-i
 fig:limits-mr
@@ -42,6 +43,3 @@ case_p
 case_c_u
 case_i_mr
 case_xbar_s
-fig:limmits-u
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-fig:limits-u
