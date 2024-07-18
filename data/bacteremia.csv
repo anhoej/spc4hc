@@ -4,12 +4,12 @@
 # 
 # Variables:
 #  month (date): month of infection
-#  hai_cases (numeric): number of hospital acquired infections
+#  ha_infections (numeric): number of hospital acquired infections
 #  risk_days (numeric): number of patient days without infection
 #  deaths (numeric): 30-day mortality after all-cause infection
-#  cases (numeric): number of all-cause infections
+#  patients (numeric): number of patients with all-cause infection
 
-month,hai_cases,risk_days,deaths,cases
+month,ha_infections,risk_days,deaths,patients
 2017-01-01,24,32421,23,100
 2017-02-01,29,29349,22,105
 2017-03-01,26,32981,13,99
