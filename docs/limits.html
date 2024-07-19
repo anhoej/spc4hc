@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-07-18" />
+<meta name="date" content="2024-07-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -442,12 +442,12 @@ Normal
 </tr>
 </tbody>
 </table>
-<p>Generally, data come in two flavours: count data and measurement data. <strong>Counts</strong> are positive integers that represent counts of events or cases, for example surgical complications, healthy babies, or patient falls. <strong>Measurements</strong> are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.</p>
+<p>Generally, data come in two flavours: count data and measurement data. <strong>Counts</strong> are positive integers that represent counts of events or cases, for example patient falls, surgical complications, or healthy babies. <strong>Measurements</strong> are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.</p>
 </div>
 <div id="count-data" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Count data<a href="limits.html#count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are several types of count data depending on the type of counts involved. In this chapter we will limit ourselves to events and cases.</p>
-<p><strong>Events</strong> are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky.Events are presented as raw counts or rates and are often modelled by the poisson distribution.</p>
+<p><strong>Events</strong> are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events are presented as raw counts or rates and are often modelled by the poisson distribution.</p>
 <p><strong>Cases</strong> represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who died (or survived), or procedures that completed according to a standard. Cases are presented as proportions or percentages and are often modelled by the binomial distribution.</p>
 <p>For count charts in this chapter we will use the bacteremia data set:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="limits.html#cb10-1" tabindex="-1"></a><span class="co"># read data from file</span></span>
@@ -475,13 +475,16 @@ Normal
 <li>month (date): month of infection</li>
 <li>ha_infections (numeric): number of hospital acquired infections</li>
 <li>risk_days (numeric): number of patient days without infection</li>
-<li>deaths (numeric): number of patients who died within 30-day after all-cause (hospital or community acquired) infection</li>
+<li>deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection</li>
 <li>patients (numeric): number of patients with all-cause infection</li>
 </ul>
-<p>We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once to a patient, while a patient is either infected or not infected and either dead or alive.</p>
+<p>We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive. Because of different statistical properties of events and cases we have different methods for calculating control limits for them.</p>
+<p>We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.</p>
+<p>Note that rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%).</p>
+<p>You may ask: if there is a C chart for count of events, is there not a chart for count of cases? In fact, there is, the NP chart. But it is rarely if ever used in healthcare because it assumes that the denominator is constant between subgroups. It does not make sense to compare 5 out of 10 deaths with 5 our of 50 deaths without taking the different subgroup sizes into account. We could argue that the same is true for C charts – that they assume that the denominator, the area of opportunity, is constant between subgroups. But in practice – as long as the subgroups are approximately the same – C and U charts usually reach the same conclusions. And if this is the case, it is often more useful to present events as counts rather than as rates, which we will see in the examples.</p>
 <div id="c-chart" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> C chart<a href="limits.html#c-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The C charts (C for counts) is the simplest of all control charts and the easiest to calculate. The process standard deviation is simply estimated as the square root of the process mean.</p>
+<p>The C charts (C for counts) is the simplest of all control charts and the easiest to produce. The process standard deviation is simply estimated as the square root of the process mean.</p>
 <p>C charts are appropriate when counting events from (nearly) equally big chunks of time or space.</p>
 <p>Figure <a href="limits.html#fig:limits-c">6.2</a> shows a C chart of the monthly number of hospital acquired bacteremias.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="limits.html#cb12-1" tabindex="-1"></a><span class="fu">with</span>(bact, {</span>
@@ -495,10 +498,11 @@ Normal
 <span id="cb12-9"><a href="limits.html#cb12-9" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&#39;LCL = &#39;</span>, lcl, <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
 <span id="cb12-10"><a href="limits.html#cb12-10" tabindex="-1"></a>  </span>
 <span id="cb12-11"><a href="limits.html#cb12-11" tabindex="-1"></a>  <span class="co"># plot the chart</span></span>
-<span id="cb12-12"><a href="limits.html#cb12-12" tabindex="-1"></a>  <span class="fu">spc</span>(month, ha_infections, cl, lcl, ucl,</span>
-<span id="cb12-13"><a href="limits.html#cb12-13" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&#39;Infections&#39;</span>,</span>
-<span id="cb12-14"><a href="limits.html#cb12-14" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&#39;Month&#39;</span>)</span>
-<span id="cb12-15"><a href="limits.html#cb12-15" tabindex="-1"></a>})</span></code></pre></div>
+<span id="cb12-12"><a href="limits.html#cb12-12" tabindex="-1"></a>  <span class="fu">spc</span>(month, ha_infections,</span>
+<span id="cb12-13"><a href="limits.html#cb12-13" tabindex="-1"></a>      cl, lcl, ucl,</span>
+<span id="cb12-14"><a href="limits.html#cb12-14" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&#39;Infections&#39;</span>, <span class="co"># y-axis label</span></span>
+<span id="cb12-15"><a href="limits.html#cb12-15" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&#39;Month&#39;</span>)      <span class="co"># x-axis label</span></span>
+<span id="cb12-16"><a href="limits.html#cb12-16" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## UCL = 36.94952 
 ## CL  = 22.66667 
 ## LCL =  8.38381</code></pre>
@@ -508,7 +512,7 @@ Normal
 Figure 6.2: C control chart of monthly numbers of hospital acquired bacteremias
 </p>
 </div>
-<p>The average number of cases is 22.7 per month and all data points are within the control limits ranging from 8.4 to 36.9.</p>
+<p>The average monthly number of cases is 22.7, and all data points are within the control limits ranging from 8.4 to 36.9. So if nothing changes, we should expect future infection counts to be around 23, and we should not be surprised if once in a while, we observe as little as 9 or as many as 36 infections in a single month.</p>
 </div>
 <div id="u-chart" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> U chart<a href="limits.html#u-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -538,36 +542,37 @@ Figure 6.2: C control chart of monthly numbers of hospital acquired bacteremias
 Figure 6.3: U chart of monthly number of infections per 10,000 risk days
 </p>
 </div>
-<p>The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the number of risk days, the denominator, for each data point. Large denominator <span class="math inline">\(\Rightarrow\)</span> narrow limits; small denominator <span class="math inline">\(\Rightarrow\)</span> wide limits.</p>
-<p>In cases like this where the denominator – the area of opportunity – only varies little between subgroups, the U charts adds little compared to the C chart. However, when one needs to compare events from organisational units of different size or over time periods where the area of opportunity varies significantly, it may be useful to compare the rates rather than the raw counts.</p>
+<p>The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the denominator (risk days), for each data point. Large denominator <span class="math inline">\(\Rightarrow\)</span> narrow limits; small denominator <span class="math inline">\(\Rightarrow\)</span> wide limits.</p>
+<p>In cases like this where the denominator – the area of opportunity – only varies little between subgroups, the U charts adds little compared to the C chart. For pedagogical reasons we may prefer the C chart. It is a lot easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.</p>
 </div>
 <div id="p-chart" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> P chart<a href="limits.html#p-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>P charts are for proportions (or percentages). Figure @ref(fig:limits-p shows the monthly proportion of patients with bacteremia who died within 30 days. In contrast to event rates, where the numerator (event counts) and the denominator (area of opportunity) are different things, proportions always shows the number of cases in relation to the total number of cases and non-cases. This means that proportions always are dimensionless. Percentages are simply proportions multiplied by 100.</p>
+<p>P charts are for proportions (or percentages). Figure <a href="limits.html#fig:limits-p">6.4</a> shows the monthly proportion of patients with bacteremia who died within 30 days.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="limits.html#cb15-1" tabindex="-1"></a><span class="fu">with</span>(bact, {</span>
 <span id="cb15-2"><a href="limits.html#cb15-2" tabindex="-1"></a>  y   <span class="ot">&lt;-</span> deaths <span class="sc">/</span> patients</span>
-<span id="cb15-3"><a href="limits.html#cb15-3" tabindex="-1"></a>  cl  <span class="ot">&lt;-</span> <span class="fu">sum</span>(deaths) <span class="sc">/</span> <span class="fu">sum</span>(patients)</span>
-<span id="cb15-4"><a href="limits.html#cb15-4" tabindex="-1"></a>  s   <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((cl <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> cl) <span class="sc">/</span> patients))</span>
-<span id="cb15-5"><a href="limits.html#cb15-5" tabindex="-1"></a>  lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s                          <span class="co"># lower control limit</span></span>
-<span id="cb15-6"><a href="limits.html#cb15-6" tabindex="-1"></a>  ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s                          <span class="co"># upper control limit</span></span>
+<span id="cb15-3"><a href="limits.html#cb15-3" tabindex="-1"></a>  cl  <span class="ot">&lt;-</span> <span class="fu">sum</span>(deaths) <span class="sc">/</span> <span class="fu">sum</span>(patients)      <span class="co"># process mean, centre line</span></span>
+<span id="cb15-4"><a href="limits.html#cb15-4" tabindex="-1"></a>  s   <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((cl <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> cl) <span class="sc">/</span> patients)) <span class="co"># process standard deviation</span></span>
+<span id="cb15-5"><a href="limits.html#cb15-5" tabindex="-1"></a>  lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s                       <span class="co"># lower control limit</span></span>
+<span id="cb15-6"><a href="limits.html#cb15-6" tabindex="-1"></a>  ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s                       <span class="co"># upper control limit</span></span>
 <span id="cb15-7"><a href="limits.html#cb15-7" tabindex="-1"></a>  </span>
-<span id="cb15-8"><a href="limits.html#cb15-8" tabindex="-1"></a>  multiply <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb15-9"><a href="limits.html#cb15-9" tabindex="-1"></a>  y <span class="ot">&lt;-</span> y <span class="sc">*</span> multiply</span>
-<span id="cb15-10"><a href="limits.html#cb15-10" tabindex="-1"></a>  cl <span class="ot">&lt;-</span> cl <span class="sc">*</span> multiply</span>
-<span id="cb15-11"><a href="limits.html#cb15-11" tabindex="-1"></a>  lcl <span class="ot">&lt;-</span> lcl <span class="sc">*</span> multiply</span>
-<span id="cb15-12"><a href="limits.html#cb15-12" tabindex="-1"></a>  ucl <span class="ot">&lt;-</span> ucl <span class="sc">*</span> multiply</span>
-<span id="cb15-13"><a href="limits.html#cb15-13" tabindex="-1"></a>  </span>
-<span id="cb15-14"><a href="limits.html#cb15-14" tabindex="-1"></a>  <span class="fu">spc</span>(month, y, cl, lcl, ucl, </span>
-<span id="cb15-15"><a href="limits.html#cb15-15" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&#39;%&#39;</span>, </span>
-<span id="cb15-16"><a href="limits.html#cb15-16" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&#39;Month&#39;</span>)</span>
-<span id="cb15-17"><a href="limits.html#cb15-17" tabindex="-1"></a>})</span></code></pre></div>
+<span id="cb15-8"><a href="limits.html#cb15-8" tabindex="-1"></a>  <span class="co"># multiply by 100 to get percentages rather than proportions</span></span>
+<span id="cb15-9"><a href="limits.html#cb15-9" tabindex="-1"></a>  multiply <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb15-10"><a href="limits.html#cb15-10" tabindex="-1"></a>  y   <span class="ot">&lt;-</span> y <span class="sc">*</span> multiply</span>
+<span id="cb15-11"><a href="limits.html#cb15-11" tabindex="-1"></a>  cl  <span class="ot">&lt;-</span> cl <span class="sc">*</span> multiply</span>
+<span id="cb15-12"><a href="limits.html#cb15-12" tabindex="-1"></a>  lcl <span class="ot">&lt;-</span> lcl <span class="sc">*</span> multiply</span>
+<span id="cb15-13"><a href="limits.html#cb15-13" tabindex="-1"></a>  ucl <span class="ot">&lt;-</span> ucl <span class="sc">*</span> multiply</span>
+<span id="cb15-14"><a href="limits.html#cb15-14" tabindex="-1"></a>  </span>
+<span id="cb15-15"><a href="limits.html#cb15-15" tabindex="-1"></a>  <span class="fu">spc</span>(month, y, cl, lcl, ucl, </span>
+<span id="cb15-16"><a href="limits.html#cb15-16" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&#39;%&#39;</span>, </span>
+<span id="cb15-17"><a href="limits.html#cb15-17" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&#39;Month&#39;</span>)</span>
+<span id="cb15-18"><a href="limits.html#cb15-18" tabindex="-1"></a>})</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:limits-p"></span>
 <img src="_main_files/figure-html/limits-p-1.svg" alt="P chart of monthly 30-day mortality rates" width="672" />
 <p class="caption">
 Figure 6.4: P chart of monthly 30-day mortality rates
 </p>
 </div>
-<p>On average the mortality is 21%. All data points are within the control limits and there are no unusually long runs or unusually few crossings. The the process appears stable and predictable.</p>
+<p>On average the mortality is 21%, and all data points are within the control limits. Thus, the process appears stable and predictable.</p>
 </div>
 </div>
 <div id="measurement-data" class="section level2 hasAnchor" number="6.4">
@@ -692,7 +697,7 @@ Figure 6.7: I- and MR-charts
 <p>With the aggregated data we are now able to construct the X-bar chart (Figure <a href="limits.html#fig:limits-xbar">6.8</a>).</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="limits.html#cb23-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
 <span id="cb23-2"><a href="limits.html#cb23-2" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.mean, delay.n)  <span class="co"># centre line</span></span>
-<span id="cb23-3"><a href="limits.html#cb23-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># pooled standard deviation</span></span>
+<span id="cb23-3"><a href="limits.html#cb23-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># process standard deviation</span></span>
 <span id="cb23-4"><a href="limits.html#cb23-4" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(delay.n)                         <span class="co"># A3 constant</span></span>
 <span id="cb23-5"><a href="limits.html#cb23-5" tabindex="-1"></a>  </span>
 <span id="cb23-6"><a href="limits.html#cb23-6" tabindex="-1"></a>  <span class="fu">spc</span>(<span class="at">x   =</span> month,</span>
@@ -714,7 +719,7 @@ Figure 6.8: X bar chart
 <div id="s-chart" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> S chart<a href="limits.html#s-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.</p>
-<p>To calculate the centre and control limits for the S chart we need to know the pooled standard deviation, <span class="math inline">\(\bar{S}\)</span> (same as for the X-bar chart), and the two constants <span class="math inline">\(B_3\)</span> and <span class="math inline">\(B_4\)</span> From Table <a href="limits.html#tab:limits-tab1">6.1</a>.</p>
+<p>To calculate the centre and control limits for the S chart we need to know the process standard deviation, <span class="math inline">\(\bar{S}\)</span> (same as for the X-bar chart), and the two constants <span class="math inline">\(B_3\)</span> and <span class="math inline">\(B_4\)</span> From Table <a href="limits.html#tab:limits-tab1">6.1</a>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="limits.html#cb24-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
 <span id="cb24-2"><a href="limits.html#cb24-2" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># pooled SD, centre line</span></span>
 <span id="cb24-3"><a href="limits.html#cb24-3" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(delay.n)                         <span class="co"># B3 constant</span></span>

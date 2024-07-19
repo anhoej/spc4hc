@@ -82,13 +82,13 @@ read.delim('input/limit_formulas.tsv', check.names = F) |>
   pack_rows('Measurement data', 4, 7)
 ```
 
-Generally, data come in two flavours: count data and measurement data. **Counts** are positive integers that represent counts of events or cases, for example surgical complications, healthy babies, or patient falls. **Measurements** are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.
+Generally, data come in two flavours: count data and measurement data. **Counts** are positive integers that represent counts of events or cases, for example patient falls, surgical complications, or healthy babies. **Measurements** are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.
 
 ## Count data
 
 There are several types of count data depending on the type of counts involved. In this chapter we will limit ourselves to events and cases.
 
-**Events** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky.Events are presented as raw counts or rates and are often modelled by the poisson distribution.
+**Events** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events are presented as raw counts or rates and are often modelled by the poisson distribution.
 
 
 **Cases** represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who died (or survived), or procedures that completed according to a standard. Cases are presented as proportions or percentages and are often modelled by the binomial distribution.
@@ -116,14 +116,20 @@ The variables are:
 * month (date): month of infection
 * ha_infections (numeric): number of hospital acquired infections
 * risk_days (numeric): number of patient days without infection
-* deaths (numeric): number of patients who died within 30-day after all-cause (hospital or community acquired) infection
+* deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection
 * patients (numeric): number of patients with all-cause infection
 
-We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once to a patient, while a patient is either infected or not infected and either dead or alive.
+We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive. Because of different statistical properties of events and cases we have different methods for calculating control limits for them.
+
+We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.
+
+Note that rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%).
+
+You may ask: if there is a C chart for count of events, is there not a chart for count of cases? In fact, there is, the NP chart. But it is rarely if ever used in healthcare because it assumes that the denominator is constant between subgroups. It does not make sense to compare 5 out of 10 deaths with 5 our of 50 deaths without taking the different subgroup sizes into account. We could argue that the same is true for C charts -- that they assume that the denominator, the area of opportunity, is constant between subgroups. But in practice -- as long as the subgroups are approximately the same -- C and U charts usually reach the same conclusions. And if this is the case, it is often more useful to present events as counts rather than as rates, which we will see in the examples.
 
 ### C chart
 
-The C charts (C for counts) is the simplest of all control charts and the easiest to calculate. The process standard deviation is simply estimated as the square root of the process mean.
+The C charts (C for counts) is the simplest of all control charts and the easiest to produce. The process standard deviation is simply estimated as the square root of the process mean.
 
 C charts are appropriate when counting events from (nearly) equally big chunks of time or space.
 
@@ -141,13 +147,14 @@ with(bact, {
   cat('LCL = ', lcl, '\n')
   
   # plot the chart
-  spc(month, ha_infections, cl, lcl, ucl,
-      ylab = 'Infections',
-      xlab = 'Month')
+  spc(month, ha_infections,
+      cl, lcl, ucl,
+      ylab = 'Infections', # y-axis label
+      xlab = 'Month')      # x-axis label
 })
 ```
 
-The average number of cases is 22.7 per month and all data points are within the control limits ranging from 8.4 to 36.9. 
+The average monthly number of cases is 22.7, and all data points are within the control limits ranging from 8.4 to 36.9. So if nothing changes, we should expect future infection counts to be around 23, and we should not be surprised if once in a while, we observe as little as 9 or as many as 36 infections in a single month.
 
 ### U chart
 
@@ -176,25 +183,26 @@ with(bact, {
 })
 ```
 
-The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the number of risk days, the denominator, for each data point. Large denominator $\Rightarrow$ narrow limits; small denominator $\Rightarrow$ wide limits.
+The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the denominator  (risk days), for each data point. Large denominator $\Rightarrow$ narrow limits; small denominator $\Rightarrow$ wide limits.
 
-In cases like this where the denominator -- the area of opportunity -- only varies little between subgroups, the U charts adds little compared to the C chart. However, when one needs to compare events from organisational units of different size or over time periods where the area of opportunity varies significantly, it may be useful to compare the rates rather than the raw counts.
+In cases like this where the denominator -- the area of opportunity -- only varies little between subgroups, the U charts adds little compared to the C chart. For pedagogical reasons we may prefer the C chart. It is a lot easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.
 
 ### P chart
 
-P charts are for proportions (or percentages). Figure \@ref(fig:limits-p shows the monthly proportion of patients with bacteremia who died within 30 days. In contrast to event rates, where the numerator (event counts) and the denominator (area of opportunity) are different things, proportions always shows the number of cases in relation to the total number of cases and non-cases. This means that proportions always are dimensionless. Percentages are simply proportions multiplied by 100.
+P charts are for proportions (or percentages). Figure \@ref(fig:limits-p) shows the monthly proportion of patients with bacteremia who died within 30 days. 
 
 ```{r limits-p, fig.cap='P chart of monthly 30-day mortality rates'}
 with(bact, {
   y   <- deaths / patients
-  cl  <- sum(deaths) / sum(patients)
-  s   <- sqrt((cl * (1 - cl) / patients))
-  lcl <- cl - 3 * s                          # lower control limit
-  ucl <- cl + 3 * s                          # upper control limit
+  cl  <- sum(deaths) / sum(patients)      # process mean, centre line
+  s   <- sqrt((cl * (1 - cl) / patients)) # process standard deviation
+  lcl <- cl - 3 * s                       # lower control limit
+  ucl <- cl + 3 * s                       # upper control limit
   
+  # multiply by 100 to get percentages rather than proportions
   multiply <- 100
-  y <- y * multiply
-  cl <- cl * multiply
+  y   <- y * multiply
+  cl  <- cl * multiply
   lcl <- lcl * multiply
   ucl <- ucl * multiply
   
@@ -204,7 +212,7 @@ with(bact, {
 })
 ```
 
-On average the mortality is 21%. All data points are within the control limits and there are no unusually long runs or unusually few crossings. The the process appears stable and predictable.
+On average the mortality is 21%, and all data points are within the control limits. Thus, the process appears stable and predictable.
 
 ## Measurement data
 
@@ -331,7 +339,7 @@ With the aggregated data we are now able to construct the X-bar chart (Figure \@
 ```{r limits-xbar, fig.cap='X bar chart'}
 with(csect.agg, {
   xbarbar <- weighted.mean(delay.mean, delay.n)  # centre line
-  sbar    <- weighted.mean(delay.sd, delay.n)    # pooled standard deviation
+  sbar    <- weighted.mean(delay.sd, delay.n)    # process standard deviation
   a3      <- a3(delay.n)                         # A3 constant
   
   spc(x   = month,
@@ -352,7 +360,7 @@ Be careful not to fall for the temptation to conclude that since no months are a
 
 The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.
 
-To calculate the centre and control limits for the S chart we need to know the pooled standard deviation, $\bar{S}$ (same as for the X-bar chart), and the two constants $B_3$ and $B_4$ From Table \@ref(tab:limits-tab1).
+To calculate the centre and control limits for the S chart we need to know the process standard deviation, $\bar{S}$ (same as for the X-bar chart), and the two constants $B_3$ and $B_4$ From Table \@ref(tab:limits-tab1).
 
 ```{r limits-s, fig.cap='S chart'}
 with(csect.agg, {
