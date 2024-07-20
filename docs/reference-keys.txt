@@ -43,7 +43,6 @@ case_p
 case_c_u
 case_i_mr
 case_xbar_s
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 bacteremia
 blood-pressure
 clostridioides-difficile-infections

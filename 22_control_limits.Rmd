@@ -19,20 +19,23 @@ To avoid repeating ourselves, let's begin by creating a function to automate the
 
 The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, one may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
 
-Let's test it using some random numbers from a normal distribution (more on testing with random numbers in Chapter XX):
+```{r, echo=FALSE}
+y <- c(169, 172, 175, 174, 161, 142,
+       174, 171, 168, 174, 180, 194,
+       161, 181, 175, 176, 186, 166,
+       157, 183, 177, 171, 185, 176,
+       181, 174)
+x <- seq_along(y)
+cl  <- mean(y)
+mr <- abs(diff(y))
+amr <- mean(mr)
+lcl <- cl - 2.66 * amr
+ucl <- cl + 2.66 * amr
+```
 
-```{r limits-fig1, fig.cap='Control chart from random normal numbers'}
-# initiate random number generator to make results reproducible
-set.seed(9)
+Let us test it with the blood pressure data from Chapter \@ref(first-chart) (Figure \@ref(fig:limits-fig1)).
 
-# create x and y data coordinates and values for centre line and control limits
-y   <- rnorm(24)     # y coordinates
-x   <- seq_along(y)  # x coordinates
-cl  <- 0             # centre line = 0
-lcl <- -3            # lower control limit = -3
-ucl <- 3             # upper control limit = 3
-
-# plot the dots and draw the lines
+```{r limits-fig1, fig.cap='Control chart of systolic blood pressure'}
 spc(x, y, cl, lcl, ucl)
 ```
 
@@ -58,7 +61,7 @@ There are several types of count data depending on the type of counts involved. 
 **Events** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events are presented as raw counts or rates and are often modelled by the poisson distribution.
 
 
-**Cases** represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who died (or survived), or procedures that completed according to a standard. Cases are presented as proportions or percentages and are often modelled by the binomial distribution.
+**Cases** represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who fell, or procedures that completed according to a standard. Cases are presented as proportions or percentages and are often modelled by the binomial distribution.
 
 For count charts in this chapter we will use the bacteremia data set:
 
@@ -86,13 +89,11 @@ The variables are:
 * deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection
 * patients (numeric): number of patients with all-cause infection
 
-We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive. Because of different statistical properties of events and cases we have different methods for calculating control limits for them.
+We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive. 
 
 We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.
 
-Note that rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%).
-
-You may ask: if there is a C chart for count of events, is there not a chart for count of cases? In fact, there is, the NP chart. But it is rarely if ever used in healthcare because it assumes that the denominator is constant between subgroups. It does not make sense to compare 5 out of 10 deaths with 5 our of 50 deaths without taking the different subgroup sizes into account. We could argue that the same is true for C charts -- that they assume that the denominator, the area of opportunity, is constant between subgroups. But in practice -- as long as the subgroups are approximately the same -- C and U charts usually reach the same conclusions. And if this is the case, it is often more useful to present events as counts rather than as rates, which we will see in the examples.
+Rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%).
 
 ### C chart
 
@@ -156,7 +157,7 @@ In cases like this where the denominator -- the area of opportunity -- only vari
 
 ### P chart
 
-P charts are for proportions (or percentages). Figure \@ref(fig:limits-p) shows the monthly proportion of patients with bacteremia who died within 30 days. 
+P charts are for proportions (or percentages). Figure \@ref(fig:limits-p) shows the monthly percentage of patients with bacteremia who died within 30 days. 
 
 ```{r limits-p, fig.cap='P chart of monthly 30-day mortality rates'}
 with(bact, {
@@ -231,7 +232,7 @@ On average, the delay time for these cases is 24 minutes. The control limits tel
 
 ### MR chart
 
-The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges cannot be negative, the MR chart has no lower control limit.
+The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges may be zero but cannot be negative, the MR chart has no lower control limit.
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 60), {
