@@ -4,15 +4,15 @@
 # pregnancy, single baby, head first, gestational age at least 37 weeks.
 # 
 # Variables:
-#  datetime (datetime): data and time of birth
-#  biweek (date): first day of biweekly period
-#  csect (logical): delivery by C-section
-#  cup (logical): delivery by vacuum extraction
-#  length (numeric): baby length in cm
-#  weight (numeric): baby weight in kg
-#  apgar (numeric): apgar score at 5 minutes
-#  ph (numeric): arterial umbilical chord pH
-#  asphyxia (logical): ph < 7 or missing ph and apgar < 7
+#   datetime (datetime): data and time of birth
+#   biweek (date): first day of biweekly period
+#   csect (logical): delivery by C-section
+#   cup (logical): delivery by vacuum extraction
+#   length (numeric): baby length in cm
+#   weight (numeric): baby weight in kg
+#   apgar (numeric): apgar score at 5 minutes
+#   ph (numeric): arterial umbilical chord pH
+#   asphyxia (logical): ph < 7 or missing ph and apgar < 7
 
 datetime,biweek,csect,cup,length,weight,apgar,ph,asphyxia
 2016-01-04 06:13:00,2016-01-04,FALSE,FALSE,55,3872,10,7.1,FALSE

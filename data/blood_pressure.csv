@@ -3,10 +3,10 @@
 # Daily measurements of blood pressure and resting pulse.
 # 
 # Variables:
-#  date (date): date of measurement
-#  systolic (numeric): systolic blood pressure (mm Hg)
-#  diastolic (numeric): diastolic blood pressure (mm Hg)
-#  pulse (numeric): resting pulse (beats per minute)
+#   date (date): date of measurement
+#   systolic (numeric): systolic blood pressure (mm Hg)
+#   diastolic (numeric): diastolic blood pressure (mm Hg)
+#   pulse (numeric): resting pulse (beats per minute)
 
 date,systolic,diastolic,pulse
 2012-06-13,125,77,56

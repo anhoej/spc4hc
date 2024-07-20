@@ -1,1 +1,44 @@
 # Highlighting Freaks, Shifts, and Trends {#highlighting}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/3,
+                      dev     = 'svg')
+
+source('R/spc1.R', local = knitr::knit_global())
+
+```
+
+```{r}
+cdiff <- read.csv('data/cdiff.csv',
+                  comment.char = '#',
+                  colClasses = c('Date',
+                                 'integer',
+                                 'integer'))
+
+head(cdiff)
+```
+
+```{r}
+with(cdiff, {
+  cl <- mean(infections)
+  lcl <- cl - 3 * sqrt(cl)
+  ucl <- cl + 3 * sqrt(cl)
+
+  spc(month, infections, cl, lcl, ucl)
+})
+```
+
+```{r, file='R/spc2.R'}
+
+```
+
+```{r}
+with(cdiff, {
+  cl <- mean(infections)
+  lcl <- cl - 3 * sqrt(cl)
+  ucl <- cl + 3 * sqrt(cl)
+
+  spc(month, infections, cl, lcl, ucl)
+})
+```
+

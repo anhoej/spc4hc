@@ -7,7 +7,7 @@
 #   cases (numeric): number of cases
 #   risk_days (numeric): number of patient days without infection
 
-month,cases,risk_days
+month,infections,risk_days
 2020-01-01,12,19801
 2020-02-01,7,18674
 2020-03-01,1,15077
