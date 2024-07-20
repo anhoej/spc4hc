@@ -34,6 +34,8 @@ x-bar-chart
 s-chart
 control-limits-in-short
 highlighting
+introducing-the-cdiff-data-set
+improved-spc-function
 r_function
 ggplot
 qicharts
@@ -51,4 +53,3 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

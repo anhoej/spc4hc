@@ -5,8 +5,10 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 
 source('R/spc1.R', local = knitr::knit_global())
-
+source('R/runs.analysis.R', local = knitr::knit_global())
 ```
+
+## Introducing the cdiff data set
 
 ```{r}
 cdiff <- read.csv('data/cdiff.csv',
@@ -31,6 +33,8 @@ with(cdiff, {
 })
 ```
 
+## Improved `spc()` function
+
 ```{r, file='R/spc2.R', attr.source='.numberLines'}
 
 ```
@@ -39,5 +43,12 @@ with(cdiff, {
 with(cdiff, {
   spc(month, infections, cl, lcl, ucl)
 })
+```
+
+----
+## Runs Analysis {-}
+
+```{r, file='R/runs.analysis.R', eval=FALSE}
+
 ```
 

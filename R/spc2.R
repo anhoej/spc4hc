@@ -1,7 +1,7 @@
 spc <- function(
     x,           # x axis values
     y   = NULL,  # data values
-    cl  = NA,    # centre line
+    cl  = NULL,  # centre line
     lcl = NA,    # lower control limit
     ucl = NA,    # upper control limit
     ...          # other parameters passed to the plot() function
@@ -11,6 +11,10 @@ spc <- function(
     y <- x
     x <- seq_along(y)
   }
+  
+  # if cl is missing use median of y
+  if (is.null(cl))
+    cl <- median(y, na.rm = TRUE)
   
   # repeat line values to match the length of y
   if (length(cl) == 1)
@@ -22,41 +26,30 @@ spc <- function(
   if (length(ucl) == 1)
     ucl <- rep(ucl, length(y))
   
-  # find data points outside control limits
+  # find data points outside control limits (freaks)
   sigma.signal <- y < lcl | y > ucl
   sigma.signal[is.na(sigma.signal)] <- FALSE
   
-  # runs analysis
-  if (all(is.na(cl))) {
-    runs.signal <- FALSE
-  } else {
-    runs            <- sign(y - cl)
-    runs            <- runs[runs != 0 & !is.na(runs)]
-    run.lengths     <- rle(runs)$lengths
-    n.useful        <- sum(run.lengths)
-    longest.run     <- max(run.lengths)
-    n.crossings     <- length(run.lengths) - 1
-    longest.run.max <- round(log2(n.useful)) + 3
-    n.crossings.min <- qbinom(0.05, n.useful - 1, 0.5)
-    runs.signal     <- longest.run > longest.run.max |
-                       n.crossings < n.crossings.min
-  }
-
+  # check for sustained shifts and trends using runs analysis
+  runs.signal <- runs.analysis(y, cl)
+  
   # make empty plot
   plot(x, y, 
        type = 'n',
        ylim = range(y, lcl, ucl, na.rm = TRUE),
        ...)
-  # add centre line, coloured and dashed if unusually long runs or unusuall
-  # few crossing were identified by the runs analysis
+  
+  # add centre line, coloured and dashed if shifts or trends were identified by
+  # the runs analysis
   lines(x, cl,
         col = runs.signal + 1,
         lty = runs.signal + 1)
+  
   # add control limits
   lines(x, lcl)
   lines(x, ucl)
   
-  # add data line and points, colour data points outside control limits
+  # add data line and points, colour freak data points (outside control limits)
   lines(x, y)
   points(x, y,
          pch = 19,
