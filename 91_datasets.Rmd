@@ -1,0 +1,31 @@
+# Data Sets {-}
+
+```{r, echo=FALSE}
+f <- dir('data', pattern = 'csv$', full.names = T)
+
+l <- lapply(f, function(x) {
+
+  l <- readLines(x) |>
+    grep('^#', x = _, value = T) |>
+    sub('^# ', '', x = _) |>
+    sub('  ', '* ', x = _)
+
+  v <- grep('^Variables:$', l)
+  l <- append(l, paste('File:', sub('data/', '', x)), v - 1)
+  l <- append(l, '', v )
+  l <- append(l, '', v + 2)
+
+  l[1] <- paste('##', l[1])
+  l <- c('', l)
+
+  l
+}) |>
+  unlist() |> 
+  paste(collapse = '\n')
+
+```
+
+```{r, results='asis', echo=FALSE}
+cat(l)
+```
+
