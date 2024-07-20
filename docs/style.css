@@ -21,3 +21,7 @@ table caption {
   text-align: left;
   color: #777;
 }
+
+pre.numberSource code > span > a:first-child::before {
+  left: 0em;
+}

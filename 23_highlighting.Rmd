@@ -15,29 +15,28 @@ cdiff <- read.csv('data/cdiff.csv',
                                  'integer',
                                  'integer'))
 
+cdiff <- within(cdiff, {
+  cl  <- mean(infections)
+  lcl <- cl - 3 * sqrt(cl)
+  ucl <- cl + 3 * sqrt(cl)
+  
+})
+
 head(cdiff)
 ```
 
 ```{r}
 with(cdiff, {
-  cl <- mean(infections)
-  lcl <- cl - 3 * sqrt(cl)
-  ucl <- cl + 3 * sqrt(cl)
-
   spc(month, infections, cl, lcl, ucl)
 })
 ```
 
-```{r, file='R/spc2.R'}
+```{r, file='R/spc2.R', attr.source='.numberLines'}
 
 ```
 
 ```{r}
 with(cdiff, {
-  cl <- mean(infections)
-  lcl <- cl - 3 * sqrt(cl)
-  ucl <- cl + 3 * sqrt(cl)
-
   spc(month, infections, cl, lcl, ucl)
 })
 ```

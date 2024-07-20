@@ -39,20 +39,24 @@ spc <- function(
     longest.run.max <- round(log2(n.useful)) + 3
     n.crossings.min <- qbinom(0.05, n.useful - 1, 0.5)
     runs.signal     <- longest.run > longest.run.max |
-      n.crossings < n.crossings.min
+                       n.crossings < n.crossings.min
   }
-  
-  
-  # plot the dots and draw the lines
+
+  # make empty plot
   plot(x, y, 
        type = 'n',
        ylim = range(y, lcl, ucl, na.rm = TRUE),
        ...)
+  # add centre line, coloured and dashed if unusually long runs or unusuall
+  # few crossing were identified by the runs analysis
   lines(x, cl,
         col = runs.signal + 1,
         lty = runs.signal + 1)
+  # add control limits
   lines(x, lcl)
   lines(x, ucl)
+  
+  # add data line and points, colour data points outside control limits
   lines(x, y)
   points(x, y,
          pch = 19,
