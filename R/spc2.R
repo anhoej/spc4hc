@@ -6,6 +6,9 @@ spc <- function(
     ucl = NA,    # upper control limit
     ...          # other parameters passed to the plot() function
 ) {
+  # load runs analysis function from R script
+  source('R/runs.analysis.R')
+  
   # if y is missing, set y to x and make a sequence for x
   if (is.null(y)) {
     y <- x
@@ -36,7 +39,7 @@ spc <- function(
   # make empty plot
   plot(x, y, 
        type = 'n',
-       ylim = range(y, lcl, ucl, na.rm = TRUE),
+       ylim = range(y, cl, lcl, ucl, na.rm = TRUE),
        ...)
   
   # add centre line, coloured and dashed if shifts or trends were identified by

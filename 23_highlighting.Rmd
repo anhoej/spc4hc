@@ -5,47 +5,90 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 
 source('R/spc1.R', local = knitr::knit_global())
-source('R/runs.analysis.R', local = knitr::knit_global())
 ```
+
+In the previous chapter we calculated control limits for the most common types of control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits are signals of special cause variation in data -- that is unexpected change caused by something outside the usual system.
+
+Control limits are designed to identify rather large (> 2SD), possibly transient, changes in the system (freaks). However, as discussed in Part 1 of this book, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. Most known are the Western Electric Rules introduced in the 1950s. The WE rules are based on the distribution of data points relative to the 1, 2, and 3 SD limits.
+
+Recently we have introduced two simple rules that rely only on the distribution of data points around the centre line, the shift and crossings rules that look for unusually long runs of data points on the same side of the centre line or unusually few crossings of the centre line.
+
+The shift and crossings rules are comparable to the WE rules in their sensitivity to minor and moderate *sustained* shifts and trends in data and may be used alone with run charts without control limits.
+
+In this chapter we will improve the `spc()` function to automatically visualise special cause variation in the form of freaks, shifts, and trends.
 
 ## Introducing the cdiff data set
 
+The cdiff data set contains 24 observations of monthly numbers of hospital acquired *Clostridioides difficile* infections from an acute care hospital.
+
 ```{r}
+# read data from file
 cdiff <- read.csv('data/cdiff.csv',
                   comment.char = '#',
                   colClasses = c('Date',
                                  'integer',
                                  'integer'))
 
+# calculate centre line and control limits
 cdiff <- within(cdiff, {
   cl  <- mean(infections)
-  lcl <- cl - 3 * sqrt(cl)
+  lcl <- pmax(0, cl - 3 * sqrt(cl)) # censor lcl at zero
   ucl <- cl + 3 * sqrt(cl)
-  
 })
 
+# print the first six rows of data
 head(cdiff)
 ```
 
-```{r}
+Figure \@ref(fig:highlighting-spc1) shows data plotted with `spc()` function. We see that there is one data point (#1) above the upper control limit. If we look carefully we also find an unusually long run of 11 data points below the centre line (#14-#24) and that the curve crosses the centre line only 7 times. Thus, in addition to the freak, there is also a shift in data, which is not large enough to break the limits but sustained enough to trigger the runs rules. 
+
+```{r highlighting-spc1, fig.cap='C control chart of CDiff infections'}
 with(cdiff, {
   spc(month, infections, cl, lcl, ucl)
 })
 ```
+
+To help us identify special cause variation we will improve the `spc()` function.
 
 ## Improved `spc()` function
 
-```{r, file='R/spc2.R', attr.source='.numberLines'}
+The new, improved `spc()` function has a few changes:
 
+* Line 10: Import a function, `runs.analysis()`, from a separate R script to test for unusually long runs and unusually few crossings. See this function in the [Runs Analysis] section at the end of this chapter.
+
+* Lines 19-20: If no cl argument is given, use the median for centre line.
+
+* Lines 33-34: Return indices of data points that lie outside the control limits
+
+* Line 37: Perform runs analysis (returns TRUE or FALSE).
+
+* Line 41: Start with an empty plot.
+
+* Line 47-49: Format the centre line according to the result of runs analysis.
+
+* Lines 56-49: Add the data line and points and colour data points outside control limits.
+
+```{r, file='R/spc2.R', attr.source='.numberLines'}
 ```
 
-```{r}
+```{r highlighting-spc2, fig.cap='Improved control chart with visual clues to highlight special cause variation'}
 with(cdiff, {
   spc(month, infections, cl, lcl, ucl)
 })
 ```
 
+Now it is a lot easier to immediately see if a chart contains special cause variation or not. Data points outside the limits are red, and the centre line will turn red and dashed if there are any unusually long runs in data or if the curve crossed the centre line unusually few times.
+
+Remember, the chart itself does not tell us what caused the signals. This interpretation of a chart -- common or special cause variation -- still relies on humans with a deep understanding the process and the data.
+
+## Highlighting special cause variation in short
+
+In this chapter we have improved the `spd()` function to automatically highlight signs of special cause variation using visual clues that help us quickly decide if a process is stable or not.
+
+In the next chapter we will improve the `spc()` function further to automatically aggregate data and calculate control limits.
+
 ----
+
 ## Runs Analysis {-}
 
 ```{r, file='R/runs.analysis.R', eval=FALSE}

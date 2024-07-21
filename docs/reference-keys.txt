@@ -12,6 +12,8 @@ fig:limits-imr
 fig:limits-xbar
 fig:limits-s
 fig:limits-xbarands
+fig:highlighting-spc1
+fig:highlighting-spc2
 what
 variation
 charts_intro
@@ -36,6 +38,7 @@ control-limits-in-short
 highlighting
 introducing-the-cdiff-data-set
 improved-spc-function
+highlighting-special-cause-variation-in-short
 r_function
 ggplot
 qicharts
