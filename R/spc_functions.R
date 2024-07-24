@@ -14,7 +14,7 @@
 #            than proportions.
 #  chart:    Character value indicating the chart type. Possible values are:
 #            'run' (default), 'xbar', 's', 'i', 'mr', 'c', 'u', and 'p'.
-#  plot:     Logical, if TRUE (default), plots and SPC chart.
+#  plot:     Logical, if TRUE (default), plots an SPC chart.
 #  print:    Logical, if TRUE, prints a data frame with coordinates.
 #  ...:      Other arguments to \code{plot()} function, e.g. main, ylab, xlab.
 # 
@@ -163,6 +163,7 @@ plot.spc <- function(x, ...) {
        bty  = 'l',
        las  = 1,
        ylim = ylim,
+       font.main = 1,
        ...)
   
   # Add lines and points to plot.

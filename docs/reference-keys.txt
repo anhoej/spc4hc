@@ -14,6 +14,10 @@ fig:limits-s
 fig:limits-xbarands
 fig:highlighting-spc1
 fig:highlighting-spc2
+fig:rfun-imr
+fig:rfun-xbars
+fig:rfun-cu
+fig:rfun-p
 what
 variation
 charts_intro
@@ -40,6 +44,14 @@ introducing-the-cdiff-data-set
 improved-spc-function
 highlighting-special-cause-variation-in-short
 r_function
+examples
+run-chart
+i-and-mr-charts-for-individual-measurements
+x-bar-and-s-charts-for-averages-and-standard-deviations-af-measurements
+c-and-u-charts-for-counts-and-rates
+p-chart-for-percentages
+todo
+further-up-further-in
 ggplot
 qicharts
 subgrouping
@@ -56,3 +68,4 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

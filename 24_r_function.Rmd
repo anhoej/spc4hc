@@ -1,1 +1,150 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # One R Function to Rule Them All {#r_function}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/3,
+                      dev     = 'svg')
+
+source('R/spc_functions.R', local = knitr::knit_global())
+```
+
+Until now, we have calculated control limits manually before plotting. In this chapter we will introduce a library of functions that work together to automate all the steps involved in constructing SPC charts.
+
+We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your needs. 
+
+In total there are 17 functions that work together to construct SPC charts. But the user only needs to interact with one of them, `spc()`. See the [R functions library](#funs) section at the end of this chapter for the source code.
+
+The main function, `spc()` is an improved version of the improved `spc()` function from Chapter \@ref(highlighting).
+
+* Most importantly, it is no longer necessary to calculate the limits manually. Instead, we provide a `chart` argument, which should be one of the following: 'run', 'xbar', 's', 'i', 'mr', 'c', 'u', 'p'. If no chart argument is provided, a run chart will be drawn.
+
+* Also, we no longer have to use the clumsy $-notation or `with()` functions to access variables inside a data frame. Instead, we may pass the name of the data frame to the `data` argument.
+
+* Finally, we do not need to aggregate data for X-bar and S charts in advance. That job is delegated to the `spc.aggregate()` function, which is also responsible for calling the appropriate functions to calculate the centre line and control limits and perform the runs analysis.
+
+After doing its job, `spc.aggregate()` returns a data frame with all the necessary information needed to construct a plot. This, in turn, is handled by the `plot.spc()` function.
+
+## Examples
+
+Here are examples of each of the Magnificent Eight. See the source code at the end of this chapter for documentation of the input arguments.
+
+### Run chart
+
+```{r rfun-run}
+d <- read.csv('data/blood_pressure.csv',
+              comment.char = '#',
+              colClasses = c(date = 'Date'))
+
+spc(date, systolic,
+    data = d,
+    main = 'Systolic blood pressure',
+    ylab = 'mm Hg',
+    xlab = 'Date')
+```
+
+### I and MR charts for individual measurements
+
+```{r rfun-imr, fig.asp=1, fig.cap='I and MR charts'}
+# Setup plotting area to hold two plots on top of each other and adjust margins
+op <- par(mfrow = c(2, 1),
+          mar   = c(4, 4, 2, 0) + 0.2)
+spc(date, systolic, 
+    data  = d, 
+    chart = 'i',
+    main  = 'Systolic blood pressure',
+    ylab  = 'mm Hg',
+    xlab  = NA)
+spc(date, systolic, 
+    data  = d, 
+    chart = 'mr',
+    main  = 'Moving range',
+    ylab  = 'mm Hg',
+    xlab  = 'Date')
+# Reset plotting area to default
+par(op)
+```
+
+### X-bar and S charts for averages and standard deviations af measurements
+
+```{r rfun-xbars, fig.asp=1, fig.cap='X-bar and S charts'}
+d <- read.csv('data/renography_doses.csv',
+              comment.char = '#',
+              colClasses = c(date = 'Date',
+                             week = 'Date'))
+
+op <- par(mfrow = c(2, 1),
+          mar   = c(4, 4, 2, 0) + 0.2)
+spc(week, dose,
+    data  = d,
+    chart = 'xbar',
+    main  = 'Average radiation dose for renography',
+    ylab  = 'MBq',
+    xlab  = NA)
+spc(week, dose,
+    data  = d,
+    chart = 's',
+    main  = 'Standard deviation',
+    ylab  = 'MBq',
+    xlab  = 'Week')
+par(op)
+```
+
+### C and U charts for counts and rates
+
+```{r rfun-cu, fig.asp=1, fig.cap='C and U charts'}
+d <- read.csv('data/bacteremia.csv',
+         comment.char = '#',
+         colClasses = c(month = 'Date'))
+
+op <- par(mfrow = c(2, 1),
+          mar   = c(4, 4, 2, 0) + 0.2)
+spc(month, ha_infections,
+    data = d,
+    chart    = 'c',
+    main     = 'Hospital acquired bacteremia',
+    ylab     = 'Count',
+    xlab     = NA)
+spc(month, ha_infections, risk_days,
+    data     = d,
+    chart    = 'u',
+    multiply = 10000,
+    main     = NA,
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
+
+par(op)
+```
+
+### P chart for percentages
+
+```{r rfun-p, fig.cap='P chart'}
+spc(month, deaths, patients,
+    data     = d,
+    multiply = 100,
+    chart    = 'p',
+    main     = '30-day mortality after bacteremia',
+    ylab     = '%',
+    xlab     = 'Month')
+```
+
+## TODO
+
+One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n have the same lengths. TIP: check the `stopifnot()` function.
+
+## Further up, further in
+
+We now have a functioning library of R functions that automate most of the steps involved in the construction of SPC charts. There is still plenty of room for improvement. But this should get you started and -- most importantly -- give you a deeper understanding of the considerations involved in plotting SPC charts.
+
+In the next chapter we will take a quick look at how to use ggplot2 for plotting rather than the `plot()` function from base R.
+
+----
+
+## R function library {- #funs}
+
+```{r, file='R/spc_functions.R'}
+```
+
