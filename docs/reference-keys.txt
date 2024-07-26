@@ -43,7 +43,7 @@ highlighting
 introducing-the-cdiff-data-set
 improved-spc-function
 highlighting-special-cause-variation-in-short
-r_function
+r-functions
 examples
 run-chart
 i-and-mr-charts-for-individual-measurements
@@ -68,5 +68,3 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-r-functions
