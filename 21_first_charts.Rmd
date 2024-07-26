@@ -68,8 +68,8 @@ amr <- mean(mr)
 s <- amr / 1.128
 
 # Create y-coordinates for the control limits
-lcl <- rep(cl - 3 * s, length(y))
-ucl <- rep(cl + 3 * s, length(y))
+lcl <- cl - 3 * s
+ucl <- cl + 3 * s
 ```
 
 Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):

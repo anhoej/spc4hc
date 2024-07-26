@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# One R Function to Rule Them All {#r_function}
+# One R Function to Rule Them All {#r-functions}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,

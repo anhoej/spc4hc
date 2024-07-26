@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-07-23" />
+<meta name="date" content="2024-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -335,8 +335,8 @@ Figure 5.2: Run chart with centre line
 <span id="cb6-5"><a href="first-chart.html#cb6-5" tabindex="-1"></a>s <span class="ot">&lt;-</span> amr <span class="sc">/</span> <span class="fl">1.128</span></span>
 <span id="cb6-6"><a href="first-chart.html#cb6-6" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Create y-coordinates for the control limits</span></span>
-<span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s, <span class="fu">length</span>(y))</span>
-<span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s, <span class="fu">length</span>(y))</span></code></pre></div>
+<span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s</span>
+<span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s</span></code></pre></div>
 <p>Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data expanding y-axis to make room for all data and lines</span></span>
 <span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(y, lcl, ucl))</span>
