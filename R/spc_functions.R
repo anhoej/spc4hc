@@ -76,6 +76,7 @@ spc <- function(x,
   class(df) <- c('spc', class(df))
   invisible(df)
 }
+
 # Aggregate function ###########################################################
 # 
 #  Calculates subgroup lengths, sums, means, and standard deviations. Called

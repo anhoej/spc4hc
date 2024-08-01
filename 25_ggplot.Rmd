@@ -10,29 +10,36 @@ knitr::opts_chunk$set(fig.asp = 3/5,
                       dev     = 'svg')
 
 source('R/spc_functions.R', local = knitr::knit_global())
+source('R/load_data.R', local = knitr::knit_global())
 ```
 
 Armed with the battery of functions from Chapter \@ref(r-functions) we are able to construct any of the Magnificent Eight using functionality from base R. Furthermore, it is easy to add new types of SPC charts to the library. To achieve this, all we have to do is to write an appropriate `spc.*()` function to handle the calculations of the centre line and limits and to include the function type in the`spc()` function's chart argument.
 
-Because we have used a modularised approach and made a separate function for plotting spc objects, `plot.spc()`, it is a simple task to use any other plotting method.
+Because we have used a modularised approach and made a separate function for plotting spc objects, `plot.spc()`, it is also a simple task to use any other plotting method.
 
-First we will create an object of class spc and assign it to a variable name for later use:
+In this chapter we will build an alternative plot function, which uses `ggplot2` as its plotting engine. `ggplot2` has many advantages over plotting with base R function. Not because `ggplot2` is able to do things that cannot be done with base R, but because it makes some operations a lot easier.
+
+For example, with `ggplot2` we do not need to worry about scaling the axes to accommodate data that are added to the plot or to make room for axis labels and tick marks. These are all handled gracefully by `ggplot2` itself.
+
+Also `ggplot2` has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colour palettes, legends, and number/date formats.
+
+First we will create an spc object and assign it to a variable name for later use:
 
 ```{r}
 # Read data
-d <- read.csv('data/cdiff.csv',
-              comment.char = '#',
-              colClasses = c(month = 'Date'))
+# d <- read.csv('data/cdiff.csv',
+#               comment.char = '#',
+#               colClasses = c(month = 'Date'))
 
 # Make spc object
 p <- spc(month, infections,
-         data  = d,
+         data  = cdiff,
          chart = 'c',
          plot = FALSE)
 
 ```
 
-Note that we suppressed the plotting and assigned the (invisible) output to the name 'p'. We can now continue working with p as with any other R object.
+Note that we suppressed the plotting and assigned the (invisible) output to the variable 'p'. We can now continue working with p as with any other R object.
 
 ```{r}
 class(p)
@@ -49,16 +56,17 @@ library(ggplot2)
 # Function for plotting spc objects with `ggplot()`
 ggspc <- function(p) {
   # Set colours
-  col1   <- 'steelblue'
-  col2   <- 'tomato'
-  dotcol <- ifelse(p$sigma.signal, col2, col1)
-  clcol  <- ifelse(p$runs.signal[1], col2, col1)
-  cltyp  <- ifelse(p$runs.signal[1], 'dashed', 'solid')
+  col1    <- 'steelblue'
+  col2    <- 'tomato'
+  linecol <- 'gray50'
+  dotcol  <- ifelse(p$sigma.signal, col2, col1)
+  clcol   <- ifelse(p$runs.signal[1], col2, linecol)
+  cltyp   <- ifelse(p$runs.signal[1], 'dashed', 'solid')
   
   # Plot the dots and draw the lines
   ggplot(p, aes(x, y)) +
-    geom_line(aes(y = lcl), na.rm = TRUE) +
-    geom_line(aes(y = ucl), na.rm = TRUE) +
+    geom_line(aes(y = lcl), colour = linecol, na.rm = TRUE) +
+    geom_line(aes(y = ucl), colour = linecol,, na.rm = TRUE) +
     geom_line(aes(y = cl),
               na.rm    = T,
               colour   = clcol,
@@ -71,15 +79,15 @@ ggspc <- function(p) {
 ggspc(p)
 ```
 
-We may also turn the spc object, p, into a ggplot2 object:
+We may also turn the spc object into a ggplot2 object:
 
 ```{r}
 # Make the spc object into a ggplot2 object
-p2 <- ggspc(p)
-class(p2)
+p <- ggspc(p)
+class(p)
 
 # Plot with modified theme and custom labels
-p2 +
+p +
   theme_light() +
   theme(panel.grid   = element_blank(),
         panel.border = element_blank(),
@@ -89,15 +97,36 @@ p2 +
        x     = 'Month')
 ```
 
-Finally, if we prefer ggplot2 for plotting, we may replace the "old" plot function with the new one:
+Now, if we wished, we could replace the `plot.spc()` with our new function. We will leave that decision to you.
+
+The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:
 
 ```{r}
-# Replace `plot.spc()` function with the new function
-plot.spc <- ggspc
+mytheme <- function() {
+  theme_light() +
+  theme(panel.grid   = element_blank(),
+        panel.border = element_blank(),
+        axis.line    = element_line(colour = 'gray'))
+}
 
-plot(p)
+# d <- read.csv('data/bacteremia.csv',
+#               comment.char = '#',
+#               colClasses = c(month = 'Date'))
+
+p <- spc(month, deaths, patients,
+          data = bact,
+          chart = 'p',
+          plot = FALSE)
+
+ggspc(p) +
+  mytheme() +
+  scale_y_continuous(labels = scales::label_percent()) +
+  labs(title = '30-day mortality',
+       y     = NULL,
+       x     = 'Month')
+
 ```
 
-Or we could simply rewrite the `plot.spc()` function to suit our needs. Now we have the tools and the insight.
+In the long run, though, we might get tired of manually designing our own theme, modifying the plot function, and formatting tick mark labels for every plot. Wouldn't it be nice to have this done automatically for us? This is exactly what `qicharts2` does.
 
-In the next chapter we will introduce the `qicharts2` package that builds on many of the same principles we have used so far. But `qicharts2` has a lot more facilities for customising SPC charts. Most importantly, `qicharts2` makes it easy to produce multidimensional plots using `ggplot2`'s faceting methods.
+`qicharts2` is an R package for plotting SPC charts and is the subject of the next chapter. `qicharts2` builds on the same principles we have developed so far but has a lot more facilities for customising charts. Most importantly, `qicharts2` makes it easy to produce multidimensional plots using `ggplot2`'s faceting methods. 

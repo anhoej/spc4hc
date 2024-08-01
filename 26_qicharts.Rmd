@@ -1,1 +1,6 @@
 # Introducing `qicharts2` {#qicharts}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 3/5,
+                      dev     = 'svg')
+```
