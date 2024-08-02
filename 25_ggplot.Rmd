@@ -26,11 +26,6 @@ Also `ggplot2` has an extensive theming engine that makes it (relatively) easy t
 First we will create an spc object and assign it to a variable name for later use:
 
 ```{r}
-# Read data
-# d <- read.csv('data/cdiff.csv',
-#               comment.char = '#',
-#               colClasses = c(month = 'Date'))
-
 # Make spc object
 p <- spc(month, infections,
          data  = cdiff,
@@ -108,10 +103,6 @@ mytheme <- function() {
         panel.border = element_blank(),
         axis.line    = element_line(colour = 'gray'))
 }
-
-# d <- read.csv('data/bacteremia.csv',
-#               comment.char = '#',
-#               colClasses = c(month = 'Date'))
 
 p <- spc(month, deaths, patients,
           data = bact,

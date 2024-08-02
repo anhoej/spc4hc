@@ -140,10 +140,10 @@ with(bact, {
   
   # multiply y axis to present infections per 10,000 risk days
   multiply <- 10000
-  y        <- y * multiply
-  cl       <- cl * multiply
-  lcl      <- lcl * multiply
-  ucl      <- ucl * multiply
+  y   <- y * multiply
+  cl  <- cl * multiply
+  lcl <- lcl * multiply
+  ucl <- ucl * multiply
   
   spc(month, y, cl, lcl, ucl, 
       ylab = 'Infections per 10,000 risk days',
@@ -169,10 +169,10 @@ with(bact, {
   
   # multiply by 100 to get percentages rather than proportions
   multiply <- 100
-  y   <- y * multiply
-  cl  <- cl * multiply
-  lcl <- lcl * multiply
-  ucl <- ucl * multiply
+  y        <- y * multiply
+  cl       <- cl * multiply
+  lcl      <- lcl * multiply
+  ucl      <- ucl * multiply
   
   spc(month, y, cl, lcl, ucl, 
       ylab = '%', 

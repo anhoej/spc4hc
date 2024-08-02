@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 SPC Charts with ggplot2 | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 9 SPC Charts with ggplot2 | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 SPC Charts with ggplot2 | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 9 SPC Charts with ggplot2 | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 SPC Charts with ggplot2 | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 9 SPC Charts with ggplot2 | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-07-28" />
+<meta name="date" content="2024-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -123,6 +125,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -143,7 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Synopsis</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a></li>
@@ -152,73 +177,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="2" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>2</b> What is SPC</a></li>
-<li class="chapter" data-level="3" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>3</b> Understanding Variation</a></li>
-<li class="chapter" data-level="4" data-path="charts_intro.html"><a href="charts_intro.html"><i class="fa fa-check"></i><b>4</b> Introducing SPC Charts</a></li>
-<li class="chapter" data-level="5" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>5</b> Responding to SPC Signals</a></li>
+<li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is SPC</a></li>
+<li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
+<li class="chapter" data-level="3" data-path="charts_intro.html"><a href="charts_intro.html"><i class="fa fa-check"></i><b>3</b> Introducing SPC Charts</a></li>
+<li class="chapter" data-level="4" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>4</b> Responding to SPC Signals</a></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
-<li class="chapter" data-level="6" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>6</b> Your First SPC Charts With Base R</a>
+<li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-blood-pressure-data"><i class="fa fa-check"></i><b>6.1</b> A run chart blood pressure data</a></li>
-<li class="chapter" data-level="6.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>6.2</b> Adding control limits to produce a control chart</a></li>
-<li class="chapter" data-level="6.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>6.3</b> That’s all, Folks!</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart blood pressure data</a></li>
+<li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>7</b> Calculating Control Limits</a>
+<li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>7.1</b> Introducing the <code>spc()</code> function</a></li>
-<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>7.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>7.3</b> Count data</a>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the <code>spc()</code> function</a></li>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>6.2</b> Formulas for calculation of control limits</a></li>
+<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.3</b> Count data</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.3.1</b> C chart</a></li>
-<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.3.2</b> U chart</a></li>
-<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.3.3</b> P chart</a></li>
+<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.3.1</b> C chart</a></li>
+<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.3.2</b> U chart</a></li>
+<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.3.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>7.4</b> Measurement data</a>
+<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>7.4.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="7.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="7.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="7.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.4.4</b> S chart</a></li>
+<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
+<li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="6.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.5</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>8</b> Highlighting Freaks, Shifts, and Trends</a>
+<li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>8.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="8.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>8.2</b> Improved <code>spc()</code> function</a></li>
-<li class="chapter" data-level="8.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>8.3</b> Highlighting special cause variation in short</a></li>
+<li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
+<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#runs-analysis"><i class="fa fa-check"></i>Runs Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>9</b> One R Function to Rule Them All</a>
+<li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> One R Function to Rule Them All</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>9.1</b> Examples</a>
+<li class="chapter" data-level="8.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>8.1</b> Examples</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>9.1.1</b> Run chart</a></li>
-<li class="chapter" data-level="9.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>9.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="9.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-af-measurements"><i class="fa fa-check"></i><b>9.1.3</b> X-bar and S charts for averages and standard deviations af measurements</a></li>
-<li class="chapter" data-level="9.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>9.1.4</b> C and U charts for counts and rates</a></li>
-<li class="chapter" data-level="9.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>9.1.5</b> P chart for percentages</a></li>
+<li class="chapter" data-level="8.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>8.1.1</b> Run chart</a></li>
+<li class="chapter" data-level="8.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>8.1.2</b> I and MR charts for individual measurements</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-af-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations af measurements</a></li>
+<li class="chapter" data-level="8.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>8.1.4</b> C and U charts for counts and rates</a></li>
+<li class="chapter" data-level="8.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>8.1.5</b> P chart for percentages</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>9.2</b> TODO</a></li>
-<li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
+<li class="chapter" data-level="8.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>8.2</b> TODO</a></li>
+<li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a></li>
-<li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> Introducing <code>qicharts2</code></a></li>
-<li class="chapter" data-level="12" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>12</b> A Note on Rational Subgrouping and Sampling</a></li>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing <code>qicharts2</code></a></li>
+<li class="chapter" data-level="11" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>11</b> A Note on Rational Subgrouping and Sampling</a></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="13" data-path="case_run.html"><a href="case_run.html"><i class="fa fa-check"></i><b>13</b> Run Chart for Any Type of Data</a></li>
-<li class="chapter" data-level="14" data-path="case_p.html"><a href="case_p.html"><i class="fa fa-check"></i><b>14</b> P Chart for Proportion Data</a></li>
-<li class="chapter" data-level="15" data-path="case_c_u.html"><a href="case_c_u.html"><i class="fa fa-check"></i><b>15</b> C and U Charts for Counts and Rates</a></li>
-<li class="chapter" data-level="16" data-path="case_i_mr.html"><a href="case_i_mr.html"><i class="fa fa-check"></i><b>16</b> I and MR Chart for Individual Measurement Data</a></li>
-<li class="chapter" data-level="17" data-path="case_xbar_s.html"><a href="case_xbar_s.html"><i class="fa fa-check"></i><b>17</b> X-bar and S Charts for Multiple Measurement Data</a></li>
+<li class="chapter" data-level="12" data-path="case_run.html"><a href="case_run.html"><i class="fa fa-check"></i><b>12</b> Run Chart for Any Type of Data</a></li>
+<li class="chapter" data-level="13" data-path="case_p.html"><a href="case_p.html"><i class="fa fa-check"></i><b>13</b> P Chart for Proportion Data</a></li>
+<li class="chapter" data-level="14" data-path="case_c_u.html"><a href="case_c_u.html"><i class="fa fa-check"></i><b>14</b> C and U Charts for Counts and Rates</a></li>
+<li class="chapter" data-level="15" data-path="case_i_mr.html"><a href="case_i_mr.html"><i class="fa fa-check"></i><b>15</b> I and MR Chart for Individual Measurement Data</a></li>
+<li class="chapter" data-level="16" data-path="case_xbar_s.html"><a href="case_xbar_s.html"><i class="fa fa-check"></i><b>16</b> X-bar and S Charts for Multiple Measurement Data</a></li>
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
 <li class="part"><span><b>Part 5: Best Practices and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="part"><span><b>Part 9¾: Nerd Stuff</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i>Data Sets</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i>Data Sets</a>
+<ul>
+<li class="chapter" data-level="1" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i><b>1</b> Bacteremia</a></li>
+<li class="chapter" data-level="2" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i><b>2</b> Blood pressure</a></li>
+<li class="chapter" data-level="3" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i><b>3</b> Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="4" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i><b>4</b> Ceasearian section delay</a></li>
+<li class="chapter" data-level="5" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i><b>5</b> Emergency admission mortality</a></li>
+<li class="chapter" data-level="6" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i><b>6</b> On-time CT</a></li>
+<li class="chapter" data-level="7" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i><b>7</b> Radiation doses</a></li>
+<li class="chapter" data-level="8" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i><b>8</b> Robson group 1 births</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -242,28 +277,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ggplot" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> SPC Charts with <code>ggplot2</code><a href="ggplot.html#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Armed with the battery of functions from Chapter <a href="r-functions.html#r-functions">9</a> we are able to construct any of the Magnificent Eight using functionality from base R. Furthermore, it is easy to add new types of SPC charts to the library. To achieve this, all we have to do is to write an appropriate <code>spc.*()</code> function to handle the calculations of the centre line and limits and to include the function type in the<code>spc()</code> function’s chart argument.</p>
+<div id="ggplot" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> SPC Charts with <code>ggplot2</code><a href="ggplot.html#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Armed with the battery of functions from Chapter <a href="r-functions.html#r-functions">8</a> we are able to construct any of the Magnificent Eight using functionality from base R. Furthermore, it is easy to add new types of SPC charts to the library. To achieve this, all we have to do is to write an appropriate <code>spc.*()</code> function to handle the calculations of the centre line and limits and to include the function type in the<code>spc()</code> function’s chart argument.</p>
 <p>Because we have used a modularised approach and made a separate function for plotting spc objects, <code>plot.spc()</code>, it is also a simple task to use any other plotting method.</p>
 <p>In this chapter we will build an alternative plot function, which uses <code>ggplot2</code> as its plotting engine. <code>ggplot2</code> has many advantages over plotting with base R function. Not because <code>ggplot2</code> is able to do things that cannot be done with base R, but because it makes some operations a lot easier.</p>
 <p>For example, with <code>ggplot2</code> we do not need to worry about scaling the axes to accommodate data that are added to the plot or to make room for axis labels and tick marks. These are all handled gracefully by <code>ggplot2</code> itself.</p>
 <p>Also <code>ggplot2</code> has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colour palettes, legends, and number/date formats.</p>
 <p>First we will create an spc object and assign it to a variable name for later use:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ggplot.html#cb1-1" tabindex="-1"></a><span class="co"># Read data</span></span>
-<span id="cb1-2"><a href="ggplot.html#cb1-2" tabindex="-1"></a><span class="co"># d &lt;- read.csv(&#39;data/cdiff.csv&#39;,</span></span>
-<span id="cb1-3"><a href="ggplot.html#cb1-3" tabindex="-1"></a><span class="co">#               comment.char = &#39;#&#39;,</span></span>
-<span id="cb1-4"><a href="ggplot.html#cb1-4" tabindex="-1"></a><span class="co">#               colClasses = c(month = &#39;Date&#39;))</span></span>
-<span id="cb1-5"><a href="ggplot.html#cb1-5" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="ggplot.html#cb1-6" tabindex="-1"></a><span class="co"># Make spc object</span></span>
-<span id="cb1-7"><a href="ggplot.html#cb1-7" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, infections,</span>
-<span id="cb1-8"><a href="ggplot.html#cb1-8" tabindex="-1"></a>         <span class="at">data  =</span> cdiff,</span>
-<span id="cb1-9"><a href="ggplot.html#cb1-9" tabindex="-1"></a>         <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb1-10"><a href="ggplot.html#cb1-10" tabindex="-1"></a>         <span class="at">plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ggplot.html#cb42-1" tabindex="-1"></a><span class="co"># Make spc object</span></span>
+<span id="cb42-2"><a href="ggplot.html#cb42-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, infections,</span>
+<span id="cb42-3"><a href="ggplot.html#cb42-3" tabindex="-1"></a>         <span class="at">data  =</span> cdiff,</span>
+<span id="cb42-4"><a href="ggplot.html#cb42-4" tabindex="-1"></a>         <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb42-5"><a href="ggplot.html#cb42-5" tabindex="-1"></a>         <span class="at">plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Note that we suppressed the plotting and assigned the (invisible) output to the variable ‘p’. We can now continue working with p as with any other R object.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ggplot.html#cb2-1" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="ggplot.html#cb43-1" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
 <pre><code>## [1] &quot;spc&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="ggplot.html#cb4-1" tabindex="-1"></a><span class="fu">head</span>(p)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ggplot.html#cb45-1" tabindex="-1"></a><span class="fu">head</span>(p)</span></code></pre></div>
 <pre><code>##            x  y n lcl       cl      ucl sigma.signal runs.signal chart
 ## 1 2020-01-01 12 1   0 5.041667 11.77776         TRUE        TRUE     c
 ## 2 2020-02-01  7 1   0 5.041667 11.77776        FALSE        TRUE     c
@@ -271,77 +301,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 2020-04-01  4 1   0 5.041667 11.77776        FALSE        TRUE     c
 ## 5 2020-05-01  4 1   0 5.041667 11.77776        FALSE        TRUE     c
 ## 6 2020-06-01  5 1   0 5.041667 11.77776        FALSE        TRUE     c</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ggplot.html#cb6-1" tabindex="-1"></a><span class="fu">plot</span>(p) <span class="co"># not necessary to call spc.plot(), just call plot()</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ggplot.html#cb47-1" tabindex="-1"></a><span class="fu">plot</span>(p) <span class="co"># not necessary to call spc.plot(), just call plot()</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
 <p>We may now create any number of alternative plotting functions for spc objects. In this example we will create a plotting function that uses <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ggplot.html#cb7-1" tabindex="-1"></a><span class="co"># Load ggplot2</span></span>
-<span id="cb7-2"><a href="ggplot.html#cb7-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-3"><a href="ggplot.html#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="ggplot.html#cb7-4" tabindex="-1"></a><span class="co"># Function for plotting spc objects with `ggplot()`</span></span>
-<span id="cb7-5"><a href="ggplot.html#cb7-5" tabindex="-1"></a>ggspc <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
-<span id="cb7-6"><a href="ggplot.html#cb7-6" tabindex="-1"></a>  <span class="co"># Set colours</span></span>
-<span id="cb7-7"><a href="ggplot.html#cb7-7" tabindex="-1"></a>  col1    <span class="ot">&lt;-</span> <span class="st">&#39;steelblue&#39;</span></span>
-<span id="cb7-8"><a href="ggplot.html#cb7-8" tabindex="-1"></a>  col2    <span class="ot">&lt;-</span> <span class="st">&#39;tomato&#39;</span></span>
-<span id="cb7-9"><a href="ggplot.html#cb7-9" tabindex="-1"></a>  linecol <span class="ot">&lt;-</span> <span class="st">&#39;gray50&#39;</span></span>
-<span id="cb7-10"><a href="ggplot.html#cb7-10" tabindex="-1"></a>  dotcol  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>sigma.signal, col2, col1)</span>
-<span id="cb7-11"><a href="ggplot.html#cb7-11" tabindex="-1"></a>  clcol   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>runs.signal[<span class="dv">1</span>], col2, linecol)</span>
-<span id="cb7-12"><a href="ggplot.html#cb7-12" tabindex="-1"></a>  cltyp   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>runs.signal[<span class="dv">1</span>], <span class="st">&#39;dashed&#39;</span>, <span class="st">&#39;solid&#39;</span>)</span>
-<span id="cb7-13"><a href="ggplot.html#cb7-13" tabindex="-1"></a>  </span>
-<span id="cb7-14"><a href="ggplot.html#cb7-14" tabindex="-1"></a>  <span class="co"># Plot the dots and draw the lines</span></span>
-<span id="cb7-15"><a href="ggplot.html#cb7-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(p, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="ggplot.html#cb7-16" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lcl), <span class="at">colour =</span> linecol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="ggplot.html#cb7-17" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> ucl), <span class="at">colour =</span> linecol,, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb7-18"><a href="ggplot.html#cb7-18" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cl),</span>
-<span id="cb7-19"><a href="ggplot.html#cb7-19" tabindex="-1"></a>              <span class="at">na.rm    =</span> T,</span>
-<span id="cb7-20"><a href="ggplot.html#cb7-20" tabindex="-1"></a>              <span class="at">colour   =</span> clcol,</span>
-<span id="cb7-21"><a href="ggplot.html#cb7-21" tabindex="-1"></a>              <span class="at">linetype =</span> cltyp) <span class="sc">+</span></span>
-<span id="cb7-22"><a href="ggplot.html#cb7-22" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">colour =</span> col1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb7-23"><a href="ggplot.html#cb7-23" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> dotcol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-24"><a href="ggplot.html#cb7-24" tabindex="-1"></a>}</span>
-<span id="cb7-25"><a href="ggplot.html#cb7-25" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="ggplot.html#cb7-26" tabindex="-1"></a><span class="co"># Plot an spc object</span></span>
-<span id="cb7-27"><a href="ggplot.html#cb7-27" tabindex="-1"></a><span class="fu">ggspc</span>(p)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ggplot.html#cb48-1" tabindex="-1"></a><span class="co"># Load ggplot2</span></span>
+<span id="cb48-2"><a href="ggplot.html#cb48-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-3"><a href="ggplot.html#cb48-3" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="ggplot.html#cb48-4" tabindex="-1"></a><span class="co"># Function for plotting spc objects with `ggplot()`</span></span>
+<span id="cb48-5"><a href="ggplot.html#cb48-5" tabindex="-1"></a>ggspc <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb48-6"><a href="ggplot.html#cb48-6" tabindex="-1"></a>  <span class="co"># Set colours</span></span>
+<span id="cb48-7"><a href="ggplot.html#cb48-7" tabindex="-1"></a>  col1    <span class="ot">&lt;-</span> <span class="st">&#39;steelblue&#39;</span></span>
+<span id="cb48-8"><a href="ggplot.html#cb48-8" tabindex="-1"></a>  col2    <span class="ot">&lt;-</span> <span class="st">&#39;tomato&#39;</span></span>
+<span id="cb48-9"><a href="ggplot.html#cb48-9" tabindex="-1"></a>  linecol <span class="ot">&lt;-</span> <span class="st">&#39;gray50&#39;</span></span>
+<span id="cb48-10"><a href="ggplot.html#cb48-10" tabindex="-1"></a>  dotcol  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>sigma.signal, col2, col1)</span>
+<span id="cb48-11"><a href="ggplot.html#cb48-11" tabindex="-1"></a>  clcol   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>runs.signal[<span class="dv">1</span>], col2, linecol)</span>
+<span id="cb48-12"><a href="ggplot.html#cb48-12" tabindex="-1"></a>  cltyp   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>runs.signal[<span class="dv">1</span>], <span class="st">&#39;dashed&#39;</span>, <span class="st">&#39;solid&#39;</span>)</span>
+<span id="cb48-13"><a href="ggplot.html#cb48-13" tabindex="-1"></a>  </span>
+<span id="cb48-14"><a href="ggplot.html#cb48-14" tabindex="-1"></a>  <span class="co"># Plot the dots and draw the lines</span></span>
+<span id="cb48-15"><a href="ggplot.html#cb48-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(p, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb48-16"><a href="ggplot.html#cb48-16" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lcl), <span class="at">colour =</span> linecol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb48-17"><a href="ggplot.html#cb48-17" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> ucl), <span class="at">colour =</span> linecol,, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb48-18"><a href="ggplot.html#cb48-18" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cl),</span>
+<span id="cb48-19"><a href="ggplot.html#cb48-19" tabindex="-1"></a>              <span class="at">na.rm    =</span> T,</span>
+<span id="cb48-20"><a href="ggplot.html#cb48-20" tabindex="-1"></a>              <span class="at">colour   =</span> clcol,</span>
+<span id="cb48-21"><a href="ggplot.html#cb48-21" tabindex="-1"></a>              <span class="at">linetype =</span> cltyp) <span class="sc">+</span></span>
+<span id="cb48-22"><a href="ggplot.html#cb48-22" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">colour =</span> col1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb48-23"><a href="ggplot.html#cb48-23" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> dotcol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb48-24"><a href="ggplot.html#cb48-24" tabindex="-1"></a>}</span>
+<span id="cb48-25"><a href="ggplot.html#cb48-25" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="ggplot.html#cb48-26" tabindex="-1"></a><span class="co"># Plot an spc object</span></span>
+<span id="cb48-27"><a href="ggplot.html#cb48-27" tabindex="-1"></a><span class="fu">ggspc</span>(p)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 <p>We may also turn the spc object into a ggplot2 object:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ggplot.html#cb8-1" tabindex="-1"></a><span class="co"># Make the spc object into a ggplot2 object</span></span>
-<span id="cb8-2"><a href="ggplot.html#cb8-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggspc</span>(p)</span>
-<span id="cb8-3"><a href="ggplot.html#cb8-3" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ggplot.html#cb49-1" tabindex="-1"></a><span class="co"># Make the spc object into a ggplot2 object</span></span>
+<span id="cb49-2"><a href="ggplot.html#cb49-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggspc</span>(p)</span>
+<span id="cb49-3"><a href="ggplot.html#cb49-3" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
 <pre><code>## [1] &quot;gg&quot;     &quot;ggplot&quot;</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="ggplot.html#cb10-1" tabindex="-1"></a><span class="co"># Plot with modified theme and custom labels</span></span>
-<span id="cb10-2"><a href="ggplot.html#cb10-2" tabindex="-1"></a>p <span class="sc">+</span></span>
-<span id="cb10-3"><a href="ggplot.html#cb10-3" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb10-4"><a href="ggplot.html#cb10-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid   =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb10-5"><a href="ggplot.html#cb10-5" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb10-6"><a href="ggplot.html#cb10-6" tabindex="-1"></a>        <span class="at">axis.line    =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&#39;gray&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="ggplot.html#cb10-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;CDiff infections&#39;</span>,</span>
-<span id="cb10-8"><a href="ggplot.html#cb10-8" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb10-9"><a href="ggplot.html#cb10-9" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="ggplot.html#cb51-1" tabindex="-1"></a><span class="co"># Plot with modified theme and custom labels</span></span>
+<span id="cb51-2"><a href="ggplot.html#cb51-2" tabindex="-1"></a>p <span class="sc">+</span></span>
+<span id="cb51-3"><a href="ggplot.html#cb51-3" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb51-4"><a href="ggplot.html#cb51-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid   =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb51-5"><a href="ggplot.html#cb51-5" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb51-6"><a href="ggplot.html#cb51-6" tabindex="-1"></a>        <span class="at">axis.line    =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&#39;gray&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb51-7"><a href="ggplot.html#cb51-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;CDiff infections&#39;</span>,</span>
+<span id="cb51-8"><a href="ggplot.html#cb51-8" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb51-9"><a href="ggplot.html#cb51-9" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
 <p>Now, if we wished, we could replace the <code>plot.spc()</code> with our new function. We will leave that decision to you.</p>
 <p>The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="ggplot.html#cb11-1" tabindex="-1"></a>mytheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb11-2"><a href="ggplot.html#cb11-2" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb11-3"><a href="ggplot.html#cb11-3" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid   =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb11-4"><a href="ggplot.html#cb11-4" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb11-5"><a href="ggplot.html#cb11-5" tabindex="-1"></a>        <span class="at">axis.line    =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&#39;gray&#39;</span>))</span>
-<span id="cb11-6"><a href="ggplot.html#cb11-6" tabindex="-1"></a>}</span>
-<span id="cb11-7"><a href="ggplot.html#cb11-7" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="ggplot.html#cb11-8" tabindex="-1"></a><span class="co"># d &lt;- read.csv(&#39;data/bacteremia.csv&#39;,</span></span>
-<span id="cb11-9"><a href="ggplot.html#cb11-9" tabindex="-1"></a><span class="co">#               comment.char = &#39;#&#39;,</span></span>
-<span id="cb11-10"><a href="ggplot.html#cb11-10" tabindex="-1"></a><span class="co">#               colClasses = c(month = &#39;Date&#39;))</span></span>
-<span id="cb11-11"><a href="ggplot.html#cb11-11" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="ggplot.html#cb11-12" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, deaths, patients,</span>
-<span id="cb11-13"><a href="ggplot.html#cb11-13" tabindex="-1"></a>          <span class="at">data =</span> bact,</span>
-<span id="cb11-14"><a href="ggplot.html#cb11-14" tabindex="-1"></a>          <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>,</span>
-<span id="cb11-15"><a href="ggplot.html#cb11-15" tabindex="-1"></a>          <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-16"><a href="ggplot.html#cb11-16" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="ggplot.html#cb11-17" tabindex="-1"></a><span class="fu">ggspc</span>(p) <span class="sc">+</span></span>
-<span id="cb11-18"><a href="ggplot.html#cb11-18" tabindex="-1"></a>  <span class="fu">mytheme</span>() <span class="sc">+</span></span>
-<span id="cb11-19"><a href="ggplot.html#cb11-19" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb11-20"><a href="ggplot.html#cb11-20" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;30-day mortality&#39;</span>,</span>
-<span id="cb11-21"><a href="ggplot.html#cb11-21" tabindex="-1"></a>       <span class="at">y     =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-22"><a href="ggplot.html#cb11-22" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ggplot.html#cb52-1" tabindex="-1"></a>mytheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb52-2"><a href="ggplot.html#cb52-2" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb52-3"><a href="ggplot.html#cb52-3" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid   =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb52-4"><a href="ggplot.html#cb52-4" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb52-5"><a href="ggplot.html#cb52-5" tabindex="-1"></a>        <span class="at">axis.line    =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&#39;gray&#39;</span>))</span>
+<span id="cb52-6"><a href="ggplot.html#cb52-6" tabindex="-1"></a>}</span>
+<span id="cb52-7"><a href="ggplot.html#cb52-7" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="ggplot.html#cb52-8" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, deaths, patients,</span>
+<span id="cb52-9"><a href="ggplot.html#cb52-9" tabindex="-1"></a>          <span class="at">data =</span> bact,</span>
+<span id="cb52-10"><a href="ggplot.html#cb52-10" tabindex="-1"></a>          <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>,</span>
+<span id="cb52-11"><a href="ggplot.html#cb52-11" tabindex="-1"></a>          <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-12"><a href="ggplot.html#cb52-12" tabindex="-1"></a></span>
+<span id="cb52-13"><a href="ggplot.html#cb52-13" tabindex="-1"></a><span class="fu">ggspc</span>(p) <span class="sc">+</span></span>
+<span id="cb52-14"><a href="ggplot.html#cb52-14" tabindex="-1"></a>  <span class="fu">mytheme</span>() <span class="sc">+</span></span>
+<span id="cb52-15"><a href="ggplot.html#cb52-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb52-16"><a href="ggplot.html#cb52-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;30-day mortality&#39;</span>,</span>
+<span id="cb52-17"><a href="ggplot.html#cb52-17" tabindex="-1"></a>       <span class="at">y     =</span> <span class="cn">NULL</span>,</span>
+<span id="cb52-18"><a href="ggplot.html#cb52-18" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
 <p>In the long run, though, we might get tired of manually designing our own theme, modifying the plot function, and formatting tick mark labels for every plot. Wouldn’t it be nice to have this done automatically for us? This is exactly what <code>qicharts2</code> does.</p>
 <p><code>qicharts2</code> is an R package for plotting SPC charts and is the subject of the next chapter. <code>qicharts2</code> builds on the same principles we have developed so far but has a lot more facilities for customising charts. Most importantly, <code>qicharts2</code> makes it easy to produce multidimensional plots using <code>ggplot2</code>’s faceting methods.</p>
 
@@ -406,6 +432,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

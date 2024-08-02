@@ -16,7 +16,7 @@
 #            'run' (default), 'xbar', 's', 'i', 'mr', 'c', 'u', and 'p'.
 #  plot:     Logical, if TRUE (default), plots an SPC chart.
 #  print:    Logical, if TRUE, prints a data frame with coordinates.
-#  ...:      Other arguments to \code{plot()} function, e.g. main, ylab, xlab.
+#  ...:      Other arguments to the plot() function, e.g. main, ylab, xlab.
 # 
 spc <- function(x,
                 y        = NULL,
@@ -27,7 +27,7 @@ spc <- function(x,
                 plot     = TRUE,
                 print    = FALSE,
                 ...) {
-  # Get data from data frame (if data argument is provided), or else get data
+  # Get data from data frame if data argument is provided, or else get data
   # from the parent environment.
   x      <- eval(substitute(x), data, parent.frame())
   y      <- eval(substitute(y), data, parent.frame())
