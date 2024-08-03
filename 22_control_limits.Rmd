@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Calculating Control Limits {#limits}
 
 ```{r, echo=FALSE}
@@ -6,6 +11,8 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 
 library(knitr)
 library(kableExtra)
+
+source('R/constants.R', local = knitr::knit_global())
 ```
 
 In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we continue with different types of control charts and how to construct their control limits.
@@ -20,15 +27,14 @@ To avoid repeating ourselves, let's begin by creating a function to automate the
 The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, one may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
 
 ```{r, echo=FALSE}
-y <- c(169, 172, 175, 174, 161, 142,
-       174, 171, 168, 174, 180, 194,
-       161, 181, 175, 176, 186, 166,
-       157, 183, 177, 171, 185, 176,
-       181, 174)
-x <- seq_along(y)
+y   <- c(169, 172, 175, 174, 161, 142,
+         174, 171, 168, 174, 180, 194,
+         161, 181, 175, 176, 186, 166,
+         157, 183, 177, 171, 185, 176,
+         181, 174)
+x   <- seq_along(y)
 cl  <- mean(y)
-mr <- abs(diff(y))
-amr <- mean(mr)
+amr <- mean(abs(diff(y)))
 lcl <- cl - 2.66 * amr
 ucl <- cl + 2.66 * amr
 ```
@@ -58,10 +64,10 @@ Generally, data come in two flavours: count data and measurement data. **Counts*
 
 There are several types of count data depending on the type of counts involved. In this chapter we will limit ourselves to events and cases.
 
-**Events** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events are presented as raw counts or rates and are often modelled by the poisson distribution.
+**Events** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events often follow the poisson distribution and are presented as raw counts or rates.
 
 
-**Cases** represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who fell, or procedures that completed according to a standard. Cases are presented as proportions or percentages and are often modelled by the binomial distribution.
+**Cases** represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who fell, or procedures that completed according to a standard. Cases often follow the binomial distribution and are presented as proportions or percentages.
 
 For count charts in this chapter we will use the bacteremia data set:
 
@@ -89,11 +95,11 @@ The variables are:
 * deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection
 * patients (numeric): number of patients with all-cause infection
 
-We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive. 
+<!-- We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive.  -->
 
 We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.
 
-Rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%).
+<!-- Rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%). -->
 
 ### C chart
 
@@ -128,7 +134,7 @@ The average monthly number of cases is 22.7, and all data points are within the 
 
 U charts are useful when events are counted over chunks of time or space that are not equally sized resulting in "unequal area of opportunity" (hence the U). In our case we might want to adjust for for the number of patient days that may vary depending on the time of year or between organisational units. The U chart adjust for this by presenting rates rather than raw counts.
 
-As mentioned before, events are often rare in comparison to their areas of opportunity. So to avoid very small numbers on the y-axis it may be useful to multiply the y-axis by some factor before plotting. In Figure \@ref(fig:limits-u) we multiply by 10,000 to display infections per 10,000 risk days rather than per day.
+As mentioned, events are often rare in comparison to their areas of opportunity. So to avoid very small numbers on the y-axis it may be useful to multiply the y-axis by some factor before plotting. In Figure \@ref(fig:limits-u) we multiply by 10,000 to display infections per 10,000 risk days rather than per day.
 
 ```{r limits-u, fig.cap='U chart of monthly number of infections per 10,000 risk days'}
 with(bact, {
@@ -140,10 +146,10 @@ with(bact, {
   
   # multiply y axis to present infections per 10,000 risk days
   multiply <- 10000
-  y   <- y * multiply
-  cl  <- cl * multiply
-  lcl <- lcl * multiply
-  ucl <- ucl * multiply
+  y        <- y * multiply
+  cl       <- cl * multiply
+  lcl      <- lcl * multiply
+  ucl      <- ucl * multiply
   
   spc(month, y, cl, lcl, ucl, 
       ylab = 'Infections per 10,000 risk days',
@@ -153,7 +159,7 @@ with(bact, {
 
 The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the denominator  (risk days), for each data point. Large denominator $\Rightarrow$ narrow limits; small denominator $\Rightarrow$ wide limits.
 
-In cases like this where the denominator -- the area of opportunity -- only varies little between subgroups, the U charts adds little compared to the C chart. For pedagogical reasons we may prefer the C chart. It is a lot easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.
+In cases like this where the denominator -- the area of opportunity -- only varies little between subgroups, the U charts adds little compared to the C chart. For pedagogical reasons we may prefer the C chart, because it is a lot easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.
 
 ### P chart
 
@@ -180,7 +186,7 @@ with(bact, {
 })
 ```
 
-On average the mortality is 21%, and all data points are within the control limits. Thus, the process appears stable and predictable.
+On average the mortality is 21%, and all data points are within the control limits.
 
 ## Measurement data
 
@@ -197,6 +203,8 @@ csect <- read.csv('data/csection_delay.csv',
                                    'Date',
                                    'integer'))
 
+csect <- csect[order(csect$datetime), ]
+
 # show the first 6 rows
 head(csect)
 ```
@@ -209,7 +217,7 @@ I charts are useful when measurements come from individual units, for example wa
 
 As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, the I chart is considered the *Swiss army knife* of SPC.
 
-When subgroups consist of single values we use the pairwise absolute difference between data points, the average moving range ($\overline{MR}$), as an estimate of the common cause variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, one may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
+When subgroups consist of single values we use the pairwise absolute difference between data points, the average moving range ($\overline{MR}$), as an estimate of the common cause variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
 
 Let's have a look at individual delay times for the latest 60 C-sections (Figure \@ref(fig:limits-i)).
 
@@ -228,11 +236,11 @@ with(tail(csect, 60), {
 })
 ```
 
-On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 11 to 37 minutes. Two data points are outside the control limits (#3 and #31) suggesting that these case were special and that it might be useful to have a closer look to find out what went well with case #3 and not so well with case #31.
+On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 11 to 37 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.
 
 ### MR chart
 
-The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges may be zero but cannot be negative, the MR chart has no lower control limit.
+The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges can always be zero but never negative, the MR chart has no lower control limit.
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 60), {
@@ -275,7 +283,7 @@ with(tail(csect, 60), {
 })
 ```
 
-The MR-chart finds five data points outside the limits. These coincide with the special causes found by the I chart and supports our conclusion that these deliveries were special. Note that each data point on the I chart (except the first and last ones) produces two moving ranges on the MR chart. Also note that delivery #4, which is very close to, but not above, the upper control limit in the I chart actually produced a signal in the MR chart. One may speculate if the very short delay for delivery #3 and the long delay for delivery #4 are linked in some way.
+The MR-chart also finds three data points outside the limits. These coincide with two of the special causes found by the I chart and supports our conclusion that these deliveries were special. Note that each data point on the I chart (except the first and last ones) produces two moving ranges on the MR chart.
 
 ### X-bar chart
 
@@ -297,9 +305,6 @@ head(csect.agg)
 ```
 
 Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1) where $\bar{\bar{x}}$ (pronounced x bar bar) is the weighted mean of the subgroup means, $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. See the section on [chart constants](#chart-constants) at the end of this chapter for the R code involved in calculating $A_3$ and other constants for control chart construction.
-
-```{r, echo=FALSE, file='R/constants.R'}
-```
 
 With the aggregated data we are now able to construct the X-bar chart (Figure \@ref(fig:limits-xbar)).
 
@@ -343,7 +348,7 @@ with(csect.agg, {
 })
 ```
 
-Figure \@ref(fig:limits-s) shows the average standard deviation of delay times per month. On average the standard deviation is 4.7 minutes (= centre line) and all data points fall between the control limits suggesting that the process is stable and predictable.
+Figure \@ref(fig:limits-s) shows the average standard deviation of delay times per month. On average the standard deviation is 4.7 minutes and all data points fall between the control limits.
 
 We may plot the X-bar and S charts together (Figure \@ref(fig:limits-xbarands)):
 
@@ -377,7 +382,7 @@ with(csect.agg, {
 
 ## Control limits in short
 
-Control limits attempt to estimate the borders of the natural common cause process variation. They are placed 3 standard deviations above and below the centre line, which is usually the (weighted) mean of the subgroup means.
+Control limits attempt to estimate the boundaries of the natural common cause process variation. They are placed 3 standard deviations above and below the centre line, which is the (weighted) mean of the subgroup means.
 
 The procedure for calculating control limits depends on the type of data involved, but the interpretation of charts are the same regardless of data type.
 
@@ -388,25 +393,5 @@ In the next chapter we will improve our plots by adding visual clues to highligh
 ## Control chart constants {-#chart-constants}
 
 ```{r constants, file='R/constants.R'}
-# a3 <- function(n) {
-#   3 / (c4(n) * sqrt(n))
-# }
-# 
-# b3 <- function(n) {
-#   pmax(0, 1 - 3 * c5(n) / c4(n))
-# }
-# 
-# b4 <- function(n) {
-#   1 + 3 * c5(n) / c4(n)
-# }
-# 
-# c4 <- function(n) {
-#   n[n <= 1] <- NA
-#   sqrt(2 / (n - 1)) * exp(lgamma(n / 2) - lgamma((n - 1) / 2))
-# }
-# 
-# c5 <- function(n) {
-#   sqrt(1 - c4(n)^2)
-# }
 ```
 

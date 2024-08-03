@@ -14,7 +14,7 @@ source('R/spc_functions.R', local = knitr::knit_global())
 
 Until now, we have calculated control limits manually before plotting. In this chapter we will introduce a library of functions that work together to automate all the steps involved in constructing SPC charts.
 
-We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your needs. 
+We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your own needs. 
 
 In total there are 17 functions that work together to construct SPC charts. But the user only needs to interact with one of them, `spc()`. See the [R functions library](#funs) section at the end of this chapter for the source code.
 
@@ -22,7 +22,7 @@ The main function, `spc()` is an improved version of the improved `spc()` functi
 
 * Most importantly, it is no longer necessary to calculate the limits manually. Instead, we provide a `chart` argument, which should be one of the following: 'run', 'xbar', 's', 'i', 'mr', 'c', 'u', 'p'. If no chart argument is provided, a run chart will be drawn.
 
-* Also, we no longer have to use the clumsy $-notation or `with()` functions to access variables inside a data frame. Instead, we may pass the name of the data frame to the `data` argument.
+* Also, we no longer have to use the clumsy $-notation or `with()` function to access variables inside a data frame. Instead, we may pass the name of the data frame to the data argument.
 
 * Finally, we do not need to aggregate data for X-bar and S charts in advance. That job is delegated to the `spc.aggregate()` function, which is also responsible for calling the appropriate functions to calculate the centre line and control limits and perform the runs analysis.
 
@@ -133,13 +133,13 @@ spc(month, deaths, patients,
 
 ## TODO
 
-One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n have the same lengths. TIP: check the `stopifnot()` function.
+One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n arguments have the same lengths. TIP: check the `stopifnot()` function.
 
 ## Further up, further in
 
 We now have a functioning library of R functions that automate most of the steps involved in the construction of SPC charts. There is still plenty of room for improvement. But this should get you started and -- most importantly -- give you a deeper understanding of the considerations involved in plotting SPC charts.
 
-In the next chapter we will take a quick look at how to use ggplot2 for plotting rather than the `plot()` function from base R.
+In the next chapter we will take a quick look at how to use `ggplot2()` for plotting rather than the `plot()` function from base R.
 
 ----
 

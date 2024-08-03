@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-02" />
+<meta name="date" content="2024-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,7 @@ div.csl-indent {
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
 <li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart blood pressure data</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart of blood pressure data</a></li>
 <li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
 <li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
@@ -279,10 +279,10 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="highlighting" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Highlighting Freaks, Shifts, and Trends<a href="highlighting.html#highlighting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In the previous chapter we calculated control limits for the most common types of control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits are signals of special cause variation in data – that is unexpected change caused by something outside the usual system.</p>
-<p>Control limits are designed to identify rather large (&gt; 2SD), possibly transient, changes in the system (freaks). However, as discussed in Part 1 of this book, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. Most known are the Western Electric Rules introduced in the 1950s. The WE rules are based on the distribution of data points relative to the 1, 2, and 3 SD limits.</p>
-<p>Recently we have introduced two simple rules that rely only on the distribution of data points around the centre line, the shift and crossings rules that look for unusually long runs of data points on the same side of the centre line or unusually few crossings of the centre line.</p>
-<p>The shift and crossings rules are comparable to the WE rules in their sensitivity to minor and moderate <em>sustained</em> shifts and trends in data and may be used alone with run charts without control limits.</p>
+<p>In the previous chapter we calculated control limits for the most common types of control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data – that is unexpected change caused by something outside the usual system.</p>
+<p>Control limits are designed to identify rather large (&gt; 2SD), possibly transient, changes in the system. However, as discussed in Part 1 of this book, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. Most known are the Western Electric Rules introduced in the 1950s. The WE rules are based on the distribution of data points relative to the 1, 2, and 3 SD limits.</p>
+<p>Recently we introduced two simple rules that rely only on the distribution of data points around the centre line, the shift and crossings rules that look for unusually long runs of data points on the same side of the centre line or unusually few crossings of the centre line (<span class="citation">Anhøj and Olesen (<a href="#ref-anhoej2014">2014</a>)</span>).</p>
+<p>The shift and crossings rules are comparable to the WE rules in their sensitivity to minor and moderate <em>sustained</em> shifts and trends in data and may be used alone with run charts without control limits (<span class="citation">Anhøj (<a href="#ref-anhoej2015">2015</a>)</span>, <span class="citation">Anhøj and Wentzel-Larsen (<a href="#ref-anhoej2018b">2018</a>)</span>).</p>
 <p>In this chapter we will improve the <code>spc()</code> function to automatically visualise special cause variation in the form of freaks, shifts, and trends.</p>
 <div id="introducing-the-cdiff-data-set" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Introducing the cdiff data set<a href="highlighting.html#introducing-the-cdiff-data-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -328,9 +328,9 @@ Figure 7.1: C control chart of CDiff infections
 <ul>
 <li><p>Line 10: Import a function, <code>runs.analysis()</code>, from a separate R script to test for unusually long runs and unusually few crossings. See this function in the <a href="highlighting.html#runs-analysis">Runs Analysis</a> section at the end of this chapter.</p></li>
 <li><p>Lines 19-20: If no cl argument is given, use the median for centre line.</p></li>
-<li><p>Lines 33-34: Return indices of data points that lie outside the control limits</p></li>
-<li><p>Line 37: Perform runs analysis (returns TRUE or FALSE).</p></li>
-<li><p>Line 41: Start with an empty plot.</p></li>
+<li><p>Lines 33-34: Create a logical vector identifying data points that lie outside the control limits.</p></li>
+<li><p>Line 37: Test for unusually long runs and unusually few crossings.</p></li>
+<li><p>Line 40: Start with an empty plot.</p></li>
 <li><p>Line 47-49: Format the centre line according to the result of runs analysis.</p></li>
 <li><p>Lines 56-49: Add the data line and points and colour data points outside control limits.</p></li>
 </ul>
@@ -403,12 +403,12 @@ Figure 7.1: C control chart of CDiff infections
 Figure 7.2: Improved control chart with visual clues to highlight special cause variation
 </p>
 </div>
-<p>Now it is a lot easier to immediately see if a chart contains special cause variation or not. Data points outside the limits are red, and the centre line will turn red and dashed if there are any unusually long runs in data or if the curve crossed the centre line unusually few times.</p>
+<p>Now it is a lot easier to immediately see if a chart contains special cause variation or not (Figure <a href="highlighting.html#fig:highlighting-spc2">7.2</a>). Data points outside the limits are red, and the centre line will turn red and dashed if there are any unusually long runs in data or if the curve crossed the centre line unusually few times.</p>
 <p>Remember, the chart itself does not tell us what caused the signals. This interpretation of a chart – common or special cause variation – still relies on humans with a deep understanding the process and the data.</p>
 </div>
 <div id="highlighting-special-cause-variation-in-short" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Highlighting special cause variation in short<a href="highlighting.html#highlighting-special-cause-variation-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this chapter we have improved the <code>spd()</code> function to automatically highlight signs of special cause variation using visual clues that help us quickly decide if a process is stable or not.</p>
+<p>In this chapter we have improved the <code>spc()</code> function to automatically highlight signs of special cause variation using visual clues that help us quickly decide if a process is stable or not.</p>
 <p>In the next chapter we will improve the <code>spc()</code> function further to automatically aggregate data and calculate control limits.</p>
 <hr />
 </div>
@@ -444,6 +444,18 @@ Figure 7.2: Improved control chart with visual clues to highlight special cause 
 <span id="cb32-28"><a href="highlighting.html#cb32-28" tabindex="-1"></a>  longest.run <span class="sc">&gt;</span> longest.run.max <span class="sc">|</span> n.crossings <span class="sc">&lt;</span> n.crossings.min</span>
 <span id="cb32-29"><a href="highlighting.html#cb32-29" tabindex="-1"></a>}</span></code></pre></div>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-anhoej2015" class="csl-entry">
+Anhøj, Jacob. 2015. <span>“Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0121349">https://doi.org/10.1371/journal.pone.0121349</a>.
+</div>
+<div id="ref-anhoej2014" class="csl-entry">
+Anhøj, Jacob, and Anne Vingaard Olesen. 2014. <span>“Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0113825">https://doi.org/10.1371/journal.pone.0113825</a>.
+</div>
+<div id="ref-anhoej2018b" class="csl-entry">
+Anhøj, Jacob, and Tore Wentzel-Larsen. 2018. <span>“Sense and Sensibility: On the Diagnostic Value of Control Chart Rules for Detection of Shifts in Time Series Data.”</span> <em>BMC Medical Research Methodology</em>. <a href="https://doi.org/10.1186/s12874-018-0564-0">https://doi.org/10.1186/s12874-018-0564-0</a>.
 </div>
 </div>
             </section>

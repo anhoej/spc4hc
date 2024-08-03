@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-02" />
+<meta name="date" content="2024-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,7 @@ div.csl-indent {
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
 <li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart blood pressure data</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart of blood pressure data</a></li>
 <li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
 <li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
@@ -279,11 +279,11 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="first-chart" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Your First SPC Charts With Base R<a href="first-chart.html#first-chart" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using only functions from base R. In later chapters we will move to <code>ggplot2</code>and <code>qicharts2</code>.</p>
-<p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower bounds of the natural variation in data.</p>
-<div id="a-run-chart-blood-pressure-data" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> A run chart blood pressure data<a href="first-chart.html#a-run-chart-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To construct an SPC chart, all we need are vectors with the y-coordinates of the data points and lines. Consider these data, which show systolic blood pressure measurements (mmHg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
+<p>From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from <code>ggplot2</code>and <code>qicharts2</code>.</p>
+<p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower boundaries of the natural variation in data.</p>
+<div id="a-run-chart-of-blood-pressure-data" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> A run chart of blood pressure data<a href="first-chart.html#a-run-chart-of-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
 <span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>       <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
 <span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>       <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>
@@ -299,7 +299,7 @@ Figure 5.1: Simple run chart
 </p>
 </div>
 <p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
-<p>To guide the runs analysis we will add the centre line, which in run charts will normally be the median of data points (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
+<p>To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create y-coordinates for the centre line</span></span>
 <span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">median</span>(y), <span class="fu">length</span>(y))</span>
 <span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a></span>
@@ -338,7 +338,7 @@ Figure 5.2: Run chart with centre line
 <span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s</span>
 <span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s</span></code></pre></div>
 <p>Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data expanding y-axis to make room for all data and lines</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data while expanding the y-axis to make room for all data and lines</span></span>
 <span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(y, lcl, ucl))</span>
 <span id="cb7-3"><a href="first-chart.html#cb7-3" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="first-chart.html#cb7-4" tabindex="-1"></a><span class="co"># Add lines</span></span>

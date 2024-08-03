@@ -5,13 +5,13 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 ```
 
-From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using only functions from base R. In later chapters we will move to `ggplot2`and `qicharts2`.
+From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from `ggplot2`and `qicharts2`.
 
-In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and -- in case of a control chart -- two lines to represent the estimated upper and lower bounds of the natural variation in data.
+In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and -- in case of a control chart -- two lines to represent the estimated upper and lower boundaries of the natural variation in data.
 
-## A run chart blood pressure data
+## A run chart of blood pressure data
 
-To construct an SPC chart, all we need are vectors with the y-coordinates of the data points and lines. Consider these data, which show systolic blood pressure measurements (mmHg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
+Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
 
 ```{r}
 y <- c(169, 172, 175, 174, 161, 142,
@@ -30,7 +30,7 @@ plot(y, type = 'o')
 
 (As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time." &#128513;)
 
-To guide the runs analysis we will add the centre line, which in run charts will normally be the median of data points (Figure \@ref(fig:first-chart-run2)):
+To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure \@ref(fig:first-chart-run2)):
 
 ```{r first-chart-run2, fig.cap='Run chart with centre line'}
 # Create y-coordinates for the centre line
@@ -75,7 +75,7 @@ ucl <- cl + 3 * s
 Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
 
 ```{r first-chart-ctrl1, fig.cap='Standardised control chart'}
-# Plot data expanding y-axis to make room for all data and lines
+# Plot data while expanding the y-axis to make room for all data and lines
 plot(y, type = 'o', ylim = range(y, lcl, ucl))
 
 # Add lines

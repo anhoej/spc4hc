@@ -23,7 +23,7 @@ variation
 charts_intro
 responding
 first-chart
-a-run-chart-blood-pressure-data
+a-run-chart-of-blood-pressure-data
 adding-control-limits-to-produce-a-control-chart
 thats-all-folks
 limits

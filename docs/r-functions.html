@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-02" />
+<meta name="date" content="2024-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,7 @@ div.csl-indent {
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
 <li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart blood pressure data</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart of blood pressure data</a></li>
 <li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
 <li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
@@ -280,12 +280,12 @@ div.csl-indent {
 <div id="r-functions" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> One R Function to Rule Them All<a href="r-functions.html#r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Until now, we have calculated control limits manually before plotting. In this chapter we will introduce a library of functions that work together to automate all the steps involved in constructing SPC charts.</p>
-<p>We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your needs.</p>
+<p>We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your own needs.</p>
 <p>In total there are 17 functions that work together to construct SPC charts. But the user only needs to interact with one of them, <code>spc()</code>. See the <a href="r-functions.html#funs">R functions library</a> section at the end of this chapter for the source code.</p>
 <p>The main function, <code>spc()</code> is an improved version of the improved <code>spc()</code> function from Chapter <a href="highlighting.html#highlighting">7</a>.</p>
 <ul>
 <li><p>Most importantly, it is no longer necessary to calculate the limits manually. Instead, we provide a <code>chart</code> argument, which should be one of the following: ‘run’, ‘xbar’, ‘s’, ‘i’, ‘mr’, ‘c’, ‘u’, ‘p’. If no chart argument is provided, a run chart will be drawn.</p></li>
-<li><p>Also, we no longer have to use the clumsy $-notation or <code>with()</code> functions to access variables inside a data frame. Instead, we may pass the name of the data frame to the <code>data</code> argument.</p></li>
+<li><p>Also, we no longer have to use the clumsy $-notation or <code>with()</code> function to access variables inside a data frame. Instead, we may pass the name of the data frame to the data argument.</p></li>
 <li><p>Finally, we do not need to aggregate data for X-bar and S charts in advance. That job is delegated to the <code>spc.aggregate()</code> function, which is also responsible for calling the appropriate functions to calculate the centre line and control limits and perform the runs analysis.</p></li>
 </ul>
 <p>After doing its job, <code>spc.aggregate()</code> returns a data frame with all the necessary information needed to construct a plot. This, in turn, is handled by the <code>plot.spc()</code> function.</p>
@@ -408,12 +408,12 @@ Figure 8.4: P chart
 </div>
 <div id="todo" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> TODO<a href="r-functions.html#todo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n have the same lengths. TIP: check the <code>stopifnot()</code> function.</p>
+<p>One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n arguments have the same lengths. TIP: check the <code>stopifnot()</code> function.</p>
 </div>
 <div id="further-up-further-in" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Further up, further in<a href="r-functions.html#further-up-further-in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We now have a functioning library of R functions that automate most of the steps involved in the construction of SPC charts. There is still plenty of room for improvement. But this should get you started and – most importantly – give you a deeper understanding of the considerations involved in plotting SPC charts.</p>
-<p>In the next chapter we will take a quick look at how to use ggplot2 for plotting rather than the <code>plot()</code> function from base R.</p>
+<p>In the next chapter we will take a quick look at how to use <code>ggplot2()</code> for plotting rather than the <code>plot()</code> function from base R.</p>
 <hr />
 </div>
 <div id="funs" class="section level2 unnumbered hasAnchor">
@@ -436,7 +436,7 @@ Figure 8.4: P chart
 <span id="cb41-16"><a href="r-functions.html#cb41-16" tabindex="-1"></a><span class="co">#            &#39;run&#39; (default), &#39;xbar&#39;, &#39;s&#39;, &#39;i&#39;, &#39;mr&#39;, &#39;c&#39;, &#39;u&#39;, and &#39;p&#39;.</span></span>
 <span id="cb41-17"><a href="r-functions.html#cb41-17" tabindex="-1"></a><span class="co">#  plot:     Logical, if TRUE (default), plots an SPC chart.</span></span>
 <span id="cb41-18"><a href="r-functions.html#cb41-18" tabindex="-1"></a><span class="co">#  print:    Logical, if TRUE, prints a data frame with coordinates.</span></span>
-<span id="cb41-19"><a href="r-functions.html#cb41-19" tabindex="-1"></a><span class="co">#  ...:      Other arguments to \code{plot()} function, e.g. main, ylab, xlab.</span></span>
+<span id="cb41-19"><a href="r-functions.html#cb41-19" tabindex="-1"></a><span class="co">#  ...:      Other arguments to the plot() function, e.g. main, ylab, xlab.</span></span>
 <span id="cb41-20"><a href="r-functions.html#cb41-20" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb41-21"><a href="r-functions.html#cb41-21" tabindex="-1"></a>spc <span class="ot">&lt;-</span> <span class="cf">function</span>(x,</span>
 <span id="cb41-22"><a href="r-functions.html#cb41-22" tabindex="-1"></a>                <span class="at">y        =</span> <span class="cn">NULL</span>,</span>
@@ -447,7 +447,7 @@ Figure 8.4: P chart
 <span id="cb41-27"><a href="r-functions.html#cb41-27" tabindex="-1"></a>                <span class="at">plot     =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb41-28"><a href="r-functions.html#cb41-28" tabindex="-1"></a>                <span class="at">print    =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb41-29"><a href="r-functions.html#cb41-29" tabindex="-1"></a>                ...) {</span>
-<span id="cb41-30"><a href="r-functions.html#cb41-30" tabindex="-1"></a>  <span class="co"># Get data from data frame (if data argument is provided), or else get data</span></span>
+<span id="cb41-30"><a href="r-functions.html#cb41-30" tabindex="-1"></a>  <span class="co"># Get data from data frame if data argument is provided, or else get data</span></span>
 <span id="cb41-31"><a href="r-functions.html#cb41-31" tabindex="-1"></a>  <span class="co"># from the parent environment.</span></span>
 <span id="cb41-32"><a href="r-functions.html#cb41-32" tabindex="-1"></a>  x      <span class="ot">&lt;-</span> <span class="fu">eval</span>(<span class="fu">substitute</span>(x), data, <span class="fu">parent.frame</span>())</span>
 <span id="cb41-33"><a href="r-functions.html#cb41-33" tabindex="-1"></a>  y      <span class="ot">&lt;-</span> <span class="fu">eval</span>(<span class="fu">substitute</span>(y), data, <span class="fu">parent.frame</span>())</span>
