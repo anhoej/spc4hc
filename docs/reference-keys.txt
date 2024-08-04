@@ -54,6 +54,12 @@ todo
 further-up-further-in
 ggplot
 qicharts
+a-simple-run-chart
+a-simple-control-chart
+excluding-data-points-from-analysis
+freezing-baseline-period
+splitting-chart-by-period
+multivariate-charts-small-multiples
 subgrouping
 case_run
 case_p

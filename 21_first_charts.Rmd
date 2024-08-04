@@ -14,18 +14,18 @@ In essence, an SPC charts is a (point-and-)line plot of data over time with a ho
 Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
 
 ```{r}
-y <- c(169, 172, 175, 174, 161, 142,
-       174, 171, 168, 174, 180, 194,
-       161, 181, 175, 176, 186, 166,
-       157, 183, 177, 171, 185, 176,
-       181, 174)
+systolic <- c(169, 172, 175, 174, 161, 142,
+              174, 171, 168, 174, 180, 194,
+              161, 181, 175, 176, 186, 166,
+              157, 183, 177, 171, 185, 176,
+              181, 174)
 ```
 
 First we plot a simple point-and-line chart without any helper lines (Figure \@ref(fig:first-chart-run1)):
 
 ```{r first-chart-run1, fig.cap='Simple run chart'}
 # Make point-and-line plot
-plot(y, type = 'o')
+plot(systolic, type = 'o')
 ```
 
 (As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time." &#128513;)
@@ -33,11 +33,11 @@ plot(y, type = 'o')
 To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure \@ref(fig:first-chart-run2)):
 
 ```{r first-chart-run2, fig.cap='Run chart with centre line'}
-# Create y-coordinates for the centre line
-cl  <- rep(median(y), length(y))
+# Create systolic-coordinates for the centre line
+cl  <- rep(median(systolic), length(systolic))
 
 # Plot data and add centre line
-plot(y, type = 'o')
+plot(systolic, type = 'o')
 lines(cl)
 ```
 
@@ -53,10 +53,10 @@ With data consisting of single measurements, we may estimate the common cause st
 
 ```{r}
 # Calulate the centre line (mean)
-cl  <- rep(mean(y), length(y))
+cl  <- rep(mean(systolic), length(systolic))
 
 # Calculate the average moving range of data
-mr <- abs(diff(y))
+mr <- abs(diff(systolic))
 
 # Print the moving ranges for our viewing pleasure
 mr
@@ -67,16 +67,16 @@ amr <- mean(mr)
 # Calculate the process standard deviation
 s <- amr / 1.128
 
-# Create y-coordinates for the control limits
+# Create systolic-coordinates for the control limits
 lcl <- cl - 3 * s
 ucl <- cl + 3 * s
 ```
 
-Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
+Before we plot data, we need to expand the systolic-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
 
 ```{r first-chart-ctrl1, fig.cap='Standardised control chart'}
-# Plot data while expanding the y-axis to make room for all data and lines
-plot(y, type = 'o', ylim = range(y, lcl, ucl))
+# Plot data while expanding the systolic-axis to make room for all data and lines
+plot(systolic, type = 'o', ylim = range(systolic, lcl, ucl))
 
 # Add lines
 lines(ucl)

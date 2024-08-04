@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-03" />
+<meta name="date" content="2024-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -230,7 +230,15 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a></li>
-<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing <code>qicharts2</code></a></li>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing qicharts2</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>10.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="10.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>10.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="10.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>10.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>10.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="10.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>10.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#multivariate-charts-small-multiples"><i class="fa fa-check"></i><b>10.6</b> Multivariate charts (small multiples)</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>11</b> A Note on Rational Subgrouping and Sampling</a></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
 <li class="chapter" data-level="12" data-path="case_run.html"><a href="case_run.html"><i class="fa fa-check"></i><b>12</b> Run Chart for Any Type of Data</a></li>
@@ -542,252 +550,256 @@ Figure 8.4: P chart
 <span id="cb41-122"><a href="r-functions.html#cb41-122" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">chart.fun</span>(df)</span>
 <span id="cb41-123"><a href="r-functions.html#cb41-123" tabindex="-1"></a>  </span>
 <span id="cb41-124"><a href="r-functions.html#cb41-124" tabindex="-1"></a>  <span class="co"># Add runs analysis</span></span>
-<span id="cb41-125"><a href="r-functions.html#cb41-125" tabindex="-1"></a>  df<span class="sc">$</span>runs.signal <span class="ot">&lt;-</span> <span class="fu">runs.analysis</span>(df<span class="sc">$</span>y, df<span class="sc">$</span>cl)</span>
-<span id="cb41-126"><a href="r-functions.html#cb41-126" tabindex="-1"></a>  </span>
-<span id="cb41-127"><a href="r-functions.html#cb41-127" tabindex="-1"></a>  <span class="co"># Find data points outside control limits.</span></span>
-<span id="cb41-128"><a href="r-functions.html#cb41-128" tabindex="-1"></a>  df<span class="sc">$</span>sigma.signal                         <span class="ot">&lt;-</span> (df<span class="sc">$</span>y <span class="sc">&lt;</span> df<span class="sc">$</span>lcl <span class="sc">|</span> df<span class="sc">$</span>y <span class="sc">&gt;</span> df<span class="sc">$</span>ucl)</span>
-<span id="cb41-129"><a href="r-functions.html#cb41-129" tabindex="-1"></a>  df<span class="sc">$</span>sigma.signal[<span class="fu">is.na</span>(df<span class="sc">$</span>sigma.signal)] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb41-125"><a href="r-functions.html#cb41-125" tabindex="-1"></a>  <span class="cf">if</span> (chart <span class="sc">==</span> <span class="st">&#39;mr&#39;</span>) {</span>
+<span id="cb41-126"><a href="r-functions.html#cb41-126" tabindex="-1"></a>    df<span class="sc">$</span>runs.signal <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb41-127"><a href="r-functions.html#cb41-127" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb41-128"><a href="r-functions.html#cb41-128" tabindex="-1"></a>    df<span class="sc">$</span>runs.signal <span class="ot">&lt;-</span> <span class="fu">runs.analysis</span>(df<span class="sc">$</span>y, df<span class="sc">$</span>cl)</span>
+<span id="cb41-129"><a href="r-functions.html#cb41-129" tabindex="-1"></a>  }</span>
 <span id="cb41-130"><a href="r-functions.html#cb41-130" tabindex="-1"></a>  </span>
-<span id="cb41-131"><a href="r-functions.html#cb41-131" tabindex="-1"></a>  <span class="co"># Return data frame.</span></span>
-<span id="cb41-132"><a href="r-functions.html#cb41-132" tabindex="-1"></a>  df[<span class="fu">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;n&#39;</span>,</span>
-<span id="cb41-133"><a href="r-functions.html#cb41-133" tabindex="-1"></a>       <span class="st">&#39;lcl&#39;</span>, <span class="st">&#39;cl&#39;</span>, <span class="st">&#39;ucl&#39;</span>,</span>
-<span id="cb41-134"><a href="r-functions.html#cb41-134" tabindex="-1"></a>       <span class="st">&#39;sigma.signal&#39;</span>,</span>
-<span id="cb41-135"><a href="r-functions.html#cb41-135" tabindex="-1"></a>       <span class="st">&#39;runs.signal&#39;</span>,</span>
-<span id="cb41-136"><a href="r-functions.html#cb41-136" tabindex="-1"></a>       <span class="st">&#39;chart&#39;</span>)]</span>
-<span id="cb41-137"><a href="r-functions.html#cb41-137" tabindex="-1"></a>}</span>
-<span id="cb41-138"><a href="r-functions.html#cb41-138" tabindex="-1"></a></span>
-<span id="cb41-139"><a href="r-functions.html#cb41-139" tabindex="-1"></a><span class="co"># Plot function ################################################################</span></span>
-<span id="cb41-140"><a href="r-functions.html#cb41-140" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-141"><a href="r-functions.html#cb41-141" tabindex="-1"></a><span class="co">#  Draws an SPC chart from data provided by the spc() function. Is usually</span></span>
-<span id="cb41-142"><a href="r-functions.html#cb41-142" tabindex="-1"></a><span class="co">#  called from the spc() function, but may be used as stand-alone for plotting</span></span>
-<span id="cb41-143"><a href="r-functions.html#cb41-143" tabindex="-1"></a><span class="co">#  data frames of class spc created by the spc() function.</span></span>
+<span id="cb41-131"><a href="r-functions.html#cb41-131" tabindex="-1"></a>  <span class="co"># Find data points outside control limits.</span></span>
+<span id="cb41-132"><a href="r-functions.html#cb41-132" tabindex="-1"></a>  df<span class="sc">$</span>sigma.signal                         <span class="ot">&lt;-</span> (df<span class="sc">$</span>y <span class="sc">&lt;</span> df<span class="sc">$</span>lcl <span class="sc">|</span> df<span class="sc">$</span>y <span class="sc">&gt;</span> df<span class="sc">$</span>ucl)</span>
+<span id="cb41-133"><a href="r-functions.html#cb41-133" tabindex="-1"></a>  df<span class="sc">$</span>sigma.signal[<span class="fu">is.na</span>(df<span class="sc">$</span>sigma.signal)] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb41-134"><a href="r-functions.html#cb41-134" tabindex="-1"></a>  </span>
+<span id="cb41-135"><a href="r-functions.html#cb41-135" tabindex="-1"></a>  <span class="co"># Return data frame.</span></span>
+<span id="cb41-136"><a href="r-functions.html#cb41-136" tabindex="-1"></a>  df[<span class="fu">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;n&#39;</span>,</span>
+<span id="cb41-137"><a href="r-functions.html#cb41-137" tabindex="-1"></a>       <span class="st">&#39;lcl&#39;</span>, <span class="st">&#39;cl&#39;</span>, <span class="st">&#39;ucl&#39;</span>,</span>
+<span id="cb41-138"><a href="r-functions.html#cb41-138" tabindex="-1"></a>       <span class="st">&#39;sigma.signal&#39;</span>,</span>
+<span id="cb41-139"><a href="r-functions.html#cb41-139" tabindex="-1"></a>       <span class="st">&#39;runs.signal&#39;</span>,</span>
+<span id="cb41-140"><a href="r-functions.html#cb41-140" tabindex="-1"></a>       <span class="st">&#39;chart&#39;</span>)]</span>
+<span id="cb41-141"><a href="r-functions.html#cb41-141" tabindex="-1"></a>}</span>
+<span id="cb41-142"><a href="r-functions.html#cb41-142" tabindex="-1"></a></span>
+<span id="cb41-143"><a href="r-functions.html#cb41-143" tabindex="-1"></a><span class="co"># Plot function ################################################################</span></span>
 <span id="cb41-144"><a href="r-functions.html#cb41-144" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-145"><a href="r-functions.html#cb41-145" tabindex="-1"></a><span class="co">#  Invisibly returns the data frame</span></span>
-<span id="cb41-146"><a href="r-functions.html#cb41-146" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-147"><a href="r-functions.html#cb41-147" tabindex="-1"></a><span class="co">#  x:   Data frame produced by the spc() function.</span></span>
-<span id="cb41-148"><a href="r-functions.html#cb41-148" tabindex="-1"></a><span class="co">#  ...: Additional arguments for the plot() function, e.g. title and labels.</span></span>
-<span id="cb41-149"><a href="r-functions.html#cb41-149" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-150"><a href="r-functions.html#cb41-150" tabindex="-1"></a>plot.spc <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
-<span id="cb41-151"><a href="r-functions.html#cb41-151" tabindex="-1"></a>  col1 <span class="ot">&lt;-</span> <span class="st">&#39;steelblue&#39;</span></span>
-<span id="cb41-152"><a href="r-functions.html#cb41-152" tabindex="-1"></a>  col2 <span class="ot">&lt;-</span> <span class="st">&#39;grey30&#39;</span></span>
-<span id="cb41-153"><a href="r-functions.html#cb41-153" tabindex="-1"></a>  col3 <span class="ot">&lt;-</span> <span class="st">&#39;tomato&#39;</span></span>
-<span id="cb41-154"><a href="r-functions.html#cb41-154" tabindex="-1"></a>  </span>
-<span id="cb41-155"><a href="r-functions.html#cb41-155" tabindex="-1"></a>  <span class="co"># Make room for data and control limits on the x axis.</span></span>
-<span id="cb41-156"><a href="r-functions.html#cb41-156" tabindex="-1"></a>  ylim <span class="ot">&lt;-</span> <span class="fu">range</span>(x<span class="sc">$</span>y,</span>
-<span id="cb41-157"><a href="r-functions.html#cb41-157" tabindex="-1"></a>                x<span class="sc">$</span>lcl,</span>
-<span id="cb41-158"><a href="r-functions.html#cb41-158" tabindex="-1"></a>                x<span class="sc">$</span>ucl,</span>
-<span id="cb41-159"><a href="r-functions.html#cb41-159" tabindex="-1"></a>                <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-160"><a href="r-functions.html#cb41-160" tabindex="-1"></a>  </span>
-<span id="cb41-161"><a href="r-functions.html#cb41-161" tabindex="-1"></a>  <span class="co"># Draw empty plot.</span></span>
-<span id="cb41-162"><a href="r-functions.html#cb41-162" tabindex="-1"></a>  <span class="fu">plot</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>y,</span>
-<span id="cb41-163"><a href="r-functions.html#cb41-163" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">&#39;n&#39;</span>,</span>
-<span id="cb41-164"><a href="r-functions.html#cb41-164" tabindex="-1"></a>       <span class="at">bty  =</span> <span class="st">&#39;l&#39;</span>,</span>
-<span id="cb41-165"><a href="r-functions.html#cb41-165" tabindex="-1"></a>       <span class="at">las  =</span> <span class="dv">1</span>,</span>
-<span id="cb41-166"><a href="r-functions.html#cb41-166" tabindex="-1"></a>       <span class="at">ylim =</span> ylim,</span>
-<span id="cb41-167"><a href="r-functions.html#cb41-167" tabindex="-1"></a>       <span class="at">font.main =</span> <span class="dv">1</span>,</span>
-<span id="cb41-168"><a href="r-functions.html#cb41-168" tabindex="-1"></a>       ...)</span>
-<span id="cb41-169"><a href="r-functions.html#cb41-169" tabindex="-1"></a>  </span>
-<span id="cb41-170"><a href="r-functions.html#cb41-170" tabindex="-1"></a>  <span class="co"># Add lines and points to plot.</span></span>
-<span id="cb41-171"><a href="r-functions.html#cb41-171" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>cl,</span>
-<span id="cb41-172"><a href="r-functions.html#cb41-172" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">ifelse</span>(x<span class="sc">$</span>runs.signal, col3, col2),</span>
-<span id="cb41-173"><a href="r-functions.html#cb41-173" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">ifelse</span>(x<span class="sc">$</span>runs.signal, <span class="st">&#39;dashed&#39;</span>, <span class="st">&#39;solid&#39;</span>))</span>
-<span id="cb41-174"><a href="r-functions.html#cb41-174" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>lcl, <span class="at">col =</span> col2)</span>
-<span id="cb41-175"><a href="r-functions.html#cb41-175" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>ucl, <span class="at">col =</span> col2)</span>
-<span id="cb41-176"><a href="r-functions.html#cb41-176" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>y, <span class="at">col =</span> col1, <span class="at">lwd =</span> <span class="fl">2.5</span>)</span>
-<span id="cb41-177"><a href="r-functions.html#cb41-177" tabindex="-1"></a>  <span class="fu">points</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>y,</span>
-<span id="cb41-178"><a href="r-functions.html#cb41-178" tabindex="-1"></a>         <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb41-179"><a href="r-functions.html#cb41-179" tabindex="-1"></a>         <span class="at">cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb41-180"><a href="r-functions.html#cb41-180" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">ifelse</span>(x<span class="sc">$</span>sigma.signal, col3, col1)</span>
-<span id="cb41-181"><a href="r-functions.html#cb41-181" tabindex="-1"></a>  )</span>
-<span id="cb41-182"><a href="r-functions.html#cb41-182" tabindex="-1"></a>  </span>
-<span id="cb41-183"><a href="r-functions.html#cb41-183" tabindex="-1"></a>  <span class="fu">invisible</span>(x)</span>
-<span id="cb41-184"><a href="r-functions.html#cb41-184" tabindex="-1"></a>}</span>
-<span id="cb41-185"><a href="r-functions.html#cb41-185" tabindex="-1"></a></span>
-<span id="cb41-186"><a href="r-functions.html#cb41-186" tabindex="-1"></a><span class="co"># Runs analysis function #######################################################</span></span>
-<span id="cb41-187"><a href="r-functions.html#cb41-187" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-188"><a href="r-functions.html#cb41-188" tabindex="-1"></a><span class="co">#  Tests time series data for non-random variation in the form of </span></span>
-<span id="cb41-189"><a href="r-functions.html#cb41-189" tabindex="-1"></a><span class="co">#  unusually long runs or unusually few crossings. Called from the</span></span>
-<span id="cb41-190"><a href="r-functions.html#cb41-190" tabindex="-1"></a><span class="co">#  spc.aggregate() function.</span></span>
+<span id="cb41-145"><a href="r-functions.html#cb41-145" tabindex="-1"></a><span class="co">#  Draws an SPC chart from data provided by the spc() function. Is usually</span></span>
+<span id="cb41-146"><a href="r-functions.html#cb41-146" tabindex="-1"></a><span class="co">#  called from the spc() function, but may be used as stand-alone for plotting</span></span>
+<span id="cb41-147"><a href="r-functions.html#cb41-147" tabindex="-1"></a><span class="co">#  data frames of class spc created by the spc() function.</span></span>
+<span id="cb41-148"><a href="r-functions.html#cb41-148" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-149"><a href="r-functions.html#cb41-149" tabindex="-1"></a><span class="co">#  Invisibly returns the data frame</span></span>
+<span id="cb41-150"><a href="r-functions.html#cb41-150" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-151"><a href="r-functions.html#cb41-151" tabindex="-1"></a><span class="co">#  x:   Data frame produced by the spc() function.</span></span>
+<span id="cb41-152"><a href="r-functions.html#cb41-152" tabindex="-1"></a><span class="co">#  ...: Additional arguments for the plot() function, e.g. title and labels.</span></span>
+<span id="cb41-153"><a href="r-functions.html#cb41-153" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-154"><a href="r-functions.html#cb41-154" tabindex="-1"></a>plot.spc <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb41-155"><a href="r-functions.html#cb41-155" tabindex="-1"></a>  col1 <span class="ot">&lt;-</span> <span class="st">&#39;steelblue&#39;</span></span>
+<span id="cb41-156"><a href="r-functions.html#cb41-156" tabindex="-1"></a>  col2 <span class="ot">&lt;-</span> <span class="st">&#39;grey30&#39;</span></span>
+<span id="cb41-157"><a href="r-functions.html#cb41-157" tabindex="-1"></a>  col3 <span class="ot">&lt;-</span> <span class="st">&#39;tomato&#39;</span></span>
+<span id="cb41-158"><a href="r-functions.html#cb41-158" tabindex="-1"></a>  </span>
+<span id="cb41-159"><a href="r-functions.html#cb41-159" tabindex="-1"></a>  <span class="co"># Make room for data and control limits on the x axis.</span></span>
+<span id="cb41-160"><a href="r-functions.html#cb41-160" tabindex="-1"></a>  ylim <span class="ot">&lt;-</span> <span class="fu">range</span>(x<span class="sc">$</span>y,</span>
+<span id="cb41-161"><a href="r-functions.html#cb41-161" tabindex="-1"></a>                x<span class="sc">$</span>lcl,</span>
+<span id="cb41-162"><a href="r-functions.html#cb41-162" tabindex="-1"></a>                x<span class="sc">$</span>ucl,</span>
+<span id="cb41-163"><a href="r-functions.html#cb41-163" tabindex="-1"></a>                <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-164"><a href="r-functions.html#cb41-164" tabindex="-1"></a>  </span>
+<span id="cb41-165"><a href="r-functions.html#cb41-165" tabindex="-1"></a>  <span class="co"># Draw empty plot.</span></span>
+<span id="cb41-166"><a href="r-functions.html#cb41-166" tabindex="-1"></a>  <span class="fu">plot</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>y,</span>
+<span id="cb41-167"><a href="r-functions.html#cb41-167" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">&#39;n&#39;</span>,</span>
+<span id="cb41-168"><a href="r-functions.html#cb41-168" tabindex="-1"></a>       <span class="at">bty  =</span> <span class="st">&#39;l&#39;</span>,</span>
+<span id="cb41-169"><a href="r-functions.html#cb41-169" tabindex="-1"></a>       <span class="at">las  =</span> <span class="dv">1</span>,</span>
+<span id="cb41-170"><a href="r-functions.html#cb41-170" tabindex="-1"></a>       <span class="at">ylim =</span> ylim,</span>
+<span id="cb41-171"><a href="r-functions.html#cb41-171" tabindex="-1"></a>       <span class="at">font.main =</span> <span class="dv">1</span>,</span>
+<span id="cb41-172"><a href="r-functions.html#cb41-172" tabindex="-1"></a>       ...)</span>
+<span id="cb41-173"><a href="r-functions.html#cb41-173" tabindex="-1"></a>  </span>
+<span id="cb41-174"><a href="r-functions.html#cb41-174" tabindex="-1"></a>  <span class="co"># Add lines and points to plot.</span></span>
+<span id="cb41-175"><a href="r-functions.html#cb41-175" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>cl,</span>
+<span id="cb41-176"><a href="r-functions.html#cb41-176" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">ifelse</span>(x<span class="sc">$</span>runs.signal, col3, col2),</span>
+<span id="cb41-177"><a href="r-functions.html#cb41-177" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">ifelse</span>(x<span class="sc">$</span>runs.signal, <span class="st">&#39;dashed&#39;</span>, <span class="st">&#39;solid&#39;</span>))</span>
+<span id="cb41-178"><a href="r-functions.html#cb41-178" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>lcl, <span class="at">col =</span> col2)</span>
+<span id="cb41-179"><a href="r-functions.html#cb41-179" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>ucl, <span class="at">col =</span> col2)</span>
+<span id="cb41-180"><a href="r-functions.html#cb41-180" tabindex="-1"></a>  <span class="fu">lines</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>y, <span class="at">col =</span> col1, <span class="at">lwd =</span> <span class="fl">2.5</span>)</span>
+<span id="cb41-181"><a href="r-functions.html#cb41-181" tabindex="-1"></a>  <span class="fu">points</span>(x<span class="sc">$</span>x, x<span class="sc">$</span>y,</span>
+<span id="cb41-182"><a href="r-functions.html#cb41-182" tabindex="-1"></a>         <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb41-183"><a href="r-functions.html#cb41-183" tabindex="-1"></a>         <span class="at">cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb41-184"><a href="r-functions.html#cb41-184" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">ifelse</span>(x<span class="sc">$</span>sigma.signal, col3, col1)</span>
+<span id="cb41-185"><a href="r-functions.html#cb41-185" tabindex="-1"></a>  )</span>
+<span id="cb41-186"><a href="r-functions.html#cb41-186" tabindex="-1"></a>  </span>
+<span id="cb41-187"><a href="r-functions.html#cb41-187" tabindex="-1"></a>  <span class="fu">invisible</span>(x)</span>
+<span id="cb41-188"><a href="r-functions.html#cb41-188" tabindex="-1"></a>}</span>
+<span id="cb41-189"><a href="r-functions.html#cb41-189" tabindex="-1"></a></span>
+<span id="cb41-190"><a href="r-functions.html#cb41-190" tabindex="-1"></a><span class="co"># Runs analysis function #######################################################</span></span>
 <span id="cb41-191"><a href="r-functions.html#cb41-191" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-192"><a href="r-functions.html#cb41-192" tabindex="-1"></a><span class="co">#  Returns a logical, TRUE if non-random variation is present.</span></span>
-<span id="cb41-193"><a href="r-functions.html#cb41-193" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-194"><a href="r-functions.html#cb41-194" tabindex="-1"></a><span class="co">#  x:  Numeric vector.</span></span>
-<span id="cb41-195"><a href="r-functions.html#cb41-195" tabindex="-1"></a><span class="co">#  cl: Numeric vector of length either one or same length as y.</span></span>
-<span id="cb41-196"><a href="r-functions.html#cb41-196" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-197"><a href="r-functions.html#cb41-197" tabindex="-1"></a>runs.analysis <span class="ot">&lt;-</span> <span class="cf">function</span>(y, cl) {</span>
-<span id="cb41-198"><a href="r-functions.html#cb41-198" tabindex="-1"></a>  <span class="co"># Trichotomise data according to position relative to CL:</span></span>
-<span id="cb41-199"><a href="r-functions.html#cb41-199" tabindex="-1"></a>  <span class="co"># -1 = below, 0 = on, 1 = above.</span></span>
-<span id="cb41-200"><a href="r-functions.html#cb41-200" tabindex="-1"></a>  runs <span class="ot">&lt;-</span> <span class="fu">sign</span>(y <span class="sc">-</span> cl)</span>
-<span id="cb41-201"><a href="r-functions.html#cb41-201" tabindex="-1"></a>  </span>
-<span id="cb41-202"><a href="r-functions.html#cb41-202" tabindex="-1"></a>  <span class="co"># Remove NAs and data points on the centre line.</span></span>
-<span id="cb41-203"><a href="r-functions.html#cb41-203" tabindex="-1"></a>  runs <span class="ot">&lt;-</span> runs[runs <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(runs)]</span>
-<span id="cb41-204"><a href="r-functions.html#cb41-204" tabindex="-1"></a>  </span>
-<span id="cb41-205"><a href="r-functions.html#cb41-205" tabindex="-1"></a>  <span class="co"># Find run lengths.</span></span>
-<span id="cb41-206"><a href="r-functions.html#cb41-206" tabindex="-1"></a>  run.lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(runs)<span class="sc">$</span>lengths</span>
-<span id="cb41-207"><a href="r-functions.html#cb41-207" tabindex="-1"></a>  </span>
-<span id="cb41-208"><a href="r-functions.html#cb41-208" tabindex="-1"></a>  <span class="co"># Find number of useful observations (data points not on centre line).</span></span>
-<span id="cb41-209"><a href="r-functions.html#cb41-209" tabindex="-1"></a>  n.useful <span class="ot">&lt;-</span> <span class="fu">sum</span>(run.lengths)</span>
-<span id="cb41-210"><a href="r-functions.html#cb41-210" tabindex="-1"></a>  </span>
-<span id="cb41-211"><a href="r-functions.html#cb41-211" tabindex="-1"></a>  <span class="co"># Find longest run above or below centre line.</span></span>
-<span id="cb41-212"><a href="r-functions.html#cb41-212" tabindex="-1"></a>  longest.run <span class="ot">&lt;-</span> <span class="fu">max</span>(run.lengths)</span>
-<span id="cb41-213"><a href="r-functions.html#cb41-213" tabindex="-1"></a>  </span>
-<span id="cb41-214"><a href="r-functions.html#cb41-214" tabindex="-1"></a>  <span class="co"># Find number of crossings.</span></span>
-<span id="cb41-215"><a href="r-functions.html#cb41-215" tabindex="-1"></a>  n.crossings <span class="ot">&lt;-</span> <span class="fu">length</span>(run.lengths) <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb41-216"><a href="r-functions.html#cb41-216" tabindex="-1"></a>  </span>
-<span id="cb41-217"><a href="r-functions.html#cb41-217" tabindex="-1"></a>  <span class="co"># Find upper limit for longest run.</span></span>
-<span id="cb41-218"><a href="r-functions.html#cb41-218" tabindex="-1"></a>  longest.run.max <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">log2</span>(n.useful)) <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb41-219"><a href="r-functions.html#cb41-219" tabindex="-1"></a>  </span>
-<span id="cb41-220"><a href="r-functions.html#cb41-220" tabindex="-1"></a>  <span class="co"># Find lower limit for number of crossing.</span></span>
-<span id="cb41-221"><a href="r-functions.html#cb41-221" tabindex="-1"></a>  n.crossings.min <span class="ot">&lt;-</span> <span class="fu">qbinom</span>(<span class="fl">0.05</span>, n.useful <span class="sc">-</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
-<span id="cb41-222"><a href="r-functions.html#cb41-222" tabindex="-1"></a>  </span>
-<span id="cb41-223"><a href="r-functions.html#cb41-223" tabindex="-1"></a>  <span class="co"># Return result.</span></span>
-<span id="cb41-224"><a href="r-functions.html#cb41-224" tabindex="-1"></a>  longest.run <span class="sc">&gt;</span> longest.run.max <span class="sc">|</span> n.crossings <span class="sc">&lt;</span> n.crossings.min</span>
-<span id="cb41-225"><a href="r-functions.html#cb41-225" tabindex="-1"></a>}</span>
-<span id="cb41-226"><a href="r-functions.html#cb41-226" tabindex="-1"></a></span>
-<span id="cb41-227"><a href="r-functions.html#cb41-227" tabindex="-1"></a><span class="co"># Limits functions #############################################################</span></span>
-<span id="cb41-228"><a href="r-functions.html#cb41-228" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-229"><a href="r-functions.html#cb41-229" tabindex="-1"></a><span class="co">#  These functions calculate coordinates for the centre line and control limits</span></span>
-<span id="cb41-230"><a href="r-functions.html#cb41-230" tabindex="-1"></a><span class="co">#  of SPC charts. They are not meant to be called directly but are used by the</span></span>
-<span id="cb41-231"><a href="r-functions.html#cb41-231" tabindex="-1"></a><span class="co">#  spc.aggregate() function.</span></span>
+<span id="cb41-192"><a href="r-functions.html#cb41-192" tabindex="-1"></a><span class="co">#  Tests time series data for non-random variation in the form of </span></span>
+<span id="cb41-193"><a href="r-functions.html#cb41-193" tabindex="-1"></a><span class="co">#  unusually long runs or unusually few crossings. Called from the</span></span>
+<span id="cb41-194"><a href="r-functions.html#cb41-194" tabindex="-1"></a><span class="co">#  spc.aggregate() function.</span></span>
+<span id="cb41-195"><a href="r-functions.html#cb41-195" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-196"><a href="r-functions.html#cb41-196" tabindex="-1"></a><span class="co">#  Returns a logical, TRUE if non-random variation is present.</span></span>
+<span id="cb41-197"><a href="r-functions.html#cb41-197" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-198"><a href="r-functions.html#cb41-198" tabindex="-1"></a><span class="co">#  x:  Numeric vector.</span></span>
+<span id="cb41-199"><a href="r-functions.html#cb41-199" tabindex="-1"></a><span class="co">#  cl: Numeric vector of length either one or same length as y.</span></span>
+<span id="cb41-200"><a href="r-functions.html#cb41-200" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-201"><a href="r-functions.html#cb41-201" tabindex="-1"></a>runs.analysis <span class="ot">&lt;-</span> <span class="cf">function</span>(y, cl) {</span>
+<span id="cb41-202"><a href="r-functions.html#cb41-202" tabindex="-1"></a>  <span class="co"># Trichotomise data according to position relative to CL:</span></span>
+<span id="cb41-203"><a href="r-functions.html#cb41-203" tabindex="-1"></a>  <span class="co"># -1 = below, 0 = on, 1 = above.</span></span>
+<span id="cb41-204"><a href="r-functions.html#cb41-204" tabindex="-1"></a>  runs <span class="ot">&lt;-</span> <span class="fu">sign</span>(y <span class="sc">-</span> cl)</span>
+<span id="cb41-205"><a href="r-functions.html#cb41-205" tabindex="-1"></a>  </span>
+<span id="cb41-206"><a href="r-functions.html#cb41-206" tabindex="-1"></a>  <span class="co"># Remove NAs and data points on the centre line.</span></span>
+<span id="cb41-207"><a href="r-functions.html#cb41-207" tabindex="-1"></a>  runs <span class="ot">&lt;-</span> runs[runs <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(runs)]</span>
+<span id="cb41-208"><a href="r-functions.html#cb41-208" tabindex="-1"></a>  </span>
+<span id="cb41-209"><a href="r-functions.html#cb41-209" tabindex="-1"></a>  <span class="co"># Find run lengths.</span></span>
+<span id="cb41-210"><a href="r-functions.html#cb41-210" tabindex="-1"></a>  run.lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(runs)<span class="sc">$</span>lengths</span>
+<span id="cb41-211"><a href="r-functions.html#cb41-211" tabindex="-1"></a>  </span>
+<span id="cb41-212"><a href="r-functions.html#cb41-212" tabindex="-1"></a>  <span class="co"># Find number of useful observations (data points not on centre line).</span></span>
+<span id="cb41-213"><a href="r-functions.html#cb41-213" tabindex="-1"></a>  n.useful <span class="ot">&lt;-</span> <span class="fu">sum</span>(run.lengths)</span>
+<span id="cb41-214"><a href="r-functions.html#cb41-214" tabindex="-1"></a>  </span>
+<span id="cb41-215"><a href="r-functions.html#cb41-215" tabindex="-1"></a>  <span class="co"># Find longest run above or below centre line.</span></span>
+<span id="cb41-216"><a href="r-functions.html#cb41-216" tabindex="-1"></a>  longest.run <span class="ot">&lt;-</span> <span class="fu">max</span>(run.lengths)</span>
+<span id="cb41-217"><a href="r-functions.html#cb41-217" tabindex="-1"></a>  </span>
+<span id="cb41-218"><a href="r-functions.html#cb41-218" tabindex="-1"></a>  <span class="co"># Find number of crossings.</span></span>
+<span id="cb41-219"><a href="r-functions.html#cb41-219" tabindex="-1"></a>  n.crossings <span class="ot">&lt;-</span> <span class="fu">length</span>(run.lengths) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb41-220"><a href="r-functions.html#cb41-220" tabindex="-1"></a>  </span>
+<span id="cb41-221"><a href="r-functions.html#cb41-221" tabindex="-1"></a>  <span class="co"># Find upper limit for longest run.</span></span>
+<span id="cb41-222"><a href="r-functions.html#cb41-222" tabindex="-1"></a>  longest.run.max <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">log2</span>(n.useful)) <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb41-223"><a href="r-functions.html#cb41-223" tabindex="-1"></a>  </span>
+<span id="cb41-224"><a href="r-functions.html#cb41-224" tabindex="-1"></a>  <span class="co"># Find lower limit for number of crossing.</span></span>
+<span id="cb41-225"><a href="r-functions.html#cb41-225" tabindex="-1"></a>  n.crossings.min <span class="ot">&lt;-</span> <span class="fu">qbinom</span>(<span class="fl">0.05</span>, n.useful <span class="sc">-</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb41-226"><a href="r-functions.html#cb41-226" tabindex="-1"></a>  </span>
+<span id="cb41-227"><a href="r-functions.html#cb41-227" tabindex="-1"></a>  <span class="co"># Return result.</span></span>
+<span id="cb41-228"><a href="r-functions.html#cb41-228" tabindex="-1"></a>  longest.run <span class="sc">&gt;</span> longest.run.max <span class="sc">|</span> n.crossings <span class="sc">&lt;</span> n.crossings.min</span>
+<span id="cb41-229"><a href="r-functions.html#cb41-229" tabindex="-1"></a>}</span>
+<span id="cb41-230"><a href="r-functions.html#cb41-230" tabindex="-1"></a></span>
+<span id="cb41-231"><a href="r-functions.html#cb41-231" tabindex="-1"></a><span class="co"># Limits functions #############################################################</span></span>
 <span id="cb41-232"><a href="r-functions.html#cb41-232" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-233"><a href="r-functions.html#cb41-233" tabindex="-1"></a><span class="co">#  Return data frames with coordinates for centre line and control limits.</span></span>
-<span id="cb41-234"><a href="r-functions.html#cb41-234" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-235"><a href="r-functions.html#cb41-235" tabindex="-1"></a><span class="co">#  x: A data frame containing the values to plot.</span></span>
+<span id="cb41-233"><a href="r-functions.html#cb41-233" tabindex="-1"></a><span class="co">#  These functions calculate coordinates for the centre line and control limits</span></span>
+<span id="cb41-234"><a href="r-functions.html#cb41-234" tabindex="-1"></a><span class="co">#  of SPC charts. They are not meant to be called directly but are used by the</span></span>
+<span id="cb41-235"><a href="r-functions.html#cb41-235" tabindex="-1"></a><span class="co">#  spc.aggregate() function.</span></span>
 <span id="cb41-236"><a href="r-functions.html#cb41-236" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-237"><a href="r-functions.html#cb41-237" tabindex="-1"></a>spc.run <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-238"><a href="r-functions.html#cb41-238" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
-<span id="cb41-239"><a href="r-functions.html#cb41-239" tabindex="-1"></a></span>
-<span id="cb41-240"><a href="r-functions.html#cb41-240" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> <span class="fu">median</span>(x<span class="sc">$</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-241"><a href="r-functions.html#cb41-241" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
-<span id="cb41-242"><a href="r-functions.html#cb41-242" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb41-237"><a href="r-functions.html#cb41-237" tabindex="-1"></a><span class="co">#  Return data frames with coordinates for centre line and control limits.</span></span>
+<span id="cb41-238"><a href="r-functions.html#cb41-238" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-239"><a href="r-functions.html#cb41-239" tabindex="-1"></a><span class="co">#  x: A data frame containing the values to plot.</span></span>
+<span id="cb41-240"><a href="r-functions.html#cb41-240" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-241"><a href="r-functions.html#cb41-241" tabindex="-1"></a>spc.run <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-242"><a href="r-functions.html#cb41-242" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
 <span id="cb41-243"><a href="r-functions.html#cb41-243" tabindex="-1"></a></span>
-<span id="cb41-244"><a href="r-functions.html#cb41-244" tabindex="-1"></a>  x</span>
-<span id="cb41-245"><a href="r-functions.html#cb41-245" tabindex="-1"></a>}</span>
-<span id="cb41-246"><a href="r-functions.html#cb41-246" tabindex="-1"></a></span>
-<span id="cb41-247"><a href="r-functions.html#cb41-247" tabindex="-1"></a>spc.i   <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-248"><a href="r-functions.html#cb41-248" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
-<span id="cb41-249"><a href="r-functions.html#cb41-249" tabindex="-1"></a></span>
-<span id="cb41-250"><a href="r-functions.html#cb41-250" tabindex="-1"></a>  xbar  <span class="ot">&lt;-</span> x<span class="sc">$</span>ybar</span>
-<span id="cb41-251"><a href="r-functions.html#cb41-251" tabindex="-1"></a>  amr   <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(<span class="fu">diff</span>(x<span class="sc">$</span>y)), <span class="at">na.rm =</span> T)</span>
-<span id="cb41-252"><a href="r-functions.html#cb41-252" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="fl">2.66</span> <span class="sc">*</span> amr</span>
+<span id="cb41-244"><a href="r-functions.html#cb41-244" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> <span class="fu">median</span>(x<span class="sc">$</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-245"><a href="r-functions.html#cb41-245" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb41-246"><a href="r-functions.html#cb41-246" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb41-247"><a href="r-functions.html#cb41-247" tabindex="-1"></a></span>
+<span id="cb41-248"><a href="r-functions.html#cb41-248" tabindex="-1"></a>  x</span>
+<span id="cb41-249"><a href="r-functions.html#cb41-249" tabindex="-1"></a>}</span>
+<span id="cb41-250"><a href="r-functions.html#cb41-250" tabindex="-1"></a></span>
+<span id="cb41-251"><a href="r-functions.html#cb41-251" tabindex="-1"></a>spc.i   <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-252"><a href="r-functions.html#cb41-252" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
 <span id="cb41-253"><a href="r-functions.html#cb41-253" tabindex="-1"></a></span>
-<span id="cb41-254"><a href="r-functions.html#cb41-254" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> xbar</span>
-<span id="cb41-255"><a href="r-functions.html#cb41-255" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> xbar <span class="sc">-</span> sss</span>
-<span id="cb41-256"><a href="r-functions.html#cb41-256" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> xbar <span class="sc">+</span> sss</span>
+<span id="cb41-254"><a href="r-functions.html#cb41-254" tabindex="-1"></a>  xbar  <span class="ot">&lt;-</span> x<span class="sc">$</span>ybar</span>
+<span id="cb41-255"><a href="r-functions.html#cb41-255" tabindex="-1"></a>  amr   <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(<span class="fu">diff</span>(x<span class="sc">$</span>y)), <span class="at">na.rm =</span> T)</span>
+<span id="cb41-256"><a href="r-functions.html#cb41-256" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="fl">2.66</span> <span class="sc">*</span> amr</span>
 <span id="cb41-257"><a href="r-functions.html#cb41-257" tabindex="-1"></a></span>
-<span id="cb41-258"><a href="r-functions.html#cb41-258" tabindex="-1"></a>  x</span>
-<span id="cb41-259"><a href="r-functions.html#cb41-259" tabindex="-1"></a>}</span>
-<span id="cb41-260"><a href="r-functions.html#cb41-260" tabindex="-1"></a></span>
-<span id="cb41-261"><a href="r-functions.html#cb41-261" tabindex="-1"></a>spc.mr <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-262"><a href="r-functions.html#cb41-262" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(x<span class="sc">$</span>mean)))</span>
-<span id="cb41-263"><a href="r-functions.html#cb41-263" tabindex="-1"></a></span>
-<span id="cb41-264"><a href="r-functions.html#cb41-264" tabindex="-1"></a>  amr   <span class="ot">&lt;-</span> <span class="fu">mean</span>(x<span class="sc">$</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-265"><a href="r-functions.html#cb41-265" tabindex="-1"></a></span>
-<span id="cb41-266"><a href="r-functions.html#cb41-266" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> amr</span>
-<span id="cb41-267"><a href="r-functions.html#cb41-267" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
-<span id="cb41-268"><a href="r-functions.html#cb41-268" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> <span class="fl">3.267</span> <span class="sc">*</span> amr</span>
+<span id="cb41-258"><a href="r-functions.html#cb41-258" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> xbar</span>
+<span id="cb41-259"><a href="r-functions.html#cb41-259" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> xbar <span class="sc">-</span> sss</span>
+<span id="cb41-260"><a href="r-functions.html#cb41-260" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> xbar <span class="sc">+</span> sss</span>
+<span id="cb41-261"><a href="r-functions.html#cb41-261" tabindex="-1"></a></span>
+<span id="cb41-262"><a href="r-functions.html#cb41-262" tabindex="-1"></a>  x</span>
+<span id="cb41-263"><a href="r-functions.html#cb41-263" tabindex="-1"></a>}</span>
+<span id="cb41-264"><a href="r-functions.html#cb41-264" tabindex="-1"></a></span>
+<span id="cb41-265"><a href="r-functions.html#cb41-265" tabindex="-1"></a>spc.mr <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-266"><a href="r-functions.html#cb41-266" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(x<span class="sc">$</span>mean)))</span>
+<span id="cb41-267"><a href="r-functions.html#cb41-267" tabindex="-1"></a></span>
+<span id="cb41-268"><a href="r-functions.html#cb41-268" tabindex="-1"></a>  amr   <span class="ot">&lt;-</span> <span class="fu">mean</span>(x<span class="sc">$</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb41-269"><a href="r-functions.html#cb41-269" tabindex="-1"></a></span>
-<span id="cb41-270"><a href="r-functions.html#cb41-270" tabindex="-1"></a>  x</span>
-<span id="cb41-271"><a href="r-functions.html#cb41-271" tabindex="-1"></a>}</span>
-<span id="cb41-272"><a href="r-functions.html#cb41-272" tabindex="-1"></a></span>
-<span id="cb41-273"><a href="r-functions.html#cb41-273" tabindex="-1"></a>spc.xbar <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-274"><a href="r-functions.html#cb41-274" tabindex="-1"></a>  x<span class="sc">$</span>y     <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
-<span id="cb41-275"><a href="r-functions.html#cb41-275" tabindex="-1"></a>  </span>
-<span id="cb41-276"><a href="r-functions.html#cb41-276" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(x<span class="sc">$</span>n)</span>
-<span id="cb41-277"><a href="r-functions.html#cb41-277" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(x<span class="sc">$</span>mean, x<span class="sc">$</span>n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-278"><a href="r-functions.html#cb41-278" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(x<span class="sc">$</span>sd, x<span class="sc">$</span>n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-279"><a href="r-functions.html#cb41-279" tabindex="-1"></a>  sss     <span class="ot">&lt;-</span> a3 <span class="sc">*</span> sbar</span>
-<span id="cb41-280"><a href="r-functions.html#cb41-280" tabindex="-1"></a>  </span>
-<span id="cb41-281"><a href="r-functions.html#cb41-281" tabindex="-1"></a>  x<span class="sc">$</span>cl    <span class="ot">&lt;-</span> xbarbar</span>
-<span id="cb41-282"><a href="r-functions.html#cb41-282" tabindex="-1"></a>  x<span class="sc">$</span>lcl   <span class="ot">&lt;-</span> xbarbar <span class="sc">-</span> sss</span>
-<span id="cb41-283"><a href="r-functions.html#cb41-283" tabindex="-1"></a>  x<span class="sc">$</span>ucl   <span class="ot">&lt;-</span> xbarbar <span class="sc">+</span> sss</span>
+<span id="cb41-270"><a href="r-functions.html#cb41-270" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> amr</span>
+<span id="cb41-271"><a href="r-functions.html#cb41-271" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb41-272"><a href="r-functions.html#cb41-272" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> <span class="fl">3.267</span> <span class="sc">*</span> amr</span>
+<span id="cb41-273"><a href="r-functions.html#cb41-273" tabindex="-1"></a></span>
+<span id="cb41-274"><a href="r-functions.html#cb41-274" tabindex="-1"></a>  x</span>
+<span id="cb41-275"><a href="r-functions.html#cb41-275" tabindex="-1"></a>}</span>
+<span id="cb41-276"><a href="r-functions.html#cb41-276" tabindex="-1"></a></span>
+<span id="cb41-277"><a href="r-functions.html#cb41-277" tabindex="-1"></a>spc.xbar <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-278"><a href="r-functions.html#cb41-278" tabindex="-1"></a>  x<span class="sc">$</span>y     <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
+<span id="cb41-279"><a href="r-functions.html#cb41-279" tabindex="-1"></a>  </span>
+<span id="cb41-280"><a href="r-functions.html#cb41-280" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(x<span class="sc">$</span>n)</span>
+<span id="cb41-281"><a href="r-functions.html#cb41-281" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(x<span class="sc">$</span>mean, x<span class="sc">$</span>n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-282"><a href="r-functions.html#cb41-282" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(x<span class="sc">$</span>sd, x<span class="sc">$</span>n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-283"><a href="r-functions.html#cb41-283" tabindex="-1"></a>  sss     <span class="ot">&lt;-</span> a3 <span class="sc">*</span> sbar</span>
 <span id="cb41-284"><a href="r-functions.html#cb41-284" tabindex="-1"></a>  </span>
-<span id="cb41-285"><a href="r-functions.html#cb41-285" tabindex="-1"></a>  x</span>
-<span id="cb41-286"><a href="r-functions.html#cb41-286" tabindex="-1"></a>}</span>
-<span id="cb41-287"><a href="r-functions.html#cb41-287" tabindex="-1"></a></span>
-<span id="cb41-288"><a href="r-functions.html#cb41-288" tabindex="-1"></a>spc.s <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-289"><a href="r-functions.html#cb41-289" tabindex="-1"></a>  x<span class="sc">$</span>y     <span class="ot">&lt;-</span> x<span class="sc">$</span>sd</span>
-<span id="cb41-290"><a href="r-functions.html#cb41-290" tabindex="-1"></a>  </span>
-<span id="cb41-291"><a href="r-functions.html#cb41-291" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(x<span class="sc">$</span>sd, x<span class="sc">$</span>n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-292"><a href="r-functions.html#cb41-292" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(x<span class="sc">$</span>n)</span>
-<span id="cb41-293"><a href="r-functions.html#cb41-293" tabindex="-1"></a>  b4      <span class="ot">&lt;-</span> <span class="fu">b4</span>(x<span class="sc">$</span>n)</span>
+<span id="cb41-285"><a href="r-functions.html#cb41-285" tabindex="-1"></a>  x<span class="sc">$</span>cl    <span class="ot">&lt;-</span> xbarbar</span>
+<span id="cb41-286"><a href="r-functions.html#cb41-286" tabindex="-1"></a>  x<span class="sc">$</span>lcl   <span class="ot">&lt;-</span> xbarbar <span class="sc">-</span> sss</span>
+<span id="cb41-287"><a href="r-functions.html#cb41-287" tabindex="-1"></a>  x<span class="sc">$</span>ucl   <span class="ot">&lt;-</span> xbarbar <span class="sc">+</span> sss</span>
+<span id="cb41-288"><a href="r-functions.html#cb41-288" tabindex="-1"></a>  </span>
+<span id="cb41-289"><a href="r-functions.html#cb41-289" tabindex="-1"></a>  x</span>
+<span id="cb41-290"><a href="r-functions.html#cb41-290" tabindex="-1"></a>}</span>
+<span id="cb41-291"><a href="r-functions.html#cb41-291" tabindex="-1"></a></span>
+<span id="cb41-292"><a href="r-functions.html#cb41-292" tabindex="-1"></a>spc.s <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-293"><a href="r-functions.html#cb41-293" tabindex="-1"></a>  x<span class="sc">$</span>y     <span class="ot">&lt;-</span> x<span class="sc">$</span>sd</span>
 <span id="cb41-294"><a href="r-functions.html#cb41-294" tabindex="-1"></a>  </span>
-<span id="cb41-295"><a href="r-functions.html#cb41-295" tabindex="-1"></a>  x<span class="sc">$</span>cl    <span class="ot">&lt;-</span> sbar</span>
-<span id="cb41-296"><a href="r-functions.html#cb41-296" tabindex="-1"></a>  x<span class="sc">$</span>lcl   <span class="ot">&lt;-</span> b3 <span class="sc">*</span> sbar</span>
-<span id="cb41-297"><a href="r-functions.html#cb41-297" tabindex="-1"></a>  x<span class="sc">$</span>ucl   <span class="ot">&lt;-</span> b4 <span class="sc">*</span> sbar</span>
+<span id="cb41-295"><a href="r-functions.html#cb41-295" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(x<span class="sc">$</span>sd, x<span class="sc">$</span>n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-296"><a href="r-functions.html#cb41-296" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(x<span class="sc">$</span>n)</span>
+<span id="cb41-297"><a href="r-functions.html#cb41-297" tabindex="-1"></a>  b4      <span class="ot">&lt;-</span> <span class="fu">b4</span>(x<span class="sc">$</span>n)</span>
 <span id="cb41-298"><a href="r-functions.html#cb41-298" tabindex="-1"></a>  </span>
-<span id="cb41-299"><a href="r-functions.html#cb41-299" tabindex="-1"></a>  x</span>
-<span id="cb41-300"><a href="r-functions.html#cb41-300" tabindex="-1"></a>}</span>
-<span id="cb41-301"><a href="r-functions.html#cb41-301" tabindex="-1"></a></span>
-<span id="cb41-302"><a href="r-functions.html#cb41-302" tabindex="-1"></a>spc.c <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-303"><a href="r-functions.html#cb41-303" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>sum</span>
-<span id="cb41-304"><a href="r-functions.html#cb41-304" tabindex="-1"></a></span>
-<span id="cb41-305"><a href="r-functions.html#cb41-305" tabindex="-1"></a>  cbar  <span class="ot">&lt;-</span> <span class="fu">mean</span>(x<span class="sc">$</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-306"><a href="r-functions.html#cb41-306" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>((cbar))</span>
-<span id="cb41-307"><a href="r-functions.html#cb41-307" tabindex="-1"></a></span>
-<span id="cb41-308"><a href="r-functions.html#cb41-308" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> cbar</span>
-<span id="cb41-309"><a href="r-functions.html#cb41-309" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, cbar <span class="sc">-</span> sss)</span>
-<span id="cb41-310"><a href="r-functions.html#cb41-310" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> cbar <span class="sc">+</span> sss</span>
+<span id="cb41-299"><a href="r-functions.html#cb41-299" tabindex="-1"></a>  x<span class="sc">$</span>cl    <span class="ot">&lt;-</span> sbar</span>
+<span id="cb41-300"><a href="r-functions.html#cb41-300" tabindex="-1"></a>  x<span class="sc">$</span>lcl   <span class="ot">&lt;-</span> b3 <span class="sc">*</span> sbar</span>
+<span id="cb41-301"><a href="r-functions.html#cb41-301" tabindex="-1"></a>  x<span class="sc">$</span>ucl   <span class="ot">&lt;-</span> b4 <span class="sc">*</span> sbar</span>
+<span id="cb41-302"><a href="r-functions.html#cb41-302" tabindex="-1"></a>  </span>
+<span id="cb41-303"><a href="r-functions.html#cb41-303" tabindex="-1"></a>  x</span>
+<span id="cb41-304"><a href="r-functions.html#cb41-304" tabindex="-1"></a>}</span>
+<span id="cb41-305"><a href="r-functions.html#cb41-305" tabindex="-1"></a></span>
+<span id="cb41-306"><a href="r-functions.html#cb41-306" tabindex="-1"></a>spc.c <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-307"><a href="r-functions.html#cb41-307" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>sum</span>
+<span id="cb41-308"><a href="r-functions.html#cb41-308" tabindex="-1"></a></span>
+<span id="cb41-309"><a href="r-functions.html#cb41-309" tabindex="-1"></a>  cbar  <span class="ot">&lt;-</span> <span class="fu">mean</span>(x<span class="sc">$</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-310"><a href="r-functions.html#cb41-310" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>((cbar))</span>
 <span id="cb41-311"><a href="r-functions.html#cb41-311" tabindex="-1"></a></span>
-<span id="cb41-312"><a href="r-functions.html#cb41-312" tabindex="-1"></a>  x</span>
-<span id="cb41-313"><a href="r-functions.html#cb41-313" tabindex="-1"></a>}</span>
-<span id="cb41-314"><a href="r-functions.html#cb41-314" tabindex="-1"></a></span>
-<span id="cb41-315"><a href="r-functions.html#cb41-315" tabindex="-1"></a>spc.u <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-316"><a href="r-functions.html#cb41-316" tabindex="-1"></a>  x<span class="sc">$</span>y <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
-<span id="cb41-317"><a href="r-functions.html#cb41-317" tabindex="-1"></a></span>
-<span id="cb41-318"><a href="r-functions.html#cb41-318" tabindex="-1"></a>  ubar  <span class="ot">&lt;-</span> x<span class="sc">$</span>ybar</span>
-<span id="cb41-319"><a href="r-functions.html#cb41-319" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>((ubar <span class="sc">/</span> x<span class="sc">$</span>n))</span>
-<span id="cb41-320"><a href="r-functions.html#cb41-320" tabindex="-1"></a></span>
-<span id="cb41-321"><a href="r-functions.html#cb41-321" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> ubar</span>
-<span id="cb41-322"><a href="r-functions.html#cb41-322" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, ubar <span class="sc">-</span> sss, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-323"><a href="r-functions.html#cb41-323" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> ubar <span class="sc">+</span> sss</span>
+<span id="cb41-312"><a href="r-functions.html#cb41-312" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> cbar</span>
+<span id="cb41-313"><a href="r-functions.html#cb41-313" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, cbar <span class="sc">-</span> sss)</span>
+<span id="cb41-314"><a href="r-functions.html#cb41-314" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> cbar <span class="sc">+</span> sss</span>
+<span id="cb41-315"><a href="r-functions.html#cb41-315" tabindex="-1"></a></span>
+<span id="cb41-316"><a href="r-functions.html#cb41-316" tabindex="-1"></a>  x</span>
+<span id="cb41-317"><a href="r-functions.html#cb41-317" tabindex="-1"></a>}</span>
+<span id="cb41-318"><a href="r-functions.html#cb41-318" tabindex="-1"></a></span>
+<span id="cb41-319"><a href="r-functions.html#cb41-319" tabindex="-1"></a>spc.u <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-320"><a href="r-functions.html#cb41-320" tabindex="-1"></a>  x<span class="sc">$</span>y <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
+<span id="cb41-321"><a href="r-functions.html#cb41-321" tabindex="-1"></a></span>
+<span id="cb41-322"><a href="r-functions.html#cb41-322" tabindex="-1"></a>  ubar  <span class="ot">&lt;-</span> x<span class="sc">$</span>ybar</span>
+<span id="cb41-323"><a href="r-functions.html#cb41-323" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>((ubar <span class="sc">/</span> x<span class="sc">$</span>n))</span>
 <span id="cb41-324"><a href="r-functions.html#cb41-324" tabindex="-1"></a></span>
-<span id="cb41-325"><a href="r-functions.html#cb41-325" tabindex="-1"></a>  x</span>
-<span id="cb41-326"><a href="r-functions.html#cb41-326" tabindex="-1"></a>}</span>
-<span id="cb41-327"><a href="r-functions.html#cb41-327" tabindex="-1"></a></span>
-<span id="cb41-328"><a href="r-functions.html#cb41-328" tabindex="-1"></a>spc.p <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb41-329"><a href="r-functions.html#cb41-329" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
-<span id="cb41-330"><a href="r-functions.html#cb41-330" tabindex="-1"></a></span>
-<span id="cb41-331"><a href="r-functions.html#cb41-331" tabindex="-1"></a>  pbar  <span class="ot">&lt;-</span> x<span class="sc">$</span>ybar</span>
-<span id="cb41-332"><a href="r-functions.html#cb41-332" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>((pbar <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pbar)) <span class="sc">/</span> x<span class="sc">$</span>n)</span>
-<span id="cb41-333"><a href="r-functions.html#cb41-333" tabindex="-1"></a></span>
-<span id="cb41-334"><a href="r-functions.html#cb41-334" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> pbar</span>
-<span id="cb41-335"><a href="r-functions.html#cb41-335" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, pbar <span class="sc">-</span> sss)</span>
-<span id="cb41-336"><a href="r-functions.html#cb41-336" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> <span class="fu">pmin</span>(<span class="dv">1</span>, pbar <span class="sc">+</span> sss)</span>
+<span id="cb41-325"><a href="r-functions.html#cb41-325" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> ubar</span>
+<span id="cb41-326"><a href="r-functions.html#cb41-326" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, ubar <span class="sc">-</span> sss, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-327"><a href="r-functions.html#cb41-327" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> ubar <span class="sc">+</span> sss</span>
+<span id="cb41-328"><a href="r-functions.html#cb41-328" tabindex="-1"></a></span>
+<span id="cb41-329"><a href="r-functions.html#cb41-329" tabindex="-1"></a>  x</span>
+<span id="cb41-330"><a href="r-functions.html#cb41-330" tabindex="-1"></a>}</span>
+<span id="cb41-331"><a href="r-functions.html#cb41-331" tabindex="-1"></a></span>
+<span id="cb41-332"><a href="r-functions.html#cb41-332" tabindex="-1"></a>spc.p <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-333"><a href="r-functions.html#cb41-333" tabindex="-1"></a>  x<span class="sc">$</span>y   <span class="ot">&lt;-</span> x<span class="sc">$</span>mean</span>
+<span id="cb41-334"><a href="r-functions.html#cb41-334" tabindex="-1"></a></span>
+<span id="cb41-335"><a href="r-functions.html#cb41-335" tabindex="-1"></a>  pbar  <span class="ot">&lt;-</span> x<span class="sc">$</span>ybar</span>
+<span id="cb41-336"><a href="r-functions.html#cb41-336" tabindex="-1"></a>  sss   <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>((pbar <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pbar)) <span class="sc">/</span> x<span class="sc">$</span>n)</span>
 <span id="cb41-337"><a href="r-functions.html#cb41-337" tabindex="-1"></a></span>
-<span id="cb41-338"><a href="r-functions.html#cb41-338" tabindex="-1"></a>  x</span>
-<span id="cb41-339"><a href="r-functions.html#cb41-339" tabindex="-1"></a>}</span>
-<span id="cb41-340"><a href="r-functions.html#cb41-340" tabindex="-1"></a></span>
-<span id="cb41-341"><a href="r-functions.html#cb41-341" tabindex="-1"></a><span class="co"># Constants functions ##########################################################</span></span>
-<span id="cb41-342"><a href="r-functions.html#cb41-342" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-343"><a href="r-functions.html#cb41-343" tabindex="-1"></a><span class="co">#  These functions calculate the constants that are used for calculating the</span></span>
-<span id="cb41-344"><a href="r-functions.html#cb41-344" tabindex="-1"></a><span class="co">#  parameters of X-bar and S charts. Called from the spc.xbar() and spc.s()</span></span>
-<span id="cb41-345"><a href="r-functions.html#cb41-345" tabindex="-1"></a><span class="co">#  functions</span></span>
+<span id="cb41-338"><a href="r-functions.html#cb41-338" tabindex="-1"></a>  x<span class="sc">$</span>cl  <span class="ot">&lt;-</span> pbar</span>
+<span id="cb41-339"><a href="r-functions.html#cb41-339" tabindex="-1"></a>  x<span class="sc">$</span>lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, pbar <span class="sc">-</span> sss)</span>
+<span id="cb41-340"><a href="r-functions.html#cb41-340" tabindex="-1"></a>  x<span class="sc">$</span>ucl <span class="ot">&lt;-</span> <span class="fu">pmin</span>(<span class="dv">1</span>, pbar <span class="sc">+</span> sss)</span>
+<span id="cb41-341"><a href="r-functions.html#cb41-341" tabindex="-1"></a></span>
+<span id="cb41-342"><a href="r-functions.html#cb41-342" tabindex="-1"></a>  x</span>
+<span id="cb41-343"><a href="r-functions.html#cb41-343" tabindex="-1"></a>}</span>
+<span id="cb41-344"><a href="r-functions.html#cb41-344" tabindex="-1"></a></span>
+<span id="cb41-345"><a href="r-functions.html#cb41-345" tabindex="-1"></a><span class="co"># Constants functions ##########################################################</span></span>
 <span id="cb41-346"><a href="r-functions.html#cb41-346" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-347"><a href="r-functions.html#cb41-347" tabindex="-1"></a><span class="co">#  Return a number, the constant for that subgroup size</span></span>
-<span id="cb41-348"><a href="r-functions.html#cb41-348" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-349"><a href="r-functions.html#cb41-349" tabindex="-1"></a><span class="co">#  n: Number of elements in subgroup</span></span>
+<span id="cb41-347"><a href="r-functions.html#cb41-347" tabindex="-1"></a><span class="co">#  These functions calculate the constants that are used for calculating the</span></span>
+<span id="cb41-348"><a href="r-functions.html#cb41-348" tabindex="-1"></a><span class="co">#  parameters of X-bar and S charts. Called from the spc.xbar() and spc.s()</span></span>
+<span id="cb41-349"><a href="r-functions.html#cb41-349" tabindex="-1"></a><span class="co">#  functions</span></span>
 <span id="cb41-350"><a href="r-functions.html#cb41-350" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb41-351"><a href="r-functions.html#cb41-351" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb41-352"><a href="r-functions.html#cb41-352" tabindex="-1"></a>  <span class="dv">3</span> <span class="sc">/</span> (<span class="fu">c4</span>(n) <span class="sc">*</span> <span class="fu">sqrt</span>(n))</span>
-<span id="cb41-353"><a href="r-functions.html#cb41-353" tabindex="-1"></a>}</span>
-<span id="cb41-354"><a href="r-functions.html#cb41-354" tabindex="-1"></a></span>
-<span id="cb41-355"><a href="r-functions.html#cb41-355" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb41-356"><a href="r-functions.html#cb41-356" tabindex="-1"></a>  <span class="fu">pmax</span>(<span class="dv">0</span>, <span class="dv">1</span> <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">c5</span>(n) <span class="sc">/</span> <span class="fu">c4</span>(n), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-351"><a href="r-functions.html#cb41-351" tabindex="-1"></a><span class="co">#  Return a number, the constant for that subgroup size</span></span>
+<span id="cb41-352"><a href="r-functions.html#cb41-352" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-353"><a href="r-functions.html#cb41-353" tabindex="-1"></a><span class="co">#  n: Number of elements in subgroup</span></span>
+<span id="cb41-354"><a href="r-functions.html#cb41-354" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb41-355"><a href="r-functions.html#cb41-355" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb41-356"><a href="r-functions.html#cb41-356" tabindex="-1"></a>  <span class="dv">3</span> <span class="sc">/</span> (<span class="fu">c4</span>(n) <span class="sc">*</span> <span class="fu">sqrt</span>(n))</span>
 <span id="cb41-357"><a href="r-functions.html#cb41-357" tabindex="-1"></a>}</span>
 <span id="cb41-358"><a href="r-functions.html#cb41-358" tabindex="-1"></a></span>
-<span id="cb41-359"><a href="r-functions.html#cb41-359" tabindex="-1"></a>b4 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb41-360"><a href="r-functions.html#cb41-360" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">c5</span>(n) <span class="sc">/</span> <span class="fu">c4</span>(n)</span>
+<span id="cb41-359"><a href="r-functions.html#cb41-359" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb41-360"><a href="r-functions.html#cb41-360" tabindex="-1"></a>  <span class="fu">pmax</span>(<span class="dv">0</span>, <span class="dv">1</span> <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">c5</span>(n) <span class="sc">/</span> <span class="fu">c4</span>(n), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb41-361"><a href="r-functions.html#cb41-361" tabindex="-1"></a>}</span>
 <span id="cb41-362"><a href="r-functions.html#cb41-362" tabindex="-1"></a></span>
-<span id="cb41-363"><a href="r-functions.html#cb41-363" tabindex="-1"></a>c4 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb41-364"><a href="r-functions.html#cb41-364" tabindex="-1"></a>  n[n <span class="sc">&lt;=</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb41-365"><a href="r-functions.html#cb41-365" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">exp</span>(<span class="fu">lgamma</span>(n <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">lgamma</span>((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>))</span>
-<span id="cb41-366"><a href="r-functions.html#cb41-366" tabindex="-1"></a>}</span>
-<span id="cb41-367"><a href="r-functions.html#cb41-367" tabindex="-1"></a></span>
-<span id="cb41-368"><a href="r-functions.html#cb41-368" tabindex="-1"></a>c5 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb41-369"><a href="r-functions.html#cb41-369" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">c4</span>(n) <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb41-370"><a href="r-functions.html#cb41-370" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb41-363"><a href="r-functions.html#cb41-363" tabindex="-1"></a>b4 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb41-364"><a href="r-functions.html#cb41-364" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">c5</span>(n) <span class="sc">/</span> <span class="fu">c4</span>(n)</span>
+<span id="cb41-365"><a href="r-functions.html#cb41-365" tabindex="-1"></a>}</span>
+<span id="cb41-366"><a href="r-functions.html#cb41-366" tabindex="-1"></a></span>
+<span id="cb41-367"><a href="r-functions.html#cb41-367" tabindex="-1"></a>c4 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb41-368"><a href="r-functions.html#cb41-368" tabindex="-1"></a>  n[n <span class="sc">&lt;=</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb41-369"><a href="r-functions.html#cb41-369" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">exp</span>(<span class="fu">lgamma</span>(n <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">lgamma</span>((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>))</span>
+<span id="cb41-370"><a href="r-functions.html#cb41-370" tabindex="-1"></a>}</span>
+<span id="cb41-371"><a href="r-functions.html#cb41-371" tabindex="-1"></a></span>
+<span id="cb41-372"><a href="r-functions.html#cb41-372" tabindex="-1"></a>c5 <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb41-373"><a href="r-functions.html#cb41-373" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">c4</span>(n) <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb41-374"><a href="r-functions.html#cb41-374" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>

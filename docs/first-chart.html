@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-03" />
+<meta name="date" content="2024-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -230,7 +230,15 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a></li>
-<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing <code>qicharts2</code></a></li>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing qicharts2</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>10.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="10.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>10.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="10.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>10.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>10.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="10.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>10.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#multivariate-charts-small-multiples"><i class="fa fa-check"></i><b>10.6</b> Multivariate charts (small multiples)</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>11</b> A Note on Rational Subgrouping and Sampling</a></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
 <li class="chapter" data-level="12" data-path="case_run.html"><a href="case_run.html"><i class="fa fa-check"></i><b>12</b> Run Chart for Any Type of Data</a></li>
@@ -284,14 +292,14 @@ div.csl-indent {
 <div id="a-run-chart-of-blood-pressure-data" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> A run chart of blood pressure data<a href="first-chart.html#a-run-chart-of-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
-<span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>       <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
-<span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>       <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>
-<span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a>       <span class="dv">157</span>, <span class="dv">183</span>, <span class="dv">177</span>, <span class="dv">171</span>, <span class="dv">185</span>, <span class="dv">176</span>,</span>
-<span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>       <span class="dv">181</span>, <span class="dv">174</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>systolic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
+<span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>              <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
+<span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>              <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>
+<span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a>              <span class="dv">157</span>, <span class="dv">183</span>, <span class="dv">177</span>, <span class="dv">171</span>, <span class="dv">185</span>, <span class="dv">176</span>,</span>
+<span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>              <span class="dv">181</span>, <span class="dv">174</span>)</span></code></pre></div>
 <p>First we plot a simple point-and-line chart without any helper lines (Figure <a href="first-chart.html#fig:first-chart-run1">5.1</a>):</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="first-chart.html#cb2-1" tabindex="-1"></a><span class="co"># Make point-and-line plot</span></span>
-<span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
+<span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run1"></span>
 <img src="_main_files/figure-html/first-chart-run1-1.svg" alt="Simple run chart" width="672" />
 <p class="caption">
@@ -300,11 +308,11 @@ Figure 5.1: Simple run chart
 </div>
 <p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
 <p>To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create y-coordinates for the centre line</span></span>
-<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">median</span>(y), <span class="fu">length</span>(y))</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the centre line</span></span>
+<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">median</span>(systolic), <span class="fu">length</span>(systolic))</span>
 <span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="first-chart.html#cb3-4" tabindex="-1"></a><span class="co"># Plot data and add centre line</span></span>
-<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
+<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
 <span id="cb3-6"><a href="first-chart.html#cb3-6" tabindex="-1"></a><span class="fu">lines</span>(cl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run2"></span>
 <img src="_main_files/figure-html/first-chart-run2-1.svg" alt="Run chart with centre line" width="672" />
@@ -320,10 +328,10 @@ Figure 5.2: Run chart with centre line
 <p>Remember that the control limits are usually set to <span class="math inline">\(CL \pm 3 SD\)</span>, where CL is the centre line, usually the mean, and SD is the estimated standard deviation – that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.</p>
 <p>With data consisting of single measurements, we may estimate the common cause standard deviation using the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter <a href="limits.html#limits">6</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="first-chart.html#cb4-1" tabindex="-1"></a><span class="co"># Calulate the centre line (mean)</span></span>
-<span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">mean</span>(y), <span class="fu">length</span>(y))</span>
+<span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">mean</span>(systolic), <span class="fu">length</span>(systolic))</span>
 <span id="cb4-3"><a href="first-chart.html#cb4-3" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="first-chart.html#cb4-4" tabindex="-1"></a><span class="co"># Calculate the average moving range of data</span></span>
-<span id="cb4-5"><a href="first-chart.html#cb4-5" tabindex="-1"></a>mr <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">diff</span>(y))</span>
+<span id="cb4-5"><a href="first-chart.html#cb4-5" tabindex="-1"></a>mr <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">diff</span>(systolic))</span>
 <span id="cb4-6"><a href="first-chart.html#cb4-6" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="first-chart.html#cb4-7" tabindex="-1"></a><span class="co"># Print the moving ranges for our viewing pleasure</span></span>
 <span id="cb4-8"><a href="first-chart.html#cb4-8" tabindex="-1"></a>mr</span></code></pre></div>
@@ -334,12 +342,12 @@ Figure 5.2: Run chart with centre line
 <span id="cb6-4"><a href="first-chart.html#cb6-4" tabindex="-1"></a><span class="co"># Calculate the process standard deviation</span></span>
 <span id="cb6-5"><a href="first-chart.html#cb6-5" tabindex="-1"></a>s <span class="ot">&lt;-</span> amr <span class="sc">/</span> <span class="fl">1.128</span></span>
 <span id="cb6-6"><a href="first-chart.html#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Create y-coordinates for the control limits</span></span>
+<span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the control limits</span></span>
 <span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s</span>
 <span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s</span></code></pre></div>
-<p>Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data while expanding the y-axis to make room for all data and lines</span></span>
-<span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(y, lcl, ucl))</span>
+<p>Before we plot data, we need to expand the systolic-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data while expanding the systolic-axis to make room for all data and lines</span></span>
+<span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(systolic, lcl, ucl))</span>
 <span id="cb7-3"><a href="first-chart.html#cb7-3" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="first-chart.html#cb7-4" tabindex="-1"></a><span class="co"># Add lines</span></span>
 <span id="cb7-5"><a href="first-chart.html#cb7-5" tabindex="-1"></a><span class="fu">lines</span>(ucl)</span>

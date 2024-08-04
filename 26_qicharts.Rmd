@@ -1,6 +1,132 @@
-# Introducing `qicharts2` {#qicharts}
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Introducing qicharts2 {#qicharts}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
                       dev     = 'svg')
+source('R/load_data.R', local = knitr::knit_global())
+library(qicharts2)
+```
+
+qicharts2 (Quality Improvement Charts, @qicharts2) is an R package for SPC aimed at data analysts working in healthcare. It is based on the same principles as we have applied in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.
+
+To learn everything about qichart2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on a few key facilities that is still missing from the function library we have buld so far.
+
+To get started with qicharts2, install it and load it into your working environment:
+
+
+```{r, eval=FALSE}
+install.packages('qicharts2')
+library(qicharts2)
+```
+
+As always, you only need to install a package once, but you need to load it every time you want to use it. Next, you may want to read the vignette: `vignette('qicharts2')` -- or you may want to get started right away.
+
+## A simple run chart
+
+The main function of qicharts2 is `qic()`. It takes the same arguments as the `spc()` function we built previously plus many more. Check the documentation for a complete list of arguments: `?qic`
+
+To reproduce our first run chart from Chapter \@ref(first-chart), run:
+
+```{r}
+qic(systolic)
+```
+
+There are several things to note:
+
+* Default chart title and axis labels are created automatically. These may, of course, be changed using the `title`, `ylab`, and `xlab` arguments.
+
+* Data points that fall directly on the centre line are greyed out. These do not count as useful observation in the runs analysis.
+
+* The centre line value is printed on the chart.
+
+## A simple control chart
+
+To produce a control chart, we simply add a `chart` argument:
+
+```{r}
+qic(systolic, chart = 'i')
+```
+
+By default `qic()` uses a grey background area to show the natural process limits.
+
+## Excluding data points from analysis
+
+Sometimes it is useful to exclude one or more data points from the calculation of control limits and from the runs analysis. This may be the case when specific data points are known to have been influenced by factors that are not part of the natural process, for example data points that fall outside the control limits. We use the `exclude` argument to do this:
+
+```{r}
+qic(systolic, chart = 'i', exclude = 6)
+```
+
+Note how the values for the centre line and control limits changed a little. Specifically, the control limits became slightly narrower.
+
+## Freezing baseline period
+
+```{r}
+qic(month, n, data = cdi)
+```
+
+```{r}
+qic(month, n, data = cdi, freeze = 24)
+```
+
+## Splitting chart by period
+
+```{r}
+qic(month, n, data = cdi, part = 24)
+```
+
+```{r}
+qic(month, n, data = cdi, part = period)
+```
+
+## Multivariate charts (small multiples)
+
+```{r}
+qic(month, n, days, 
+    data = subset(hospital_infections, infection == 'UTI'),
+    chart = 'u',
+    multiply = 10000)
+```
+
+```{r, fig.asp=3/3}
+qic(month, n, days, 
+    data = subset(hospital_infections, infection == 'UTI'),
+    chart = 'u',
+    multiply = 10000,
+    facets = ~hospital)
+```
+
+```{r}
+qic(month, n, days, 
+    data = subset(hospital_infections, hospital == 'NOH'),
+    chart = 'u',
+    multiply = 10000,
+    facets = ~infection)
+```
+
+```{r, fig.asp=3/3}
+qic(month, n, days, 
+    data = subset(hospital_infections, hospital == 'NOH'),
+    chart = 'u',
+    multiply = 10000,
+    facets = ~infection,
+    scales = 'free_y',
+    ncol = 1)
+```
+
+```{r}
+qic(month, n, days, 
+    data = hospital_infections,
+    chart = 'u',
+    multiply = 10000,
+    facets = infection ~ hospital,
+    scales = 'free_y',
+    title = 'Hospital infections',
+    ylab = 'Count per 10,000 risk days',
+    xlab = 'Month')
 ```

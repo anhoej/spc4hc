@@ -122,7 +122,11 @@ spc.aggregate <- function(x, y, n, chart) {
   df <- chart.fun(df)
   
   # Add runs analysis
-  df$runs.signal <- runs.analysis(df$y, df$cl)
+  if (chart == 'mr') {
+    df$runs.signal <- FALSE
+  } else {
+    df$runs.signal <- runs.analysis(df$y, df$cl)
+  }
   
   # Find data points outside control limits.
   df$sigma.signal                         <- (df$y < df$lcl | df$y > df$ucl)
