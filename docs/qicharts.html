@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-04" />
+<meta name="date" content="2024-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,7 +237,7 @@ div.csl-indent {
 <li class="chapter" data-level="10.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>10.3</b> Excluding data points from analysis</a></li>
 <li class="chapter" data-level="10.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>10.4</b> Freezing baseline period</a></li>
 <li class="chapter" data-level="10.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>10.5</b> Splitting chart by period</a></li>
-<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#multivariate-charts-small-multiples"><i class="fa fa-check"></i><b>10.6</b> Multivariate charts (small multiples)</a></li>
+<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>10.6</b> Small multiple plots for multivariate data</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>11</b> A Note on Rational Subgrouping and Sampling</a></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
@@ -287,15 +287,21 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="qicharts" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">Chapter 10</span> Introducing qicharts2<a href="qicharts.html#qicharts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>qicharts2 (Quality Improvement Charts, <span class="citation">Anhøj (<a href="#ref-qicharts2">2024</a>)</span>) is an R package for SPC aimed at data analysts working in healthcare. It is based on the same principles as we have applied in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.</p>
-<p>To learn everything about qichart2, visit its website: <a href="https://anhoej.github.io/qicharts2/" class="uri">https://anhoej.github.io/qicharts2/</a>. In this chapter we will concentrate on a few key facilities that is still missing from the function library we have buld so far.</p>
+<p>qicharts2 (Quality Improvement Charts, <span class="citation">Anhøj (<a href="#ref-qicharts2">2024</a>)</span>) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.</p>
+<p>To learn everything about qichart2, visit its website: <a href="https://anhoej.github.io/qicharts2/" class="uri">https://anhoej.github.io/qicharts2/</a>. In this chapter we will concentrate on some key facilities that is still missing from the function library we have buld so far:</p>
+<ul>
+<li>excluding data points from analysis</li>
+<li>freezing and splitting charts by periods</li>
+<li>multivariate plots (small multiples)</li>
+</ul>
 <p>To get started with qicharts2, install it and load it into your working environment:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="qicharts.html#cb53-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;qicharts2&#39;</span>)</span>
 <span id="cb53-2"><a href="qicharts.html#cb53-2" tabindex="-1"></a><span class="fu">library</span>(qicharts2)</span></code></pre></div>
-<p>As always, you only need to install a package once, but you need to load it every time you want to use it. Next, you may want to read the vignette: <code>vignette('qicharts2')</code> – or you may want to get started right away.</p>
+<p>As always, you only need to install a package once, but you need to load it every time you want to use it.</p>
+<p>Next, you may want to read the vignette: <code>vignette('qicharts2')</code> – or you may want to get started right away.</p>
 <div id="a-simple-run-chart" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> A simple run chart<a href="qicharts.html#a-simple-run-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The main function of qicharts2 is <code>qic()</code>. It takes the same arguments as the <code>spc()</code> function we built previously plus many more. Check the documentation for a complete list of arguments: <code>?qic</code></p>
+<p>The main function of qicharts2 is <code>qic()</code>. It takes the same arguments as the <code>spc()</code> function we built previously plus many more. Check the documentation for a complete list of arguments: <code>?qic</code>.</p>
 <p>To reproduce our first run chart from Chapter <a href="first-chart.html#first-chart">5</a>, run:</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="qicharts.html#cb54-1" tabindex="-1"></a><span class="fu">qic</span>(systolic)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-23-1.svg" width="672" /></p>
@@ -318,59 +324,107 @@ div.csl-indent {
 <p>Sometimes it is useful to exclude one or more data points from the calculation of control limits and from the runs analysis. This may be the case when specific data points are known to have been influenced by factors that are not part of the natural process, for example data points that fall outside the control limits. We use the <code>exclude</code> argument to do this:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="qicharts.html#cb56-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>, <span class="at">exclude =</span> <span class="dv">6</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-25-1.svg" width="672" /></p>
-<p>Note how the values for the centre line and control limits changed a little. Specifically, the control limits became slightly narrower.</p>
+<p>Notice how the values for the centre line and control limits changed a little. Specifically, the control limits became slightly narrower.</p>
+<p>Excluding data points should be a deliberate decision and not something that is done automatically just because one or more data points are outside the control limits. Exclusion should be based on a thorough understanding of the process and only when the reason(s) for a special cause has been established. Otherwise, the whole idea of SPC as a way of understanding variation and its sources is lost.</p>
 </div>
 <div id="freezing-baseline-period" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Freezing baseline period<a href="qicharts.html#freezing-baseline-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="qicharts.html#cb57-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="qicharts.html#cb58-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">freeze =</span> <span class="dv">24</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
+<p>When data have been collected for a long enough period of time to establish the centre line and control limits of a stable and predictable process – that is, a process with only common cause variation – it is often useful to “freeze” the limits and use them for future data.</p>
+<p>In production industry this technique is referred to as phase one and phase two studies. In healthcare freezing is especially useful when we have historical data from before the start of some type of intervention or improvement programme. When plotting future data with the centre line and control limits from a stable baseline period shifts and trends will show up faster than if they were recalculated with every new data point.</p>
+<p>The cdi dataset comes with qicharts2 and contains monthly counts of infections two years before and one year after the initiation of an improvement programme. Check the documentation for details, <code>?cdi</code>.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="qicharts.html#cb57-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">freeze =</span> <span class="dv">24</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:qicharts-cdi1"></span>
+<img src="_main_files/figure-html/qicharts-cdi1-1.svg" alt="Infections before and after intervention" width="672" />
+<p class="caption">
+Figure 10.1: Infections before and after intervention
+</p>
+</div>
+<p>Figure <a href="qicharts.html#fig:qicharts-cdi1">10.1</a> shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. There is a sustained shift in data after the intervention.</p>
 </div>
 <div id="splitting-chart-by-period" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Splitting chart by period<a href="qicharts.html#splitting-chart-by-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="qicharts.html#cb59-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="qicharts.html#cb60-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-29-1.svg" width="672" /></p>
+<p>When a sustained shift in data has been discovered <em>and</em> the cause is known it is allowable to split the graph by periods. We use the part argument for this (Figure <a href="qicharts.html#fig:qicharts-cdi2">10.2</a>).</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="qicharts.html#cb58-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:qicharts-cdi2"></span>
+<img src="_main_files/figure-html/qicharts-cdi2-1.svg" alt="Splitting using index" width="672" />
+<p class="caption">
+Figure 10.2: Splitting using index
+</p>
 </div>
-<div id="multivariate-charts-small-multiples" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> Multivariate charts (small multiples)<a href="qicharts.html#multivariate-charts-small-multiples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="qicharts.html#cb61-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb61-2"><a href="qicharts.html#cb61-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">subset</span>(hospital_infections, infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb61-3"><a href="qicharts.html#cb61-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb61-4"><a href="qicharts.html#cb61-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.svg" width="672" /></p>
+<p>The split argument takes either the indices of the data points to split after, or we may use a categorical variable naming the time periods in which case the periods will be labelled (Figure <a href="qicharts.html#fig:qicharts-cdi3">10.3</a>).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="qicharts.html#cb59-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:qicharts-cdi3"></span>
+<img src="_main_files/figure-html/qicharts-cdi3-1.svg" alt="Splitting using a period variable" width="672" />
+<p class="caption">
+Figure 10.3: Splitting using a period variable
+</p>
+</div>
+<p>As with excluding data points, freezing and splitting should be based on deliberate decisions and thorough understanding of the process. Some SPC applications allow for automatic splitting whenever a shift is detected. We strongly advise against this approach. Freezing and splitting <em>may</em> be useful when:</p>
+<ul>
+<li>there is a sustained shift in data</li>
+<li>the reason for the shift is known</li>
+<li>the shift is in the desired direction</li>
+<li>the shift is expected to continue</li>
+</ul>
+<p>If any of these conditions is not met we should rather look for the root cause and – if need be – eliminate it.</p>
+</div>
+<div id="small-multiple-plots-for-multivariate-data" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Small multiple plots for multivariate data<a href="qicharts.html#small-multiple-plots-for-multivariate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Process data is all about time. But often data – not the least in healthcare – have more dimensions, which are important to understand in order to interpret data correctly.</p>
+<p>one unit, many indicators</p>
+<p>one indicator, many units</p>
+<p>many units, many indicators</p>
+<p>For example, the hospital_infections dataset, which is also included in the qicharts2 package, contains monthly counts of three types of hospital infections, bacteremia (BAC), C. diff (CDI), and urinary tract infections (UTI) from six hospitals.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="qicharts.html#cb60-1" tabindex="-1"></a><span class="co"># show structure of hospitals_infections dataset</span></span>
+<span id="cb60-2"><a href="qicharts.html#cb60-2" tabindex="-1"></a><span class="fu">str</span>(hospital_infections)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    432 obs. of  5 variables:
+##  $ hospital : Factor w/ 6 levels &quot;AHH&quot;,&quot;BFH&quot;,&quot;BOH&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ infection: Factor w/ 3 levels &quot;BAC&quot;,&quot;CDI&quot;,&quot;UTI&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ month    : Date, format: &quot;2015-01-01&quot; &quot;2015-02-01&quot; ...
+##  $ n        : int  17 18 17 10 13 14 9 15 16 10 ...
+##  $ days     : num  17234 15308 16884 15464 15789 ...</code></pre>
+<p>In this example data have two extra dimensions, infections and hospitals.</p>
+<p>A most useful way of visualising multivariate data is to plot data from different “spaces” alongside each other.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="qicharts.html#cb62-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
 <span id="cb62-2"><a href="qicharts.html#cb62-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">subset</span>(hospital_infections, infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
 <span id="cb62-3"><a href="qicharts.html#cb62-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb62-4"><a href="qicharts.html#cb62-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb62-5"><a href="qicharts.html#cb62-5" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>hospital)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
+<span id="cb62-4"><a href="qicharts.html#cb62-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:qicharts-hais1"></span>
+<img src="_main_files/figure-html/qicharts-hais1-1.svg" alt="Small multiple plot of urinary tract infection from six hospital" width="672" />
+<p class="caption">
+Figure 10.4: Small multiple plot of urinary tract infection from six hospital
+</p>
+</div>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="qicharts.html#cb63-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb63-2"><a href="qicharts.html#cb63-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
+<span id="cb63-2"><a href="qicharts.html#cb63-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">subset</span>(hospital_infections, infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
 <span id="cb63-3"><a href="qicharts.html#cb63-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;u&#39;</span>,</span>
 <span id="cb63-4"><a href="qicharts.html#cb63-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb63-5"><a href="qicharts.html#cb63-5" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>infection)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-32-1.svg" width="672" /></p>
+<span id="cb63-5"><a href="qicharts.html#cb63-5" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>hospital)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="qicharts.html#cb64-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
 <span id="cb64-2"><a href="qicharts.html#cb64-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
 <span id="cb64-3"><a href="qicharts.html#cb64-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;u&#39;</span>,</span>
 <span id="cb64-4"><a href="qicharts.html#cb64-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb64-5"><a href="qicharts.html#cb64-5" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>infection,</span>
-<span id="cb64-6"><a href="qicharts.html#cb64-6" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">&#39;free_y&#39;</span>,</span>
-<span id="cb64-7"><a href="qicharts.html#cb64-7" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-33-1.svg" width="672" /></p>
+<span id="cb64-5"><a href="qicharts.html#cb64-5" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>infection)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="qicharts.html#cb65-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb65-2"><a href="qicharts.html#cb65-2" tabindex="-1"></a>    <span class="at">data =</span> hospital_infections,</span>
+<span id="cb65-2"><a href="qicharts.html#cb65-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
 <span id="cb65-3"><a href="qicharts.html#cb65-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;u&#39;</span>,</span>
 <span id="cb65-4"><a href="qicharts.html#cb65-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb65-5"><a href="qicharts.html#cb65-5" tabindex="-1"></a>    <span class="at">facets =</span> infection <span class="sc">~</span> hospital,</span>
+<span id="cb65-5"><a href="qicharts.html#cb65-5" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>infection,</span>
 <span id="cb65-6"><a href="qicharts.html#cb65-6" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">&#39;free_y&#39;</span>,</span>
-<span id="cb65-7"><a href="qicharts.html#cb65-7" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb65-8"><a href="qicharts.html#cb65-8" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb65-9"><a href="qicharts.html#cb65-9" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-34-1.svg" width="672" /></p>
+<span id="cb65-7"><a href="qicharts.html#cb65-7" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="qicharts.html#cb66-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb66-2"><a href="qicharts.html#cb66-2" tabindex="-1"></a>    <span class="at">data =</span> hospital_infections,</span>
+<span id="cb66-3"><a href="qicharts.html#cb66-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb66-4"><a href="qicharts.html#cb66-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb66-5"><a href="qicharts.html#cb66-5" tabindex="-1"></a>    <span class="at">facets =</span> infection <span class="sc">~</span> hospital,</span>
+<span id="cb66-6"><a href="qicharts.html#cb66-6" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">&#39;free_y&#39;</span>,</span>
+<span id="cb66-7"><a href="qicharts.html#cb66-7" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb66-8"><a href="qicharts.html#cb66-8" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb66-9"><a href="qicharts.html#cb66-9" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.svg" width="672" /></p>
 
 </div>
 </div>
