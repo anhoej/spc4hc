@@ -1,3 +1,13 @@
+# 2024-08-09
+
+Part 2 -- how to -- is beginning to take form.
+
+TODO:
+ * JA: get download statistics on qicharts2
+ * JA: Add "controversies" to Part 5
+ * JA: Start thinking about how to test and validate "improved" charts
+ * MAM: Start writing chapters in Part 1
+
 # 2024-07-12
 
 TOC revised.
