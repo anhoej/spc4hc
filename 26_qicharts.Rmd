@@ -113,11 +113,11 @@ If any of these conditions is not met we should rather look for the root cause a
 
 Process data is all about time. But often data -- not the least in healthcare -- have more dimensions, which are important to understand in order to interpret data correctly.
 
-one unit, many indicators
+- one unit, many indicators
 
-one indicator, many units
+- one indicator, many units
 
-many units, many indicators
+- many units, many indicators
 
 
 
