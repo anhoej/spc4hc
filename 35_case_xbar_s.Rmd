@@ -1,1 +1,0 @@
-# X-bar and S Charts for Multiple Measurement Data {#case_xbar_s}

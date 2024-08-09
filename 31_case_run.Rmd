@@ -1,1 +1,0 @@
-# Run Chart for Any Type of Data {#case_run}

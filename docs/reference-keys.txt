@@ -63,12 +63,9 @@ excluding-data-points-from-analysis
 freezing-baseline-period
 splitting-chart-by-period
 small-multiple-plots-for-multivariate-data
-subgrouping
-case_run
-case_p
-case_c_u
-case_i_mr
-case_xbar_s
+case1
+case2
+case3
 bacteremia
 blood-pressure
 clostridioides-difficile-infections
