@@ -190,22 +190,21 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the <code>spc()</code> function</a></li>
-<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>6.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.3</b> Count data</a>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.2</b> Count data</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.3.1</b> C chart</a></li>
-<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.3.2</b> U chart</a></li>
-<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.3.3</b> P chart</a></li>
+<li class="chapter" data-level="6.2.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.2.1</b> C chart</a></li>
+<li class="chapter" data-level="6.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.2.2</b> U chart</a></li>
+<li class="chapter" data-level="6.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.2.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
+<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.3</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
+<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.3.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.3.2</b> MR chart</a></li>
+<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.3.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.3.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.3.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.4</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
@@ -289,7 +288,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 6</span> Calculating Control Limits<a href="limits.html#limits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we continue with different types of control charts and how to construct their control limits.</p>
 <div id="introducing-the-spc-function" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Introducing the <code>spc()</code> function<a href="limits.html#introducing-the-spc-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">6.1</span> Introducing the spc() function<a href="limits.html#introducing-the-spc-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To avoid repeating ourselves, let’s begin by creating a function to automate the plotting for us.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="limits.html#cb8-1" tabindex="-1"></a>spc <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
 <span id="cb8-2"><a href="limits.html#cb8-2" tabindex="-1"></a>    x,           <span class="co"># x axis values</span></span>
@@ -326,17 +325,19 @@ div.csl-indent {
 <span id="cb8-33"><a href="limits.html#cb8-33" tabindex="-1"></a>}</span></code></pre></div>
 <p>The <code>spc()</code> function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, one may provide additional arguments for the <code>plot()</code> function, e.g. main, xlab, and ylab for title and axis labels.</p>
 <p>Let us test it with the blood pressure data from Chapter <a href="first-chart.html#first-chart">5</a> (Figure <a href="limits.html#fig:limits-fig1">6.1</a>).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="limits.html#cb9-1" tabindex="-1"></a><span class="fu">spc</span>(x, y, cl, lcl, ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="limits.html#cb9-1" tabindex="-1"></a><span class="co"># create an x variable – not that is it necessary in this case, but just because we can</span></span>
+<span id="cb9-2"><a href="limits.html#cb9-2" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(systolic)</span>
+<span id="cb9-3"><a href="limits.html#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="limits.html#cb9-4" tabindex="-1"></a><span class="co"># plot data</span></span>
+<span id="cb9-5"><a href="limits.html#cb9-5" tabindex="-1"></a><span class="fu">spc</span>(day, systolic, cl, lcl, ucl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:limits-fig1"></span>
 <img src="_main_files/figure-html/limits-fig1-1.svg" alt="Control chart of systolic blood pressure" width="672" />
 <p class="caption">
 Figure 6.1: Control chart of systolic blood pressure
 </p>
 </div>
-<p>With this function we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits.</p>
-</div>
-<div id="formulas-for-calculation-of-control-limits" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Formulas for calculation of control limits<a href="limits.html#formulas-for-calculation-of-control-limits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>With this function we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits.
+## Formulas for calculation of control limits</p>
 <p>The formulas for calculation control limits for the most common control charts are provided in Table <a href="limits.html#tab:limits-tab1">6.1</a>. Don’t be alarmed by the number of strange symbols, we will dissect the formulas one by one as we move along.</p>
 <table>
 <caption>
@@ -471,16 +472,16 @@ Normal
 </table>
 <p>Generally, data come in two flavours: count data and measurement data. <strong>Counts</strong> are positive integers that represent counts of events or cases, for example patient falls, surgical complications, or healthy babies. <strong>Measurements</strong> are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.</p>
 </div>
-<div id="count-data" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Count data<a href="limits.html#count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="count-data" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Count data<a href="limits.html#count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are several types of count data depending on the type of counts involved. In this chapter we will limit ourselves to events and cases.</p>
 <p><strong>Events</strong> are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events often follow the poisson distribution and are presented as raw counts or rates.</p>
 <p><strong>Cases</strong> represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who fell, or procedures that completed according to a standard. Cases often follow the binomial distribution and are presented as proportions or percentages.</p>
 <p>For count charts in this chapter we will use the bacteremia data set:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="limits.html#cb10-1" tabindex="-1"></a><span class="co"># read data from file</span></span>
-<span id="cb10-2"><a href="limits.html#cb10-2" tabindex="-1"></a>bact <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/bacteremia.csv&#39;</span>,</span>
-<span id="cb10-3"><a href="limits.html#cb10-3" tabindex="-1"></a>                 <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
-<span id="cb10-4"><a href="limits.html#cb10-4" tabindex="-1"></a>                 <span class="at">colClasses =</span> <span class="fu">c</span>(</span>
+<span id="cb10-2"><a href="limits.html#cb10-2" tabindex="-1"></a>bact <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/bacteremia.csv&#39;</span>,  <span class="co"># path to data file</span></span>
+<span id="cb10-3"><a href="limits.html#cb10-3" tabindex="-1"></a>                 <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,     <span class="co"># ignore lines that start with &quot;#&quot;</span></span>
+<span id="cb10-4"><a href="limits.html#cb10-4" tabindex="-1"></a>                 <span class="at">colClasses   =</span> <span class="fu">c</span>(       <span class="co"># specify variable types</span></span>
 <span id="cb10-5"><a href="limits.html#cb10-5" tabindex="-1"></a>                   <span class="st">&#39;Date&#39;</span>,</span>
 <span id="cb10-6"><a href="limits.html#cb10-6" tabindex="-1"></a>                   <span class="st">&#39;integer&#39;</span>,</span>
 <span id="cb10-7"><a href="limits.html#cb10-7" tabindex="-1"></a>                   <span class="st">&#39;integer&#39;</span>,</span>
@@ -505,11 +506,9 @@ Normal
 <li>deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection</li>
 <li>patients (numeric): number of patients with all-cause infection</li>
 </ul>
-<!-- We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive.  -->
 <p>We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.</p>
-<!-- Rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%). -->
-<div id="c-chart" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> C chart<a href="limits.html#c-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="c-chart" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> C chart<a href="limits.html#c-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The C charts (C for counts) is the simplest of all control charts and the easiest to produce. The process standard deviation is simply estimated as the square root of the process mean.</p>
 <p>C charts are appropriate when counting events from (nearly) equally big chunks of time or space.</p>
 <p>Figure <a href="limits.html#fig:limits-c">6.2</a> shows a C chart of the monthly number of hospital acquired bacteremias.</p>
@@ -540,8 +539,8 @@ Figure 6.2: C control chart of monthly numbers of hospital acquired bacteremias
 </div>
 <p>The average monthly number of cases is 22.7, and all data points are within the control limits ranging from 8.4 to 36.9. So if nothing changes, we should expect future infection counts to be around 23, and we should not be surprised if once in a while, we observe as little as 9 or as many as 36 infections in a single month.</p>
 </div>
-<div id="u-chart" class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> U chart<a href="limits.html#u-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="u-chart" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> U chart<a href="limits.html#u-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>U charts are useful when events are counted over chunks of time or space that are not equally sized resulting in “unequal area of opportunity” (hence the U). In our case we might want to adjust for for the number of patient days that may vary depending on the time of year or between organisational units. The U chart adjust for this by presenting rates rather than raw counts.</p>
 <p>As mentioned, events are often rare in comparison to their areas of opportunity. So to avoid very small numbers on the y-axis it may be useful to multiply the y-axis by some factor before plotting. In Figure <a href="limits.html#fig:limits-u">6.3</a> we multiply by 10,000 to display infections per 10,000 risk days rather than per day.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="limits.html#cb14-1" tabindex="-1"></a><span class="fu">with</span>(bact, {</span>
@@ -571,8 +570,8 @@ Figure 6.3: U chart of monthly number of infections per 10,000 risk days
 <p>The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the denominator (risk days), for each data point. Large denominator <span class="math inline">\(\Rightarrow\)</span> narrow limits; small denominator <span class="math inline">\(\Rightarrow\)</span> wide limits.</p>
 <p>In cases like this where the denominator – the area of opportunity – only varies little between subgroups, the U charts adds little compared to the C chart. For pedagogical reasons we may prefer the C chart, because it is a lot easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.</p>
 </div>
-<div id="p-chart" class="section level3 hasAnchor" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> P chart<a href="limits.html#p-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="p-chart" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> P chart<a href="limits.html#p-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>P charts are for proportions (or percentages). Figure <a href="limits.html#fig:limits-p">6.4</a> shows the monthly percentage of patients with bacteremia who died within 30 days.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="limits.html#cb15-1" tabindex="-1"></a><span class="fu">with</span>(bact, {</span>
 <span id="cb15-2"><a href="limits.html#cb15-2" tabindex="-1"></a>  y   <span class="ot">&lt;-</span> deaths <span class="sc">/</span> patients</span>
@@ -601,8 +600,8 @@ Figure 6.4: P chart of monthly 30-day mortality rates
 <p>On average the mortality is 21%, and all data points are within the control limits.</p>
 </div>
 </div>
-<div id="measurement-data" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Measurement data<a href="limits.html#measurement-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="measurement-data" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Measurement data<a href="limits.html#measurement-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this section we will use a data set on response times for grade 2 caesarean sections, that is, the time (in minutes) it took from the decision to perform a C-section to the baby was delivered. The goal is to keep the response times below 30 minutes.</p>
 <p>The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for 208 grade 2 section over a two-year period.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="limits.html#cb16-1" tabindex="-1"></a><span class="co"># read raw data</span></span>
@@ -623,8 +622,8 @@ Figure 6.4: P chart of monthly 30-day mortality rates
 ## 4 2016-01-07 22:32:27 2016-01-01    28
 ## 5 2016-01-09 14:56:09 2016-01-01    22
 ## 6 2016-01-09 21:21:24 2016-01-01    20</code></pre>
-<div id="i-chart-aka-x-chart" class="section level3 hasAnchor" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> I chart (aka X chart)<a href="limits.html#i-chart-aka-x-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="i-chart-aka-x-chart" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> I chart (aka X chart)<a href="limits.html#i-chart-aka-x-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “I” in I chart stand for “individuals” because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.</p>
 <p>I charts are useful when measurements come from individual units, for example waiting times or blood pressure measurements for individual patients.</p>
 <p>As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, the I chart is considered the <em>Swiss army knife</em> of SPC.</p>
@@ -650,8 +649,8 @@ Figure 6.5: I-chart
 </div>
 <p>On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 11 to 37 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.</p>
 </div>
-<div id="mr-chart" class="section level3 hasAnchor" number="6.4.2">
-<h3><span class="header-section-number">6.4.2</span> MR chart<a href="limits.html#mr-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="mr-chart" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> MR chart<a href="limits.html#mr-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges can always be zero but never negative, the MR chart has no lower control limit.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="limits.html#cb19-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">tail</span>(csect, <span class="dv">60</span>), {</span>
 <span id="cb19-2"><a href="limits.html#cb19-2" tabindex="-1"></a>  mr  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(delay)))</span>
@@ -700,8 +699,8 @@ Figure 6.7: I- and MR-charts
 </div>
 <p>The MR-chart also finds three data points outside the limits. These coincide with two of the special causes found by the I chart and supports our conclusion that these deliveries were special. Note that each data point on the I chart (except the first and last ones) produces two moving ranges on the MR chart.</p>
 </div>
-<div id="x-bar-chart" class="section level3 hasAnchor" number="6.4.3">
-<h3><span class="header-section-number">6.4.3</span> X-bar chart<a href="limits.html#x-bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="x-bar-chart" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> X-bar chart<a href="limits.html#x-bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The X-bar chart is appropriate when the subgroups consist of samples of two or more measurements.</p>
 <p>To plot a control chart of the monthly average delays, we must first aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="limits.html#cb21-1" tabindex="-1"></a><span class="co"># aggregate data by month</span></span>
@@ -744,8 +743,8 @@ Figure 6.8: X bar chart
 <p>As with U and P charts the control limits vary from month to month reflecting the varying subgroup sizes – small subgroups <span class="math inline">\(\Rightarrow\)</span> wide limits; large subgroups <span class="math inline">\(\Rightarrow\)</span> narrow limits.</p>
 <p>Be careful not to fall for the temptation to conclude that since no months are above the target of 30 minutes, all is well. The 30-minute target concerns the delay time of <em>individual</em> sections, not the <em>averages</em>. Even if the averages are well below the target, individuals may be above, which we already noticed from the I chart above.</p>
 </div>
-<div id="s-chart" class="section level3 hasAnchor" number="6.4.4">
-<h3><span class="header-section-number">6.4.4</span> S chart<a href="limits.html#s-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="s-chart" class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> S chart<a href="limits.html#s-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.</p>
 <p>To calculate the centre and control limits for the S chart we need to know the process standard deviation, <span class="math inline">\(\bar{S}\)</span> (same as for the X-bar chart), and the two constants <span class="math inline">\(B_3\)</span> and <span class="math inline">\(B_4\)</span> From Table <a href="limits.html#tab:limits-tab1">6.1</a>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="limits.html#cb24-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
@@ -799,8 +798,8 @@ Figure 6.10: X-bar and S charts
 </div>
 </div>
 </div>
-<div id="control-limits-in-short" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Control limits in short<a href="limits.html#control-limits-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="control-limits-in-short" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Control limits in short<a href="limits.html#control-limits-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Control limits attempt to estimate the boundaries of the natural common cause process variation. They are placed 3 standard deviations above and below the centre line, which is the (weighted) mean of the subgroup means.</p>
 <p>The procedure for calculating control limits depends on the type of data involved, but the interpretation of charts are the same regardless of data type.</p>
 <p>In the next chapter we will improve our plots by adding visual clues to highlight signs of non-random variation.</p>

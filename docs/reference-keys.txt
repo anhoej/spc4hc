@@ -32,7 +32,6 @@ adding-control-limits-to-produce-a-control-chart
 thats-all-folks
 limits
 introducing-the-spc-function
-formulas-for-calculation-of-control-limits
 count-data
 c-chart
 u-chart

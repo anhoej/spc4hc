@@ -13,11 +13,22 @@ library(knitr)
 library(kableExtra)
 
 source('R/constants.R', local = knitr::knit_global())
+systolic   <- c(169, 172, 175, 174, 161, 142,
+                174, 171, 168, 174, 180, 194,
+                161, 181, 175, 176, 186, 166,
+                157, 183, 177, 171, 185, 176,
+                181, 174)
+day        <- seq_along(systolic)
+cl         <- mean(systolic)
+amr        <- mean(abs(diff(systolic)))
+lcl        <- cl - 2.66 * amr
+ucl        <- cl + 2.66 * amr
+
 ```
 
 In the previous chapter we established the basis for constructing SPC charts with R. In this chapter we continue with different types of control charts and how to construct their control limits.
 
-## Introducing the `spc()` function
+## Introducing the spc() function
 
 To avoid repeating ourselves, let's begin by creating a function to automate the plotting for us.
 
@@ -26,27 +37,17 @@ To avoid repeating ourselves, let's begin by creating a function to automate the
 
 The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, one may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
 
-```{r, echo=FALSE}
-y   <- c(169, 172, 175, 174, 161, 142,
-         174, 171, 168, 174, 180, 194,
-         161, 181, 175, 176, 186, 166,
-         157, 183, 177, 171, 185, 176,
-         181, 174)
-x   <- seq_along(y)
-cl  <- mean(y)
-amr <- mean(abs(diff(y)))
-lcl <- cl - 2.66 * amr
-ucl <- cl + 2.66 * amr
-```
-
 Let us test it with the blood pressure data from Chapter \@ref(first-chart) (Figure \@ref(fig:limits-fig1)).
 
 ```{r limits-fig1, fig.cap='Control chart of systolic blood pressure'}
-spc(x, y, cl, lcl, ucl)
+# create an x variable – not that is it necessary in this case, but just because we can
+day <- seq_along(systolic)
+
+# plot data
+spc(day, systolic, cl, lcl, ucl)
 ```
 
 With this function we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits. 
-
 ## Formulas for calculation of control limits
 
 The formulas for calculation control limits for the most common control charts are provided in Table \@ref(tab:limits-tab1). Don't be alarmed by the number of strange symbols, we will dissect the formulas one by one as we move along.
@@ -73,9 +74,9 @@ For count charts in this chapter we will use the bacteremia data set:
 
 ```{r}
 # read data from file
-bact <- read.csv('data/bacteremia.csv',
-                 comment.char = '#',
-                 colClasses = c(
+bact <- read.csv('data/bacteremia.csv',  # path to data file
+                 comment.char = '#',     # ignore lines that start with "#"
+                 colClasses   = c(       # specify variable types
                    'Date',
                    'integer',
                    'integer',
@@ -95,11 +96,7 @@ The variables are:
 * deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection
 * patients (numeric): number of patients with all-cause infection
 
-<!-- We think of infections as events and patients as cases. The difference may seem insignificant, but consider infections as events that can occur more than once in the same patient, while a patient is either infected or not infected and either dead or alive.  -->
-
 We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.
-
-<!-- Rates and proportions both have numerators and denominators, but they have very different statistical properties. With rates, the numerator and denominator are different things, for example infections and time. With proportions, the numerator and denominator are always the same thing, for example patients and patients. Since the numerator is a subset of the denominator, proportions cannot be greater than 1 (100%). -->
 
 ### C chart
 

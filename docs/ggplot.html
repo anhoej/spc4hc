@@ -190,22 +190,21 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the <code>spc()</code> function</a></li>
-<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>6.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.3</b> Count data</a>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.2</b> Count data</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.3.1</b> C chart</a></li>
-<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.3.2</b> U chart</a></li>
-<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.3.3</b> P chart</a></li>
+<li class="chapter" data-level="6.2.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.2.1</b> C chart</a></li>
+<li class="chapter" data-level="6.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.2.2</b> U chart</a></li>
+<li class="chapter" data-level="6.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.2.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
+<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.3</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
+<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.3.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.3.2</b> MR chart</a></li>
+<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.3.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.3.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.3.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.4</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
@@ -310,7 +309,7 @@ div.csl-indent {
 ## 5 2020-05-01  4 1   0 5.041667 11.77776        FALSE        TRUE     c
 ## 6 2020-06-01  5 1   0 5.041667 11.77776        FALSE        TRUE     c</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ggplot.html#cb47-1" tabindex="-1"></a><span class="fu">plot</span>(p) <span class="co"># not necessary to call spc.plot(), just call the generic plot() function</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.svg" width="672" /></p>
 <p>We may now create any number of alternative plotting functions for spc objects. In this example we will create a plotting function that uses ggplot2.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ggplot.html#cb48-1" tabindex="-1"></a><span class="co"># Load ggplot2</span></span>
 <span id="cb48-2"><a href="ggplot.html#cb48-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -339,7 +338,7 @@ div.csl-indent {
 <span id="cb48-25"><a href="ggplot.html#cb48-25" tabindex="-1"></a></span>
 <span id="cb48-26"><a href="ggplot.html#cb48-26" tabindex="-1"></a><span class="co"># Plot an spc object</span></span>
 <span id="cb48-27"><a href="ggplot.html#cb48-27" tabindex="-1"></a><span class="fu">ggspc</span>(p)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
 <p>We may also turn the spc object into a ggplot2 object:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ggplot.html#cb49-1" tabindex="-1"></a><span class="co"># Make the spc object into a ggplot2 object</span></span>
 <span id="cb49-2"><a href="ggplot.html#cb49-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggspc</span>(p)</span>
@@ -354,7 +353,7 @@ div.csl-indent {
 <span id="cb51-7"><a href="ggplot.html#cb51-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;CDiff infections&#39;</span>,</span>
 <span id="cb51-8"><a href="ggplot.html#cb51-8" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">&#39;Count&#39;</span>,</span>
 <span id="cb51-9"><a href="ggplot.html#cb51-9" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
 <p>Now, if we wished, we could replace the <code>plot.spc()</code> function with this new function. We will leave it to you to decide which of the two you like best.</p>
 <p>The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ggplot.html#cb52-1" tabindex="-1"></a>mytheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
@@ -375,7 +374,7 @@ div.csl-indent {
 <span id="cb52-16"><a href="ggplot.html#cb52-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;30-day mortality&#39;</span>,</span>
 <span id="cb52-17"><a href="ggplot.html#cb52-17" tabindex="-1"></a>       <span class="at">y     =</span> <span class="cn">NULL</span>,</span>
 <span id="cb52-18"><a href="ggplot.html#cb52-18" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 <p>In the long run, though, we might get tired of manually designing our own theme, modifying the plot function, and formatting tick mark labels for every plot. Wouldn’t it be nice to have this done automatically for us? This is exactly what qicharts2 does.</p>
 <p>qicharts2 is an R package for plotting SPC charts and is the subject of the next chapter. qicharts2 builds on the same principles we have developed so far but has a lot more facilities for customising charts. Most importantly, qicharts2 makes it easy to produce multidimensional plots using ggplot2’s faceting methods.</p>
 
