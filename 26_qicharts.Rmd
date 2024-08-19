@@ -24,7 +24,10 @@ To get started with qicharts2, install it and load it into your working environm
 
 
 ```{r, eval=FALSE}
+# install package
 install.packages('qicharts2')
+
+# load package
 library(qicharts2)
 ```
 
@@ -38,13 +41,13 @@ The main function of qicharts2 is `qic()`. It takes the same arguments as the `s
 
 To reproduce our first run chart from Chapter \@ref(first-chart), run:
 
-```{r}
+```{r qicharts-qic1, fig.cap='Run chart produced with the `qic()` function from the qicharts2 package'}
 qic(systolic)
 ```
 
 There are several things to note:
 
-* Default chart title and axis labels are created automatically. These may, of course, be changed using the `title`, `ylab`, and `xlab` arguments.
+* Default chart title and axis labels are created automatically. These can be changed using the title, ylab, and xlab arguments.
 
 * Data points that fall directly on the centre line are greyed out. These do not count as useful observation in the runs analysis.
 
@@ -52,9 +55,9 @@ There are several things to note:
 
 ## A simple control chart
 
-To produce a control chart, we simply add a `chart` argument:
+To produce a control chart, we simply add a chart argument:
 
-```{r}
+```{r qicharts-qic2, fig.cap='I chart produced with `qic()`'}
 qic(systolic, chart = 'i')
 ```
 
@@ -62,9 +65,9 @@ By default `qic()` uses a grey background area to show the natural process limit
 
 ## Excluding data points from analysis
 
-Sometimes it is useful to exclude one or more data points from the calculation of control limits and from the runs analysis. This may be the case when specific data points are known to have been influenced by factors that are not part of the natural process, for example data points that fall outside the control limits. We use the `exclude` argument to do this:
+Sometimes it is useful to exclude one or more data points from the calculation of control limits and from the runs analysis. This may be the case when specific data points are known to have been influenced by factors that are not part of the natural process, for example data points that fall outside the control limits. We use the exclude argument to do this:
 
-```{r}
+```{r qicharts-qic3, fig.cap='I chart with one data point excluded from calculations'}
 qic(systolic, chart = 'i', exclude = 6)
 ```
 
@@ -113,71 +116,96 @@ If any of these conditions is not met we should rather look for the root cause a
 
 Process data is all about time. But often data -- not the least in healthcare -- have more dimensions, which are important to understand in order to interpret data correctly.
 
-- one unit, many indicators
-
-- one indicator, many units
-
-- many units, many indicators
-
-- Test bullet
-
-
-
-
-
-
-For example, the hospital_infections dataset, which is also included in the qicharts2 package, contains monthly counts of three types of hospital infections, bacteremia (BAC), C. diff (CDI), and urinary tract infections (UTI) from six hospitals.
+For example, the hospital_infections dataset, which is also included in the qicharts2 package, contains monthly counts of three types of hospital infections: bacteremia (BAC), C. diff. (CDI), and urinary tract infections (UTI) from six hospitals: AHH, BFH, BOH, HGH, NOH, RGH.
 
 ```{r}
-# show structure of hospitals_infections dataset
-str(hospital_infections)
+# show the first six rows of the hospitals_infections dataset
+head(hospital_infections)
 ```
 
-In this example data have two extra dimensions, infections and hospitals.
+In addition to the time dimension, these data have two extra dimensions, infection and hospital.
 
-A most useful way of visualising multivariate data is to plot data from different "spaces" alongside each other. 
+Figure \@ref(fig:qicharts-hais1) shows the total (aggregated) monthly counts of hospital infections from six hospitals.
 
-```{r qicharts-hais1, fig.cap='Small multiple plot of urinary tract infection from six hospital'}
+```{r qicharts-hais1, fig.cap='Aggregated U chart of urinary tract infections from six hospital'}
 qic(month, n, days, 
-    data = subset(hospital_infections, infection == 'UTI'),
-    chart = 'u',
-    multiply = 10000)
-```
-
-```{r, fig.asp=3/3}
-qic(month, n, days, 
-    data = subset(hospital_infections, infection == 'UTI'),
-    chart = 'u',
+    data     = subset(hospital_infections,
+                      infection == 'UTI'),
+    chart    = 'u',
     multiply = 10000,
-    facets = ~hospital)
+    title    = 'Urinary tract infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
 ```
 
-```{r}
+Figure \@ref(fig:qicharts-hais2) shows the data as Figure \@ref(fig:qicharts-hais1), but this time data have been stratified into so-called small multiple plots -- one plot per hospital.
+
+```{r qicharts-hais2, fig.cap='Stratified (small multiple) U charts of urinary tract infections from six hospital', fig.asp=5/6}
 qic(month, n, days, 
-    data = subset(hospital_infections, hospital == 'NOH'),
-    chart = 'u',
+    data     = subset(hospital_infections, 
+                      infection == 'UTI'),
+    chart    = 'u',
     multiply = 10000,
-    facets = ~infection)
+    facets   = ~hospital,                     # stratify by hospital
+    ncol     = 2,                             # two-column arrangement of plots
+    title    = 'Urinary tract infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
 ```
 
-```{r, fig.asp=3/3}
+In the litterature, small multiples are also known as trellis, lattice, or grid plots.
+
+Likewise, we may construct a small multiple plot of different infection types from one hospital (Figure \@ref(fig:qicharts-hais3)).
+
+```{r qicharts-hais3, fig.cap='U charts from one hospital stratified by infection type', fig.asp=5/5}
 qic(month, n, days, 
-    data = subset(hospital_infections, hospital == 'NOH'),
-    chart = 'u',
+    data     = subset(hospital_infections, 
+                      hospital == 'NOH'),
+    chart    = 'u',
     multiply = 10000,
-    facets = ~infection,
-    scales = 'free_y',
-    ncol = 1)
+    facets   = ~infection,                   # stratify by infection type
+    ncol     = 1,
+    title    = 'Hospital infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
 ```
 
-```{r}
+By default, `qich()` use fixed scales on the axes. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
+
+```{r qicharts-hais4, fig.cap='Small multiple plot with individual y-axes', fig.asp=5/5}
 qic(month, n, days, 
-    data = hospital_infections,
-    chart = 'u',
+    data     = subset(hospital_infections, hospital == 'NOH'),
+    chart    = 'u',
     multiply = 10000,
-    facets = infection ~ hospital,
-    scales = 'free_y',
-    title = 'Hospital infections',
-    ylab = 'Count per 10,000 risk days',
-    xlab = 'Month')
+    facets   = ~infection,
+    scales   = 'free_y',                      # free y-axes
+    ncol     = 1,
+    title    = 'Hospital infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
 ```
+
+The decision about when to use fixed or free axis scales should be taken deliberately depending on the purpose of the plot. Sometimes it may even be useful to display both plots with fixed and free axes side by side.
+
+Finally, we may want to display both dimensions, infection and hospital at the same time (Figure \@ref(fig:qicharts-hais5).
+
+```{r qicharts-hais5, fig.cap='Hospital infections stratified by infection and hospital'}
+qic(month, n, days, 
+    data     = hospital_infections,
+    chart    = 'u',
+    multiply = 10000,
+    facets   = infection ~ hospital,         # two-dimensional faceting by infection and hospital
+    scales   = 'free_y',
+    title    = 'Hospital infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
+```
+
+### To aggregate or not to aggregate
+
+When data come from multiple organisational units, for example hospitals or hospital departments, we must decide if we want to aggregate  or stratify data. 
+
+Figures \@ref(fig:qicharts-hais1) and \@ref(fig:qicharts-hais2) demonstrate the difference. Notice how the aggregated data show no signs of special causes while the stratified data show non-random shifts in two hospitals (BOH and NOH). If data, as in this case, move in different directions in two or more units, aggregation has a tendency to mask or cancel out special causes. However, when minor shifts in data, that are too small to produce signals in the small multiple plots, move in the same direction the shifts tend to add up resulting in a better chance of detecting the special cause with aggregated data.
+
+As usual, the decision to aggregate or stratify must be taken deliberately, preferably by persons with a thorough understanding of the structures and processes that have produced data. And often it may be useful to produce several plots at different levels of aggregation.     
+

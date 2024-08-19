@@ -18,10 +18,17 @@ fig:rfun-imr
 fig:rfun-xbars
 fig:rfun-cu
 fig:rfun-p
+fig:qicharts-qic1
+fig:qicharts-qic2
+fig:qicharts-qic3
 fig:qicharts-cdi1
 fig:qicharts-cdi2
 fig:qicharts-cdi3
 fig:qicharts-hais1
+fig:qicharts-hais2
+fig:qicharts-hais3
+fig:qicharts-hais4
+fig:qicharts-hais5
 what
 variation
 charts_intro
@@ -63,6 +70,7 @@ excluding-data-points-from-analysis
 freezing-baseline-period
 splitting-chart-by-period
 small-multiple-plots-for-multivariate-data
+to-aggregate-or-not-to-aggregate
 case1
 case2
 case3
