@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-19" />
+<meta name="date" content="2024-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,7 +220,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>8.1.1</b> Run chart</a></li>
 <li class="chapter" data-level="8.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>8.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-af-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations af measurements</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
 <li class="chapter" data-level="8.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>8.1.4</b> C and U charts for counts and rates</a></li>
 <li class="chapter" data-level="8.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>8.1.5</b> P chart for percentages</a></li>
 </ul></li>
@@ -653,7 +653,7 @@ Figure 6.5: I-chart
 <h3><span class="header-section-number">6.3.2</span> MR chart<a href="limits.html#mr-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges can always be zero but never negative, the MR chart has no lower control limit.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="limits.html#cb19-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">tail</span>(csect, <span class="dv">60</span>), {</span>
-<span id="cb19-2"><a href="limits.html#cb19-2" tabindex="-1"></a>  mr  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(delay)))</span>
+<span id="cb19-2"><a href="limits.html#cb19-2" tabindex="-1"></a>  mr  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fu">abs</span>(<span class="fu">diff</span>(delay)))  <span class="co"># add NA in front to match the length of the I-chart</span></span>
 <span id="cb19-3"><a href="limits.html#cb19-3" tabindex="-1"></a>  amr <span class="ot">&lt;-</span> <span class="fu">mean</span>(mr, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb19-4"><a href="limits.html#cb19-4" tabindex="-1"></a>  </span>
 <span id="cb19-5"><a href="limits.html#cb19-5" tabindex="-1"></a>  <span class="fu">spc</span>(mr,</span>
@@ -741,7 +741,7 @@ Figure 6.8: X bar chart
 </div>
 <p>Figure <a href="limits.html#fig:limits-xbar">6.8</a> shows the <em>average</em> delay time per month. On average the delay time is 23 minutes (= centre line) and all data points fall between the control limits suggesting that the process is stable and predictable.</p>
 <p>As with U and P charts the control limits vary from month to month reflecting the varying subgroup sizes – small subgroups <span class="math inline">\(\Rightarrow\)</span> wide limits; large subgroups <span class="math inline">\(\Rightarrow\)</span> narrow limits.</p>
-<p>Be careful not to fall for the temptation to conclude that since no months are above the target of 30 minutes, all is well. The 30-minute target concerns the delay time of <em>individual</em> sections, not the <em>averages</em>. Even if the averages are well below the target, individuals may be above, which we already noticed from the I chart above.</p>
+<p>Be careful not to fall for the temptation to conclude that just because no months are above the target of 30 minutes all is well. The 30-minute target applies to the delay time of <em>individual</em> sections, not the <em>averages</em>. Even if the averages are well below the target, individuals may be above, which we already noticed from the I chart above.</p>
 </div>
 <div id="s-chart" class="section level3 hasAnchor" number="6.3.4">
 <h3><span class="header-section-number">6.3.4</span> S chart<a href="limits.html#s-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>

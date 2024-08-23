@@ -34,10 +34,12 @@ Here are examples of each of the Magnificent Eight. See the source code at the e
 
 ### Run chart
 
-```{r rfun-run}
+```{r rfun-run, fig.cap='Run chart'}
 d <- read.csv('data/blood_pressure.csv',
               comment.char = '#',
               colClasses = c(date = 'Date'))
+
+head(d)
 
 spc(date, systolic,
     data = d,
@@ -68,13 +70,15 @@ spc(date, systolic,
 par(op)
 ```
 
-### X-bar and S charts for averages and standard deviations af measurements
+### X-bar and S charts for averages and standard deviations of measurements
 
 ```{r rfun-xbars, fig.asp=1, fig.cap='X-bar and S charts'}
 d <- read.csv('data/renography_doses.csv',
               comment.char = '#',
               colClasses = c(date = 'Date',
                              week = 'Date'))
+
+head(d)
 
 op <- par(mfrow = c(2, 1),
           mar   = c(4, 4, 2, 0) + 0.2)
@@ -99,6 +103,8 @@ par(op)
 d <- read.csv('data/bacteremia.csv',
          comment.char = '#',
          colClasses = c(month = 'Date'))
+
+head(d)
 
 op <- par(mfrow = c(2, 1),
           mar   = c(4, 4, 2, 0) + 0.2)

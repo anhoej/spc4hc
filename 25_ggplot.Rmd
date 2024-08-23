@@ -26,25 +26,32 @@ Also ggplot2 has an extensive theming engine that makes it (relatively) easy to 
 First we will create an spc object and assign it to a variable name for later use:
 
 ```{r}
-# Make spc object
+# make spc object
 p <- spc(month, infections,
          data  = cdiff,
          chart = 'c',
-         plot = FALSE)
+         plot  = FALSE)
 
 ```
 
-Note that we suppressed the plotting and assigned the (invisible) output to the variable 'p'. We can now continue working with p as with any other R object.
+Note that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable 'p'. We can now continue working with p as with any other R object.
 
-```{r}
+```{r ggplot-fig1, fig.cap='SPC chart'}
+# check the class of p
 class(p)
+
+# show the first six rows from p
 head(p)
+
+# show the C chart
 plot(p) # not necessary to call spc.plot(), just call the generic plot() function
 ```
 
+Because p is an object of class "spc" we only need to call the generic `plot()` function, which in turn will pass its first argument to the specialised `spc.plot()` function.
+
 We may now create any number of alternative plotting functions for spc objects. In this example we will create a plotting function that uses ggplot2.
 
-```{r}
+```{r ggplot-fig2, fig.cap='SPC chart using the `ggspc()` function'}
 # Load ggplot2
 library(ggplot2)
 
@@ -76,12 +83,12 @@ ggspc(p)
 
 We may also turn the spc object into a ggplot2 object:
 
-```{r}
-# Make the spc object into a ggplot2 object
+```{r ggplot-fig3, fig.cap='SPC chart with modified theme'}
+# make the spc object into a ggplot2 object
 p <- ggspc(p)
 class(p)
 
-# Plot with modified theme and custom labels
+# plot with modified theme and custom labels
 p +
   theme_light() +
   theme(panel.grid   = element_blank(),
@@ -96,7 +103,7 @@ Now, if we wished, we could replace the `plot.spc()` function with this new func
 
 The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:
 
-```{r}
+```{r ggplot-fig4, fig.cap='SPC chart with labels and custom y-axis'}
 mytheme <- function() {
   theme_light() +
   theme(panel.grid   = element_blank(),

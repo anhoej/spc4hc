@@ -11,7 +11,7 @@ In the previous chapter we calculated control limits for the most common types o
 
 Control limits are designed to identify rather large (> 2SD), possibly transient, changes in the system. However, as discussed in Part 1 of this book, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. Most known are the Western Electric Rules introduced in the 1950s. The WE rules are based on the distribution of data points relative to the 1, 2, and 3 SD limits.
 
-Recently we introduced two simple rules that rely only on the distribution of data points around the centre line, the shift and crossings rules that look for unusually long runs of data points on the same side of the centre line or unusually few crossings of the centre line (@anhoej2014).
+Recently Anhøj et al. introduced two simple rules that rely only on the distribution of data points around the centre line, the shift and crossings rules, that look for unusually long runs of data points on the same side of the centre line or unusually few crossings of the centre line (@anhoej2014).
 
 The shift and crossings rules are comparable to the WE rules in their sensitivity to minor and moderate *sustained* shifts and trends in data and may be used alone with run charts without control limits (@anhoej2015, @anhoej2018b).
 

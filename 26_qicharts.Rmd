@@ -12,7 +12,7 @@ source('R/load_data.R', local = knitr::knit_global())
 library(qicharts2)
 ```
 
-qicharts2 (Quality Improvement Charts, @qicharts2) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.
+qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.
 
 To learn everything about qichart2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on some key facilities that is still missing from the function library we have buld so far:
 
@@ -45,7 +45,7 @@ To reproduce our first run chart from Chapter \@ref(first-chart), run:
 qic(systolic)
 ```
 
-There are several things to note:
+There are several things to note in Figure \@ref(fig:qicharts-qic1):
 
 * Default chart title and axis labels are created automatically. These can be changed using the title, ylab, and xlab arguments.
 
@@ -55,7 +55,7 @@ There are several things to note:
 
 ## A simple control chart
 
-To produce a control chart, we simply add a chart argument:
+To produce a control chart, we simply add a chart argument (Figure \@ref(fig:qicharts-qic2)):
 
 ```{r qicharts-qic2, fig.cap='I chart produced with `qic()`'}
 qic(systolic, chart = 'i')
@@ -71,7 +71,7 @@ Sometimes it is useful to exclude one or more data points from the calculation o
 qic(systolic, chart = 'i', exclude = 6)
 ```
 
-Notice how the values for the centre line and control limits changed a little. Specifically, the control limits became slightly narrower.
+Notice how the values for the centre line and control limits in Figure \@ref(fig:qicharts-qic3) changed a little. Specifically, the control limits became slightly narrower.
 
 Excluding data points should be a deliberate decision and not something that is done automatically just because one or more data points are outside the control limits. Exclusion should be based on a thorough understanding of the process and only when the reason(s) for a special cause has been established. Otherwise, the whole idea of SPC as a way of understanding variation and its sources is lost.
 
@@ -79,7 +79,7 @@ Excluding data points should be a deliberate decision and not something that is 
 
 When data have been collected for a long enough period of time to establish the centre line and control limits of a stable and predictable process -- that is, a process with only common cause variation -- it is often useful to "freeze" the limits and use them for future data.
 
-In production industry this technique is referred to as phase one and phase two studies. In healthcare freezing is especially useful when we have historical data from before the start of some type of intervention or improvement programme. When plotting future data with the centre line and control limits from a stable baseline period shifts and trends will show up faster than if they were recalculated with every new data point.
+In production industry this technique is referred to as phase one and phase two studies. In healthcare freezing is especially useful when we have historical data from before the start of some type of intervention or improvement programme. When plotting future data with the centre line and control limits from a stable baseline period shifts and trends will show up faster than if the limits were recalculated with every new data point.
 
 The cdi dataset comes with qicharts2 and contains monthly counts of infections two years before and one year after the initiation of an improvement programme. Check the documentation for details, `?cdi`.
 
@@ -138,7 +138,7 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-Figure \@ref(fig:qicharts-hais2) shows the data as Figure \@ref(fig:qicharts-hais1), but this time data have been stratified into so-called small multiple plots -- one plot per hospital.
+Figure \@ref(fig:qicharts-hais2) shows the same data as Figure \@ref(fig:qicharts-hais1), but this time data have been stratified into so-called small multiple plots -- one plot per hospital.
 
 ```{r qicharts-hais2, fig.cap='Stratified (small multiple) U charts of urinary tract infections from six hospital', fig.asp=5/6}
 qic(month, n, days, 
@@ -170,7 +170,7 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-By default, `qich()` use fixed scales on the axes. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
+By default, `qich()` use fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
 
 ```{r qicharts-hais4, fig.cap='Small multiple plot with individual y-axes', fig.asp=5/5}
 qic(month, n, days, 
@@ -187,14 +187,14 @@ qic(month, n, days,
 
 The decision about when to use fixed or free axis scales should be taken deliberately depending on the purpose of the plot. Sometimes it may even be useful to display both plots with fixed and free axes side by side.
 
-Finally, we may want to display both dimensions, infection and hospital at the same time (Figure \@ref(fig:qicharts-hais5).
+Finally, we may want to display both dimensions, infection and hospital, at the same time as in Figure \@ref(fig:qicharts-hais5).
 
 ```{r qicharts-hais5, fig.cap='Hospital infections stratified by infection and hospital'}
 qic(month, n, days, 
     data     = hospital_infections,
     chart    = 'u',
     multiply = 10000,
-    facets   = infection ~ hospital,         # two-dimensional faceting by infection and hospital
+    facets   = infection ~ hospital,         # two-dimensional faceting
     scales   = 'free_y',
     title    = 'Hospital infections',
     ylab     = 'Count per 10,000 risk days',

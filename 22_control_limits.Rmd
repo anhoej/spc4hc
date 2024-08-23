@@ -241,7 +241,7 @@ The MR chart plots the moving ranges of individual values. It is a companion to 
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 60), {
-  mr  <- c(NA, abs(diff(delay)))
+  mr  <- c(NA, abs(diff(delay)))  # add NA in front to match the length of the I-chart
   amr <- mean(mr, na.rm = TRUE)
   
   spc(mr,
@@ -323,7 +323,7 @@ Figure \@ref(fig:limits-xbar) shows the *average* delay time per month. On avera
 
 As with U and P charts the control limits vary from month to month reflecting the varying subgroup sizes -- small subgroups $\Rightarrow$ wide limits; large subgroups $\Rightarrow$ narrow limits.
 
-Be careful not to fall for the temptation to conclude that since no months are above the target of 30 minutes, all is well. The 30-minute target concerns the delay time of *individual* sections, not the *averages*. Even if the averages are well below the target, individuals may be above, which we already noticed from the I chart above.
+Be careful not to fall for the temptation to conclude that just because no months are above the target of 30 minutes all is well. The 30-minute target applies to the delay time of *individual* sections, not the *averages*. Even if the averages are well below the target, individuals may be above, which we already noticed from the I chart above.
 
 ### S chart
 

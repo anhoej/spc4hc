@@ -34,14 +34,15 @@ To guide the runs analysis we will add the centre line, which in run charts is u
 
 ```{r first-chart-run2, fig.cap='Run chart with centre line'}
 # Create systolic-coordinates for the centre line
-cl  <- rep(median(systolic), length(systolic))
+cl  <- median(systolic)           # calculate median
+cl  <- rep(cl, length(systolic))  # repeat to match the length of y
 
 # Plot data and add centre line
 plot(systolic, type = 'o')
 lines(cl)
 ```
 
-We find that the longest runs (there are two of them, 14:17 and 23:26) have 5 data points and that the curve crosses the centre line 10 times. With 26 data points and using the runs rules proposed previously, the upper limit for longest run is 8 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *persistent* shifts or trends in data over time.
+We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the runs rules proposed previously, the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *persistent* shifts or trends in data over time.
 
 ## Adding control limits to produce a control chart
 

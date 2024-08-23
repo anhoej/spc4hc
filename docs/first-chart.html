@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-19" />
+<meta name="date" content="2024-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,7 +220,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>8.1.1</b> Run chart</a></li>
 <li class="chapter" data-level="8.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>8.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-af-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations af measurements</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
 <li class="chapter" data-level="8.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>8.1.4</b> C and U charts for counts and rates</a></li>
 <li class="chapter" data-level="8.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>8.1.5</b> P chart for percentages</a></li>
 </ul></li>
@@ -308,18 +308,19 @@ Figure 5.1: Simple run chart
 <p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
 <p>To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the centre line</span></span>
-<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">median</span>(systolic), <span class="fu">length</span>(systolic))</span>
-<span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="first-chart.html#cb3-4" tabindex="-1"></a><span class="co"># Plot data and add centre line</span></span>
-<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
-<span id="cb3-6"><a href="first-chart.html#cb3-6" tabindex="-1"></a><span class="fu">lines</span>(cl)</span></code></pre></div>
+<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">median</span>(systolic)           <span class="co"># calculate median</span></span>
+<span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl, <span class="fu">length</span>(systolic))  <span class="co"># repeat to match the length of y</span></span>
+<span id="cb3-4"><a href="first-chart.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="co"># Plot data and add centre line</span></span>
+<span id="cb3-6"><a href="first-chart.html#cb3-6" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
+<span id="cb3-7"><a href="first-chart.html#cb3-7" tabindex="-1"></a><span class="fu">lines</span>(cl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run2"></span>
 <img src="_main_files/figure-html/first-chart-run2-1.svg" alt="Run chart with centre line" width="672" />
 <p class="caption">
 Figure 5.2: Run chart with centre line
 </p>
 </div>
-<p>We find that the longest runs (there are two of them, 14:17 and 23:26) have 5 data points and that the curve crosses the centre line 10 times. With 26 data points and using the runs rules proposed previously, the upper limit for longest run is 8 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of <em>persistent</em> shifts or trends in data over time.</p>
+<p>We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the runs rules proposed previously, the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of <em>persistent</em> shifts or trends in data over time.</p>
 </div>
 <div id="adding-control-limits-to-produce-a-control-chart" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
