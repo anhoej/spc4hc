@@ -87,3 +87,14 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+anatomy-and-physiology-of-spc-charts-generic-spc-chart
+testing-for-non-random-variation-in-spc-charts
+tests-based-on-sigma-limits
+runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
+look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts
+two-types-of-errors-when-using-spc
+formulas-for-calculation-of-control-limits
+fig:spc-fig1
+fig:spc-fig2
+fig:spc-fig3
