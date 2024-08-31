@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Your First SPC Charts With Base R | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="responding.html"/>
-<link rel="next" href="limits.html"/>
+<link rel="prev" href="charts_intro.html"/>
+<link rel="next" href="responding.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -299,95 +299,47 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="first-chart" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Your First SPC Charts With Base R<a href="first-chart.html#first-chart" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from <code>ggplot2</code>and <code>qicharts2</code>.</p>
-<p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower boundaries of the natural variation in data.</p>
-<div id="a-run-chart-of-blood-pressure-data" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> A run chart of blood pressure data<a href="first-chart.html#a-run-chart-of-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>systolic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
-<span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>              <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
-<span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>              <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>
-<span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a>              <span class="dv">157</span>, <span class="dv">183</span>, <span class="dv">177</span>, <span class="dv">171</span>, <span class="dv">185</span>, <span class="dv">176</span>,</span>
-<span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>              <span class="dv">181</span>, <span class="dv">174</span>)</span></code></pre></div>
-<p>First we plot a simple point-and-line chart without any helper lines (Figure <a href="first-chart.html#fig:first-chart-run1">6.1</a>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="first-chart.html#cb2-1" tabindex="-1"></a><span class="co"># Make point-and-line plot</span></span>
-<span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-run1"></span>
-<img src="_main_files/figure-html/first-chart-run1-1.svg" alt="Simple run chart" width="672" />
+<div id="special_causes" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Testing for Special Cause Variation<a href="special_causes.html#special_causes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="figure"><span style="display:block;" id="fig:spc-fig2"></span>
+<img src="_main_files/figure-html/spc-fig2-1.svg" alt="Control chart with a large (2 SD) transient shift in data" width="672" />
 <p class="caption">
-Figure 6.1: Simple run chart
+Figure 4.1: Control chart with a large (2 SD) transient shift in data
 </p>
 </div>
-<p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
-<p>To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure <a href="first-chart.html#fig:first-chart-run2">6.2</a>):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the centre line</span></span>
-<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">median</span>(systolic)           <span class="co"># calculate median</span></span>
-<span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl, <span class="fu">length</span>(systolic))  <span class="co"># repeat to match the length of y</span></span>
-<span id="cb3-4"><a href="first-chart.html#cb3-4" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="co"># Plot data and add centre line</span></span>
-<span id="cb3-6"><a href="first-chart.html#cb3-6" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
-<span id="cb3-7"><a href="first-chart.html#cb3-7" tabindex="-1"></a><span class="fu">lines</span>(cl)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-run2"></span>
-<img src="_main_files/figure-html/first-chart-run2-1.svg" alt="Run chart with centre line" width="672" />
+<div class="figure"><span style="display:block;" id="fig:spc-fig3"></span>
+<img src="_main_files/figure-html/spc-fig3-1.svg" alt="Control chart with a minor (1 SD) sustained shift in data" width="672" />
 <p class="caption">
-Figure 6.2: Run chart with centre line
+Figure 4.2: Control chart with a minor (1 SD) sustained shift in data
 </p>
 </div>
-<p>We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the runs rules proposed previously, the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of <em>persistent</em> shifts or trends in data over time.</p>
+<div id="tests-based-on-sigma-limits" class="section level3 hasAnchor" number="4.0.1">
+<h3><span class="header-section-number">4.0.1</span> Tests based on sigma limits<a href="special_causes.html#tests-based-on-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>the 3-sigma test</p></li>
+<li><p>the Western Electric rules</p></li>
+</ul>
 </div>
-<div id="adding-control-limits-to-produce-a-control-chart" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We use the same technique to add the lower and upper control limits.</p>
-<p>Remember that the control limits are usually set to <span class="math inline">\(CL \pm 3 SD\)</span>, where CL is the centre line, usually the mean, and SD is the estimated standard deviation – that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.</p>
-<p>With data consisting of single measurements, we may estimate the common cause standard deviation using the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter <a href="limits.html#limits">7</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="first-chart.html#cb4-1" tabindex="-1"></a><span class="co"># Calulate the centre line (mean)</span></span>
-<span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">mean</span>(systolic), <span class="fu">length</span>(systolic))</span>
-<span id="cb4-3"><a href="first-chart.html#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="first-chart.html#cb4-4" tabindex="-1"></a><span class="co"># Calculate the average moving range of data</span></span>
-<span id="cb4-5"><a href="first-chart.html#cb4-5" tabindex="-1"></a>mr <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">diff</span>(systolic))</span>
-<span id="cb4-6"><a href="first-chart.html#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="first-chart.html#cb4-7" tabindex="-1"></a><span class="co"># Print the moving ranges for our viewing pleasure</span></span>
-<span id="cb4-8"><a href="first-chart.html#cb4-8" tabindex="-1"></a>mr</span></code></pre></div>
-<pre><code>##  [1]  3  3  1 13 19 32  3  3  6  6 14 33 20  6  1 10 20  9 26  6  6 14  9  5  7</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="first-chart.html#cb6-1" tabindex="-1"></a><span class="co"># Calculate the average moving range</span></span>
-<span id="cb6-2"><a href="first-chart.html#cb6-2" tabindex="-1"></a>amr <span class="ot">&lt;-</span> <span class="fu">mean</span>(mr)</span>
-<span id="cb6-3"><a href="first-chart.html#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="first-chart.html#cb6-4" tabindex="-1"></a><span class="co"># Calculate the process standard deviation</span></span>
-<span id="cb6-5"><a href="first-chart.html#cb6-5" tabindex="-1"></a>s <span class="ot">&lt;-</span> amr <span class="sc">/</span> <span class="fl">1.128</span></span>
-<span id="cb6-6"><a href="first-chart.html#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the control limits</span></span>
-<span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s</span>
-<span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s</span></code></pre></div>
-<p>Before we plot data, we need to expand the systolic-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">6.3</a>):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data while expanding the systolic-axis to make room for all data and lines</span></span>
-<span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(systolic, lcl, ucl))</span>
-<span id="cb7-3"><a href="first-chart.html#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="first-chart.html#cb7-4" tabindex="-1"></a><span class="co"># Add lines</span></span>
-<span id="cb7-5"><a href="first-chart.html#cb7-5" tabindex="-1"></a><span class="fu">lines</span>(ucl)</span>
-<span id="cb7-6"><a href="first-chart.html#cb7-6" tabindex="-1"></a><span class="fu">lines</span>(cl)</span>
-<span id="cb7-7"><a href="first-chart.html#cb7-7" tabindex="-1"></a><span class="fu">lines</span>(lcl)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:first-chart-ctrl1"></span>
-<img src="_main_files/figure-html/first-chart-ctrl1-1.svg" alt="Standardised control chart" width="672" />
-<p class="caption">
-Figure 6.3: Standardised control chart
-</p>
+<div id="runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="section level3 hasAnchor" number="4.0.2">
+<h3><span class="header-section-number">4.0.2</span> Runs analysis – tests based on the distribution of data points around the centre line<a href="special_causes.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>unusually long runs</p></li>
+<li><p>unusually few crossings</p></li>
+</ul>
 </div>
-<p>One (freak) data point is below the lower control limit suggesting that this reading has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement.</p>
+<div id="look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> look mom, no control limits! – using runs analysis as stand-alone rules with run charts<a href="special_causes.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="thats-all-folks" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> That’s all, Folks!<a href="first-chart.html#thats-all-folks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>So constructing an SPC chart using R may be done using a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.</p>
-<p>Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.</p>
-<p>In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, “The Magnificent Eight”.</p>
+<div id="two-types-of-errors-when-using-spc" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Two types of errors when using SPC<a href="special_causes.html#two-types-of-errors-when-using-spc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
+<ul>
+<li><p>Error 1: Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
+<li><p>Error 2: Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
+</ul>
+<p>Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from mistake 1. And if all data were treated as common cause variation, this maximises the losses from mistake 2. Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart concluded that it was best to make either mistake only rarely and that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to ± three standard deviations from the mean provides a reasonable balance between making the two types of mistakes.</p>
+<p>The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgment which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention (we discuss this later in book).</p>
 
-</div>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-mohammed2008" class="csl-entry">
-Mohammed, M A, P Worthington, and W H Woodall. 2008. <span>“Plotting Basic Control Charts: Tutorial Notes for Healthcare Practitioners.”</span> <em>BMJ Qual Saf</em> 17 (2): 137–45. <a href="https://doi.org/10.1136/qshc.2004.012047">https://doi.org/10.1136/qshc.2004.012047</a>.
 </div>
 </div>
             </section>
@@ -395,8 +347,8 @@ Mohammed, M A, P Worthington, and W H Woodall. 2008. <span>“Plotting Basic Con
           </div>
         </div>
       </div>
-<a href="responding.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="charts_intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="responding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,3 +1,6 @@
+fig:spc-fig1
+fig:spc-fig2
+fig:spc-fig3
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
@@ -37,6 +40,15 @@ fig:qicharts-hais5
 what
 variation
 charts_intro
+anatomy-and-physiology-of-spc-charts
+some-common-types-of-control-charts-the-magnificient-seven
+counts
+measurements
+special_causes
+tests-based-on-sigma-limits
+runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
+look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts
+two-types-of-errors-when-using-spc
 responding
 first-chart
 a-run-chart-of-blood-pressure-data
@@ -87,14 +99,3 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-anatomy-and-physiology-of-spc-charts-generic-spc-chart
-testing-for-non-random-variation-in-spc-charts
-tests-based-on-sigma-limits
-runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
-look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts
-two-types-of-errors-when-using-spc
-formulas-for-calculation-of-control-limits
-fig:spc-fig1
-fig:spc-fig2
-fig:spc-fig3

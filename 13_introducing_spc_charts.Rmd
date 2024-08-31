@@ -9,83 +9,79 @@ editor_options:
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
                       dev     = 'svg')
-source('R/load_data.R', local = knitr::knit_global())
-library(qicharts2)
+library(kableExtra)
 
-options(qic.clshade = FALSE)
+source('R/stdchart.R', local = knitr::knit_global())
 ```
 
-There are many different types of control chart and the chart to be used is determined largely by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.
+There are many different types of control chart and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.
 
-Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help discriminate between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. To help identify unusual patterns several statistical tests (or rules) have been developed.
+In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In Part 2 of this book we will go into detail on how to do the actual calculations involved.
 
-Shewhart's brilliant invention was the idea of control limits to show the boundaries of the common cause variation. Data points that lie between the lines represent common cause variation and data points outside the limits represent special cause variation.
+Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. To help identify unusual patterns several statistical tests (or rules) have been developed.
 
+Before we get to the rules, we will take a close look at the structure and the functionality of SPC charts.
 
+## Anatomy and physiology of SPC charts
 
+Shewhart's brilliant invention was the idea of control limits to show the boundaries of the common cause variation in data. Data points that lie between the lines represent common cause variation and data points outside the limits represent special cause variation.
 
-```{r spc-fig1, fig.cap='Control chart with one data point outside control limits', echo=FALSE}
-set.seed(3)
-y <- rnorm(24, 9)
-y[22] <- 13
+```{r spc-fig1, fig.cap='Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit', echo=FALSE}
+set.seed(33)
+y1 <- y2 <- y3 <- rnorm(24)
 
-qic(y, chart = 'i',
-    title = NULL,
-    ylab = 'Indicator',
-    xlab = 'Subgroup')
+stdchart(y1)
 ```
 
+Figure \@ref(fig:spc-fig1) shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.
+
+We see that the data points are distributed fairly symmetrical around the centre line and that most data points are close to the centre. As we move away from the centre line, data become rarer. 
+
+The control limits are positioned so that nearly all data points from a common cause process with fall between them. Conversely, data points outside the limits will most likely represent special causes.
+
+Based on empirical evidence from designed experiments involving real life data Shewhart found that in practice most process data are found within three standard deviations from the process centre. This is especially true when data, as in Figure  \@ref(fig:spc-fig1), come from a normal distribution, where the 3-sigma limits are expected to contain over 99.7% of data. Consequently, the chance of any particular data point being outside the limits purely by chance is about three out of a thousand. Thus, in a control chart with a total of 20 data points the chance of *all* data points being within the control limits is about 95% (1 - 0.997^20^).
+
+But before we go down that rabbit hole we must realise that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because "it works" (@shewhart1931, p. 18). By this he meant that 3-sigma limits strike the best balance between finding or overlooking special causes regardless of the type and distribution of data. More on this later.
+
+It is important to realise that the SD in question is the SD of the common cause variation, not the overall, pooled SD that would include both the common and any special cause variation. The procedure for calculating -- or rather estimating -- the common cause SD depends on the type of data involved.
+
+## Some common types of control charts -- The Magnificient Seven
+
+In summary, a Shewhart control chart is a point-and-line plot of data over time with three added horizontal lines: the centre line representing the overall mean of data and the lower and upper control lines representing the limits of the natural process variation. The control limits are positioned three times the common cause SD above and below the centre line. All types of control charts follow this general formula for control lines:
+
+$$CL \pm 3SD$$
+
+So to construct a control chart, all we need to know is how to find the process standard deviation. As mentioned before, we do *not* use the overall SD of all the data as this would include any variation due to special causes and inflate the control limits. Instead we use a pooled estimate of the *within* subgroup SDs, which in turn depend on the type of data involved. The formulas for constructing control limits are presented in Table \@ref(tab:limits-tab1).
+
+Generally, data come in two flavours: count data and measurement data.
+
+### Counts
+
+Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. Events are phenomena that happen in time and space, for example patient falls. Cases are units with (or without) a certain property, for example patients who fell. 
+
+When counting falls as events every fall counts. When counting patients as units who fell every patient counts -- but only once regardless of how many times each patient fell. 
+
+Both events and cases may be expressed as ratios, that is counts divided by some denominator. Events may be expressed as rates, number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
+
+Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different that the numerator. With proportions the numerators and denominators are counts of the same thing, for example patients. Also, with proportions the numerator cannot be larger than the denominator.
+
+The most common chart types for count data are:
+
+* **C chart**: count of events, e.g. number of patient falls.
+* **U chart**: event rates, e.g. number of patient falls per unit of time.
+* **P chart**: unit proportions, e.g. proportion of patients who fell.
+
+### Measurements
+
+Measurements are data that are measured on a continuous scale and may have decimals, for example blood pressure, height and weight, or waiting times.
+
+As an example, take waiting or "door-to-needle" times. These may be plotted as either individual times where each data point (subgroup) represents one patient or as average time for all patients in a certain period of time, for example an hour, day, week, or month.
+
+When plotting individual measurement data we use the I chart (aka the X chart). When plotting the average of multiple measurement per subgroup we use the X-bar chart.
+
+When plotting measurements it is sometimes useful to also plot a chart of the within subgroup SDs. For this we use the moving range (MR) chart together with I charts and S charts together with X-bar charts. So for measurement data we have:
+
+* **I and MR charts**: individual measurement, subgroup size = 1.
+* **X-bar and S charts**: multiple measurements, subgroup size > 1.
 
 
-
-```{r spc-fig2, fig.cap='Control chart with a sustained shift in data', echo=FALSE}
-y[17:24] <- rnorm(8, mean = 11)
-
-qic(y, chart = 'i',
-    title = NULL,
-    ylab = 'Indicator',
-    xlab = 'Subgroup')
-```
-
-
-
-
-Two important types of data are: continuous (measurement) data and discrete (or count or attribute) data. Continuous data involve measurement—for example weight, height, blood pressure, length of stay and time from referral to surgery. Discrete data involve counts (integers)—for example, number of admissions, number of prescriptions, number of errors and number of patients waiting. For continuous data that are available a point at a time (ie, not in subgroups) the xmr-chart (also known as the individuals chart) is often appropriate. For discrete data, the p-chart, u-chart and the c-chart are relevant. We will show how to construct the xmr-chart, p-chart, u-chart and c-chart using worked examples.
-
-## Anatomy and physiology of SPC charts – generic SPC chart
-
-## Testing for Non-random Variation in SPC Charts
-
-### Tests based on sigma limits
-
-* the 3-sigma test
-
-* the Western Electric rules
-
-### Runs analysis – tests based on the distribution of data points around the centre line
-
-* unusually long runs
-
-* unusually few crossings
-
-## look mom, no control limits! – using runs analysis as stand-alone rules with run charts
-
-## Two types of errors when using SPC
-
-Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).
-
-* Error 1: Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process. 
-
-* Error 2: Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.
-
-Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from mistake 1. And if all data were treated as common cause variation, this maximises the losses from mistake 2.  Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart concluded that it was best to make either mistake only rarely and that this depended largely upon the costs of looking unnecessarily for special cause variation.  Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to ± three standard deviations from the mean provides a reasonable balance between making the two types of mistakes.
-
-The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgment which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention (we discuss this later in book).
-
-The Magnificent Eight
-    1. Run chart
-    2. I chart (aka X chart): MR chart
-    3. X-bar chart: S chart
-    4. C chart
-    5. U chart
-    6. P chart
