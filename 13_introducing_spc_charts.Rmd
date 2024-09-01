@@ -14,13 +14,13 @@ library(kableExtra)
 source('R/stdchart.R', local = knitr::knit_global())
 ```
 
-There are many different types of control chart and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.
+There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.
 
 In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In Part 2 of this book we will go into detail on how to do the actual calculations involved.
 
 Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. To help identify unusual patterns several statistical tests (or rules) have been developed.
 
-Before we get to the rules, we will take a close look at the structure and the functionality of SPC charts.
+Before we get to the rules in Chapter \@ref(testing), we will take a close look at the structure and the functionality of SPC charts.
 
 ## Anatomy and physiology of SPC charts
 
@@ -33,7 +33,7 @@ y1 <- y2 <- y3 <- rnorm(24)
 stdchart(y1)
 ```
 
-Figure \@ref(fig:spc-fig1) shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.
+Figure \@ref(fig:spc-fig1) shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits. The data included in each data point are called subgroups.
 
 We see that the data points are distributed fairly symmetrical around the centre line and that most data points are close to the centre. As we move away from the centre line, data become rarer. 
 
@@ -43,25 +43,26 @@ Based on empirical evidence from designed experiments involving real life data S
 
 But before we go down that rabbit hole we must realise that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because "it works" (@shewhart1931, p. 18). By this he meant that 3-sigma limits strike the best balance between finding or overlooking special causes regardless of the type and distribution of data. More on this later.
 
-It is important to realise that the SD in question is the SD of the common cause variation, not the overall, pooled SD that would include both the common and any special cause variation. The procedure for calculating -- or rather estimating -- the common cause SD depends on the type of data involved.
+It is important to realise that the SD in question is that of the common cause variation, not the overall, pooled SD that would include both the common and any special cause variation. The procedure for calculating -- or rather estimating -- the common cause SD depends on the type of data involved.
 
 ## Some common types of control charts -- The Magnificient Seven
 
-In summary, a Shewhart control chart is a point-and-line plot of data over time with three added horizontal lines: the centre line representing the overall mean of data and the lower and upper control lines representing the limits of the natural process variation. The control limits are positioned three times the common cause SD above and below the centre line. All types of control charts follow this general formula for control lines:
+
+As described above, the control limits are positioned three times the common cause SD above and below the centre line. Thus, all types of control charts follow this general formula for control lines:
 
 $$CL \pm 3SD$$
 
-So to construct a control chart, all we need to know is how to find the process standard deviation. As mentioned before, we do *not* use the overall SD of all the data as this would include any variation due to special causes and inflate the control limits. Instead we use a pooled estimate of the *within* subgroup SDs, which in turn depend on the type of data involved. The formulas for constructing control limits are presented in Table \@ref(tab:limits-tab1).
+So to construct a control chart, all we need to know is how to find the process standard deviation. As mentioned before, we do *not* use the overall SD of all the data as this would include any variation due to special causes and inflate the control limits. Instead we use a pooled average of the *within* subgroup SDs, which in turn depend on the type of data involved. The impatient reader may find the formulas for constructing control limits in Table \@ref(tab:limits-tab1) later in the book.
 
 Generally, data come in two flavours: count data and measurement data.
 
 ### Counts
 
-Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. Events are phenomena that happen in time and space, for example patient falls. Cases are units with (or without) a certain property, for example patients who fell. 
+Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. **Events** are phenomena that happen in time and space, for example patient falls. **Cases** are units with (or without) a certain property, for example patients who fell. 
 
-When counting falls as events every fall counts. When counting patients as units who fell every patient counts -- but only once regardless of how many times each patient fell. 
+When counting falls as events, every fall counts. When counting patients as units who fell, every patient counts -- but only once regardless of how many times each patient fell. 
 
-Both events and cases may be expressed as ratios, that is counts divided by some denominator. Events may be expressed as rates, number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
+Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
 
 Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different that the numerator. With proportions the numerators and denominators are counts of the same thing, for example patients. Also, with proportions the numerator cannot be larger than the denominator.
 
@@ -69,7 +70,7 @@ The most common chart types for count data are:
 
 * **C chart**: count of events, e.g. number of patient falls.
 * **U chart**: event rates, e.g. number of patient falls per unit of time.
-* **P chart**: unit proportions, e.g. proportion of patients who fell.
+* **P chart**: case proportions, e.g. proportion of patients who fell.
 
 ### Measurements
 
@@ -84,4 +85,12 @@ When plotting measurements it is sometimes useful to also plot a chart of the wi
 * **I and MR charts**: individual measurement, subgroup size = 1.
 * **X-bar and S charts**: multiple measurements, subgroup size > 1.
 
+## Common SPC charts in summary
 
+In summary, a Shewhart control chart is a point-and-line plot of data over time with three added horizontal lines: the centre line representing the overall mean of data and the lower and upper control lines representing the limits of the natural process variation.
+
+While there are many types of SPC charts for different types of data they all look and behave the same. In this chapter we introduced the most common types used in healthcare, The Magnificient Seven, and their use cases.
+
+When choosing the right chart we must first decide what type of data we have. For count data there are three common types: C, U, and P charts for event counts, event rates, and proportions respectively. For measurement data we have I and X-bar charts for individual measurements and averages respectively. MR and S charts plot estimates of the within subgroup standard deviation and are often plotted alongside I and X-bar charts.
+
+In the next chapter we will discuss different techniques and  rules used to detect special causes, and we will suggest a set of rules that have been thoroughly studied and validated and provide a high sensitivity to special cause variation while keeping the false alarm rate at a reasonable level.

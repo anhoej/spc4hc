@@ -44,7 +44,9 @@ anatomy-and-physiology-of-spc-charts
 some-common-types-of-control-charts-the-magnificient-seven
 counts
 measurements
-special_causes
+common-spc-charts-in-summary
+testing
+patterns-of-non-random-variation-in-time-series-data
 tests-based-on-sigma-limits
 runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
 look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts

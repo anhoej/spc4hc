@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-08-31" />
+<meta name="date" content="2024-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,8 +171,10 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Synopsis</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a>
+<ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
@@ -187,13 +189,17 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.1" data-path="charts_intro.html"><a href="charts_intro.html#counts"><i class="fa fa-check"></i><b>3.2.1</b> Counts</a></li>
 <li class="chapter" data-level="3.2.2" data-path="charts_intro.html"><a href="charts_intro.html#measurements"><i class="fa fa-check"></i><b>3.2.2</b> Measurements</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="charts_intro.html"><a href="charts_intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>3.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="special_causes.html"><a href="special_causes.html"><i class="fa fa-check"></i><b>4</b> Testing for Special Cause Variation</a>
+<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Testing for Special Cause Variation</a>
 <ul>
-<li class="chapter" data-level="4.0.1" data-path="special_causes.html"><a href="special_causes.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.0.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="4.0.2" data-path="special_causes.html"><a href="special_causes.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.0.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
-<li class="chapter" data-level="4.1" data-path="special_causes.html"><a href="special_causes.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.1</b> look mom, no control limits! – using runs analysis as stand-alone rules with run charts</a></li>
-<li class="chapter" data-level="4.2" data-path="special_causes.html"><a href="special_causes.html#two-types-of-errors-when-using-spc"><i class="fa fa-check"></i><b>4.2</b> Two types of errors when using SPC</a></li>
+<li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.1.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.1.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.2</b> look mom, no control limits! – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#two-types-of-errors-when-using-spc"><i class="fa fa-check"></i><b>4.3</b> Two types of errors when using SPC</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>5</b> Responding to SPC Signals</a></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
@@ -304,40 +310,14 @@ div.csl-indent {
 <p>This book is about the practical application of statistical process control (SPC) methodology in healthcare.</p>
 <p>SPC is based on a fundamental intuitive insight – that processes are subject to two sources of variation: common cause and special cause variation. This simple yet profound insight enables us to monitor, understand, and improve a wide range of processes.</p>
 <p>With this insight comes a set of intuitive visual tools, run and control charts, that make it easy to tell common from special cause variation.</p>
-<!-- The notion of common and special cause variation is best illustrated by a control chart, which is one of the tools of SPC. The chart in Figure \@ref(fig:intro-ichart) shows daily measurements of blood pressure in a patient. The centre line marks the mean of the measurements, and the two horizontal lines (control limits) mark the boundaries of the natural common cause variation in data. Most data points are located randomly around the centre and between the control limits, but one data point (#6) lies outside the limits and represents a special cause -- that is, this data points has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement. -->
-<!-- ```{r intro-ichart, fig.cap='I control chart produced with the R package qicharts2', echo=FALSE, dev='svg', fig.asp=0.5} -->
-<!-- x <- c(169, 172, 175, 174, -->
-<!--        161, 142, 174, 171, -->
-<!--        168, 174, 180, 194, -->
-<!--        161, 181, 175, 176, -->
-<!--        186, 166, 157, 183, -->
-<!--        177, 171, 185, 176, -->
-<!--        181, 174) -->
-<!-- options(qic.clshade = F) -->
-<!-- qicharts2::qic(x, -->
-<!--                chart = 'i', -->
-<!--                title = 'Systolic blood pressure', -->
-<!--                ylab = 'mmHg', -->
-<!--                xlab = 'Day #') -->
-<!-- ``` -->
-<!-- SPC was introduced in production industry in the 1920s. In healthcare SPC started to appear together with the quality movement in the early 1990s. A PubMed search on the term "statistical process control" finds one paper from 1990. Since then publications have been steadily increasing to around 170 a year in the early 2020s. -->
-<!-- The rise of SPC in healthcare has been spectacular - the number of papers relating to SPC in the PubMed database went from only 14 in 1971 to 3252 in 2023 [SEARCH TERM].  -->
 <p>Nevertheless a systematic review concluded</p>
 <blockquote>
 <p>… although SPC charts may be easy to use even for patients, clinicians or managers without extensive SPC training, they may not be equally simple to <em>construct correctly</em>. To apply SPC is, paradoxically, both simple and difficult at the same time.</p>
-<p>— <span class="citation">Thor et al. (<a href="#ref-thor2007">2007</a>)</span></p>
+<p>— <span class="citation">(<a href="#ref-thor2007">Thor et al. 2007</a>)</span></p>
 </blockquote>
 <p>Consequently, this book aims to ease the construction and production of SPC charts in healthcare using modern software.</p>
-<!-- While SPC is often thought of simply as a set of tools -- the control chart being its most prominent member -- we prefer to think of SPC more broadly as *the application of statistical thinking to continuous quality improvement*. -->
-<!-- >Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. [...] It is about the continual improvement of processes and outcomes. And it is, first and foremost, *a way of thinking* with some tools attached. -->
-<!-- > -->
-<!-- > ---  Don Wheeler [@wheeler2000, p 152] -->
-<!-- Many excellent books have been written about the thinking and the theory behind SPC  [e.g.  @wheeler2000; @montgomery2009; @mohammed2024], but very little has been written about how to actually construct SPC charts -- especially using software. Consequently, this book is mostly about the tools, in particular run and control charts, and how to construct and interpret them using modern software.  -->
-<!-- SPC charts are powerful, intuitive and versatile. First developed in the 1920's in production industry, the use of SPC in healthcare has grown spectacularly. For instance, the number of papers in the pubmed database went from only 14 in 1971 to 3252 in 2023 [SEARCH CRITERIA?].  -->
-<!-- However, a review of SPC in healthcare noted that "it's easy and not so easy" [CITATION]. The "easy part" is that SPC charts are usually intuitive and easily understood. The "not so easy part" involves the production of these charts. -->
-<!-- This book aims to help people who want to produce SPC charts in practice using modern software. We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, patients, etc. -->
-<div id="so-what-is-different-about-this-book" class="section level3 unnumbered hasAnchor">
-<h3>So what is different about this book?<a href="preface.html#so-what-is-different-about-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="so-what-is-different-about-this-book" class="section level2 unnumbered hasAnchor">
+<h2>So what is different about this book?<a href="preface.html#so-what-is-different-about-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This book is a <em>how to easily produce SPC charts book</em>. Since this involves statistics, computing, and visualisation our software of choice is R – which is often referred to as the <em>lingua franca</em> of statistical computing and visualisation.</p>
 <p>This book stands out by being a <em>specialized</em>, <em>practical</em>, and <em>modern</em> guide specifically tailored for data scientists in the healthcare sector. Its focus on real-world application, combined with comprehensive coverage of SPC techniques and the use of contemporary tools, makes it a unique and valuable resource.</p>
 <ol style="list-style-type: decimal">
@@ -348,18 +328,18 @@ div.csl-indent {
 <li><p><strong>Comprehensive Coverage</strong>: The book covers a comprehensive range of topics within SPC, from basic concepts to advanced techniques. This ensures that both beginners and experienced data scientists can find valuable insights and techniques that can be applied to their work in healthcare.</p></li>
 <li><p><strong>Resources</strong>: The book comes with additional resources such as R scripts, datasets, and access to an online <a href="https://github.com/anhoej/spc4hc">GitHub repository</a>.</p></li>
 </ol>
-</div>
 <div id="prerequisites" class="section level3 unnumbered hasAnchor">
 <h3>Prerequisites<a href="preface.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We assume no prior knowledge of SPC, but a basic familiarity with R is required to understand the steps and algorithms for constructing SPC charts. For readers not familiar with R we refer you to some excellent (free) resources for getting started with R including the amazing <a href="https://nhsrcommunity.com/">NHS-R Community</a>.</p>
 </div>
-<div id="how-to-use-this-book" class="section level3 unnumbered hasAnchor">
-<h3>How to use this book<a href="preface.html#how-to-use-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="how-to-use-this-book" class="section level2 unnumbered hasAnchor">
+<h2>How to use this book<a href="preface.html#how-to-use-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you are new to SPC, then start with Chapter <a href="what.html#what">1</a>. If you are eager to get started with plotting then skip to chapters <a href="first-chart.html#first-chart">6</a> and <a href="limits.html#limits">7</a>. Later chapters move to more advanced types of charts and topics for newbies and knowbies. Further resources and datasets can be found on our <a href="https://github.com/anhoej/spc4hc">GitHub repository</a>.</p>
 <p>We hope you find the book of some use and would appreciate your feedback on how it can be continually improved.</p>
 </div>
-<div id="about-us" class="section level3 unnumbered hasAnchor">
-<h3>About us<a href="preface.html#about-us" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="about-us" class="section level2 unnumbered hasAnchor">
+<h2>About us<a href="preface.html#about-us" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Jacob Anhøj</strong> is a medical doctor with 30+ years of experience along with a diploma in Information Technology. He has published 45+ papers and two books and has extensive teaching experience. His main professional interest is patient safety and healthcare quality in general and statistical methods for quality improvement in particular. He has contributed to the development of statistical methods for testing for non-random variation in time series data. He is an experienced R user and has published several R packages including <code>qicharts2</code> for construction and analysis of statistical process control charts.</p>
 <p><strong>Mohammed Amin Mohammed</strong> is Emeritus Professor of Healthcare Quality
 and Effectiveness at the Faculty of Health Studies, University of Bradford, and

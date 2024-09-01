@@ -3,8 +3,14 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Testing for Special Cause Variation {#special_causes}
+# Testing for Special Cause Variation {#testing}
 
+## Patterns of non-random variation in time series data
+
+* freaks
+* shifts
+* trends
+* other unusual patterns
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
@@ -12,10 +18,13 @@ knitr::opts_chunk$set(fig.asp = 3/5,
 library(kableExtra)
 
 source('R/stdchart.R', local = knitr::knit_global())
+set.seed(33)
+y1 <- y2 <- y3 <- rnorm(24)
 ```
 
 
 ```{r spc-fig2, fig.cap='Control chart with a large (2 SD) transient shift in data', echo=FALSE}
+
 y2[13] <- y2[13] + 2
 
 stdchart(y2)
