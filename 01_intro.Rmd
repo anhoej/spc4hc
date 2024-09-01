@@ -1,4 +1,9 @@
-# Preface {- #preface}
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Preface {-#preface}
 
 This book is about the practical application of statistical process control (SPC) methodology in healthcare.
 
@@ -6,52 +11,16 @@ SPC is based on a fundamental intuitive insight -- that processes are subject to
 
 With this insight comes a set of intuitive visual tools, run and control charts, that make it easy to tell common from special cause variation.
 
-<!-- The notion of common and special cause variation is best illustrated by a control chart, which is one of the tools of SPC. The chart in Figure \@ref(fig:intro-ichart) shows daily measurements of blood pressure in a patient. The centre line marks the mean of the measurements, and the two horizontal lines (control limits) mark the boundaries of the natural common cause variation in data. Most data points are located randomly around the centre and between the control limits, but one data point (#6) lies outside the limits and represents a special cause -- that is, this data points has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement. -->
-
-<!-- ```{r intro-ichart, fig.cap='I control chart produced with the R package qicharts2', echo=FALSE, dev='svg', fig.asp=0.5} -->
-<!-- x <- c(169, 172, 175, 174, -->
-<!--        161, 142, 174, 171, -->
-<!--        168, 174, 180, 194, -->
-<!--        161, 181, 175, 176, -->
-<!--        186, 166, 157, 183, -->
-<!--        177, 171, 185, 176, -->
-<!--        181, 174) -->
-
-<!-- options(qic.clshade = F) -->
-<!-- qicharts2::qic(x, -->
-<!--                chart = 'i', -->
-<!--                title = 'Systolic blood pressure', -->
-<!--                ylab = 'mmHg', -->
-<!--                xlab = 'Day #') -->
-<!-- ``` -->
-
-<!-- SPC was introduced in production industry in the 1920s. In healthcare SPC started to appear together with the quality movement in the early 1990s. A PubMed search on the term "statistical process control" finds one paper from 1990. Since then publications have been steadily increasing to around 170 a year in the early 2020s. -->
-
-<!-- The rise of SPC in healthcare has been spectacular - the number of papers relating to SPC in the PubMed database went from only 14 in 1971 to 3252 in 2023 [SEARCH TERM].  -->
 
 Nevertheless a systematic review concluded 
 
 >... although SPC charts may be easy to use even for patients, clinicians or managers without extensive SPC training, they may not be equally simple to *construct correctly*. To apply SPC is, paradoxically, both simple and difficult at the same time.
 >
-> --- @thor2007 
+> --- [@thor2007]
 
 Consequently, this book aims to ease the construction and production of SPC charts in healthcare using modern software.
 
-<!-- While SPC is often thought of simply as a set of tools -- the control chart being its most prominent member -- we prefer to think of SPC more broadly as *the application of statistical thinking to continuous quality improvement*. -->
-
-<!-- >Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. [...] It is about the continual improvement of processes and outcomes. And it is, first and foremost, *a way of thinking* with some tools attached. -->
-<!-- > -->
-<!-- > ---  Don Wheeler [@wheeler2000, p 152] -->
-
-<!-- Many excellent books have been written about the thinking and the theory behind SPC  [e.g.  @wheeler2000; @montgomery2009; @mohammed2024], but very little has been written about how to actually construct SPC charts -- especially using software. Consequently, this book is mostly about the tools, in particular run and control charts, and how to construct and interpret them using modern software.  -->
-
-<!-- SPC charts are powerful, intuitive and versatile. First developed in the 1920's in production industry, the use of SPC in healthcare has grown spectacularly. For instance, the number of papers in the pubmed database went from only 14 in 1971 to 3252 in 2023 [SEARCH CRITERIA?].  -->
-
-<!-- However, a review of SPC in healthcare noted that "it's easy and not so easy" [CITATION]. The "easy part" is that SPC charts are usually intuitive and easily understood. The "not so easy part" involves the production of these charts. -->
-
-<!-- This book aims to help people who want to produce SPC charts in practice using modern software. We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, patients, etc. -->
-
-### So what is different about this book? {-}
+## So what is different about this book? {-}
 
 This book is a *how to easily produce SPC charts book*. Since this involves statistics, computing, and visualisation our software of choice is R -- which is often referred to as the *lingua franca* of statistical computing and visualisation. 
 
@@ -73,13 +42,13 @@ This book stands out by being a *specialized*, *practical*, and *modern* guide s
 
 We assume no prior knowledge of SPC, but a basic familiarity with R is required to understand the steps and algorithms for constructing SPC charts. For readers not familiar with R we refer you to some excellent (free) resources for getting started with R including the amazing [NHS-R Community](https://nhsrcommunity.com/).
 
-### How to use this book {-}
+## How to use this book {-}
 
 If you are new to SPC, then start with Chapter \@ref(what). If you are eager to get started with plotting then skip to chapters \@ref(first-chart) and \@ref(limits). Later chapters move to more advanced types of charts and topics for newbies and knowbies. Further resources and datasets can be found on our [GitHub repository](https://github.com/anhoej/spc4hc).
 
 We hope you find the book of some use and would appreciate your feedback on how it can be continually improved.
 
-### About us {-}
+## About us {-}
 
 **Jacob Anhøj** is a medical doctor with 30+ years of experience along with a diploma in Information Technology. He has published 45+ papers and two books and has extensive teaching experience. His main professional interest is patient safety and healthcare quality in general and statistical methods for quality improvement in particular. He has contributed to the development of statistical methods for testing for non-random variation in time series data. He is an experienced R user and has published several R packages including `qicharts2` for construction and analysis of statistical process control charts.
   
