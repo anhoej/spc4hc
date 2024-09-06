@@ -1,6 +1,8 @@
 fig:spc-fig1
+fig:testing-fig1
 fig:spc-fig2
 fig:spc-fig3
+fig:spc-fig4
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
@@ -47,6 +49,11 @@ measurements
 common-spc-charts-in-summary
 testing
 patterns-of-non-random-variation-in-time-series-data
+freaks
+shifts
+trends
+other-unusual-patterns
+spc-rules
 tests-based-on-sigma-limits
 runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
 look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts

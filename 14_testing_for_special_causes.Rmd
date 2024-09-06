@@ -3,25 +3,49 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Testing for Special Cause Variation {#testing}
-
-## Patterns of non-random variation in time series data
-
-* freaks
-* shifts
-* trends
-* other unusual patterns
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.asp = 3/5,
+knitr::opts_chunk$set(fig.asp = 1/2,
+                      echo = FALSE,
                       dev     = 'svg')
-library(kableExtra)
 
 source('R/stdchart.R', local = knitr::knit_global())
 set.seed(33)
 y1 <- y2 <- y3 <- rnorm(24)
 ```
 
+# Testing for Special Cause Variation {#testing}
+
+So far we have mostly concerned ourselves with Shewhart's 3-sigma rule, one or more data points outside the control limits, to detect special cause variation. 
+
+The 3-sigma rule is very effective to detect large shifts in data. Imagine data from a symmetric distribution, if data shifted three SDs upwards, the old upper control limit would be the new centre line and we would expect about half of future data points to lie above the upper control limit. If data only shifted one SD, the old upper control limit would be the new 2-sigma limit and we would expect about 2.5% of future data points to lie above this line (Figure \@ref(fig:testing-fig1)).
+
+```{r testing-fig1, fig.cap='Control chart with progressive shifts in data'}
+set.seed(4444444)
+y <- rnorm(36, rep(0:2, each = 12))
+
+stdchart(y, ra = F) +
+  geom_vline(xintercept = 12.5, linetype = 3) +
+  geom_vline(xintercept = 24.5, linetype = 3) +
+  annotate('text', c(6, 18, 30), 4, 
+           label = c('mean = 0', 'mean = 1', 'mean = 2'))
+```
+
+The performance of the 3-sigma rule has been studied extensively, but to make a long story short, it is most useful when looking for shift in the order of at least 1.5 - 2 SDs. Minor to moderate shifts may go unnoticed for long periods of time. 
+
+In order to increase the sensitivity of SPC charts to minor shifts in data a large number of additional rules have been suggested. But before we get to these rules we will take a look at different types of patterns in data that often accompany special causes.
+
+## Patterns of non-random variation in time series data
+
+In the iconic Western Electric Handbook [@we1956] a large number of control chart patterns are described to help engineers interpret control charts. The idea being that certain patterns are often due to certain causes.
+
+In our experience, the most common special cause patterns found in healthcare data are freaks, shift, and trends. 
+
+### Freaks
+
+A freak is one or few data points that are distinctly different from the rest (Figure \@ref(fig:spc-fig2)). Freaks are by definition transient in nature -- they appear and then go away.
+
+Freaks are often caused by data or sampling errors, but may also be results of transient external forces acting on the process, for example temporary changes in patient case mix. Finally, freaks may simply be part of the natural process which once in a while is expected to produce extreme values simply by chance.
 
 ```{r spc-fig2, fig.cap='Control chart with a large (2 SD) transient shift in data', echo=FALSE}
 
@@ -30,26 +54,42 @@ y2[13] <- y2[13] + 2
 stdchart(y2)
 ```
 
+### Shifts
+
+A shift is a sudden and sustained change in process centre (Figure \@ref(fig:spc-fig3)). Minor to moderate shifts may go unnoticed by the 3-sigma rule for long periods of time. Large shifts may initially present themselves as freaks.
+
+Shifts are what we are looking for especially in quality improvement.
+
 ```{r spc-fig3, fig.cap='Control chart with a minor (1 SD) sustained shift in data', echo=FALSE}
 y3[16:24] <- y3[16:24] + 1
 
 stdchart(y3)
 ```
 
+### Trends
+
+```{r spc-fig4, fig.cap='Control chart with a trend in data', echo=FALSE}
+set.seed(22222)
+y4 <- rnorm(24, seq(-2, 2, length.out = 24))
+
+stdchart(y4)
+```
+
+### Other unusual patterns
+
+## SPC rules
 
 ### Tests based on sigma limits
 
 * the 3-sigma test
-
 * the Western Electric rules
 
 ### Runs analysis – tests based on the distribution of data points around the centre line
 
 * unusually long runs
-
 * unusually few crossings
 
-## look mom, no control limits! – using runs analysis as stand-alone rules with run charts
+### look mom, no control limits! – using runs analysis as stand-alone rules with run charts
     
     
 

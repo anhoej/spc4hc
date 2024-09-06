@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,70 +56,6 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -195,10 +131,17 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.1.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.1.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>4.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>4.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="4.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>4.1.3</b> Trends</a></li>
+<li class="chapter" data-level="4.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>4.1.4</b> Other unusual patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.2</b> look mom, no control limits! – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>4.2</b> SPC rules</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="4.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+<li class="chapter" data-level="4.2.3" data-path="testing.html"><a href="testing.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.2.3</b> look mom, no control limits! – using runs analysis as stand-alone rules with run charts</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#two-types-of-errors-when-using-spc"><i class="fa fa-check"></i><b>4.3</b> Two types of errors when using SPC</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>5</b> Responding to SPC Signals</a></li>
@@ -313,17 +256,8 @@ div.csl-indent {
 <p>For example, with ggplot2 we do not need to worry about scaling the axes to accommodate data that are added to the plot or to make room for axis labels and tick marks. These are all handled gracefully by ggplot2 itself.</p>
 <p>Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colour palettes, legends, and number/date formats.</p>
 <p>First we will create an spc object and assign it to a variable name for later use:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ggplot.html#cb48-1" tabindex="-1"></a><span class="co"># make spc object</span></span>
-<span id="cb48-2"><a href="ggplot.html#cb48-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, infections,</span>
-<span id="cb48-3"><a href="ggplot.html#cb48-3" tabindex="-1"></a>         <span class="at">data  =</span> cdiff,</span>
-<span id="cb48-4"><a href="ggplot.html#cb48-4" tabindex="-1"></a>         <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb48-5"><a href="ggplot.html#cb48-5" tabindex="-1"></a>         <span class="at">plot  =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Note that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable ‘p’. We can now continue working with p as with any other R object.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ggplot.html#cb49-1" tabindex="-1"></a><span class="co"># check the class of p</span></span>
-<span id="cb49-2"><a href="ggplot.html#cb49-2" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
 <pre><code>## [1] &quot;spc&quot;        &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="ggplot.html#cb51-1" tabindex="-1"></a><span class="co"># show the first six rows from p</span></span>
-<span id="cb51-2"><a href="ggplot.html#cb51-2" tabindex="-1"></a><span class="fu">head</span>(p)</span></code></pre></div>
 <pre><code>##            x  y n lcl       cl      ucl sigma.signal runs.signal chart
 ## 1 2020-01-01 12 1   0 5.041667 11.77776         TRUE        TRUE     c
 ## 2 2020-02-01  7 1   0 5.041667 11.77776        FALSE        TRUE     c
@@ -331,8 +265,6 @@ div.csl-indent {
 ## 4 2020-04-01  4 1   0 5.041667 11.77776        FALSE        TRUE     c
 ## 5 2020-05-01  4 1   0 5.041667 11.77776        FALSE        TRUE     c
 ## 6 2020-06-01  5 1   0 5.041667 11.77776        FALSE        TRUE     c</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ggplot.html#cb53-1" tabindex="-1"></a><span class="co"># show the C chart</span></span>
-<span id="cb53-2"><a href="ggplot.html#cb53-2" tabindex="-1"></a><span class="fu">plot</span>(p) <span class="co"># not necessary to call spc.plot(), just call the generic plot() function</span></span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ggplot-fig1"></span>
 <img src="_main_files/figure-html/ggplot-fig1-1.svg" alt="SPC chart" width="672" />
 <p class="caption">
@@ -341,33 +273,6 @@ Figure 10.1: SPC chart
 </div>
 <p>Because p is an object of class “spc” we only need to call the generic <code>plot()</code> function, which in turn will pass its first argument to the specialised <code>spc.plot()</code> function.</p>
 <p>We may now create any number of alternative plotting functions for spc objects. In this example we will create a plotting function that uses ggplot2.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ggplot.html#cb54-1" tabindex="-1"></a><span class="co"># Load ggplot2</span></span>
-<span id="cb54-2"><a href="ggplot.html#cb54-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb54-3"><a href="ggplot.html#cb54-3" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="ggplot.html#cb54-4" tabindex="-1"></a><span class="co"># Function for plotting spc objects with ggplot()</span></span>
-<span id="cb54-5"><a href="ggplot.html#cb54-5" tabindex="-1"></a>ggspc <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
-<span id="cb54-6"><a href="ggplot.html#cb54-6" tabindex="-1"></a>  <span class="co"># Set colours</span></span>
-<span id="cb54-7"><a href="ggplot.html#cb54-7" tabindex="-1"></a>  col1    <span class="ot">&lt;-</span> <span class="st">&#39;steelblue&#39;</span></span>
-<span id="cb54-8"><a href="ggplot.html#cb54-8" tabindex="-1"></a>  col2    <span class="ot">&lt;-</span> <span class="st">&#39;tomato&#39;</span></span>
-<span id="cb54-9"><a href="ggplot.html#cb54-9" tabindex="-1"></a>  linecol <span class="ot">&lt;-</span> <span class="st">&#39;gray50&#39;</span></span>
-<span id="cb54-10"><a href="ggplot.html#cb54-10" tabindex="-1"></a>  dotcol  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>sigma.signal, col2, col1)</span>
-<span id="cb54-11"><a href="ggplot.html#cb54-11" tabindex="-1"></a>  clcol   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>runs.signal[<span class="dv">1</span>], col2, linecol)</span>
-<span id="cb54-12"><a href="ggplot.html#cb54-12" tabindex="-1"></a>  cltyp   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p<span class="sc">$</span>runs.signal[<span class="dv">1</span>], <span class="st">&#39;dashed&#39;</span>, <span class="st">&#39;solid&#39;</span>)</span>
-<span id="cb54-13"><a href="ggplot.html#cb54-13" tabindex="-1"></a>  </span>
-<span id="cb54-14"><a href="ggplot.html#cb54-14" tabindex="-1"></a>  <span class="co"># Plot the dots and draw the lines</span></span>
-<span id="cb54-15"><a href="ggplot.html#cb54-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(p, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb54-16"><a href="ggplot.html#cb54-16" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lcl), <span class="at">colour =</span> linecol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb54-17"><a href="ggplot.html#cb54-17" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> ucl), <span class="at">colour =</span> linecol,, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb54-18"><a href="ggplot.html#cb54-18" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cl),</span>
-<span id="cb54-19"><a href="ggplot.html#cb54-19" tabindex="-1"></a>              <span class="at">na.rm    =</span> T,</span>
-<span id="cb54-20"><a href="ggplot.html#cb54-20" tabindex="-1"></a>              <span class="at">colour   =</span> clcol,</span>
-<span id="cb54-21"><a href="ggplot.html#cb54-21" tabindex="-1"></a>              <span class="at">linetype =</span> cltyp) <span class="sc">+</span></span>
-<span id="cb54-22"><a href="ggplot.html#cb54-22" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">colour =</span> col1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb54-23"><a href="ggplot.html#cb54-23" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> dotcol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-24"><a href="ggplot.html#cb54-24" tabindex="-1"></a>}</span>
-<span id="cb54-25"><a href="ggplot.html#cb54-25" tabindex="-1"></a></span>
-<span id="cb54-26"><a href="ggplot.html#cb54-26" tabindex="-1"></a><span class="co"># Plot an spc object</span></span>
-<span id="cb54-27"><a href="ggplot.html#cb54-27" tabindex="-1"></a><span class="fu">ggspc</span>(p)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ggplot-fig2"></span>
 <img src="_main_files/figure-html/ggplot-fig2-1.svg" alt="SPC chart using the `ggspc()` function" width="672" />
 <p class="caption">
@@ -375,19 +280,7 @@ Figure 10.2: SPC chart using the <code>ggspc()</code> function
 </p>
 </div>
 <p>We may also turn the spc object into a ggplot2 object:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ggplot.html#cb55-1" tabindex="-1"></a><span class="co"># make the spc object into a ggplot2 object</span></span>
-<span id="cb55-2"><a href="ggplot.html#cb55-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggspc</span>(p)</span>
-<span id="cb55-3"><a href="ggplot.html#cb55-3" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
 <pre><code>## [1] &quot;gg&quot;     &quot;ggplot&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ggplot.html#cb57-1" tabindex="-1"></a><span class="co"># plot with modified theme and custom labels</span></span>
-<span id="cb57-2"><a href="ggplot.html#cb57-2" tabindex="-1"></a>p <span class="sc">+</span></span>
-<span id="cb57-3"><a href="ggplot.html#cb57-3" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb57-4"><a href="ggplot.html#cb57-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid   =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb57-5"><a href="ggplot.html#cb57-5" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb57-6"><a href="ggplot.html#cb57-6" tabindex="-1"></a>        <span class="at">axis.line    =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&#39;gray&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb57-7"><a href="ggplot.html#cb57-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;CDiff infections&#39;</span>,</span>
-<span id="cb57-8"><a href="ggplot.html#cb57-8" tabindex="-1"></a>       <span class="at">y     =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb57-9"><a href="ggplot.html#cb57-9" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ggplot-fig3"></span>
 <img src="_main_files/figure-html/ggplot-fig3-1.svg" alt="SPC chart with modified theme" width="672" />
 <p class="caption">
@@ -396,24 +289,6 @@ Figure 10.3: SPC chart with modified theme
 </div>
 <p>Now, if we wished, we could replace the <code>plot.spc()</code> function with this new function. We will leave it to you to decide which of the two you like best.</p>
 <p>The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ggplot.html#cb58-1" tabindex="-1"></a>mytheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb58-2"><a href="ggplot.html#cb58-2" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb58-3"><a href="ggplot.html#cb58-3" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid   =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb58-4"><a href="ggplot.html#cb58-4" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb58-5"><a href="ggplot.html#cb58-5" tabindex="-1"></a>        <span class="at">axis.line    =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&#39;gray&#39;</span>))</span>
-<span id="cb58-6"><a href="ggplot.html#cb58-6" tabindex="-1"></a>}</span>
-<span id="cb58-7"><a href="ggplot.html#cb58-7" tabindex="-1"></a></span>
-<span id="cb58-8"><a href="ggplot.html#cb58-8" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, deaths, patients,</span>
-<span id="cb58-9"><a href="ggplot.html#cb58-9" tabindex="-1"></a>          <span class="at">data =</span> bact,</span>
-<span id="cb58-10"><a href="ggplot.html#cb58-10" tabindex="-1"></a>          <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>,</span>
-<span id="cb58-11"><a href="ggplot.html#cb58-11" tabindex="-1"></a>          <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb58-12"><a href="ggplot.html#cb58-12" tabindex="-1"></a></span>
-<span id="cb58-13"><a href="ggplot.html#cb58-13" tabindex="-1"></a><span class="fu">ggspc</span>(p) <span class="sc">+</span></span>
-<span id="cb58-14"><a href="ggplot.html#cb58-14" tabindex="-1"></a>  <span class="fu">mytheme</span>() <span class="sc">+</span></span>
-<span id="cb58-15"><a href="ggplot.html#cb58-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb58-16"><a href="ggplot.html#cb58-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;30-day mortality&#39;</span>,</span>
-<span id="cb58-17"><a href="ggplot.html#cb58-17" tabindex="-1"></a>       <span class="at">y     =</span> <span class="cn">NULL</span>,</span>
-<span id="cb58-18"><a href="ggplot.html#cb58-18" tabindex="-1"></a>       <span class="at">x     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ggplot-fig4"></span>
 <img src="_main_files/figure-html/ggplot-fig4-1.svg" alt="SPC chart with labels and custom y-axis" width="672" />
 <p class="caption">

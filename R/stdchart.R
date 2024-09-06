@@ -3,7 +3,8 @@ stdchart <- function(
     y   = NULL,
     cl  = 0,
     lcl = -3,
-    ucl = 3
+    ucl = 3,
+    ra = T
 ) {
   library(ggplot2)
   source('R/runs.analysis.R')
@@ -29,7 +30,7 @@ stdchart <- function(
   sigma.signal <- y < lcl | y > ucl
   sigma.signal[is.na(sigma.signal)] <- FALSE
   
-  runs.signal <- runs.analysis(y, cl)
+  runs.signal <- ifelse(ra, runs.analysis(y, cl), F)
   
   dotcol  <- ifelse(sigma.signal, col2, col1)
   clcol   <- ifelse(runs.signal[1], col2, linecol)
