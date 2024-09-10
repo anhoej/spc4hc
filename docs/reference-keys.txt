@@ -57,7 +57,7 @@ spc-rules
 tests-based-on-sigma-limits
 runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
 look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts
-two-types-of-errors-when-using-spc
+two-types-of-erros
 responding
 first-chart
 a-run-chart-of-blood-pressure-data
@@ -108,3 +108,6 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+two-types-of-errors
+formulas-for-calculation-of-control-limits

@@ -64,7 +64,7 @@ When counting falls as events, every fall counts. When counting patients as unit
 
 Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
 
-Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different that the numerator. With proportions the numerators and denominators are counts of the same thing, for example patients. Also, with proportions the numerator cannot be larger than the denominator.
+Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different from the numerators. With proportions the numerators and denominators are counts of the same thing, for example patients. Also, with proportions the numerators cannot be larger than the denominators.
 
 The most common chart types for count data are:
 
