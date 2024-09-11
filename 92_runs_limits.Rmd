@@ -1,0 +1,13 @@
+# Critical Values for Longest Runs and Number of Crossings {#runs-limits}
+
+
+```{r, results='asis', echo=FALSE}
+n <- 10:100
+x <- data.frame(
+  `Number of useful observations`       = n,
+  `Upper limit for longest run`         = round(log2(n) + 3),
+  `Lower limit for number of crossings` = qbinom(0.05, n - 1, 0.5),
+  check.names                           = FALSE)
+
+knitr::kable(x)
+```

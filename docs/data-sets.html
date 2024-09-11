@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Data Sets | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>A Data Sets | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Data Sets | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="A Data Sets | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data Sets | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="A Data Sets | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-10" />
+<meta name="date" content="2024-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="case3.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="runs-limits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -140,9 +140,10 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.2.1</b> Tests based on sigma limits</a></li>
 <li class="chapter" data-level="4.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
-<li class="chapter" data-level="4.2.3" data-path="testing.html"><a href="testing.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.2.3</b> look mom, no control limits! – using runs analysis as stand-alone rules with run charts</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#two-types-of-erros"><i class="fa fa-check"></i><b>4.3</b> Two types of errors when using SPC</a></li>
+<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.3</b> Charts without borders – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="4.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>4.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="4.5" data-path="testing.html"><a href="testing.html#two-types-of-errors"><i class="fa fa-check"></i><b>4.5</b> Two types of errors when using SPC</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>5</b> Responding to SPC Signals</a></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
@@ -214,17 +215,18 @@ div.csl-indent {
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="part"><span><b>Part 9¾: Nerd Stuff</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i>Data Sets</a>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
 <ul>
-<li class="chapter" data-level="1" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i><b>1</b> Bacteremia</a></li>
-<li class="chapter" data-level="2" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i><b>2</b> Blood pressure</a></li>
-<li class="chapter" data-level="3" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i><b>3</b> Clostridioides difficile infections</a></li>
-<li class="chapter" data-level="4" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i><b>4</b> Ceasearian section delay</a></li>
-<li class="chapter" data-level="5" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i><b>5</b> Emergency admission mortality</a></li>
-<li class="chapter" data-level="6" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i><b>6</b> On-time CT</a></li>
-<li class="chapter" data-level="7" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i><b>7</b> Radiation doses</a></li>
-<li class="chapter" data-level="8" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i><b>8</b> Robson group 1 births</a></li>
+<li class="chapter" data-level="A.1" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i><b>A.1</b> Bacteremia</a></li>
+<li class="chapter" data-level="A.2" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i><b>A.2</b> Blood pressure</a></li>
+<li class="chapter" data-level="A.3" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i><b>A.3</b> Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="A.4" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i><b>A.4</b> Ceasearian section delay</a></li>
+<li class="chapter" data-level="A.5" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i><b>A.5</b> Emergency admission mortality</a></li>
+<li class="chapter" data-level="A.6" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i><b>A.6</b> On-time CT</a></li>
+<li class="chapter" data-level="A.7" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i><b>A.7</b> Radiation doses</a></li>
+<li class="chapter" data-level="A.8" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i><b>A.8</b> Robson group 1 births</a></li>
 </ul></li>
+<li class="chapter" data-level="B" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>B</b> Critical Values for Longest Runs and Number of Crossings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -248,10 +250,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sets" class="section level1 unnumbered hasAnchor">
-<h1>Data Sets<a href="data-sets.html#data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="bacteremia" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">1</span> Bacteremia<a href="data-sets.html#bacteremia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-sets" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">A</span> Data Sets<a href="data-sets.html#data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="bacteremia" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">A.1</span> Bacteremia<a href="data-sets.html#bacteremia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hospital acquired and all cause bacteremias and 30 days mortality</p>
 <p>File: bacteremia.csv</p>
 <p>Variables:</p>
@@ -263,8 +265,8 @@ div.csl-indent {
 <li>patients (numeric): number of patients with all-cause infection</li>
 </ul>
 </div>
-<div id="blood-pressure" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">2</span> Blood pressure<a href="data-sets.html#blood-pressure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="blood-pressure" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">A.2</span> Blood pressure<a href="data-sets.html#blood-pressure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Daily measurements of blood pressure and resting pulse.</p>
 <p>File: blood_pressure.csv</p>
 <p>Variables:</p>
@@ -275,8 +277,8 @@ div.csl-indent {
 <li>pulse (numeric): resting pulse (beats per minute)</li>
 </ul>
 </div>
-<div id="clostridioides-difficile-infections" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">3</span> Clostridioides difficile infections<a href="data-sets.html#clostridioides-difficile-infections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="clostridioides-difficile-infections" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">A.3</span> Clostridioides difficile infections<a href="data-sets.html#clostridioides-difficile-infections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hospital acquired C. diff. infections</p>
 <p>File: cdiff.csv</p>
 <p>Variables:</p>
@@ -286,8 +288,8 @@ div.csl-indent {
 <li>risk_days (numeric): number of patient days without infection</li>
 </ul>
 </div>
-<div id="ceasearian-section-delay" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">4</span> Ceasearian section delay<a href="data-sets.html#ceasearian-section-delay" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ceasearian-section-delay" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">A.4</span> Ceasearian section delay<a href="data-sets.html#ceasearian-section-delay" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Time to grade 2 C-section</p>
 <p>File: csection_delay.csv</p>
 <p>Variables:</p>
@@ -297,8 +299,8 @@ div.csl-indent {
 <li>delay (numeric): time in minutes between decision and delivery</li>
 </ul>
 </div>
-<div id="emergency-admission-mortality" class="section level2 hasAnchor" number="14.5">
-<h2><span class="header-section-number">5</span> Emergency admission mortality<a href="data-sets.html#emergency-admission-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="emergency-admission-mortality" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">A.5</span> Emergency admission mortality<a href="data-sets.html#emergency-admission-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>7-day mortality after emergency admission</p>
 <p>File: emergency_admission.csv</p>
 <p>Variables:</p>
@@ -308,8 +310,8 @@ div.csl-indent {
 <li>admissions (numeric): number of emergency admissions</li>
 </ul>
 </div>
-<div id="on-time-ct" class="section level2 hasAnchor" number="14.6">
-<h2><span class="header-section-number">6</span> On-time CT<a href="data-sets.html#on-time-ct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="on-time-ct" class="section level2 hasAnchor" number="15.6">
+<h2><span class="header-section-number">A.6</span> On-time CT<a href="data-sets.html#on-time-ct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Patients with acute abdomen CT scanned within 3 hours after arrival</p>
 <p>File: ontime_ct.csv</p>
 <p>Variables:</p>
@@ -319,8 +321,8 @@ div.csl-indent {
 <li>cases (numeric): number of patients with acute abdomen</li>
 </ul>
 </div>
-<div id="radiation-doses" class="section level2 hasAnchor" number="14.7">
-<h2><span class="header-section-number">7</span> Radiation doses<a href="data-sets.html#radiation-doses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="radiation-doses" class="section level2 hasAnchor" number="15.7">
+<h2><span class="header-section-number">A.7</span> Radiation doses<a href="data-sets.html#radiation-doses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Radiation doses used for renography</p>
 <p>File: renography_doses.csv</p>
 <p>Variables:</p>
@@ -330,8 +332,8 @@ div.csl-indent {
 <li>dose (numeric): radiation dose in megabequerel</li>
 </ul>
 </div>
-<div id="robson-group-1-births" class="section level2 hasAnchor" number="14.8">
-<h2><span class="header-section-number">8</span> Robson group 1 births<a href="data-sets.html#robson-group-1-births" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="robson-group-1-births" class="section level2 hasAnchor" number="15.8">
+<h2><span class="header-section-number">A.8</span> Robson group 1 births<a href="data-sets.html#robson-group-1-births" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Outcomes and complications of Robson group 1 births: first time
 pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
 <p>File: robson1_births.csv</p>
@@ -356,7 +358,7 @@ pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
         </div>
       </div>
 <a href="case3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="runs-limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

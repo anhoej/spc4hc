@@ -3,6 +3,8 @@ fig:testing-fig1
 fig:spc-fig2
 fig:spc-fig3
 fig:spc-fig4
+fig:spc-fig5
+fig:spc-fig6
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
@@ -56,8 +58,9 @@ other-unusual-patterns
 spc-rules
 tests-based-on-sigma-limits
 runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
-look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts
-two-types-of-erros
+charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts
+a-practical-approach-to-spc-analysis
+two-types-of-errors
 responding
 first-chart
 a-run-chart-of-blood-pressure-data
@@ -100,6 +103,7 @@ to-aggregate-or-not-to-aggregate
 case1
 case2
 case3
+data-sets
 bacteremia
 blood-pressure
 clostridioides-difficile-infections
@@ -108,6 +112,4 @@ emergency-admission-mortality
 on-time-ct
 radiation-doses
 robson-group-1-births
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-two-types-of-errors
-formulas-for-calculation-of-control-limits
+runs-limits

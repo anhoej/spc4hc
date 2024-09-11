@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-10" />
+<meta name="date" content="2024-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -102,7 +104,7 @@ div.csl-indent {
 </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Synopsis</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a>
@@ -113,107 +115,118 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="2" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>2</b> What is SPC</a></li>
-<li class="chapter" data-level="3" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>3</b> Understanding Variation</a></li>
-<li class="chapter" data-level="4" data-path="charts_intro.html"><a href="charts_intro.html"><i class="fa fa-check"></i><b>4</b> Introducing SPC Charts</a>
+<li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is SPC</a></li>
+<li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
+<li class="chapter" data-level="3" data-path="charts_intro.html"><a href="charts_intro.html"><i class="fa fa-check"></i><b>3</b> Introducing SPC Charts</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="charts_intro.html"><a href="charts_intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>4.1</b> Anatomy and physiology of SPC charts</a></li>
-<li class="chapter" data-level="4.2" data-path="charts_intro.html"><a href="charts_intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>4.2</b> Some common types of control charts – The Magnificient Seven</a>
+<li class="chapter" data-level="3.1" data-path="charts_intro.html"><a href="charts_intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
+<li class="chapter" data-level="3.2" data-path="charts_intro.html"><a href="charts_intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>3.2</b> Some common types of control charts – The Magnificient Seven</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="charts_intro.html"><a href="charts_intro.html#counts"><i class="fa fa-check"></i><b>4.2.1</b> Counts</a></li>
-<li class="chapter" data-level="4.2.2" data-path="charts_intro.html"><a href="charts_intro.html#measurements"><i class="fa fa-check"></i><b>4.2.2</b> Measurements</a></li>
+<li class="chapter" data-level="3.2.1" data-path="charts_intro.html"><a href="charts_intro.html#counts"><i class="fa fa-check"></i><b>3.2.1</b> Counts</a></li>
+<li class="chapter" data-level="3.2.2" data-path="charts_intro.html"><a href="charts_intro.html#measurements"><i class="fa fa-check"></i><b>3.2.2</b> Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="charts_intro.html"><a href="charts_intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>4.3</b> Common SPC charts in summary</a></li>
+<li class="chapter" data-level="3.3" data-path="charts_intro.html"><a href="charts_intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>3.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5</b> Testing for Special Cause Variation</a>
+<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Testing for Special Cause Variation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>5.1</b> Patterns of non-random variation in time series data</a>
+<li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>5.1.1</b> Freaks</a></li>
-<li class="chapter" data-level="5.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>5.1.2</b> Shifts</a></li>
-<li class="chapter" data-level="5.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>5.1.3</b> Trends</a></li>
-<li class="chapter" data-level="5.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>5.1.4</b> Other unusual patterns</a></li>
+<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>4.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>4.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="4.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>4.1.3</b> Trends</a></li>
+<li class="chapter" data-level="4.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>4.1.4</b> Other unusual patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>5.2</b> SPC rules</a>
+<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>4.2</b> SPC rules</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>5.2.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="5.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>5.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
-<li class="chapter" data-level="5.2.3" data-path="testing.html"><a href="testing.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>5.2.3</b> look mom, no control limits! – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="4.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="4.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="testing.html"><a href="testing.html#two-types-of-errors"><i class="fa fa-check"></i><b>5.3</b> Two types of errors when using SPC</a></li>
+<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.3</b> Charts without borders – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="4.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>4.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="4.5" data-path="testing.html"><a href="testing.html#two-types-of-errors"><i class="fa fa-check"></i><b>4.5</b> Two types of errors when using SPC</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>6</b> Responding to SPC Signals</a></li>
+<li class="chapter" data-level="5" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>5</b> Responding to SPC Signals</a></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
-<li class="chapter" data-level="7" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>7</b> Your First SPC Charts With Base R</a>
+<li class="chapter" data-level="6" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>6</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>7.1</b> A run chart of blood pressure data</a></li>
-<li class="chapter" data-level="7.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>7.2</b> Adding control limits to produce a control chart</a></li>
-<li class="chapter" data-level="7.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>7.3</b> That’s all, Folks!</a></li>
+<li class="chapter" data-level="6.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>6.1</b> A run chart of blood pressure data</a></li>
+<li class="chapter" data-level="6.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>6.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="6.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>6.3</b> That’s all, Folks!</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>8</b> Calculating Control Limits</a>
+<li class="chapter" data-level="7" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>7</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>8.1</b> Introducing the spc() function</a></li>
-<li class="chapter" data-level="8.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>8.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="8.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>8.3</b> Count data</a>
+<li class="chapter" data-level="7.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>7.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>7.2</b> Count data</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>8.3.1</b> C chart</a></li>
-<li class="chapter" data-level="8.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>8.3.2</b> U chart</a></li>
-<li class="chapter" data-level="8.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>8.3.3</b> P chart</a></li>
+<li class="chapter" data-level="7.2.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.2.1</b> C chart</a></li>
+<li class="chapter" data-level="7.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.2.2</b> U chart</a></li>
+<li class="chapter" data-level="7.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.2.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>8.4</b> Measurement data</a>
+<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>7.3</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>8.4.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="8.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>8.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="8.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>8.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="8.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>8.4.4</b> S chart</a></li>
+<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>7.3.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.3.2</b> MR chart</a></li>
+<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.3.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="7.3.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.3.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>8.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.4</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>9</b> Highlighting Freaks, Shifts, and Trends</a>
+<li class="chapter" data-level="8" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>8</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>9.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="9.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>9.2</b> Improved <code>spc()</code> function</a></li>
-<li class="chapter" data-level="9.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>9.3</b> Highlighting special cause variation in short</a></li>
+<li class="chapter" data-level="8.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>8.1</b> Introducing the cdiff data set</a></li>
+<li class="chapter" data-level="8.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>8.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="8.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>8.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#runs-analysis"><i class="fa fa-check"></i>Runs Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>10</b> One R Function to Rule Them All</a>
+<li class="chapter" data-level="9" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>9</b> One R Function to Rule Them All</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>10.1</b> Examples</a>
+<li class="chapter" data-level="9.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>9.1</b> Examples</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>10.1.1</b> Run chart</a></li>
-<li class="chapter" data-level="10.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>10.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="10.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>10.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
-<li class="chapter" data-level="10.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>10.1.4</b> C and U charts for counts and rates</a></li>
-<li class="chapter" data-level="10.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>10.1.5</b> P chart for percentages</a></li>
+<li class="chapter" data-level="9.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>9.1.1</b> Run chart</a></li>
+<li class="chapter" data-level="9.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>9.1.2</b> I and MR charts for individual measurements</a></li>
+<li class="chapter" data-level="9.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>9.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
+<li class="chapter" data-level="9.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>9.1.4</b> C and U charts for counts and rates</a></li>
+<li class="chapter" data-level="9.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>9.1.5</b> P chart for percentages</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>10.2</b> TODO</a></li>
-<li class="chapter" data-level="10.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>10.3</b> Further up, further in</a></li>
+<li class="chapter" data-level="9.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>9.2</b> TODO</a></li>
+<li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>11</b> SPC Charts with <code>ggplot2</code></a></li>
-<li class="chapter" data-level="12" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>12</b> Introducing qicharts2</a>
+<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> Introducing qicharts2</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>12.1</b> A simple run chart</a></li>
-<li class="chapter" data-level="12.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>12.2</b> A simple control chart</a></li>
-<li class="chapter" data-level="12.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>12.3</b> Excluding data points from analysis</a></li>
-<li class="chapter" data-level="12.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>12.4</b> Freezing baseline period</a></li>
-<li class="chapter" data-level="12.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>12.5</b> Splitting chart by period</a></li>
-<li class="chapter" data-level="12.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>12.6</b> Small multiple plots for multivariate data</a>
+<li class="chapter" data-level="11.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>11.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="11.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>11.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="11.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>11.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="11.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>11.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="11.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>11.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="11.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>11.6</b> Small multiple plots for multivariate data</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>12.6.1</b> To aggregate or not to aggregate</a></li>
+<li class="chapter" data-level="11.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>11.6.1</b> To aggregate or not to aggregate</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="13" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>13</b> Case 1</a></li>
-<li class="chapter" data-level="14" data-path="case2.html"><a href="case2.html"><i class="fa fa-check"></i><b>14</b> Case 2</a></li>
-<li class="chapter" data-level="15" data-path="case3.html"><a href="case3.html"><i class="fa fa-check"></i><b>15</b> Case 3</a></li>
+<li class="chapter" data-level="12" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>12</b> Case 1</a></li>
+<li class="chapter" data-level="13" data-path="case2.html"><a href="case2.html"><i class="fa fa-check"></i><b>13</b> Case 2</a></li>
+<li class="chapter" data-level="14" data-path="case3.html"><a href="case3.html"><i class="fa fa-check"></i><b>14</b> Case 3</a></li>
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="part"><span><b>Part 9¾: Nerd Stuff</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i>Data Sets</a></li>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i><b>A.1</b> Bacteremia</a></li>
+<li class="chapter" data-level="A.2" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i><b>A.2</b> Blood pressure</a></li>
+<li class="chapter" data-level="A.3" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i><b>A.3</b> Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="A.4" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i><b>A.4</b> Ceasearian section delay</a></li>
+<li class="chapter" data-level="A.5" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i><b>A.5</b> Emergency admission mortality</a></li>
+<li class="chapter" data-level="A.6" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i><b>A.6</b> On-time CT</a></li>
+<li class="chapter" data-level="A.7" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i><b>A.7</b> Radiation doses</a></li>
+<li class="chapter" data-level="A.8" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i><b>A.8</b> Robson group 1 births</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>B</b> Critical Values for Longest Runs and Number of Crossings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -237,114 +250,144 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="testing" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Testing for Special Cause Variation<a href="testing.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="testing" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Testing for Special Cause Variation<a href="testing.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>So far we have mostly concerned ourselves with Shewhart’s 3-sigma rule, one or more data points outside the control limits, to detect special cause variation.</p>
-<p>The 3-sigma rule is very effective to detect large shifts in data. Imagine data from a symmetric distribution, if data shifted three SDs upwards, the old upper control limit would be the new centre line and we would expect about half of future data points to lie above the upper control limit. If data only shifted one SD, the old upper control limit would be the new 2-sigma limit and we would expect about 2.5% of future data points to lie above this line (Figure <a href="testing.html#fig:testing-fig1">5.1</a>).</p>
+<p>The 3-sigma rule is very effective to detect large shifts in data. Imagine data from a symmetric distribution, if data shifted three SDs upwards, the old upper control limit would be the new centre line and we would expect about half of future data points to lie above the upper control limit. If data only shifted one SD, the old upper control limit would be the new 2-sigma limit and we would expect about 2.5% of future data points to lie above this line (Figure <a href="testing.html#fig:testing-fig1">4.1</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:testing-fig1"></span>
 <img src="_main_files/figure-html/testing-fig1-1.svg" alt="Control chart with progressive shifts in data" width="672" />
 <p class="caption">
-Figure 5.1: Control chart with progressive shifts in data
+Figure 4.1: Control chart with progressive shifts in data
 </p>
 </div>
 <p>The performance of the 3-sigma rule has been studied extensively, but to make a long story short, it is most useful when looking for shift in the order of at least 1.5 - 2 SDs. Minor to moderate shifts may go unnoticed for long periods of time.</p>
 <p>In order to increase the sensitivity of SPC charts to minor shifts in data a large number of additional rules have been suggested. But before we get to these rules we will take a look at different types of patterns in data that often accompany special causes.</p>
-<div id="patterns-of-non-random-variation-in-time-series-data" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Patterns of non-random variation in time series data<a href="testing.html#patterns-of-non-random-variation-in-time-series-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="patterns-of-non-random-variation-in-time-series-data" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Patterns of non-random variation in time series data<a href="testing.html#patterns-of-non-random-variation-in-time-series-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the iconic Western Electric Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span> a large number of control chart patterns are described to help engineers interpret control charts. The idea being that certain patterns are often due to certain causes.</p>
 <p>In our experience, the most common special cause patterns found in healthcare data are freaks, shift, and trends.</p>
-<div id="freaks" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Freaks<a href="testing.html#freaks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A freak is one or few data points that are distinctly different from the rest (Figure <a href="testing.html#fig:spc-fig2">5.2</a>). Freaks are by definition transient in nature – they appear and then go away.</p>
+<div id="freaks" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Freaks<a href="testing.html#freaks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A freak is one or few data points that are distinctly different from the rest (Figure <a href="testing.html#fig:spc-fig2">4.2</a>). Freaks are by definition transient in nature – they appear and then go away.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig2"></span>
 <img src="_main_files/figure-html/spc-fig2-1.svg" alt="Control chart with a large (2 SD) transient shift in data" width="672" />
 <p class="caption">
-Figure 5.2: Control chart with a large (2 SD) transient shift in data
+Figure 4.2: Control chart with a large (2 SD) transient shift in data
 </p>
 </div>
 <p>Freaks are often caused by data or sampling errors, but may also be results of transient external forces acting on the process, for example temporary changes in patient case mix. Finally, freaks may simply be part of the natural process which once in a while is expected to produce extreme values simply by chance.</p>
 </div>
-<div id="shifts" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Shifts<a href="testing.html#shifts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A shift is a sudden and sustained change in process centre (Figure <a href="testing.html#fig:spc-fig3">5.3</a>). Minor to moderate shifts may go unnoticed by the 3-sigma rule for long periods of time. Large shifts may initially present themselves as freaks.</p>
+<div id="shifts" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Shifts<a href="testing.html#shifts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A shift is a sudden and sustained change in process centre (Figure <a href="testing.html#fig:spc-fig3">4.3</a>). Minor to moderate shifts may go unnoticed by the 3-sigma rule for long periods of time. Large shifts may initially present themselves as freaks.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig3"></span>
 <img src="_main_files/figure-html/spc-fig3-1.svg" alt="Control chart with a minor (1 SD) sustained shift in data" width="672" />
 <p class="caption">
-Figure 5.3: Control chart with a minor (1 SD) sustained shift in data
+Figure 4.3: Control chart with a minor (1 SD) sustained shift in data
 </p>
 </div>
 <p>Shifts are caused by sudden changes in process behaviour. In healthcare improvement we strive to induce shift in the desired direction by improving the structures and procedures that are behind data.</p>
 </div>
-<div id="trends" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Trends<a href="testing.html#trends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A trend is a gradual change in process centre (<a href="testing.html#fig:spc-fig4">5.4</a>). Note that in some texts a trend is more specifically a series of data points that are all larger or smaller than the previous data points. In this book, we use the term “trend” in the more general sense that a process is gradually changing.</p>
+<div id="trends" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Trends<a href="testing.html#trends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A trend is a gradual change in process centre (Figure <a href="testing.html#fig:spc-fig4">4.4</a>). Note that in some texts a trend is more specifically a series of data points that are all larger or smaller than the previous data points. In this book, we use the term “trend” in the more general sense as a gradual change in one direction.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig4"></span>
 <img src="_main_files/figure-html/spc-fig4-1.svg" alt="Control chart with a trend in data" width="672" />
 <p class="caption">
-Figure 5.4: Control chart with a trend in data
+Figure 4.4: Control chart with a trend in data
 </p>
 </div>
-<p>Trends are found when forces outside the usual process are pushing data consistently in one direction, and specifically when the push is continuous and cumulative. Trends are most commonly seen when improvements are implemented in a stepwise fashion, for example by being introduced incrementally in a large organisation. In such cases we may observe sequential shifts in data a the department level that sum up to a trend at the organisational level.</p>
+<p>Trends are seen when forces outside the usual process are pushing data consistently in one direction, and specifically when the push is continuous and the effect cumulative. Trends are commonly seen when improvements are implemented in a stepwise fashion, for example by being introduced incrementally in a large organisation. In such cases we may observe sequential shifts in data a the department level that sum up to a trend at the organisational level.</p>
 </div>
-<div id="other-unusual-patterns" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Other unusual patterns<a href="testing.html#other-unusual-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="other-unusual-patterns" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Other unusual patterns<a href="testing.html#other-unusual-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are, of course, countless other types of “unusual” patterns that may show up in data. However, it is our experience from healthcare, that process improvement or deterioration is most commonly associated with either freaks, shifts, or trends and learning to recognise these patterns are helpful in finding the underlying causes of change.</p>
 <p>That said, depending on the context and the purpose of using SPC it may be useful to look for other types of patterns in data. This is especially true for cyclic or seasonal data where specific patterns are repeated depending on the time of day, week, month, year etc. <span class="citation">(<a href="#ref-jeppegaard2023">Jeppegaard et al. 2023</a>)</span>. For example, excess mortality related to weekend admissions may not present itself as neither freaks, shifts, or trends, but may nonetheless be important to recognise.</p>
 </div>
 </div>
-<div id="spc-rules" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> SPC rules<a href="testing.html#spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>If patterns of special cause variation were always as clear as in the figures <a href="testing.html#fig:spc-fig2">5.2</a>, <a href="testing.html#fig:spc-fig3">5.3</a>, and <a href="testing.html#fig:spc-fig4">5.4</a> there would be no need for SPC. However, in reality, special causes often show up in more subtle ways. To help objectify the analysis we use SPC rules, that is statistical tests that signal the presence – or rather, the likelihood – of special cause variation.</p>
-<p>We have already seen Shewhart’s original 3-sigma rule in action (Figure <a href="testing.html#fig:spc-fig2">5.2</a>), but many more rules have been developed to help identify minor to moderate shifts, trends, and other specific patterns in data. It is tempting to simply apply all known rules to our data, but – as always in statistic – the more tests we apply, the more signals we get. And the more signals we get, the more signals would be false alarms, that is signals of special causes when no special causes are present.</p>
+<div id="spc-rules" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> SPC rules<a href="testing.html#spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If patterns of special cause variation were always as clear as in the figures <a href="testing.html#fig:spc-fig2">4.2</a>, <a href="testing.html#fig:spc-fig3">4.3</a>, and <a href="testing.html#fig:spc-fig4">4.4</a> there would be no need for SPC. However, in reality, special causes often show up in more subtle ways. To help objectify the analysis we use SPC rules, that is statistical tests that signal the presence – or rather, the likelihood – of special cause variation.</p>
+<p>We have already seen Shewhart’s original 3-sigma rule in action (Figure <a href="testing.html#fig:spc-fig2">4.2</a>), but many more rules have been developed to help identify minor to moderate shifts, trends, and other specific patterns in data. It is tempting to simply apply all known rules to our data, but – as always in statistics – the more tests we apply, the more signals we get, and the more signals we get, the more signals are false alarms signalling special causes when really no special causes are present.</p>
 <p>Thus, it is important to select as few rules as possible to minimise the risk of false alarms but at the same time select as many rules as necessary to identify as many true alarms as possible. More on this topic in the <a href="testing.html#two-types-of-errors">“Two types of errors”</a> section later in this chapter.</p>
-<p>Basically there are two types of test for special cause variation in SPC charts. Some tests are based on the data points distribution relative to the sigma lines including 1- and 2-sigma lines, which are placed one and two SDs from the centre line respectively. And then there are tests that are based solely on the data points distribution relative to the centre line.</p>
+<p>Basically there are two types of test for special cause variation in SPC charts. Some tests are based on the distribution of data points relative to the sigma lines including 1- and 2-sigma lines, which are placed one and two SDs from the centre line respectively. And then there are tests that are based solely on the distribution of data points relative to the centre line.</p>
 <p>We will restrict ourselves to two sets of rules that have been thoroughly studied and validated.</p>
-<div id="tests-based-on-sigma-limits" class="section level3 hasAnchor" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Tests based on sigma limits<a href="testing.html#tests-based-on-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The best known tests for non-random variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span>. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the control and centre lines.</p>
+<div id="tests-based-on-sigma-limits" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Tests based on sigma limits<a href="testing.html#tests-based-on-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span>. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the control and centre lines.</p>
 <ol style="list-style-type: decimal">
 <li><p>One or more points outside of the 3-sigma limits (Shewhart’s original 3-sigma rule).</p></li>
 <li><p>Two out of three successive points beyond a 2-sigma limit (two thirds of the distance between the centre line and the control line).</p></li>
 <li><p>Four out of five successive points beyond a 1-sigma limit.</p></li>
 <li><p>A run of eight successive points on one side of the centre line.</p></li>
 </ol>
-<p>The WE rules have proven their worth during half a century. One thing to notice is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives).</p>
+<p>We leave it to the reader to apply WE rules #2-#4 to figures <a href="testing.html#fig:spc-fig3">4.3</a> and <a href="testing.html#fig:spc-fig4">4.4</a>.</p>
+<p>The WE rules have proven their worth during most of a century. One thing to notice though is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives).</p>
 </div>
-<div id="runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="section level3 hasAnchor" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Runs analysis – tests based on the distribution of data points around the centre line<a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Runs analysis – tests based on the distribution of data points around the centre line<a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>WE rule #4 is independent of the sigma limits. It is based on assumptions regarding the length of runs on either side of the centre line. A run is defined as one of more successive data points on the same side of the centre line.</p>
-<p>By dichotomising data in runs of data points that are either below or above a centre line a whole branch of statistical theory based on runs analysis lies at our feet. The basic idea is that the lengths and number of runs in random processes are governed by statistical laws and may be modelled by associated probability distributions. Conversely, we may use runs analysis to identify unusual runs representing non-random (i.e. special cause) variation.</p>
-<p>For our purpose we use runs analysis to help identify shifts and trends that are too small to trigger the 3-sigma rule but sustained enough to cause “unusual” runs. Especially we are looking for “unusually” long and “unusually” few runs <span class="citation">(<a href="#ref-anhoej2014">Anhøj and Olesen 2014</a>; <a href="#ref-anhoej2015">Anhøj 2015</a>)</span>.</p>
+<p>If we assume that the centre line splits data in two halves, the probability of any data point being above or below the centre is fifty-fifty. Similarly, the probability of any two neighbouring points being on the same or opposite side is fifty-fifty.</p>
+<p>By dichotomising data in runs of data points that are either below or above a certain value, for example the centre line, a whole branch of statistical theory called runs analysis lies at our feet. The basic idea is that the lengths and number of runs in random processes are governed by laws of nature and thus predictable within limits.</p>
+<p>In short, when a process shifts or trends, runs tend to get longer and fewer. Consequently, we may base our runs tests on finding unusually long or unusually few runs. The question now is: what constitutes “unusually” long or or “unusually” few?</p>
+<p>From practical experiments, some theoretical considerations, and years of practice <span class="citation">(<a href="#ref-anhoej2014">Anhøj and Olesen 2014</a>; <a href="#ref-anhoej2015">Anhøj 2015</a>)</span> we suggest these two tests:</p>
 <ul>
-<li><strong>Unusually long runs</strong>: A run is one or more consecutive data points on the same side of the centre line. Data points that fall on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately <span class="math inline">\(log_2(n)+3\)</span> (rounded to the nearest integer), where <span class="math inline">\(n\)</span> is the number of useful data points. For example, in a run chart with 24 data points a run of <em>more</em> than <code>round(log2(24) + 3)</code> = 8 would suggest a shift in the process.</li>
+<li><p><strong>Unusually long runs</strong>: A run is one or more consecutive data points on the same side of the centre line. Data points that fall on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately <span class="math inline">\(log_2(n)+3\)</span> (rounded to the nearest integer), where <span class="math inline">\(n\)</span> is the number of useful data points. For example, in a run chart with 24 data points a run of <em>more</em> than <code>round(log2(24) + 3)</code> = 8 would suggest a shift in the process.</p></li>
+<li><p><strong>Unusually few crossings</strong>: Rather than counting the number of runs, we count the number of crossings, which by definition is one less than the number of runs. A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution, <span class="math inline">\(b(n-1,0.5)\)</span>. The lower 5% prediction limit for number of crossings is found using <code>qbinom(p = 0.05, size = n - 1, prob = 0.5)</code>. Thus, in a run chart with 24 useful data points, <em>fewer</em> than <code>qbinom(0.05, 24 - 1, 0.5)</code> = 8 crossings would suggest that the process is shifting.</p></li>
 </ul>
-<p>Figure <a href="testing.html#fig:spc-fig3">5.3</a> has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.</p>
-<ul>
-<li><strong>Unusually few crossings</strong>: Rather than counting the number of runs, we count the number of crossings, which by definition is one less than the number of runs. A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution, <span class="math inline">\(b(n-1,0.5)\)</span>. The lower 5% prediction limit for number of crossings is found using <code>qbinom(p = 0.05, size = n - 1, prob = 0.5)</code>. Thus, in a run chart with 24 useful data points, <em>fewer</em> than <code>qbinom(0.05, 24 - 1, 0.5)</code> = 8 crossings would suggest that the process is shifting.</li>
-</ul>
-<p>In Figure <a href="testing.html#fig:spc-fig3">5.3</a> there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.</p>
+<p>Figure <a href="testing.html#fig:spc-fig3">4.3</a> has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.</p>
+<p>In Figure <a href="testing.html#fig:spc-fig3">4.3</a> there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.</p>
 <p>Note that the tests themselves do not tell what type of patterns are in data not to mention what the underlying causes of shifts and trends are. That interpretation lies with the data analyst and the people working in the process.</p>
-<p>Critical values for longest runs and number of crossings for 10 – 100 data points are tabulated in Appendix 2.</p>
-<p>Apart from being comparable in sensitivity and specificity to WE rules 2-4 with 20-30 data points, these runs rules have some advantages:</p>
+<p>Critical values for longest runs and number of crossings for 10-100 data points are tabulated in the Appendix <a href="runs-limits.html#runs-limits">B</a>.</p>
+<p>Apart from being comparable in sensitivity and specificity to WE rules #2-#4 with 20-30 data points <span class="citation">(<a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span>, these runs rules have some advantages:</p>
 <ul>
-<li><p>They do not depend on sigma limits and thus are useful as stand-alone rules with run charts.</p></li>
+<li><p>They do not depend on sigma limits and thus are useful as stand-alone rules with run charts (more on run charts in the next section).</p></li>
 <li><p>They adapt dynamically to the number of available data points, and can be applied to charts with as few as 10 and up to indefinitely many data points without losing sensitivity or specificity.</p></li>
 </ul>
-</div>
-<div id="look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts" class="section level3 hasAnchor" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> look mom, no control limits! – using runs analysis as stand-alone rules with run charts<a href="testing.html#look-mom-no-control-limits-using-runs-analysis-as-stand-alone-rules-with-run-charts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In practice the runs rules may be used as alternatives to WE rules #2-#4 to help identify shifts and trends alongside the WE rule #1 for freaks.</p>
 </div>
 </div>
-<div id="two-types-of-errors" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Two types of errors when using SPC<a href="testing.html#two-types-of-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>It is a common misconception that SPC is all about applying statistical tests to time series data in order to prove the presence or absence of special cause variation.</p>
+<div id="charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Charts without borders – using runs analysis as stand-alone rules with run charts<a href="testing.html#charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As we saw in the previous section, some rules only depend on a single line representing the centre of data. We made the assumption that the centre line is positioned such that it splits the data in two equally sized halves. In many cases the process average is a good representation of this centre, but if data are skewed in any way, this may not be the case. However, if we use the median rather than the mean of data the assumption always holds true.</p>
+<p>So what happens if we remove the sigma lines and use the median for the centre line? We get a <strong>run chart</strong>: one of the most useful inventions in quality improvement and control.</p>
+<div class="figure"><span style="display:block;" id="fig:spc-fig5"></span>
+<img src="_main_files/figure-html/spc-fig5-1.svg" alt="Run chart" width="672" />
+<p class="caption">
+Figure 4.5: Run chart
+</p>
+</div>
+<p>Figure <a href="testing.html#fig:spc-fig5">4.5</a> is a run chart of the data from Figure <a href="testing.html#fig:spc-fig2">4.2</a>. We notice that the centre line is a little different from the control chart because we have used the median rather than the mean. Consequently, data are now evenly distributed around the centre line with 12 data points on each side. The longest run have 3 data points (#13-#15 and #22-#24), and the data line crosses the centre line 13 times. Since there are no unusually long runs and not unusually few crossing we conclude that this process shows no signs of persistent shifts in data.</p>
+<p>Figure <a href="testing.html#fig:spc-fig6">4.6</a> is a run chart with data from Figure <a href="testing.html#fig:spc-fig4">4.4</a> containing a shift. The runs analysis confirms our “analysis-by-eye” by finding two unusually long runs with 9 data points and unusually few crossings (4).</p>
+<div class="figure"><span style="display:block;" id="fig:spc-fig6"></span>
+<img src="_main_files/figure-html/spc-fig6-1.svg" alt="Run chart with a trend" width="672" />
+<p class="caption">
+Figure 4.6: Run chart with a trend
+</p>
+</div>
+<p>In practice the two rules are two sides of the same coin – when runs get longer, crossings get fewer and vice versa – and either of them may signal non-random variation.</p>
+<p>Run charts are a lot simpler to construct than control charts. They do not make assumptions about the distribution of data. And they are more sensitive to minor to moderate persistent shifts and trends than control charts are (using only the 3-sigma rule).</p>
+<p>So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (freaks) that would go unnoticed by run charts, and 2) the control limits provide a good measure and a visual representation of the width of the natural process variation.</p>
+<p>Luckily, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.</p>
+</div>
+<div id="a-practical-approach-to-spc-analysis" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> A practical approach to SPC analysis<a href="testing.html#a-practical-approach-to-spc-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we move on, let us pause for a moment and remind ourselves: What are we using SPC charts for? As discussed earlier, we use SPC mainly for two distinctly different tasks: process improvement and process monitoring.</p>
+<p>When <strong>improving</strong> processes we strive to create sustained shifts in the desired direction in data. Thus, shifts are expected. Since improvement often happens in small steps, and since we are after lasting shifts, runs analysis is our tool of choice.</p>
+<p>When <strong>monitoring</strong> processes our goal is to maintain process behaviour and stability, and we are not expecting data to shift. On the other hand, we want to pick up any signals suggesting that the process is deteriorating as quickly as possible. For this, the 3-sigma rule is particularly useful. We may chose to combine the 3-sigma rule with <em>either</em> the rest of the WE rules <em>or</em> with the two runs rules to get better sensitivity to minor to moderate shifts and trends. However, we should be aware that adding tests comes with a price of more false alarms.</p>
+<p>Regardless of the task at hand, we recommend to always begin any SPC analysis with the “assumption free” run chart using the median as centre line. If the runs rules find only non-random variation, it makes no sense to compute sigma limits based on assumptions regarding the location and dispersion of data, because these figures are meaningless when one or more shifts have already been identified. (A bit like ordering a CT scan when the diagnosis has already been confirmed by conventional X-ray.) In that case, we should rather be looking for special causes than concerning ourselves with calculating control limits.</p>
+<p>Then, if our goal is process improvement, we continue with the run chart until we see significant and sustained improvement resulting in a new and better process. When this new process has stabilised itself and looks set to continue, we may consider moving into “monitoring mode” and add control limits to our chart.</p>
+<p>Monitoring a process makes sense when the process is stable (common cause variation only) <em>and</em> satisfactory. If that is not the case, we should start over in “improvement mode”.</p>
+</div>
+<div id="two-types-of-errors" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Two types of errors when using SPC<a href="testing.html#two-types-of-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
 <ul>
-<li><p>Error 1: Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
-<li><p>Error 2: Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
+<li><p>Error 1 (false positive): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
+<li><p>Error 2 (false negative): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
 </ul>
 <p>Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from mistake 1. And if all data were treated as common cause variation, this maximises the losses from mistake 2. Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart concluded that it was best to make either mistake only rarely and that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to ± three standard deviations from the mean provides a reasonable balance between making the two types of mistakes.</p>
-<p>The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgment which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention (we discuss this later in book).</p>
+<p>The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgement which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention. We discuss this later in the book.</p>
 
 </div>
 </div>
@@ -355,6 +398,9 @@ Anhøj, Jacob. 2015. <span>“Diagnostic Value of Run Chart Analysis: Using Like
 </div>
 <div id="ref-anhoej2014" class="csl-entry">
 Anhøj, Jacob, and Anne Vingaard Olesen. 2014. <span>“Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0113825">https://doi.org/10.1371/journal.pone.0113825</a>.
+</div>
+<div id="ref-anhoej2018b" class="csl-entry">
+Anhøj, Jacob, and Tore Wentzel-Larsen. 2018. <span>“Sense and Sensibility: On the Diagnostic Value of Control Chart Rules for Detection of Shifts in Time Series Data.”</span> <em>BMC Medical Research Methodology</em>. <a href="https://doi.org/10.1186/s12874-018-0564-0">https://doi.org/10.1186/s12874-018-0564-0</a>.
 </div>
 <div id="ref-jeppegaard2023" class="csl-entry">
 Jeppegaard, Maria, Steen C. Rasmussen, Jacob Anhøj, and Lone Krebs. 2023. <span>“Winter, Spring, Summer or Fall: Temporal Patterns in Placenta-Mediated Pregnancy Complications—an Exploratory Analysis.”</span> <em>Gynecol Obstet</em> 309: 1991–98. https://doi.org/<a href="https://doi.org/10.1007/s00404-023-07094-6">https://doi.org/10.1007/s00404-023-07094-6</a>.
