@@ -1,10 +1,10 @@
 fig:spc-fig1
 fig:testing-fig1
-fig:spc-fig2
-fig:spc-fig3
-fig:spc-fig4
-fig:spc-fig5
-fig:spc-fig6
+fig:testing-fig2
+fig:testing-fig3
+fig:testing-fig4
+fig:testing-fig5
+fig:testing-fig6
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
@@ -60,7 +60,7 @@ tests-based-on-sigma-limits
 runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line
 charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts
 a-practical-approach-to-spc-analysis
-two-types-of-errors
+spc-rules-in-summary
 responding
 first-chart
 a-run-chart-of-blood-pressure-data
@@ -103,6 +103,8 @@ to-aggregate-or-not-to-aggregate
 case1
 case2
 case3
+diagnostics
+two-types-of-errors
 data-sets
 bacteremia
 blood-pressure

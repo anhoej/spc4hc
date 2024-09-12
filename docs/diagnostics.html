@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Data Sets | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 15 Diagnostic Errors | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Data Sets | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 15 Diagnostic Errors | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Data Sets | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 15 Diagnostic Errors | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="diagnostics.html"/>
-<link rel="next" href="runs-limits.html"/>
+<link rel="prev" href="case3.html"/>
+<link rel="next" href="data-sets.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -254,115 +254,31 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sets" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">A</span> Data Sets<a href="data-sets.html#data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="bacteremia" class="section level2 hasAnchor" number="16.1">
-<h2><span class="header-section-number">A.1</span> Bacteremia<a href="data-sets.html#bacteremia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Hospital acquired and all cause bacteremias and 30 days mortality</p>
-<p>File: bacteremia.csv</p>
-<p>Variables:</p>
+<div id="diagnostics" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Diagnostic Errors<a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="two-types-of-errors" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Two types of errors when using SPC<a href="diagnostics.html#two-types-of-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
 <ul>
-<li>month (date): month of infection</li>
-<li>ha_infections (numeric): number of hospital acquired infections</li>
-<li>risk_days (numeric): number of patient days without infection</li>
-<li>deaths (numeric): 30-day mortality after all-cause infection</li>
-<li>patients (numeric): number of patients with all-cause infection</li>
+<li><p>Error 1 (false positive): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
+<li><p>Error 2 (false negative): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
 </ul>
-</div>
-<div id="blood-pressure" class="section level2 hasAnchor" number="16.2">
-<h2><span class="header-section-number">A.2</span> Blood pressure<a href="data-sets.html#blood-pressure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Daily measurements of blood pressure and resting pulse.</p>
-<p>File: blood_pressure.csv</p>
-<p>Variables:</p>
-<ul>
-<li>date (date): date of measurement</li>
-<li>systolic (numeric): systolic blood pressure (mm Hg)</li>
-<li>diastolic (numeric): diastolic blood pressure (mm Hg)</li>
-<li>pulse (numeric): resting pulse (beats per minute)</li>
-</ul>
-</div>
-<div id="clostridioides-difficile-infections" class="section level2 hasAnchor" number="16.3">
-<h2><span class="header-section-number">A.3</span> Clostridioides difficile infections<a href="data-sets.html#clostridioides-difficile-infections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Hospital acquired C. diff. infections</p>
-<p>File: cdiff.csv</p>
-<p>Variables:</p>
-<ul>
-<li>month (date): first day of month</li>
-<li>cases (numeric): number of cases</li>
-<li>risk_days (numeric): number of patient days without infection</li>
-</ul>
-</div>
-<div id="ceasearian-section-delay" class="section level2 hasAnchor" number="16.4">
-<h2><span class="header-section-number">A.4</span> Ceasearian section delay<a href="data-sets.html#ceasearian-section-delay" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Time to grade 2 C-section</p>
-<p>File: csection_delay.csv</p>
-<p>Variables:</p>
-<ul>
-<li>datetime (datetime): date and time of delivery</li>
-<li>month (date): first day of month</li>
-<li>delay (numeric): time in minutes between decision and delivery</li>
-</ul>
-</div>
-<div id="emergency-admission-mortality" class="section level2 hasAnchor" number="16.5">
-<h2><span class="header-section-number">A.5</span> Emergency admission mortality<a href="data-sets.html#emergency-admission-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>7-day mortality after emergency admission</p>
-<p>File: emergency_admission.csv</p>
-<p>Variables:</p>
-<ul>
-<li>month (date): first day of month</li>
-<li>deaths (numeric): number of deaths within 7 days after emergency admission</li>
-<li>admissions (numeric): number of emergency admissions</li>
-</ul>
-</div>
-<div id="on-time-ct" class="section level2 hasAnchor" number="16.6">
-<h2><span class="header-section-number">A.6</span> On-time CT<a href="data-sets.html#on-time-ct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Patients with acute abdomen CT scanned within 3 hours after arrival</p>
-<p>File: ontime_ct.csv</p>
-<p>Variables:</p>
-<ul>
-<li>month (date): first day of month</li>
-<li>ct_on_time (numeric): number of patients scanned within 3 hours</li>
-<li>cases (numeric): number of patients with acute abdomen</li>
-</ul>
-</div>
-<div id="radiation-doses" class="section level2 hasAnchor" number="16.7">
-<h2><span class="header-section-number">A.7</span> Radiation doses<a href="data-sets.html#radiation-doses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Radiation doses used for renography</p>
-<p>File: renography_doses.csv</p>
-<p>Variables:</p>
-<ul>
-<li>date (date): date of renography</li>
-<li>week (date): first day of week</li>
-<li>dose (numeric): radiation dose in megabequerel</li>
-</ul>
-</div>
-<div id="robson-group-1-births" class="section level2 hasAnchor" number="16.8">
-<h2><span class="header-section-number">A.8</span> Robson group 1 births<a href="data-sets.html#robson-group-1-births" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Outcomes and complications of Robson group 1 births: first time
-pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
-<p>File: robson1_births.csv</p>
-<p>Variables:</p>
-<ul>
-<li>datetime (datetime): data and time of birth</li>
-<li>biweek (date): first day of biweekly period</li>
-<li>csect (logical): delivery by C-section</li>
-<li>cup (logical): delivery by vacuum extraction</li>
-<li>length (numeric): baby length in cm</li>
-<li>weight (numeric): baby weight in kg</li>
-<li>apgar (numeric): apgar score at 5 minutes</li>
-<li>ph (numeric): arterial umbilical chord pH</li>
-<li>asphyxia (logical): ph &lt; 7 or missing ph and apgar &lt; 7</li>
-</ul>
+<p>Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from mistake 1. And if all data were treated as common cause variation, this maximises the losses from mistake 2. Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart concluded that it was best to make either mistake only rarely and that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to ± three standard deviations from the mean provides a reasonable balance between making the two types of mistakes.</p>
+<p>The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgement which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention. We discuss this later in the book.</p>
 
 </div>
+</div>
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="diagnostics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="runs-limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="case3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
