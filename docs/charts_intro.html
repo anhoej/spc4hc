@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-12" />
+<meta name="date" content="2024-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 3</span> Introducing SPC Charts<a href="charts_intro.html#charts_intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.</p>
 <p>In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In Part 2 of this book we will go into detail on how to do the actual calculations involved.</p>
-<p>Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. To help identify unusual patterns several statistical tests (or rules) have been developed.</p>
+<p>Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. by “unusual” we mean something that is unlikely to have happen purely by chance, for example getting ten heads in a row when tossing a coin. To help identify unusual patterns several statistical tests (or rules) have been developed.</p>
 <p>Before we get to the rules in Chapter <a href="testing.html#testing">4</a>, we will take a close look at the structure and the functionality of SPC charts.</p>
 <div id="anatomy-and-physiology-of-spc-charts" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Anatomy and physiology of SPC charts<a href="charts_intro.html#anatomy-and-physiology-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -270,7 +270,7 @@ Figure 3.1: Standardised control chart. SD = standard deviation; CL = centre lin
 </p>
 </div>
 <p>Figure <a href="charts_intro.html#fig:spc-fig1">3.1</a> shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The data included in each data point are called subgroups. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.</p>
-<p>We see that the data points are distributed fairly symmetrical around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer.</p>
+<p>We see that the data points are distributed fairly symmetrically around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer.</p>
 <p>The control limits are positioned so that nearly all data points from a common cause process with fall between them. Conversely, data points outside the limits will most likely represent special causes.</p>
 <p>Based on empirical evidence from designed experiments involving real life data Shewhart found that in practice most process data are found within three standard deviations from the process centre. This is especially true when data, as in Figure <a href="charts_intro.html#fig:spc-fig1">3.1</a>, come from a normal distribution, where the 3-sigma limits are expected to contain over 99.7% of data. Consequently, the chance of any particular data point being outside the limits purely by chance is about three out of a thousand. Thus, in a control chart with a total of 20 data points the chance of <em>all</em> data points being within the control limits is about 95% (1 - 0.997<sup>20</sup>).</p>
 <p>But before we go down that rabbit hole we must realise that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because “it works” (<span class="citation">Shewhart (<a href="#ref-shewhart1931">1931</a>)</span>, p. 18). By this he meant that 3-sigma limits strike the best balance between finding or overlooking special causes regardless of the type and distribution of data. More on this later.</p>
@@ -286,8 +286,8 @@ Figure 3.1: Standardised control chart. SD = standard deviation; CL = centre lin
 <h3><span class="header-section-number">3.2.1</span> Counts<a href="charts_intro.html#counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. <strong>Events</strong> are phenomena that happen in time and space, for example patient falls. <strong>Cases</strong> are units with (or without) a certain property, for example patients who fell.</p>
 <p>When counting falls as events, every fall counts. When counting patients as units who fell, every patient counts – but only once regardless of how many times each patient fell.</p>
-<p>Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.</p>
-<p>Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different from the numerators. With proportions the numerators and denominators are counts of the same thing, for example patients. Also, with proportions the numerators cannot be larger than the denominators.</p>
+<p>Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time(or space), for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.</p>
+<p>Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different from the numerators. With proportions the numerators and denominators are counts of the same thing, for example patients – only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.</p>
 <p>The most common chart types for count data are:</p>
 <ul>
 <li><strong>C chart</strong>: count of events, e.g. number of patient falls.</li>
@@ -298,9 +298,9 @@ Figure 3.1: Standardised control chart. SD = standard deviation; CL = centre lin
 <div id="measurements" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Measurements<a href="charts_intro.html#measurements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Measurements are data that are measured on a continuous scale and may have decimals, for example blood pressure, height and weight, or waiting times.</p>
-<p>As an example, take waiting or “door-to-needle” times. These may be plotted as either individual times where each data point (subgroup) represents one patient or as average time for all patients in a certain period of time, for example an hour, day, week, or month.</p>
+<p>As an example, take waiting or “door-to-needle” times. These may be plotted as either <strong>individual</strong> times where each data point (subgroup) represents one patient or as <strong>average</strong> time for all patients in a certain period of time, for example an hour, day, week, or month.</p>
 <p>When plotting individual measurement data we use the I chart (aka the X chart). When plotting the average of multiple measurement per subgroup we use the X-bar chart.</p>
-<p>When plotting measurements it is sometimes useful to also plot a chart of the within subgroup SDs. For this we use the moving range (MR) chart together with I charts and S charts together with X-bar charts. So for measurement data we have:</p>
+<p>Sometimes it is also useful to plot a chart of the within subgroup SDs. For this we use the moving range (MR) chart together with the I chart and the S chart together with the X-bar chart. So for measurement data we have:</p>
 <ul>
 <li><strong>I and MR charts</strong>: individual measurement, subgroup size = 1.</li>
 <li><strong>X-bar and S charts</strong>: multiple measurements, subgroup size &gt; 1.</li>

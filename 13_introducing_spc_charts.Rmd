@@ -18,7 +18,7 @@ There are many different types of control charts and the chart to be used is det
 
 In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In Part 2 of this book we will go into detail on how to do the actual calculations involved.
 
-Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. To help identify unusual patterns several statistical tests (or rules) have been developed.
+Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. by "unusual" we mean something that is unlikely to have happen purely by chance, for example getting ten heads in a row when tossing a coin. To help identify unusual patterns several statistical tests (or rules) have been developed.
 
 Before we get to the rules in Chapter \@ref(testing), we will take a close look at the structure and the functionality of SPC charts.
 
@@ -35,7 +35,7 @@ stdchart(y1)
 
 Figure \@ref(fig:spc-fig1) shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The data included in each data point are called subgroups. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.
 
-We see that the data points are distributed fairly symmetrical around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer. 
+We see that the data points are distributed fairly symmetrically around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer. 
 
 The control limits are positioned so that nearly all data points from a common cause process with fall between them. Conversely, data points outside the limits will most likely represent special causes.
 
@@ -62,9 +62,9 @@ Counts are positive integers that represent counts of events or cases. The disti
 
 When counting falls as events, every fall counts. When counting patients as units who fell, every patient counts -- but only once regardless of how many times each patient fell. 
 
-Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
+Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time(or space), for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
 
-Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different from the numerators. With proportions the numerators and denominators are counts of the same thing, for example patients. Also, with proportions the numerators cannot be larger than the denominators.
+Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different from the numerators. With proportions the numerators and denominators are counts of the same thing, for example patients -- only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.
 
 The most common chart types for count data are:
 
@@ -76,11 +76,11 @@ The most common chart types for count data are:
 
 Measurements are data that are measured on a continuous scale and may have decimals, for example blood pressure, height and weight, or waiting times.
 
-As an example, take waiting or "door-to-needle" times. These may be plotted as either individual times where each data point (subgroup) represents one patient or as average time for all patients in a certain period of time, for example an hour, day, week, or month.
+As an example, take waiting or "door-to-needle" times. These may be plotted as either **individual** times where each data point (subgroup) represents one patient or as **average** time for all patients in a certain period of time, for example an hour, day, week, or month.
 
 When plotting individual measurement data we use the I chart (aka the X chart). When plotting the average of multiple measurement per subgroup we use the X-bar chart.
 
-When plotting measurements it is sometimes useful to also plot a chart of the within subgroup SDs. For this we use the moving range (MR) chart together with I charts and S charts together with X-bar charts. So for measurement data we have:
+Sometimes it is also useful to plot a chart of the within subgroup SDs. For this we use the moving range (MR) chart together with the I chart and the S chart together with the X-bar chart. So for measurement data we have:
 
 * **I and MR charts**: individual measurement, subgroup size = 1.
 * **X-bar and S charts**: multiple measurements, subgroup size > 1.
@@ -93,4 +93,4 @@ While there are many types of SPC charts for different types of data they all lo
 
 When choosing the right chart we must first decide what type of data we have. For count data there are three common types: C, U, and P charts for event counts, event rates, and proportions respectively. For measurement data we have I and X-bar charts for individual measurements and averages respectively. MR and S charts plot estimates of the within subgroup standard deviation and are often plotted alongside I and X-bar charts.
 
-In the next chapter we will discuss different techniques and  rules used to detect special causes, and we will suggest a set of rules that have been thoroughly studied and validated and provide a high sensitivity to special cause variation while keeping the false alarm rate at a reasonable level.
+In the next chapter we will discuss different techniques and rules used to detect special causes, and we will suggest a set of rules that have been thoroughly studied and validated and provide a high sensitivity to special cause variation while keeping the false alarm rate at a reasonable level.
