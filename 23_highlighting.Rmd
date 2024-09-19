@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Highlighting Freaks, Shifts, and Trends {#highlighting}
 
 ```{r, echo=FALSE}
@@ -7,13 +12,9 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 source('R/spc1.R', local = knitr::knit_global())
 ```
 
-In the previous chapter we calculated control limits for the most common types of control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data -- that is unexpected change caused by something outside the usual system.
+In the previous chapter we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data -- that is unexpected change caused by something outside the usual system.
 
-Control limits are designed to identify rather large (> 2SD), possibly transient, changes in the system. However, as discussed in Part 1 of this book, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. Most known are the Western Electric Rules introduced in the 1950s. The WE rules are based on the distribution of data points relative to the 1, 2, and 3 SD limits.
-
-Recently Anhøj et al. introduced two simple rules that rely only on the distribution of data points around the centre line, the shift and crossings rules, that look for unusually long runs of data points on the same side of the centre line or unusually few crossings of the centre line (@anhoej2014).
-
-The shift and crossings rules are comparable to the WE rules in their sensitivity to minor and moderate *sustained* shifts and trends in data and may be used alone with run charts without control limits (@anhoej2015, @anhoej2018b).
+Control limits are designed to identify rather large (> 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter \@ref(testing), minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to detect freaks and the two runs rules for unusually long runs and unusually few crossings to detect shifts and trends.
 
 In this chapter we will improve the `spc()` function to automatically visualise special cause variation in the form of freaks, shifts, and trends.
 

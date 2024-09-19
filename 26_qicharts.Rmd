@@ -14,7 +14,7 @@ library(qicharts2)
 
 qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.
 
-To learn everything about qichart2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on some key facilities that is still missing from the function library we have buld so far:
+To learn everything about qichart2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on some key facilities that is still missing from the function library we have build so far:
 
 * excluding data points from analysis
 * freezing and splitting charts by periods
@@ -103,7 +103,7 @@ The split argument takes either the indices of the data points to split after, o
 qic(month, n, data = cdi, part = period)
 ```
 
-As with excluding data points, freezing and splitting should be based on deliberate decisions and thorough understanding of the process. Some SPC applications allow for automatic splitting whenever a shift is detected. We strongly advise against this approach. Freezing and splitting *may* be useful when:
+As with excluding data points, splitting should be based on deliberate decisions and thorough understanding of the process. Some SPC applications allow for automatic splitting whenever a shift is detected. We strongly advise against this approach. Splitting *may* be useful when:
 
 * there is a sustained shift in data
 * the reason for the shift is known
@@ -125,7 +125,7 @@ head(hospital_infections)
 
 In addition to the time dimension, these data have two extra dimensions, infection and hospital.
 
-Figure \@ref(fig:qicharts-hais1) shows the total (aggregated) monthly counts of hospital infections from six hospitals.
+Figure \@ref(fig:qicharts-hais1) shows the total (aggregated) monthly counts of hospital associated urinary tract infections from six hospitals.
 
 ```{r qicharts-hais1, fig.cap='Aggregated U chart of urinary tract infections from six hospital'}
 qic(month, n, days, 
@@ -170,7 +170,7 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-By default, `qich()` use fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
+By default, `qic()` use fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
 
 ```{r qicharts-hais4, fig.cap='Small multiple plot with individual y-axes', fig.asp=5/5}
 qic(month, n, days, 
@@ -209,3 +209,6 @@ Figures \@ref(fig:qicharts-hais1) and \@ref(fig:qicharts-hais2) demonstrate the 
 
 As usual, the decision to aggregate or stratify must be taken deliberately, preferably by persons with a thorough understanding of the structures and processes that have produced data. And often it may be useful to produce several plots at different levels of aggregation.     
 
+## qicharts2 in short
+
+qicharts2 is an R package for constructing SPC charts aimed specifically at healthcare but usefull in many other areas. Besides functions for the most commonly used SPC charts, qicharts2 is has a number of specialist charts for rare events data and count data with very large denominators.

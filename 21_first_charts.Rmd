@@ -2,6 +2,7 @@
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,
+                      echo    = TRUE,
                       dev     = 'svg')
 ```
 
@@ -50,13 +51,13 @@ We use the same technique to add the lower and upper control limits.
 
 Remember that the control limits are usually set to $CL \pm 3 SD$, where CL is the centre line, usually the mean, and SD is the estimated standard deviation -- that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.
 
-With data consisting of single measurements, we may estimate the common cause standard deviation using the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter \@ref(limits).
+For data consisting of single measurements, we choose the I chart. To estimate the common cause standard deviation we use the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter \@ref(limits).
 
 ```{r}
 # Calulate the centre line (mean)
 cl  <- rep(mean(systolic), length(systolic))
 
-# Calculate the average moving range of data
+# Calculate the moving ranges of data
 mr <- abs(diff(systolic))
 
 # Print the moving ranges for our viewing pleasure
@@ -68,15 +69,15 @@ amr <- mean(mr)
 # Calculate the process standard deviation
 s <- amr / 1.128
 
-# Create systolic-coordinates for the control limits
+# Create y-coordinates for the control limits
 lcl <- cl - 3 * s
 ucl <- cl + 3 * s
 ```
 
-Before we plot data, we need to expand the systolic-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
+Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
 
 ```{r first-chart-ctrl1, fig.cap='Standardised control chart'}
-# Plot data while expanding the systolic-axis to make room for all data and lines
+# Plot data while expanding the y-axis to make room for all data and lines
 plot(systolic, type = 'o', ylim = range(systolic, lcl, ucl))
 
 # Add lines
@@ -93,4 +94,4 @@ So constructing an SPC chart using R may be done using a few lines of code. In f
 
 Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.
 
-In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, "The Magnificent Eight".
+In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, "The Magnificent Seven".

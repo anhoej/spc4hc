@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-17" />
+<meta name="date" content="2024-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,70 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -117,15 +181,15 @@ div.csl-indent {
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
 <li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is SPC</a></li>
 <li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
-<li class="chapter" data-level="3" data-path="charts_intro.html"><a href="charts_intro.html"><i class="fa fa-check"></i><b>3</b> Introducing SPC Charts</a>
+<li class="chapter" data-level="3" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>3</b> Introducing SPC Charts</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="charts_intro.html"><a href="charts_intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
-<li class="chapter" data-level="3.2" data-path="charts_intro.html"><a href="charts_intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>3.2</b> Some common types of control charts – The Magnificient Seven</a>
+<li class="chapter" data-level="3.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
+<li class="chapter" data-level="3.2" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>3.2</b> Some common types of control charts – The Magnificient Seven</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="charts_intro.html"><a href="charts_intro.html#counts"><i class="fa fa-check"></i><b>3.2.1</b> Counts</a></li>
-<li class="chapter" data-level="3.2.2" data-path="charts_intro.html"><a href="charts_intro.html#measurements"><i class="fa fa-check"></i><b>3.2.2</b> Measurements</a></li>
+<li class="chapter" data-level="3.2.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>3.2.1</b> Counts</a></li>
+<li class="chapter" data-level="3.2.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>3.2.2</b> Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="charts_intro.html"><a href="charts_intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>3.3</b> Common SPC charts in summary</a></li>
+<li class="chapter" data-level="3.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>3.3</b> Common SPC charts in summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Testing for Special Cause Variation</a>
 <ul>
@@ -156,20 +220,21 @@ div.csl-indent {
 <li class="chapter" data-level="7" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>7</b> Calculating Control Limits</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>7.1</b> Introducing the spc() function</a></li>
-<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>7.2</b> Count data</a>
+<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>7.2</b> Formulas for calculation of control limits</a></li>
+<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>7.3</b> Count data</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.2.1</b> C chart</a></li>
-<li class="chapter" data-level="7.2.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.2.2</b> U chart</a></li>
-<li class="chapter" data-level="7.2.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.2.3</b> P chart</a></li>
+<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.3.1</b> C chart</a></li>
+<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.3.2</b> U chart</a></li>
+<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.3.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>7.3</b> Measurement data</a>
+<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>7.4</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>7.3.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.3.2</b> MR chart</a></li>
-<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.3.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="7.3.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.3.4</b> S chart</a></li>
+<li class="chapter" data-level="7.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>7.4.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.4.2</b> MR chart</a></li>
+<li class="chapter" data-level="7.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.4.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="7.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.4.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.4</b> Control limits in short</a></li>
+<li class="chapter" data-level="7.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.5</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>8</b> Highlighting Freaks, Shifts, and Trends</a>
@@ -205,6 +270,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="11.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>11.6.1</b> To aggregate or not to aggregate</a></li>
 </ul></li>
+<li class="chapter" data-level="11.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>11.7</b> qicharts2 in short</a></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
 <li class="chapter" data-level="12" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>12</b> Case 1</a></li>
@@ -261,7 +327,14 @@ div.csl-indent {
 <div id="a-run-chart-of-blood-pressure-data" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> A run chart of blood pressure data<a href="first-chart.html#a-run-chart-of-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>systolic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
+<span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>              <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
+<span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>              <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>
+<span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a>              <span class="dv">157</span>, <span class="dv">183</span>, <span class="dv">177</span>, <span class="dv">171</span>, <span class="dv">185</span>, <span class="dv">176</span>,</span>
+<span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>              <span class="dv">181</span>, <span class="dv">174</span>)</span></code></pre></div>
 <p>First we plot a simple point-and-line chart without any helper lines (Figure <a href="first-chart.html#fig:first-chart-run1">6.1</a>):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="first-chart.html#cb2-1" tabindex="-1"></a><span class="co"># Make point-and-line plot</span></span>
+<span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run1"></span>
 <img src="_main_files/figure-html/first-chart-run1-1.svg" alt="Simple run chart" width="672" />
 <p class="caption">
@@ -270,6 +343,13 @@ Figure 6.1: Simple run chart
 </div>
 <p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
 <p>To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure <a href="first-chart.html#fig:first-chart-run2">6.2</a>):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the centre line</span></span>
+<span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">median</span>(systolic)           <span class="co"># calculate median</span></span>
+<span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl, <span class="fu">length</span>(systolic))  <span class="co"># repeat to match the length of y</span></span>
+<span id="cb3-4"><a href="first-chart.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="first-chart.html#cb3-5" tabindex="-1"></a><span class="co"># Plot data and add centre line</span></span>
+<span id="cb3-6"><a href="first-chart.html#cb3-6" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span>
+<span id="cb3-7"><a href="first-chart.html#cb3-7" tabindex="-1"></a><span class="fu">lines</span>(cl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run2"></span>
 <img src="_main_files/figure-html/first-chart-run2-1.svg" alt="Run chart with centre line" width="672" />
 <p class="caption">
@@ -282,9 +362,33 @@ Figure 6.2: Run chart with centre line
 <h2><span class="header-section-number">6.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We use the same technique to add the lower and upper control limits.</p>
 <p>Remember that the control limits are usually set to <span class="math inline">\(CL \pm 3 SD\)</span>, where CL is the centre line, usually the mean, and SD is the estimated standard deviation – that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.</p>
-<p>With data consisting of single measurements, we may estimate the common cause standard deviation using the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter <a href="limits.html#limits">7</a>.</p>
+<p>For data consisting of single measurements, we choose the I chart. To estimate the common cause standard deviation we use the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter <a href="limits.html#limits">7</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="first-chart.html#cb4-1" tabindex="-1"></a><span class="co"># Calulate the centre line (mean)</span></span>
+<span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">mean</span>(systolic), <span class="fu">length</span>(systolic))</span>
+<span id="cb4-3"><a href="first-chart.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="first-chart.html#cb4-4" tabindex="-1"></a><span class="co"># Calculate the moving ranges of data</span></span>
+<span id="cb4-5"><a href="first-chart.html#cb4-5" tabindex="-1"></a>mr <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">diff</span>(systolic))</span>
+<span id="cb4-6"><a href="first-chart.html#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="first-chart.html#cb4-7" tabindex="-1"></a><span class="co"># Print the moving ranges for our viewing pleasure</span></span>
+<span id="cb4-8"><a href="first-chart.html#cb4-8" tabindex="-1"></a>mr</span></code></pre></div>
 <pre><code>##  [1]  3  3  1 13 19 32  3  3  6  6 14 33 20  6  1 10 20  9 26  6  6 14  9  5  7</code></pre>
-<p>Before we plot data, we need to expand the systolic-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">6.3</a>):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="first-chart.html#cb6-1" tabindex="-1"></a><span class="co"># Calculate the average moving range</span></span>
+<span id="cb6-2"><a href="first-chart.html#cb6-2" tabindex="-1"></a>amr <span class="ot">&lt;-</span> <span class="fu">mean</span>(mr)</span>
+<span id="cb6-3"><a href="first-chart.html#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="first-chart.html#cb6-4" tabindex="-1"></a><span class="co"># Calculate the process standard deviation</span></span>
+<span id="cb6-5"><a href="first-chart.html#cb6-5" tabindex="-1"></a>s <span class="ot">&lt;-</span> amr <span class="sc">/</span> <span class="fl">1.128</span></span>
+<span id="cb6-6"><a href="first-chart.html#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Create y-coordinates for the control limits</span></span>
+<span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s</span>
+<span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s</span></code></pre></div>
+<p>Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">6.3</a>):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data while expanding the y-axis to make room for all data and lines</span></span>
+<span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(systolic, lcl, ucl))</span>
+<span id="cb7-3"><a href="first-chart.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="first-chart.html#cb7-4" tabindex="-1"></a><span class="co"># Add lines</span></span>
+<span id="cb7-5"><a href="first-chart.html#cb7-5" tabindex="-1"></a><span class="fu">lines</span>(ucl)</span>
+<span id="cb7-6"><a href="first-chart.html#cb7-6" tabindex="-1"></a><span class="fu">lines</span>(cl)</span>
+<span id="cb7-7"><a href="first-chart.html#cb7-7" tabindex="-1"></a><span class="fu">lines</span>(lcl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-ctrl1"></span>
 <img src="_main_files/figure-html/first-chart-ctrl1-1.svg" alt="Standardised control chart" width="672" />
 <p class="caption">
@@ -297,7 +401,7 @@ Figure 6.3: Standardised control chart
 <h2><span class="header-section-number">6.3</span> That’s all, Folks!<a href="first-chart.html#thats-all-folks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So constructing an SPC chart using R may be done using a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.</p>
 <p>Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.</p>
-<p>In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, “The Magnificent Eight”.</p>
+<p>In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, “The Magnificent Seven”.</p>
 
 </div>
 </div>

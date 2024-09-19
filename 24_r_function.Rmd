@@ -30,7 +30,7 @@ After doing its job, `spc.aggregate()` returns a data frame with all the necessa
 
 ## Examples
 
-Here are examples of each of the Magnificent Eight. See the source code at the end of this chapter for documentation of the input arguments.
+Here are examples of a run chart and each of the Magnificent Seven. See Appendix \@ref(data-sets) for documentation of the data sets used in the examples.
 
 ### Run chart
 

@@ -7,6 +7,7 @@ editor_options:
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,
+                      echo = TRUE,
                       dev     = 'svg')
 
 library(knitr)
@@ -18,7 +19,7 @@ systolic   <- c(169, 172, 175, 174, 161, 142,
                 161, 181, 175, 176, 186, 166,
                 157, 183, 177, 171, 185, 176,
                 181, 174)
-day        <- seq_along(systolic)
+# day        <- seq_along(systolic)
 cl         <- mean(systolic)
 amr        <- mean(abs(diff(systolic)))
 lcl        <- cl - 2.66 * amr
@@ -35,22 +36,23 @@ To avoid repeating ourselves, let's begin by creating a function to automate the
 ```{r spc1, file='R/spc1.R'}
 ```
 
-The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, one may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
+The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, we may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
 
 Let us test it with the blood pressure data from Chapter \@ref(first-chart) (Figure \@ref(fig:limits-fig1)).
 
 ```{r limits-fig1, fig.cap='Control chart of systolic blood pressure'}
-# create an x variable – not that is it necessary in this case, but just because we can
+# create an x variable, not that is it necessary in this case, just because we can
 day <- seq_along(systolic)
 
 # plot data
 spc(day, systolic, cl, lcl, ucl)
 ```
 
-With this function we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits. 
+With this function we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits.
+
 ## Formulas for calculation of control limits
 
-The formulas for calculation control limits for the most common control charts are provided in Table \@ref(tab:limits-tab1). Don't be alarmed by the number of strange symbols, we will dissect the formulas one by one as we move along.
+The formulas for calculation control limits for The Magnificent Seven introduced in Chapter \@ref(charts-intro) are provided in Table \@ref(tab:limits-tab1). Don't be alarmed by the number of strange symbols, we will dissect the formulas one by one as we move along.
 
 ```{r limits-tab1, echo=FALSE}
 read.delim('input/limit_formulas.tsv', check.names = F) |> 
@@ -59,16 +61,9 @@ read.delim('input/limit_formulas.tsv', check.names = F) |>
   pack_rows('Measurement data', 4, 7)
 ```
 
-Generally, data come in two flavours: count data and measurement data. **Counts** are positive integers that represent counts of events or cases, for example patient falls, surgical complications, or healthy babies. **Measurements** are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.
+As discussed in Chapter \@ref(charts-intro), data come in two flavours: count data and measurement data. **Counts** are positive integers that represent counts of events or cases, for example patient falls, surgical complications, or healthy babies. **Measurements** are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.
 
 ## Count data
-
-There are several types of count data depending on the type of counts involved. In this chapter we will limit ourselves to events and cases.
-
-**Events** are phenomena that happens from time to time and are usually rare and randomly distributed in time and space. Events can for example be the number of cancer cells found in a microscopy slide, the number of patient falls in a month, or the number of shooting stars observed in the night sky. Events often follow the poisson distribution and are presented as raw counts or rates.
-
-
-**Cases** represent whole units that either possess or do not posses a certain property. Cases can for example be surgical procedures that had one or more complications, patients who fell, or procedures that completed according to a standard. Cases often follow the binomial distribution and are presented as proportions or percentages.
 
 For count charts in this chapter we will use the bacteremia data set:
 
@@ -113,8 +108,8 @@ with(bact, {
   ucl <- cl + 3 * sqrt(cl)
   
   # print the limits
-  cat('UCL =', ucl, '\n')
-  cat('CL  =', cl, '\n')
+  cat('UCL =',  ucl, '\n')
+  cat('CL  =',   cl, '\n')
   cat('LCL = ', lcl, '\n')
   
   # plot the chart
@@ -131,7 +126,7 @@ The average monthly number of cases is 22.7, and all data points are within the 
 
 U charts are useful when events are counted over chunks of time or space that are not equally sized resulting in "unequal area of opportunity" (hence the U). In our case we might want to adjust for for the number of patient days that may vary depending on the time of year or between organisational units. The U chart adjust for this by presenting rates rather than raw counts.
 
-As mentioned, events are often rare in comparison to their areas of opportunity. So to avoid very small numbers on the y-axis it may be useful to multiply the y-axis by some factor before plotting. In Figure \@ref(fig:limits-u) we multiply by 10,000 to display infections per 10,000 risk days rather than per day.
+Events are often rare in comparison to their areas of opportunity. So to avoid very small numbers on the y-axis it may be useful to multiply the y-axis by some factor before plotting. In Figure \@ref(fig:limits-u) we multiply by 10,000 to display infections per 10,000 risk days rather than per day.
 
 ```{r limits-u, fig.cap='U chart of monthly number of infections per 10,000 risk days'}
 with(bact, {
@@ -183,7 +178,7 @@ with(bact, {
 })
 ```
 
-On average the mortality is 21%, and all data points are within the control limits.
+On average the mortality is 21%, and all data points are within the control limits. As with U charts, the control limits vary depending on the size of the denominator.
 
 ## Measurement data
 
@@ -214,7 +209,7 @@ I charts are useful when measurements come from individual units, for example wa
 
 As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, the I chart is considered the *Swiss army knife* of SPC.
 
-When subgroups consist of single values we use the pairwise absolute difference between data points, the average moving range ($\overline{MR}$), as an estimate of the common cause variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
+When subgroups consist of single values we use the average absolute difference between neighbouring data points, the average moving range ($\overline{MR}$), as an estimate of the common cause variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
 
 Let's have a look at individual delay times for the latest 60 C-sections (Figure \@ref(fig:limits-i)).
 
@@ -229,11 +224,11 @@ with(tail(csect, 60), {
       cl  = xbar,
       lcl = xbar - 3 * s,
       ucl = xbar + 3 * s)
-  
 })
+
 ```
 
-On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 11 to 37 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.
+On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 13 to 35 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.
 
 ### MR chart
 

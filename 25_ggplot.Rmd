@@ -13,17 +13,17 @@ source('R/spc_functions.R', local = knitr::knit_global())
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-Armed with the battery of functions from Chapter \@ref(r-functions) we are able to construct any of the Magnificent Eight using functionality from base R. Furthermore, it is easy to add new types of SPC charts to the library. To achieve this, all we have to do is to write an appropriate `spc.*()` function to handle the calculations of the centre line and limits and to include the function type in the`spc()` function's chart argument.
+Armed with the battery of functions from Chapter \@ref(r-functions) we are able to construct any of the most commonly used SPC charts using functionality from base R. Furthermore, it is easy to add new types of SPC charts to the library. To achieve this, all we have to do is to write an appropriate `spc.*()` function to handle the calculations of the centre line and limits and to include the function type in the`spc()` function's chart argument.
 
-Because we have used a modularised approach and made a separate function for plotting spc objects, `plot.spc()`, it is also a simple task to use any other plotting method.
+Because we have used a modularised approach and made a separate function for plotting spc objects, `plot.spc()`, it is also a simple task to use any plotting engine other than base R graphics.
 
-In this chapter we will build an alternative plot function, which uses ggplot2 as its plotting engine. ggplot2 has many advantages over plotting with base R function. Not because ggplot2 is able to do things that cannot be done with base R, but because it makes some operations a lot easier.
+In this chapter we will build an alternative plot function, which uses ggplot2 as its plotting engine. ggplot2 has some advantages over plotting with base R function. Not because ggplot2 is able to do things that cannot be done with base R, but because it makes some operations a lot easier.
 
 For example, with ggplot2 we do not need to worry about scaling the axes to accommodate data that are added to the plot or to make room for axis labels and tick marks. These are all handled gracefully by ggplot2 itself.
 
 Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colour palettes, legends, and number/date formats.
 
-First we will create an spc object and assign it to a variable name for later use:
+First, with the `spc()` function we created in the previous chapter we will create an spc object and assign it to a variable name for later use:
 
 ```{r}
 # make spc object
@@ -34,7 +34,7 @@ p <- spc(month, infections,
 
 ```
 
-Note that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable 'p'. We can now continue working with p as with any other R object.
+Notice that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable 'p'. We can now continue working with p as with any other R object.
 
 ```{r ggplot-fig1, fig.cap='SPC chart'}
 # check the class of p

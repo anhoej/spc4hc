@@ -43,7 +43,7 @@ fig:qicharts-hais4
 fig:qicharts-hais5
 what
 variation
-charts_intro
+charts-intro
 anatomy-and-physiology-of-spc-charts
 some-common-types-of-control-charts-the-magnificient-seven
 counts
@@ -68,6 +68,7 @@ adding-control-limits-to-produce-a-control-chart
 thats-all-folks
 limits
 introducing-the-spc-function
+formulas-for-calculation-of-control-limits
 count-data
 c-chart
 u-chart
@@ -100,6 +101,7 @@ freezing-baseline-period
 splitting-chart-by-period
 small-multiple-plots-for-multivariate-data
 to-aggregate-or-not-to-aggregate
+qicharts2-in-short
 case1
 case2
 case3

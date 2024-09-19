@@ -1,5 +1,6 @@
 bookdown::gitbook:
   css: style.css
+  split_bib: yes
   # table_css: FALSE
   config:
     toc:
