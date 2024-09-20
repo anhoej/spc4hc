@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-19" />
+<meta name="date" content="2024-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,13 @@ div.csl-indent {
 <li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>10.1</b> Creating an SPC object for later plotting</a></li>
+<li class="chapter" data-level="10.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>10.2</b> Making a new plot function based on ggplot2</a></li>
+<li class="chapter" data-level="10.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>10.3</b> Customising the plotting theme</a></li>
+<li class="chapter" data-level="10.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>10.4</b> Preparing for qicharts2</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> Introducing qicharts2</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>11.1</b> A simple run chart</a></li>
@@ -326,7 +332,9 @@ div.csl-indent {
 <p>Because we have used a modularised approach and made a separate function for plotting spc objects, <code>plot.spc()</code>, it is also a simple task to use any plotting engine other than base R graphics.</p>
 <p>In this chapter we will build an alternative plot function, which uses ggplot2 as its plotting engine. ggplot2 has some advantages over plotting with base R function. Not because ggplot2 is able to do things that cannot be done with base R, but because it makes some operations a lot easier.</p>
 <p>For example, with ggplot2 we do not need to worry about scaling the axes to accommodate data that are added to the plot or to make room for axis labels and tick marks. These are all handled gracefully by ggplot2 itself.</p>
-<p>Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colour palettes, legends, and number/date formats.</p>
+<p>Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colours, legends, and number formats.</p>
+<div id="creating-an-spc-object-for-later-plotting" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Creating an SPC object for later plotting<a href="ggplot.html#creating-an-spc-object-for-later-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First, with the <code>spc()</code> function we created in the previous chapter we will create an spc object and assign it to a variable name for later use:</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ggplot.html#cb48-1" tabindex="-1"></a><span class="co"># make spc object</span></span>
 <span id="cb48-2"><a href="ggplot.html#cb48-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, infections,</span>
@@ -355,6 +363,9 @@ Figure 10.1: SPC chart
 </p>
 </div>
 <p>Because p is an object of class “spc” we only need to call the generic <code>plot()</code> function, which in turn will pass its first argument to the specialised <code>spc.plot()</code> function.</p>
+</div>
+<div id="making-a-new-plot-function-based-on-ggplot2" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Making a new plot function based on ggplot2<a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We may now create any number of alternative plotting functions for spc objects. In this example we will create a plotting function that uses ggplot2.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ggplot.html#cb54-1" tabindex="-1"></a><span class="co"># Load ggplot2</span></span>
 <span id="cb54-2"><a href="ggplot.html#cb54-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -372,17 +383,14 @@ Figure 10.1: SPC chart
 <span id="cb54-14"><a href="ggplot.html#cb54-14" tabindex="-1"></a>  <span class="co"># Plot the dots and draw the lines</span></span>
 <span id="cb54-15"><a href="ggplot.html#cb54-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(p, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
 <span id="cb54-16"><a href="ggplot.html#cb54-16" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lcl), <span class="at">colour =</span> linecol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb54-17"><a href="ggplot.html#cb54-17" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> ucl), <span class="at">colour =</span> linecol,, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb54-18"><a href="ggplot.html#cb54-18" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cl),</span>
-<span id="cb54-19"><a href="ggplot.html#cb54-19" tabindex="-1"></a>              <span class="at">na.rm    =</span> T,</span>
-<span id="cb54-20"><a href="ggplot.html#cb54-20" tabindex="-1"></a>              <span class="at">colour   =</span> clcol,</span>
-<span id="cb54-21"><a href="ggplot.html#cb54-21" tabindex="-1"></a>              <span class="at">linetype =</span> cltyp) <span class="sc">+</span></span>
-<span id="cb54-22"><a href="ggplot.html#cb54-22" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">colour =</span> col1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb54-23"><a href="ggplot.html#cb54-23" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> dotcol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-24"><a href="ggplot.html#cb54-24" tabindex="-1"></a>}</span>
-<span id="cb54-25"><a href="ggplot.html#cb54-25" tabindex="-1"></a></span>
-<span id="cb54-26"><a href="ggplot.html#cb54-26" tabindex="-1"></a><span class="co"># Plot an spc object</span></span>
-<span id="cb54-27"><a href="ggplot.html#cb54-27" tabindex="-1"></a><span class="fu">ggspc</span>(p)</span></code></pre></div>
+<span id="cb54-17"><a href="ggplot.html#cb54-17" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> ucl), <span class="at">colour =</span> linecol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb54-18"><a href="ggplot.html#cb54-18" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cl), <span class="at">colour =</span> clcol, <span class="at">linetype =</span> cltyp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb54-19"><a href="ggplot.html#cb54-19" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">colour =</span> col1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb54-20"><a href="ggplot.html#cb54-20" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> dotcol, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-21"><a href="ggplot.html#cb54-21" tabindex="-1"></a>}</span>
+<span id="cb54-22"><a href="ggplot.html#cb54-22" tabindex="-1"></a></span>
+<span id="cb54-23"><a href="ggplot.html#cb54-23" tabindex="-1"></a><span class="co"># Plot an spc object</span></span>
+<span id="cb54-24"><a href="ggplot.html#cb54-24" tabindex="-1"></a><span class="fu">ggspc</span>(p)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ggplot-fig2"></span>
 <img src="_main_files/figure-html/ggplot-fig2-1.svg" alt="SPC chart using the `ggspc()` function" width="672" />
 <p class="caption">
@@ -410,6 +418,9 @@ Figure 10.3: SPC chart with modified theme
 </p>
 </div>
 <p>Now, if we wished, we could replace the <code>plot.spc()</code> function with this new function. We will leave it to you to decide which of the two you like best.</p>
+</div>
+<div id="customising-the-plotting-theme" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Customising the plotting theme<a href="ggplot.html#customising-the-plotting-theme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ggplot.html#cb58-1" tabindex="-1"></a>mytheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb58-2"><a href="ggplot.html#cb58-2" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
@@ -436,8 +447,12 @@ Figure 10.4: SPC chart with labels and custom y-axis
 </p>
 </div>
 <p>In the long run, though, we might get tired of manually designing our own theme, modifying the plot function, and formatting tick mark labels for every plot. Wouldn’t it be nice to have this done automatically for us? This is exactly what qicharts2 does.</p>
+</div>
+<div id="preparing-for-qicharts2" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Preparing for qicharts2<a href="ggplot.html#preparing-for-qicharts2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>qicharts2 is an R package for plotting SPC charts and is the subject of the next chapter. qicharts2 builds on the same principles we have developed so far but has a lot more facilities for customising charts. Most importantly, qicharts2 makes it easy to produce multidimensional plots using ggplot2’s faceting methods.</p>
 
+</div>
 </div>
             </section>
 

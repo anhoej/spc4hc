@@ -36,6 +36,7 @@ fig:qicharts-qic3
 fig:qicharts-cdi1
 fig:qicharts-cdi2
 fig:qicharts-cdi3
+fig:qicharts-cdi4
 fig:qicharts-hais1
 fig:qicharts-hais2
 fig:qicharts-hais3
@@ -93,6 +94,10 @@ p-chart-for-percentages
 todo
 further-up-further-in
 ggplot
+creating-an-spc-object-for-later-plotting
+making-a-new-plot-function-based-on-ggplot2
+customising-the-plotting-theme
+preparing-for-qicharts2
 qicharts
 a-simple-run-chart
 a-simple-control-chart

@@ -21,7 +21,9 @@ In this chapter we will build an alternative plot function, which uses ggplot2 a
 
 For example, with ggplot2 we do not need to worry about scaling the axes to accommodate data that are added to the plot or to make room for axis labels and tick marks. These are all handled gracefully by ggplot2 itself.
 
-Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colour palettes, legends, and number/date formats.
+Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colours, legends, and number formats.
+
+## Creating an SPC object for later plotting
 
 First, with the `spc()` function we created in the previous chapter we will create an spc object and assign it to a variable name for later use:
 
@@ -49,6 +51,8 @@ plot(p) # not necessary to call spc.plot(), just call the generic plot() functio
 
 Because p is an object of class "spc" we only need to call the generic `plot()` function, which in turn will pass its first argument to the specialised `spc.plot()` function.
 
+## Making a new plot function based on ggplot2
+
 We may now create any number of alternative plotting functions for spc objects. In this example we will create a plotting function that uses ggplot2.
 
 ```{r ggplot-fig2, fig.cap='SPC chart using the `ggspc()` function'}
@@ -68,11 +72,8 @@ ggspc <- function(p) {
   # Plot the dots and draw the lines
   ggplot(p, aes(x, y)) +
     geom_line(aes(y = lcl), colour = linecol, na.rm = TRUE) +
-    geom_line(aes(y = ucl), colour = linecol,, na.rm = TRUE) +
-    geom_line(aes(y = cl),
-              na.rm    = T,
-              colour   = clcol,
-              linetype = cltyp) +
+    geom_line(aes(y = ucl), colour = linecol, na.rm = TRUE) +
+    geom_line(aes(y = cl), colour = clcol, linetype = cltyp, na.rm = TRUE) +
     geom_line(colour = col1, na.rm = TRUE) +
     geom_point(colour = dotcol, na.rm = TRUE)
 }
@@ -101,6 +102,8 @@ p +
 
 Now, if we wished, we could replace the `plot.spc()` function with this new function. We will leave it to you to decide which of the two you like best.
 
+## Customising the plotting theme
+
 The last example in this chapter demonstrates how to create our own custom theme and how to format y axis tick marks as percentages:
 
 ```{r ggplot-fig4, fig.cap='SPC chart with labels and custom y-axis'}
@@ -126,5 +129,7 @@ ggspc(p) +
 ```
 
 In the long run, though, we might get tired of manually designing our own theme, modifying the plot function, and formatting tick mark labels for every plot. Wouldn't it be nice to have this done automatically for us? This is exactly what qicharts2 does.
+
+## Preparing for qicharts2
 
 qicharts2 is an R package for plotting SPC charts and is the subject of the next chapter. qicharts2 builds on the same principles we have developed so far but has a lot more facilities for customising charts. Most importantly, qicharts2 makes it easy to produce multidimensional plots using ggplot2's faceting methods. 

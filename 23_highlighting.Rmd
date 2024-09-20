@@ -78,7 +78,7 @@ with(cdiff, {
 })
 ```
 
-Now it is a lot easier to immediately see if a chart contains special cause variation or not (Figure \@ref(fig:highlighting-spc2)). Data points outside the limits are red, and the centre line will turn red and dashed if there are any unusually long runs in data or if the curve crossed the centre line unusually few times.
+Now it is a lot easier to immediately see if a chart contains special cause variation or not (Figure \@ref(fig:highlighting-spc2)). Freak data points are red, and the centre line turns red and dashed if there are any unusually long runs or if the curve crossed the centre line unusually few times.
 
 Remember, the chart itself does not tell us what caused the signals. This interpretation of a chart -- common or special cause variation -- still relies on humans with a deep understanding the process and the data.
 

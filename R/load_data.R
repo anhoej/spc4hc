@@ -73,3 +73,11 @@ births <- read.csv('data/robson1_births.csv',
                                     'integer',
                                     'double',
                                     'logical'))
+
+# systolic blood pressure ----
+systolic <- c(169, 172, 175, 174, 161, 142,
+              174, 171, 168, 174, 180, 194,
+              161, 181, 175, 176, 186, 166,
+              157, 183, 177, 171, 185, 176,
+              181, 174)
+

@@ -36,7 +36,7 @@ To avoid repeating ourselves, let's begin by creating a function to automate the
 ```{r spc1, file='R/spc1.R'}
 ```
 
-The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, we may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
+The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple point-and-line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, we may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
 
 Let us test it with the blood pressure data from Chapter \@ref(first-chart) (Figure \@ref(fig:limits-fig1)).
 
@@ -209,7 +209,7 @@ I charts are useful when measurements come from individual units, for example wa
 
 As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, the I chart is considered the *Swiss army knife* of SPC.
 
-When subgroups consist of single values we use the average absolute difference between neighbouring data points, the average moving range ($\overline{MR}$), as an estimate of the common cause variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
+When subgroups consist of single values we use the average absolute difference between neighbouring data points, the average moving range ($\overline{MR}$), as an estimate of the within subgroup variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
 
 Let's have a look at individual delay times for the latest 60 C-sections (Figure \@ref(fig:limits-i)).
 
@@ -228,7 +228,7 @@ with(tail(csect, 60), {
 
 ```
 
-On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 13 to 35 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.
+On average, the delay time for these cases is 24 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.
 
 ### MR chart
 

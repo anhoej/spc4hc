@@ -6,15 +6,15 @@ editor_options:
 # Introducing qicharts2 {#qicharts}
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.asp = 3/5,
+knitr::opts_chunk$set(fig.asp = 3/6,
                       dev     = 'svg')
 source('R/load_data.R', local = knitr::knit_global())
 library(qicharts2)
 ```
 
-qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct all of the Magnicent Eight plus a number of specialised charts including pareto charts and control charts for rare events data.
+qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct run charts and all of the Magnificent Seven plus a number of specialised charts including pareto charts and control charts for rare events data.
 
-To learn everything about qichart2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on some key facilities that is still missing from the function library we have build so far:
+To learn everything about qicharts2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on some key facilities that is missing from the function library we have build so far:
 
 * excluding data points from analysis
 * freezing and splitting charts by periods
@@ -31,7 +31,7 @@ install.packages('qicharts2')
 library(qicharts2)
 ```
 
-As always, you only need to install a package once, but you need to load it every time you want to use it. 
+Remember, you only need to install a package once, but you need to load it every time you want to use it. 
 
 Next, you may want to read the vignette: `vignette('qicharts2')` -- or you may want to get started right away.
 
@@ -97,7 +97,7 @@ When a sustained shift in data has been discovered *and* the cause is known it i
 qic(month, n, data = cdi, part = 24)
 ```
 
-The split argument takes either the indices of the data points to split after, or we may use a categorical variable naming the time periods in which case the periods will be labelled (Figure \@ref(fig:qicharts-cdi3)).
+The part argument takes either the indices of the data points to split after, or a categorical variable naming the time periods in which case the periods will be labelled (Figure \@ref(fig:qicharts-cdi3)).
 
 ```{r qicharts-cdi3, fig.cap='Splitting using a period variable'}
 qic(month, n, data = cdi, part = period)
@@ -111,6 +111,12 @@ As with excluding data points, splitting should be based on deliberate decisions
 * the shift is expected to continue
 
 If any of these conditions is not met we should rather look for the root cause and -- if need be -- eliminate it.
+
+Because we now have data from two very different but stable processes we may choose to add control limits to better detect future changes, especially freaks, in process behaviour (Figure \@ref(fig:qicharts-cdi4)).
+
+```{r qicharts-cdi4, fig.cap='Splitting using a period variable'}
+qic(month, n, data = cdi, part = period, chart = 'c')
+```
 
 ## Small multiple plots for multivariate data
 

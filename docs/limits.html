@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-19" />
+<meta name="date" content="2024-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,7 +258,13 @@ div.csl-indent {
 <li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>10.1</b> Creating an SPC object for later plotting</a></li>
+<li class="chapter" data-level="10.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>10.2</b> Making a new plot function based on ggplot2</a></li>
+<li class="chapter" data-level="10.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>10.3</b> Customising the plotting theme</a></li>
+<li class="chapter" data-level="10.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>10.4</b> Preparing for qicharts2</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> Introducing qicharts2</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>11.1</b> A simple run chart</a></li>
@@ -359,7 +365,7 @@ div.csl-indent {
 <span id="cb8-31"><a href="limits.html#cb8-31" tabindex="-1"></a>  <span class="fu">lines</span>(x, lcl)</span>
 <span id="cb8-32"><a href="limits.html#cb8-32" tabindex="-1"></a>  <span class="fu">lines</span>(x, ucl)</span>
 <span id="cb8-33"><a href="limits.html#cb8-33" tabindex="-1"></a>}</span></code></pre></div>
-<p>The <code>spc()</code> function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, we may provide additional arguments for the <code>plot()</code> function, e.g. main, xlab, and ylab for title and axis labels.</p>
+<p>The <code>spc()</code> function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple point-and-line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, we may provide additional arguments for the <code>plot()</code> function, e.g. main, xlab, and ylab for title and axis labels.</p>
 <p>Let us test it with the blood pressure data from Chapter <a href="first-chart.html#first-chart">6</a> (Figure <a href="limits.html#fig:limits-fig1">7.1</a>).</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="limits.html#cb9-1" tabindex="-1"></a><span class="co"># create an x variable, not that is it necessary in this case, just because we can</span></span>
 <span id="cb9-2"><a href="limits.html#cb9-2" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(systolic)</span>
@@ -662,7 +668,7 @@ Figure 7.4: P chart of monthly 30-day mortality rates
 <p>The “I” in I chart stand for “individuals” because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.</p>
 <p>I charts are useful when measurements come from individual units, for example waiting times or blood pressure measurements for individual patients.</p>
 <p>As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, the I chart is considered the <em>Swiss army knife</em> of SPC.</p>
-<p>When subgroups consist of single values we use the average absolute difference between neighbouring data points, the average moving range (<span class="math inline">\(\overline{MR}\)</span>), as an estimate of the common cause variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply <span class="math inline">\(\overline{MR}\)</span> by 3 / 1.128 = 2.66 to get 3 <span class="math inline">\(SD\)</span>s.</p>
+<p>When subgroups consist of single values we use the average absolute difference between neighbouring data points, the average moving range (<span class="math inline">\(\overline{MR}\)</span>), as an estimate of the within subgroup variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply <span class="math inline">\(\overline{MR}\)</span> by 3 / 1.128 = 2.66 to get 3 <span class="math inline">\(SD\)</span>s.</p>
 <p>Let’s have a look at individual delay times for the latest 60 C-sections (Figure <a href="limits.html#fig:limits-i">7.5</a>).</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="limits.html#cb18-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">tail</span>(csect, <span class="dv">60</span>), {</span>
 <span id="cb18-2"><a href="limits.html#cb18-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(delay)      <span class="co"># mean value, centre line</span></span>
@@ -681,7 +687,7 @@ Figure 7.4: P chart of monthly 30-day mortality rates
 Figure 7.5: I-chart
 </p>
 </div>
-<p>On average, the delay time for these cases is 24 minutes. The control limits tell us that we should expect future delays to be in the range of 13 to 35 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.</p>
+<p>On average, the delay time for these cases is 24 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.</p>
 </div>
 <div id="mr-chart" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> MR chart<a href="limits.html#mr-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
