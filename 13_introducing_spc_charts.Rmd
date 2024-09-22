@@ -3,6 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+
 # Introducing SPC Charts {#charts-intro}
 
 
@@ -14,13 +15,11 @@ library(kableExtra)
 source('R/stdchart.R', local = knitr::knit_global())
 ```
 
-There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.
+Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data. By "unusual" we mean something that is unlikely to have happened purely by chance, like getting ten heads in a row when tossing a coin.
 
-In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In Part 2 of this book we will go into detail on how to do the actual calculations involved.
+There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same by employing a set of statistical tests (or rules) to help identify unusual patterns.
 
-Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. by "unusual" we mean something that is unlikely to have happen purely by chance, for example getting ten heads in a row when tossing a coin. To help identify unusual patterns several statistical tests (or rules) have been developed.
-
-Before we get to the rules in Chapter \@ref(testing), we will take a close look at the structure and the functionality of SPC charts.
+In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In the next chapter (\@ref(testing)) we discuss different rules for identifying unusual patterns in data. In Part 2 of this book we will go into detail on how to do the actual calculations involved.
 
 ## Anatomy and physiology of SPC charts
 

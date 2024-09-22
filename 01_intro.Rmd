@@ -50,7 +50,7 @@ We hope you find the book of some use and would appreciate your feedback on how 
 
 ## About us {-}
 
-**Jacob Anhøj** is a medical doctor with 30+ years of experience along with a diploma in Information Technology. He has published 45+ papers and two books and has extensive teaching experience. His main professional interest is patient safety and healthcare quality in general and statistical methods for quality improvement in particular. He has contributed to the development of statistical methods for testing for non-random variation in time series data. He is an experienced R user and has published several R packages including `qicharts2` for construction and analysis of statistical process control charts.
+**Jacob Anhøj** is a medical doctor with 30+ years of experience along with a diploma in Information Technology. He has published 45+ papers and two books and has extensive teaching experience. His main professional interest is patient safety and healthcare quality in general and statistical methods for quality improvement in particular. He has contributed to the development of statistical methods for testing for non-random variation in time series data. He is an experienced R user and has published several R packages including qicharts2 for construction and analysis of statistical process control charts.
   
 **Mohammed Amin Mohammed** is Emeritus Professor of Healthcare Quality
 and Effectiveness at the Faculty of Health Studies, University of Bradford, and

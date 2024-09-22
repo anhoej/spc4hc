@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-20" />
+<meta name="date" content="2024-09-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,10 +328,9 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="charts-intro" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Introducing SPC Charts<a href="charts-intro.html#charts-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same.</p>
-<p>In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In Part 2 of this book we will go into detail on how to do the actual calculations involved.</p>
-<p>Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data over time. by “unusual” we mean something that is unlikely to have happen purely by chance, for example getting ten heads in a row when tossing a coin. To help identify unusual patterns several statistical tests (or rules) have been developed.</p>
-<p>Before we get to the rules in Chapter <a href="testing.html#testing">4</a>, we will take a close look at the structure and the functionality of SPC charts.</p>
+<p>Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data. By “unusual” we mean something that is unlikely to have happened purely by chance, like getting ten heads in a row when tossing a coin.</p>
+<p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same by employing a set of statistical tests (or rules) to help identify unusual patterns.</p>
+<p>In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In the next chapter (<a href="testing.html#testing">4</a>) we discuss different rules for identifying unusual patterns in data. In Part 2 of this book we will go into detail on how to do the actual calculations involved.</p>
 <div id="anatomy-and-physiology-of-spc-charts" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Anatomy and physiology of SPC charts<a href="charts-intro.html#anatomy-and-physiology-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Shewhart’s brilliant invention was the idea of control limits to show the boundaries of the common cause variation in data. Data points that lie between the lines represent common cause variation and data points outside the limits represent special cause variation.</p>

@@ -37,9 +37,9 @@ In order to increase the sensitivity of SPC charts to minor shifts in data a lar
 
 ## Patterns of non-random variation in time series data
 
-In the iconic Western Electric Handbook [@we1956] a large number of control chart patterns are described to help engineers interpret control charts. The idea being that certain patterns are often due to certain causes.
+In the iconic Western Electric Handbook [@we1956] a large number of control chart patterns are described to help engineers interpret control charts. The idea being that certain patterns are often related to certain causes.
 
-In our experience, the most common special cause patterns found in healthcare data are freaks, shift, and trends. 
+In our experience, the most common special cause patterns found in healthcare data are freaks, shifts, and trends. 
 
 ### Freaks
 
@@ -52,7 +52,7 @@ y2[13] <- y2[13] + 2
 stdchart(y2)
 ```
 
-Freaks are often caused by data or sampling errors, but may also be results of transient external forces acting on the process, for example temporary changes in patient case mix. Finally, freaks may simply be part of the natural process which once in a while is expected to produce extreme values simply by chance.
+Freaks are often caused by data or sampling errors, but may also be results of transient external forces acting on the process, for example temporary changes in patient case mix during a holiday season. Finally, freaks may simply be part of the natural process which once in a while is expected to produce extreme values simply by chance (false alarm).
 
 ### Shifts
 
@@ -64,11 +64,11 @@ y3[16:24] <- y3[16:24] + 1
 stdchart(y3)
 ```
 
-Shifts are caused by sudden changes in process behaviour. In healthcare improvement we strive to induce shift in the desired direction by improving the structures and procedures that are behind data.
+Shifts are caused by sudden changes in process behaviour. In fact, in healthcare improvement we strive to induce shifts in the desired direction by improving the structures and procedures that are behind data.
 
 ### Trends
 
-A trend is a gradual change in process centre (Figure \@ref(fig:testing-fig4)). Note that in some texts a trend is more specifically a series of data points that are all larger or smaller than the previous data point. In this book, we use the term "trend" in the more general sense as a gradual change in one direction.
+A trend is a gradual change in process centre (Figure \@ref(fig:testing-fig4)). Note that in some texts a trend is more specifically a series of data points that are all going up or down. In this book, we use the term "trend" in the more general sense as a gradual change in one direction.
 
 ```{r testing-fig4, fig.cap='Control chart with a trend in data', echo=FALSE}
 set.seed(22222)
@@ -127,7 +127,7 @@ From practical experiments, some theoretical considerations, and years of practi
 
 * **Unusually long runs**: A run is one or more consecutive data points on the same side of the centre line. Data points that fall directly on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately $log_2(n)+3$ (rounded to the nearest integer), where $n$ is the number of useful data points (data points not on the centre line). For example, in a run chart with 24 useful data points a run of *more* than `round(log2(24) + 3)` = `r round(log2(24) + 3)` would suggest a shift in the process.
 
-* **Unusually few crossings**: Rather than counting the number of runs, we count the number of crossings, which by definition is one less than the number of runs. A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution, $b(n-1,0.5)$. The lower 5% prediction limit for number of crossings is found using `qbinom(p = 0.05, size = n - 1, prob = 0.5)`. Thus, in a run chart with 24 useful data points, *fewer* than `qbinom(0.05, 24 - 1, 0.5)` = `r qbinom(0.05, 24 - 1, 0.5)` crossings would suggest that the process is shifting.
+* **Unusually few crossings**: Rather than counting the number of runs, we count the number of crossings, which by definition is one less than the number of runs. A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution. The lower 5% prediction limit for number of crossings is found using the cumulative probability distribution, `qbinom(p = 0.05, size = n - 1, prob = 0.5)`. Thus, in a run chart with 24 useful data points, *fewer* than `qbinom(0.05, 24 - 1, 0.5)` = `r qbinom(0.05, 24 - 1, 0.5)` crossings would suggest that the process is shifting.
 
 Figure \@ref(fig:testing-fig3) has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.
 
@@ -179,9 +179,11 @@ When **improving** processes we strive to create sustained shifts in the desired
 
 When **monitoring** processes our goal is to maintain process behaviour and stability, and we are not expecting data to shift. On the other hand, we want to pick up any signals suggesting that the process is deteriorating as quickly as possible. For this, the 3-sigma rule is particularly useful. We may chose to combine the 3-sigma rule with *either* the rest of the WE rules *or* with the two runs rules to get better sensitivity to minor to moderate shifts and trends. However, we should be aware that adding tests comes with a price of more false alarms.
 
-Regardless of the task at hand, **we recommend to always begin any SPC analysis with the "assumption free" run chart** using the median as centre line. If the runs rules find non-random variation, it makes no sense to compute sigma limits based on assumptions regarding the location and dispersion of data, because these figures are meaningless when one or more shifts have already been identified. (A bit like ordering a CT scan when the diagnosis has already been confirmed by conventional X-ray.) In that case, we should rather be looking for special causes than concerning ourselves with calculating control limits.
+Regardless of the task at hand, **we recommend to always begin any SPC analysis with the "assumption free" run chart** using the median as centre line. If the runs analysis find non-random variation, it makes no sense to compute sigma limits based on assumptions regarding the location and dispersion of data, because these figures are meaningless when one or more shifts have already been identified. (A bit like ordering a CT scan when the diagnosis has already been confirmed by conventional X-ray.) In that case, we should rather be looking for special causes than concerning ourselves with calculating control limits.
 
-Then, if our goal is process improvement, we continue with the run chart until we see significant and sustained improvement resulting in a new and better process. When this new process has stabilised itself and looks set to continue, we may consider moving into "monitoring mode" and add control limits to our chart.
+Then, if our goal is process improvement, we continue with the run chart until we see significant and sustained improvement resulting in a new and better process. 
+
+If and when this new better process stabilises and looks set to continue, we may consider moving into "monitoring mode" by adding control limits and using the mean for centre line.
 
 Monitoring a process makes sense when the process is stable (common cause variation only) *and* satisfactory. If that is not the case, we should start over in "improvement mode".
 
