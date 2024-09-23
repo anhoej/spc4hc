@@ -113,7 +113,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="2" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>2</b> What is Statistical Process Control</a></li>
+<li class="chapter" data-level="2" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>2</b> What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="3" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>3</b> Understanding Variation</a></li>
 <li class="chapter" data-level="4" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>4</b> Understanding SPC Charts</a>
 <ul>
@@ -143,11 +143,11 @@ div.csl-indent {
 <li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>5.4</b> A practical approach to SPC analysis</a></li>
 <li class="chapter" data-level="5.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>5.5</b> SPC rules in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="responding.html"><a href="responding.html"><i class="fa fa-check"></i><b>6</b> Using SPC in healthcare</a>
+<li class="chapter" data-level="6" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>6</b> Using SPC in healthcare</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="responding.html"><a href="responding.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>6.1</b> Using SPC to monitor a process</a></li>
-<li class="chapter" data-level="6.2" data-path="responding.html"><a href="responding.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>6.2</b> Using SPC to improve a process</a></li>
-<li class="chapter" data-level="6.3" data-path="responding.html"><a href="responding.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>6.3</b> Successful use of SPC in healthcare</a></li>
+<li class="chapter" data-level="6.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>6.1</b> Using SPC to monitor a process</a></li>
+<li class="chapter" data-level="6.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>6.2</b> Using SPC to improve a process</a></li>
+<li class="chapter" data-level="6.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>6.3</b> Successful use of SPC in healthcare</a></li>
 </ul></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
 <li class="chapter" data-level="7" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>7</b> Your First SPC Charts With Base R</a>
@@ -255,22 +255,22 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="responding" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Using SPC in healthcare<a href="responding.html#responding" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="using" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Using SPC in healthcare<a href="using.html#using" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In healthcare, SPC methodology is used in two main ways:</p>
 <ul>
 <li>Monitoring the behaviour or performance of an existing process (e.g. complications following surgery), or</li>
 <li>Improving an existing process (e.g. redesigning the pathway for patients with fractured hips).</li>
 </ul>
 <div id="using-spc-to-monitor-a-process" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Using SPC to monitor a process<a href="responding.html#using-spc-to-monitor-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">6.1</span> Using SPC to monitor a process<a href="using.html#using-spc-to-monitor-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the monitoring mode, the primary aim is to determine if a process is deteriorating which is usually indicated by signals of special cause variation where detective work is undertaken to find the cause and then eliminate it. Such detective work can be undertaken by using the Pyramid Model of Investigation describe below.</p>
 <p>The key aim of using statistical process control charts to monitor healthcare processes is to ensure that quality and safety of care are adequate and not deteriorating. So when a signal of special cause variation is seen on a control chart monitoring a given outcome (e.g. mortality rates following surgery), investigation is necessary. However, the chosen method must recognise that the link between recorded outcomes and quality of care <em>is complex, ambiguous and subject to multiple explanations</em> [REF]. Failure to do so may inadvertently contribute to premature conclusions and a blame culture that undermines the engagement of clinical staff and the credibility of statistical process control. As <span class="citation">Rogers et al. (<a href="#ref-rogers2004">2004</a>)</span> note:</p>
 <blockquote>
 <p>If monitoring schemes are to be accepted by those whose outcomes are being assessed, an atmosphere of constructive evaluation, not ‘blaming’ or ‘naming and shaming’, is essential as apparent poor performance could arise for a number of reasons that should be explored systematically.</p>
 <p>– <span class="citation">Rogers et al. (<a href="#ref-rogers2004">2004</a>)</span></p>
 </blockquote>
-<p>To address this need, Mohammed et al. propose the <strong>Pyramid Model</strong> for Investigation Special Cause Variation in healthcare – a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient case-mix, structure/resources, process of care, and carer(s) (Figure <a href="responding.html#fig:responding-fig1">6.1</a>).</p>
+<p>To address this need, <span class="citation">Mohammed et al. (<a href="#ref-mohammed2004">2004</a>)</span> proposed the <strong>Pyramid Model</strong> for Investigation of Special Cause Variation in healthcare – a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient case-mix, structure/resources, process of care, and carer(s) (Figure <a href="using.html#fig:responding-fig1">6.1</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:responding-fig1"></span>
 <img src="figures/pyramid_model.svg" alt="Pyramid Model for Investigation"  />
 <p class="caption">
@@ -285,46 +285,48 @@ Figure 6.1: Pyramid Model for Investigation
 <li><p>A credible cause requires <strong>quantitative and qualitative evidence</strong>, which is used by the team to test hypotheses and reach closure. If no credible explanation can be found, then the only plausible conclusion is that signal itself was a false signal.</p></li>
 </ol>
 <p>The types of questions that can be asked when undertaking the detective work are highlighted below.</p>
-<p><strong>Data</strong>: Data quality issues, e.g. coding accuracy, reliability of charts, definitions, and completeness.</p>
 <ul>
-<li>Are the data coded correctly?</li>
-<li>Has there been a change in data coding practices (e.g. are there less experienced coders)?</li>
-<li>Is clinical documentation clear, complete, and consistent?</li>
-</ul>
-<p><strong>Case mix</strong>: Although differences in case mix are accounted for in the calculation, it is possible that some residual confounding may remain.</p>
+<li><p><strong>Data</strong>: Data quality issues, e.g. coding accuracy, reliability of charts, definitions, and completeness.</p>
 <ul>
-<li>Are there factors peculiar to this hospital not taken into account in the risk adjustment?</li>
-<li>Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?</li>
-</ul>
-<p><strong>Structure or resource</strong>: Availability of beds, staff, and medical equipment; institutional processes.</p>
+<li><p>Are the data coded correctly?</p></li>
+<li><p>Has there been a change in data coding practices (e.g. are there less experienced coders)?</p></li>
+<li><p>Is clinical documentation clear, complete, and consistent?</p></li>
+</ul></li>
+<li><p><strong>Case mix</strong>: Although differences in case mix are accounted for in the calculation, it is possible that some residual confounding may remain.</p>
 <ul>
-<li>Has there been a change in the distribution of patients in the hospital, with more patients in this specialty spread throughout the hospital rather than concentrated in a particular unit?</li>
-</ul>
-<p><strong>Process of care</strong>: Medical treatments of patients, clinical pathways, patient admission and discharge hospital policies.</p>
+<li><p>Are there factors peculiar to this hospital not taken into account in the risk adjustment?</p></li>
+<li><p>Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?</p></li>
+</ul></li>
+<li><p><strong>Structure or resource</strong>: Availability of beds, staff, and medical equipment; institutional processes.</p>
 <ul>
-<li>Has there been a change in the care being provided?</li>
-<li>Have new treatment guidelines been introduced?</li>
-</ul>
-<p><strong>Professional staff/carers</strong>: Practice and treatment methods, etc.</p>
+<li><p>Has there been a change in the distribution of patients in the hospital, with more patients in this specialty spread throughout the hospital rather than concentrated in a particular unit?</p></li>
+<li><p>Has the physical environment or organisational structures changed?</p></li>
+</ul></li>
+<li><p><strong>Process of care</strong>: Medical treatments of patients, clinical pathways, patient admission and discharge hospital policies.</p>
 <ul>
-<li>Has there been a change in staffing for treatment of patients?</li>
-<li>Has a key staff member gained additional training and introduced a new method that has led to improved outcomes?</li>
+<li><p>Has there been a change in the care being provided?</p></li>
+<li><p>Have new treatment guidelines been introduced?</p></li>
+</ul></li>
+<li><p><strong>Professional staff/carers</strong>: Practice and treatment methods, etc.</p>
+<ul>
+<li><p>Has there been a change in staffing for treatment of patients?</p></li>
+<li><p>Has a key staff member gained additional training and introduced a new method that has led to improved outcomes?</p></li>
+</ul></li>
 </ul>
 </div>
 <div id="using-spc-to-improve-a-process" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Using SPC to improve a process<a href="responding.html#using-spc-to-improve-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better ’a’s after switching to a computer. This is determined by looking to see the impact of the change in the form of signals of special cause variation on a SPC chart.</p>
+<h2><span class="header-section-number">6.2</span> Using SPC to improve a process<a href="using.html#using-spc-to-improve-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a’s after switching to a computer. This is determined by looking to see the impact of the change in the form of signals of special cause variation on a SPC chart.</p>
 <p>The degree of alignment between changes to the process and subsequent signals of special cause variation provide a story which qualitatively and quantitatively describes the impact of changes.</p>
-<p>Common cause variation can only be addressed by changing a major portion of the process.</p>
-<p>What do we mean by a major portion? The theory of constraints offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints (as demonstrated by the handwriting example earlier). [ref]</p>
-<p>The Model for Improvement, proposed by <span class="citation">Langley et al. (<a href="#ref-langley2009">2009</a>)</span> is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.</p>
+<p>Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? The theory of constraints offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints (as demonstrated by the handwriting example earlier). [ref]</p>
+<p>The Model for Improvement, proposed by <span class="citation">Langley et al. (<a href="#ref-langley2009">2009</a>)</span>, is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>What are we trying to accomplish?</strong>
 This question defines the aim of the improvement effort, which should be specific, measurable, and time-bound along with a rationale for why this is important.</p></li>
 <li><p><strong>How will we know that a change is an improvement?</strong>
 This question focuses on measurement. The team identifies key performance indicators and other metrics to assess whether the change has led to improvement. This includes balancing measures designed to capture unintended negative consequences from changing a system or process.</p></li>
 <li><p><strong>What changes can we make that will result in improvement?</strong>
-This question explores potential change ideas or interventions that could lead to the desired improvement which are undertaken according to the <strong>PDSA Cycle</strong>, which is a method for testing changes on a small scale:</p>
+This question explores potential change ideas or interventions that could lead to the desired improvement. These ideas are undertaken according to the <strong>PDSA Cycle</strong>, which is a method for iterative small-scale testing of changes:</p>
 <ul>
 <li>Plan: Develop a plan to test the change, including who, what, when, and where.</li>
 <li>Do: Implement the change on a small scale.</li>
@@ -335,10 +337,10 @@ This question explores potential change ideas or interventions that could lead t
 <p>There are other approaches to improvement in healthcare, such as Lean, Six Sigma, and Systems Engineering. The SPC chart can support each of these approaches because it offers a robust and insightful way to test the success or otherwise change ideas.</p>
 </div>
 <div id="successful-use-of-spc-in-healthcare" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Successful use of SPC in healthcare<a href="responding.html#successful-use-of-spc-in-healthcare" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">6.3</span> Successful use of SPC in healthcare<a href="using.html#successful-use-of-spc-in-healthcare" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart especially in complex adaptive systems like healthcare. These factors include:- engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance – all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see <span class="citation">Mohammed (<a href="#ref-mohammed2024">2024</a>)</span>.</p>
 <p>Nevertheless, it is important to note that SPC charts are not necessarily easy to construct. After examining 64 statistical process control charts, <span class="citation">Koetsier et al. (<a href="#ref-koetsier2012">2012</a>)</span> found that that almost half the charts had technical problems which suggests a need for more training for those constructing charts – which is the primary motivation for this book.</p>
-<p>This is the end of Part 1. In Part 2, beginning with Chapter <a href="first-chart.html#first-chart">7</a> we show you how to produce SPC charts using R.</p>
+<p>This is the end of Part 1. In Part 2, beginning with Chapter <a href="first-chart.html#first-chart">7</a>, we show you how to produce SPC charts using R.</p>
 
 </div>
 </div>
@@ -357,8 +359,11 @@ Langley, Gerald J, Ronald D Moen, Kevin M Nolan, Thomas W Nolan, Clifford L Norm
 <div id="ref-mohammed2024" class="csl-entry">
 Mohammed, M A. 2024. <em>Statistical Process Control</em>. Elements of Improving Quality and Safety in Healthcare. Cambridge University Press. <a href="https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10">https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10</a>.
 </div>
+<div id="ref-mohammed2004" class="csl-entry">
+Mohammed, M A, Anthony Rathbone, Paulette Myers, Divya Patel, Helen Onions, and Andrew Stevens. 2004. <span>“An Investigation into General Practitioners Associated with High Patient Mortality Flagged up Through the Shipman Inquiry: Retrospective Analysis of Routine Data.”</span> <em>BMJ</em> 328 (7454): 1474–77. <a href="https://doi.org/10.1136/bmj.328.7454.1474">https://doi.org/10.1136/bmj.328.7454.1474</a>.
+</div>
 <div id="ref-rogers2004" class="csl-entry">
-Rogers, Chris A., Barnaby C. Reeves, Massimo Caputo, J.Saravana Ganesh, Robert S. Bonser, and Gianni D. Angelini. 2004. <span>“Control Chart Methods for Monitoring Cardiac Surgical Performance and Their Interpretation.”</span> <em>The Journal of Thoracic and Cardiovascular Surgery</em> 128: 811–19. https://doi.org/<a href="https://doi.org/10.1016/j.jtcvs.2004.03.011">https://doi.org/10.1016/j.jtcvs.2004.03.011</a>.
+Rogers, Chris A., Barnaby C. Reeves, Massimo Caputo, J. Saravana Ganesh, Robert S. Bonser, and Gianni D. Angelini. 2004. <span>“Control Chart Methods for Monitoring Cardiac Surgical Performance and Their Interpretation.”</span> <em>The Journal of Thoracic and Cardiovascular Surgery</em> 128: 811–19. https://doi.org/<a href="https://doi.org/10.1016/j.jtcvs.2004.03.011">https://doi.org/10.1016/j.jtcvs.2004.03.011</a>.
 </div>
 </div>
             </section>

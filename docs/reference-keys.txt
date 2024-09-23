@@ -7,6 +7,7 @@ fig:testing-fig3
 fig:testing-fig4
 fig:testing-fig5
 fig:testing-fig6
+fig:responding-fig1
 fig:first-chart-run1
 fig:first-chart-run2
 fig:first-chart-ctrl1
@@ -64,7 +65,10 @@ runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-l
 charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts
 a-practical-approach-to-spc-analysis
 spc-rules-in-summary
-responding
+using
+using-spc-to-monitor-a-process
+using-spc-to-improve-a-process
+successful-use-of-spc-in-healthcare
 first-chart
 a-run-chart-of-blood-pressure-data
 adding-control-limits-to-produce-a-control-chart
@@ -124,3 +128,4 @@ on-time-ct
 radiation-doses
 robson-group-1-births
 runs-limits
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

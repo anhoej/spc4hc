@@ -1,4 +1,4 @@
-# What is Statistical Process Control {#what}
+# What is Statistical Process Control? {#what}
 
 The ultimate purpose of collecting and analysing data is to support better decision-making and actions that will lead to improvement. Statistical Process Control (SPC) is a proven methodology for doing just that. 
 
