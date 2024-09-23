@@ -1,3 +1,5 @@
+fig:variation-fig1
+fig:spc-fig0
 fig:spc-fig1
 fig:testing-fig1
 fig:testing-fig2

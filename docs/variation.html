@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-21" />
+<meta name="date" content="2024-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,9 +179,9 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is SPC</a></li>
+<li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is Statistical Process Control</a></li>
 <li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
-<li class="chapter" data-level="3" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>3</b> Introducing SPC Charts</a>
+<li class="chapter" data-level="3" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>3</b> Understanding SPC Charts</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
 <li class="chapter" data-level="3.2" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>3.2</b> Some common types of control charts – The Magnificient Seven</a>
@@ -328,6 +328,75 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="variation" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Understanding Variation<a href="variation.html#variation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Consider writing the letter ‘a’ by hand with a pen and paper. Figure <a href="variation.html#fig:variation-fig1">2.1</a> displays eight instances of this letter produced by one of the authors. The leftmost seven letters were written using the dominant (right) hand, and the rightmost letter was produced by the non-dominant hand.</p>
+<div class="figure"><span style="display:block;" id="fig:variation-fig1"></span>
+<img src="figures/handwritten1.jpg" alt="Hanwritten a's"  />
+<p class="caption">
+Figure 2.1: Hanwritten a’s
+</p>
+</div>
+<p>Although the seven leftmost letters were produced under identical conditions – same hand, date, time, place, pen, paper, temperature, lighting, and other factors—they are not identical. Instead, they exhibit controlled variation. This illustrates that a stable process inherently produces some degree of variation or “noise.” In analysing this controlled variation, it might be tempting to classify some a’s as better or worse than their peers, and so attempt to learn from the best while eliminating the worst.</p>
+<p>However, this approach is fundamentally flawed. Since all a’s were produced under identical conditions, no single a is inherently better or worse than the others. From the viewpoint of the underlying process, all seven letters are equivalent because they were produced under the same conditions. The variation observed among them has a common cause which is inherent in the process itself. So how can we improve these a’s? To improve the quality of the letters we should focus on modifying the process rather than trying to draw lessons from the differences between individual letters.</p>
+<p>To reduce variation and improve the quality of the letter a, we might consider changes such as using a different pen, paper, or surface, or switching to a computer. Of these options, it is intuitive that using a computer will yield the most significant improvements. This insight is supported by the theory of constraints, which views a process as a chain of interconnected links. The strength of the entire chain is limited by its weakest link. Improving this weakest link will enhance the overall performance, while changes to other, non-constraint links offer minimal benefit. In the context of handwriting, the weakest link is the manual use of the hand. The pen, paper, and lighting are not constraints in this process; altering them will not substantially impact the quality of the ‘a’. Switching to a computer addresses the key constraint – handwriting – resulting in a marked improvement in the quality of the letter.</p>
+<p>Now consider the rightmost a of Figure Figure <a href="variation.html#fig:variation-fig1">2.1</a>. It is obviously different from the others. A casual look suggests that there must be a special cause. When we see special cause variation, we need to find the underlying special cause and then decide how to act. In other words, special cause variation requires detective work. If the special cause is having an adverse impact on our process, we must work towards eliminating it from the process. But if the special cause is having a favourable impact on our process, we can work towards learning from it and making it part of our process.</p>
+<p>In summary then, the handwritten a’s demonstrate that a process exhibits two types of variation –- common cause and special cause -– and the action required to address each type of cause is fundamentally different. To address common cause variation, we must take action on a major portion of the process. To address special cause variation, we must first do some detective work to find the cause and then we can decide to eradicate that cause (if it is unfavourable) or keep it (if it is favourable).</p>
+<p>The originator of this theory of variation was Walter A. Shewhart, who in the 1920’s was seeking to enhance the quality of industrial products. Shewhart identified that quality is not just about meeting target specifications but involves managing variation. He distinguished between these two types of variation: common cause variation, which is inherent in the underlying process, and special cause variation, which arises from external factors.</p>
+<p>There are various characteristics and descriptions of common and special cause variation which are highlighted below.</p>
+<table>
+<caption>Characteristics of common versus special cause variation</caption>
+<colgroup>
+<col width="51%" />
+<col width="48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Common Cause Variation</th>
+<th align="left">Special Cause Variation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Is caused by a stable process (like
+writing a signature) and is intrinsic
+to the process.</td>
+<td align="left">Is caused by an assignable cause that
+it extrinsic to the process.</td>
+</tr>
+<tr class="even">
+<td align="left">Is neither good or bad, it just is.</td>
+<td align="left">Can be favourable or unfavourable and
+premediated (as part of an improvement
+project) or incidental (not part of an
+improvement project)</td>
+</tr>
+<tr class="odd">
+<td align="left">Can be reduced (but not eliminated) by
+changing the underlying process.
+Such changes can be informed by
+special cause variation.</td>
+<td align="left">Unfavourable special cause can be
+eliminated. Favourable special cause
+can be adopted and adapted into a new
+process.</td>
+</tr>
+<tr class="even">
+<td align="left">Is sometimes referred to as random
+variation, chance variation, or noise.</td>
+<td align="left">Is sometimes referred to a systematic,
+non-random variation.</td>
+</tr>
+<tr class="odd">
+<td align="left">Depicts the voice or behaviour of a
+stable process and affects all those
+who are part of the process.</td>
+<td align="left">Is a distinct signal which differs
+from the usual voice or noise of the
+process which requires further
+detective work to identify the
+assignable cause.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
             </section>

@@ -4,18 +4,37 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Introducing SPC Charts {#charts-intro}
+# Understanding SPC Charts {#charts-intro}
 
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
+                      echo = FALSE,
                       dev     = 'svg')
 library(kableExtra)
+library(qicharts2)
+
+options(qic.clshade = F)
 
 source('R/stdchart.R', local = knitr::knit_global())
+source('R/load_data.R', local = knitr::knit_global())
 ```
 
-Basically, SPC charts are point-and-line plots of data over time. Their purpose is to help distinguish between common cause and special cause variation. Special causes are signalled by unusual patterns in data. By "unusual" we mean something that is unlikely to have happened purely by chance, like getting ten heads in a row when tossing a coin.
+So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of SPC charts that depicts the voice or behaviour of a process over time and with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.
+
+SPC charts are point-and-line plots of data over time. In practice, SPC charts are operational definitions for identifying common and special cause variation. An operational definition is one which is designed to be practical and useful and leads to agreement between different people.
+
+```{r spc-fig0, fig.cap='Control chart of systolic blood pressure'}
+qic(systolic, 
+    chart = 'i',
+    title = 'Systolic blood pressure',
+    ylab = 'mmHg',
+    xlab = 'Day #')
+```
+
+Figure \@ref(fig:spc-fig0) is a control charts of daily measurements of blood pressure. One data point (#6, marked by a red dot) is positioned so far from the rest that it triggers a signal suggesting that this measurement represents a special cause.
+
+Special causes are signalled by unusual patterns in data. By "unusual" we mean something that is unlikely to have happened purely by chance, like a freak data point. Common cause variation is simply noise. The absence of signals of special cause variation is evidence that the behaviour of the process is consistent with common cause variation. The presence of signals is consistent with special cause variation.
 
 There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same by employing a set of statistical tests (or rules) to help identify unusual patterns.
 
@@ -35,7 +54,6 @@ stdchart(y1)
 Figure \@ref(fig:spc-fig1) shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The data included in each data point are called subgroups. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.
 
 We see that the data points are distributed fairly symmetrically around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer. 
-
 The control limits are positioned so that nearly all data points from a common cause process with fall between them. Conversely, data points outside the limits will most likely represent special causes.
 
 Based on empirical evidence from designed experiments involving real life data Shewhart found that in practice most process data are found within three standard deviations from the process centre. This is especially true when data, as in Figure  \@ref(fig:spc-fig1), come from a normal distribution, where the 3-sigma limits are expected to contain over 99.7% of data. Consequently, the chance of any particular data point being outside the limits purely by chance is about three out of a thousand. Thus, in a control chart with a total of 20 data points the chance of *all* data points being within the control limits is about 95% (1 - 0.997^20^).
@@ -61,9 +79,9 @@ Counts are positive integers that represent counts of events or cases. The disti
 
 When counting falls as events, every fall counts. When counting patients as units who fell, every patient counts -- but only once regardless of how many times each patient fell. 
 
-Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time(or space), for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
+Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
 
-Note that with rates the denominators are in units of time or space, which are expressed as continuous variables and represent something distinctly different from the numerators. With proportions the numerators and denominators are counts of the same thing, for example patients -- only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.
+Notice that with rates the denominator is in units of time, which is a continuous variable and represents something distinctly different from the numerator. With proportions the numerator and denominator are counts of the same thing, for example patients -- only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.
 
 The most common chart types for count data are:
 
@@ -73,7 +91,7 @@ The most common chart types for count data are:
 
 ### Measurements
 
-Measurements are data that are measured on a continuous scale and may have decimals, for example blood pressure, height and weight, or waiting times.
+Measurements are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.
 
 As an example, take waiting or "door-to-needle" times. These may be plotted as either **individual** times where each data point (subgroup) represents one patient or as **average** time for all patients in a certain period of time, for example an hour, day, week, or month.
 
