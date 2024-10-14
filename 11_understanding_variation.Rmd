@@ -39,12 +39,13 @@ changing the underlying process.          eliminated. Favourable special cause
 Such changes can be informed by           can be adopted and adapted into a new
 special cause variation.                  process.
 
-Is sometimes referred to as random        Is sometimes referred to a systematic,
-variation, chance variation, or noise.    non-random variation.
-
+Is sometimes referred to as random        Is sometimes referred to a systematic
+variation, chance variation, or noise.    variation, non-random variation, or
+                                          signal.
+                                          
 Depicts the voice or behaviour of a       Is a distinct signal which differs
-stable process and affects all those      from the usual voice or noise of the
-who are part of the process.              process which requires further
+stable process and affects all those      from the usual voice or behaviour of
+who are part of the process.              the process, which requires further
                                           detective work to identify the
                                           assignable cause.
 --------------------------------------------------------------------------------
