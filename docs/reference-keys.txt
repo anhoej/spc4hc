@@ -128,4 +128,3 @@ on-time-ct
 radiation-doses
 robson-group-1-births
 runs-limits
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

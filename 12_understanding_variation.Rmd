@@ -47,3 +47,11 @@ who are part of the process.              process which requires further
                                           assignable cause.
 --------------------------------------------------------------------------------
 Table: Characteristics of common versus special cause variation
+
+SPC is all about understanding variation and recognising the underlying causes -- common or special -- in order to help improve products and services. Contrary to many beliefs SPC is *not* simply a method of identifying outliers in a population.
+
+> Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. […] It is about the continual improvement of processes and outcomes. And it is, first and foremost, a way of thinking with some tools attached.
+>
+> -- @wheeler2000, p 152
+
+With this insight in mind, the rest of this book is mostly about the tools -- in particular the SPC chart, which is a simple and intuitive graphical representation of process variation over time. In the next chapter we take a close look at the "anatomy and physiology" of SPC charts.

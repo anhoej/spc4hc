@@ -2,14 +2,14 @@
 
 In healthcare, SPC methodology is used in two main ways:
 
-* Monitoring the behaviour or performance of an existing process (e.g. complications following surgery), or 
+* Monitoring the behaviour or performance of an existing process (e.g. complications following surgery), or
 * Improving an existing process (e.g. redesigning the pathway for patients with fractured hips).
 
 ## Using SPC to monitor a process
 
 In the monitoring mode, the primary aim is to determine if a process is deteriorating which is usually indicated by signals of special cause variation where detective work is undertaken to find the cause and then eliminate it. Such detective work can be undertaken by using the Pyramid Model of Investigation  describe below.
 
-The key aim of using statistical process control charts to monitor healthcare processes is to ensure that quality and safety of care are adequate and not deteriorating. So when a signal of special cause variation is seen on a control chart monitoring a given outcome (e.g. mortality rates following surgery), investigation is necessary. However, the chosen method must recognise that the link between recorded outcomes and quality of care *is complex, ambiguous and subject to multiple explanations* [REF]. Failure to do so may inadvertently contribute to premature conclusions and a blame culture that undermines the engagement of clinical staff and the credibility of statistical process control. As @rogers2004 note:
+The key aim of using statistical process control charts to monitor healthcare processes is to ensure that quality and safety of care are adequate and not deteriorating. So when a signal of special cause variation is seen on a control chart monitoring a given outcome, investigation is necessary. However, the chosen method must recognise that the link between recorded outcomes and quality of care *is complex, ambiguous and subject to multiple explanations* [@lilford2004]. Failure to do so may inadvertently contribute to premature conclusions and a blame culture that undermines the engagement of clinical staff and the credibility of statistical process control. As Rogers note:
 
 > If monitoring schemes are to be accepted by those whose outcomes are being assessed, an atmosphere of constructive evaluation, not 'blaming' or 'naming and shaming', is essential as apparent poor performance could arise for a number of reasons that should be explored systematically.
 >
@@ -86,10 +86,10 @@ This question focuses on measurement. The team identifies key performance indica
 1. **What changes can we make that will result in improvement?**
 This question explores potential change ideas or interventions that could lead to the desired improvement. These ideas are undertaken according to the **PDSA Cycle**, which is a method for iterative small-scale testing of changes:
 
-    - Plan: Develop a plan to test the change, including who, what, when, and where.
-    - Do: Implement the change on a small scale.
-    - Study: Analyze the results, focusing on the impact of the change.
-    - Act: Decide whether to adopt, modify, or abandon the change based on the results.
+    - **Plan**: Develop a plan to test the change, including who, what, when, and where.
+    - **Do**: Implement the change on a small scale.
+    - **Study**: Analyze the results, focusing on the impact of the change.
+    - **Act**: Decide whether to adopt, modify, or abandon the change based on the results.
 
 There are other approaches to improvement in healthcare, such as Lean, Six Sigma, and Systems Engineering. The SPC chart can support each of these approaches because it offers a robust and insightful way to test the success or otherwise change ideas.
 

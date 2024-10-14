@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 4 Looking for signals of Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 4 Looking for signals of Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Testing for Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 4 Looking for signals of Special Cause Variation | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-23" />
+<meta name="date" content="2024-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -191,7 +191,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>3.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Testing for Special Cause Variation</a>
+<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Looking for signals of Special Cause Variation</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
 <ul>
@@ -332,9 +332,9 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="testing" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Testing for Special Cause Variation<a href="testing.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 4</span> Looking for signals of Special Cause Variation<a href="testing.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>So far we have mostly concerned ourselves with Shewhart’s 3-sigma rule, one or more data points outside the control limits, to detect special cause variation.</p>
-<p>The 3-sigma rule is very effective to detect large shifts in data. Imagine data from a normal distribution, if data shifted three SDs upwards, the old upper control limit would be the new centre line and we would expect about half of future data points to lie above the upper control limit. If data only shifted one SD, the old upper control limit would be the new 2-sigma limit and we would expect about 2.5% of future data points to lie above this line (Figure <a href="testing.html#fig:testing-fig1">4.1</a>).</p>
+<p>The 3-sigma rule is very effective to signal large shifts in data. Imagine data from a normal distribution, if data shifted three SDs upwards, the old upper control limit would be the new centre line and we would expect about half of future data points to lie above the upper control limit. If data only shifted one SD, the old upper control limit would be the new 2-sigma limit and we would expect about 2.5% of future data points to lie above this line (Figure <a href="testing.html#fig:testing-fig1">4.1</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:testing-fig1"></span>
 <img src="_main_files/figure-html/testing-fig1-1.svg" alt="Control chart with progressive shifts in data" width="672" />
 <p class="caption">
@@ -389,9 +389,9 @@ Figure 4.4: Control chart with a trend in data
 <div id="spc-rules" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> SPC rules<a href="testing.html#spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If patterns of special cause variation were always as clear as in the figures <a href="testing.html#fig:testing-fig2">4.2</a>, <a href="testing.html#fig:testing-fig3">4.3</a>, and <a href="testing.html#fig:testing-fig4">4.4</a> there would be no need for SPC. However, in reality, special causes often show up in more subtle ways. To help objectify the analysis we use SPC rules, that is statistical tests that signal the presence – or rather, the likelihood – of special cause variation.</p>
-<p>We have already seen Shewhart’s original 3-sigma rule in action, but many more rules have been developed to help identify minor to moderate shifts, trends, and other specific patterns in data. It is tempting to simply apply all known rules to our data, but – as always in statistics – the more tests we apply, the more signals we get, and the more signals we get, the more signals are false alarms signalling special causes when really only common cause is present.</p>
+<p>We have already seen Shewhart’s original 3-sigma rule in action, but many more rules have been developed to help signal minor to moderate shifts, trends, and other specific patterns in data. It is tempting to simply apply all known rules to our data, but – as always in statistics – the more tests we apply, the more signals we get, and the more signals we get, the more signals are false alarms signalling special causes when really only common cause is present.</p>
 <p>Thus, it is important to select as few rules as possible to minimise the risk of false alarms but at the same time select as many rules as necessary to identify as many true alarms as possible. More on this topic later in the chapter on <a href="diagnostics.html#diagnostics">Diagnostic Errors</a> later in this book.</p>
-<p>Basically there are two types of tests for special cause variation in SPC charts. Some tests are based on the distribution of data points relative to the sigma lines including 1- and 2-sigma lines, which are placed one and two SDs from the centre line respectively. And then there are tests that are based solely on the distribution of data points relative to the centre line.</p>
+<p>Basically there are two types of tests for signals of special cause variation in SPC charts. Some tests are based on the distribution of data points relative to the sigma lines including 1- and 2-sigma lines, which are placed one and two SDs from the centre line respectively. And then there are tests that are based solely on the distribution of data points relative to the centre line.</p>
 <p>We will restrict ourselves to two sets of rules that have been thoroughly studied and validated.</p>
 <div id="tests-based-on-sigma-limits" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Tests based on sigma limits<a href="testing.html#tests-based-on-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -446,8 +446,8 @@ Figure 4.5: Run chart
 Figure 4.6: Run chart with a trend
 </p>
 </div>
-<p>In practice the two runs rules are two sides of the same coin – when runs get longer, crossings get fewer and vice versa – and either of them may signal non-random variation.</p>
-<p>Run charts are a lot simpler to construct than control charts. They do not make assumptions about the distribution of data. And they are more sensitive to minor to moderate persistent shifts and trends than control charts are (using only the 3-sigma rule).</p>
+<p>The two runs rules are two sides of the same coin – when runs get longer, crossings get fewer and vice versa – and either of them may signal special cause variation.</p>
+<p>Run charts are a lot simpler to construct than control charts. They do not make assumptions about the distribution of data. And they are more sensitive to minor to moderate <em>persistent</em> shifts and trends than control charts are (using only the 3-sigma rule).</p>
 <p>So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (freaks) that would go unnoticed by run charts, and 2) the control limits provide a good measure and a visual representation of the width of the natural process variation.</p>
 <p>Luckily, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.</p>
 </div>
@@ -456,15 +456,15 @@ Figure 4.6: Run chart with a trend
 <p>Before we move on, let us pause for a moment and remind ourselves: What are we using SPC charts for? As discussed earlier, we use SPC mainly for two distinctly different tasks: process improvement and process monitoring.</p>
 <p>When <strong>improving</strong> processes we strive to create sustained shifts in the desired direction in data. Thus, shifts are expected. Since improvement often happens in small steps, and since we are after lasting shifts, runs analysis is our tool of choice.</p>
 <p>When <strong>monitoring</strong> processes our goal is to maintain process behaviour and stability, and we are not expecting data to shift. On the other hand, we want to pick up any signals suggesting that the process is deteriorating as quickly as possible. For this, the 3-sigma rule is particularly useful. We may chose to combine the 3-sigma rule with <em>either</em> the rest of the WE rules <em>or</em> with the two runs rules to get better sensitivity to minor to moderate shifts and trends. However, we should be aware that adding tests comes with a price of more false alarms.</p>
-<p>Regardless of the task at hand, <strong>we recommend to always begin any SPC analysis with the “assumption free” run chart</strong> using the median as centre line. If the runs analysis find non-random variation, it makes no sense to compute sigma limits based on assumptions regarding the location and dispersion of data, because these figures are meaningless when one or more shifts have already been identified. (A bit like ordering a CT scan when the diagnosis has already been confirmed by conventional X-ray.) In that case, we should rather be looking for special causes than concerning ourselves with calculating control limits.</p>
+<p>Regardless of the task at hand, <strong>we recommend to always begin any SPC analysis with the “assumption free” run chart</strong> using the median as centre line. If the runs analysis signals non-random variation, it makes no sense to compute sigma limits based on assumptions regarding the location and dispersion of data, because these figures are meaningless when one or more shifts have already been identified. (A bit like ordering a CT scan when the diagnosis has already been confirmed by conventional X-ray.) In that case, we should rather be looking for special causes than concerning ourselves with calculating control limits.</p>
 <p>Then, if our goal is process improvement, we continue with the run chart until we see significant and sustained improvement resulting in a new and better process.</p>
-<p>If and when this new better process stabilises and looks set to continue, we may consider moving into “monitoring mode” by adding control limits and using the mean for centre line.</p>
-<p>Monitoring a process makes sense when the process is stable (common cause variation only) <em>and</em> satisfactory. If that is not the case, we should start over in “improvement mode”.</p>
+<p>If and when this new better process stabilises and looks set to continue, we may consider moving into monitoring mode by adding control limits and using the mean for centre line.</p>
+<p>Monitoring a process makes sense when the process is stable (common cause variation only) <em>and</em> satisfactory. If that is not the case, we should start over in improvement mode.</p>
 </div>
 <div id="spc-rules-in-summary" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> SPC rules in summary<a href="testing.html#spc-rules-in-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC rules are statistical tests designed to identify signs of special cause variation in time series data. Depending on specific patterns in data suggesting special causes many rules have been suggested. However, as more and more rules are applied, the risk of false alarms increases. Consequently, it pays to select a small battery of rules that together maximises the chance of finding special causes that are there (true alarms) while minimising the risk of false alarms.</p>
-<p>We recommend to always begin any SPC analysis with a median-based run chart and the two runs rules testing for unusually long runs or unusually few crossings. If – and only if – the process is stable and satisfactory, we may chose to use the mean for centre line and to add control limits to help identify freaks and other sudden, large shifts i data.</p>
+<p>SPC rules are statistical tests designed to identify signs of special cause variation (signals) in time series data. Depending on specific patterns in data suggesting special causes many rules have been suggested. However, as more and more rules are applied, the risk of false alarms increases. Consequently, it pays to select a small battery of rules that together maximises the chance of signalling special causes that are there (true alarms) while minimising the risk of false alarms.</p>
+<p>We recommend to always begin any SPC analysis with a median-based run chart and the two runs rules testing for unusually long runs and/or unusually few crossings. If – and only if – the process is stable and satisfactory, we may chose to use the mean for centre line and to add control limits to help identify freaks and other sudden, large shifts i data.</p>
 
 </div>
 </div>

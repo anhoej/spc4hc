@@ -110,4 +110,4 @@ While there are many types of SPC charts for different types of data they all lo
 
 When choosing the right chart we must first decide what type of data we have. For count data there are three common types: C, U, and P charts for event counts, event rates, and proportions respectively. For measurement data we have I and X-bar charts for individual measurements and averages respectively. MR and S charts plot estimates of the within subgroup standard deviation and are often plotted alongside I and X-bar charts.
 
-In the next chapter we will discuss different techniques and rules used to detect special causes, and we will suggest a set of rules that have been thoroughly studied and validated and provide a high sensitivity to special cause variation while keeping the false alarm rate at a reasonable level.
+In the next chapter we will discuss different techniques and rules used to test for signals of special causes, and we will suggest a set of rules that have been thoroughly studied and validated and provide a high sensitivity to special cause variation while keeping the false alarm rate at a reasonable level.

@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-09-23" />
+<meta name="date" content="2024-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,74 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -102,7 +168,7 @@ div.csl-indent {
 </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Synopsis</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a>
@@ -113,124 +179,134 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="2" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>2</b> What is Statistical Process Control?</a></li>
-<li class="chapter" data-level="3" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>3</b> Understanding Variation</a></li>
-<li class="chapter" data-level="4" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>4</b> Understanding SPC Charts</a>
+<li class="chapter" data-level="1" data-path="what.html"><a href="what.html"><i class="fa fa-check"></i><b>1</b> What is Statistical Process Control?</a></li>
+<li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
+<li class="chapter" data-level="3" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>3</b> Understanding SPC Charts</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>4.1</b> Anatomy and physiology of SPC charts</a></li>
-<li class="chapter" data-level="4.2" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>4.2</b> Some common types of control charts – The Magnificient Seven</a>
+<li class="chapter" data-level="3.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
+<li class="chapter" data-level="3.2" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificient-seven"><i class="fa fa-check"></i><b>3.2</b> Some common types of control charts – The Magnificient Seven</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>4.2.1</b> Counts</a></li>
-<li class="chapter" data-level="4.2.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>4.2.2</b> Measurements</a></li>
+<li class="chapter" data-level="3.2.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>3.2.1</b> Counts</a></li>
+<li class="chapter" data-level="3.2.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>3.2.2</b> Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>4.3</b> Common SPC charts in summary</a></li>
+<li class="chapter" data-level="3.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>3.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5</b> Testing for Special Cause Variation</a>
+<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Looking for signals of Special Cause Variation</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>5.1</b> Patterns of non-random variation in time series data</a>
+<li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>5.1.1</b> Freaks</a></li>
-<li class="chapter" data-level="5.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>5.1.2</b> Shifts</a></li>
-<li class="chapter" data-level="5.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>5.1.3</b> Trends</a></li>
-<li class="chapter" data-level="5.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>5.1.4</b> Other unusual patterns</a></li>
+<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>4.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>4.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="4.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>4.1.3</b> Trends</a></li>
+<li class="chapter" data-level="4.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>4.1.4</b> Other unusual patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>5.2</b> SPC rules</a>
+<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>4.2</b> SPC rules</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>5.2.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="5.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>5.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+<li class="chapter" data-level="4.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="4.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="testing.html"><a href="testing.html#charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>5.3</b> Charts without borders – using runs analysis as stand-alone rules with run charts</a></li>
-<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>5.4</b> A practical approach to SPC analysis</a></li>
-<li class="chapter" data-level="5.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>5.5</b> SPC rules in summary</a></li>
+<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>4.3</b> Charts without borders – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="4.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>4.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="4.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>4.5</b> SPC rules in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>6</b> Using SPC in healthcare</a>
+<li class="chapter" data-level="5" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>5</b> Using SPC in healthcare</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>6.1</b> Using SPC to monitor a process</a></li>
-<li class="chapter" data-level="6.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>6.2</b> Using SPC to improve a process</a></li>
-<li class="chapter" data-level="6.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>6.3</b> Successful use of SPC in healthcare</a></li>
+<li class="chapter" data-level="5.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>5.1</b> Using SPC to monitor a process</a></li>
+<li class="chapter" data-level="5.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>5.2</b> Using SPC to improve a process</a></li>
+<li class="chapter" data-level="5.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>5.3</b> Successful use of SPC in healthcare</a></li>
 </ul></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
-<li class="chapter" data-level="7" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>7</b> Your First SPC Charts With Base R</a>
+<li class="chapter" data-level="6" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>6</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>7.1</b> A run chart of blood pressure data</a></li>
-<li class="chapter" data-level="7.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>7.2</b> Adding control limits to produce a control chart</a></li>
-<li class="chapter" data-level="7.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>7.3</b> That’s all, Folks!</a></li>
+<li class="chapter" data-level="6.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>6.1</b> A run chart of blood pressure data</a></li>
+<li class="chapter" data-level="6.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>6.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="6.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>6.3</b> That’s all, Folks!</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>8</b> Calculating Control Limits</a>
+<li class="chapter" data-level="7" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>7</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>8.1</b> Introducing the spc() function</a></li>
-<li class="chapter" data-level="8.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>8.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="8.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>8.3</b> Count data</a>
+<li class="chapter" data-level="7.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>7.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>7.2</b> Formulas for calculation of control limits</a></li>
+<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>7.3</b> Count data</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>8.3.1</b> C chart</a></li>
-<li class="chapter" data-level="8.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>8.3.2</b> U chart</a></li>
-<li class="chapter" data-level="8.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>8.3.3</b> P chart</a></li>
+<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.3.1</b> C chart</a></li>
+<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.3.2</b> U chart</a></li>
+<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.3.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>8.4</b> Measurement data</a>
+<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>7.4</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>8.4.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="8.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>8.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="8.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>8.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="8.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>8.4.4</b> S chart</a></li>
+<li class="chapter" data-level="7.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>7.4.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.4.2</b> MR chart</a></li>
+<li class="chapter" data-level="7.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.4.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="7.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.4.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>8.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="7.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.5</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>9</b> Highlighting Freaks, Shifts, and Trends</a>
+<li class="chapter" data-level="8" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>8</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>9.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="9.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>9.2</b> Improved <code>spc()</code> function</a></li>
-<li class="chapter" data-level="9.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>9.3</b> Highlighting special cause variation in short</a></li>
+<li class="chapter" data-level="8.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>8.1</b> Introducing the cdiff data set</a></li>
+<li class="chapter" data-level="8.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>8.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="8.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>8.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#runs-analysis"><i class="fa fa-check"></i>Runs Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>10</b> One R Function to Rule Them All</a>
+<li class="chapter" data-level="9" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>9</b> One R Function to Rule Them All</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>10.1</b> Examples</a>
+<li class="chapter" data-level="9.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>9.1</b> Examples</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>10.1.1</b> Run chart</a></li>
-<li class="chapter" data-level="10.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>10.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="10.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>10.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
-<li class="chapter" data-level="10.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>10.1.4</b> C and U charts for counts and rates</a></li>
-<li class="chapter" data-level="10.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>10.1.5</b> P chart for percentages</a></li>
+<li class="chapter" data-level="9.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>9.1.1</b> Run chart</a></li>
+<li class="chapter" data-level="9.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>9.1.2</b> I and MR charts for individual measurements</a></li>
+<li class="chapter" data-level="9.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>9.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
+<li class="chapter" data-level="9.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>9.1.4</b> C and U charts for counts and rates</a></li>
+<li class="chapter" data-level="9.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>9.1.5</b> P chart for percentages</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>10.2</b> TODO</a></li>
-<li class="chapter" data-level="10.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>10.3</b> Further up, further in</a></li>
+<li class="chapter" data-level="9.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>9.2</b> TODO</a></li>
+<li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>11</b> SPC Charts with <code>ggplot2</code></a>
+<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <code>ggplot2</code></a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>11.1</b> Creating an SPC object for later plotting</a></li>
-<li class="chapter" data-level="11.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>11.2</b> Making a new plot function based on ggplot2</a></li>
-<li class="chapter" data-level="11.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>11.3</b> Customising the plotting theme</a></li>
-<li class="chapter" data-level="11.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>11.4</b> Preparing for qicharts2</a></li>
+<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>10.1</b> Creating an SPC object for later plotting</a></li>
+<li class="chapter" data-level="10.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>10.2</b> Making a new plot function based on ggplot2</a></li>
+<li class="chapter" data-level="10.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>10.3</b> Customising the plotting theme</a></li>
+<li class="chapter" data-level="10.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>10.4</b> Preparing for qicharts2</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>12</b> Introducing qicharts2</a>
+<li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> Introducing qicharts2</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>12.1</b> A simple run chart</a></li>
-<li class="chapter" data-level="12.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>12.2</b> A simple control chart</a></li>
-<li class="chapter" data-level="12.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>12.3</b> Excluding data points from analysis</a></li>
-<li class="chapter" data-level="12.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>12.4</b> Freezing baseline period</a></li>
-<li class="chapter" data-level="12.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>12.5</b> Splitting chart by period</a></li>
-<li class="chapter" data-level="12.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>12.6</b> Small multiple plots for multivariate data</a>
+<li class="chapter" data-level="11.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>11.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="11.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>11.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="11.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>11.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="11.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>11.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="11.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>11.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="11.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>11.6</b> Small multiple plots for multivariate data</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>12.6.1</b> To aggregate or not to aggregate</a></li>
+<li class="chapter" data-level="11.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>11.6.1</b> To aggregate or not to aggregate</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>12.7</b> qicharts2 in short</a></li>
+<li class="chapter" data-level="11.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>11.7</b> qicharts2 in short</a></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="13" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>13</b> Case 1</a></li>
-<li class="chapter" data-level="14" data-path="case2.html"><a href="case2.html"><i class="fa fa-check"></i><b>14</b> Case 2</a></li>
-<li class="chapter" data-level="15" data-path="case3.html"><a href="case3.html"><i class="fa fa-check"></i><b>15</b> Case 3</a></li>
+<li class="chapter" data-level="12" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>12</b> Case 1</a></li>
+<li class="chapter" data-level="13" data-path="case2.html"><a href="case2.html"><i class="fa fa-check"></i><b>13</b> Case 2</a></li>
+<li class="chapter" data-level="14" data-path="case3.html"><a href="case3.html"><i class="fa fa-check"></i><b>14</b> Case 3</a></li>
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="part"><span><b>Part 9¾: Nerd Stuff</b></span></li>
-<li class="chapter" data-level="16" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>16</b> Diagnostic Errors</a>
+<li class="chapter" data-level="15" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>15</b> Diagnostic Errors</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="diagnostics.html"><a href="diagnostics.html#two-types-of-errors"><i class="fa fa-check"></i><b>16.1</b> Two types of errors when using SPC</a></li>
+<li class="chapter" data-level="15.1" data-path="diagnostics.html"><a href="diagnostics.html#two-types-of-errors"><i class="fa fa-check"></i><b>15.1</b> Two types of errors when using SPC</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a></li>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i><b>A.1</b> Bacteremia</a></li>
+<li class="chapter" data-level="A.2" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i><b>A.2</b> Blood pressure</a></li>
+<li class="chapter" data-level="A.3" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i><b>A.3</b> Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="A.4" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i><b>A.4</b> Ceasearian section delay</a></li>
+<li class="chapter" data-level="A.5" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i><b>A.5</b> Emergency admission mortality</a></li>
+<li class="chapter" data-level="A.6" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i><b>A.6</b> On-time CT</a></li>
+<li class="chapter" data-level="A.7" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i><b>A.7</b> Radiation doses</a></li>
+<li class="chapter" data-level="A.8" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i><b>A.8</b> Robson group 1 births</a></li>
+</ul></li>
 <li class="chapter" data-level="B" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>B</b> Critical Values for Longest Runs and Number of Crossings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -321,6 +397,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
