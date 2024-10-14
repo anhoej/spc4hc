@@ -16,7 +16,7 @@ Nevertheless a systematic review concluded
 
 >... although SPC charts may be easy to use even for patients, clinicians or managers without extensive SPC training, they may not be equally simple to *construct correctly*. To apply SPC is, paradoxically, both simple and difficult at the same time.
 >
-> --- [@thor2007]
+> -- @thor2007
 
 Consequently, this book aims to ease the construction and production of SPC charts in healthcare using modern software.
 
@@ -44,7 +44,7 @@ We assume no prior knowledge of SPC, but a basic familiarity with R is required 
 
 ## How to use this book {-}
 
-If you are new to SPC, then start with Chapter \@ref(what). If you are eager to get started with plotting then skip to chapters \@ref(first-chart) and \@ref(limits). Later chapters move to more advanced types of charts and topics for newbies and knowbies. Further resources and datasets can be found on our [GitHub repository](https://github.com/anhoej/spc4hc).
+If you are new to SPC, then start with Chapter \@ref(variation). If you are eager to get started with plotting then skip to chapters \@ref(first-chart) and \@ref(limits). Later chapters move to more advanced types of charts and topics for newbies and knowbies. Further resources and datasets can be found on our [GitHub repository](https://github.com/anhoej/spc4hc).
 
 We hope you find the book of some use and would appreciate your feedback on how it can be continually improved.
 

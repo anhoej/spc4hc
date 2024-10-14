@@ -1,3 +1,5 @@
+# (PART\*) Part 2: Constructing SPC Charts {-}
+
 # Your First SPC Charts With Base R {#first-chart}
 
 ```{r, echo=FALSE}

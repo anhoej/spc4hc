@@ -1,3 +1,5 @@
+# (PART\*) Part 1: Understanding Variation {-}
+
 # Understanding Variation {#variation}
 
 Consider writing the letter 'a' by hand with a pen and paper. Figure \@ref(fig:variation-fig1) displays eight instances of this letter produced by one of the authors. The leftmost seven letters were written using the dominant (right) hand, and the rightmost letter was produced by the non-dominant hand.
@@ -48,10 +50,10 @@ who are part of the process.              process which requires further
 --------------------------------------------------------------------------------
 Table: Characteristics of common versus special cause variation
 
-SPC is all about understanding variation and recognising the underlying causes -- common or special -- in order to help improve products and services. Contrary to many beliefs SPC is *not* simply a method of identifying outliers in a population.
+SPC is all about understanding variation and recognising its underlying causes -- common or special -- in order to help improve products and services. Contrary to many beliefs SPC is *not* simply a method of identifying outliers in a population.
 
 > Statistical Process Control is not about statistics, it is not about "process-hyphen-control", and it is not about conformance to specifications. […] It is about the continual improvement of processes and outcomes. And it is, first and foremost, a way of thinking with some tools attached.
 >
 > -- @wheeler2000, p 152
 
-With this insight in mind, the rest of this book is mostly about the tools -- in particular the SPC chart, which is a simple and intuitive graphical representation of process variation over time. In the next chapter we take a close look at the "anatomy and physiology" of SPC charts.
+With this insight in mind, the rest of this book is mostly about the tools -- in particular the SPC chart. In the next chapter we begin by taking a close look at the "anatomy and physiology" of SPC charts.

@@ -1,1 +1,3 @@
+# (PART\*) Part 3: Case Studies and Worked Examples {-}
+
 # Case 1 {#case1}

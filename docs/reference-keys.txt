@@ -45,7 +45,6 @@ fig:qicharts-hais2
 fig:qicharts-hais3
 fig:qicharts-hais4
 fig:qicharts-hais5
-what
 variation
 charts-intro
 anatomy-and-physiology-of-spc-charts
@@ -116,7 +115,6 @@ qicharts2-in-short
 case1
 case2
 case3
-diagnostics
 two-types-of-errors
 data-sets
 bacteremia

@@ -1,0 +1,168 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Synopsis {-#synopsis}
+
+
+INTRODUCTION
+
+- About the Book (contents, target audience, prerequisites, etc.)
+- GitHub
+
+PART 1: Understanding Variation
+
+1. What is SPC?
+    1. History
+    1. A modern definition
+    1. SPC and continuous quality improvement -- neither can live while the other dies
+    1. The case for SPC in healthcare
+1. Understanding Variation
+    1. Given two numbers, one will be bigger
+        - different numbers may come from the same process
+        - same numbers may come from different processes
+        - rolling dies and flipping coins
+        - when you throw a die and get a seven
+    1. Patterns of non-random variation in time series data and their interpretation
+        - freaks
+        - shifts
+        - trends
+        - waves
+        - sawtooths(teeth?) and other repeated patterns
+1. Introducing SPC Charts
+    1. Anatomy and physiology of SPC charts
+    1. Testing for Non-random Variation in SPC Charts
+        - Tests based on sigma limits
+          - the 3-sigma test
+          - the Western Electric rules
+        - Runs analysis -- tests based on the distribution of data points around the centre line
+          - unusually long runs
+          - unusually few crossings
+          - look mom, no control limits! -- using runs analysis as stand-alone rules with run charts
+    1. The Magnificent Eight
+        - Run chart
+        - I chart (aka X chart)
+        - MR chart
+        - X-bar chart
+        - S chart
+        - C chart
+        - U chart
+        - P chart
+1. Responding to SPC Signals
+    1. The voice of the customer vs the voice of the process
+    1. Conciliating the two voices -- or, from RAGs to RICHes
+        - RAG = Red, Amber, Green
+        - RICH = Respond, Investigate, Celebrate'n Hold
+
+PART 2: Constructing SPC Charts with R
+
+1. Your First SPC Charts with Base R
+    1. A run chart
+    1. Adding control limits to produce a control chart
+1. Calculating Control Limits for "The Magnificent Eight" (minus one)
+    - I chart (to screen or not to screen?)
+    - MR chart
+    - Xbar chart (several methods for sbar)
+    - S chart
+    - C chart
+    - U chart
+    - P chart
+1. Highlighting Freaks, Shifts, and Trends
+1. One R Function to Rule Them All
+1. SPC Charts with `ggplot2`
+1. Introducing `qicharts2` -- an R Package Tailored Specifically for SPC in Healthcare
+1. A Note on Rational Subgrouping and Sampling
+
+PART 3: Case Studies and Worked Examples
+
+1. Run chart
+1. P Charts for Proportion Data
+1. C and U Charts for Count and Rate Data
+1. I and MR Chart for Individual Measurement Data
+1. X-bar and S Charts for Multiple Measurement Data
+
+PART 4: Advanced SPC Techniques
+
+1. Small Multiple Plots for Multivariate Data
+1. Funnel Plots for Categorical Subgroups
+1. Pareto Charts for Ranking Problems
+1. SPC Charts for Rare Events
+    - T Charts for Time Between Events
+    - G Charts for Opportunities Between Cases
+    - Bernoulli CUSUM charts for binary data
+1. Prime Charts for Count Data with Very Large Sample Sizes
+1. Screened I chart (eliminating freak moving ranges before calculating limits)
+1. Improved (normalised) I chart
+1. Dual charting
+1. When to Split SPC Charts
+1. When to Transform Data Before Plotting
+1. High Frequency/Volume Data
+1. Scaling Up Charts (technical issues, tabular charts, rid)
+1. CUSUM and EWMA Charts
+1. Multivariate charts
+1. Phase One and Phase Two Applications of SPC
+
+PART 5: Best Practices and Tips
+
+1. Tips for Effective SPC Implementation
+    - Automating production of SPC charts
+    - Engaging stakeholders
+    - Continuous monitoring and improvement.
+    - Problems with SPC (challenges)
+1. Common Pitfalls to Avoid
+    - Data issues, misinterpretation of charts
+    - Overreacting to common cause variation (too many or over-sensitive runs rules, too tight control limits)
+    - Automating recalculation of control limits
+    - One-to-one relation between PDSA cycles and dots on the plot
+
+PART 6: Conclusion and Final Thoughts
+
+1. Summary of Key Points
+1. The Control Charts vs Run Charts Debate
+1. Emerging trends in SPC and healthcare analytics
+1. Encouragement for Continuous Learning and Application
+1. Final Thoughts
+
+PART 9&frac34;: Nerd Stuff
+
+1. Introducing R
+1. Basic Statistical Concepts
+    1. Data types (counts and measurements)
+    1. Distributions
+        - centre (mean, median)
+        - spread (range, percentiles, standard deviation)
+        - shape (symmetric, skewed)
+1. Principles for Data Visualisation
+    1. Histograms and boxplots for measurement data distributions
+    1. Barplots for count data distributions
+    1. Scatter plots for relations between measurement data
+    1. Point-and-line plots for time series data
+1. Data Preparation with R
+    1. Sources of healthcare data
+    1. Indicator types: measurements, counts, rates, proportions
+    1. Getting data in shape for visualisation with R
+1. Runs Analysis Revisited
+    - The joint distribution of longest run and Number of crossings
+    - Improving runs analysis using the bestbox and cutbox rules
+
+APPENDICES
+
+1. Resources and Further Readings
+    1. Recommended books
+    1. Web sites, forums, and communities
+    1. Other R packages for SPC (`qcc`, `spc`, ...)
+1. Formulas and R Functions for Calculating Control Limits
+1. Table of Parameters for the Xbar and S Charts
+1. Table of Critical Values for Longest Runs and Number of Crossings
+1. Glossary of Terms
+
+----
+
+- Ideas for papers
+  - RAGs to RICHes (two voices)
+  - Big data issues -- CUSUM vs 3000 SPC charts
+  - Improved I chart
+  - The problem with SPC
+
+

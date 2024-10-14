@@ -14,9 +14,9 @@ set.seed(33)
 y1 <- y2 <- y3 <- rnorm(24)
 ```
 
-# Looking for signals of Special Cause Variation {#testing}
+# Looking for Signals of Special Cause Variation {#testing}
 
-So far we have mostly concerned ourselves with Shewhart's 3-sigma rule, one or more data points outside the control limits, to detect special cause variation. 
+So far we have mostly concerned ourselves with Shewhart's 3-sigma rule, one or more data points outside the control limits, to signal special cause variation. 
 
 The 3-sigma rule is very effective to signal large shifts in data. Imagine data from a normal distribution, if data shifted three SDs upwards, the old upper control limit would be the new centre line and we would expect about half of future data points to lie above the upper control limit. If data only shifted one SD, the old upper control limit would be the new 2-sigma limit and we would expect about 2.5% of future data points to lie above this line (Figure \@ref(fig:testing-fig1)).
 
@@ -31,7 +31,7 @@ stdchart(y, ra = F) +
            label = c('mean = 0', 'mean = 1', 'mean = 2'))
 ```
 
-The performance of the 3-sigma rule has been studied extensively, but to make a long story short, it is most useful when looking for shift in the order of at least 1.5 - 2 SDs. Minor to moderate shifts may go unnoticed for long periods of time. 
+The performance of the 3-sigma rule has been studied extensively (see, for example, @montgomery2020), but to make a long story short, it is most useful when looking for shift in the order of at least 1.5 - 2 SDs. Minor to moderate shifts may go unnoticed for long periods of time. 
 
 In order to increase the sensitivity of SPC charts to minor shifts in data a large number of additional rules have been suggested. But before we get to these rules we will take a look at different types of patterns in data that often accompany special causes.
 

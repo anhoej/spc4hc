@@ -20,7 +20,7 @@ source('R/stdchart.R', local = knitr::knit_global())
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of SPC charts that depicts the voice or behaviour of a process over time and with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.
+So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of SPC charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.
 
 SPC charts are point-and-line plots of data over time. In practice, SPC charts are operational definitions for identifying common and special cause variation. An operational definition is one which is designed to be practical and useful and leads to agreement between different people.
 
