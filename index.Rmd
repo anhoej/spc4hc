@@ -25,6 +25,6 @@ SPC methodology provides a philosophy and framework for continually learning abo
 
 SPC was initially developed by Walter A. Shewhart in the 1920s to improve the quality of manufactured products and has since been successfully used in many settings including healthcare.
 
-At is core, SPC methodology involves the plotting of data over time to detect unusual patterns or variations that might indicate a change/problem with a process. This simple graphical device is underpinned by an intuitive theory of variation, the hypothesis-generating testing-cycle of the scientific method, and statistical theory. 
+At is core, SPC methodology involves the plotting of data over time to detect unusual patterns or variations that might indicate a change or problem with a process. This simple graphical device is underpinned by an intuitive theory of variation, the hypothesis-generating testing-cycle of the scientific method, and statistical theory. 
 
-To understand SPC, we first need to understand the theory of variation on which it is based, which we demonstrate in Part 1 of this book. Next, we need to master some type of software to help us construct SPC charts. This is the topic of Part 2. In later parts we go in depth with specialist topics for advanced SPC practitioners.
+To understand SPC, we first need to understand the theory of variation on which it is based, which we demonstrate in Part 1 of this book. Next, we need to master some sort of software to help us construct SPC charts. This is the topic of Part 2. In later parts we go in depth with specialist topics for advanced SPC practitioners.

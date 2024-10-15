@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-10-14" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,10 +171,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a>
-<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
@@ -191,7 +189,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>2.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals of Special Cause Variation</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
@@ -247,7 +245,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
 <li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
 <li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
-<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#runs-analysis"><i class="fa fa-check"></i>Runs Analysis</a></li>
+<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> Core R Functions to Construct SPC Charts</a>
 <ul>
@@ -263,7 +261,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with ggplot2</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>9.1</b> Creating an SPC object for later plotting</a></li>
 <li class="chapter" data-level="9.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>9.2</b> Making a new plot function based on ggplot2</a></li>
@@ -337,11 +335,11 @@ div.csl-indent {
 Figure 1.1: Hanwritten a’s
 </p>
 </div>
-<p>Although the seven leftmost letters were produced under identical conditions – same hand, date, time, place, pen, paper, temperature, lighting, and other factors—they are not identical. Instead, they exhibit controlled variation. This illustrates that a stable process inherently produces some degree of variation or “noise.” In analysing this controlled variation, it might be tempting to classify some a’s as better or worse than their peers, and so attempt to learn from the best while eliminating the worst.</p>
+<p>Although the seven leftmost letters were produced under identical conditions – same hand, date, time, place, pen, paper, temperature, lighting, and other factors – they are not identical. Instead, they exhibit controlled variation. This illustrates that a stable process inherently produces some degree of variation or “noise”. In analysing this controlled variation, it might be tempting to classify some a’s as better or worse than their peers, and so attempt to learn from the best while eliminating the worst.</p>
 <p>However, this approach is fundamentally flawed. Since all a’s were produced under identical conditions, no single a is inherently better or worse than the others. From the viewpoint of the underlying process, all seven letters are equivalent because they were produced under the same conditions. The variation observed among them has a common cause which is inherent in the process itself. So how can we improve these a’s? To improve the quality of the letters we should focus on modifying the process rather than trying to draw lessons from the differences between individual letters.</p>
-<p>To reduce variation and improve the quality of the letter a, we might consider changes such as using a different pen, paper, or surface, or switching to a computer. Of these options, it is intuitive that using a computer will yield the most significant improvements. This insight is supported by the theory of constraints, which views a process as a chain of interconnected links. The strength of the entire chain is limited by its weakest link. Improving this weakest link will enhance the overall performance, while changes to other, non-constraint links offer minimal benefit. In the context of handwriting, the weakest link is the manual use of the hand. The pen, paper, and lighting are not constraints in this process; altering them will not substantially impact the quality of the ‘a’. Switching to a computer addresses the key constraint – handwriting – resulting in a marked improvement in the quality of the letter.</p>
-<p>Now consider the rightmost a of Figure Figure <a href="variation.html#fig:variation-fig1">1.1</a>. It is obviously different from the others. A casual look suggests that there must be a special cause. When we see special cause variation, we need to find the underlying special cause and then decide how to act. In other words, special cause variation requires detective work. If the special cause is having an adverse impact on our process, we must work towards eliminating it from the process. But if the special cause is having a favourable impact on our process, we can work towards learning from it and making it part of our process.</p>
-<p>In summary then, the handwritten a’s demonstrate that a process exhibits two types of variation –- common cause and special cause -– and the action required to address each type of cause is fundamentally different. To address common cause variation, we must take action on a major portion of the process. To address special cause variation, we must first do some detective work to find the cause and then we can decide to eradicate that cause (if it is unfavourable) or keep it (if it is favourable).</p>
+<p>To reduce variation and improve the quality of the letter a, we might consider changes such as using a different pen, paper, or surface, or switching to a computer. Of these options, it is intuitive that using a computer will yield the most significant improvements. This insight is supported by the theory of constraints, which views a process as a chain of interconnected links. The strength of the entire chain is limited by its weakest link. Improving this weakest link will enhance the overall performance, while changes to other, non-constraint links, offer minimal benefit. In the context of handwriting, the weakest link is the manual use of the hand. The pen, paper, and lighting are not constraints in this process; altering them will not substantially impact the quality of the ‘a’. Switching to a computer addresses the key constraint – handwriting – resulting in a marked improvement in the quality of the letter.</p>
+<p>Now consider the rightmost a of Figure <a href="variation.html#fig:variation-fig1">1.1</a>. It is obviously different from the others. A casual look suggests that there must be a special cause. When we see special cause variation, we need to find the underlying special cause and then decide how to act. In other words, special cause variation requires detective work. If the special cause is having an adverse impact on our process, we must work towards eliminating it from the process. But if the special cause is having a favourable impact on our process, we can work towards learning from it and making it part of our process.</p>
+<p>In summary then, the handwritten a’s demonstrate that a process exhibits two types of variation –- common cause and special cause – and the action required to address each type of cause is fundamentally different. To address common cause variation, we must take action on a major portion of the process. To address special cause variation, we must first do some detective work to find the cause and then we can decide to eradicate that cause (if it is unfavourable) or keep it (if it is favourable).</p>
 <p>The originator of this theory of variation was Walter A. Shewhart, who in the 1920’s was seeking to enhance the quality of industrial products. Shewhart identified that quality is not just about meeting target specifications but involves managing variation. He distinguished between these two types of variation: common cause variation, which is inherent in the underlying process, and special cause variation, which arises from external factors.</p>
 <p>There are various characteristics and descriptions of common and special cause variation which are highlighted below.</p>
 <table>
@@ -384,22 +382,23 @@ process.</td>
 <tr class="even">
 <td align="left">Is sometimes referred to as random
 variation, chance variation, or noise.</td>
-<td align="left">Is sometimes referred to a systematic,
-non-random variation.</td>
+<td align="left">Is sometimes referred to as non-random
+variation, systematic variation, or
+signal.</td>
 </tr>
 <tr class="odd">
 <td align="left">Depicts the voice or behaviour of a
 stable process and affects all those
 who are part of the process.</td>
 <td align="left">Is a distinct signal which differs
-from the usual voice or noise of the
-process which requires further
+from the usual voice or behaviour of
+the process and requires further
 detective work to identify the
 assignable cause.</td>
 </tr>
 </tbody>
 </table>
-<p>SPC is all about understanding variation and recognising its underlying causes – common or special – in order to help improve products and services. Contrary to many beliefs SPC is <em>not</em> simply a method of identifying outliers in a population.</p>
+<p>Thus, SPC is all about understanding variation and recognising its underlying causes – common or special – in order to help improve products and services. Contrary to many beliefs SPC is <em>not</em> simply a method of identifying outliers in a population.</p>
 <blockquote>
 <p>Statistical Process Control is not about statistics, it is not about “process-hyphen-control”, and it is not about conformance to specifications. […] It is about the continual improvement of processes and outcomes. And it is, first and foremost, a way of thinking with some tools attached.</p>
 <p>– <span class="citation">Wheeler (<a href="#ref-wheeler2000">2000</a>)</span>, p 152</p>

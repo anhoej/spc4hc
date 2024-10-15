@@ -55,7 +55,7 @@ To help us identify special cause variation we will improve the `spc()` function
 
 The new, improved `spc()` function has a few changes:
 
-* Line 10: Import a function, `runs.analysis()`, from a separate R script to test for unusually long runs and unusually few crossings. See this function in the [Runs Analysis] section at the end of this chapter.
+* Line 10: Import a function, `runs.analysis()`, from a separate R script to test for unusually long runs and unusually few crossings. See this function in the [R function for runs analysis] section at the end of this chapter.
 
 * Lines 19-20: If no cl argument is given, use the median for centre line.
 
@@ -90,7 +90,7 @@ In the next chapter we will improve the `spc()` function further to automaticall
 
 ----
 
-## Runs Analysis {-}
+## R function for runs analysis {-}
 
 ```{r, file='R/runs.analysis.R', eval=FALSE}
 

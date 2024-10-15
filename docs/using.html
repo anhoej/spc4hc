@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-10-14" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,10 +171,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a>
-<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
@@ -191,7 +189,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>2.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals of Special Cause Variation</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
@@ -247,7 +245,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
 <li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
 <li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
-<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#runs-analysis"><i class="fa fa-check"></i>Runs Analysis</a></li>
+<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> Core R Functions to Construct SPC Charts</a>
 <ul>
@@ -263,7 +261,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with ggplot2</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>9.1</b> Creating an SPC object for later plotting</a></li>
 <li class="chapter" data-level="9.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>9.2</b> Making a new plot function based on ggplot2</a></li>
@@ -337,7 +335,7 @@ div.csl-indent {
 </ul>
 <div id="using-spc-to-monitor-a-process" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Using SPC to monitor a process<a href="using.html#using-spc-to-monitor-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In the monitoring mode, the primary aim is to determine if a process is deteriorating which is usually indicated by signals of special cause variation where detective work is undertaken to find the cause and then eliminate it. Such detective work can be undertaken by using the Pyramid Model of Investigation describe below.</p>
+<p>In the monitoring mode, the primary aim is to determine if a process is deteriorating which is usually indicated by signals of special cause variation where detective work is needed to find the cause and then eliminate it. Such detective work can be undertaken by using the Pyramid Model of Investigation described below.</p>
 <p>The key aim of using statistical process control charts to monitor healthcare processes is to ensure that quality and safety of care are adequate and not deteriorating. So when a signal of special cause variation is seen on a control chart monitoring a given outcome, investigation is necessary. However, the chosen method must recognise that the link between recorded outcomes and quality of care <em>is complex, ambiguous and subject to multiple explanations</em> <span class="citation">(<a href="#ref-lilford2004">Lilford et al. 2004</a>)</span>. Failure to do so may inadvertently contribute to premature conclusions and a blame culture that undermines the engagement of clinical staff and the credibility of statistical process control. As Rogers note:</p>
 <blockquote>
 <p>If monitoring schemes are to be accepted by those whose outcomes are being assessed, an atmosphere of constructive evaluation, not ‘blaming’ or ‘naming and shaming’, is essential as apparent poor performance could arise for a number of reasons that should be explored systematically.</p>
@@ -354,8 +352,8 @@ Figure 4.1: Pyramid Model for Investigation
 <p>A proper investigation requires a team of people with expertise in each of the layers. Such a team is also likely to include those staff whose outcomes or data are being investigated, so that their insights and expertise can inform the investigation while also ensuring their buy-in to the investigation process. Basic steps for using the model are shown below.</p>
 <ol style="list-style-type: decimal">
 <li><p>Form a <strong>multidisciplinary team</strong> that has expertise in each layer of the pyramid, with a decision-making process that allows them to judge the extent to which a credible cause or explanation has been found, based on hypothesis generation and testing.</p></li>
-<li><p>Candidate <strong>hypotheses</strong> are generated and tested starting from the lowest level of the Pyramid Model and proceeding to upper levels only if the preceding levels provide no adequate explanation for the special cause.</p></li>
-<li><p>A credible cause requires <strong>quantitative and qualitative evidence</strong>, which is used by the team to test hypotheses and reach closure. If no credible explanation can be found, then the only plausible conclusion is that signal itself was a false signal.</p></li>
+<li><p>Guided by what type(s) of non-random pattern(s) exist in data (freaks, shifts, trends, mixed, or cyclic patterns) candidate <strong>hypotheses</strong> are generated and tested starting from the lowest level of the Pyramid Model and proceeding to upper levels only if the preceding levels provide no adequate explanation for the special cause.</p></li>
+<li><p>A credible cause requires <strong>quantitative and qualitative evidence</strong>, which is used by the team to test hypotheses and reach closure. If no credible explanation can be found, then the only plausible conclusion is that the signal itself was a false signal.</p></li>
 </ol>
 <p>The types of questions that can be asked when undertaking the detective work are highlighted below.</p>
 <ul>
@@ -367,20 +365,20 @@ Figure 4.1: Pyramid Model for Investigation
 </ul></li>
 <li><p><strong>Case mix</strong>: Although differences in case mix are accounted for in the calculation, it is possible that some residual confounding may remain.</p>
 <ul>
-<li><p>Are there factors peculiar to this hospital not taken into account in the risk adjustment?</p></li>
+<li><p>Are factors peculiar to this hospital not taken into account in the risk adjustment?</p></li>
 <li><p>Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?</p></li>
 </ul></li>
 <li><p><strong>Structure or resource</strong>: Availability of beds, staff, and medical equipment; institutional processes.</p>
 <ul>
-<li><p>Has there been a change in the distribution of patients in the hospital, with more patients in this specialty spread throughout the hospital rather than concentrated in a particular unit?</p></li>
+<li><p>Has there been a change in the distribution of patients in the hospital, with more patients in this speciality spread throughout the hospital rather than concentrated in a particular unit?</p></li>
 <li><p>Has the physical environment or organisational structures changed?</p></li>
 </ul></li>
-<li><p><strong>Process of care</strong>: Medical treatments of patients, clinical pathways, patient admission and discharge hospital policies.</p>
+<li><p><strong>Process of care</strong>: Medical treatments, clinical pathways, patient admission and discharge policies.</p>
 <ul>
 <li><p>Has there been a change in the care being provided?</p></li>
 <li><p>Have new treatment guidelines been introduced?</p></li>
 </ul></li>
-<li><p><strong>Professional staff/carers</strong>: Practice and treatment methods, etc.</p>
+<li><p><strong>Professional staff/carers</strong>: Practice and treatment methods etc.</p>
 <ul>
 <li><p>Has there been a change in staffing for treatment of patients?</p></li>
 <li><p>Has a key staff member gained additional training and introduced a new method that has led to improved outcomes?</p></li>
@@ -389,9 +387,9 @@ Figure 4.1: Pyramid Model for Investigation
 </div>
 <div id="using-spc-to-improve-a-process" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Using SPC to improve a process<a href="using.html#using-spc-to-improve-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a’s after switching to a computer. This is determined by looking to see the impact of the change in the form of signals of special cause variation on a SPC chart.</p>
+<p>SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a’s after switching to a computer. This is determined by looking to see the impact of the change in the form of signals of special cause variation on an SPC chart.</p>
 <p>The degree of alignment between changes to the process and subsequent signals of special cause variation provide a story which qualitatively and quantitatively describes the impact of changes.</p>
-<p>Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? The theory of constraints offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints (as demonstrated by the handwriting example earlier). [ref]</p>
+<p>Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? The Theory of Constraints <span class="citation">(<a href="#ref-goldratt2022">Goldratt and Cox 2022</a>)</span> offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints.</p>
 <p>The Model for Improvement, proposed by <span class="citation">Langley et al. (<a href="#ref-langley2009">2009</a>)</span>, is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>What are we trying to accomplish?</strong>
@@ -422,6 +420,9 @@ This question explores potential change ideas or interventions that could lead t
 
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-goldratt2022" class="csl-entry">
+Goldratt, Eliyahu M., and Jeff Cox. 2022. <em>The Goal: A Process of Ongoing Improvement, 3rd Edition</em>. Routledge.
+</div>
 <div id="ref-koetsier2012" class="csl-entry">
 Koetsier, A., S. N. van der Veer, K. J. Jager, N. Peek, and N. F. de Keizer. 2012. <span>“Control Charts in Healthcare Quality Improvement.”</span> <em>Methods of Information in Medicine</em>. <a href="https://doi.org/10.3414/ME11-01-0055">https://doi.org/10.3414/ME11-01-0055</a>.
 </div>

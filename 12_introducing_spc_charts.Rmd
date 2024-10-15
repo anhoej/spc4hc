@@ -20,7 +20,7 @@ source('R/stdchart.R', local = knitr::knit_global())
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of SPC charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.
+So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.
 
 SPC charts are point-and-line plots of data over time. In practice, SPC charts are operational definitions for identifying common and special cause variation. An operational definition is one which is designed to be practical and useful and leads to agreement between different people.
 
@@ -69,7 +69,7 @@ As described above, the control limits are positioned three times the common cau
 
 $$CL \pm 3SD$$
 
-So to construct a control chart, all we need to know is how to find the process standard deviation. As mentioned before, we do *not* use the overall SD of all the data as this would include any variation due to special causes and inflate the control limits. Instead we use a pooled average of the *within* subgroup SDs, which in turn depend on the type of data involved. The impatient reader may find the formulas for constructing control limits in Table \@ref(tab:limits-tab1) later in the book.
+So to construct a control chart, all we need to know is how to find the process mean and standard deviation. As mentioned before, we do *not* use the overall SD of all the data as this would include any variation due to special causes, which would inflate the control limits. Instead we use a pooled average of the *within* subgroup SDs, which in turn depend on the type of data involved. The impatient reader may find the formulas for constructing control limits in Table \@ref(tab:limits-tab1) later in the book.
 
 Generally, data come in two flavours: count data and measurement data.
 
@@ -77,7 +77,7 @@ Generally, data come in two flavours: count data and measurement data.
 
 Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. **Events** are phenomena that happen in time and space, for example patient falls. **Cases** are units with (or without) a certain property, for example patients who fell. 
 
-When counting falls as events, every fall counts. When counting patients as units who fell, every patient counts -- but only once regardless of how many times each patient fell. 
+When counting falls as events, every fall counts. When counting patients who fell as cases, every patient counts -- but only once regardless of how many times each patient fell. 
 
 Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
 

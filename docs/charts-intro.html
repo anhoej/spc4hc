@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-10-14" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,10 +171,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a>
-<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
 </ul></li>
@@ -191,7 +189,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>2.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals of Special Cause Variation</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
@@ -247,7 +245,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
 <li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
 <li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
-<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#runs-analysis"><i class="fa fa-check"></i>Runs Analysis</a></li>
+<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> Core R Functions to Construct SPC Charts</a>
 <ul>
@@ -263,7 +261,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <code>ggplot2</code></a>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with ggplot2</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>9.1</b> Creating an SPC object for later plotting</a></li>
 <li class="chapter" data-level="9.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>9.2</b> Making a new plot function based on ggplot2</a></li>
@@ -330,7 +328,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="charts-intro" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Understanding SPC Charts<a href="charts-intro.html#charts-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of SPC charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.</p>
+<p>So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.</p>
 <p>SPC charts are point-and-line plots of data over time. In practice, SPC charts are operational definitions for identifying common and special cause variation. An operational definition is one which is designed to be practical and useful and leads to agreement between different people.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig0"></span>
 <img src="_main_files/figure-html/spc-fig0-1.svg" alt="Control chart of systolic blood pressure" width="672" />
@@ -362,12 +360,12 @@ The control limits are positioned so that nearly all data points from a common c
 <h2><span class="header-section-number">2.2</span> Some common types of control charts – The Magnificient Seven<a href="charts-intro.html#some-common-types-of-control-charts-the-magnificient-seven" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As described above, the control limits are positioned three times the common cause SD above and below the centre line. Thus, all types of control charts follow this general formula for control lines:</p>
 <p><span class="math display">\[CL \pm 3SD\]</span></p>
-<p>So to construct a control chart, all we need to know is how to find the process standard deviation. As mentioned before, we do <em>not</em> use the overall SD of all the data as this would include any variation due to special causes and inflate the control limits. Instead we use a pooled average of the <em>within</em> subgroup SDs, which in turn depend on the type of data involved. The impatient reader may find the formulas for constructing control limits in Table <a href="limits.html#tab:limits-tab1">6.1</a> later in the book.</p>
+<p>So to construct a control chart, all we need to know is how to find the process mean and standard deviation. As mentioned before, we do <em>not</em> use the overall SD of all the data as this would include any variation due to special causes, which would inflate the control limits. Instead we use a pooled average of the <em>within</em> subgroup SDs, which in turn depend on the type of data involved. The impatient reader may find the formulas for constructing control limits in Table <a href="limits.html#tab:limits-tab1">6.1</a> later in the book.</p>
 <p>Generally, data come in two flavours: count data and measurement data.</p>
 <div id="counts" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Counts<a href="charts-intro.html#counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. <strong>Events</strong> are phenomena that happen in time and space, for example patient falls. <strong>Cases</strong> are units with (or without) a certain property, for example patients who fell.</p>
-<p>When counting falls as events, every fall counts. When counting patients as units who fell, every patient counts – but only once regardless of how many times each patient fell.</p>
+<p>When counting falls as events, every fall counts. When counting patients who fell as cases, every patient counts – but only once regardless of how many times each patient fell.</p>
 <p>Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.</p>
 <p>Notice that with rates the denominator is in units of time, which is a continuous variable and represents something distinctly different from the numerator. With proportions the numerator and denominator are counts of the same thing, for example patients – only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.</p>
 <p>The most common chart types for count data are:</p>

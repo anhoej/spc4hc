@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# SPC Charts with `ggplot2` {#ggplot}
+# SPC Charts with ggplot2 {#ggplot}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,

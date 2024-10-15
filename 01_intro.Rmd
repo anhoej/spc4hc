@@ -11,7 +11,6 @@ SPC is based on a fundamental intuitive insight -- that processes are subject to
 
 With this insight comes a set of intuitive visual tools, run and control charts, that make it easy to tell common from special cause variation.
 
-
 Nevertheless a systematic review concluded 
 
 >... although SPC charts may be easy to use even for patients, clinicians or managers without extensive SPC training, they may not be equally simple to *construct correctly*. To apply SPC is, paradoxically, both simple and difficult at the same time.
@@ -26,9 +25,9 @@ This book is a *how to easily produce SPC charts book*. Since this involves stat
 
 This book stands out by being a *specialized*, *practical*, and *modern* guide specifically tailored for data scientists in the healthcare sector. Its focus on real-world application, combined with comprehensive coverage of SPC techniques and the use of contemporary tools, makes it a unique and valuable resource. 
 
-1. **Target Audience**:  This book aims to help people who want to produce SPC charts in practice using modern software. This book is specifically tailored for data scientists who want to learn how to produce SPC charts using the R programming language.  We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, clinicians or patients.
+1. **Target Audience**:  This book aims to help people who want to produce SPC charts in practice using modern software. This book is specifically tailored for data scientists who want to learn how to produce SPC charts using the R programming language. We refer to such people as data scientist whilst recognising that they may be analysts, practitioners, managers, teachers, students, researchers, clinicians or patients.
 
-2. **Use of R**: Our choice of software is R, which is popular, free, and open source. By being pro-R we are not anti any other software. Indeed we encourage readers to use this book with their preferred software and share it with the world. One major advantage of R (and programming languages in general) is that all the steps and procedures involved in analysing data and constructing graphs and other output are documented in readable form in the source code thus making analyses transparent and reproducible, which is rarely the case with "point-and-click" software. Another advantage of R is that it enables the automation of repeated tasks such as monthly reports, slide decks and dashboards of SPC charts with high quality customisable graphics. 
+2. **Use of R**: Our choice of software is R, which is popular, free, and open source. By being pro-R we are not anti any other software. Indeed we encourage readers to use this book with their preferred software and share it with the world. One major advantage of R (and programming languages in general) is that all the steps and procedures involved in analysing data and constructing graphs and other output are documented in readable form in the source code thus making analyses transparent and reproducible, which is rarely the case with "point-and-click" software. Another advantage of R is that it enables the automation of repeated tasks such as monthly reports, slide decks and dashboards of SPC charts with high quality customisable graphics.
 
 3. **Healthcare Focus**: While there are many general books on SPC, this book's focus is on practical applications in healthcare, making it particularly relevant for those working in this field. It addresses the unique challenges and requirements of applying SPC methods in healthcare settings, such as patient safety, clinical outcomes, and operational efficiency as described in an accompanying book [@mohammed2024].
 
@@ -38,7 +37,7 @@ This book stands out by being a *specialized*, *practical*, and *modern* guide s
 
 6. **Resources**: The book comes with additional resources such as R scripts, datasets, and access to an online [GitHub repository](https://github.com/anhoej/spc4hc).
 
-### Prerequisites {-}
+## Prerequisites {-}
 
 We assume no prior knowledge of SPC, but a basic familiarity with R is required to understand the steps and algorithms for constructing SPC charts. For readers not familiar with R we refer you to some excellent (free) resources for getting started with R including the amazing [NHS-R Community](https://nhsrcommunity.com/).
 
