@@ -1,9 +1,9 @@
 # Using SPC in healthcare {#using}
 
-In healthcare, SPC methodology is used in two main ways:
+As briefly discussed in the previous chapter, in healthcare, we use SPC methodology in two main ways:
 
-* Monitoring the behaviour or performance of an existing process (e.g. complications following surgery), or
-* Improving an existing process (e.g. redesigning the pathway for patients with fractured hips).
+* **Monitoring** the behaviour or performance of an existing process (e.g. complications following surgery), or
+* **Improving** an existing process (e.g. redesigning the pathway for patients with fractured hips).
 
 ## Using SPC to monitor a process
 
@@ -34,46 +34,35 @@ A proper investigation requires a team of people with expertise in each of the l
 The types of questions that can be asked when undertaking the detective work are highlighted below.
 
 * **Data**: Data quality issues, e.g. coding accuracy, reliability of charts, definitions, and completeness.
-
     * Are the data coded correctly?
-
     * Has there been a change in data coding practices (e.g. are there less experienced coders)?
-
     * Is clinical documentation clear, complete, and  consistent?
-
+<br><br>
 * **Case mix**: Although differences in case mix are accounted for in the calculation, it is possible that some residual confounding may remain.
-
     * Are factors peculiar to this hospital not taken into account in the risk adjustment?
-
     * Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?
-
+<br><br>
 * **Structure or resource**: Availability of beds, staff, and medical equipment; institutional processes.
-
     * Has there been a change in the distribution of patients in the hospital, with more patients in this speciality spread throughout the hospital rather than concentrated in a particular unit?
-    
     * Has the physical environment or organisational structures changed?
-
+<br><br>
 * **Process of care**: Medical treatments, clinical pathways, patient admission and discharge policies.
-   
     * Has there been a change in the care being provided?
-  
     * Have new treatment guidelines been introduced?
-
+<br><br>
 * **Professional staff/carers**: Practice and treatment methods etc.
-
     * Has there been a change in staffing for treatment of patients?
-  
     * Has a key staff member gained additional training and introduced a new method that has led to improved outcomes?
 
 ## Using SPC to improve a process
 
-SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a's after switching to a computer. This is determined by looking to see the impact of the change in the form of signals of special cause variation on an SPC chart. 
+SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a's after switching to a computer? This is determined by looking to see the impact of the change in the form of signals of special cause variation on an SPC chart (provided we have a creditable measure of "letter quality").
 
 The degree of alignment between changes to the process and subsequent signals of special cause variation provide a story which qualitatively and quantitatively describes the impact of changes.
 
-Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? The Theory of Constraints [@goldratt2022] offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints.
+Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? **The Theory of Constraints** [@goldratt2022] offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints.
 
-The Model for Improvement, proposed by @langley2009, is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.
+**The Model for Improvement**, proposed by @langley2009, is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.
 
 1. **What are we trying to accomplish?**
 This question defines the aim of the improvement effort, which should be specific, measurable, and time-bound along with a rationale for why this is important.
@@ -89,11 +78,11 @@ This question explores potential change ideas or interventions that could lead t
     - **Study**: Analyze the results, focusing on the impact of the change.
     - **Act**: Decide whether to adopt, modify, or abandon the change based on the results.
 
-There are other approaches to improvement in healthcare, such as Lean, Six Sigma, and Systems Engineering. The SPC chart can support each of these approaches because it offers a robust and insightful way to test the success or otherwise change ideas.
+There are other approaches to improvement in healthcare, such as Lean, Six Sigma, and Systems Engineering. The SPC chart can support each of these approaches because it offers a robust and insightful way to test the success of change ideas.
 
 ## Successful use of SPC in healthcare
 
-The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart especially in complex adaptive systems like healthcare. These factors include:- engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance -- all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see @mohammed2024.
+The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart especially in complex adaptive systems like healthcare. These factors include: engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance -- all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see @mohammed2024.
 
 Nevertheless, it is important to note that SPC charts are not necessarily easy to construct. After examining 64 statistical process control charts, @koetsier2012 found that that almost half the charts had technical problems which suggests a need for more training for those constructing charts -- which is the primary motivation for this book. 
 

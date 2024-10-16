@@ -79,7 +79,7 @@ Counts are positive integers that represent counts of events or cases. The disti
 
 When counting falls as events, every fall counts. When counting patients who fell as cases, every patient counts -- but only once regardless of how many times each patient fell. 
 
-Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as rates, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as proportions, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
+Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as **rates**, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as **proportions**, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.
 
 Notice that with rates the denominator is in units of time, which is a continuous variable and represents something distinctly different from the numerator. With proportions the numerator and denominator are counts of the same thing, for example patients -- only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.
 
