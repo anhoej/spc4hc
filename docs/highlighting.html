@@ -329,7 +329,7 @@ div.csl-indent {
 <div id="highlighting" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Highlighting Freaks, Shifts, and Trends<a href="highlighting.html#highlighting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In the previous chapter we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data – that is unexpected change caused by something outside the usual system.</p>
-<p>Control limits are designed to identify rather large (&gt; 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter <a href="testing.html#testing">3</a>, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to detect freaks and the two runs rules for unusually long runs and unusually few crossings to detect shifts and trends.</p>
+<p>Control limits are designed to signal rather large (&gt; 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter <a href="testing.html#testing">3</a>, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to signal freaks and the two runs rules for unusually long runs and unusually few crossings to signal shifts and trends.</p>
 <p>In this chapter we will improve the <code>spc()</code> function to automatically visualise special cause variation in the form of freaks, shifts, and trends.</p>
 <div id="introducing-the-cdiff-data-set" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Introducing the cdiff data set<a href="highlighting.html#introducing-the-cdiff-data-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -367,7 +367,7 @@ div.csl-indent {
 Figure 7.1: C control chart of CDiff infections
 </p>
 </div>
-<p>To help us identify special cause variation we will improve the <code>spc()</code> function.</p>
+<p>To help us signal special cause variation we will improve the <code>spc()</code> function.</p>
 </div>
 <div id="improved-spc-function" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Improved <code>spc()</code> function<a href="highlighting.html#improved-spc-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -487,7 +487,7 @@ Figure 7.2: Improved control chart with visual clues to highlight special cause 
 <span id="cb32-24"><a href="highlighting.html#cb32-24" tabindex="-1"></a>  <span class="co"># find lower limit for number of crossing</span></span>
 <span id="cb32-25"><a href="highlighting.html#cb32-25" tabindex="-1"></a>  n.crossings.min <span class="ot">&lt;-</span> <span class="fu">qbinom</span>(<span class="fl">0.05</span>, n.useful <span class="sc">-</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
 <span id="cb32-26"><a href="highlighting.html#cb32-26" tabindex="-1"></a>  </span>
-<span id="cb32-27"><a href="highlighting.html#cb32-27" tabindex="-1"></a>  <span class="co"># return result</span></span>
+<span id="cb32-27"><a href="highlighting.html#cb32-27" tabindex="-1"></a>  <span class="co"># return result, TRUE if either of the two tests is true, otherwise FALSE</span></span>
 <span id="cb32-28"><a href="highlighting.html#cb32-28" tabindex="-1"></a>  longest.run <span class="sc">&gt;</span> longest.run.max <span class="sc">|</span> n.crossings <span class="sc">&lt;</span> n.crossings.min</span>
 <span id="cb32-29"><a href="highlighting.html#cb32-29" tabindex="-1"></a>}</span></code></pre></div>
 

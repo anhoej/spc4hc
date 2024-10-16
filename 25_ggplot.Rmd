@@ -25,7 +25,7 @@ Also ggplot2 has an extensive theming engine that makes it (relatively) easy to 
 
 ## Creating an SPC object for later plotting
 
-First, with the `spc()` function we created in the previous chapter we will create an spc object and assign it to a variable name for later use:
+With the `spc()` function we created in the previous chapter we will create an spc object and assign it to a variable, p, for later use:
 
 ```{r}
 # make spc object
@@ -36,7 +36,7 @@ p <- spc(month, infections,
 
 ```
 
-Notice that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable 'p'. We can now continue working with p as with any other R object.
+Notice that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable p. We can now continue working with p as with any other R object.
 
 ```{r ggplot-fig1, fig.cap='SPC chart'}
 # check the class of p

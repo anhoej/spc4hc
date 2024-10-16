@@ -14,7 +14,7 @@ source('R/spc1.R', local = knitr::knit_global())
 
 In the previous chapter we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data -- that is unexpected change caused by something outside the usual system.
 
-Control limits are designed to identify rather large (> 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter \@ref(testing), minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to detect freaks and the two runs rules for unusually long runs and unusually few crossings to detect shifts and trends.
+Control limits are designed to signal rather large (> 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter \@ref(testing), minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to signal freaks and the two runs rules for unusually long runs and unusually few crossings to signal shifts and trends.
 
 In this chapter we will improve the `spc()` function to automatically visualise special cause variation in the form of freaks, shifts, and trends.
 
@@ -49,7 +49,7 @@ with(cdiff, {
 })
 ```
 
-To help us identify special cause variation we will improve the `spc()` function.
+To help us signal special cause variation we will improve the `spc()` function.
 
 ## Improved `spc()` function
 

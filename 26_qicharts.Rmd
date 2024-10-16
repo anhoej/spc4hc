@@ -87,7 +87,7 @@ The cdi dataset comes with qicharts2 and contains monthly counts of infections t
 qic(month, n, data = cdi, freeze = 24)
 ```
 
-Figure \@ref(fig:qicharts-cdi1) shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. There is a sustained shift in data after the intervention.
+Figure \@ref(fig:qicharts-cdi1) shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. After the intervention, marked by the dotted vertical line, there is a sustained shift in data in the desired direction.
 
 ## Splitting chart by period
 
@@ -176,7 +176,7 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-By default, `qic()` use fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
+By default, `qic()` uses fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
 
 ```{r qicharts-hais4, fig.cap='Small multiple plot with individual y-axes', fig.asp=5/5}
 qic(month, n, days, 

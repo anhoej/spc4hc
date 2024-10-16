@@ -398,7 +398,7 @@ Figure 10.3: I chart with one data point excluded from calculations
 Figure 10.4: Infections before and after intervention
 </p>
 </div>
-<p>Figure <a href="qicharts.html#fig:qicharts-cdi1">10.4</a> shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. There is a sustained shift in data after the intervention.</p>
+<p>Figure <a href="qicharts.html#fig:qicharts-cdi1">10.4</a> shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. After the intervention, marked by the dotted vertical line, there is a sustained shift in data in the desired direction.</p>
 </div>
 <div id="splitting-chart-by-period" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Splitting chart by period<a href="qicharts.html#splitting-chart-by-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -499,7 +499,7 @@ Figure 10.9: Stratified (small multiple) U charts of urinary tract infections fr
 Figure 10.10: U charts from one hospital stratified by infection type
 </p>
 </div>
-<p>By default, <code>qic()</code> use fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure <a href="qicharts.html#fig:qicharts-hais4">10.11</a> we use individual y-axes.</p>
+<p>By default, <code>qic()</code> uses fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure <a href="qicharts.html#fig:qicharts-hais4">10.11</a> we use individual y-axes.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="qicharts.html#cb72-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
 <span id="cb72-2"><a href="qicharts.html#cb72-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
 <span id="cb72-3"><a href="qicharts.html#cb72-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>

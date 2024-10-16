@@ -8,13 +8,13 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 ```
 
-From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from `ggplot2`and `qicharts2`.
+From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from ggplot2 and qicharts2.
 
 In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and -- in case of a control chart -- two lines to represent the estimated upper and lower boundaries of the natural variation in data.
 
 ## A run chart of blood pressure data
 
-Consider these data, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
+Consider the data from Figure \@ref(fig:spc-fig0), which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
 
 ```{r}
 systolic <- c(169, 172, 175, 174, 161, 142,
@@ -33,7 +33,7 @@ plot(systolic, type = 'o')
 
 (As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time." &#128513;)
 
-To guide the runs analysis we will add the centre line, which in run charts is usually the median of the data points (Figure \@ref(fig:first-chart-run2)):
+To guide the runs analysis we will add a horizontal centre line, which in run charts is usually the median of the data points (Figure \@ref(fig:first-chart-run2)):
 
 ```{r first-chart-run2, fig.cap='Run chart with centre line'}
 # Create systolic-coordinates for the centre line
@@ -45,7 +45,7 @@ plot(systolic, type = 'o')
 lines(cl)
 ```
 
-We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the runs rules proposed previously, the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *persistent* shifts or trends in data over time.
+We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the two runs rules proposed in Chapter \@ref(testing), the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *persistent* shifts or trends in data over time.
 
 ## Adding control limits to produce a control chart
 
@@ -76,7 +76,7 @@ lcl <- cl - 3 * s
 ucl <- cl + 3 * s
 ```
 
-Before we plot data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
+When plotting data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
 
 ```{r first-chart-ctrl1, fig.cap='Standardised control chart'}
 # Plot data while expanding the y-axis to make room for all data and lines

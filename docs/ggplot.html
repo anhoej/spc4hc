@@ -335,13 +335,13 @@ div.csl-indent {
 <p>Also ggplot2 has an extensive theming engine that makes it (relatively) easy to customise the non-data parts of a plot, for example colours, legends, and number formats.</p>
 <div id="creating-an-spc-object-for-later-plotting" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Creating an SPC object for later plotting<a href="ggplot.html#creating-an-spc-object-for-later-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>First, with the <code>spc()</code> function we created in the previous chapter we will create an spc object and assign it to a variable name for later use:</p>
+<p>With the <code>spc()</code> function we created in the previous chapter we will create an spc object and assign it to a variable, p, for later use:</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ggplot.html#cb48-1" tabindex="-1"></a><span class="co"># make spc object</span></span>
 <span id="cb48-2"><a href="ggplot.html#cb48-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">spc</span>(month, infections,</span>
 <span id="cb48-3"><a href="ggplot.html#cb48-3" tabindex="-1"></a>         <span class="at">data  =</span> cdiff,</span>
 <span id="cb48-4"><a href="ggplot.html#cb48-4" tabindex="-1"></a>         <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
 <span id="cb48-5"><a href="ggplot.html#cb48-5" tabindex="-1"></a>         <span class="at">plot  =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>Notice that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable ‘p’. We can now continue working with p as with any other R object.</p>
+<p>Notice that we suppressed the plotting and assigned the (invisible) output, which is a data frame containing the coordinates to plot, to the variable p. We can now continue working with p as with any other R object.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ggplot.html#cb49-1" tabindex="-1"></a><span class="co"># check the class of p</span></span>
 <span id="cb49-2"><a href="ggplot.html#cb49-2" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
 <pre><code>## [1] &quot;spc&quot;        &quot;data.frame&quot;</code></pre>

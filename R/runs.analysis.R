@@ -24,6 +24,6 @@ runs.analysis <- function(y, cl) {
   # find lower limit for number of crossing
   n.crossings.min <- qbinom(0.05, n.useful - 1, 0.5)
   
-  # return result
+  # return result, TRUE if either of the two tests is true, otherwise FALSE
   longest.run > longest.run.max | n.crossings < n.crossings.min
 }
