@@ -62,7 +62,7 @@ But before we go down that rabbit hole we must realise that these theoretical co
 
 It is important to realise that the SD in question is that of the common cause variation, not the overall, pooled SD that would include both the common and any special cause variation. The procedure for calculating -- or rather estimating -- the common cause SD depends on the type of data involved.
 
-## Some common types of control charts -- The Magnificient Seven
+## Some common types of control charts -- The Magnificent Seven
 
 
 As described above, the control limits are positioned three times the common cause SD above and below the centre line. Thus, all types of control charts follow this general formula for control lines:
@@ -106,7 +106,7 @@ Sometimes it is also useful to plot a chart of the within subgroup SDs. For this
 
 In summary, a Shewhart control chart is a point-and-line plot of data over time with three added horizontal lines: the centre line representing the overall mean of data and the lower and upper control lines representing the limits of the natural process variation.
 
-While there are many types of SPC charts for different types of data they all look and behave the same. In this chapter we introduced the most common types used in healthcare, The Magnificient Seven, and their use cases.
+While there are many types of SPC charts for different types of data they all look and behave the same. In this chapter we introduced the most common types used in healthcare, The Magnificent Seven, and their use cases.
 
 When choosing the right chart we must first decide what type of data we have. For count data there are three common types: C, U, and P charts for event counts, event rates, and proportions respectively. For measurement data we have I and X-bar charts for individual measurements and averages respectively. MR and S charts plot estimates of the within subgroup standard deviation and are often plotted alongside I and X-bar charts.
 

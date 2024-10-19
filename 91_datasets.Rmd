@@ -6,7 +6,6 @@
 f <- dir('data', pattern = 'csv$', full.names = T)
 
 l <- lapply(f, function(x) {
-
   l <- readLines(x) |>
     grep('^#', x = _, value = T) |>
     sub('^# ', '', x = _) |>
@@ -17,7 +16,7 @@ l <- lapply(f, function(x) {
   l <- append(l, '', v )
   l <- append(l, '', v + 2)
 
-  l[1] <- paste('##', l[1])
+  l[1] <- paste('##', l[1], '{-}')
   l <- c('', l)
 
   l

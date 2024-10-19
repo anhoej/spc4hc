@@ -1,5 +1,3 @@
-# (PART\*) Part 9&frac34;: Nerd Stuff {-}
-
 # Two types of errors when using SPC {#two-types-of-errors}
 
 Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).
