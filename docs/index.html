@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-10-19" />
+<meta name="date" content="2024-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,7 +199,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>2.3</b> Common SPC charts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
@@ -213,7 +213,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
 <li class="chapter" data-level="3.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#charts-without-borders-using-runs-analysis-as-stand-alone-rules-with-run-charts"><i class="fa fa-check"></i><b>3.3</b> Charts without borders – using runs analysis as stand-alone rules with run charts</a></li>
+<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
 <li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
 <li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
@@ -298,6 +298,9 @@ div.csl-indent {
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
 <ul>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#reading-csv-files"><i class="fa fa-check"></i>Reading csv files</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#data-summaries"><i class="fa fa-check"></i>Data summaries</a>
+<ul>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i>Bacteremia</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
@@ -306,6 +309,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
 <li class="chapter" data-level="C" data-path="two-types-of-errors.html"><a href="two-types-of-errors.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a></li>
@@ -339,7 +343,7 @@ div.csl-indent {
 <h1 class="title">Mastering Statistical Process Control Charts in Healthcare</h1>
 <h2 class="subtitle"><em>A practical, hands-on, step-by-step guide for data scientists using R</em></h2>
 <p class="author"><em>Jacob Anhøj &amp; Mohammed Amin Mohammed</em></p>
-<p class="date"><em>2024-10-19</em></p>
+<p class="date"><em>2024-10-24</em></p>
 </div>
 <div id="what" class="section level1 unnumbered hasAnchor">
 <h1>What is Statistical Process Control?<a href="index.html#what" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -351,7 +355,7 @@ div.csl-indent {
 <p>SPC methodology provides a philosophy and framework for continually learning about the behaviour of processes for analytical purposes – where the aim is to act on the underlying causes of variation to maintain or improve the performance of a process.</p>
 <p>SPC was initially developed by Walter A. Shewhart in the 1920s to improve the quality of manufactured products and has since been successfully used in many settings including healthcare.</p>
 <p>At is core, SPC methodology involves the plotting of data over time to detect unusual patterns or variations that might indicate a change or problem with a process. This simple graphical device is underpinned by an intuitive theory of variation, the hypothesis-generating testing-cycle of the scientific method, and statistical theory.</p>
-<p>To understand SPC, we first need to understand the theory of variation on which it is based, which we demonstrate in Part 1 of this book. Next, we need to master some sort of software to help us construct SPC charts. This is the topic of Part 2. In later parts we go in depth with specialist topics for advanced SPC practitioners.</p>
+<p>To master SPC, it’s essential to first understand the underlying theory of variation, which we explore in Part 1 of this book. Next, proficiency in using software to construct SPC charts is key, and this is covered in Part 2. In the later sections, we delve into specialized topics for more advanced SPC practitioners, offering deeper insights and expertise.</p>
 
 </div>
             </section>
