@@ -14,7 +14,7 @@ set.seed(33)
 y1 <- y2 <- y3 <- rnorm(24)
 ```
 
-# Looking for Signals {#testing}
+# Looking for Signals on SPC charts {#testing}
 
 So far we have mostly concerned ourselves with Shewhart's 3-sigma rule, one or more data points outside the control limits, to signal special cause variation.
 
@@ -147,7 +147,7 @@ Apart from being comparable in sensitivity and specificity to WE rules #2-#4 wit
 
 In practice these runs rules may be used as alternatives to WE rules #2-#4 to help identify shifts and trends alongside the WE rule #1 for freaks.
 
-## Charts without borders -- using runs analysis as stand-alone rules with run charts
+## SPC charts without borders -- using run charts
 
 As we saw in the previous section, some rules only depend on a single line representing the centre of data. We made the assumption that the centre line is positioned such that it splits the data in two equally sized halves. In many cases the process average is a good representation of this centre, but if data are skewed in any way, this may not be the case. However, if we use the median rather than the mean of data the assumption always holds true.
 
