@@ -118,3 +118,17 @@ two-types-of-errors
 r-intro
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+bacteremia-hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality-variables-month-date-month-of-infection-ha_infections-numeric-number-of-hospital-acquired-infections-risk_days-numeric-number-of-patient-days-without-infection-deaths-numeric-30-day-mortality-after-all-cause-infection-patients-numeric-number-of-patients-with-all-cause-infection-monthha_infectionsrisk_daysdeathspatients-2017-01-01243242123100-2017-02-01292934922105-2017-03-0126329811399-2017-04-0116295881485-2017-05-0128308561798-2017-06-0116305441585-2017-07-0114264821589-2017-08-0118276372599-2017-09-01273049521103-2017-10-0130306002486-2017-11-01283177023110-2017-12-0124316792698-2018-01-0116327201893-2018-02-0125296982396-2018-03-01203211824115-2018-04-01253021225102-2018-05-0122316121594-2018-06-0128305142194-2018-07-0123263622694-2018-08-0123281311697-2018-09-01172907125114-2018-10-01222848122108-2018-11-01212922324102-2018-12-01222861118104
+bacteremia
+section
+hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality
+section-1
+variables
+month-date-month-of-infection
+ha_infections-numeric-number-of-hospital-acquired-infections
+risk_days-numeric-number-of-patient-days-without-infection
+deaths-numeric-30-day-mortality-after-all-cause-infection
+patients-numeric-number-of-patients-with-all-cause-infection
+reading-csv-files
+data-summaries

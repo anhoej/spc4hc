@@ -2,6 +2,18 @@
 
 # Data Sets {#data-sets}
 
+
+
+```{r, comment='', echo=FALSE}
+readLines('data/bacteremia.csv', 18) |> 
+  paste0(collapse = '\n') |> 
+  cat()
+```
+
+## Reading csv files {-}
+
+## Data summaries {-}
+
 ```{r, echo=FALSE}
 f <- dir('data', pattern = 'csv$', full.names = T)
 
@@ -16,7 +28,7 @@ l <- lapply(f, function(x) {
   l <- append(l, '', v )
   l <- append(l, '', v + 2)
 
-  l[1] <- paste('##', l[1], '{-}')
+  l[1] <- paste('###', l[1], '{-}')
   l <- c('', l)
 
   l

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>D Hospital acquired and all cause bacteremias and 30 days mortality | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="D Hospital acquired and all cause bacteremias and 30 days mortality | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="D Hospital acquired and all cause bacteremias and 30 days mortality | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="section.html"/>
+<link rel="next" href="section-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -207,26 +271,32 @@
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a></li>
+<li class="chapter" data-level="B" data-path="bacteremia.html"><a href="bacteremia.html"><i class="fa fa-check"></i><b>B</b> Bacteremia</a></li>
+<li class="chapter" data-level="C" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>C</b> </a></li>
+<li class="chapter" data-level="D" data-path="hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality.html"><a href="hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality.html"><i class="fa fa-check"></i><b>D</b> Hospital acquired and all cause bacteremias and 30 days mortality</a></li>
+<li class="chapter" data-level="E" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>E</b> </a></li>
+<li class="chapter" data-level="F" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>F</b> Variables:</a></li>
+<li class="chapter" data-level="G" data-path="month-date-month-of-infection.html"><a href="month-date-month-of-infection.html"><i class="fa fa-check"></i><b>G</b> month (date): month of infection</a></li>
+<li class="chapter" data-level="H" data-path="ha_infections-numeric-number-of-hospital-acquired-infections.html"><a href="ha_infections-numeric-number-of-hospital-acquired-infections.html"><i class="fa fa-check"></i><b>H</b> ha_infections (numeric): number of hospital acquired infections</a></li>
+<li class="chapter" data-level="I" data-path="risk_days-numeric-number-of-patient-days-without-infection.html"><a href="risk_days-numeric-number-of-patient-days-without-infection.html"><i class="fa fa-check"></i><b>I</b> risk_days (numeric): number of patient days without infection</a></li>
+<li class="chapter" data-level="J" data-path="deaths-numeric-30-day-mortality-after-all-cause-infection.html"><a href="deaths-numeric-30-day-mortality-after-all-cause-infection.html"><i class="fa fa-check"></i><b>J</b> deaths (numeric): 30-day mortality after all-cause infection</a></li>
+<li class="chapter" data-level="K" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html"><i class="fa fa-check"></i><b>K</b> patients (numeric): number of patients with all-cause infection</a>
 <ul>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#reading-csv-files"><i class="fa fa-check"></i>Reading csv files</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#data-summaries"><i class="fa fa-check"></i>Data summaries</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i>Bacteremia</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#bacteremia-1"><i class="fa fa-check"></i>Bacteremia</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
+<li class="chapter" data-level="" data-path="patients-numeric-number-of-patients-with-all-cause-infection.html"><a href="patients-numeric-number-of-patients-with-all-cause-infection.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
-<li class="chapter" data-level="C" data-path="two-types-of-errors.html"><a href="two-types-of-errors.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a></li>
-<li class="chapter" data-level="D" data-path="r-intro.html"><a href="r-intro.html"><i class="fa fa-check"></i><b>D</b> Introduction to R</a></li>
-<li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
-<li class="chapter" data-level="F" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>F</b> Resources and Further Readings</a></li>
+<li class="chapter" data-level="L" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>L</b> Basic Statistical Concepts</a></li>
+<li class="chapter" data-level="M" data-path="two-types-of-errors.html"><a href="two-types-of-errors.html"><i class="fa fa-check"></i><b>M</b> Two types of errors when using SPC</a></li>
+<li class="chapter" data-level="N" data-path="r-intro.html"><a href="r-intro.html"><i class="fa fa-check"></i><b>N</b> Introduction to R</a></li>
+<li class="chapter" data-level="O" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>O</b> Critical Values for Longest Runs and Number of Crossings</a></li>
+<li class="chapter" data-level="P" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>P</b> Resources and Further Readings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -250,19 +320,16 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">D</span> Hospital acquired and all cause bacteremias and 30 days mortality<a href="hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality.html#hospital-acquired-and-all-cause-bacteremias-and-30-days-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="section.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
