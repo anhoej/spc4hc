@@ -8,7 +8,7 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 ```
 
-From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from ggplot2 and qicharts2.
+From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from ggplot2 and qicharts2 (an R package developed by JA).
 
 In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and -- in case of a control chart -- two lines to represent the estimated upper and lower boundaries of the natural variation in data.
 
