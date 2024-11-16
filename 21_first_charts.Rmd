@@ -24,7 +24,7 @@ systolic <- c(169, 172, 175, 174, 161, 142,
               181, 174)
 ```
 
-First we plot a simple point-and-line chart without any helper lines (Figure \@ref(fig:first-chart-run1)):
+First we plot a simple point-and-line chart without any additional lines (Figure \@ref(fig:first-chart-run1)):
 
 ```{r first-chart-run1, fig.cap='Simple run chart'}
 # Make point-and-line plot
@@ -96,4 +96,4 @@ So constructing an SPC chart using R may be done using a few lines of code. In f
 
 Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.
 
-In the next chapter we will calculate lines and limits for the SPC charts that are most commonly used in healthcare, "The Magnificent Seven".
+In the next chapter we will produce SPC charts that are most commonly used in healthcare, "The Magnificent Seven".
