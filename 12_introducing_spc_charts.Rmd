@@ -20,9 +20,9 @@ source('R/stdchart.R', local = knitr::knit_global())
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.
+Now that we’ve explored the concepts of common and special cause variation through the example of handwritten letters, the next step is understanding how to apply these ideas to healthcare processes. This application involves creating charts that represent the "voice" or behavior of a process (usually) over time. By leveraging statistical theory, these charts help determine whether a process is exhibiting common or special cause variation. Such visualisations are known as SPC charts, control charts, or process behavior charts.
 
-SPC charts are point-and-line plots of data over time. In practice, SPC charts are operational definitions for identifying common and special cause variation. An operational definition is one which is designed to be practical and useful and leads to agreement between different people.
+SPC charts are point-and-line plots of data collected over time. They serve as operational definitions for identifying common and special cause variation. An operational definition is one that is designed to be practical, useful, and ensures consistency in interpretation across different individuals.
 
 ```{r spc-fig0, fig.cap='Control chart of systolic blood pressure'}
 qic(systolic, 
@@ -32,17 +32,17 @@ qic(systolic,
     xlab = 'Day #')
 ```
 
-Figure \@ref(fig:spc-fig0) is a control charts of daily measurements of blood pressure. One data point (#6, marked by a red dot) is positioned so far from the rest that it triggers a signal suggesting that this measurement represents a special cause.
+Figure \@ref(fig:spc-fig0) illustrates a control chart showing daily blood pressure measurements. One data point (#6), marked with a red dot, stands out from the others. This deviation triggers a signal, indicating that the data point is likely due to a special cause.
 
 Special causes are signalled by unusual patterns in data. By "unusual" we mean something that is unlikely to have happened purely by chance, like a freak data point. Common cause variation is simply noise. The absence of signals of special cause variation is evidence that the behaviour of the process is consistent with common cause variation. The presence of signals is consistent with special cause variation.
 
-There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same by employing a set of statistical tests (or rules) to help identify unusual patterns.
+There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, (most) SPC charts look the same and are interpreted the same way, by employing a set of statistical tests (or rules) to help identify unusual patterns.
 
-In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In the next chapter (\@ref(testing)) we discuss different rules for identifying unusual patterns in data. In Part 2 of this book we will go into detail on how to do the actual calculations involved.
+In this chapter, we introduce the most common types of control charts used in healthcare and their practical applications. In the following chapter (\@ref(testing)), we delve into the rules and statistical tests for identifying unusual patterns in data. Later, in Part 2 of this book, we provide a detailed guide on performing the calculations necessary to construct and analyze control charts.
 
 ## Anatomy and physiology of SPC charts
 
-Shewhart's brilliant invention was the idea of control limits to show the boundaries of the common cause variation in data. Data points that lie between the lines represent common cause variation and data points outside the limits represent special cause variation.
+Shewhart’s groundbreaking innovation was the introduction of control limits, which define the boundaries of common cause variation in data. Data points falling within these limits (without unsuual patterns) indicate common cause variation, while those outside indicate special cause variation.
 
 ```{r spc-fig1, fig.cap='Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit', echo=FALSE}
 set.seed(33)
@@ -51,16 +51,18 @@ y1 <- y2 <- y3 <- rnorm(24)
 stdchart(y1)
 ```
 
-Figure \@ref(fig:spc-fig1) shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The data included in each data point are called subgroups. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.
+Figure \@ref(fig:spc-fig1) demonstrates a standardized Shewhart control chart, created using random numbers from a normal distribution with a mean of 0 and a standard deviation of 1. The x-axis represents time or sequence order, while the y-axis displays the indicator values. Each dot, connected by a line, represents a data point sampled sequentially. The chart features:
 
-We see that the data points are distributed fairly symmetrically around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer. 
-The control limits are positioned so that nearly all data points from a common cause process with fall between them. Conversely, data points outside the limits will most likely represent special causes.
+A Center Line (CL), which represents the mean of the data values.
+Lower Control Limit (LCL) and Upper Control Limit (UCL), defining the range of common cause variation, often referred to as 3-sigma limits.
 
-Based on empirical evidence from designed experiments involving real life data Shewhart found that in practice most process data are found within three standard deviations from the process centre. This is especially true when data, as in Figure  \@ref(fig:spc-fig1), come from a normal distribution, where the 3-sigma limits are expected to contain over 99.7% of data. Consequently, the chance of any particular data point being outside the limits purely by chance is about three out of a thousand. Thus, in a control chart with a total of 20 data points the chance of *all* data points being within the control limits is about 95% (1 - 0.997^20^).
+The data points cluster symmetrically around the center line, with most near the mean. As the distance from the center line increases, data points become increasingly sparse. The control limits are positioned to encompass nearly all data points arising from common cause variation. Conversely, points outside the limits are likely to represent special causes.
 
-But before we go down that rabbit hole we must realise that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because "it works" (@shewhart1931, p. 18). By this he meant that 3-sigma limits strike the best balance between finding or overlooking special causes regardless of the type and distribution of data. More on this later.
+Why 3-Sigma Limits?
 
-It is important to realise that the SD in question is that of the common cause variation, not the overall, pooled SD that would include both the common and any special cause variation. The procedure for calculating -- or rather estimating -- the common cause SD depends on the type of data involved.
+Shewhart’s choice of 3-sigma limits was based on empirical observations from real-world experiments. For data following a normal distribution, like in Figure \@ref(fig:spc-fig1), these limits contain about 99.7% of all data points, meaning the likelihood of a point falling outside the limits purely by chance is approximately 3 in 1000 (0.3%). In a control chart with a total of 20 data points the chance of *all* data points being within the control limits is about 95% (1 - 0.997^20^)
+
+But before we go down that rabbit hole we note that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because they "work" (@shewhart1931, p. 18), because this practical choice balances sensitivity (detecting special causes) with specificity (avoiding false alarms), regardless of the data type or distribution. More on this will be discussed in later chapters.
 
 ## Some common types of control charts -- The Magnificent Seven
 
