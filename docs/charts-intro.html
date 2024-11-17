@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-10-24" />
+<meta name="date" content="2024-11-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="variation.html"/>
-<link rel="next" href="testing.html"/>
+<link rel="next" href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -171,10 +171,22 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#so-what-is-different-about-this-book"><i class="fa fa-check"></i>So what is different about this book?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a>
+<ul>
+<li class="chapter" data-level="0.0.1" data-path="preface.html"><a href="preface.html#target-audience"><i class="fa fa-check"></i><b>0.0.1</b> 1. <strong>Target Audience</strong></a></li>
+<li class="chapter" data-level="0.0.2" data-path="preface.html"><a href="preface.html#why-r"><i class="fa fa-check"></i><b>0.0.2</b> 2. <strong>Why R?</strong></a></li>
+<li class="chapter" data-level="0.0.3" data-path="preface.html"><a href="preface.html#healthcare-focused"><i class="fa fa-check"></i><b>0.0.3</b> 3. <strong>Healthcare-Focused</strong></a></li>
+<li class="chapter" data-level="0.0.4" data-path="preface.html"><a href="preface.html#practical-and-hands-on"><i class="fa fa-check"></i><b>0.0.4</b> 4. <strong>Practical and Hands-On</strong></a></li>
+<li class="chapter" data-level="0.0.5" data-path="preface.html"><a href="preface.html#comprehensive-coverage"><i class="fa fa-check"></i><b>0.0.5</b> 5. <strong>Comprehensive Coverage</strong></a></li>
+<li class="chapter" data-level="0.0.6" data-path="preface.html"><a href="preface.html#additional-resources"><i class="fa fa-check"></i><b>0.0.6</b> 6. <strong>Additional Resources</strong></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-us"><i class="fa fa-check"></i>About us</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a>
+<ul>
+<li class="chapter" data-level="0.0.7" data-path="preface.html"><a href="preface.html#jacob-anhøj"><i class="fa fa-check"></i><b>0.0.7</b> <strong>Jacob Anhøj</strong></a></li>
+<li class="chapter" data-level="0.0.8" data-path="preface.html"><a href="preface.html#mohammed-amin-mohammed"><i class="fa fa-check"></i><b>0.0.8</b> <strong>Mohammed Amin Mohammed</strong></a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
 <ul>
@@ -197,25 +209,28 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>2.2.1</b> Counts</a></li>
 <li class="chapter" data-level="2.2.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>2.2.2</b> Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#common-spc-charts-in-summary"><i class="fa fa-check"></i><b>2.3</b> Common SPC charts in summary</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts</a>
+<li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#summary-of-common-spc-charts"><i class="fa fa-check"></i><b>2.3</b> Summary of common SPC charts</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
-<li class="chapter" data-level="3.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
-<li class="chapter" data-level="3.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
-<li class="chapter" data-level="3.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
+<li class="chapter" data-level="2.3.1" data-path="charts-intro.html"><a href="charts-intro.html#the-magnificent-seven-common-types-of-spc-charts"><i class="fa fa-check"></i><b>2.3.1</b> The Magnificent Seven: Common Types of SPC Charts</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="3.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
-<li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
-<li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
+<li class="chapter" data-level="3" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="3.1.2" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="3.1.3" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
+<li class="chapter" data-level="3.1.4" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="3.2.2" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
+<li class="chapter" data-level="3.4" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in healthcare</a>
 <ul>
@@ -312,7 +327,10 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
-<li class="chapter" data-level="C" data-path="two-types-of-errors.html"><a href="two-types-of-errors.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a></li>
+<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-diagnostic-errors-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying diagnostic errors of SPC charts</a></li>
+</ul></li>
 <li class="chapter" data-level="D" data-path="r-intro.html"><a href="r-intro.html"><i class="fa fa-check"></i><b>D</b> Introduction to R</a></li>
 <li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
 <li class="chapter" data-level="F" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>F</b> Resources and Further Readings</a></li>
@@ -341,46 +359,55 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="charts-intro" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Understanding SPC Charts<a href="charts-intro.html#charts-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>So now that we have seen an intuitive demonstration of common and special cause variation using handwritten letters, how can we use these ideas in practice with data from healthcare processes? In practice this involves the production of charts that depicts the voice or behaviour of a process over time and, with the aid of statistical theory, shows if the process is consistent with common or special cause variation. Such charts are known as SPC charts, control charts or process behaviour charts.</p>
-<p>SPC charts are point-and-line plots of data over time. In practice, SPC charts are operational definitions for identifying common and special cause variation. An operational definition is one which is designed to be practical and useful and leads to agreement between different people.</p>
+<p>Now that we’ve explored the concepts of common and special cause variation through the example of handwritten letters, the next step is understanding how to apply these ideas to healthcare processes. This application involves creating charts that represent the “voice” or behavior of a process (usually) over time. By leveraging statistical theory, these charts help determine whether a process is exhibiting common or special cause variation. Such visualisations are known as SPC charts, control charts, or process behavior charts.</p>
+<p>SPC charts are point-and-line plots of data collected over time. They serve as operational definitions for identifying common and special cause variation. An operational definition is one that is designed to be practical, useful, and ensures consistency in interpretation across different individuals.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig0"></span>
 <img src="_main_files/figure-html/spc-fig0-1.svg" alt="Control chart of systolic blood pressure" width="672" />
 <p class="caption">
 Figure 2.1: Control chart of systolic blood pressure
 </p>
 </div>
-<p>Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a> is a control charts of daily measurements of blood pressure. One data point (#6, marked by a red dot) is positioned so far from the rest that it triggers a signal suggesting that this measurement represents a special cause.</p>
+<p>Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a> illustrates a control chart showing daily blood pressure measurements. One data point (#6), marked with a red dot, stands out from the others. This deviation triggers a signal, indicating that the data point is likely due to a special cause.</p>
 <p>Special causes are signalled by unusual patterns in data. By “unusual” we mean something that is unlikely to have happened purely by chance, like a freak data point. Common cause variation is simply noise. The absence of signals of special cause variation is evidence that the behaviour of the process is consistent with common cause variation. The presence of signals is consistent with special cause variation.</p>
-<p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, SPC charts look the same and are interpreted the same by employing a set of statistical tests (or rules) to help identify unusual patterns.</p>
-<p>In this chapter we will introduce the most common types of control charts that are used in healthcare and their use cases. In the next chapter (<a href="testing.html#testing">3</a>) we discuss different rules for identifying unusual patterns in data. In Part 2 of this book we will go into detail on how to do the actual calculations involved.</p>
+<p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, (most) SPC charts look the same and are interpreted the same way, by employing a set of statistical tests (or rules) to help identify unusual patterns.</p>
+<p>In this chapter, we introduce seven of of the most common types of control charts (the magnificent seven) used in healthcare and their practical applications. In the following chapter (<a href="#testing"><strong>??</strong></a>), we delve into the rules and statistical tests for identifying unusual patterns in data. Later, in Part 2 of this book, we provide a detailed guide on performing the calculations necessary to construct and analyze control charts.</p>
 <div id="anatomy-and-physiology-of-spc-charts" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Anatomy and physiology of SPC charts<a href="charts-intro.html#anatomy-and-physiology-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Shewhart’s brilliant invention was the idea of control limits to show the boundaries of the common cause variation in data. Data points that lie between the lines represent common cause variation and data points outside the limits represent special cause variation.</p>
+<p>Shewhart’s groundbreaking innovation was the introduction of control limits, which define the boundaries of common cause variation in data. Data points falling within these limits (without unsuual patterns) indicate common cause variation, while those outside indicate special cause variation.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig1"></span>
 <img src="_main_files/figure-html/spc-fig1-1.svg" alt="Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit" width="672" />
 <p class="caption">
 Figure 2.2: Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit
 </p>
 </div>
-<p>Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a> shows a standardised Shewhart control chart made from random numbers from a normal distribution with mean = 0 and standard deviation = 1. The x-axis represents time or order, and the y-axis represents the indicator values. The dots connected with straight lines show the data values in the order they were sampled. The data included in each data point are called subgroups. The horizontal centre line (CL) shows the overall mean of the data values, and the lower (LCL) and upper (UCL) control lines show the boundaries of the common cause variation. Together LCL and UCL are often referred to as 3-sigma limits.</p>
-<p>We see that the data points are distributed fairly symmetrically around the centre line, and that most data points are close to the centre. As we move away from the centre line, data become rarer.
-The control limits are positioned so that nearly all data points from a common cause process with fall between them. Conversely, data points outside the limits will most likely represent special causes.</p>
-<p>Based on empirical evidence from designed experiments involving real life data Shewhart found that in practice most process data are found within three standard deviations from the process centre. This is especially true when data, as in Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a>, come from a normal distribution, where the 3-sigma limits are expected to contain over 99.7% of data. Consequently, the chance of any particular data point being outside the limits purely by chance is about three out of a thousand. Thus, in a control chart with a total of 20 data points the chance of <em>all</em> data points being within the control limits is about 95% (1 - 0.997<sup>20</sup>).</p>
-<p>But before we go down that rabbit hole we must realise that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because “it works” (<span class="citation">Shewhart (<a href="#ref-shewhart1931">1931</a>)</span>, p. 18). By this he meant that 3-sigma limits strike the best balance between finding or overlooking special causes regardless of the type and distribution of data. More on this later.</p>
-<p>It is important to realise that the SD in question is that of the common cause variation, not the overall, pooled SD that would include both the common and any special cause variation. The procedure for calculating – or rather estimating – the common cause SD depends on the type of data involved.</p>
+<p>Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a> demonstrates a standardized Shewhart control chart, created using random numbers from a normal distribution with a mean of 0 and a standard deviation of 1. The x-axis represents time or sequence order, while the y-axis displays the indicator values. Each dot, connected by a line, represents a data point sampled sequentially. The chart features:</p>
+<p>A Center Line (CL), which represents the mean of the data values.
+Lower Control Limit (LCL) and Upper Control Limit (UCL), defining the range of common cause variation, often referred to as 3-sigma limits.</p>
+<p>The data points cluster symmetrically around the center line, with most near the mean. As the distance from the center line increases, data points become increasingly sparse. The control limits are positioned to encompass nearly all data points arising from common cause variation. Conversely, points outside the limits are likely to represent special causes.</p>
+<p>Why 3-Sigma Limits?</p>
+<p>Shewhart’s choice of 3-sigma limits was based on empirical observations from real-world experiments. For data following a normal distribution, like in Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a>, these limits contain about 99.7% of all data points, meaning the likelihood of a point falling outside the limits purely by chance is approximately 3 in 1000 (0.3%). In a control chart with a total of 20 data points the chance of <em>all</em> data points being within the control limits is about 95% (1 - 0.997<sup>20</sup>)</p>
+<p>But before we go down that rabbit hole we note that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because they “work” (<span class="citation">Shewhart (<a href="#ref-shewhart1931">1931</a>)</span>, p. 18), because this practical choice balances sensitivity (detecting special causes) with specificity (avoiding false alarms), regardless of the data type or distribution. More on this will be discussed in later chapters (??can we give specific chapter??).</p>
 </div>
 <div id="some-common-types-of-control-charts-the-magnificent-seven" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Some common types of control charts – The Magnificent Seven<a href="charts-intro.html#some-common-types-of-control-charts-the-magnificent-seven" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As described above, the control limits are positioned three times the common cause SD above and below the centre line. Thus, all types of control charts follow this general formula for control lines:</p>
+<p>As described above, the control limits are positioned three at three standard deviations (SDs) above and below the centre line. Thus, all types of control charts follow this general formula for control lines:</p>
 <p><span class="math display">\[CL \pm 3SD\]</span></p>
-<p>So to construct a control chart, all we need to know is how to find the process mean and standard deviation. As mentioned before, we do <em>not</em> use the overall SD of all the data as this would include any variation due to special causes, which would inflate the control limits. Instead we use a pooled average of the <em>within</em> subgroup SDs, which in turn depend on the type of data involved. The impatient reader may find the formulas for constructing control limits in Table <a href="limits.html#tab:limits-tab1">6.1</a> later in the book.</p>
+<p>To construct a control chart, the essential components are the process mean and the process standard deviation. However, it’s important to use the right standard deviation. Rather than using the overall SD of all data—which could include variation from special causes and artificially inflate the control limits—we rely on a pooled average of the within-subgroup SDs. This approach ensures that the calculated control limits reflect only the common cause variation inherent to the process.</p>
+<p>The exact method for determining the within-subgroup SD depends on the type of data being analyzed. For readers eager to dive into the specifics, the formulas for constructing control limits can be found in Table <a href="limits.html#tab:limits-tab1">6.1</a> later in the book.</p>
 <p>Generally, data come in two flavours: count data and measurement data.</p>
 <div id="counts" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Counts<a href="charts-intro.html#counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Counts are positive integers that represent counts of events or cases. The distinction between events and cases is important but somewhat subtle. <strong>Events</strong> are phenomena that happen in time and space, for example patient falls. <strong>Cases</strong> are units with (or without) a certain property, for example patients who fell.</p>
-<p>When counting falls as events, every fall counts. When counting patients who fell as cases, every patient counts – but only once regardless of how many times each patient fell.</p>
-<p>Both events and cases may be expressed as ratios, that is counts divided by some denominator (area of opportunity). Events may be expressed as <strong>rates</strong>, that is number of events per unit of time, for example number of falls per 1,000 patient days. Cases may be expressed as <strong>proportions</strong>, that is number of cases per total number of cases and non-cases, for example the proportion (or percentage) of patients who fell one or more times.</p>
-<p>Notice that with rates the denominator is in units of time, which is a continuous variable and represents something distinctly different from the numerator. With proportions the numerator and denominator are counts of the same thing, for example patients – only the numerator is a subset of the denominator. Consequently, with proportions the numerators cannot be larger than the denominators.</p>
+<p>Counts are positive integers representing the number of events or cases. While the distinction between events and cases may seem subtle, it is crucial for accurate analysis:</p>
+<ul>
+<li>Events are occurrences that happen in time and space, such as patient falls.</li>
+<li>Cases refer to individual units possessing (or lacking) a particular attribute, such as patients who have fallen</li>
+</ul>
+<div id="events-vs.-cases" class="section level4 hasAnchor" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> Events vs. Cases<a href="charts-intro.html#events-vs.-cases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When counting events, every occurrence is recorded. For example, if a patient falls multiple times, each fall is counted as a separate event. In contrast, when counting cases, each unit (e.g., patient) is counted only once, regardless of how many times the event (e.g. the fall) occurred for that individual.</p>
+<p>Both events and cases can be expressed as ratios, which are counts divided by a relevant denominator, also known as the area of opportunity. However, the way these ratios are constructed depends on whether we are analyzing events or cases:</p>
+<p>Rates: Events are often expressed as rates, calculated as the number of events per unit of time. For instance, the rate of falls might be expressed as the number of falls per 1,000 patient-days. The denominator is a continuous variable (e.g., time) and is inherently different from the numerator, which counts discrete events.</p>
+<p>Proportions: Cases are expressed as proportions or percentages, calculated as the number of cases divided by the total number of cases and non-cases. For example, the proportion of patients who fell might represent the percentage of patients who experienced one or more falls. The numerator and denominator represent the same category of count (e.g., patients). The numerator is always a subset of the denominator, meaning it cannot exceed the denominator.</p>
 <p>The most common chart types for count data are:</p>
 <ul>
 <li><strong>C chart</strong>: count of events, e.g. number of patient falls.</li>
@@ -388,25 +415,42 @@ The control limits are positioned so that nearly all data points from a common c
 <li><strong>P chart</strong>: case proportions, e.g. proportion of patients who fell.</li>
 </ul>
 </div>
+</div>
 <div id="measurements" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Measurements<a href="charts-intro.html#measurements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Measurements are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.</p>
-<p>As an example, take waiting or “door-to-needle” times. These may be plotted as either <strong>individual</strong> times where each data point (subgroup) represents one patient or as <strong>average</strong> time for all patients in a certain period of time, for example an hour, day, week, or month.</p>
-<p>When plotting individual measurement data we use the I chart (aka the X chart). When plotting the average of multiple measurement per subgroup we use the X-bar chart.</p>
-<p>Sometimes it is also useful to plot a chart of the within subgroup SDs. For this we use the moving range (MR) chart together with the I chart and the S chart together with the X-bar chart. So for measurement data we have:</p>
+<p>Measurements refer to data collected on continuous scales, often including decimals. Examples include blood pressure, height, weight, or waiting times.</p>
+<p>As an example, consider waiting or “door-to-needle” times. These may be plotted as either <strong>individual</strong> times where each data point represents one patient or as an <strong>average</strong> time for all patients in a certain period of time, for example an hour, day, week, or month. When prodcing SPC charts for measurement data, the choice of control chart depends on how the measurement data are grouped.</p>
+<p>For individual measurements, we use an I chart (also called an X chart) when each subgroup represents one individual measurement often in combination with a Moving Range (MR) chart to plot the variability between consecutive individual measurements.</p>
+<p>For subgroup averages, we use an X-bar chart when subgroups consist of multiple measurements, such as the average of several patients’ waiting times within a given period, often in combination with a S chart to plot the within-subgroup standard deviations, which helps visualize the variability within each subgroup.</p>
 <ul>
 <li><strong>I and MR charts</strong>: individual measurement, subgroup size = 1.</li>
 <li><strong>X-bar and S charts</strong>: multiple measurements, subgroup size &gt; 1.</li>
 </ul>
 </div>
 </div>
-<div id="common-spc-charts-in-summary" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Common SPC charts in summary<a href="charts-intro.html#common-spc-charts-in-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In summary, a Shewhart control chart is a point-and-line plot of data over time with three added horizontal lines: the centre line representing the overall mean of data and the lower and upper control lines representing the limits of the natural process variation.</p>
-<p>While there are many types of SPC charts for different types of data they all look and behave the same. In this chapter we introduced the most common types used in healthcare, The Magnificent Seven, and their use cases.</p>
-<p>When choosing the right chart we must first decide what type of data we have. For count data there are three common types: C, U, and P charts for event counts, event rates, and proportions respectively. For measurement data we have I and X-bar charts for individual measurements and averages respectively. MR and S charts plot estimates of the within subgroup standard deviation and are often plotted alongside I and X-bar charts.</p>
-<p>In the next chapter we will discuss different techniques and rules used to test for signals of special causes, and we will suggest a set of rules that have been thoroughly studied and validated and provide a high sensitivity to special cause variation while keeping the false alarm rate at a reasonable level.</p>
+<div id="summary-of-common-spc-charts" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Summary of common SPC charts<a href="charts-intro.html#summary-of-common-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A Shewhart control chart is a point-and-line plot of data over time, augmented by three horizontal lines:</p>
+<p><em>Centre Line (CL): Represents the overall mean of the data.
+</em>Lower Control Limit (LCL) and Upper Control Limit (UCL): Define the boundaries of natural process variation.</p>
+<div id="the-magnificent-seven-common-types-of-spc-charts" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> The Magnificent Seven: Common Types of SPC Charts<a href="charts-intro.html#the-magnificent-seven-common-types-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>While there are various types of SPC charts tailored to different types of data, all share a consistent structure and behavior.
+When choosing the right chart we must first decide what type of data we have - count data or measurement data.</p>
+<ul>
+<li>For Count Data:</li>
+</ul>
+<p>** C Charts: For event counts.
+** U Charts: For event rates (events per unit of time or opportunity).
+** P Charts: For proportions (cases as a subset of the total).</p>
+<ul>
+<li>For Measurement Data:</li>
+</ul>
+<p>** I Charts with MR charts: For individual measurements.
+* X-bar Charts with S charts: For subgroup averages.</p>
+<p>In the next chapter, we will explore the rules and techniques used to detect signals of special causes. We will present a validated set of rules that achieve a high sensitivity to special cause variation while maintaining a reasonable false alarm rate.</p>
 
+</div>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -421,7 +465,7 @@ Shewhart, Walther A. 1931. <em>Economic Control of Quality of Manufactured Produ
         </div>
       </div>
 <a href="variation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

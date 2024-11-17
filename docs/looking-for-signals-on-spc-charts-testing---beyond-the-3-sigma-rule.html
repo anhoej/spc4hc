@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Introducing qicharts2 | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 3 Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 Introducing qicharts2 | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 3 Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Introducing qicharts2 | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 3 Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ggplot.html"/>
-<link rel="next" href="data-sets.html"/>
+<link rel="prev" href="charts-intro.html"/>
+<link rel="next" href="using.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,252 +357,170 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="qicharts" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Introducing qicharts2<a href="qicharts.html#qicharts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>qicharts2 (Quality Improvement Charts, <span class="citation">Anhøj (<a href="#ref-qicharts2">2024</a>)</span>, <span class="citation">Anhøj (<a href="#ref-anhoej2018a">2018</a>)</span>) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct run charts and all of the Magnificent Seven plus a number of specialised charts including pareto charts and control charts for rare events data.</p>
-<p>To learn everything about qicharts2, visit its website: <a href="https://anhoej.github.io/qicharts2/" class="uri">https://anhoej.github.io/qicharts2/</a>. In this chapter we will concentrate on some key facilities that is missing from the function library we have build so far:</p>
+<div id="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Until now, we have primarily focused on Shewhart’s 3-sigma rule, which identifies special cause variation when one or more data points fall outside the control limits.</p>
+<p>The 3-sigma rule is highly effective at detecting large shifts in data. To illustrate:</p>
 <ul>
-<li>excluding data points from analysis</li>
-<li>freezing and splitting charts by periods</li>
-<li>multivariate plots (small multiples)</li>
+<li><p>Large shifts (3 SDs): Imagine a process with data following a normal distribution that suddenly shifts upward by three standard deviations (SDs). In this case, the old upper control limit (UCL) would effectively become the new centre line (CL). Consequently, about 50% of subsequent data points would fall above the old UCL, providing a clear signal of the shift.</p></li>
+<li><p>Smaller shifts (1 SD): For a smaller shift of one standard deviation, the old UCL would align with the new 2-sigma limit. As a result, about 2.5% of future data points would exceed this line, signaling the shift but with less frequency.</p></li>
 </ul>
-<p>To get started with qicharts2, install it and load it into your working environment:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="qicharts.html#cb59-1" tabindex="-1"></a><span class="co"># install package</span></span>
-<span id="cb59-2"><a href="qicharts.html#cb59-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;qicharts2&#39;</span>)</span>
-<span id="cb59-3"><a href="qicharts.html#cb59-3" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="qicharts.html#cb59-4" tabindex="-1"></a><span class="co"># load package</span></span>
-<span id="cb59-5"><a href="qicharts.html#cb59-5" tabindex="-1"></a><span class="fu">library</span>(qicharts2)</span></code></pre></div>
-<p>Remember, you only need to install a package once, but you need to load it every time you want to use it.</p>
-<p>Next, you may want to read the vignette: <code>vignette('qicharts2')</code> – or you may want to get started right away.</p>
-<div id="a-simple-run-chart" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> A simple run chart<a href="qicharts.html#a-simple-run-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The main function of qicharts2 is <code>qic()</code>. It takes the same arguments as the <code>spc()</code> function we built previously plus many more. Check the documentation for a complete list of arguments: <code>?qic</code>.</p>
-<p>To reproduce our first run chart from Chapter <a href="first-chart.html#first-chart">5</a>, run:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="qicharts.html#cb60-1" tabindex="-1"></a><span class="fu">qic</span>(systolic)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-qic1"></span>
-<img src="_main_files/figure-html/qicharts-qic1-1.svg" alt="Run chart produced with the `qic()` function from the qicharts2 package" width="672" />
+<p>The 3-sigma rule’s sensitivity makes it an invaluable guide for identifying material, easily detectable changes in the behavior of a process. However, for smaller, subtler shifts, additional rules or techniques are often necessary to ensure reliable detection whilst balancing the number of false alarms (Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig1">3.1</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:testing-fig1"></span>
+<img src="_main_files/figure-html/testing-fig1-1.svg" alt="Control chart with progressive shifts in data" width="672" />
 <p class="caption">
-Figure 10.1: Run chart produced with the <code>qic()</code> function from the qicharts2 package
+Figure 3.1: Control chart with progressive shifts in data
 </p>
 </div>
-<p>There are several things to note in Figure <a href="qicharts.html#fig:qicharts-qic1">10.1</a>:</p>
+<p>The performance of the 3-sigma rule has been studied extensively (see, for instance, <span class="citation">Montgomery (<a href="#ref-montgomery2020">2020</a>)</span> or <span class="citation">Anhøj and Wentzel-Larsen (<a href="#ref-anhoej2018b">2018</a>)</span>). To summarize, the 3-sigma rule is most effective when detecting shifts in data of at least 1.5 to 2 standard deviations (SDs). Minor to moderate shifts may go undetected for significant periods. To increase the sensitivity of SPC charts to smaller shifts, a variety of additional rules have been proposed. However, before diving into these rules, it’s important to first explore the different patterns in data that often signal the presence of special causes.</p>
+<div id="patterns-of-non-random-variation-in-time-series-data" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Patterns of non-random variation in time series data<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#patterns-of-non-random-variation-in-time-series-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the iconic Western Electric Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span> a variety of control chart patterns are described to assist engineers in interpreting control charts based on the notion that certain patterns often reflect specific causes. In our experience, the most common special cause patterns found in healthcare data are freaks, shifts, and trends.</p>
+<div id="freaks" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Freaks<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#freaks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A freak is one or few data points that are distinctly different from the rest (Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig2">3.2</a>). Freaks are by definition transient in nature – they appear and then go away.</p>
+<div class="figure"><span style="display:block;" id="fig:testing-fig2"></span>
+<img src="_main_files/figure-html/testing-fig2-1.svg" alt="Control chart with a large (2 SD) transient shift in data" width="672" />
+<p class="caption">
+Figure 3.2: Control chart with a large (2 SD) transient shift in data
+</p>
+</div>
+<p>A freak is a data point or a small number of data points that are distinctly different from the rest, as shown in Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig2">3.2</a>). By definition, freaks are transient — they appear suddenly and then disappear. Freaks are often caused by data or sampling errors, but they can also result from temporary external factors influencing the process, such as shifts in patient case mix during a holiday season. In some cases, freaks may simply be a false alarm.</p>
+</div>
+<div id="shifts" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Shifts<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#shifts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A trend is a gradual change in the process center, as shown in Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig3">3.3</a>. While some texts define a trend more specifically as a series of data points moving consistently up or down, in this book we use the term in a broader sense to refer to any gradual shift in one direction. Trends occur when external forces are consistently influencing the data in one direction, particularly when this influence is continuous and cumulative. Trends are commonly observed when improvements are implemented incrementally, such as in large organizations. In such cases, sequential shifts in data at the department level may accumulate into a broader trend at the organizational level.</p>
+<div class="figure"><span style="display:block;" id="fig:testing-fig3"></span>
+<img src="_main_files/figure-html/testing-fig3-1.svg" alt="Control chart with a minor (1 SD) sustained shift in data" width="672" />
+<p class="caption">
+Figure 3.3: Control chart with a minor (1 SD) sustained shift in data
+</p>
+</div>
+<p>Shifts are caused by sudden changes in process behaviour. In fact, in healthcare improvement we strive to induce shifts in the desired direction by improving the structures and procedures that are behind data.</p>
+</div>
+<div id="trends" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Trends<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#trends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A trend is a gradual change in process centre (Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig4">3.4</a>). Note that in some texts a trend is more specifically a series of data points that are all going up or down. In this book, we use the term “trend” in the more general sense as a gradual change in one direction.</p>
+<div class="figure"><span style="display:block;" id="fig:testing-fig4"></span>
+<img src="_main_files/figure-html/testing-fig4-1.svg" alt="Control chart with a trend in data" width="672" />
+<p class="caption">
+Figure 3.4: Control chart with a trend in data
+</p>
+</div>
+<p>Trends are seen when forces outside the usual process are pushing data consistently in one direction, and specifically when the push is continuous and the effect cumulative. Trends are commonly seen when improvements are implemented in a stepwise fashion, for example by being introduced incrementally in a large organisation. In such cases we may observe sequential shifts in data at the department level that sum up to a trend at the organisational level.</p>
+</div>
+<div id="other-unusual-patterns" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Other unusual patterns<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#other-unusual-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are numerous other types of “unusual” or mixed patterns that may appear in data. However, based on our experience in healthcare, process improvement or deterioration is most commonly associated with freaks, shifts, or trends. Learning to recognize these patterns is essential for uncovering the underlying causes of change. That being said, depending on the context and the purpose of using SPC, it may be valuable to look for other types of patterns in the data. This is particularly true for cyclic or seasonal data, where specific patterns repeat based on time of day, week, month, or year <span class="citation">(<a href="#ref-jeppegaard2023">Jeppegaard et al. 2023</a>)</span>. For example, excess mortality linked to weekend admissions might not present itself as a freak, shift, or trend, but it is still an important pattern to recognize in order to address the issue effectively.</p>
+</div>
+</div>
+<div id="spc-rules" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> SPC rules<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If patterns of special cause variation were always as clear as in the figures <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig2">3.2</a>, <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig3">3.3</a>, and <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig4">3.4</a> there would be no need for SPC. However, in practice, special causes often manifest in more subtle ways and so we use additonal statistical tests or SPC rules that are designed to signal the presence, or rather the likelihood, of special cause variation.</p>
+<p>We’ve already seen Shewhart’s original 3-sigma rule in action, but many additional rules have been developed to identify minor shifts, trends, and other specific patterns in data. While it may seem tempting to apply all known rules to the data, it’s important to remember that the more tests we apply, the more signals we generate and this increases the risk of false alarms - where common cause variation is mistakenly identified as special cause variation.</p>
+<p>Therefore, it’s crucial to strike a balance: we must select as few rules as necessary to minimize false alarms while ensuring the detection of true special cause signals. This topic will be discussed in greater detail in the chapter on <a href="diagnostics.html#diagnostics">Diagnostic Errors</a> later in this book.</p>
+<p>For this book, we will concentrate on two sets of rules that have been thoroughly studied and validated for their effectiveness.</p>
+<div id="tests-based-on-sigma-limits" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Tests based on sigma limits<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#tests-based-on-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span>. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the center lines and the control limits.</p>
+<ol style="list-style-type: decimal">
+<li><p>One or more points outside of the 3-sigma limits (Shewhart’s original 3-sigma rule).</p></li>
+<li><p>Two out of three successive points beyond a 2-sigma limit (two thirds of the distance between the centre line and the control line).</p></li>
+<li><p>Four out of five successive points beyond a 1-sigma limit.</p></li>
+<li><p>A run of eight successive points on one side of the centre line.</p></li>
+</ol>
+<p>We leave it to the reader to apply WE rules #2-#4 to figures <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig3">3.3</a> and <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig4">3.4</a>.</p>
+<p>The WE rules have proven their worth during most of a century. One thing to notice though is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives).</p>
+<p>WE rule #4 is independent of the sigma limits. It is based on assumptions regarding the length of runs on either side of the centre line. A run is defined as one or more successive data points on the same side of the centre line. Rules based on runs analysis are further discussed below.</p>
+</div>
+<div id="runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Runs analysis – tests based on the distribution of data points around the centre line<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If we assume that the center line divides the data into two halves, the probability of any data point falling above or below the center is fifty-fifty. Similarly, the probability that two neighboring points fall on the same or opposite side of the center line is also fifty-fifty.</p>
+<p>By dichotomizing the data into runs of points either above or below a certain value—such as the center line—we enter the realm of runs analysis. The fundamental idea behind runs analysis is that the length and number of runs in a random process are governed by natural laws, making them predictable within certain limits.</p>
+<p>In essence, when a process shifts or trends, runs tend to become longer and fewer. Therefore, we can design runs tests to detect unusually long or unusually few runs. The key question is: what constitutes “unusually” long or “unusually” few runs?</p>
+<p>To illustrate, imagine flipping a coin ten times. Would you be surprised to get three or four heads in a row? Probably not. But what if you got ten heads in a row? That would definitely be surprising. Now, imagine tossing the coin 100 times. Would a sequence of ten heads be surprising then? Probably not, because as the number of trials increases, the likelihood of observing a run of ten heads also increases.</p>
+<p>This intuitive understanding highlights that what constitutes an “unusually” long run depends on the total number of observations or subgroups. The more subgroups we have in our SPC chart, the longer the longest runs are likely to be. From practical experiments, some theoretical considerations, and years of experience <span class="citation">(<a href="#ref-anhoej2014">Anhøj and Olesen 2014</a>; <a href="#ref-anhoej2015">Anhøj 2015</a>)</span> we suggest these two runs tests:</p>
 <ul>
-<li><p>Default chart title and axis labels are created automatically. These can be changed using the title, ylab, and xlab arguments.</p></li>
-<li><p>Data points that fall directly on the centre line are greyed out. These do not count as useful observation in the runs analysis.</p></li>
-<li><p>The centre line value is printed on the chart.</p></li>
+<li><p><strong>Unusually long runs</strong>: A run is one or more consecutive data points on the same side of the centre line. Data points that fall directly on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately <span class="math inline">\(log_2(n)+3\)</span> (rounded to the nearest integer), where <span class="math inline">\(n\)</span> is the number of useful data points (data points not on the centre line). For example, in a run chart with 24 useful data points a run of <em>more</em> than <code>round(log2(24) + 3)</code> = 8 would suggest a shift in the process <span class="citation">(<a href="#ref-schilling2012">Schilling 2012</a>)</span>.</p></li>
+<li><p><strong>Unusually few crossings</strong>: Rather than counting the number of runs, we count the number of crossings, which by definition is one less than the number of runs. A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution. The lower 5% prediction limit for number of crossings is found using the cumulative probability distribution, <code>qbinom(p = 0.05, size = n - 1, prob = 0.5)</code>. Thus, in a run chart with 24 useful data points, <em>fewer</em> than <code>qbinom(0.05, 24 - 1, 0.5)</code> = 8 crossings would suggest that the process is shifting <span class="citation">(<a href="#ref-chen2010">Chen 2010</a>)</span>.</p></li>
 </ul>
-</div>
-<div id="a-simple-control-chart" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> A simple control chart<a href="qicharts.html#a-simple-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To produce a control chart, we simply add a chart argument (Figure <a href="qicharts.html#fig:qicharts-qic2">10.2</a>):</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="qicharts.html#cb61-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-qic2"></span>
-<img src="_main_files/figure-html/qicharts-qic2-1.svg" alt="I chart produced with `qic()`" width="672" />
-<p class="caption">
-Figure 10.2: I chart produced with <code>qic()</code>
-</p>
-</div>
-<p>By default <code>qic()</code> uses a grey background area to show the natural process limits.</p>
-</div>
-<div id="excluding-data-points-from-analysis" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Excluding data points from analysis<a href="qicharts.html#excluding-data-points-from-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Sometimes it is useful to exclude one or more data points from the calculation of control limits and from the runs analysis. This may be the case when specific data points are known to have been influenced by factors that are not part of the natural process, for example data points that fall outside the control limits. We use the exclude argument to do this:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="qicharts.html#cb62-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>, <span class="at">exclude =</span> <span class="dv">6</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-qic3"></span>
-<img src="_main_files/figure-html/qicharts-qic3-1.svg" alt="I chart with one data point excluded from calculations" width="672" />
-<p class="caption">
-Figure 10.3: I chart with one data point excluded from calculations
-</p>
-</div>
-<p>Notice how the values for the centre line and control limits in Figure <a href="qicharts.html#fig:qicharts-qic3">10.3</a> changed a little. Specifically, the control limits became slightly narrower.</p>
-<p>Excluding data points should be a deliberate decision and not something that is done automatically just because one or more data points are outside the control limits. Exclusion should be based on a thorough understanding of the process and only when the reason(s) for a special cause has been established. Otherwise, the whole idea of SPC as a way of understanding variation and its sources is lost.</p>
-</div>
-<div id="freezing-baseline-period" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Freezing baseline period<a href="qicharts.html#freezing-baseline-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When data have been collected for a long enough period of time to establish the centre line and control limits of a stable and predictable process – that is, a process with only common cause variation – it is often useful to “freeze” the limits and use them for future data.</p>
-<p>In production industry this technique is referred to as phase one and phase two studies. In healthcare freezing is especially useful when we have historical data from before the start of some type of intervention or improvement programme. When plotting future data with the centre line and control limits from a stable baseline period shifts and trends will show up faster than if the limits were recalculated with every new data point.</p>
-<p>The cdi dataset comes with qicharts2 and contains monthly counts of infections two years before and one year after the initiation of an improvement programme. Check the documentation for details, <code>?cdi</code>.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="qicharts.html#cb63-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">freeze =</span> <span class="dv">24</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-cdi1"></span>
-<img src="_main_files/figure-html/qicharts-cdi1-1.svg" alt="Infections before and after intervention" width="672" />
-<p class="caption">
-Figure 10.4: Infections before and after intervention
-</p>
-</div>
-<p>Figure <a href="qicharts.html#fig:qicharts-cdi1">10.4</a> shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. After the intervention, marked by the dotted vertical line, there is a sustained shift in data in the desired direction.</p>
-</div>
-<div id="splitting-chart-by-period" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Splitting chart by period<a href="qicharts.html#splitting-chart-by-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When a sustained shift in data has been discovered <em>and</em> the cause is known it is allowable to split the graph by periods. We use the part argument for this (Figure <a href="qicharts.html#fig:qicharts-cdi2">10.5</a>).</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="qicharts.html#cb64-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-cdi2"></span>
-<img src="_main_files/figure-html/qicharts-cdi2-1.svg" alt="Splitting using index" width="672" />
-<p class="caption">
-Figure 10.5: Splitting using index
-</p>
-</div>
-<p>The part argument takes either the indices of the data points to split after, or a categorical variable naming the time periods in which case the periods will be labelled (Figure <a href="qicharts.html#fig:qicharts-cdi3">10.6</a>).</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="qicharts.html#cb65-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-cdi3"></span>
-<img src="_main_files/figure-html/qicharts-cdi3-1.svg" alt="Splitting using a period variable" width="672" />
-<p class="caption">
-Figure 10.6: Splitting using a period variable
-</p>
-</div>
-<p>As with excluding data points, splitting should be based on deliberate decisions and thorough understanding of the process. Some SPC applications allow for automatic splitting whenever a shift is detected. We strongly advise against this approach. Splitting <em>may</em> be useful when:</p>
+<p>The two runs rules are two sides of the same coin – when runs get longer, crossings get fewer and vice versa – and either of them may signal special cause variation.</p>
+<p>Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig3">3.3</a> has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.</p>
+<p>In Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig3">3.3</a> there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.</p>
+<p>It’s important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process.</p>
+<p>Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix <a href="runs-limits.html#runs-limits">E</a>.</p>
+<p>Apart from being comparable in sensitivity and specificity to WE rules #2-#4 with 20-30 data points <span class="citation">(<a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span>, these runs rules have some advantages:</p>
 <ul>
-<li>there is a sustained shift in data</li>
-<li>the reason for the shift is known</li>
-<li>the shift is in the desired direction</li>
-<li>the shift is expected to continue</li>
+<li><p>They do not depend on sigma limits and thus are useful as stand-alone rules with run charts (more on run charts in the next section).</p></li>
+<li><p>They adapt dynamically to the number of available data points, and can be applied to charts with as few as 10 and up to indefinitely many data points without losing sensitivity or specificity.</p></li>
 </ul>
-<p>If any of these conditions is not met we should rather look for the root cause and – if need be – eliminate it.</p>
-<p>Because we now have data from two very different but stable processes we may choose to add control limits to better detect future changes, especially freaks, in process behaviour (Figure <a href="qicharts.html#fig:qicharts-cdi4">10.7</a>).</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="qicharts.html#cb66-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period, <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-cdi4"></span>
-<img src="_main_files/figure-html/qicharts-cdi4-1.svg" alt="Splitting using a period variable" width="672" />
+<p>In practice these runs rules may be used as alternatives to WE rules #2-#4 to help identify shifts and trends alongside the WE rule #1 for freaks.</p>
+</div>
+</div>
+<div id="spc-charts-without-borders-using-run-charts" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> SPC charts without borders – using run charts<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-charts-without-borders-using-run-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As discussed in the previous section, some rules rely solely on a single line representing the center of the data. We assumed that the center line divides the data into two equal halves. While the process average typically serves as a good representation of this center, this assumption may not hold if the data are skewed. However, if we use the median instead of the mean, the assumption always holds true, because the median is by definition the middle value.</p>
+<p>So, what happens if we remove the sigma lines and use the median as the center line? We get a run chart, which is one of the most valuable tools in quality improvement and control.</p>
+<div class="figure"><span style="display:block;" id="fig:testing-fig5"></span>
+<img src="_main_files/figure-html/testing-fig5-1.svg" alt="Run chart" width="672" />
 <p class="caption">
-Figure 10.7: Splitting using a period variable
+Figure 3.5: Run chart
 </p>
 </div>
-</div>
-<div id="small-multiple-plots-for-multivariate-data" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> Small multiple plots for multivariate data<a href="qicharts.html#small-multiple-plots-for-multivariate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Process data is all about time. But often data – not the least in healthcare – have more dimensions, which are important to understand in order to interpret data correctly.</p>
-<p>For example, the hospital_infections dataset, which is also included in the qicharts2 package, contains monthly counts of three types of hospital infections: bacteremia (BAC), C. diff. (CDI), and urinary tract infections (UTI) from six hospitals: AHH, BFH, BOH, HGH, NOH, RGH.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="qicharts.html#cb67-1" tabindex="-1"></a><span class="co"># show the first six rows of the hospitals_infections dataset</span></span>
-<span id="cb67-2"><a href="qicharts.html#cb67-2" tabindex="-1"></a><span class="fu">head</span>(hospital_infections)</span></code></pre></div>
-<pre><code>##   hospital infection      month  n     days
-## 1      AHH       BAC 2015-01-01 17 17233.67
-## 2      AHH       BAC 2015-02-01 18 15308.25
-## 3      AHH       BAC 2015-03-01 17 16883.67
-## 4      AHH       BAC 2015-04-01 10 15463.83
-## 5      AHH       BAC 2015-05-01 13 15788.96
-## 6      AHH       BAC 2015-06-01 14 15660.04</code></pre>
-<p>In addition to the time dimension, these data have two extra dimensions, infection and hospital.</p>
-<p>Figure <a href="qicharts.html#fig:qicharts-hais1">10.8</a> shows the total (aggregated) monthly counts of hospital associated urinary tract infections from six hospitals.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="qicharts.html#cb69-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb69-2"><a href="qicharts.html#cb69-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections,</span>
-<span id="cb69-3"><a href="qicharts.html#cb69-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb69-4"><a href="qicharts.html#cb69-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb69-5"><a href="qicharts.html#cb69-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb69-6"><a href="qicharts.html#cb69-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
-<span id="cb69-7"><a href="qicharts.html#cb69-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb69-8"><a href="qicharts.html#cb69-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-hais1"></span>
-<img src="_main_files/figure-html/qicharts-hais1-1.svg" alt="Aggregated U chart of urinary tract infections from six hospital" width="672" />
+<p>Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig5">3.5</a> is a run chart of the data from Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a>. We notice that the centre line is a little different from the control chart because we have used the empirical median rather than the theoretical mean. Consequently, data are now evenly distributed around the centre line with 12 data points on each side. The longest run have 3 data points (#13-#15 and #22-#24), and the data line crosses the centre line 13 times. Since there are no unusually long runs and not unusually few crossing we conclude that this process shows no signs of persistent shifts in data.</p>
+<p>Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig6">3.6</a> is a run chart with data from Figure <a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#fig:testing-fig4">3.4</a> containing a trend. The runs analysis confirms our “analysis-by-eye” by finding two unusually long runs with 9 data points and unusually few crossings (4).</p>
+<div class="figure"><span style="display:block;" id="fig:testing-fig6"></span>
+<img src="_main_files/figure-html/testing-fig6-1.svg" alt="Run chart with a trend" width="672" />
 <p class="caption">
-Figure 10.8: Aggregated U chart of urinary tract infections from six hospital
+Figure 3.6: Run chart with a trend
 </p>
 </div>
-<p>Figure <a href="qicharts.html#fig:qicharts-hais2">10.9</a> shows the same data as Figure <a href="qicharts.html#fig:qicharts-hais1">10.8</a>, but this time data have been stratified into so-called small multiple plots – one plot per hospital.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="qicharts.html#cb70-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb70-2"><a href="qicharts.html#cb70-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
-<span id="cb70-3"><a href="qicharts.html#cb70-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb70-4"><a href="qicharts.html#cb70-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb70-5"><a href="qicharts.html#cb70-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb70-6"><a href="qicharts.html#cb70-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,                     <span class="co"># stratify by hospital</span></span>
-<span id="cb70-7"><a href="qicharts.html#cb70-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,                             <span class="co"># two-column arrangement of plots</span></span>
-<span id="cb70-8"><a href="qicharts.html#cb70-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
-<span id="cb70-9"><a href="qicharts.html#cb70-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb70-10"><a href="qicharts.html#cb70-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-hais2"></span>
-<img src="_main_files/figure-html/qicharts-hais2-1.svg" alt="Stratified (small multiple) U charts of urinary tract infections from six hospital" width="672" />
-<p class="caption">
-Figure 10.9: Stratified (small multiple) U charts of urinary tract infections from six hospital
-</p>
+<p>Run charts are a lot easier to construct than are control charts. They do not make assumptions about the distribution of data. And they have better sensitivity to minor and moderate <em>persistent</em> shifts and trends than control charts based on only the 3-sigma rule.</p>
+<p>So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (for example freaks) that may go unnoticed by run charts, and 2) the control limits reflect the common cause variability of the process and hence define its <em>capability</em>.
+Foruntatley, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.</p>
 </div>
-<p>In the litterature, small multiples are also known as trellis, lattice, or grid plots.</p>
-<p>Likewise, we may construct a small multiple plot of different infection types from one hospital (Figure <a href="qicharts.html#fig:qicharts-hais3">10.10</a>).</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="qicharts.html#cb71-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb71-2"><a href="qicharts.html#cb71-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
-<span id="cb71-3"><a href="qicharts.html#cb71-3" tabindex="-1"></a>                      hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
-<span id="cb71-4"><a href="qicharts.html#cb71-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb71-5"><a href="qicharts.html#cb71-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb71-6"><a href="qicharts.html#cb71-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,                   <span class="co"># stratify by infection type</span></span>
-<span id="cb71-7"><a href="qicharts.html#cb71-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
-<span id="cb71-8"><a href="qicharts.html#cb71-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb71-9"><a href="qicharts.html#cb71-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb71-10"><a href="qicharts.html#cb71-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-hais3"></span>
-<img src="_main_files/figure-html/qicharts-hais3-1.svg" alt="U charts from one hospital stratified by infection type" width="672" />
-<p class="caption">
-Figure 10.10: U charts from one hospital stratified by infection type
-</p>
+<div id="a-practical-approach-to-spc-analysis" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> A practical approach to SPC analysis<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#a-practical-approach-to-spc-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we move on, let’s take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(using)), SPC charts support two distinct purposes: process improvement and process monitoring.</p>
+<p>When we are focused on process improvement, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.</p>
+<p>In process monitoring, the objective is to maintain process stability, with no expected shifts in the data. Here, our focus is on detecting any signs of process deterioration as quickly as possible. For this, the 3-sigma rule is highly effective. To improve sensitivity to minor or moderate shifts, we may combine the 3-sigma rule with either the rest of the Western Electric (WE) rules or the two runs rules. However, we must be mindful that adding more tests increases the risk of false alarms.</p>
+<p>Regardless of the task, we recommend starting any SPC analysis with an “assumption-free” run chart, using the median as the center line. If runs analysis indicates non-random variation, calculating sigma limits becomes meaningless, as these values are irrelevant when shifts are already evident. In such cases, the focus should shift to identifying special causes, rather than calculating control limits.</p>
+<p>If the goal is process improvement, we continue with the run chart until we observe significant and sustained improvement, leading to a new and better process.
+Once this new process stabilizes and appears set to continue, we may transition to monitoring mode by adding control limits and using the mean as the center line.</p>
+<p>Process monitoring is appropriate when the process is stable (common cause variation only) and the outcome is satisfactory. If either condition is not met, we should return to improvement mode.</p>
 </div>
-<p>By default, <code>qic()</code> uses fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure <a href="qicharts.html#fig:qicharts-hais4">10.11</a> we use individual y-axes.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="qicharts.html#cb72-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb72-2"><a href="qicharts.html#cb72-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
-<span id="cb72-3"><a href="qicharts.html#cb72-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb72-4"><a href="qicharts.html#cb72-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb72-5"><a href="qicharts.html#cb72-5" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,</span>
-<span id="cb72-6"><a href="qicharts.html#cb72-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,                      <span class="co"># free y-axes</span></span>
-<span id="cb72-7"><a href="qicharts.html#cb72-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
-<span id="cb72-8"><a href="qicharts.html#cb72-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb72-9"><a href="qicharts.html#cb72-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb72-10"><a href="qicharts.html#cb72-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-hais4"></span>
-<img src="_main_files/figure-html/qicharts-hais4-1.svg" alt="Small multiple plot with individual y-axes" width="672" />
-<p class="caption">
-Figure 10.11: Small multiple plot with individual y-axes
-</p>
-</div>
-<p>The decision about when to use fixed or free axis scales should be taken deliberately depending on the purpose of the plot. Sometimes it may even be useful to display both plots with fixed and free axes side by side.</p>
-<p>Finally, we may want to display both dimensions, infection and hospital, at the same time as in Figure <a href="qicharts.html#fig:qicharts-hais5">10.12</a>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="qicharts.html#cb73-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb73-2"><a href="qicharts.html#cb73-2" tabindex="-1"></a>    <span class="at">data     =</span> hospital_infections,</span>
-<span id="cb73-3"><a href="qicharts.html#cb73-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb73-4"><a href="qicharts.html#cb73-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb73-5"><a href="qicharts.html#cb73-5" tabindex="-1"></a>    <span class="at">facets   =</span> infection <span class="sc">~</span> hospital,         <span class="co"># two-dimensional faceting</span></span>
-<span id="cb73-6"><a href="qicharts.html#cb73-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,</span>
-<span id="cb73-7"><a href="qicharts.html#cb73-7" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb73-8"><a href="qicharts.html#cb73-8" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb73-9"><a href="qicharts.html#cb73-9" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qicharts-hais5"></span>
-<img src="_main_files/figure-html/qicharts-hais5-1.svg" alt="Hospital infections stratified by infection and hospital" width="672" />
-<p class="caption">
-Figure 10.12: Hospital infections stratified by infection and hospital
-</p>
-</div>
-<div id="to-aggregate-or-not-to-aggregate" class="section level3 hasAnchor" number="10.6.1">
-<h3><span class="header-section-number">10.6.1</span> To aggregate or not to aggregate<a href="qicharts.html#to-aggregate-or-not-to-aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When data come from multiple organisational units, for example hospitals or hospital departments, we must decide if we want to aggregate or stratify data.</p>
-<p>Figures <a href="qicharts.html#fig:qicharts-hais1">10.8</a> and <a href="qicharts.html#fig:qicharts-hais2">10.9</a> demonstrate the difference. Notice how the aggregated data show no signs of special causes while the stratified data show non-random shifts in two hospitals (BOH and NOH). If data, as in this case, move in different directions in two or more units, aggregation has a tendency to mask or cancel out special causes. However, when minor shifts in data, that are too small to produce signals in the small multiple plots, move in the same direction the shifts tend to add up resulting in a better chance of detecting the special cause with aggregated data.</p>
-<p>As usual, the decision to aggregate or stratify must be taken deliberately, preferably by persons with a thorough understanding of the structures and processes that have produced data. And often it may be useful to produce several plots at different levels of aggregation.</p>
-</div>
-</div>
-<div id="qicharts2-in-short" class="section level2 hasAnchor" number="10.7">
-<h2><span class="header-section-number">10.7</span> qicharts2 in short<a href="qicharts.html#qicharts2-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>qicharts2 is an R package for constructing SPC charts aimed specifically at healthcare but usefull in many other areas. Besides functions for the most commonly used SPC charts, qicharts2 is has a number of specialist charts for rare events data and count data with very large denominators.</p>
+<div id="spc-rules-in-summary" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> SPC rules in summary<a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-rules-in-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SPC rules are statistical tests designed to detect special cause variation in time series data. Given the variety of patterns that can indicate special causes, many rules have been developed. However, applying too many rules increases the risk of false alarms. Therefore, it is important to choose a small set of rules that strike a balance: maximizing the ability to detect true alarms (special causes) while minimizing false alarms.</p>
+<p>We recommend starting any SPC analysis with a median-based run chart and using the two runs rules to test for unusually long runs or an unusually small number of crossings. If, and only if, the runs analysis indicates random variation (no special cause), and the process outcome is stable and satisfactory, we may proceed to use the mean as the center line and add control limits to help identify large shifts and freak data points more easily.</p>
 
 </div>
 </div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-anhoej2018a" class="csl-entry">
-———. 2018. <span>“<span class="nocase">q</span>icharts2: Quality Improvement Charts for <span>R</span>.”</span> <em>JOSS</em>. <a href="https://doi.org/10.21105/joss.0069">https://doi.org/10.21105/joss.0069</a>.
+<div id="ref-anhoej2015" class="csl-entry">
+Anhøj, Jacob. 2015. <span>“Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0121349">https://doi.org/10.1371/journal.pone.0121349</a>.
 </div>
-<div id="ref-qicharts2" class="csl-entry">
-———. 2024. <em>Qicharts2: Quality Improvement Charts</em>. <a href="https://CRAN.R-project.org/package=qicharts2">https://CRAN.R-project.org/package=qicharts2</a>.
+<div id="ref-anhoej2014" class="csl-entry">
+Anhøj, Jacob, and Anne Vingaard Olesen. 2014. <span>“Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0113825">https://doi.org/10.1371/journal.pone.0113825</a>.
+</div>
+<div id="ref-anhoej2018b" class="csl-entry">
+Anhøj, Jacob, and Tore Wentzel-Larsen. 2018. <span>“Sense and Sensibility: On the Diagnostic Value of Control Chart Rules for Detection of Shifts in Time Series Data.”</span> <em>BMC Medical Research Methodology</em>. <a href="https://doi.org/10.1186/s12874-018-0564-0">https://doi.org/10.1186/s12874-018-0564-0</a>.
+</div>
+<div id="ref-chen2010" class="csl-entry">
+Chen, Zhenmin. 2010. <span>“A Note on the Runs Test.”</span> <em>Model Assisted Statistics and Applications</em> 5: 73–77. <a href="https://doi.org/10.3233/MAS-2010-0142">https://doi.org/10.3233/MAS-2010-0142</a>.
+</div>
+<div id="ref-jeppegaard2023" class="csl-entry">
+Jeppegaard, Maria, Steen C. Rasmussen, Jacob Anhøj, and Lone Krebs. 2023. <span>“Winter, Spring, Summer or Fall: Temporal Patterns in Placenta-Mediated Pregnancy Complications—an Exploratory Analysis.”</span> <em>Gynecol Obstet</em> 309: 1991–98. https://doi.org/<a href="https://doi.org/10.1007/s00404-023-07094-6">https://doi.org/10.1007/s00404-023-07094-6</a>.
+</div>
+<div id="ref-montgomery2020" class="csl-entry">
+Montgomery, Douglas C. 2020. <em>Introduction to Statistical Quality Control, Eighths Ed.</em> Wiley.
+</div>
+<div id="ref-schilling2012" class="csl-entry">
+Schilling, Mark F. 2012. <span>“The Surprising Predictability of Long Runs.”</span> <em>Mathematics Magazine</em> 85: 141–49. <a href="https://doi.org/10.4169/math.mag.85.2.141">https://doi.org/10.4169/math.mag.85.2.141</a>.
+</div>
+<div id="ref-we1956" class="csl-entry">
+Western Electric Company. 1956. <em>Statistical Quality Control Handbook</em>. New York: Western Electric Company inc.
 </div>
 </div>
             </section>
@@ -610,8 +528,8 @@ Figure 10.12: Hospital infections stratified by infection and hospital
           </div>
         </div>
       </div>
-<a href="ggplot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="charts-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
