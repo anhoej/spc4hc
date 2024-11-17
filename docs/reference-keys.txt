@@ -129,3 +129,4 @@ quantifying-diagnostic-errors-of-spc-charts
 r-intro
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
