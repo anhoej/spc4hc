@@ -11,7 +11,7 @@ At its core, SPC is founded on a powerful, intuitive insight: processes are subj
 
 However, while SPC tools are conceptually simple to use, applying them correctly can be a challenge. As noted in a systematic review of SPC in healthcare:
 
-> "... although SPC charts may be easy to use even for patients, clinicians, or managers without extensive SPC training, they may not be equally simple to *construct correctly*. To apply SPC is, paradoxically, both simple and difficult at the same time."
+> ... although SPC charts may be easy to use even for patients, clinicians, or managers without extensive SPC training, they may not be equally simple to *construct correctly*. To apply SPC is, paradoxically, both simple and difficult at the same time.
 >
 > -- @thor2007
 

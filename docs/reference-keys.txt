@@ -46,6 +46,7 @@ fig:qicharts-hais3
 fig:qicharts-hais4
 fig:qicharts-hais5
 variation
+spc-and-the-nature-of-variation
 charts-intro
 anatomy-and-physiology-of-spc-charts
 some-common-types-of-control-charts-the-magnificent-seven
