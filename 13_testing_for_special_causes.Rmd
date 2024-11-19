@@ -14,7 +14,7 @@ set.seed(33)
 y1 <- y2 <- y3 <- rnorm(24)
 ```
 
-# Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule
+# Looking for Signals on SPC charts -- beyond the 3-Sigma Rule {#testing}
 
 Until now, we have primarily focused on Shewhart’s 3-sigma rule, which identifies special cause variation when one or more data points fall outside the control limits.
 

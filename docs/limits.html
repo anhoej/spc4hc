@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Calculating Control Limits | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Calculating Control Limits | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-11-17" />
+<meta name="date" content="2024-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,22 +171,10 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a>
-<ul>
-<li class="chapter" data-level="0.0.1" data-path="preface.html"><a href="preface.html#target-audience"><i class="fa fa-check"></i><b>0.0.1</b> 1. <strong>Target Audience</strong></a></li>
-<li class="chapter" data-level="0.0.2" data-path="preface.html"><a href="preface.html#why-r"><i class="fa fa-check"></i><b>0.0.2</b> 2. <strong>Why R?</strong></a></li>
-<li class="chapter" data-level="0.0.3" data-path="preface.html"><a href="preface.html#healthcare-focused"><i class="fa fa-check"></i><b>0.0.3</b> 3. <strong>Healthcare-Focused</strong></a></li>
-<li class="chapter" data-level="0.0.4" data-path="preface.html"><a href="preface.html#practical-and-hands-on"><i class="fa fa-check"></i><b>0.0.4</b> 4. <strong>Practical and Hands-On</strong></a></li>
-<li class="chapter" data-level="0.0.5" data-path="preface.html"><a href="preface.html#comprehensive-coverage"><i class="fa fa-check"></i><b>0.0.5</b> 5. <strong>Comprehensive Coverage</strong></a></li>
-<li class="chapter" data-level="0.0.6" data-path="preface.html"><a href="preface.html#additional-resources"><i class="fa fa-check"></i><b>0.0.6</b> 6. <strong>Additional Resources</strong></a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book</a></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a>
-<ul>
-<li class="chapter" data-level="0.0.7" data-path="preface.html"><a href="preface.html#jacob-anhøj"><i class="fa fa-check"></i><b>0.0.7</b> <strong>Jacob Anhøj</strong></a></li>
-<li class="chapter" data-level="0.0.8" data-path="preface.html"><a href="preface.html#mohammed-amin-mohammed"><i class="fa fa-check"></i><b>0.0.8</b> <strong>Mohammed Amin Mohammed</strong></a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
 <ul>
@@ -214,23 +202,23 @@ div.csl-indent {
 <li class="chapter" data-level="2.3.1" data-path="charts-intro.html"><a href="charts-intro.html#the-magnificent-seven-common-types-of-spc-charts"><i class="fa fa-check"></i><b>2.3.1</b> The Magnificent Seven: Common Types of SPC Charts</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts {#testing} - beyond the 3-Sigma Rule</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts – beyond the 3-Sigma Rule</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
+<li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
-<li class="chapter" data-level="3.1.2" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
-<li class="chapter" data-level="3.1.3" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
-<li class="chapter" data-level="3.1.4" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
+<li class="chapter" data-level="3.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="3.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="3.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
+<li class="chapter" data-level="3.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
+<li class="chapter" data-level="3.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="3.2.2" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+<li class="chapter" data-level="3.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="3.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
-<li class="chapter" data-level="3.4" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
-<li class="chapter" data-level="3.5" data-path="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html"><a href="looking-for-signals-on-spc-charts-testing---beyond-the-3-sigma-rule.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
+<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
+<li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in healthcare</a>
 <ul>

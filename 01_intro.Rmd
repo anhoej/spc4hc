@@ -5,9 +5,9 @@ editor_options:
 ---
 # Preface {-#preface}
 
-This book is about the practical application of **Statistical Process Control (SPC)** methodology in healthcare.
+This book is about the practical application of **Statistical Process Control** (SPC) methodology in healthcare.
 
-At its core, SPC is founded on a powerful, intuitive insight: processes are subject to two sources of variation—**common cause** and **special cause**. This distinction enables us to understand, monitor, and improve a wide range of processes. With this insight comes a suite of visual tools—**run charts** and **control charts**—that help differentiate between common and special cause variation with ease.
+At its core, SPC is founded on a powerful, intuitive insight: processes are subject to two sources of variation -- **common cause** and **special cause**. This distinction enables us to understand, monitor, and improve a wide range of processes. With this insight comes a suite of visual tools -- **run charts** and **control charts** -- that help differentiate between common and special cause variation with ease.
 
 However, while SPC tools are conceptually simple to use, applying them correctly can be a challenge. As noted in a systematic review of SPC in healthcare:
 
@@ -19,7 +19,7 @@ This book seeks to address this paradox by providing a straightforward, practica
 
 ## What Sets This Book Apart? {-}
 
-This book is a **step-by-step guide to easily and correctly producing SPC charts**. Since this involves statistics, computing, and visualization, our software of choice is **R**—often referred to as the *lingua franca* of statistical computing and visualization.
+This book is a **step-by-step guide to easily and correctly producing SPC charts**. Since this involves statistics, computing, and visualization, our software of choice is **R** -- often referred to as the *lingua franca* of statistical computing and visualization.
 
 What makes this book unique is its **specialized, practical, and modern approach**, specifically tailored for data scientists and practitioners in the healthcare sector. Here's what you can expect:
 
@@ -30,11 +30,11 @@ This book is for anyone looking to produce SPC charts using modern tools. While 
 We’ve chosen R as our primary tool because it is popular, free, and open-source. While we are pro-R, we are not anti-other software; readers can adapt the concepts in this book to their preferred tools.
 <br>
 R has several key advantages:<br>
-    - **Transparency & Reproducibility**: R’s programming capabilities ensure every step of data analysis and SPC chart construction is documented, making your work both readable and reproducible—something rarely achieved with "point-and-click" software.
+    - **Transparency & Reproducibility**: R’s programming capabilities ensure every step of data analysis and SPC chart construction is documented, making your work both readable and reproducible -- something rarely achieved with "point-and-click" software.
     - **Automation**: R allows for automating repetitive tasks such as generating monthly reports, slide decks, and SPC dashboards with customizable, high-quality graphics.
 
 1. **Healthcare-Focused**<br>
-Unlike general SPC books, this one focuses on **healthcare-specific applications**, addressing challenges like patient safety, clinical outcomes, and operational efficiency. It complements the foundational concepts in our companion book, Statistical Process Control: Elements of Improving Quality and Safety in Healthcare [@mohammed2024].
+Unlike general SPC books, this one focuses on **healthcare-specific applications**, addressing challenges like patient safety, clinical outcomes, and operational efficiency. It complements the foundational concepts in our companion book, *Statistical Process Control: Elements of Improving Quality and Safety in Healthcare* [@mohammed2024].
 
 1. **Practical and Hands-On**<br>
 The book takes a hands-on approach, providing real-world examples and case studies to help readers produce and use SPC charts confidently. This practical emphasis bridges the gap between theory and application.
