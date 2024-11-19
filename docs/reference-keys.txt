@@ -49,12 +49,11 @@ variation
 spc-and-the-nature-of-variation
 charts-intro
 anatomy-and-physiology-of-spc-charts
+why-3-sigma-limits
 some-common-types-of-control-charts-the-magnificent-seven
 counts
-events-vs.-cases
 measurements
 summary-of-common-spc-charts
-the-magnificent-seven-common-types-of-spc-charts
 testing
 patterns-of-non-random-variation-in-time-series-data
 freaks
