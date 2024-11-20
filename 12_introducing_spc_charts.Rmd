@@ -119,12 +119,15 @@ A Shewhart control chart is a point-and-line plot of data over time, augmented b
 
 While there are various types of SPC charts tailored to different types of data, all share a consistent structure and behaviour. When choosing the right chart we must first decide what type of data we have, count data or measurement data:
 
-* **For count data**:
-    * C Chart: For event counts.
-    * U Chart: For event rates (events per unit of time or opportunity).
-    * P Chart: For proportions (cases as a subset of the total).
-* **For measurement data**:
-    * I Chart with MR chart: For individual measurements and moving ranges.
-    * X-bar Chart with S chart: For subgroup averages and within-subgroup variability.
+**For count data**:
+
+* C Chart: For event counts.
+* U Chart: For event rates (events per unit of time or opportunity).
+* P Chart: For proportions (cases as a subset of the total).
+
+**For measurement data**:
+
+* I Chart with MR chart: For individual measurements and moving ranges.
+* X-bar Chart with S chart: For subgroup averages and within-subgroup variability.
 
 In the next chapter, we will explore the rules and techniques used to detect signals of special causes. We will present a validated set of rules that achieve a high sensitivity to special cause variation while maintaining a reasonable false alarm rate.
