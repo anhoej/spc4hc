@@ -15,7 +15,7 @@ The key aim of using statistical process control charts to monitor healthcare pr
 >
 > -- @rogers2004
 
-To address this need, @mohammed2004 proposed the **Pyramid Model** for Investigation of Special Cause Variation in healthcare  – a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient case-mix, structure/resources, process of care, and carer(s) (Figure \@ref(fig:responding-fig1)).
+To address this need, @mohammed2004 proposed the **Pyramid Model** for Investigation of Special Cause Variation in healthcare -- a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure/resources, process of care, and carer(s) (Figure \@ref(fig:responding-fig1)).
 
 ```{r responding-fig1, fig.cap='Pyramid Model for Investigation', echo=FALSE}
 knitr::include_graphics('figures/pyramid_model.svg')
@@ -27,7 +27,7 @@ A proper investigation requires a team of people with expertise in each of the l
 
 1. Form a **multidisciplinary team** that has expertise in each layer of the pyramid, with a decision-making process that allows them to judge the extent to which a credible cause or explanation has been found, based on hypothesis generation and testing.
 
-1. Guided by what type(s) of non-random pattern(s) exist in data (freaks, shifts, trends, mixed, or cyclic patterns) candidate **hypotheses** are generated and tested starting from the lowest level of the Pyramid Model and proceeding to upper levels only if the preceding levels provide no adequate explanation for the special cause.
+1. Guided by what type(s) of pattern(s) exist in data (freaks, shifts, trends, mixed, or cyclic patterns) candidate **hypotheses** are generated and tested starting from the lowest level of the Pyramid Model and proceeding to upper levels only if the preceding levels provide no adequate explanation for the special cause.
 
 1. A credible cause requires **quantitative and qualitative evidence**, which is used by the team to test hypotheses and reach closure. If no credible explanation can be found, then the only plausible conclusion is that the signal itself was a false signal.
 
@@ -38,7 +38,7 @@ The types of questions that can be asked when undertaking the detective work are
     * Has there been a change in data coding practices (e.g. are there less experienced coders)?
     * Is clinical documentation clear, complete, and  consistent?
 <br><br>
-* **Case mix**: Although differences in case mix are accounted for in the calculation, it is possible that some residual confounding may remain.
+* **Casemix**: Although differences in casemix are accounted for in the calculation, it is possible that some residual confounding may remain.
     * Are factors peculiar to this hospital not taken into account in the risk adjustment?
     * Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?
 <br><br>
@@ -82,7 +82,7 @@ There are other approaches to improvement in healthcare, such as Lean, Six Sigma
 
 ## Successful use of SPC in healthcare
 
-The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart especially in complex adaptive systems like healthcare. These factors include: engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance -- all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see @mohammed2024.
+The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart -- especially in complex adaptive systems like healthcare. These factors include: engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance -- all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see @mohammed2024.
 
 Nevertheless, it is important to note that SPC charts are not necessarily easy to construct. After examining 64 statistical process control charts, @koetsier2012 found that that almost half the charts had technical problems which suggests a need for more training for those constructing charts -- which is the primary motivation for this book. 
 

@@ -18,13 +18,13 @@ y1 <- y2 <- y3 <- rnorm(24)
 
 Until now, we have primarily focused on Shewhart’s 3-sigma rule, which identifies special cause variation when one or more data points fall outside the control limits.
 
-The 3-sigma rule is highly effective at detecting large shifts in data. To illustrate:
+The 3-sigma rule is effective at detecting large shifts in data. To illustrate:
 
-* Large shifts (3 SDs): Imagine a process with data following a normal distribution that suddenly shifts upward by three standard deviations (SDs). In this case, the old upper control limit (UCL) would effectively become the new centre line (CL). Consequently, about 50% of subsequent data points would fall above the old UCL, providing a clear signal of the shift.
+**Large shifts (3 SDs)**: Imagine a process with data following a normal distribution that suddenly shifts upward by three standard deviations (SDs). In this case, the old upper control limit (UCL) would effectively become the new centre line (CL). Consequently, about 50% of subsequent data points would fall above the old UCL, providing a clear signal of the shift.
 
-* Smaller shifts (1 SD): For a smaller shift of one standard deviation, the old UCL would align with the new 2-sigma limit. As a result, about 2.5% of future data points would exceed this line, signaling the shift but with less frequency.
+**Smaller shifts (1 SD)**: For a smaller shift of one standard deviation, the old UCL would align with the new 2-sigma limit. As a result, about 2.5% of future data points would exceed this line, signalling the shift but with less frequency.
 
-The 3-sigma rule’s sensitivity makes it an invaluable guide for identifying material, easily detectable changes in the behavior of a process. However, for smaller, subtler shifts, additional rules or techniques are often necessary to ensure reliable detection whilst balancing the number of false alarms (Figure \@ref(fig:testing-fig1)).
+The 3-sigma rule’s sensitivity makes it an invaluable guide for identifying material, easily detectable changes in the behaviour of a process. However, for smaller, subtler shifts, additional rules or techniques are often necessary to ensure reliable detection whilst balancing the number of false alarms (Figure \@ref(fig:testing-fig1)).
 
 ```{r testing-fig1, fig.cap='Control chart with progressive shifts in data'}
 set.seed(4444444)
@@ -37,13 +37,11 @@ stdchart(y, ra = F) +
            label = c('mean = 0', 'mean = 1', 'mean = 2'))
 ```
 
-The performance of the 3-sigma rule has been studied extensively (see, for instance, @montgomery2020 or @anhoej2018b). To summarize, the 3-sigma rule is most effective when detecting shifts in data of at least 1.5 to 2 standard deviations (SDs). Minor to moderate shifts may go undetected for significant periods. To increase the sensitivity of SPC charts to smaller shifts, a variety of additional rules have been proposed. However, before diving into these rules, it's important to first explore the different patterns in data that often signal the presence of special causes.
-
-
+The performance of the 3-sigma rule has been studied extensively (see, for instance, @montgomery2020 or @anhoej2018b). To summarize, the 3-sigma rule is most effective when detecting shifts in data of at least 1.5 to 2 standard deviations (SDs). Minor to moderate shifts may go undetected for significant periods. To increase the sensitivity of SPC charts to smaller shifts, a variety of additional rules have been proposed. However, before diving into these rules, it is important to first explore the different patterns in data that often signal the presence of special causes.
 
 ## Patterns of non-random variation in time series data
 
-In the iconic Western Electric Handbook [@we1956]  a variety of control chart patterns are described to assist engineers in interpreting control charts based on the notion that certain patterns often reflect specific causes. In our experience, the most common special cause patterns found in healthcare data are freaks, shifts, and trends. 
+In the iconic Western Electric Handbook [@we1956] a variety of control chart patterns are described to assist engineers in interpreting control charts based on the notion that certain patterns often reflect specific causes. In our experience, the most common special cause patterns found in healthcare data are freaks, shifts, and trends. 
 
 ### Freaks
 
@@ -60,19 +58,19 @@ A freak is a data point or a small number of data points that are distinctly dif
 
 ### Shifts
 
-A trend is a gradual change in the process center, as shown in Figure \@ref(fig:testing-fig3). While some texts define a trend more specifically as a series of data points moving consistently up or down, in this book we use the term in a broader sense to refer to any gradual shift in one direction. Trends occur when external forces are consistently influencing the data in one direction, particularly when this influence is continuous and cumulative. Trends are commonly observed when improvements are implemented incrementally, such as in large organizations. In such cases, sequential shifts in data at the department level may accumulate into a broader trend at the organizational level.
+Shifts are caused by sudden and sustained changes in process behaviour as in Figure \@ref(fig:testing-fig3). 
 
-```{r testing-fig3, fig.cap='Control chart with a minor (1 SD) sustained shift in data', echo=FALSE}
+```{r testing-fig3, fig.cap='Control chart with a minor (1 SD) sustained shift in data introduced at data point #16', echo=FALSE}
 y3[16:24] <- y3[16:24] + 1
 
 stdchart(y3)
 ```
 
-Shifts are caused by sudden changes in process behaviour. In fact, in healthcare improvement we strive to induce shifts in the desired direction by improving the structures and procedures that are behind data.
+In fact, in healthcare improvement we strive to induce shifts in the desired direction by improving the structures and procedures that are behind data.
 
 ### Trends
 
-A trend is a gradual change in process centre (Figure \@ref(fig:testing-fig4)). Note that in some texts a trend is more specifically a series of data points that are all going up or down. In this book, we use the term "trend" in the more general sense as a gradual change in one direction.
+A trend is a gradual change in the process centre, as shown in Figure \@ref(fig:testing-fig4). 
 
 ```{r testing-fig4, fig.cap='Control chart with a trend in data', echo=FALSE}
 set.seed(22222)
@@ -81,25 +79,29 @@ y4 <- rnorm(24, seq(-2, 2, length.out = 24))
 stdchart(y4)
 ```
 
-Trends are seen when forces outside the usual process are pushing data consistently in one direction, and specifically when the push is continuous and the effect cumulative. Trends are commonly seen when improvements are implemented in a stepwise fashion, for example by being introduced incrementally in a large organisation. In such cases we may observe sequential shifts in data at the department level that sum up to a trend at the organisational level.
+While some texts define a trend more specifically as a series of data points moving consistently up or down, in this book we use the term in a broader sense to refer to any gradual shift in one direction.
+
+Trends occur when external forces are consistently influencing the data in one direction, particularly when this influence is continuous and cumulative. Trends are commonly observed when improvements are implemented incrementally, such as in large organizations. In such cases, sequential shifts in data at the department level may accumulate into a broader trend at the organizational level.
 
 ### Other unusual patterns
 
-There are numerous other types of "unusual" or mixed patterns that may appear in data. However, based on our experience in healthcare, process improvement or deterioration is most commonly associated with freaks, shifts, or trends. Learning to recognize these patterns is essential for uncovering the underlying causes of change. That being said, depending on the context and the purpose of using SPC, it may be valuable to look for other types of patterns in the data. This is particularly true for cyclic or seasonal data, where specific patterns repeat based on time of day, week, month, or year [@jeppegaard2023]. For example, excess mortality linked to weekend admissions might not present itself as a freak, shift, or trend, but it is still an important pattern to recognize in order to address the issue effectively.
+There are numerous other types of "unusual" or mixed patterns that may appear in data. However, based on our experience in healthcare, process improvement or deterioration is most commonly associated with freaks, shifts, or trends. Learning to recognize these patterns is essential for uncovering the underlying causes of change. 
+
+That being said, depending on the context and the purpose of using SPC, it may be valuable to look for other types of patterns in the data. This is particularly true for cyclic or seasonal data, where specific patterns repeat based on time of day, week, month, or year [@jeppegaard2023]. For example, excess mortality linked to weekend admissions might not present itself as a freak, shift, or trend, but it is still an important pattern to recognize in order to address the issue effectively.
 
 ## SPC rules
 
-If patterns of special cause variation were always as clear as in the figures \@ref(fig:testing-fig2), \@ref(fig:testing-fig3), and \@ref(fig:testing-fig4) there would be no need for SPC. However, in practice, special causes often manifest in more subtle ways and so we use additonal statistical tests or SPC rules that are designed to signal the presence, or rather the likelihood, of special cause variation.
+If patterns of special cause variation were always as clear as in the figures \@ref(fig:testing-fig2), \@ref(fig:testing-fig3), and \@ref(fig:testing-fig4) there would be no need for SPC. However, in practice, special causes often manifest in more subtle ways and so we use additional statistical tests or SPC rules that are designed to signal the presence, or rather the likelihood, of special cause variation.
 
-We’ve already seen Shewhart’s original 3-sigma rule in action, but many additional rules have been developed to identify minor shifts, trends, and other specific patterns in data. While it may seem tempting to apply all known rules to the data, it’s important to remember that the more tests we apply, the more signals we generate and this increases the risk of false alarms - where common cause variation is mistakenly identified as special cause variation.
+Many additional rules have been developed to identify minor shifts, trends, and other specific patterns in data. While it may seem tempting to apply all known rules to the data, it’s important to remember that the more tests we apply, the more signals we generate and this increases the risk of false alarms where common cause variation is mistakenly identified as special cause variation.
 
-Therefore, it’s crucial to strike a balance: we must select as few rules as necessary to minimize false alarms while ensuring the detection of true special cause signals. This topic will be discussed in greater detail in the chapter on [Diagnostic Errors](#diagnostics) later in this book.
+Therefore, it is crucial to strike a balance: we must select as few rules as necessary to minimize false alarms while ensuring the detection of true special cause signals. This topic will be discussed in greater detail in the chapter on [Diagnostic Errors](#diagnostics) later in this book.
 
 For this book, we will concentrate on two sets of rules that have been thoroughly studied and validated for their effectiveness.
 
 ### Tests based on sigma limits
 
-The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook [@we1956]. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the center lines and the control limits.
+The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook [@we1956]. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the centre lines and the control limits.
 
 1. One or more points outside of the 3-sigma limits (Shewhart's original 3-sigma rule).
 
@@ -109,17 +111,17 @@ The best known tests for special cause variation are probably the Western Electr
 
 4. A run of eight successive points on one side of the centre line.
 
-We leave it to the reader to apply WE rules #2-#4 to figures \@ref(fig:testing-fig3) and  \@ref(fig:testing-fig4).
+We leave it to the reader to apply WE rules #2-#4 to figures \@ref(fig:testing-fig3) and \@ref(fig:testing-fig4).
 
 The WE rules have proven their worth during most of a century. One thing to notice though is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives). 
 
-WE rule #4 is independent of the sigma limits. It is based on assumptions regarding the length of runs on either side of the centre line.  A run is defined as one or more successive data points on the same side of the centre line. Rules based on runs analysis are further discussed below.
+WE rule #4 is independent of the sigma limits. It is based on assumptions regarding the length of runs on either side of the centre line. A run is defined as one or more successive data points on the same side of the centre line. Rules based on runs analysis are further discussed below.
 
 ### Runs analysis -- tests based on the distribution of data points around the centre line
 
-If we assume that the center line divides the data into two halves, the probability of any data point falling above or below the center is fifty-fifty. Similarly, the probability that two neighboring points fall on the same or opposite side of the center line is also fifty-fifty.
+If we assume that the  centre line divides the data into two halves, the probability of any data point falling above or below the  centre is fifty-fifty. Similarly, the probability that two neighbouring points fall on the same or opposite side of the  centre line is also fifty-fifty.
 
-By dichotomizing the data into runs of points either above or below a certain value—such as the center line—we enter the realm of runs analysis. The fundamental idea behind runs analysis is that the length and number of runs in a random process are governed by natural laws, making them predictable within certain limits.
+By dichotomizing the data into runs of points either above or below a certain value -- such as the  centre line -- we enter the realm of runs analysis. The fundamental idea behind runs analysis is that the length and number of runs in a random process are governed by natural laws, making them predictable within certain limits.
 
 In essence, when a process shifts or trends, runs tend to become longer and fewer. Therefore, we can design runs tests to detect unusually long or unusually few runs. The key question is: what constitutes "unusually" long or "unusually" few runs?
 
@@ -135,9 +137,9 @@ The two runs rules are two sides of the same coin -- when runs get longer, cross
 
 Figure \@ref(fig:testing-fig3) has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.
 
-In Figure \@ref(fig:testing-fig3) there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.
+In Figure \@ref(fig:testing-fig4) there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.
 
-It's important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process.
+It is important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process.
 
 Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix \@ref(runs-limits).
 
@@ -151,9 +153,9 @@ In practice these runs rules may be used as alternatives to WE rules #2-#4 to he
 
 ## SPC charts without borders -- using run charts
 
-As discussed in the previous section, some rules rely solely on a single line representing the center of the data. We assumed that the center line divides the data into two equal halves. While the process average typically serves as a good representation of this center, this assumption may not hold if the data are skewed. However, if we use the median instead of the mean, the assumption always holds true, because the median is by definition the middle value.
+As discussed in the previous section, some rules rely solely on a single line representing the  centre of the data. We assumed that the  centre line divides the data into two equal halves. While the process average typically serves as a good representation of this  centre, this assumption may not hold if the data are skewed. However, if we use the median instead of the mean, the assumption always holds true, because the median is by definition the middle value.
 
-So, what happens if we remove the sigma lines and use the median as the center line? We get a run chart, which is one of the most valuable tools in quality improvement and control.
+So, what happens if we remove the sigma lines and use the median as the centre line? We get a run chart, which is one of the most valuable tools in quality improvement and control.
 
 ```{r testing-fig5, fig.cap='Run chart', echo=FALSE, warning=FALSE}
 stdchart(y1, lcl = NA_real_, ucl = NA_real_, cl = median(y1))
@@ -169,21 +171,21 @@ stdchart(y4, lcl = NA_real_, ucl = NA_real_, cl = median(y4))
 
 Run charts are a lot easier to construct than are control charts. They do not make assumptions about the distribution of data. And they have better sensitivity to minor and moderate *persistent* shifts and trends than control charts based on only the 3-sigma rule.
 
-So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (for example freaks) that may go unnoticed by run charts, and 2) the control limits reflect the common cause variability of the process and hence define its *capability*.
-Foruntatley, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.
+So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (for example freaks) that may go unnoticed by run charts, and 2) the control limits reflect the common cause variability of the process and hence define its *capability*, that is the process' ability to meet specifications.
+
+Fortunately, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.
 
 ## A practical approach to SPC analysis
 
 Before we move on, let's take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see @ref(using)), SPC charts support two distinct purposes: process improvement and process monitoring.
 
-When we are focused on process improvement, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.
+When we are focused on **process improvement**, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.
 
-In process monitoring, the objective is to maintain process stability, with no expected shifts in the data. Here, our focus is on detecting any signs of process deterioration as quickly as possible. For this, the 3-sigma rule is highly effective. To improve sensitivity to minor or moderate shifts, we may combine the 3-sigma rule with either the rest of the Western Electric (WE) rules or the two runs rules. However, we must be mindful that adding more tests increases the risk of false alarms.
+In **process monitoring**, the objective is to maintain process stability, with no expected shifts in the data. Here, our focus is on detecting any signs of process deterioration as quickly as possible. For this, the 3-sigma rule is effective. To improve sensitivity to minor or moderate shifts, we may combine the 3-sigma rule with *either* the rest of the Western Electric (WE) rules *or* the two runs rules. However, we must be mindful that adding more tests increases the risk of false alarms.
 
-Regardless of the task, we recommend starting any SPC analysis with an "assumption-free" run chart, using the median as the center line. If runs analysis indicates non-random variation, calculating sigma limits becomes meaningless, as these values are irrelevant when shifts are already evident. In such cases, the focus should shift to identifying special causes, rather than calculating control limits.
+Regardless of the task, we recommend starting any SPC analysis with an "assumption-free" run chart, using the median as the  centre line. If runs analysis indicates non-random variation, calculating sigma limits becomes meaningless, as these values are irrelevant when shifts are already evident. In such cases, the focus should shift to identifying special causes, rather than calculating control limits.
 
-If the goal is process improvement, we continue with the run chart until we observe significant and sustained improvement, leading to a new and better process.
-Once this new process stabilizes and appears set to continue, we may transition to monitoring mode by adding control limits and using the mean as the center line.
+If the goal is process improvement, we continue with the run chart until we observe significant and sustained improvement, leading to a new and better process. Once this new process stabilizes and appears set to continue, we may transition to monitoring mode by adding control limits and using the mean as the centre line.
 
 Process monitoring is appropriate when the process is stable (common cause variation only) and the outcome is satisfactory. If either condition is not met, we should return to improvement mode.
 
@@ -191,4 +193,4 @@ Process monitoring is appropriate when the process is stable (common cause varia
 
 SPC rules are statistical tests designed to detect special cause variation in time series data. Given the variety of patterns that can indicate special causes, many rules have been developed. However, applying too many rules increases the risk of false alarms. Therefore, it is important to choose a small set of rules that strike a balance: maximizing the ability to detect true alarms (special causes) while minimizing false alarms.
 
-We recommend starting any SPC analysis with a median-based run chart and using the two runs rules to test for unusually long runs or an unusually small number of crossings. If, and only if, the runs analysis indicates random variation (no special cause), and the process outcome is stable and satisfactory, we may proceed to use the mean as the center line and add control limits to help identify large shifts and freak data points more easily.
+We recommend starting any SPC analysis with a median-based run chart and using the two runs rules to test for unusually long runs or an unusually small number of crossings. If, and only if, the runs analysis indicates random variation (no special cause), and the process outcome is stable and satisfactory, we may proceed to use the mean as the centre line and add control limits to help identify large shifts and freak data points more easily.

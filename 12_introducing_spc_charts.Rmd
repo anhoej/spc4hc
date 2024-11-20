@@ -51,7 +51,7 @@ y1 <- y2 <- y3 <- rnorm(24)
 stdchart(y1)
 ```
 
-Figure \@ref(fig:spc-fig1) demonstrates a standardized Shewhart control chart, created using random numbers from a normal distribution with a mean of 0 and a standard deviation of 1. The x-axis represents time or sequence order, while the y-axis displays the indicator values. Each dot, connected by a line, represents a data point sampled sequentially. The data included in a data point is called a subgroup representing a snapshot (or sample) of the process at a point in time.
+Figure \@ref(fig:spc-fig1) demonstrates a standardized Shewhart control chart, created using random numbers from a normal distribution with a mean of 0 and a standard deviation of 1. The x-axis represents time or sequence order, while the y-axis displays the indicator values. Each dot, connected by a line, represents a data point sampled sequentially. The data included in a data point is called a subgroup representing a set of observations (a sample) collected together at a specific point in time and under similar conditions.
 
 The chart features a Centre Line (CL), which represents the mean of the data values, and a Lower Control Limit (LCL) and an Upper Control Limit (UCL), defining the range of common cause variation. The lower and upper control limits are often referred to as 3-sigma limits.
 
