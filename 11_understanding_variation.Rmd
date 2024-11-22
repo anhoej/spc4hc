@@ -37,6 +37,12 @@ Common Cause Variation                    Special Cause Variation
 Is caused by a stable process (like       Is caused by an assignable cause that
 writing a signature) and is intrinsic     it extrinsic to the process.
 to the process.
+                                          
+Reflects the voice or behaviour of a      Is a distinct signal which differs
+stable process and affects all those      from the usual voice or behaviour of
+who are part of the process.              the process and requires further
+                                          detective work to identify the
+                                          assignable cause.
 
 Is neither good or bad, it just is.       Can be favourable or unfavourable and
                                           premediated (as part of an improvement
@@ -51,12 +57,6 @@ special cause variation.                  process.
 Is sometimes referred to as random        Is sometimes referred to as non-random
 variation, chance variation, or noise.    variation, systematic variation, or
                                           signal.
-                                          
-Reflects the voice or behaviour of a      Is a distinct signal which differs
-stable process and affects all those      from the usual voice or behaviour of
-who are part of the process.              the process and requires further
-                                          detective work to identify the
-                                          assignable cause.
 --------------------------------------------------------------------------------
 Table: Characteristics of common versus special cause variation
 
@@ -68,6 +68,6 @@ Statistical Process Control (SPC) revolves around understanding variation and id
 >
 >-- @wheeler2000, p. 152
 
-With this foundation in mind, the rest of this book focuses on the tools of SPC, particularly the SPC chart. In the next chapter, we delve into the “anatomy and physiology” of SPC charts, exploring their structure, function, and practical applications.
+With this foundation in mind, most of this book focuses on the tools of SPC, particularly the SPC chart. In the next chapter, we delve into the “anatomy and physiology” of SPC charts, exploring their structure, function, and practical applications.
 
 
