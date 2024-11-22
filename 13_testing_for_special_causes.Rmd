@@ -139,7 +139,7 @@ Figure \@ref(fig:testing-fig3) has 24 data points, the longest run consists of 1
 
 In Figure \@ref(fig:testing-fig4) there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.
 
-It is important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process.
+It is important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process. This is the topic of the next chapter (\@ref(using)).
 
 Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix \@ref(runs-limits).
 
@@ -177,7 +177,7 @@ Fortunately, we do not need to choose between run and control charts. In fact, t
 
 ## A practical approach to SPC analysis
 
-Before we move on, let's take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see @ref(using)), SPC charts support two distinct purposes: process improvement and process monitoring.
+Before we move on, let's take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see \@ref(using)), SPC charts support two distinct purposes: process improvement and process monitoring.
 
 When we are focused on **process improvement**, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.
 

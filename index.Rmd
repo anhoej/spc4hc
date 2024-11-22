@@ -27,4 +27,4 @@ SPC was initially developed by Walter A. Shewhart in the 1920s to improve the qu
 
 At is core, SPC methodology involves the plotting of data over time to detect unusual patterns or variations that might indicate a change or problem with a process. This simple graphical device is underpinned by an intuitive theory of variation, the hypothesis-generating testing-cycle of the scientific method, and statistical theory. 
 
-To master SPC, it's essential to first understand the underlying theory of variation, which we explore in Part 1 of this book. Next, proficiency in using software to construct SPC charts is key, and this is covered in Part 2. In the later sections, we delve into specialized topics for more advanced SPC practitioners, offering deeper insights and expertise.
+To master SPC, it is essential to first understand the underlying theory of variation, which we explore in Part 1 of this book. Next, proficiency in using software to construct SPC charts is key, and this is covered in Part 2. In the later sections, we delve into specialized topics for more advanced SPC practitioners, offering deeper insights and expertise.

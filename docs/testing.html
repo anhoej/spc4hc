@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2024-11-20" />
+<meta name="date" content="2024-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -436,7 +436,7 @@ Figure 3.4: Control chart with a trend in data
 <p>The two runs rules are two sides of the same coin – when runs get longer, crossings get fewer and vice versa – and either of them may signal special cause variation.</p>
 <p>Figure <a href="testing.html#fig:testing-fig3">3.3</a> has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.</p>
 <p>In Figure <a href="testing.html#fig:testing-fig4">3.4</a> there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.</p>
-<p>It is important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process.</p>
+<p>It is important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process. This is the topic of the next chapter (<a href="using.html#using">4</a>).</p>
 <p>Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix <a href="runs-limits.html#runs-limits">E</a>.</p>
 <p>Apart from being comparable in sensitivity and specificity to WE rules #2-#4 with 20-30 data points <span class="citation">(<a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span>, these runs rules have some advantages:</p>
 <ul>
@@ -470,7 +470,7 @@ Figure 3.6: Run chart with a trend
 </div>
 <div id="a-practical-approach-to-spc-analysis" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> A practical approach to SPC analysis<a href="testing.html#a-practical-approach-to-spc-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before we move on, let’s take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see <span class="citation">(<a href="#ref-ref"><strong>ref?</strong></a>)</span>(using)), SPC charts support two distinct purposes: process improvement and process monitoring.</p>
+<p>Before we move on, let’s take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see <a href="using.html#using">4</a>), SPC charts support two distinct purposes: process improvement and process monitoring.</p>
 <p>When we are focused on <strong>process improvement</strong>, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.</p>
 <p>In <strong>process monitoring</strong>, the objective is to maintain process stability, with no expected shifts in the data. Here, our focus is on detecting any signs of process deterioration as quickly as possible. For this, the 3-sigma rule is effective. To improve sensitivity to minor or moderate shifts, we may combine the 3-sigma rule with <em>either</em> the rest of the Western Electric (WE) rules <em>or</em> the two runs rules. However, we must be mindful that adding more tests increases the risk of false alarms.</p>
 <p>Regardless of the task, we recommend starting any SPC analysis with an “assumption-free” run chart, using the median as the centre line. If runs analysis indicates non-random variation, calculating sigma limits becomes meaningless, as these values are irrelevant when shifts are already evident. In such cases, the focus should shift to identifying special causes, rather than calculating control limits.</p>
