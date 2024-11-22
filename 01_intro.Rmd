@@ -23,26 +23,26 @@ This book is a **step-by-step guide to easily and correctly producing SPC charts
 
 What makes this book unique is its **specialized, practical, and modern approach**, specifically tailored for data scientists and practitioners in the healthcare sector. Here's what you can expect:
 
-1. **Target Audience**<br>
+1. **Target audience**<br>
 This book is for anyone looking to produce SPC charts using modern tools. While it is specifically geared toward **data scientists**, we recognize that our readers may include analysts, practitioners, managers, educators, students, researchers, clinicians, or even patients. Regardless of your role, if you work with healthcare data and want to master SPC, then this book is for you.
 
 1. **Why R?**<br>
 We’ve chosen R as our primary tool because it is popular, free, and open-source. While we are pro-R, we are not anti-other software; readers can adapt the concepts in this book to their preferred tools.
 <br>
 R has several key advantages:<br>
-    - **Transparency & Reproducibility**: R’s programming capabilities ensure every step of data analysis and SPC chart construction is documented, making your work both readable and reproducible -- something rarely achieved with "point-and-click" software.
+    - **Transparency and reproducibility**: R’s programming capabilities ensure every step of data analysis and SPC chart construction is documented, making your work both readable and reproducible -- something rarely achieved with "point-and-click" software.
     - **Automation**: R allows for automating repetitive tasks such as generating monthly reports, slide decks, and SPC dashboards with customizable, high-quality graphics.
 
-1. **Healthcare-Focused**<br>
+1. **Healthcare-focused**<br>
 Unlike general SPC books, this one focuses on **healthcare-specific applications**, addressing challenges like patient safety, clinical outcomes, and operational efficiency. It complements the foundational concepts in our companion book, *Statistical Process Control: Elements of Improving Quality and Safety in Healthcare* [@mohammed2024].
 
-1. **Practical and Hands-On**<br>
+1. **Practical and hands-on**<br>
 The book takes a hands-on approach, providing real-world examples and case studies to help readers produce and use SPC charts confidently. This practical emphasis bridges the gap between theory and application.
 
-1. **Comprehensive Coverage**<br>
+1. **Comprehensive coverage**<br>
 From foundational principles to advanced SPC techniques, this book covers it all. It’s designed to cater to both beginners and experienced data scientists, ensuring everyone finds value.
 
-1. **Additional Resources**<br>
+1. **Additional resources**<br>
 Readers will gain access to supplemental materials, including:
     - R scripts
     - Datasets
@@ -66,7 +66,7 @@ We hope this book proves valuable, and we welcome your feedback for ongoing impr
 
 ## About the Authors {-}
 
-- **Jacob Anhøj**: Jacob is a medical doctor with over 30 years of experience and a diploma in Information Technology. With 45+ published papers, two books, and extensive teaching expertise, he is deeply passionate about patient safety and quality improvement in healthcare. Jacob is an experienced R user and the creator of several R packages, including **qicharts2**, widely used for SPC chart construction and analysis.
+- **Jacob Anhøj**: Medical doctor with over 30 years of experience and a diploma in Information Technology. With 45+ published papers, two books, and extensive teaching expertise, he is deeply passionate about patient safety and quality improvement in healthcare. Jacob is an experienced R user and the creator of several R packages, including **qicharts2**, widely used for SPC chart construction and analysis.
 <br>
 Contact: jacob@anhoej.net  
 
