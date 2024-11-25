@@ -45,15 +45,15 @@ plot(systolic, type = 'o')
 lines(cl)
 ```
 
-We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the two runs rules proposed in Chapter \@ref(testing), the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *persistent* shifts or trends in data over time.
+We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the two runs rules proposed in Chapter \@ref(testing), the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *sustained* shifts or trends in data over time.
 
 ## Adding control limits to produce a control chart
 
 We use the same technique to add the lower and upper control limits. 
 
-Remember that the control limits are usually set to $CL \pm 3 SD$, where CL is the centre line, usually the mean, and SD is the estimated standard deviation -- that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both random and any non-random variation.
+Remember that the control limits are usually set to $CL \pm 3 SD$, where CL is the centre line, usually the mean, and SD is the estimated standard deviation -- that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both common cause and any special cause variation.
 
-For data consisting of single measurements, we choose the I chart. To estimate the common cause standard deviation we use the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter \@ref(limits).
+For data consisting of single measurements, we choose the I chart (see Chapter \@ref(charts-intro)). To estimate the common cause standard deviation we use the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter \@ref(limits).
 
 ```{r}
 # Calulate the centre line (mean)
