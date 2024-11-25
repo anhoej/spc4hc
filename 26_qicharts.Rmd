@@ -10,6 +10,8 @@ knitr::opts_chunk$set(fig.asp = 3/6,
                       dev     = 'svg')
 source('R/load_data.R', local = knitr::knit_global())
 library(qicharts2)
+
+options(qic.clshade = T)
 ```
 
 qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct run charts and all of the Magnificent Seven plus a number of specialised charts including pareto charts and control charts for rare events data.
@@ -211,10 +213,10 @@ qic(month, n, days,
 
 When data come from multiple organisational units, for example hospitals or hospital departments, we must decide if we want to aggregate  or stratify data. 
 
-Figures \@ref(fig:qicharts-hais1) and \@ref(fig:qicharts-hais2) demonstrate the difference. Notice how the aggregated data show no signs of special causes while the stratified data show non-random shifts in two hospitals (BOH and NOH). If data, as in this case, move in different directions in two or more units, aggregation has a tendency to mask or cancel out special causes. However, when minor shifts in data, that are too small to produce signals in the small multiple plots, move in the same direction the shifts tend to add up resulting in a better chance of detecting the special cause with aggregated data.
+Figures \@ref(fig:qicharts-hais1) and \@ref(fig:qicharts-hais2) demonstrate the difference. Notice how the aggregated data show no signs of special causes while the stratified data show shifts in two hospitals (BOH and NOH). If data, as in this case, move in different directions in two or more units, aggregation has a tendency to mask or cancel out special causes. However, when minor shifts in data, that are too small to produce signals in the small multiple plots, move in the same direction the shifts tend to add up resulting in a better chance of detecting the special cause with aggregated data.
 
-As usual, the decision to aggregate or stratify must be taken deliberately, preferably by persons with a thorough understanding of the structures and processes that have produced data. And often it may be useful to produce several plots at different levels of aggregation.     
+As usual, the decision to aggregate or stratify must be taken deliberately by persons with a thorough understanding of the structures and processes that have produced data. And often it may be useful to produce several plots at different levels of aggregation.     
 
 ## qicharts2 in short
 
-qicharts2 is an R package for constructing SPC charts aimed specifically at healthcare but usefull in many other areas. Besides functions for the most commonly used SPC charts, qicharts2 is has a number of specialist charts for rare events data and count data with very large denominators.
+qicharts2 is an R package for constructing SPC charts aimed specifically at healthcare but usefull in many other areas. Besides functions for the most commonly used SPC charts, qicharts2 has a number of specialist charts for rare events data and count data with very large denominators.
