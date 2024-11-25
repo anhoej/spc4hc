@@ -12,7 +12,7 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 source('R/spc1.R', local = knitr::knit_global())
 ```
 
-In the previous chapter we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data -- that is unexpected change caused by something outside the usual system.
+In the Chapter \@ref(limits) we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data -- that is, unexpected change caused by something outside the usual system.
 
 Control limits are designed to signal rather large (> 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter \@ref(testing), minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to signal freaks and the two runs rules for unusually long runs and unusually few crossings to signal shifts and trends.
 
@@ -49,6 +49,8 @@ with(cdiff, {
 })
 ```
 
+Notice that we censored the lower control limit at zero even if the exact value is negative ($\bar{c}-3\sqrt{\bar{c}}$). This is purely cosmetic, but since the data values themselves cannot be negative it makes little sense to show negative control limits. For the same reason we usually censor P chart control limits at 0 and 1 (100%) respectively.
+
 To help us signal special cause variation we will improve the `spc()` function.
 
 ## Improved `spc()` function
@@ -61,7 +63,7 @@ The new, improved `spc()` function has a few changes:
 
 * Lines 33-34: Create a logical vector identifying data points that lie outside the control limits.
 
-* Line 37: Test for unusually long runs and unusually few crossings.
+* Line 37: Test for unusually long runs or unusually few crossings.
 
 * Line 40: Start with an empty plot.
 
@@ -78,13 +80,13 @@ with(cdiff, {
 })
 ```
 
-Now it is a lot easier to immediately see if a chart contains special cause variation or not (Figure \@ref(fig:highlighting-spc2)). Freak data points are red, and the centre line turns red and dashed if there are any unusually long runs or if the curve crossed the centre line unusually few times.
+Now it is a lot easier to immediately see if a chart signals special cause variation or not (Figure \@ref(fig:highlighting-spc2)). Freak data points are red, and the centre line turns red and dashed if there are any unusually long runs or if the curve crossed the centre line unusually few times.
 
 Remember, the chart itself does not tell us what caused the signals. This interpretation of a chart -- common or special cause variation -- still relies on humans with a deep understanding the process and the data.
 
 ## Highlighting special cause variation in short
 
-In this chapter we have improved the `spc()` function to automatically highlight signs of special cause variation using visual clues that help us quickly decide if a process is stable or not.
+In this chapter we have improved the `spc()` function to automatically highlight signs of special cause variation using visual clues that signal special cause variation.
 
 In the next chapter we will improve the `spc()` function further to automatically aggregate data and calculate control limits.
 
