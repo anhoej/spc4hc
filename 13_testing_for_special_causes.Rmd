@@ -14,7 +14,7 @@ set.seed(33)
 y1 <- y2 <- y3 <- rnorm(24)
 ```
 
-# Looking for Signals on SPC charts -- beyond the 3-Sigma Rule {#testing}
+# Looking for Signals on SPC charts -- Beyond the 3-Sigma Rule {#testing}
 
 Until now, we have primarily focused on Shewhart’s 3-sigma rule, which identifies special cause variation when one or more data points fall outside the control limits.
 
@@ -45,7 +45,7 @@ In the iconic Western Electric Handbook [@we1956] a variety of control chart pat
 
 ### Freaks
 
-A freak is one or few data points that are distinctly different from the rest (Figure \@ref(fig:testing-fig2)). Freaks are by definition transient in nature -- they appear and then go away.
+A freak is a data point or a small number of data points that are distinctly different from the rest, as shown in Figure \@ref(fig:testing-fig2). By definition, freaks are transient -- they appear suddenly and then disappear.
 
 ```{r testing-fig2, fig.cap='Control chart with a large (2 SD) transient shift in data', echo=FALSE}
 
@@ -54,7 +54,7 @@ y2[13] <- y2[13] + 2
 stdchart(y2)
 ```
 
-A freak is a data point or a small number of data points that are distinctly different from the rest, as shown in Figure \@ref(fig:testing-fig2)). By definition, freaks are transient — they appear suddenly and then disappear. Freaks are often caused by data or sampling errors, but they can also result from temporary external factors influencing the process, such as shifts in patient case mix during a holiday season. In some cases, freaks may simply be a false alarm.
+Freaks are often caused by data or sampling errors, but they can also result from temporary external factors influencing the process, such as shifts in patient case mix during a holiday season. In some cases, a freak may simply be a false alarm.
 
 ### Shifts
 
@@ -127,7 +127,7 @@ In essence, when a process shifts or trends, runs tend to become longer and fewe
 
 To illustrate, imagine flipping a coin ten times. Would you be surprised to get three or four heads in a row? Probably not. But what if you got ten heads in a row? That would definitely be surprising. Now, imagine tossing the coin 100 times. Would a sequence of ten heads be surprising then? Probably not, because as the number of trials increases, the likelihood of observing a run of ten heads also increases.
 
-This intuitive understanding highlights that what constitutes an "unusually" long run depends on the total number of observations or subgroups. The more subgroups we have in our SPC chart, the longer the longest runs are likely to be. From practical experiments, some theoretical considerations, and years of experience [@anhoej2014; @anhoej2015] we suggest these two runs tests:
+This intuitive understanding highlights that what constitutes an "unusually" long run depends on the total number of observations or subgroups. The more subgroups we have in our SPC chart, the longer the longest runs are likely to be. From practical experiments, some theoretical considerations [@anhoej2014; @anhoej2015; @anhoej2018b], and years of experience we suggest these two runs tests:
 
 * **Unusually long runs**: A run is one or more consecutive data points on the same side of the centre line. Data points that fall directly on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately $log_2(n)+3$ (rounded to the nearest integer), where $n$ is the number of useful data points (data points not on the centre line). For example, in a run chart with 24 useful data points a run of *more* than `round(log2(24) + 3)` = `r round(log2(24) + 3)` would suggest a shift in the process [@schilling2012].
 
