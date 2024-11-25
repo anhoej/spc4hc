@@ -228,7 +228,7 @@ On average, the delay time for these cases is 24 minutes. Three data points are 
 
 ### MR chart
 
-The MR chart plots the moving ranges of individual values. It is a companion to the I chart. Since moving ranges can always be zero but never negative, the MR chart has no lower control limit.
+The MR chart plots the moving ranges, that is, the absolute pairwise differences of neighbouring data points. It is a companion to the I chart. Since moving ranges can always be zero but never negative, the MR chart has no lower control limit.
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 60), {
