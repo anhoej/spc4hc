@@ -45,16 +45,13 @@ editor_options:
     - T Charts for Time Between Events
     - G Charts for Opportunities Between Cases
     - Bernoulli CUSUM charts for binary data
-1. Prime Charts for Count Data with Very Large Sample Sizes
+1. Dual charting
+1. Prime Charts for Count Data with Very Large Subgroups
 1. Screened I Chart (eliminating freak moving ranges before calculating limits)
 1. Improved (normalised) I chart
 1. Improved Runs Analysis Using the Bestbox and Cutbox approaches
 1. CUSUM and EWMA Charts
-1. Dual charting
-1. When to Transform Data Before Plotting
-1. High Volume Data
-1. Scaling Up Charts (technical issues, tabular charts, grids)
-1. Multivariate charts
+1. ??? Multivariate charts ???
 
 ## Part 5: Best Practices and Tips {-}
 
@@ -62,13 +59,16 @@ editor_options:
     - Automating production of SPC charts
     - Engaging stakeholders
     - Continuous monitoring and improvement.
-    - Problems with SPC (challenges)
+    - Problems and challenges with SPC
 1. Common Pitfalls to Avoid
     - Data issues, misinterpretation of charts
     - Overreacting to common cause variation (over-sensitive runs rules, too tight control limits)
     - Automating recalculation of control limits
     - One-to-one relation between PDSA cycles and dots on the plot
 1. A Note on Rational Subgrouping and Sampling
+1. When to Transform Data Before Plotting
+1. High Volume Data
+1. Scaling Up Charts (technical issues, tabular charts, grids)
 
 ## Part 6: Conclusion and Final Thoughts {-}
 
@@ -81,9 +81,9 @@ editor_options:
 ## Appendices {-}
 
 a. Included Data Sets
+a. A Note on R
 a. Basic Statistical Concepts
 a. Diagnostic Properties of SPC Charts (Two Types of Errors When Using SPC)
-a. Introducing R
 a. Table of Critical Values for Longest Runs and Number of Crossings
 a. Resources and Further Readings
 a. Glossary of Terms
