@@ -45,13 +45,10 @@ editor_options:
     - T Charts for Time Between Events
     - G Charts for Opportunities Between Cases
     - Bernoulli CUSUM charts for binary data
+1. Screened I Chart (eliminating freak moving ranges before calculating limits)
 1. Dual charting
 1. Prime Charts for Count Data with Very Large Subgroups
-1. Screened I Chart (eliminating freak moving ranges before calculating limits)
 1. Improved (normalised) I chart
-1. Improved Runs Analysis Using the Bestbox and Cutbox approaches
-1. CUSUM and EWMA Charts
-1. ??? Multivariate charts ???
 
 ## Part 5: Best Practices and Tips {-}
 
@@ -73,6 +70,7 @@ editor_options:
 ## Part 6: Conclusion and Final Thoughts {-}
 
 1. Summary of Key Points
+    - jfældsajfsaækf
 1. The Control Charts vs Run Charts Debate
 1. Emerging trends in SPC and healthcare analytics
 1. Encouragement for Continuous Learning and Application
@@ -88,6 +86,13 @@ a. Table of Critical Values for Longest Runs and Number of Crossings
 a. Resources and Further Readings
 a. Glossary of Terms
 
+----
+
+- Ideas for chapters / topics
+    - Improved Runs Analysis Using the Bestbox and Cutbox approaches
+    - CUSUM and EWMA Charts
+    - Multivariate charts
+    
 ----
 
 - Ideas for papers:
