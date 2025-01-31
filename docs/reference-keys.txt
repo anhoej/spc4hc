@@ -118,6 +118,9 @@ data-sets
 stat-concepts
 diagnostics
 quantifying-diagnostic-errors-of-spc-charts
-r-intro
+r-notes
+data-structures-and-types
+importing-data-from-text-files
+manipulating-data-frames
 runs-limits
 resources

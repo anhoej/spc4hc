@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>C Two types of errors when using SPC | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>D Notes on R | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="C Two types of errors when using SPC | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="D Notes on R | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="C Two types of errors when using SPC | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="D Notes on R | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="stat-concepts.html"/>
-<link rel="next" href="r-notes.html"/>
+<link rel="prev" href="diagnostics.html"/>
+<link rel="next" href="runs-limits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -351,19 +351,73 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="diagnostics" class="section level1 hasAnchor" number="13">
-<h1><span class="header-section-number">C</span> Two types of errors when using SPC<a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
+<div id="r-notes" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">D</span> Notes on R<a href="r-notes.html#r-notes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting.</p>
+<p>First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting.</p>
+<div id="data-structures-and-types" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">D.1</span> Data structures and types<a href="r-notes.html#data-structures-and-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The simplest data structure in R is the <strong>vector</strong>: zero or more data elements of the same type. Data come in several basic types. We are mainly concerned with logical, numeric and character values. Date and datetime values, which are especially important in SPC, are basically just numeric values representing the number of days (dates) or seconds (datetimes) since the beginning of the year 1970.</p>
+<p>The <strong>data frame</strong> is (for our purpose) probably the most important data structure in R. Data frames are collections of vectors that may be of different types but are all of the same length. Think matrix or table with rows and columns where each row represents an observation, each column represents a variable, and each cell represents a data value. All rows and all columns have the same length, and all cells have values (or NA for missing values).</p>
+</div>
+<div id="importing-data-from-text-files" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">D.2</span> Importing data from text files<a href="r-notes.html#importing-data-from-text-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When importing data into R from text files using one of the base R read.* functions data are returned as data frames.</p>
+<p>For this book all data sets are provided as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the “bacteremia.csv” file looks like this:</p>
+<pre><code># Bacteremia
+# 
+# Hospital acquired and all cause bacteremias and 30 days mortality
+# 
+# Variables:
+#   month (date): month of infection
+#   ha_infections (numeric): number of hospital acquired infections
+#   risk_days (numeric): number of patient days without infection
+#   deaths (numeric): 30-day mortality after all-cause infection
+#   patients (numeric): number of patients with all-cause infection
+
+month,ha_infections,risk_days,deaths,patients
+2017-01-01,24,32421,23,100
+2017-02-01,29,29349,22,105
+2017-03-01,26,32981,13,99
+2017-04-01,16,29588,14,85
+2017-05-01,28,30856,17,98
+2017-06-01,16,30544,15,85
+...</code></pre>
+<p>Lines beginning with # represent comments. The first non-blank line after the comments holds the variable names, and the the rest of the file contains the data values separated by commas (,).</p>
+<p>Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to never store dates in any other format than this, which also happens to be the international ISO standard for writing dates. ISO dates also have the advantage of being easily recognised as dates by R (and other statistical software).</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="r-notes.html#cb76-1" tabindex="-1"></a><span class="co"># read data from file and assign to variable named d</span></span>
+<span id="cb76-2"><a href="r-notes.html#cb76-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/bacteremia.csv&#39;</span>,</span>
+<span id="cb76-3"><a href="r-notes.html#cb76-3" tabindex="-1"></a>         <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb76-4"><a href="r-notes.html#cb76-4" tabindex="-1"></a>         <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="at">month         =</span> <span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb76-5"><a href="r-notes.html#cb76-5" tabindex="-1"></a>                        <span class="at">ha_infections =</span> <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb76-6"><a href="r-notes.html#cb76-6" tabindex="-1"></a>                        <span class="at">risk_days     =</span> <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb76-7"><a href="r-notes.html#cb76-7" tabindex="-1"></a>                        <span class="at">deaths        =</span> <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb76-8"><a href="r-notes.html#cb76-8" tabindex="-1"></a>                        <span class="at">patients      =</span> <span class="st">&#39;integer&#39;</span>))</span>
+<span id="cb76-9"><a href="r-notes.html#cb76-9" tabindex="-1"></a></span>
+<span id="cb76-10"><a href="r-notes.html#cb76-10" tabindex="-1"></a><span class="co"># print the first six lines of data</span></span>
+<span id="cb76-11"><a href="r-notes.html#cb76-11" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>##        month ha_infections risk_days deaths patients
+## 1 2017-01-01            24     32421     23      100
+## 2 2017-02-01            29     29349     22      105
+## 3 2017-03-01            26     32981     13       99
+## 4 2017-04-01            16     29588     14       85
+## 5 2017-05-01            28     30856     17       98
+## 6 2017-06-01            16     30544     15       85</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="r-notes.html#cb78-1" tabindex="-1"></a><span class="co"># print the data structure</span></span>
+<span id="cb78-2"><a href="r-notes.html#cb78-2" tabindex="-1"></a><span class="fu">str</span>(d)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    24 obs. of  5 variables:
+##  $ month        : Date, format: &quot;2017-01-01&quot; &quot;2017-02-01&quot; ...
+##  $ ha_infections: int  24 29 26 16 28 16 14 18 27 30 ...
+##  $ risk_days    : int  32421 29349 32981 29588 30856 30544 26482 27637 30495 30600 ...
+##  $ deaths       : int  23 22 13 14 17 15 15 25 21 24 ...
+##  $ patients     : int  100 105 99 85 98 85 89 99 103 86 ...</code></pre>
+</div>
+<div id="manipulating-data-frames" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">D.3</span> Manipulating data frames<a href="r-notes.html#manipulating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>Error 1 (false positive): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
-<li><p>Error 2 (false negative): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
+<li>add variable</li>
+<li>aggregating data</li>
 </ul>
-<p>Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from mistake 1. And if all data were treated as common cause variation, this maximises the losses from mistake 2. Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart concluded that it was best to make either mistake only rarely and that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to ± three standard deviations from the mean provides a reasonable balance between making the two types of mistakes.</p>
-<div id="quantifying-diagnostic-errors-of-spc-charts" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">C.1</span> Quantifying diagnostic errors of SPC charts<a href="diagnostics.html#quantifying-diagnostic-errors-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>ARL</p>
-<p>Likelihood ratios</p>
-<!-- The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgement which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention. We discuss this later in the book. -->
 
 </div>
 </div>
@@ -372,8 +426,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="stat-concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-notes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="diagnostics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="runs-limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

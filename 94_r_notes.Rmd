@@ -1,0 +1,52 @@
+# Notes on R {#r-notes}
+
+This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting.
+
+First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting.
+
+## Data structures and types
+
+The simplest data structure in R is the **vector**: zero or more data elements of the same type. Data come in several basic types. We are mainly concerned with logical, numeric and character values. Date and datetime values, which are especially important in SPC, are basically just numeric values representing the number of days (dates) or seconds (datetimes) since the beginning of the year 1970.
+
+The **data frame** is (for our purpose) probably the most important data structure in R. Data frames are collections of vectors that may be of different types but are all of the same length. Think matrix or table with rows and columns where each row represents an observation, each column represents a variable, and each cell represents a data value. All rows and all columns have the same length, and all cells have values (or NA for missing values).
+
+## Importing data from text files
+
+When importing data into R from text files using one of the base R read.* functions data are returned as data frames.
+
+For this book all data sets are provided as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the "bacteremia.csv" file looks like this:
+
+```{r, comment='', echo=FALSE}
+readLines('data/bacteremia.csv', 18) |> 
+  cat( '...', sep = '\n')
+```
+Lines beginning with # represent comments. The first non-blank line after the comments holds the variable names, and the the rest of the file contains the data values separated by commas (,).
+
+Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to never store dates in any other format than this, which also happens to be the international ISO standard for writing dates. ISO dates also have the advantage of being easily recognised as dates by R (and other statistical software).
+
+
+
+```{r}
+# read data from file and assign to variable named d
+d <- read.csv('data/bacteremia.csv',
+         comment.char = '#',
+         colClasses = c(month         = 'Date',
+                        ha_infections = 'integer',
+                        risk_days     = 'integer',
+                        deaths        = 'integer',
+                        patients      = 'integer'))
+
+# print the first six lines of data
+head(d)
+
+# print the data structure
+str(d)
+```
+
+
+
+## Manipulating data frames
+
+* add variable
+* aggregating data
+    
