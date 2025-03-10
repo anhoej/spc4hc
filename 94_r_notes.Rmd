@@ -1,40 +1,81 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Notes on R {#r-notes}
 
-This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting.
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/3,
+                      echo    = TRUE,
+                      comment = '',
+                      dev     = 'svg')
 
-First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting.
+library(qicharts2)
+```
 
-## Data structures and types
+This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting using only base R functions. We are very well aware of new and modern approaches to data manipulation from the tidyverse and data.table packages -- we use these tool ourselves every day. But we find it valuable to be able to handle data in base R. Especially when sharing code or building R packages it is generally a good strategy to avoid unnecessary dependencies on external packages.
 
-The simplest data structure in R is the **vector**: zero or more data elements of the same type. Data come in several basic types. We are mainly concerned with logical, numeric and character values. Date and datetime values, which are especially important in SPC, are basically just numeric values representing the number of days (dates) or seconds (datetimes) since the beginning of the year 1970.
+First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting. Finally, we give some useful tips and tricks
+
+## Data structures and classes
+
+The simplest data structure in R is the **vector**: zero or more data elements of the same type. Data come in several basic types (**classes**). We are mainly concerned with logical, numeric and character values. Date and datetime values, which are especially important in SPC, are basically just numeric values representing the number of days (dates) or seconds (datetimes) since the beginning of the year 1970.
 
 The **data frame** is (for our purpose) probably the most important data structure in R. Data frames are collections of vectors that may be of different types but are all of the same length. Think matrix or table with rows and columns where each row represents an observation, each column represents a variable, and each cell represents a data value. All rows and all columns have the same length, and all cells have values (or NA for missing values).
 
+## Plot-ready data frames
+
+When plotting time series data including spc data, R usually expects two vectors, one for the x axis representing the subgroups, which in its simplest form may be a sequence of numbers or dates and one for the y axis representing the indicator values to be plotted. To correctly calculate the control limits in spc charts, we often need a third variable representing the denominator of the count data in the y variable. Thus, a generic plot-ready data set for making an spc chart may look like this.
+
+```{r echo=FALSE, comment=''}
+set.seed(1)
+d <- data.frame(x = seq(Sys.Date() - 12, by = 'day', length.out = 12),
+                y = rbinom(12, 30, 0.5),
+                n = as.integer(round(runif(12, 25, 35))))
+
+tibble::tibble(d)
+# knitr::kable(d, booktabs = T)
+```
+
+To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:
+
+```{r}
+qic(x, y, n, 
+    data  = d, 
+    chart = 'p')
+```
+
+To correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date or POSIXct).
+
 ## Importing data from text files
 
-When importing data into R from text files using one of the base R read.* functions data are returned as data frames.
+When importing data into R from text files using one of the base R read.* functions, data are returned as data frames.
 
-For this book all data sets are provided as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the "bacteremia.csv" file looks like this:
+For this book, we provide all data sets as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the "bacteremia.csv" file looks like this:
 
 ```{r, comment='', echo=FALSE}
 readLines('data/bacteremia.csv', 18) |> 
   cat( '...', sep = '\n')
 ```
-Lines beginning with # represent comments. The first non-blank line after the comments holds the variable names, and the the rest of the file contains the data values separated by commas (,).
 
-Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to never store dates in any other format than this, which also happens to be the international ISO standard for writing dates. ISO dates also have the advantage of being easily recognised as dates by R (and other statistical software).
+Lines beginning with a hash symbol (#) represent comments. The first non-blank line after the comments holds the variable names, and the the rest of the file contains the data values separated by commas (,).
 
+Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to always store dates in this format, which also happens to be the international ISO standard for writing dates. ISO dates, when used in file names, sort correctly and also have the advantage of being easily recognised as dates by R (and other statistical software).
 
+If dates are stored in any other format (e.g. dd-mm-yyyy), we may need to import them as character values and later convert them to dates using the as.Date() function.
+
+When reading data in R programmes that are used in production systems, we recommend that you specify the data type (class) of each column using the colClasses argument.
 
 ```{r}
 # read data from file and assign to variable named d
 d <- read.csv('data/bacteremia.csv',
-         comment.char = '#',
-         colClasses = c(month         = 'Date',
-                        ha_infections = 'integer',
-                        risk_days     = 'integer',
-                        deaths        = 'integer',
-                        patients      = 'integer'))
+              comment.char = '#',
+              colClasses = c(month         = 'Date',
+                             ha_infections = 'integer',
+                             risk_days     = 'integer',
+                             deaths        = 'integer',
+                             patients      = 'integer'))
 
 # print the first six lines of data
 head(d)
@@ -43,10 +84,59 @@ head(d)
 str(d)
 ```
 
-
-
 ## Manipulating data frames
 
-* add variable
-* aggregating data
-    
+We will import the [c. section][Ceasearian section delay] data set to demonstrate adding variables and aggregating data.
+
+```{r}
+d <- read.csv('data/csection_delay.csv',
+              comment.char = '#',
+              colClasses = c(datetime = 'POSIXct',
+                             month    = 'Date',
+                             delay    = 'integer'))
+
+head(d)
+```
+
+The c. section data contains `r nrow(d)` rows representing individual c. sections. Our aim for this exercise is to reduce data to a plot ready data frame with one row per month and the number of c. section that were on target and the total number of c. sections.
+
+The delay variable is the number of minutes from decision to perform a c. section to delivery og the baby. The standard target value for grade 2 c. sections is less than 30 minutes. If we want to plot the proportion of c. sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
+
+### Adding variables to data frames
+
+```{r}
+d$ontime <- d$delay < 30  # Dichotomise delays.
+
+head(d)
+```
+
+### Aggregating data frames
+
+Then we aggregate (or summarise) data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list. Finally, we combine the groups back into a data frame again.
+
+```{r}
+d2 <- split(d, d$month)                  # Split data frame by month.
+d2 <- lapply(d2, function(i) {           # Apply summaries to each group.
+  data.frame(month     = i$month[1],
+             n         = nrow(i),
+             n_ontime  = sum(i$ontime))
+})
+d2 <- do.call(rbind, d2)                 # Combine groups into data frame.
+rownames(d2) <- NULL                     # Remove row names (cosmetic only).
+
+str(d2)
+head(d2)
+```
+
+The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them -- RTD (read the documentation).
+
+The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or table.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages. 
+
+## Tips and tricks
+
+### Cutting dates and datetimes
+
+### Getting age from date of birth
+
+### Naming files and variables
+

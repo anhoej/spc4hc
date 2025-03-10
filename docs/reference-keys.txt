@@ -119,8 +119,15 @@ stat-concepts
 diagnostics
 quantifying-diagnostic-errors-of-spc-charts
 r-notes
-data-structures-and-types
+data-structures-and-classes
+plot-ready-data-frames
 importing-data-from-text-files
 manipulating-data-frames
+adding-variables-to-data-frames
+aggregating-data-frames
+tips-and-tricks
+cutting-dates-and-datetimes
+getting-age-from-date-of-birth
+naming-files-and-variables
 runs-limits
 resources
