@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # (APPENDIX) Appendices {-}
 
 # Data Sets {#data-sets}
@@ -30,7 +35,7 @@ l <- lapply(f, function(x) {
 
   l[1] <- paste('###', l[1], '{-}')
   l <- c('', l)
-
+  
   l
 }) |>
   unlist() |> 

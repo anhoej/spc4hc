@@ -121,8 +121,8 @@ d2 <- lapply(d2, function(i) {           # Apply summaries to each group.
              n         = nrow(i),
              n_ontime  = sum(i$ontime))
 })
-d2 <- do.call(rbind, d2)                 # Combine groups into data frame.
-rownames(d2) <- NULL                     # Remove row names (cosmetic only).
+d2 <- do.call(rbind, c(d2, make.row.names = FALSE))                 # Combine groups into data frame.
+# rownames(d2) <- NULL                     # Remove row names (cosmetic only).
 
 str(d2)
 head(d2)

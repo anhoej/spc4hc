@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>H  | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>B  | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="H  | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="B  | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="H  | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="B  | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-01-25" />
+<meta name="date" content="2025-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="importing-reading-data-from-files.html"/>
-<link rel="next" href="runs-limits.html"/>
+<link rel="prev" href="data-sets.html"/>
+<link rel="next" href="stat-concepts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -214,32 +214,45 @@
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
 <ul>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#reading-csv-files"><i class="fa fa-check"></i>Reading csv files</a></li>
-<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#data-summaries"><i class="fa fa-check"></i>Data summaries</a></li>
-</ul></li>
-<li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
-<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#data-summaries"><i class="fa fa-check"></i>Data summaries</a>
 <ul>
-<li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-diagnostic-errors-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying diagnostic errors of SPC charts</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i>Bacteremia</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> notes on R</a></li>
-<li class="chapter" data-level="E" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>E</b> Data types</a>
+</ul></li>
+<li class="chapter" data-level="B" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>B</b> </a>
 <ul>
-<li class="chapter" data-level="E.1" data-path="data-types.html"><a href="data-types.html#logical-boolean"><i class="fa fa-check"></i><b>E.1</b> logical (boolean)</a></li>
-<li class="chapter" data-level="E.2" data-path="data-types.html"><a href="data-types.html#numbers"><i class="fa fa-check"></i><b>E.2</b> numbers</a></li>
-<li class="chapter" data-level="E.3" data-path="data-types.html"><a href="data-types.html#dates-and-datetimes"><i class="fa fa-check"></i><b>E.3</b> dates and datetimes</a></li>
-<li class="chapter" data-level="E.4" data-path="data-types.html"><a href="data-types.html#text"><i class="fa fa-check"></i><b>E.4</b> text</a></li>
-<li class="chapter" data-level="E.5" data-path="data-types.html"><a href="data-types.html#factors-categorical"><i class="fa fa-check"></i><b>E.5</b> factors (categorical)</a></li>
+<li class="chapter" data-level="" data-path="section.html"><a href="section.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
+<li class="chapter" data-level="" data-path="section.html"><a href="section.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
+<li class="chapter" data-level="" data-path="section.html"><a href="section.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
+<li class="chapter" data-level="" data-path="section.html"><a href="section.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
 </ul></li>
-<li class="chapter" data-level="F" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>F</b> Data structures</a>
+<li class="chapter" data-level="C" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>C</b> Basic Statistical Concepts</a></li>
+<li class="chapter" data-level="D" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>D</b> Two types of errors when using SPC</a>
 <ul>
-<li class="chapter" data-level="F.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>F.1</b> vectors</a></li>
-<li class="chapter" data-level="F.2" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>F.2</b> lists</a></li>
-<li class="chapter" data-level="F.3" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>F.3</b> data frames</a></li>
+<li class="chapter" data-level="D.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-diagnostic-errors-of-spc-charts"><i class="fa fa-check"></i><b>D.1</b> Quantifying diagnostic errors of SPC charts</a></li>
 </ul></li>
-<li class="chapter" data-level="G" data-path="importing-reading-data-from-files.html"><a href="importing-reading-data-from-files.html"><i class="fa fa-check"></i><b>G</b> Importing (reading) data from files</a></li>
-<li class="chapter" data-level="H" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>H</b> </a></li>
-<li class="chapter" data-level="I" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>I</b> Critical Values for Longest Runs and Number of Crossings</a></li>
-<li class="chapter" data-level="J" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>J</b> Resources and Further Readings</a></li>
+<li class="chapter" data-level="E" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>E</b> Notes on R</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="r-notes.html"><a href="r-notes.html#data-structures-and-classes"><i class="fa fa-check"></i><b>E.1</b> Data structures and classes</a></li>
+<li class="chapter" data-level="E.2" data-path="r-notes.html"><a href="r-notes.html#plot-ready-data-frames"><i class="fa fa-check"></i><b>E.2</b> Plot-ready data frames</a></li>
+<li class="chapter" data-level="E.3" data-path="r-notes.html"><a href="r-notes.html#importing-data-from-text-files"><i class="fa fa-check"></i><b>E.3</b> Importing data from text files</a></li>
+<li class="chapter" data-level="E.4" data-path="r-notes.html"><a href="r-notes.html#manipulating-data-frames"><i class="fa fa-check"></i><b>E.4</b> Manipulating data frames</a>
+<ul>
+<li class="chapter" data-level="E.4.1" data-path="r-notes.html"><a href="r-notes.html#adding-variables-to-data-frames"><i class="fa fa-check"></i><b>E.4.1</b> Adding variables to data frames</a></li>
+<li class="chapter" data-level="E.4.2" data-path="r-notes.html"><a href="r-notes.html#aggregating-data-frames"><i class="fa fa-check"></i><b>E.4.2</b> Aggregating data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="E.5" data-path="r-notes.html"><a href="r-notes.html#tips-and-tricks"><i class="fa fa-check"></i><b>E.5</b> Tips and tricks</a>
+<ul>
+<li class="chapter" data-level="E.5.1" data-path="r-notes.html"><a href="r-notes.html#cutting-dates-and-datetimes"><i class="fa fa-check"></i><b>E.5.1</b> Cutting dates and datetimes</a></li>
+<li class="chapter" data-level="E.5.2" data-path="r-notes.html"><a href="r-notes.html#getting-age-from-date-of-birth"><i class="fa fa-check"></i><b>E.5.2</b> Getting age from date of birth</a></li>
+<li class="chapter" data-level="E.5.3" data-path="r-notes.html"><a href="r-notes.html#naming-files-and-variables"><i class="fa fa-check"></i><b>E.5.3</b> Naming files and variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>F</b> Critical Values for Longest Runs and Number of Crossings</a></li>
+<li class="chapter" data-level="G" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>G</b> Resources and Further Readings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -263,17 +276,77 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section" class="section level1" number="19">
-<h1><span class="header-section-number">H</span> </h1>
+<div id="section" class="section level1" number="13">
+<h1><span class="header-section-number">B</span> </h1>
+<p>Time to grade 2 C-section
+#
+File: csection_delay.csv</p>
+<p>Variables:</p>
+<ul>
+<li>datetime (datetime): date and time of delivery</li>
+<li>month (date): first day of month</li>
+<li>delay (numeric): time in minutes between decision and delivery</li>
+</ul>
+<div id="emergency-admission-mortality" class="section level3 unnumbered hasAnchor">
+<h3>Emergency admission mortality<a href="section.html#emergency-admission-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>7-day mortality after emergency admission</p>
+<p>File: emergency_admission.csv</p>
+<p>Variables:</p>
+<ul>
+<li>month (date): first day of month</li>
+<li>deaths (numeric): number of deaths within 7 days after emergency admission</li>
+<li>admissions (numeric): number of emergency admissions</li>
+</ul>
+</div>
+<div id="on-time-ct" class="section level3 unnumbered hasAnchor">
+<h3>On-time CT<a href="section.html#on-time-ct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Patients with acute abdomen CT scanned within 3 hours after arrival</p>
+<p>File: ontime_ct.csv</p>
+<p>Variables:</p>
+<ul>
+<li>month (date): first day of month</li>
+<li>ct_on_time (numeric): number of patients scanned within 3 hours</li>
+<li>cases (numeric): number of patients with acute abdomen</li>
+</ul>
+</div>
+<div id="radiation-doses" class="section level3 unnumbered hasAnchor">
+<h3>Radiation doses<a href="section.html#radiation-doses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Radiation doses used for renography</p>
+<p>File: renography_doses.csv</p>
+<p>Variables:</p>
+<ul>
+<li>date (date): date of renography</li>
+<li>week (date): first day of week</li>
+<li>dose (numeric): radiation dose in megabequerel</li>
+</ul>
+</div>
+<div id="robson-group-1-births" class="section level3 unnumbered hasAnchor">
+<h3>Robson group 1 births<a href="section.html#robson-group-1-births" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Outcomes and complications of Robson group 1 births: first time
+pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
+<p>File: robson1_births.csv</p>
+<p>Variables:</p>
+<ul>
+<li>datetime (datetime): data and time of birth</li>
+<li>biweek (date): first day of biweekly period</li>
+<li>csect (logical): delivery by C-section</li>
+<li>cup (logical): delivery by vacuum extraction</li>
+<li>length (numeric): baby length in cm</li>
+<li>weight (numeric): baby weight in kg</li>
+<li>apgar (numeric): apgar score at 5 minutes</li>
+<li>ph (numeric): arterial umbilical chord pH</li>
+<li>asphyxia (logical): ph &lt; 7 or missing ph and apgar &lt; 7</li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="importing-reading-data-from-files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="runs-limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-sets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stat-concepts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -287,42 +360,42 @@
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>
