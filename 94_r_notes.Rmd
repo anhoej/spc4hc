@@ -46,11 +46,11 @@ qic(x, y, n,
     chart = 'p')
 ```
 
-To correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date or POSIXct).
+To correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).
 
 ## Importing data from text files
 
-When importing data into R from text files using one of the base R read.* functions, data are returned as data frames.
+When importing data from a text file into R using one of the base R read.* functions, data are returned as a data frame.
 
 For this book, we provide all data sets as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the "bacteremia.csv" file looks like this:
 
@@ -71,11 +71,11 @@ When reading data in R programmes that are used in production systems, we recomm
 # read data from file and assign to variable named d
 d <- read.csv('data/bacteremia.csv',
               comment.char = '#',
-              colClasses = c(month         = 'Date',
-                             ha_infections = 'integer',
-                             risk_days     = 'integer',
-                             deaths        = 'integer',
-                             patients      = 'integer'))
+              colClasses   = c(month         = 'Date',
+                               ha_infections = 'integer',
+                               risk_days     = 'integer',
+                               deaths        = 'integer',
+                               patients      = 'integer'))
 
 # print the first six lines of data
 head(d)
@@ -91,9 +91,9 @@ We will import the [c. section][Ceasearian section delay] data set to demonstrat
 ```{r}
 d <- read.csv('data/csection_delay.csv',
               comment.char = '#',
-              colClasses = c(datetime = 'POSIXct',
-                             month    = 'Date',
-                             delay    = 'integer'))
+              colClasses   = c(datetime = 'POSIXct',
+                               month    = 'Date',
+                               delay    = 'integer'))
 
 head(d)
 ```
@@ -112,25 +112,25 @@ head(d)
 
 ### Aggregating data frames
 
-Then we aggregate (or summarise) data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list. Finally, we combine the groups back into a data frame again.
+Then we aggregate (or summarise) data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list collapsing into a one-row data frame. Finally, we combine elements back into a data frame again.
 
 ```{r}
-d2 <- split(d, d$month)                  # Split data frame by month.
-d2 <- lapply(d2, function(i) {           # Apply summaries to each group.
+d2 <- split(d, d$month)                      # Split data frame by month.
+d2 <- lapply(d2, function(i) {               # Apply summaries to each group.
   data.frame(month     = i$month[1],
              n         = nrow(i),
              n_ontime  = sum(i$ontime))
 })
-d2 <- do.call(rbind, c(d2, make.row.names = FALSE))                 # Combine groups into data frame.
-# rownames(d2) <- NULL                     # Remove row names (cosmetic only).
+d2 <- do.call(rbind,                          # Combine groups into data frame.
+              c(d2, make.row.names = FALSE))
 
 str(d2)
 head(d2)
 ```
 
-The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them -- RTD (read the documentation).
+The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them -- read the documentation.
 
-The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or table.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages. 
+The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or table.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.
 
 ## Tips and tricks
 
