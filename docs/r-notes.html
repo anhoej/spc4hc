@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D Notes on R | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D Notes on R | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-03-23" />
+<meta name="date" content="2025-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -377,18 +377,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-03-11    13    32
- 2 2025-03-12    14    29
- 3 2025-03-13    16    33
- 4 2025-03-14    19    30
- 5 2025-03-15    13    32
- 6 2025-03-16    18    35
- 7 2025-03-17    19    29
- 8 2025-03-18    16    33
- 9 2025-03-19    16    34
-10 2025-03-20    11    27
-11 2025-03-21    13    32
-12 2025-03-22    12    26</code></pre>
+ 1 2025-04-12    13    32
+ 2 2025-04-13    14    29
+ 3 2025-04-14    16    33
+ 4 2025-04-15    19    30
+ 5 2025-04-16    13    32
+ 6 2025-04-17    18    35
+ 7 2025-04-18    19    29
+ 8 2025-04-19    16    33
+ 9 2025-04-20    16    34
+10 2025-04-21    11    27
+11 2025-04-22    13    32
+12 2025-04-23    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="r-notes.html#cb76-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb76-2"><a href="r-notes.html#cb76-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
@@ -486,27 +486,29 @@ month,ha_infections,risk_days,deaths,patients
 <h3><span class="header-section-number">D.4.2</span> Aggregating data frames<a href="r-notes.html#aggregating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Then we aggregate (or summarise) data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list collapsing into a one-row data frame. Finally, we combine elements back into a data frame again.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="r-notes.html#cb86-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">split</span>(d, d<span class="sc">$</span>month)                      <span class="co"># Split data frame by month.</span></span>
-<span id="cb86-2"><a href="r-notes.html#cb86-2" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(d2, <span class="cf">function</span>(i) {               <span class="co"># Apply summaries to each group.</span></span>
-<span id="cb86-3"><a href="r-notes.html#cb86-3" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">month     =</span> i<span class="sc">$</span>month[<span class="dv">1</span>],</span>
-<span id="cb86-4"><a href="r-notes.html#cb86-4" tabindex="-1"></a>             <span class="at">n         =</span> <span class="fu">nrow</span>(i),</span>
-<span id="cb86-5"><a href="r-notes.html#cb86-5" tabindex="-1"></a>             <span class="at">n_ontime  =</span> <span class="fu">sum</span>(i<span class="sc">$</span>ontime))</span>
-<span id="cb86-6"><a href="r-notes.html#cb86-6" tabindex="-1"></a>})</span>
-<span id="cb86-7"><a href="r-notes.html#cb86-7" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind,                          <span class="co"># Combine groups into data frame.</span></span>
-<span id="cb86-8"><a href="r-notes.html#cb86-8" tabindex="-1"></a>              <span class="fu">c</span>(d2, <span class="at">make.row.names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb86-9"><a href="r-notes.html#cb86-9" tabindex="-1"></a></span>
-<span id="cb86-10"><a href="r-notes.html#cb86-10" tabindex="-1"></a><span class="fu">str</span>(d2)</span></code></pre></div>
-<pre><code>&#39;data.frame&#39;:   24 obs. of  3 variables:
- $ month   : Date, format: &quot;2016-01-01&quot; &quot;2016-02-01&quot; ...
- $ n       : int  7 11 11 9 8 5 7 12 7 12 ...
- $ n_ontime: int  7 9 10 9 8 4 5 12 6 11 ...</code></pre>
+<span id="cb86-2"><a href="r-notes.html#cb86-2" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(d2, <span class="cf">function</span>(x) {               <span class="co"># Apply summaries to each group.</span></span>
+<span id="cb86-3"><a href="r-notes.html#cb86-3" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">month     =</span> x<span class="sc">$</span>month[<span class="dv">1</span>],</span>
+<span id="cb86-4"><a href="r-notes.html#cb86-4" tabindex="-1"></a>             <span class="at">avg_delay =</span> <span class="fu">mean</span>(x<span class="sc">$</span>delay),</span>
+<span id="cb86-5"><a href="r-notes.html#cb86-5" tabindex="-1"></a>             <span class="at">n         =</span> <span class="fu">nrow</span>(x),</span>
+<span id="cb86-6"><a href="r-notes.html#cb86-6" tabindex="-1"></a>             <span class="at">n_ontime  =</span> <span class="fu">sum</span>(x<span class="sc">$</span>ontime))</span>
+<span id="cb86-7"><a href="r-notes.html#cb86-7" tabindex="-1"></a>})</span>
+<span id="cb86-8"><a href="r-notes.html#cb86-8" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind,                          <span class="co"># Combine groups into data frame.</span></span>
+<span id="cb86-9"><a href="r-notes.html#cb86-9" tabindex="-1"></a>              <span class="fu">c</span>(d2, <span class="at">make.row.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb86-10"><a href="r-notes.html#cb86-10" tabindex="-1"></a></span>
+<span id="cb86-11"><a href="r-notes.html#cb86-11" tabindex="-1"></a><span class="fu">str</span>(d2)</span></code></pre></div>
+<pre><code>&#39;data.frame&#39;:   24 obs. of  4 variables:
+ $ month    : Date, format: &quot;2016-01-01&quot; &quot;2016-02-01&quot; ...
+ $ avg_delay: num  23.9 24.5 22.5 22.7 22.5 ...
+ $ n        : int  7 11 11 9 8 5 7 12 7 12 ...
+ $ n_ontime : int  7 9 10 9 8 4 5 12 6 11 ...</code></pre>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="r-notes.html#cb88-1" tabindex="-1"></a><span class="fu">head</span>(d2)</span></code></pre></div>
-<pre><code>       month  n n_ontime
-1 2016-01-01  7        7
-2 2016-02-01 11        9
-3 2016-03-01 11       10
-4 2016-04-01  9        9
-5 2016-05-01  8        8
-6 2016-06-01  5        4</code></pre>
+<pre><code>       month avg_delay  n n_ontime
+1 2016-01-01  23.85714  7        7
+2 2016-02-01  24.45455 11        9
+3 2016-03-01  22.45455 11       10
+4 2016-04-01  22.66667  9        9
+5 2016-05-01  22.50000  8        8
+6 2016-06-01  22.00000  5        4</code></pre>
 <p>The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them – read the documentation.</p>
 <p>The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or table.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.</p>
 </div>
@@ -515,12 +517,80 @@ month,ha_infections,risk_days,deaths,patients
 <h2><span class="header-section-number">D.5</span> Tips and tricks<a href="r-notes.html#tips-and-tricks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="cutting-dates-and-datetimes" class="section level3 hasAnchor" number="14.5.1">
 <h3><span class="header-section-number">D.5.1</span> Cutting dates and datetimes<a href="r-notes.html#cutting-dates-and-datetimes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the C. section data set the month variable represents the time period of each delivery used for subgrouping data, that is counting events and cases per month. The month variable was created by “cutting” the datetime variable into monthly chunks.</p>
+<p>Converting dates and datetimes into time period – for example weeks, months or quarters – is a common task, not the least in SPC. It is easily done using the cut() function, which is a generic function with many uses. However, the syntax for cutting dates is poorly documented. To cut dates we use two arguments: first, the vector of date(time)s to be cut; second, the interval we want.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="r-notes.html#cb90-1" tabindex="-1"></a><span class="co"># R&#39;s date of birth</span></span>
+<span id="cb90-2"><a href="r-notes.html#cb90-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2000-02-29&#39;</span>)</span>
+<span id="cb90-3"><a href="r-notes.html#cb90-3" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>[1] &quot;2000-02-29&quot;</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="r-notes.html#cb92-1" tabindex="-1"></a><span class="co"># The first day of the month of R&#39;s date of birth</span></span>
+<span id="cb92-2"><a href="r-notes.html#cb92-2" tabindex="-1"></a><span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>)</span></code></pre></div>
+<pre><code>[1] 2000-02-01
+Levels: 2000-02-01</code></pre>
+<p>Notice that cut() returns a factor. We need to convert it back to a date:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="r-notes.html#cb94-1" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>))</span></code></pre></div>
+<pre><code>[1] &quot;2000-02-01&quot;</code></pre>
+<p>The breaks argument accepts a character string that qualifies for a time period, for example:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="r-notes.html#cb96-1" tabindex="-1"></a><span class="co"># Cutting to the first day of a week (monday)</span></span>
+<span id="cb96-2"><a href="r-notes.html#cb96-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;week&#39;</span>))</span></code></pre></div>
+<pre><code>[1] &quot;2000-02-28&quot;</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="r-notes.html#cb98-1" tabindex="-1"></a><span class="co"># The first day of biweekly periods</span></span>
+<span id="cb98-2"><a href="r-notes.html#cb98-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;2 weeks&#39;</span>))</span></code></pre></div>
+<pre><code>[1] &quot;2000-02-28&quot;</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="r-notes.html#cb100-1" tabindex="-1"></a><span class="co"># Quarter</span></span>
+<span id="cb100-2"><a href="r-notes.html#cb100-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;quarter&#39;</span>))</span></code></pre></div>
+<pre><code>[1] &quot;2000-01-01&quot;</code></pre>
+<p>Cutting dates is such a common task that we may want to make our own function:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="r-notes.html#cb102-1" tabindex="-1"></a>cutdate <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>) {</span>
+<span id="cb102-2"><a href="r-notes.html#cb102-2" tabindex="-1"></a>  <span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> breaks))</span>
+<span id="cb102-3"><a href="r-notes.html#cb102-3" tabindex="-1"></a>}</span>
+<span id="cb102-4"><a href="r-notes.html#cb102-4" tabindex="-1"></a></span>
+<span id="cb102-5"><a href="r-notes.html#cb102-5" tabindex="-1"></a><span class="fu">cutdate</span>(x)</span></code></pre></div>
+<pre><code>[1] &quot;2000-02-01&quot;</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="r-notes.html#cb104-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;week&#39;</span>)</span></code></pre></div>
+<pre><code>[1] &quot;2000-02-28&quot;</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="r-notes.html#cb106-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;quarter&#39;</span>)</span></code></pre></div>
+<pre><code>[1] &quot;2000-01-01&quot;</code></pre>
 </div>
 <div id="getting-age-from-date-of-birth" class="section level3 hasAnchor" number="14.5.2">
 <h3><span class="header-section-number">D.5.2</span> Getting age from date of birth<a href="r-notes.html#getting-age-from-date-of-birth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In healthcare we often need to know the patient’s age on a certain date. By “age” we usually mean a whole number of years since the patient’s date of birth. However, year is not a well defined unit of time, and age is really a continuous variable. Therefore, we are usually better off knowing the patient’s age in days, which in turn can always be converted to decimal or integer years if necessary.</p>
+<p>How old is R (at the time of writing)?</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="r-notes.html#cb108-1" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2025-04-24&#39;</span>)</span>
+<span id="cb108-2"><a href="r-notes.html#cb108-2" tabindex="-1"></a>r_dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2000-02-29&#39;</span>)</span>
+<span id="cb108-3"><a href="r-notes.html#cb108-3" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="r-notes.html#cb108-4" tabindex="-1"></a><span class="co"># calculate age in days (using parentheses to print result)</span></span>
+<span id="cb108-5"><a href="r-notes.html#cb108-5" tabindex="-1"></a>(age_in_days <span class="ot">&lt;-</span> today <span class="sc">-</span> r_dob)</span></code></pre></div>
+<pre><code>Time difference of 9186 days</code></pre>
+<p>When subtracting (or adding) dates we get back a difftime object. Usually we want to convert this to an integer:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="r-notes.html#cb110-1" tabindex="-1"></a><span class="co"># convert from difftime object to integer:</span></span>
+<span id="cb110-2"><a href="r-notes.html#cb110-2" tabindex="-1"></a>(age_in_days <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(age_in_days))</span></code></pre></div>
+<pre><code>[1] 9186</code></pre>
+<p>A calendar year is on average a little less than 365.25 days. We can converts age in days to age in years:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="r-notes.html#cb112-1" tabindex="-1"></a>(age_in_years <span class="ot">&lt;-</span> age_in_days <span class="sc">/</span> <span class="fl">365.25</span>)</span></code></pre></div>
+<pre><code>[1] 25.1499</code></pre>
+<p>Putting everything together:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="r-notes.html#cb114-1" tabindex="-1"></a>(age_in_years <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(today <span class="sc">-</span> r_dob) <span class="sc">/</span> <span class="fl">365.25</span>)</span></code></pre></div>
+<pre><code>[1] 25.1499</code></pre>
+<p>Notice that this calculation may be off by up to one day depending on the number and position of leap years. However, this is far better than relying on age expressed in whole years. The error is on the third decimal. So, when presenting data, rounding to one or two decimal places seems reasonable:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="r-notes.html#cb116-1" tabindex="-1"></a><span class="fu">round</span>(age_in_years, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>[1] 25.1</code></pre>
 </div>
 <div id="naming-files-and-variables" class="section level3 hasAnchor" number="14.5.3">
 <h3><span class="header-section-number">D.5.3</span> Naming files and variables<a href="r-notes.html#naming-files-and-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Book have been written about how to and how not to name variables and files. Here is our take on a minimal list of dos and don’ts. Feel free to make your own naming style – and stick to it. Mixing styles is a source of confusion not only for others but also for your future self.</p>
+<p><strong>Always</strong>:</p>
+<ul>
+<li>Use lower case letters (a-z) and numbers (0-9), e.g. “myvariable”, “myfile.R”.</li>
+<li>Separate words with “-”, “_“, or”.”, e.g.: my_variable, my-variable, my.variable.</li>
+<li>Use ISO format (yyyy-mm-dd) for dates, e.g.: “2001-02-03”.</li>
+<li>When numbering files, use use a suitable number of leading zeros, e.g. “myfile_01”, “myfile_02”, … “myfile_10”, “myfile_11”.</li>
+</ul>
+<p><strong>Newer</strong>:</p>
+<ul>
+<li>Use spaces, e.g.: “my variable”, “my file.R”.</li>
+<li>Versionize files using words like “final”, “finalfinal”, “new”, “draft”, etc. Instead, use ISO dates, e.g.: “my_file_2001-02-03.R”.</li>
+</ul>
 
 </div>
 </div>

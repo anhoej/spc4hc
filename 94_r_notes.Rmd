@@ -116,10 +116,11 @@ Then we aggregate (or summarise) data to one row per month. For this, we use the
 
 ```{r}
 d2 <- split(d, d$month)                      # Split data frame by month.
-d2 <- lapply(d2, function(i) {               # Apply summaries to each group.
-  data.frame(month     = i$month[1],
-             n         = nrow(i),
-             n_ontime  = sum(i$ontime))
+d2 <- lapply(d2, function(x) {               # Apply summaries to each group.
+  data.frame(month     = x$month[1],
+             avg_delay = mean(x$delay),
+             n         = nrow(x),
+             n_ontime  = sum(x$ontime))
 })
 d2 <- do.call(rbind,                          # Combine groups into data frame.
               c(d2, make.row.names = FALSE))
@@ -136,7 +137,102 @@ The split-apply-combine strategy may be performed a lot easier with functions fr
 
 ### Cutting dates and datetimes
 
+In the C. section data set the month variable represents the time period of each delivery used for subgrouping data, that is counting events and cases per month. The month variable was created by "cutting" the datetime variable into monthly chunks.
+
+Converting dates and datetimes into time period -- for example weeks, months or quarters -- is a common task, not the least in SPC. It is easily done using the cut() function, which is a generic function with many uses. However, the syntax for cutting dates is poorly documented. To cut dates we use two arguments: first, the vector of date(time)s to be cut; second, the interval we want.
+
+```{r}
+# R's date of birth
+x <- as.Date('2000-02-29')
+x
+
+# The first day of the month of R's date of birth
+cut(x, breaks = 'month')
+```
+
+Notice that cut() returns a factor. We need to convert it back to a date:
+ 
+```{r}
+as.Date(cut(x, breaks = 'month'))
+```
+ 
+The breaks argument accepts a character string that qualifies for a time period, for example:
+
+```{r}
+# Cutting to the first day of a week (monday)
+as.Date(cut(x, breaks = 'week'))
+
+# The first day of biweekly periods
+as.Date(cut(x, breaks = '2 weeks'))
+
+# Quarter
+as.Date(cut(x, breaks = 'quarter'))
+```
+
+Cutting dates is such a common task that we may want to make our own function:
+
+```{r}
+cutdate <- function(x, breaks = 'month') {
+  as.Date(cut(x, breaks = breaks))
+}
+
+cutdate(x)
+cutdate(x, 'week')
+cutdate(x, 'quarter')
+```
+
 ### Getting age from date of birth
+
+In healthcare we often need to know the patient's age on a certain date. By "age" we usually mean a whole number of years since the patient's date of birth. However, year is not a well defined unit of time, and age is really a continuous variable. Therefore, we are usually better off knowing the patient's age in days, which in turn can always be converted to decimal or integer years if necessary.
+
+How old is R (at the time of writing)?
+
+```{r}
+today <- as.Date('2025-04-24')
+r_dob <- as.Date('2000-02-29')
+
+# calculate age in days (using parentheses to print result)
+(age_in_days <- today - r_dob)
+```
+
+When subtracting (or adding) dates we get back a difftime object. Usually we want to convert this to an integer:
+
+```{r}
+# convert from difftime object to integer:
+(age_in_days <- as.integer(age_in_days))
+```
+
+
+A calendar year is on average a little less than 365.25 days. We can converts age in days to age in years:
+
+```{r}
+(age_in_years <- age_in_days / 365.25)
+```
+
+Putting everything together:
+
+```{r}
+(age_in_years <- as.integer(today - r_dob) / 365.25)
+```
+
+Notice that this calculation may be off by up to one day depending on the number and position of leap years. However, this is far better than relying on age expressed in whole years. The error is on the third decimal. So, when presenting data, rounding to one or two decimal places seems reasonable:
+
+```{r}
+round(age_in_years, 1)
+```
 
 ### Naming files and variables
 
+Book have been written about how to and how not to name variables and files. Here is our take on a minimal list of dos and don'ts. Feel free to make your own naming style -- and stick to it. Mixing styles is a source of confusion not only for others but also for your future self.
+
+**Always**:
+
+* Use lower case letters (a-z) and numbers (0-9), e.g. "myvariable", "myfile.R".
+* Separate words with "-", "_", or ".", e.g.: my_variable, my-variable, my.variable.
+* Use ISO format (yyyy-mm-dd) for dates, e.g.: "2001-02-03".
+* When numbering files, use use a suitable number of leading zeros, e.g. "myfile_01", "myfile_02", ... "myfile_10", "myfile_11".
+
+**Newer**:
+
+* Use spaces, e.g.: "my variable", "my file.R".
+* Versionize files using words like "final", "finalfinal", "new", "draft", etc. Instead, use ISO dates, e.g.: "my_file_2001-02-03.R".
