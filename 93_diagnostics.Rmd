@@ -2,16 +2,63 @@
 
 Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).
 
-* Error 1 (false positive): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process. 
+* False positive (type 1 error): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process. 
 
-* Error 2 (false negative): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.
+* False negative (type 2 eroor): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.
 
-Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from mistake 1. And if all data were treated as common cause variation, this maximises the losses from mistake 2.  Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart concluded that it was best to make either mistake only rarely and that this depended largely upon the costs of looking unnecessarily for special cause variation.  Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to ± three standard deviations from the mean provides a reasonable balance between making the two types of mistakes.
+Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from false positives. And if all data were treated as common cause variation, this maximises the losses from false negatives.
+
+Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart sought a strategy to make either mistake only rarely and concluded that the this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to three standard deviations below and above the mean provides a reasonable balance between making the two types of mistakes.
 
 ## Quantifying diagnostic errors of SPC charts
 
-ARL
+### Average run length
 
-Likelihood ratios
+Traditionally, the performance characteristics of SPC charts have been evaluated through the so-called average run length (ARL), that is, the average number of data points until a special cause is signalled [@montgomery2020, p.186]:
+
+$$ ARL_0=\frac{1}{\alpha} $$
+for the in-control ARL, when no special cause is present, and 
+
+$$ ARL_1=\frac{1}{1-\beta} $$
+for the out-of-control ARL, when a special cause is present, where
+
+$$ \alpha=P\{\text{signal | common cause variation}\}=P\{\text{false positive}\}=P\{\text{type 1 error}\} $$
+
+$$ \beta=P\{\text{no signal | special cause variation}\}=P\{\text{false negative}\}=P\{\text{type 2 error}\} $$
+
+For example, in a common cause process with normal data the chance ($\alpha$) of a data point falling outside the 3-sigma limits is 0.0027 and $ARL_0=1/0.0027=370$, meaning that we should expect to wait on average 370 data points between false alarms.
+
+The out-of-control ARL depends on the false negative risk, $\beta$, which in turn depends on the size of the shift (signal) relative to the size of the common cause variation (noise).
+
+The ideal control charts would have $ARL_0=\infty$ and $ARL_1=1$. In practice, this is not possible because ARLs are linked -- if one goes up, the other goes up too.
+
+ARLs are related to sensitivity and specificity, which may be more familiar to healthcare workers. In general, sensitivity and specificity tell how well a test is able to identify the presence or absence of a certain condition. Specifically, regarding SPC charts:
+
+$$ specificity=P\{\text{no signal | common cause variation}\}=P\{\text{true negative}\}=1-\alpha $$
+
+$$ sensitivity=P\{\text{signal | special cause variation}\}=P\{\text{true positive}\}=1-\beta $$
+
+
+### Likelihood ratios
+
+Sensitivity and specificity are, however, not that useful on their own -- they describe how a special cause predicts a signal, not how a signal predicts a special cause, which is what we really want to know. Predictive values do this, but they depend on the prevalence of special causes, which is unknowable in practice. The solution is likelihood ratios [@deeks2004].
+
+Likelihood ratios are diagnostic measures designed to answer such questions. Assume that a run chart tests positive for non-random variation. A perfect test would mean that the run chart would certainly come from a process with non-random variation (true positive, TP). However, some run charts with only random variation also test positive (false positive, FP). We therefore correct the true positive rate by the false positive rate by dividing one with the other. Likewise, if a run chart tests negative it could be a false negative (FN) rather than a true negative (TN).
+
+$$ LR+=TP/FP=sensitivity/(1-specificity) $$
+
+$$ LR-=FN/TN=(1-sensitivity)/specificity $$
+
+A likelihood ratio greater than 1 speaks in favour of the condition being tested for, which in our case is special cause variation, while a likelihood ratio less than 1 speaks against special cause variation. The further a likelihood ratio is from 1, the more or less likely is the presence of special cause variation. As a rule of thumb, a positive likelihood ratio greater than 10 is considered strong evidence that the condition being tested for is present. A negative likelihood ratio smaller than 0.1 is considered strong evidence against the condition [@deeks2004]. Thus, likelihood ratios allow us to quantify the probability of special causes in data and are useful quality characteristics of SPC rules [@anhoej2015].
+
+A worked example is presented in the table below:
+
+               Shift--   Shift+  Likelihood ratio
+-------------  --------  ------- -----------------------
+**Signal--**       927      115  LR-- = 115 / 927 = 0.12
+**Signal+**         73      885  LR+ = 885 / 73 = 12
+------------- --------- -------- -----------------------
+Table: Results from runs analyses of 2000 simulated run charts with 24 data points. In half the simulations a shift of 2 SD was introduced in the last 12 subgroups. Shift +/-- indicates the presence or absence of true shifts in process mean. Signal +/-- indicates the result from the run chart analysis using the two runs analysis rules [@anhoej2015].
+
 
 <!-- The choice of three standard deviations ensures there is a relatively small chance that an investigation of special cause variation will be unfounded. It has been argued that while three standard deviations was an appropriate choice for manufacturing industry, it is not stringent enough for healthcare processes – and two standard deviations may be more appropriate. Lowering the control limits to, say two standard deviations, will increase the sensitivity of the control chart, but will also increase the chances of false alarms. The extent to which this is acceptable requires decision-makers to balance the total costs (e.g. time, money, human resources, quality, safety, reputation) of investigating (true or false) signals versus the costs of overlooking these signals (and so not investigating). In practice, this is a matter of judgement which varies with context. Nevertheless, in the era of big data in healthcare the issue of false alarms needs greater appreciation and attention. We discuss this later in the book. -->

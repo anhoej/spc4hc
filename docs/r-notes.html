@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-04-24" />
+<meta name="date" content="2025-04-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -318,7 +318,11 @@ div.csl-indent {
 <li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
 <li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
 <ul>
-<li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-diagnostic-errors-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying diagnostic errors of SPC charts</a></li>
+<li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-diagnostic-errors-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying diagnostic errors of SPC charts</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="diagnostics.html"><a href="diagnostics.html#average-run-length"><i class="fa fa-check"></i><b>C.1.1</b> Average run length</a></li>
+<li class="chapter" data-level="C.1.2" data-path="diagnostics.html"><a href="diagnostics.html#likelihood-ratios"><i class="fa fa-check"></i><b>C.1.2</b> Likelihood ratios</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> Notes on R</a>
 <ul>
@@ -377,18 +381,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-04-12    13    32
- 2 2025-04-13    14    29
- 3 2025-04-14    16    33
- 4 2025-04-15    19    30
- 5 2025-04-16    13    32
- 6 2025-04-17    18    35
- 7 2025-04-18    19    29
- 8 2025-04-19    16    33
- 9 2025-04-20    16    34
-10 2025-04-21    11    27
-11 2025-04-22    13    32
-12 2025-04-23    12    26</code></pre>
+ 1 2025-04-13    13    32
+ 2 2025-04-14    14    29
+ 3 2025-04-15    16    33
+ 4 2025-04-16    19    30
+ 5 2025-04-17    13    32
+ 6 2025-04-18    18    35
+ 7 2025-04-19    19    29
+ 8 2025-04-20    16    33
+ 9 2025-04-21    16    34
+10 2025-04-22    11    27
+11 2025-04-23    13    32
+12 2025-04-24    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="r-notes.html#cb76-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb76-2"><a href="r-notes.html#cb76-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

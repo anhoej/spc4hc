@@ -118,6 +118,8 @@ data-sets
 stat-concepts
 diagnostics
 quantifying-diagnostic-errors-of-spc-charts
+average-run-length
+likelihood-ratios
 r-notes
 data-structures-and-classes
 plot-ready-data-frames
