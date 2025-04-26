@@ -14,7 +14,7 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 library(qicharts2)
 ```
 
-This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting using only base R functions. We are very well aware of new and modern approaches to data manipulation from the tidyverse and data.table packages -- we use these tool ourselves every day. But we find it valuable to be able to handle data in base R. Especially when sharing code or building R packages it is generally a good strategy to avoid unnecessary dependencies on external packages.
+This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting using only base R functions. We are very well aware of new and modern approaches to data manipulation from the tidyverse and data.table packages -- we use these tool ourselves every day -- but we find it valuable to be able to handle data in base R. Especially when sharing code or building R packages it is generally a good strategy to avoid unnecessary dependencies on external packages.
 
 First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting. Finally, we give some useful tips and tricks
 
@@ -22,7 +22,7 @@ First, we will look at some data structures and types that are essential to this
 
 The simplest data structure in R is the **vector**: zero or more data elements of the same type. Data come in several basic types (**classes**). We are mainly concerned with logical, numeric and character values. Date and datetime values, which are especially important in SPC, are basically just numeric values representing the number of days (dates) or seconds (datetimes) since the beginning of the year 1970.
 
-The **data frame** is (for our purpose) probably the most important data structure in R. Data frames are collections of vectors that may be of different types but are all of the same length. Think matrix or table with rows and columns where each row represents an observation, each column represents a variable, and each cell represents a data value. All rows and all columns have the same length, and all cells have values (or NA for missing values).
+The **data frame** is (for our purpose) probably the most important data structure in R. Data frames are collections of vectors that may be of different types but are all of the same length. Think matrix or table with rows and columns where each row represents an observation, each column represents a variable, and each cell represents a data value. All rows and all columns have the same length, and all cells have values (including NA for missing data).
 
 ## Plot-ready data frames
 
@@ -46,11 +46,11 @@ qic(x, y, n,
     chart = 'p')
 ```
 
-To correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).
+Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).
 
 ## Importing data from text files
 
-When importing data from a text file into R using one of the base R read.* functions, data are returned as a data frame.
+When importing data from a text file into R using one of the base R read.*() functions, data are returned as a data frame.
 
 For this book, we provide all data sets as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the "bacteremia.csv" file looks like this:
 
@@ -59,13 +59,13 @@ readLines('data/bacteremia.csv', 18) |>
   cat( '...', sep = '\n')
 ```
 
-Lines beginning with a hash symbol (#) represent comments. The first non-blank line after the comments holds the variable names, and the the rest of the file contains the data values separated by commas (,).
+Lines beginning with a hash symbol (#) are comments. The first non-blank line after the comments holds the variable names, and the the rest of the file contains the data values separated by commas (,).
 
-Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to always store dates in this format, which also happens to be the international ISO standard for writing dates. ISO dates, when used in file names, sort correctly and also have the advantage of being easily recognised as dates by R (and other statistical software).
+Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to always store dates in this format, which also happens to be the international ISO standard for writing dates. Also, ISO dates, when used in file names, sort correctly and also have the advantage of being easily recognised as dates by R (and other statistical software).
 
 If dates are stored in any other format (e.g. dd-mm-yyyy), we may need to import them as character values and later convert them to dates using the as.Date() function.
 
-When reading data in R programmes that are used in production systems, we recommend that you specify the data type (class) of each column using the colClasses argument.
+When reading data in R programmes for use in production environments, we recommend that you specify the data type (class) of each column using the colClasses argument.
 
 ```{r}
 # read data from file and assign to variable named d
@@ -100,9 +100,9 @@ head(d)
 
 The c. section data contains `r nrow(d)` rows representing individual c. sections. Our aim for this exercise is to reduce data to a plot ready data frame with one row per month and the number of c. section that were on target and the total number of c. sections.
 
-The delay variable is the number of minutes from decision to perform a c. section to delivery og the baby. The standard target value for grade 2 c. sections is less than 30 minutes. If we want to plot the proportion of c. sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
-
 ### Adding variables to data frames
+
+The delay variable is the number of minutes from decision to perform a c. section to delivery og the baby. The standard target value for grade 2 c. sections is less than 30 minutes. If we want to plot the proportion of c. sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
 
 ```{r}
 d$ontime <- d$delay < 30  # Dichotomise delays.
@@ -112,7 +112,7 @@ head(d)
 
 ### Aggregating data frames
 
-Then we aggregate (or summarise) data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list collapsing into a one-row data frame. Finally, we combine elements back into a data frame again.
+Then we aggregate data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list collapsing into a one-row data frame. Finally, we combine the elements back into a data frame again.
 
 ```{r}
 d2 <- split(d, d$month)                      # Split data frame by month.
@@ -125,8 +125,8 @@ d2 <- lapply(d2, function(x) {               # Apply summaries to each group.
 d2 <- do.call(rbind,                          # Combine groups into data frame.
               c(d2, make.row.names = FALSE))
 
-str(d2)
 head(d2)
+str(d2)
 ```
 
 The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them -- read the documentation.
@@ -142,9 +142,8 @@ In the C. section data set the month variable represents the time period of each
 Converting dates and datetimes into time period -- for example weeks, months or quarters -- is a common task, not the least in SPC. It is easily done using the cut() function, which is a generic function with many uses. However, the syntax for cutting dates is poorly documented. To cut dates we use two arguments: first, the vector of date(time)s to be cut; second, the interval we want.
 
 ```{r}
-# R's date of birth
-x <- as.Date('2000-02-29')
-x
+# R's date of birth (using parentheses to print the result)
+(x <- as.Date('2000-02-29'))
 
 # The first day of the month of R's date of birth
 cut(x, breaks = 'month')
@@ -162,14 +161,18 @@ The breaks argument accepts a character string that qualifies for a time period,
 # Cutting to the first day of a week (monday)
 as.Date(cut(x, breaks = 'week'))
 
-# The first day of biweekly periods
-as.Date(cut(x, breaks = '2 weeks'))
-
 # Quarter
 as.Date(cut(x, breaks = 'quarter'))
 ```
 
-Cutting dates is such a common task that we may want to make our own function:
+We can even specify multiples of time periods in the breaks argument:
+
+```{r}
+# The first day of biweekly periods
+as.Date(cut(x, breaks = '2 weeks'))
+```
+
+Cutting dates is such a common task that we may want to make our own function for the purpose:
 
 ```{r}
 cutdate <- function(x, breaks = 'month') {
@@ -185,23 +188,22 @@ cutdate(x, 'quarter')
 
 In healthcare we often need to know the patient's age on a certain date. By "age" we usually mean a whole number of years since the patient's date of birth. However, year is not a well defined unit of time, and age is really a continuous variable. Therefore, we are usually better off knowing the patient's age in days, which in turn can always be converted to decimal or integer years if necessary.
 
-How old is R (at the time of writing)?
+How old is R today?
 
 ```{r}
 today <- as.Date('2025-04-24')
 r_dob <- as.Date('2000-02-29')
 
-# calculate age in days (using parentheses to print result)
+# calculate age in days
 (age_in_days <- today - r_dob)
 ```
 
-When subtracting (or adding) dates we get back a difftime object. Usually we want to convert this to an integer:
+When subtracting dates we get back a difftime object. Usually we want to convert this to an integer:
 
 ```{r}
 # convert from difftime object to integer:
 (age_in_days <- as.integer(age_in_days))
 ```
-
 
 A calendar year is on average a little less than 365.25 days. We can converts age in days to age in years:
 
@@ -215,11 +217,7 @@ Putting everything together:
 (age_in_years <- as.integer(today - r_dob) / 365.25)
 ```
 
-Notice that this calculation may be off by up to one day depending on the number and position of leap years. However, this is far better than relying on age expressed in whole years. The error is on the third decimal. So, when presenting data, rounding to one or two decimal places seems reasonable:
-
-```{r}
-round(age_in_years, 1)
-```
+Notice that this calculation may be off by up to one day depending on the number and position of leap years. However, this is far better than relying on age expressed in whole years.
 
 ### Naming files and variables
 
@@ -227,12 +225,17 @@ Book have been written about how to and how not to name variables and files. Her
 
 **Always**:
 
-* Use lower case letters (a-z) and numbers (0-9), e.g. "myvariable", "myfile.R".
-* Separate words with "-", "_", or ".", e.g.: my_variable, my-variable, my.variable.
-* Use ISO format (yyyy-mm-dd) for dates, e.g.: "2001-02-03".
-* When numbering files, use use a suitable number of leading zeros, e.g. "myfile_01", "myfile_02", ... "myfile_10", "myfile_11".
+* use lower case ascii letters (a-z) and integers (0-9), e.g. "myvariable", "myfile.R";
+
+* separate words with "-", "_", or ".", e.g.: "my_variable", "my-variable", "my.variable";
+
+* use ISO format (yyyy-mm-dd) for dates, e.g.: "2001-02-03";
+
+* when numbering files, use use a suitable number of leading zeros, e.g. "myfile_01", "myfile_02", ... "myfile_10", "myfile_11".
 
 **Newer**:
 
-* Use spaces, e.g.: "my variable", "my file.R".
-* Versionize files using words like "final", "finalfinal", "new", "draft", etc. Instead, use ISO dates, e.g.: "my_file_2001-02-03.R".
+* use spaces, e.g.: "my variable", "my file.R";
+
+* versionize files using words like "final", "finalfinal", "new", "draft", etc. Instead, use ISO dates, e.g.: "my_file_2001-02-03.R".
+
