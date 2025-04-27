@@ -784,32 +784,39 @@ Figure 6.7: I- and MR-charts
 <h3><span class="header-section-number">6.4.3</span> X-bar chart<a href="limits.html#x-bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The X-bar chart is appropriate when the subgroups consist of samples of two or more measurements.</p>
 <p>To plot a control chart of the monthly average delays, we must first aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="limits.html#cb21-1" tabindex="-1"></a><span class="co"># aggregate data by month</span></span>
-<span id="cb21-2"><a href="limits.html#cb21-2" tabindex="-1"></a>csect.agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(delay <span class="sc">~</span> month, csect,</span>
-<span id="cb21-3"><a href="limits.html#cb21-3" tabindex="-1"></a>                       <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x),</span>
-<span id="cb21-4"><a href="limits.html#cb21-4" tabindex="-1"></a>                                     <span class="at">sd   =</span> <span class="fu">sd</span>(x),</span>
-<span id="cb21-5"><a href="limits.html#cb21-5" tabindex="-1"></a>                                     <span class="at">n    =</span> <span class="fu">length</span>(x)))</span>
-<span id="cb21-6"><a href="limits.html#cb21-6" tabindex="-1"></a><span class="co"># make data into a nice data frame</span></span>
-<span id="cb21-7"><a href="limits.html#cb21-7" tabindex="-1"></a>csect.agg <span class="ot">&lt;-</span> <span class="fu">do.call</span>(data.frame, csect.agg)</span>
-<span id="cb21-8"><a href="limits.html#cb21-8" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="limits.html#cb21-9" tabindex="-1"></a><span class="co"># print the first 6 rows</span></span>
-<span id="cb21-10"><a href="limits.html#cb21-10" tabindex="-1"></a><span class="fu">head</span>(csect.agg)</span></code></pre></div>
-<pre><code>##        month delay.mean delay.sd delay.n
-## 1 2016-01-01   23.85714 3.387653       7
-## 2 2016-02-01   24.45455 6.137811      11
-## 3 2016-03-01   22.45455 6.638729      11
-## 4 2016-04-01   22.66667 3.041381       9
-## 5 2016-05-01   22.50000 3.891382       8
-## 6 2016-06-01   22.00000 6.204837       5</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="limits.html#cb21-1" tabindex="-1"></a><span class="co"># split data frame by month</span></span>
+<span id="cb21-2"><a href="limits.html#cb21-2" tabindex="-1"></a>csect.agg <span class="ot">&lt;-</span> <span class="fu">split</span>(csect, csect<span class="sc">$</span>month)</span>
+<span id="cb21-3"><a href="limits.html#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="limits.html#cb21-4" tabindex="-1"></a><span class="co"># aggregate data by month</span></span>
+<span id="cb21-5"><a href="limits.html#cb21-5" tabindex="-1"></a>csect.agg <span class="ot">&lt;-</span> <span class="fu">lapply</span>(csect.agg, <span class="cf">function</span>(x) {</span>
+<span id="cb21-6"><a href="limits.html#cb21-6" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">month =</span> x<span class="sc">$</span>month[<span class="dv">1</span>],</span>
+<span id="cb21-7"><a href="limits.html#cb21-7" tabindex="-1"></a>             <span class="at">mean  =</span> <span class="fu">mean</span>(x<span class="sc">$</span>delay),</span>
+<span id="cb21-8"><a href="limits.html#cb21-8" tabindex="-1"></a>             <span class="at">sd    =</span> <span class="fu">sd</span>(x<span class="sc">$</span>delay),</span>
+<span id="cb21-9"><a href="limits.html#cb21-9" tabindex="-1"></a>             <span class="at">n     =</span> <span class="fu">nrow</span>(x))</span>
+<span id="cb21-10"><a href="limits.html#cb21-10" tabindex="-1"></a>})</span>
+<span id="cb21-11"><a href="limits.html#cb21-11" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="limits.html#cb21-12" tabindex="-1"></a><span class="co"># put everything together again</span></span>
+<span id="cb21-13"><a href="limits.html#cb21-13" tabindex="-1"></a>csect.agg <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">c</span>(csect.agg, <span class="at">make.row.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb21-14"><a href="limits.html#cb21-14" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="limits.html#cb21-15" tabindex="-1"></a><span class="co"># print the first 6 rows</span></span>
+<span id="cb21-16"><a href="limits.html#cb21-16" tabindex="-1"></a><span class="fu">head</span>(csect.agg)</span></code></pre></div>
+<pre><code>##        month     mean       sd  n
+## 1 2016-01-01 23.85714 3.387653  7
+## 2 2016-02-01 24.45455 6.137811 11
+## 3 2016-03-01 22.45455 6.638729 11
+## 4 2016-04-01 22.66667 3.041381  9
+## 5 2016-05-01 22.50000 3.891382  8
+## 6 2016-06-01 22.00000 6.204837  5</code></pre>
+<p>See section <a href="r-notes.html#aggregating-data-frames">Aggregating data frames</a> in Appendix <a href="r-notes.html#r-notes">D</a> for details on the split-apply-combine strategy.</p>
 <p>Next, we calculate the centre line and the control limits using the formula in Table <a href="limits.html#tab:limits-tab1">6.1</a> where <span class="math inline">\(\bar{\bar{x}}\)</span> (pronounced x bar bar) is the weighted mean of the subgroup means, <span class="math inline">\(\bar{s}\)</span> (s bar) is the weighted mean of the subgroup standard deviations, and <span class="math inline">\(A_3\)</span> is a constant that depends on the subgroup size. See the section on <a href="limits.html#chart-constants">chart constants</a> at the end of this chapter for the R code involved in calculating <span class="math inline">\(A_3\)</span> and other constants for control chart construction.</p>
 <p>With the aggregated data we are now able to construct the X-bar chart (Figure <a href="limits.html#fig:limits-xbar">6.8</a>).</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="limits.html#cb23-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
-<span id="cb23-2"><a href="limits.html#cb23-2" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.mean, delay.n)  <span class="co"># centre line</span></span>
-<span id="cb23-3"><a href="limits.html#cb23-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># process standard deviation</span></span>
-<span id="cb23-4"><a href="limits.html#cb23-4" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(delay.n)                         <span class="co"># A3 constant</span></span>
+<span id="cb23-2"><a href="limits.html#cb23-2" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(mean, n)  <span class="co"># centre line</span></span>
+<span id="cb23-3"><a href="limits.html#cb23-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(sd, n)    <span class="co"># process standard deviation</span></span>
+<span id="cb23-4"><a href="limits.html#cb23-4" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(n)                   <span class="co"># A3 constant</span></span>
 <span id="cb23-5"><a href="limits.html#cb23-5" tabindex="-1"></a>  </span>
 <span id="cb23-6"><a href="limits.html#cb23-6" tabindex="-1"></a>  <span class="fu">spc</span>(<span class="at">x   =</span> month,</span>
-<span id="cb23-7"><a href="limits.html#cb23-7" tabindex="-1"></a>      <span class="at">y   =</span> delay.mean,</span>
+<span id="cb23-7"><a href="limits.html#cb23-7" tabindex="-1"></a>      <span class="at">y   =</span> mean,</span>
 <span id="cb23-8"><a href="limits.html#cb23-8" tabindex="-1"></a>      <span class="at">cl  =</span> xbarbar,</span>
 <span id="cb23-9"><a href="limits.html#cb23-9" tabindex="-1"></a>      <span class="at">lcl =</span> xbarbar <span class="sc">-</span> a3 <span class="sc">*</span> sbar,</span>
 <span id="cb23-10"><a href="limits.html#cb23-10" tabindex="-1"></a>      <span class="at">ucl =</span> xbarbar <span class="sc">+</span> a3 <span class="sc">*</span> sbar)</span>
@@ -829,12 +836,12 @@ Figure 6.8: X bar chart
 <p>The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.</p>
 <p>To calculate the centre and control limits for the S chart we need to know the process standard deviation, <span class="math inline">\(\bar{S}\)</span> (same as for the X-bar chart), and the two constants <span class="math inline">\(B_3\)</span> and <span class="math inline">\(B_4\)</span> From Table <a href="limits.html#tab:limits-tab1">6.1</a>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="limits.html#cb24-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
-<span id="cb24-2"><a href="limits.html#cb24-2" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># pooled SD, centre line</span></span>
-<span id="cb24-3"><a href="limits.html#cb24-3" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(delay.n)                         <span class="co"># B3 constant</span></span>
-<span id="cb24-4"><a href="limits.html#cb24-4" tabindex="-1"></a>  b4      <span class="ot">&lt;-</span> <span class="fu">b4</span>(delay.n)                         <span class="co"># B4 constant</span></span>
+<span id="cb24-2"><a href="limits.html#cb24-2" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(sd, n)  <span class="co"># pooled SD, centre line</span></span>
+<span id="cb24-3"><a href="limits.html#cb24-3" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(n)                 <span class="co"># B3 constant</span></span>
+<span id="cb24-4"><a href="limits.html#cb24-4" tabindex="-1"></a>  b4      <span class="ot">&lt;-</span> <span class="fu">b4</span>(n)                 <span class="co"># B4 constant</span></span>
 <span id="cb24-5"><a href="limits.html#cb24-5" tabindex="-1"></a>  </span>
 <span id="cb24-6"><a href="limits.html#cb24-6" tabindex="-1"></a>  <span class="fu">spc</span>(<span class="at">x   =</span> month,</span>
-<span id="cb24-7"><a href="limits.html#cb24-7" tabindex="-1"></a>      <span class="at">y   =</span> delay.sd,</span>
+<span id="cb24-7"><a href="limits.html#cb24-7" tabindex="-1"></a>      <span class="at">y   =</span> sd,</span>
 <span id="cb24-8"><a href="limits.html#cb24-8" tabindex="-1"></a>      <span class="at">cl  =</span> sbar,</span>
 <span id="cb24-9"><a href="limits.html#cb24-9" tabindex="-1"></a>      <span class="at">lcl =</span> b3 <span class="sc">*</span> sbar,</span>
 <span id="cb24-10"><a href="limits.html#cb24-10" tabindex="-1"></a>      <span class="at">ucl =</span> b4 <span class="sc">*</span> sbar)</span>
@@ -848,22 +855,22 @@ Figure 6.9: S chart
 <p>Figure <a href="limits.html#fig:limits-s">6.9</a> shows the average standard deviation of delay times per month. On average the standard deviation is 4.7 minutes and all data points fall between the control limits.</p>
 <p>We may plot the X-bar and S charts together (Figure <a href="limits.html#fig:limits-xbarands">6.10</a>):</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="limits.html#cb25-1" tabindex="-1"></a><span class="fu">with</span>(csect.agg, {</span>
-<span id="cb25-2"><a href="limits.html#cb25-2" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.mean, delay.n)  <span class="co"># pooled average</span></span>
-<span id="cb25-3"><a href="limits.html#cb25-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(delay.sd, delay.n)    <span class="co"># pooled standard deviation</span></span>
-<span id="cb25-4"><a href="limits.html#cb25-4" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(delay.n)                         <span class="co"># A3 constant</span></span>
-<span id="cb25-5"><a href="limits.html#cb25-5" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(delay.n)                         <span class="co"># B3 constant</span></span>
-<span id="cb25-6"><a href="limits.html#cb25-6" tabindex="-1"></a>  b4      <span class="ot">&lt;-</span> <span class="fu">b4</span>(delay.n)                         <span class="co"># B4 constant</span></span>
+<span id="cb25-2"><a href="limits.html#cb25-2" tabindex="-1"></a>  xbarbar <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(mean, n)  <span class="co"># pooled average</span></span>
+<span id="cb25-3"><a href="limits.html#cb25-3" tabindex="-1"></a>  sbar    <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(sd, n)    <span class="co"># pooled standard deviation</span></span>
+<span id="cb25-4"><a href="limits.html#cb25-4" tabindex="-1"></a>  a3      <span class="ot">&lt;-</span> <span class="fu">a3</span>(n)                   <span class="co"># A3 constant</span></span>
+<span id="cb25-5"><a href="limits.html#cb25-5" tabindex="-1"></a>  b3      <span class="ot">&lt;-</span> <span class="fu">b3</span>(n)                   <span class="co"># B3 constant</span></span>
+<span id="cb25-6"><a href="limits.html#cb25-6" tabindex="-1"></a>  b4      <span class="ot">&lt;-</span> <span class="fu">b4</span>(n)                   <span class="co"># B4 constant</span></span>
 <span id="cb25-7"><a href="limits.html#cb25-7" tabindex="-1"></a>  </span>
 <span id="cb25-8"><a href="limits.html#cb25-8" tabindex="-1"></a>  op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>),</span>
 <span id="cb25-9"><a href="limits.html#cb25-9" tabindex="-1"></a>            <span class="at">mar   =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb25-10"><a href="limits.html#cb25-10" tabindex="-1"></a>  <span class="fu">spc</span>(month, delay.mean,</span>
+<span id="cb25-10"><a href="limits.html#cb25-10" tabindex="-1"></a>  <span class="fu">spc</span>(month, mean,</span>
 <span id="cb25-11"><a href="limits.html#cb25-11" tabindex="-1"></a>      <span class="at">cl   =</span> xbarbar,</span>
 <span id="cb25-12"><a href="limits.html#cb25-12" tabindex="-1"></a>      <span class="at">lcl  =</span> xbarbar <span class="sc">-</span> a3 <span class="sc">*</span> sbar,</span>
 <span id="cb25-13"><a href="limits.html#cb25-13" tabindex="-1"></a>      <span class="at">ucl  =</span> xbarbar <span class="sc">+</span> a3 <span class="sc">*</span> sbar,</span>
 <span id="cb25-14"><a href="limits.html#cb25-14" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&#39;X-bar Chart&#39;</span>,</span>
 <span id="cb25-15"><a href="limits.html#cb25-15" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&#39;&#39;</span>)</span>
 <span id="cb25-16"><a href="limits.html#cb25-16" tabindex="-1"></a>  </span>
-<span id="cb25-17"><a href="limits.html#cb25-17" tabindex="-1"></a>  <span class="fu">spc</span>(month, delay.sd,</span>
+<span id="cb25-17"><a href="limits.html#cb25-17" tabindex="-1"></a>  <span class="fu">spc</span>(month, sd,</span>
 <span id="cb25-18"><a href="limits.html#cb25-18" tabindex="-1"></a>      <span class="at">cl   =</span> sbar,</span>
 <span id="cb25-19"><a href="limits.html#cb25-19" tabindex="-1"></a>      <span class="at">lcl  =</span> b3 <span class="sc">*</span> sbar,</span>
 <span id="cb25-20"><a href="limits.html#cb25-20" tabindex="-1"></a>      <span class="at">ucl  =</span> b4 <span class="sc">*</span> sbar,</span>

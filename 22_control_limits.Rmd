@@ -280,17 +280,25 @@ The X-bar chart is appropriate when the subgroups consist of samples of two or m
 To plot a control chart of the monthly average delays, we must first aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.
 
 ```{r}
+# split data frame by month
+csect.agg <- split(csect, csect$month)
+
 # aggregate data by month
-csect.agg <- aggregate(delay ~ month, csect,
-                       function(x) c(mean = mean(x),
-                                     sd   = sd(x),
-                                     n    = length(x)))
-# make data into a nice data frame
-csect.agg <- do.call(data.frame, csect.agg)
+csect.agg <- lapply(csect.agg, function(x) {
+  data.frame(month = x$month[1],
+             mean  = mean(x$delay),
+             sd    = sd(x$delay),
+             n     = nrow(x))
+})
+
+# put everything together again
+csect.agg <- do.call(rbind, c(csect.agg, make.row.names = FALSE))
 
 # print the first 6 rows
 head(csect.agg)
 ```
+
+See section [Aggregating data frames] in Appendix \@ref(r-notes) for details on the split-apply-combine strategy.
 
 Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1) where $\bar{\bar{x}}$ (pronounced x bar bar) is the weighted mean of the subgroup means, $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. See the section on [chart constants](#chart-constants) at the end of this chapter for the R code involved in calculating $A_3$ and other constants for control chart construction.
 
@@ -298,12 +306,12 @@ With the aggregated data we are now able to construct the X-bar chart (Figure \@
 
 ```{r limits-xbar, fig.cap='X bar chart'}
 with(csect.agg, {
-  xbarbar <- weighted.mean(delay.mean, delay.n)  # centre line
-  sbar    <- weighted.mean(delay.sd, delay.n)    # process standard deviation
-  a3      <- a3(delay.n)                         # A3 constant
+  xbarbar <- weighted.mean(mean, n)  # centre line
+  sbar    <- weighted.mean(sd, n)    # process standard deviation
+  a3      <- a3(n)                   # A3 constant
   
   spc(x   = month,
-      y   = delay.mean,
+      y   = mean,
       cl  = xbarbar,
       lcl = xbarbar - a3 * sbar,
       ucl = xbarbar + a3 * sbar)
@@ -324,12 +332,12 @@ To calculate the centre and control limits for the S chart we need to know the p
 
 ```{r limits-s, fig.cap='S chart'}
 with(csect.agg, {
-  sbar    <- weighted.mean(delay.sd, delay.n)    # pooled SD, centre line
-  b3      <- b3(delay.n)                         # B3 constant
-  b4      <- b4(delay.n)                         # B4 constant
+  sbar    <- weighted.mean(sd, n)  # pooled SD, centre line
+  b3      <- b3(n)                 # B3 constant
+  b4      <- b4(n)                 # B4 constant
   
   spc(x   = month,
-      y   = delay.sd,
+      y   = sd,
       cl  = sbar,
       lcl = b3 * sbar,
       ucl = b4 * sbar)
@@ -342,22 +350,22 @@ We may plot the X-bar and S charts together (Figure \@ref(fig:limits-xbarands)):
 
 ```{r limits-xbarands, fig.cap='X-bar and S charts', fig.asp=3/3}
 with(csect.agg, {
-  xbarbar <- weighted.mean(delay.mean, delay.n)  # pooled average
-  sbar    <- weighted.mean(delay.sd, delay.n)    # pooled standard deviation
-  a3      <- a3(delay.n)                         # A3 constant
-  b3      <- b3(delay.n)                         # B3 constant
-  b4      <- b4(delay.n)                         # B4 constant
+  xbarbar <- weighted.mean(mean, n)  # pooled average
+  sbar    <- weighted.mean(sd, n)    # pooled standard deviation
+  a3      <- a3(n)                   # A3 constant
+  b3      <- b3(n)                   # B3 constant
+  b4      <- b4(n)                   # B4 constant
   
   op <- par(mfrow = c(2, 1),
             mar   = c(3, 5, 2, 1))
-  spc(month, delay.mean,
+  spc(month, mean,
       cl   = xbarbar,
       lcl  = xbarbar - a3 * sbar,
       ucl  = xbarbar + a3 * sbar,
       main = 'X-bar Chart',
       xlab = '')
   
-  spc(month, delay.sd,
+  spc(month, sd,
       cl   = sbar,
       lcl  = b3 * sbar,
       ucl  = b4 * sbar,
@@ -365,7 +373,6 @@ with(csect.agg, {
       xlab = '')
   par(op)
 })
-
 ```
 
 ## Control limits in short
