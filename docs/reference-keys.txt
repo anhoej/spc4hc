@@ -117,9 +117,10 @@ qicharts2-in-short
 data-sets
 stat-concepts
 diagnostics
-quantifying-diagnostic-errors-of-spc-charts
+quantifying-the-diagnostic-error-of-spc-charts
 average-run-length
 likelihood-ratios
+conclusion-keeping-the-balance
 r-notes
 data-structures-and-classes
 plot-ready-data-frames
@@ -133,4 +134,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

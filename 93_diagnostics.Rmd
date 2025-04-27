@@ -6,11 +6,13 @@ Classifying variation into common cause or special cause is the primary focus of
 
 * False negative (type 2 eroor): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.
 
-Either mistake can cause losses. If all data were treated as special cause variation, this maximises the losses from false positives. And if all data were treated as common cause variation, this maximises the losses from false negatives.
+Either mistake can cause losses. Treating all data as special cause variation maximises the losses from false positives; and treating all data as common cause variation maximises the losses from false negatives.
 
-Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart sought a strategy to make either mistake only rarely and concluded that the this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to three standard deviations below and above the mean provides a reasonable balance between making the two types of mistakes.
+Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart sought a strategy to make either mistake only rarely and concluded that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to three standard deviations below and above the mean provides a reasonable balance between making the two types of mistakes.
 
-## Average run length
+## Quantifying the diagnostic error of SPC charts
+
+### Average run length
 
 Traditionally, the performance characteristics of SPC charts have been evaluated through the so-called average run length (ARL), that is, the average number of data points until a special cause is signalled [@montgomery2020, p.186]:
 
@@ -30,14 +32,15 @@ The out-of-control ARL depends on the false negative risk, $\beta$, which in tur
 
 The ideal control charts would have $ARL_0=\infty$ and $ARL_1=1$. In practice, this is not possible because ARLs are linked -- if one goes up, the other goes up too.
 
-ARLs are related to sensitivity and specificity, which may be more familiar to healthcare workers. In general, sensitivity and specificity tell how well a test is able to identify the presence or absence of a certain condition. Specifically, regarding SPC charts:
+ARLs are related to sensitivity and specificity, which may be more familiar to healthcare workers. In general, sensitivity and specificity tell how well a test is able to identify the presence or absence of a certain condition.
+
+Specifically, regarding SPC charts:
 
 $$ specificity=P\{\text{no signal | common cause variation}\}=P\{\text{true negative}\}=1-\alpha $$
 
 $$ sensitivity=P\{\text{signal | special cause variation}\}=P\{\text{true positive}\}=1-\beta $$
 
-
-## Likelihood ratios
+### Likelihood ratios
 
 Sensitivity and specificity are, however, not that useful on their own -- they describe how a special cause predicts a signal, not how a signal predicts a special cause, which is what we really want to know.
 
@@ -47,7 +50,11 @@ $$ LR+=TP/FP=sensitivity/(1-specificity) $$
 
 $$ LR-=FN/TN=(1-sensitivity)/specificity $$
 
-A likelihood ratio greater than 1 speaks in favour of the condition being tested for, which in our case is special cause variation, while a likelihood ratio less than 1 speaks against special cause variation. The further a likelihood ratio is from 1, the more or less likely is the presence of special cause variation. As a rule of thumb, a positive likelihood ratio greater than 10 is considered strong evidence that the condition being tested for is present. A negative likelihood ratio smaller than 0.1 is considered strong evidence against the condition [@deeks2004]. Thus, likelihood ratios allow us to quantify the probability of special causes in data and are useful quality characteristics of SPC rules [@anhoej2015]. All else being equal, a "good" rule or combination of rules is one with a high positive likelihood ratio *and* a low negative likelihood ratio.
+A likelihood ratio greater than 1 speaks in favour of the condition being tested for, which in our case is special cause variation, while a likelihood ratio less than 1 speaks against special cause variation. The further a likelihood ratio is from 1, the more or less likely is the presence of special cause variation.
+
+As a rule of thumb, a positive likelihood ratio greater than 10 is considered strong evidence that the condition being tested for is present. A negative likelihood ratio smaller than 0.1 is considered strong evidence against the condition [@deeks2004]. 
+
+Thus, likelihood ratios allow us to quantify the probability of special causes in data and are useful quality characteristics of SPC rules [@anhoej2015]. All else being equal, a "good" rule (or combination of rules) is one with a high positive likelihood ratio *and* a low negative likelihood ratio.
 
 A worked example is presented in the table below:
 
@@ -60,7 +67,7 @@ Table: Results from runs analyses of 2000 simulated run charts with 24 data poin
 
 Studies comparing different combination of rules using likelihood ratios [@anhoej2015; @anhoej2018b] found that:
 
-* The 3-sigma rule is effective in signalling moderate to large possibly *transient* shifts in data.
+* The 3-sigma rule is effective (high LR+, low LR--) in signalling moderate to large possibly *transient* shifts in data.
 
 * The 3-sigma rule looses specificity (more false positive signals) with increasing number of data points.
 
@@ -68,3 +75,10 @@ Studies comparing different combination of rules using likelihood ratios [@anhoe
 
 * Combining the 3-sigma rule with runs analysis and keeping the number of data points between 20 and 30 strikes a good balance between false positive and false negative signals.
 
+## Conclusion: Keeping the balance
+
+SPC charts, like any statistical or medical tests, can sometimes suggest a problem where none exists or fail to detect a real issue. This can result in losses -- either from wasted resources chasing false alarms or from harm caused by overlooked special causes. However, carefully selecting which rules to apply to SPC charts can help minimize losses in both cases.
+
+Since Shewhart first introduced the control chart in 1924 -- using only the 3-sigma rule -- many additional rules and rule sets have been proposed to improve the sensitivity of SPC charts to special cause variation. However, increased sensitivity comes at the cost of reduced specificity, and applying too many or overly sensitive rules inevitably leads to wasted resources chasing false alarms. Our goal is to strike the right balance between sensitivity and specificity. Quantifying diagnostic errors using likelihood ratios is a valuable tool in achieving this.
+
+The rules proposed in this book -- the two runs rules and the 3-sigma rule -- have been validated through careful studies and years of practical experience, demonstrating a useful balance between sensitivity and specificity.
