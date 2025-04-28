@@ -86,7 +86,7 @@ str(d)
 
 ## Manipulating data frames
 
-We will import the [c. section][Ceasearian section delay] data set to demonstrate adding variables and aggregating data.
+We will import the [C-section][Ceasearian section delay] data set to demonstrate adding variables and aggregating data.
 
 ```{r}
 d <- read.csv('data/csection_delay.csv',
@@ -98,11 +98,11 @@ d <- read.csv('data/csection_delay.csv',
 head(d)
 ```
 
-The c. section data contains `r nrow(d)` rows representing individual c. sections. Our aim for this exercise is to reduce data to a plot ready data frame with one row per month and the number of c. section that were on target and the total number of c. sections.
+The C-section data contains `r nrow(d)` rows representing individual C-sections. Our aim for this exercise is to reduce data to a plot ready data frame with one row per month and the number of C-section that were on target and the total number of C-sections.
 
 ### Adding variables to data frames
 
-The delay variable is the number of minutes from decision to perform a c. section to delivery og the baby. The standard target value for grade 2 c. sections is less than 30 minutes. If we want to plot the proportion of c. sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
+The delay variable is the number of minutes from decision to perform a C-section to delivery og the baby. The standard target value for grade 2 C-sections is less than 30 minutes. If we want to plot the proportion of C-sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
 
 ```{r}
 d$ontime <- d$delay < 30  # Dichotomise delays.
@@ -137,7 +137,7 @@ The split-apply-combine strategy may be performed a lot easier with functions fr
 
 ### Cutting dates and datetimes
 
-In the C. section data set the month variable represents the time period of each delivery used for subgrouping data, that is counting events and cases per month. The month variable was created by "cutting" the datetime variable into monthly chunks.
+In the C-section data set the month variable represents the time period of each delivery used for subgrouping data, that is counting events and cases per month. The month variable was created by "cutting" the datetime variable into monthly chunks.
 
 Converting dates and datetimes into time period -- for example weeks, months or quarters -- is a common task, not the least in SPC. It is easily done using the cut() function, which is a generic function with many uses. However, the syntax for cutting dates is poorly documented. To cut dates we use two arguments: first, the vector of date(time)s to be cut; second, the interval we want.
 
