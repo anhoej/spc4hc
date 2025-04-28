@@ -90,25 +90,32 @@ spc <- function(x,
 #  chart: Character, type of chart.
 # 
 spc.aggregate <- function(x, y, n, chart) {
+  df <- data.frame(x, y, n)
+  
   # Get function to calculate centre line and control limits.
   chart.fun  <- get(paste('spc', chart, sep = '.'))
   
   # Get function to restore the x variable to its original class after
   # aggregation.
-  subgrp.fun <- get(paste0('as.', class(x)))
+  # subgrp.fun <- get(paste0('as.', class(x)))
+  
+  # Split data frame by subgroups
+  df <- split(df, df$x)
   
   # Calculate subgroup lengths, sums, means, and standard deviations.
-  df <- data.frame(y, n)
-  df <- split(df, x)
-  df <- lapply(df, function(i) {
-    data.frame(n    = sum(i$n, na.rm = TRUE),
-               sum  = sum(i$y, na.rm = TRUE),
-               mean = sum(i$y, na.rm = TRUE) / sum(i$n, na.rm = TRUE),
-               sd   = sd(i$y, na.rm = TRUE))
+  df <- lapply(df, function(x) {
+    data.frame(x     = x$x[1],
+               n     = sum(x$n, na.rm = TRUE),
+               sum   = sum(x$y, na.rm = TRUE),
+               mean  = sum(x$y, na.rm = TRUE) / sum(x$n, na.rm = TRUE),
+               sd    = sd(x$y, na.rm = TRUE),
+               chart = chart)
   })
-  df <- do.call(rbind, df)
-  df <- data.frame(x = rownames(df), df, chart, row.names = NULL)
   
+  # Put list elements back together in a data frame.
+  df <- do.call(rbind, c(df, make.row.names = FALSE))
+  # df <- data.frame(x = rownames(df), df, chart, row.names = NULL)
+
   # Replace any zero length subgroups with NA.
   df$n[df$n == 0] <- NA
   
@@ -116,7 +123,7 @@ spc.aggregate <- function(x, y, n, chart) {
   df$ybar <- weighted.mean(df$mean, df$n, na.rm = TRUE)
   
   # Restore x variable to its original class.
-  df$x <- subgrp.fun(df$x)
+  # df$x <- subgrp.fun(df$x)
   
   # Calculate centre line and control limits.
   df <- chart.fun(df)
