@@ -7,17 +7,17 @@ editor_options:
 
 # Data Sets {#data-sets}
 
-
+All datasets for this book are provided as comma separated values (csv) in text files. For details on how to read data from csv-files, see the [Importing data from text files] in Appendix \@ref(r-notes).
 
 ```{r, comment='', echo=FALSE}
-readLines('data/bacteremia.csv', 18) |> 
-  paste0(collapse = '\n') |> 
-  cat()
+# readLines('data/bacteremia.csv', 18) |> 
+#   paste0(collapse = '\n') |> 
+#   cat()
 ```
 
-## Reading csv files {-}
+<!-- ## Reading csv files {-} -->
 
-## Data summaries {-}
+<!-- ## Data summaries {-} -->
 
 ```{r, echo=FALSE}
 f <- dir('data', pattern = 'csv$', full.names = T)
