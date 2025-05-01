@@ -39,16 +39,16 @@ editor_options:
 
 ## Part 4: Advanced SPC Techniques {-}
 
-1. Funnel Plots for Categorical Subgroups
-1. Pareto Charts for Ranking Problems
+1. Screened I Chart (eliminating freak moving ranges before calculating limits)
 1. SPC Charts for Rare Events
     - T Charts for Time Between Events
     - G Charts for Opportunities Between Cases
     - Bernoulli CUSUM charts for binary data
-1. Screened I Chart (eliminating freak moving ranges before calculating limits)
 1. Dual charting
 1. Prime Charts for Count Data with Very Large Subgroups
 1. Improved (normalised) I chart
+1. Funnel Plots for Categorical Subgroups
+1. Pareto Charts for Ranking Problems
 
 ## Part 5: Best Practices and Tips {-}
 

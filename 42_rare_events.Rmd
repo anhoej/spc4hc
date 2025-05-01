@@ -1,0 +1,8 @@
+# Prime Charts for Count Data with Very Large Subgroups
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/4,
+                      dev     = 'svg')
+
+library(qicharts2)
+```
