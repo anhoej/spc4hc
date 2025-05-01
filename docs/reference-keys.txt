@@ -118,8 +118,8 @@ small-multiple-plots-for-multivariate-data
 to-aggregate-or-not-to-aggregate
 qicharts2-in-short
 screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits
+spc-charts-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
-prime-charts-for-count-data-with-very-large-subgroups-1
 data-sets
 stat-concepts
 diagnostics
