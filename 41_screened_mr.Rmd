@@ -54,4 +54,4 @@ qic(y,
 options(qic.screenedmr = TRUE)
 ```
 
-In our experience, presenting moving range charts to non-technical SPC users rarely adds meaningful insight and can sometimes cause confusion. As a result, we prefer to enhance the sensitivity of I charts by excluding extreme moving ranges before calculating control limits while leaving the use and interpretation of moving range charts to the data analyst.
+In our experience, presenting moving range charts to non-technical SPC users rarely adds meaningful insight and can sometimes cause confusion. As a result, we prefer to enhance the sensitivity of I charts by excluding extreme moving ranges before calculating control limits while leaving the use and interpretation of moving range charts to data analyst.
