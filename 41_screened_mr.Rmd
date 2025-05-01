@@ -13,7 +13,7 @@ y   <- rpois(24, 16)
 amr <- mean(abs(diff(y)))
 ```
 
-As detailed in earlier chapters, control limits are designed to represent the natural, common cause variation and thereby enclose (almost) all data points from a stable process. To estimate the common cause variation we use the within subgroup variation. However, if the subgroups consist of only one data element, as is the case with I charts, there is no within subgroup variation to be calculated. In stead, we use the moving ranges, which is the absolute differences between consecutive data points. Thus, *two* subgroups is used to define the "within" subgroup variation.
+As detailed in earlier chapters, control limits are designed to represent the natural, common cause variation and thereby enclose (almost) all data points from a stable process. To estimate the common cause variation we use the within subgroup variation. However, if the subgroups consist of only one data element, as is the case with I charts, there is no within subgroup variation to be calculated. Instead, we use the moving ranges, that is the absolute differences between consecutive data points. Thus, *two* subgroups is used to define the "within" subgroup variation.
 
 Consequently, if a shift occurs between two subgroups, this will affect the moving range at this point and possible produce a signal on the moving range chart. For example, take these 24 "random" numbers:
 
@@ -23,27 +23,27 @@ cat(y)
 
 The average moving range (AMR) is `r amr`, and the upper control AMR limit is 3.267 x `r amr` = `r round(3.267 * amr, 1)`.
 
-The range between observations numbers 14 and 15 (|11 -- 28| = 17) is unusually large as shown by the moving range chart in Figure \@ref(fig:freak-mr1).
+The range between observations numbers 14 and 15 (|11 -- 28| = 17) is unusually large as shown by the moving range chart in Figure \@ref(fig:screened-mr1).
 
-```{r freak-mr1, fig.cap='Moving range chart with one range above the control limit'}
+```{r screened-mr1, fig.cap='Moving range chart with one range above the control limit'}
 
 qic(y, 
     chart = 'mr', 
     title = 'Moving range chart')
 ```
 
-Some authors recommend removing freak moving ranges before calculating the limits on the corresponding I chart [@nelson1982]. qicharts2 does this by default as shown in Figure \@ref(fig:freak-mr2).
+Some authors recommend removing extreme moving ranges before calculating the control limits for the corresponding I chart [@nelson1982], as this can slightly improve the chart's sensitivity. qicharts2 does this by default as shown in Figure \@ref(fig:screened-mr2).
 
-```{r freak-mr2, fig.cap='I chart with control limits calculated after removing freak moving ranges'}
+```{r screened-mr2, fig.cap='I chart with control limits calculated after removing freak moving ranges'}
 # default is to screen moving ranges before calculating control limits
 qic(y, 
     chart = 'i', 
     title = 'I chart with screened MRs')
 ```
 
-One may argue that this is unnecessary as long as the moving range chart is shown alongside the I chart. To suppress the screening of moving ranges before calculating control limits for I charts (and prime charts) in qicharts2, we can set the qic.screenedmr option to FALSE before plotting as in Figure \@ref(fig:freak-mr3):
+One may argue that this is unnecessary as long as the moving range chart is shown alongside the I chart. To suppress the screening of moving ranges before calculating control limits for I charts (and prime charts) in qicharts2, we can set the qic.screenedmr option to FALSE before plotting as in Figure \@ref(fig:screened-mr3):
 
-```{r freak-mr3, fig.cap='I chart with control limits calculated without removing ranges above control limit'}
+```{r screened-mr3, fig.cap='I chart with control limits calculated without removing ranges above control limit'}
 # suppress screening of moving ranges
 options(qic.screenedmr = FALSE)
 qic(y, 
@@ -54,3 +54,4 @@ qic(y,
 options(qic.screenedmr = TRUE)
 ```
 
+In our experience, presenting moving range charts to non-technical SPC users rarely adds meaningful insight and can sometimes cause confusion. As a result, we prefer to enhance the sensitivity of I charts by excluding extreme moving ranges before calculating control limits while leaving the use and interpretation of moving range charts to the data analyst.
