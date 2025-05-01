@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Highlighting Freaks, Shifts, and Trends | Mastering Statistical Process Control Charts in Healthcare</title>
+  <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Highlighting Freaks, Shifts, and Trends | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta name="github-repo" content="anhoej/spc4hc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Highlighting Freaks, Shifts, and Trends | Mastering Statistical Process Control Charts in Healthcare" />
+  
+  <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  
+
+<meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
+
+
+<meta name="date" content="2025-05-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="limits.html"/>
+<link rel="next" href="r-functions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">
+    Mastering SPC charts
+  </a>
+</li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
+<ul>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-2-constructing-spc-charts-with-r"><i class="fa fa-check"></i>Part 2: Constructing SPC Charts with R</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-case-studies-and-worked-examples"><i class="fa fa-check"></i>Part 3: Case Studies and Worked Examples</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-advanced-spc-techniques"><i class="fa fa-check"></i>Part 4: Advanced SPC Techniques</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-best-practices-and-tips"><i class="fa fa-check"></i>Part 5: Best Practices and Tips</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-6-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 6: Conclusion and Final Thoughts</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
+</ul></li>
+<li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
+<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="variation.html"><a href="variation.html#spc-and-the-nature-of-variation"><i class="fa fa-check"></i><b>1.1</b> SPC and the nature of variation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>2</b> Understanding SPC Charts</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>2.1</b> Anatomy and physiology of SPC charts</a></li>
+<li class="chapter" data-level="2.2" data-path="charts-intro.html"><a href="charts-intro.html#why-3-sigma-limits"><i class="fa fa-check"></i><b>2.2</b> Why 3-sigma limits?</a></li>
+<li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificent-seven"><i class="fa fa-check"></i><b>2.3</b> Some common types of control charts: The Magnificent Seven</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>2.3.1</b> Counts</a></li>
+<li class="chapter" data-level="2.3.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>2.3.2</b> Measurements</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="charts-intro.html"><a href="charts-intro.html#summary-of-common-spc-charts"><i class="fa fa-check"></i><b>2.4</b> Summary of common SPC charts</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts – Beyond the 3-Sigma Rule</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="3.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="3.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
+<li class="chapter" data-level="3.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="3.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
+<li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in healthcare</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>4.1</b> Using SPC to monitor a process</a></li>
+<li class="chapter" data-level="4.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>4.2</b> Using SPC to improve a process</a></li>
+<li class="chapter" data-level="4.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>4.3</b> Successful use of SPC in healthcare</a></li>
+</ul></li>
+<li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
+<li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart of blood pressure data</a></li>
+<li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>6.2</b> Formulas for calculation of control limits</a></li>
+<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.3</b> Count data</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.3.1</b> C chart</a></li>
+<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.3.2</b> U chart</a></li>
+<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.3.3</b> P chart</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
+<li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
+<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
+<li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> Core R Functions to Construct SPC Charts</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>8.1</b> Examples</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>8.1.1</b> Run chart</a></li>
+<li class="chapter" data-level="8.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>8.1.2</b> I and MR charts for individual measurements</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
+<li class="chapter" data-level="8.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>8.1.4</b> C and U charts for counts and rates</a></li>
+<li class="chapter" data-level="8.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>8.1.5</b> P chart for percentages</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>8.2</b> TODO</a></li>
+<li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
+<li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with ggplot2</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>9.1</b> Creating an SPC object for later plotting</a></li>
+<li class="chapter" data-level="9.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>9.2</b> Making a new plot function based on ggplot2</a></li>
+<li class="chapter" data-level="9.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>9.3</b> Customising the plotting theme</a></li>
+<li class="chapter" data-level="9.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>9.4</b> Preparing for qicharts2</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing qicharts2</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>10.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="10.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>10.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="10.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>10.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>10.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="10.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>10.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>10.6</b> Small multiple plots for multivariate data</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>10.6.1</b> To aggregate or not to aggregate</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> qicharts2 in short</a></li>
+</ul></li>
+<li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
+<li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
+<li class="chapter" data-level="11" data-path="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><i class="fa fa-check"></i><b>11</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="12" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>12</b> Prime Charts for Count Data with Very Large Subgroups</a></li>
+<li class="chapter" data-level="13" data-path="prime-charts-for-count-data-with-very-large-subgroups-1.html"><a href="prime-charts-for-count-data-with-very-large-subgroups-1.html"><i class="fa fa-check"></i><b>13</b> Prime Charts for Count Data with Very Large Subgroups</a></li>
+<li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
+<li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i>Bacteremia</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
+<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying the diagnostic error of SPC charts</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="diagnostics.html"><a href="diagnostics.html#average-run-length"><i class="fa fa-check"></i><b>C.1.1</b> Average run length</a></li>
+<li class="chapter" data-level="C.1.2" data-path="diagnostics.html"><a href="diagnostics.html#likelihood-ratios"><i class="fa fa-check"></i><b>C.1.2</b> Likelihood ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="diagnostics.html"><a href="diagnostics.html#conclusion-keeping-the-balance"><i class="fa fa-check"></i><b>C.2</b> Conclusion: Keeping the balance</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> Notes on R</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="r-notes.html"><a href="r-notes.html#data-structures-and-classes"><i class="fa fa-check"></i><b>D.1</b> Data structures and classes</a></li>
+<li class="chapter" data-level="D.2" data-path="r-notes.html"><a href="r-notes.html#plot-ready-data-frames"><i class="fa fa-check"></i><b>D.2</b> Plot-ready data frames</a></li>
+<li class="chapter" data-level="D.3" data-path="r-notes.html"><a href="r-notes.html#importing-data-from-text-files"><i class="fa fa-check"></i><b>D.3</b> Importing data from text files</a></li>
+<li class="chapter" data-level="D.4" data-path="r-notes.html"><a href="r-notes.html#manipulating-data-frames"><i class="fa fa-check"></i><b>D.4</b> Manipulating data frames</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="r-notes.html"><a href="r-notes.html#adding-variables-to-data-frames"><i class="fa fa-check"></i><b>D.4.1</b> Adding variables to data frames</a></li>
+<li class="chapter" data-level="D.4.2" data-path="r-notes.html"><a href="r-notes.html#aggregating-data-frames"><i class="fa fa-check"></i><b>D.4.2</b> Aggregating data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="D.5" data-path="r-notes.html"><a href="r-notes.html#tips-and-tricks"><i class="fa fa-check"></i><b>D.5</b> Tips and tricks</a>
+<ul>
+<li class="chapter" data-level="D.5.1" data-path="r-notes.html"><a href="r-notes.html#cutting-dates-and-datetimes"><i class="fa fa-check"></i><b>D.5.1</b> Cutting dates and datetimes</a></li>
+<li class="chapter" data-level="D.5.2" data-path="r-notes.html"><a href="r-notes.html#getting-age-from-date-of-birth"><i class="fa fa-check"></i><b>D.5.2</b> Getting age from date of birth</a></li>
+<li class="chapter" data-level="D.5.3" data-path="r-notes.html"><a href="r-notes.html#naming-files-and-variables"><i class="fa fa-check"></i><b>D.5.3</b> Naming files and variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
+<li class="chapter" data-level="F" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>F</b> Resources and Further Readings</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">
+    Published with bookdown
+  </a>
+</li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mastering Statistical Process Control Charts in Healthcare</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="highlighting" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Highlighting Freaks, Shifts, and Trends<a href="highlighting.html#highlighting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the Chapter <a href="limits.html#limits">6</a> we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data – that is, unexpected change caused by something outside the usual system.</p>
+<p>Control limits are designed to signal rather large (&gt; 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter <a href="testing.html#testing">3</a>, minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to signal freaks and the two runs rules for unusually long runs and unusually few crossings to signal shifts and trends.</p>
+<p>In this chapter we will improve the <code>spc()</code> function to automatically visualise special cause variation in the form of freaks, shifts, and trends.</p>
+<div id="introducing-the-cdiff-data-set" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Introducing the cdiff data set<a href="highlighting.html#introducing-the-cdiff-data-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The cdiff data set contains 24 observations of monthly numbers of hospital acquired <em>Clostridioides difficile</em> infections from an acute care hospital.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="highlighting.html#cb27-1" tabindex="-1"></a><span class="co"># read data from file</span></span>
+<span id="cb27-2"><a href="highlighting.html#cb27-2" tabindex="-1"></a>cdiff <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/cdiff.csv&#39;</span>,</span>
+<span id="cb27-3"><a href="highlighting.html#cb27-3" tabindex="-1"></a>                  <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb27-4"><a href="highlighting.html#cb27-4" tabindex="-1"></a>                  <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb27-5"><a href="highlighting.html#cb27-5" tabindex="-1"></a>                                 <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb27-6"><a href="highlighting.html#cb27-6" tabindex="-1"></a>                                 <span class="st">&#39;integer&#39;</span>))</span>
+<span id="cb27-7"><a href="highlighting.html#cb27-7" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="highlighting.html#cb27-8" tabindex="-1"></a><span class="co"># calculate centre line and control limits</span></span>
+<span id="cb27-9"><a href="highlighting.html#cb27-9" tabindex="-1"></a>cdiff <span class="ot">&lt;-</span> <span class="fu">within</span>(cdiff, {</span>
+<span id="cb27-10"><a href="highlighting.html#cb27-10" tabindex="-1"></a>  cl  <span class="ot">&lt;-</span> <span class="fu">mean</span>(infections)</span>
+<span id="cb27-11"><a href="highlighting.html#cb27-11" tabindex="-1"></a>  lcl <span class="ot">&lt;-</span> <span class="fu">pmax</span>(<span class="dv">0</span>, cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>(cl)) <span class="co"># censor lcl at zero</span></span>
+<span id="cb27-12"><a href="highlighting.html#cb27-12" tabindex="-1"></a>  ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">sqrt</span>(cl)</span>
+<span id="cb27-13"><a href="highlighting.html#cb27-13" tabindex="-1"></a>})</span>
+<span id="cb27-14"><a href="highlighting.html#cb27-14" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="highlighting.html#cb27-15" tabindex="-1"></a><span class="co"># print the first six rows of data</span></span>
+<span id="cb27-16"><a href="highlighting.html#cb27-16" tabindex="-1"></a><span class="fu">head</span>(cdiff)</span></code></pre></div>
+<pre><code>##        month infections risk_days      ucl lcl       cl
+## 1 2020-01-01         12     19801 11.77776   0 5.041667
+## 2 2020-02-01          7     18674 11.77776   0 5.041667
+## 3 2020-03-01          1     15077 11.77776   0 5.041667
+## 4 2020-04-01          4     12062 11.77776   0 5.041667
+## 5 2020-05-01          4     14005 11.77776   0 5.041667
+## 6 2020-06-01          5     14840 11.77776   0 5.041667</code></pre>
+<p>Figure <a href="highlighting.html#fig:highlighting-spc1">7.1</a> shows data plotted with <code>spc()</code> function. We see that there is one data point (#1) above the upper control limit. If we look carefully we also find an unusually long run of 11 data points below the centre line (#14-#24) and that the curve crosses the centre line only 7 times. Thus, in addition to the freak, there is also a shift in data, which is not large enough to break the limits but sustained enough to trigger the runs rules.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="highlighting.html#cb29-1" tabindex="-1"></a><span class="fu">with</span>(cdiff, {</span>
+<span id="cb29-2"><a href="highlighting.html#cb29-2" tabindex="-1"></a>  <span class="fu">spc</span>(month, infections, cl, lcl, ucl)</span>
+<span id="cb29-3"><a href="highlighting.html#cb29-3" tabindex="-1"></a>})</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:highlighting-spc1"></span>
+<img src="_main_files/figure-html/highlighting-spc1-1.svg" alt="C control chart of CDiff infections" width="672" />
+<p class="caption">
+Figure 7.1: C control chart of CDiff infections
+</p>
+</div>
+<p>Notice that we censored the lower control limit at zero even if the exact value is negative (<span class="math inline">\(\bar{c}-3\sqrt{\bar{c}}\)</span>). This is purely cosmetic, but since the data values themselves cannot be negative it makes little sense to show negative control limits. For the same reason we usually censor P chart control limits at 0 and 1 (100%) respectively.</p>
+<p>To help us signal special cause variation we will improve the <code>spc()</code> function.</p>
+</div>
+<div id="improved-spc-function" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Improved <code>spc()</code> function<a href="highlighting.html#improved-spc-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The new, improved <code>spc()</code> function has a few changes:</p>
+<ul>
+<li><p>Line 10: Import a function, <code>runs.analysis()</code>, from a separate R script to test for unusually long runs and unusually few crossings. See this function in the <a href="highlighting.html#r-function-for-runs-analysis">R function for runs analysis</a> section at the end of this chapter.</p></li>
+<li><p>Lines 19-20: If no cl argument is given, use the median for centre line.</p></li>
+<li><p>Lines 33-34: Create a logical vector identifying data points that lie outside the control limits.</p></li>
+<li><p>Line 37: Test for unusually long runs or unusually few crossings.</p></li>
+<li><p>Line 40: Start with an empty plot.</p></li>
+<li><p>Line 47-49: Format the centre line according to the result of runs analysis.</p></li>
+<li><p>Lines 56-49: Add the data line and points and colour data points outside control limits.</p></li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="highlighting.html#cb30-1"></a>spc <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb30-2"><a href="highlighting.html#cb30-2"></a>    x,           <span class="co"># x axis values</span></span>
+<span id="cb30-3"><a href="highlighting.html#cb30-3"></a>    <span class="at">y   =</span> <span class="cn">NULL</span>,  <span class="co"># data values</span></span>
+<span id="cb30-4"><a href="highlighting.html#cb30-4"></a>    <span class="at">cl  =</span> <span class="cn">NULL</span>,  <span class="co"># centre line</span></span>
+<span id="cb30-5"><a href="highlighting.html#cb30-5"></a>    <span class="at">lcl =</span> <span class="cn">NA</span>,    <span class="co"># lower control limit</span></span>
+<span id="cb30-6"><a href="highlighting.html#cb30-6"></a>    <span class="at">ucl =</span> <span class="cn">NA</span>,    <span class="co"># upper control limit</span></span>
+<span id="cb30-7"><a href="highlighting.html#cb30-7"></a>    ...          <span class="co"># other parameters passed to the plot() function</span></span>
+<span id="cb30-8"><a href="highlighting.html#cb30-8"></a>) {</span>
+<span id="cb30-9"><a href="highlighting.html#cb30-9"></a>  <span class="co"># load runs analysis function from R script</span></span>
+<span id="cb30-10"><a href="highlighting.html#cb30-10"></a>  <span class="fu">source</span>(<span class="st">&#39;R/runs.analysis.R&#39;</span>)</span>
+<span id="cb30-11"><a href="highlighting.html#cb30-11"></a>  </span>
+<span id="cb30-12"><a href="highlighting.html#cb30-12"></a>  <span class="co"># if y is missing, set y to x and make a sequence for x</span></span>
+<span id="cb30-13"><a href="highlighting.html#cb30-13"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(y)) {</span>
+<span id="cb30-14"><a href="highlighting.html#cb30-14"></a>    y <span class="ot">&lt;-</span> x</span>
+<span id="cb30-15"><a href="highlighting.html#cb30-15"></a>    x <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(y)</span>
+<span id="cb30-16"><a href="highlighting.html#cb30-16"></a>  }</span>
+<span id="cb30-17"><a href="highlighting.html#cb30-17"></a>  </span>
+<span id="cb30-18"><a href="highlighting.html#cb30-18"></a>  <span class="co"># if cl is missing use median of y</span></span>
+<span id="cb30-19"><a href="highlighting.html#cb30-19"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(cl))</span>
+<span id="cb30-20"><a href="highlighting.html#cb30-20"></a>    cl <span class="ot">&lt;-</span> <span class="fu">median</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-21"><a href="highlighting.html#cb30-21"></a>  </span>
+<span id="cb30-22"><a href="highlighting.html#cb30-22"></a>  <span class="co"># repeat line values to match the length of y</span></span>
+<span id="cb30-23"><a href="highlighting.html#cb30-23"></a>  <span class="cf">if</span> (<span class="fu">length</span>(cl) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb30-24"><a href="highlighting.html#cb30-24"></a>    cl <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl, <span class="fu">length</span>(y))</span>
+<span id="cb30-25"><a href="highlighting.html#cb30-25"></a>  </span>
+<span id="cb30-26"><a href="highlighting.html#cb30-26"></a>  <span class="cf">if</span> (<span class="fu">length</span>(lcl) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb30-27"><a href="highlighting.html#cb30-27"></a>    lcl <span class="ot">&lt;-</span> <span class="fu">rep</span>(lcl, <span class="fu">length</span>(y))</span>
+<span id="cb30-28"><a href="highlighting.html#cb30-28"></a>  </span>
+<span id="cb30-29"><a href="highlighting.html#cb30-29"></a>  <span class="cf">if</span> (<span class="fu">length</span>(ucl) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb30-30"><a href="highlighting.html#cb30-30"></a>    ucl <span class="ot">&lt;-</span> <span class="fu">rep</span>(ucl, <span class="fu">length</span>(y))</span>
+<span id="cb30-31"><a href="highlighting.html#cb30-31"></a>  </span>
+<span id="cb30-32"><a href="highlighting.html#cb30-32"></a>  <span class="co"># find data points outside control limits (freaks)</span></span>
+<span id="cb30-33"><a href="highlighting.html#cb30-33"></a>  sigma.signal <span class="ot">&lt;-</span> y <span class="sc">&lt;</span> lcl <span class="sc">|</span> y <span class="sc">&gt;</span> ucl</span>
+<span id="cb30-34"><a href="highlighting.html#cb30-34"></a>  sigma.signal[<span class="fu">is.na</span>(sigma.signal)] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb30-35"><a href="highlighting.html#cb30-35"></a>  </span>
+<span id="cb30-36"><a href="highlighting.html#cb30-36"></a>  <span class="co"># check for sustained shifts and trends using runs analysis</span></span>
+<span id="cb30-37"><a href="highlighting.html#cb30-37"></a>  runs.signal <span class="ot">&lt;-</span> <span class="fu">runs.analysis</span>(y, cl)</span>
+<span id="cb30-38"><a href="highlighting.html#cb30-38"></a>  </span>
+<span id="cb30-39"><a href="highlighting.html#cb30-39"></a>  <span class="co"># make empty plot</span></span>
+<span id="cb30-40"><a href="highlighting.html#cb30-40"></a>  <span class="fu">plot</span>(x, y, </span>
+<span id="cb30-41"><a href="highlighting.html#cb30-41"></a>       <span class="at">type =</span> <span class="st">&#39;n&#39;</span>,</span>
+<span id="cb30-42"><a href="highlighting.html#cb30-42"></a>       <span class="at">ylim =</span> <span class="fu">range</span>(y, cl, lcl, ucl, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb30-43"><a href="highlighting.html#cb30-43"></a>       ...)</span>
+<span id="cb30-44"><a href="highlighting.html#cb30-44"></a>  </span>
+<span id="cb30-45"><a href="highlighting.html#cb30-45"></a>  <span class="co"># add centre line, coloured and dashed if shifts or trends were identified by</span></span>
+<span id="cb30-46"><a href="highlighting.html#cb30-46"></a>  <span class="co"># the runs analysis</span></span>
+<span id="cb30-47"><a href="highlighting.html#cb30-47"></a>  <span class="fu">lines</span>(x, cl,</span>
+<span id="cb30-48"><a href="highlighting.html#cb30-48"></a>        <span class="at">col =</span> runs.signal <span class="sc">+</span> <span class="dv">1</span>,</span>
+<span id="cb30-49"><a href="highlighting.html#cb30-49"></a>        <span class="at">lty =</span> runs.signal <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb30-50"><a href="highlighting.html#cb30-50"></a>  </span>
+<span id="cb30-51"><a href="highlighting.html#cb30-51"></a>  <span class="co"># add control limits</span></span>
+<span id="cb30-52"><a href="highlighting.html#cb30-52"></a>  <span class="fu">lines</span>(x, lcl)</span>
+<span id="cb30-53"><a href="highlighting.html#cb30-53"></a>  <span class="fu">lines</span>(x, ucl)</span>
+<span id="cb30-54"><a href="highlighting.html#cb30-54"></a>  </span>
+<span id="cb30-55"><a href="highlighting.html#cb30-55"></a>  <span class="co"># add data line and points, colour freak data points (outside control limits)</span></span>
+<span id="cb30-56"><a href="highlighting.html#cb30-56"></a>  <span class="fu">lines</span>(x, y)</span>
+<span id="cb30-57"><a href="highlighting.html#cb30-57"></a>  <span class="fu">points</span>(x, y,</span>
+<span id="cb30-58"><a href="highlighting.html#cb30-58"></a>         <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb30-59"><a href="highlighting.html#cb30-59"></a>         <span class="at">col =</span> sigma.signal <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb30-60"><a href="highlighting.html#cb30-60"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="highlighting.html#cb31-1" tabindex="-1"></a><span class="fu">with</span>(cdiff, {</span>
+<span id="cb31-2"><a href="highlighting.html#cb31-2" tabindex="-1"></a>  <span class="fu">spc</span>(month, infections, cl, lcl, ucl)</span>
+<span id="cb31-3"><a href="highlighting.html#cb31-3" tabindex="-1"></a>})</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:highlighting-spc2"></span>
+<img src="_main_files/figure-html/highlighting-spc2-1.svg" alt="Improved control chart with visual clues to highlight special cause variation" width="672" />
+<p class="caption">
+Figure 7.2: Improved control chart with visual clues to highlight special cause variation
+</p>
+</div>
+<p>Now it is a lot easier to immediately see if a chart signals special cause variation or not (Figure <a href="highlighting.html#fig:highlighting-spc2">7.2</a>). Freak data points are red, and the centre line turns red and dashed if there are any unusually long runs or if the curve crossed the centre line unusually few times.</p>
+<p>Remember, the chart itself does not tell us what caused the signals. This interpretation of a chart – common or special cause variation – still relies on humans with a deep understanding the process and the data.</p>
+</div>
+<div id="highlighting-special-cause-variation-in-short" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Highlighting special cause variation in short<a href="highlighting.html#highlighting-special-cause-variation-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this chapter we have improved the <code>spc()</code> function to automatically highlight signs of special cause variation using visual clues that signal special cause variation.</p>
+<p>In the next chapter we will improve the <code>spc()</code> function further to automatically aggregate data and calculate control limits.</p>
+<hr />
+</div>
+<div id="r-function-for-runs-analysis" class="section level2 unnumbered hasAnchor">
+<h2>R function for runs analysis<a href="highlighting.html#r-function-for-runs-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="highlighting.html#cb32-1" tabindex="-1"></a>runs.analysis <span class="ot">&lt;-</span> <span class="cf">function</span>(y, cl) {</span>
+<span id="cb32-2"><a href="highlighting.html#cb32-2" tabindex="-1"></a>  <span class="co"># trichotomise data according to position relative to CL</span></span>
+<span id="cb32-3"><a href="highlighting.html#cb32-3" tabindex="-1"></a>  <span class="co"># -1 = below, 0 = on, 1 = above</span></span>
+<span id="cb32-4"><a href="highlighting.html#cb32-4" tabindex="-1"></a>  runs            <span class="ot">&lt;-</span> <span class="fu">sign</span>(y <span class="sc">-</span> cl)</span>
+<span id="cb32-5"><a href="highlighting.html#cb32-5" tabindex="-1"></a>  </span>
+<span id="cb32-6"><a href="highlighting.html#cb32-6" tabindex="-1"></a>  <span class="co"># remove NAs and data points on the CL</span></span>
+<span id="cb32-7"><a href="highlighting.html#cb32-7" tabindex="-1"></a>  runs            <span class="ot">&lt;-</span> runs[runs <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(runs)]</span>
+<span id="cb32-8"><a href="highlighting.html#cb32-8" tabindex="-1"></a>  </span>
+<span id="cb32-9"><a href="highlighting.html#cb32-9" tabindex="-1"></a>  <span class="co"># find run lengths</span></span>
+<span id="cb32-10"><a href="highlighting.html#cb32-10" tabindex="-1"></a>  run.lengths     <span class="ot">&lt;-</span> <span class="fu">rle</span>(runs)<span class="sc">$</span>lengths</span>
+<span id="cb32-11"><a href="highlighting.html#cb32-11" tabindex="-1"></a>  </span>
+<span id="cb32-12"><a href="highlighting.html#cb32-12" tabindex="-1"></a>  <span class="co"># find number of useful observations (data points not on CL)</span></span>
+<span id="cb32-13"><a href="highlighting.html#cb32-13" tabindex="-1"></a>  n.useful        <span class="ot">&lt;-</span> <span class="fu">sum</span>(run.lengths)</span>
+<span id="cb32-14"><a href="highlighting.html#cb32-14" tabindex="-1"></a>  </span>
+<span id="cb32-15"><a href="highlighting.html#cb32-15" tabindex="-1"></a>  <span class="co"># find longest run above or below CL</span></span>
+<span id="cb32-16"><a href="highlighting.html#cb32-16" tabindex="-1"></a>  longest.run     <span class="ot">&lt;-</span> <span class="fu">max</span>(run.lengths)</span>
+<span id="cb32-17"><a href="highlighting.html#cb32-17" tabindex="-1"></a>  </span>
+<span id="cb32-18"><a href="highlighting.html#cb32-18" tabindex="-1"></a>  <span class="co"># find number of times adjacent data points are on opposite sides of CL</span></span>
+<span id="cb32-19"><a href="highlighting.html#cb32-19" tabindex="-1"></a>  n.crossings     <span class="ot">&lt;-</span> <span class="fu">length</span>(run.lengths) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb32-20"><a href="highlighting.html#cb32-20" tabindex="-1"></a>  </span>
+<span id="cb32-21"><a href="highlighting.html#cb32-21" tabindex="-1"></a>  <span class="co"># find upper limit for longest run</span></span>
+<span id="cb32-22"><a href="highlighting.html#cb32-22" tabindex="-1"></a>  longest.run.max <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">log2</span>(n.useful)) <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb32-23"><a href="highlighting.html#cb32-23" tabindex="-1"></a>  </span>
+<span id="cb32-24"><a href="highlighting.html#cb32-24" tabindex="-1"></a>  <span class="co"># find lower limit for number of crossing</span></span>
+<span id="cb32-25"><a href="highlighting.html#cb32-25" tabindex="-1"></a>  n.crossings.min <span class="ot">&lt;-</span> <span class="fu">qbinom</span>(<span class="fl">0.05</span>, n.useful <span class="sc">-</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb32-26"><a href="highlighting.html#cb32-26" tabindex="-1"></a>  </span>
+<span id="cb32-27"><a href="highlighting.html#cb32-27" tabindex="-1"></a>  <span class="co"># return result, TRUE if either of the two tests is true, otherwise FALSE</span></span>
+<span id="cb32-28"><a href="highlighting.html#cb32-28" tabindex="-1"></a>  longest.run <span class="sc">&gt;</span> longest.run.max <span class="sc">|</span> n.crossings <span class="sc">&lt;</span> n.crossings.min</span>
+<span id="cb32-29"><a href="highlighting.html#cb32-29" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="limits.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
