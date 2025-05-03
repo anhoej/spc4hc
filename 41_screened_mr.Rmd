@@ -1,6 +1,6 @@
 # (PART\*) Part 4: Advanced SPC Techniques {-}
 
-# Screened I Chart -- eliminating freak moving ranges before calculating limits
+# Screened I Chart -- eliminating freak moving ranges before calculating limits {#screenedmr}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,

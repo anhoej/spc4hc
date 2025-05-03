@@ -50,6 +50,7 @@ fig:screened-mr2
 fig:screened-mr3
 fig:pcharts-fig1
 fig:pcharts-fig2
+fig:pcharts-fig3
 tab:pcharts-tab1
 variation
 spc-and-the-nature-of-variation
@@ -121,10 +122,11 @@ small-multiple-plots-for-multivariate-data
 to-aggregate-or-not-to-aggregate
 qicharts2-in-short
 case-1
-screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits
+screenedmr
 spc-charts-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
 laneys-prime-chart
+when-to-use-prime-charts
 tips-for-effective-spc-implementation
 data-sets
 stat-concepts

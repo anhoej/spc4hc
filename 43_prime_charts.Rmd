@@ -9,7 +9,7 @@ library(qicharts2)
 
 With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points outside the limits. 
 
-Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 (see data at the [end of this chapter][Data]).
+Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 (example data are tabulated at the [end of this chapter](#pp-data)).
 
 ```{r pcharts-fig1, echo=FALSE, fig.cap='P chart of percent emergency attendances seen within 4 hours'}
 qic(i, r, n, 
@@ -34,18 +34,15 @@ qic(i, r, n,
     xlab      = 'Week')
 ```
 
-As a general rule of thumb, when the control limits from an I chart differ significantly from those of a P or U chart, it suggests that the observed variation is inconsistent with the assumed binomial or Poisson models underlying the P and U charts, respectively.
+As a general rule of thumb, when the control limits from an I chart differ significantly from those of the P or U chart, this suggests that the observed variation is inconsistent with the assumed binomial or Poisson models underlying the P and U charts, respectively.
 
-Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes -- not the least in healthcare -- subgroup sizes matter.
+Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes -- not the least in healthcare -- varying subgroup sizes matter.
 
-Laney proposed a solution that adjust the (assumed) within subgroup variation in count data ($\sigma_{pi}$) by a factor based on the moving ranges of successive standardised data points ($\sigma_z$).
-
-
-
+Laney proposed a solution that adjust the within subgroup variation in count data ($\sigma_{pi}$) by a factor based on the moving ranges of successive standardised data points ($\sigma_z$) [@laney2002].
 
 ## Laney's prime chart
 
-The control limits for a traditional **P chart** are calculated as:
+As shown earlier in Table \@ref(tab:limits-tab1), the control limits for a **traditional P chart** are calculated as:
 
 $$\bar{p}\pm3\sigma_{pi}$$
 
@@ -59,33 +56,59 @@ The **P′ chart** (pronounced P-prime chart) accounts for both within and betwe
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z$$
 
-where $\sigma_z$ represents the between-subgroup variation, calculated using the moving ranges of the standardized proportions defined as:
+where $\sigma_z$ represents the between-subgroup variation, calculated using the moving ranges of the standardised proportions defined as:
 
 $$z_i=(p_i - \bar{p})/\sigma_{pi}$$
 
-The moving range is:
+The moving ranges are:
 
 $$MR_i=|z_i-z_{i-1}|$$
 
-Then, the estimate of between-subgroup variation $\sigma_z$ is the average moving range devided by the constant 1.128:
+Then, the estimated between-subgroup variation $\sigma_z$ is the average moving range devided by the constant 1.128:
 
 $$\sigma_z=\overline{MR_z}/1.128$$
 Thus, the control limits for the P′ chart are:
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z $$
 
+```{r pcharts-fig3, echo=FALSE, fig.cap="P' chart of percent emergency attendances seen within 4 hours"}
+qic(i, r, n, 
+    data      = nhs_accidents,
+    chart     = 'pp',
+    y.percent = TRUE,
+    title     = 'Attendances seen within 4 hours',
+    subtitle  = "P' chart",
+    xlab      = 'Week')
+```
+
+The control limits in Figure \@ref(fig:pcharts-fig3) are very close to the I chart limits from Figure \@ref(fig:pcharts-fig3), but vary slightly due to varying subgroup sizes.
+
 Similarly, control limits for the U' chart are:
 
 $$\bar{u}\pm3\sigma_{ui}\sigma_z$$
 
-
 where $\sigma_{ui}=\sqrt{\bar{u}/n_i}$ and $\sigma_{z}=\overline{MR_z}/1.128$; and the moving ranges are computed from the standardised rates defined as $z_i=(u_i-\bar{u})/\sigma_{ui}$.
 
-## Data {-}
+Note that in qicharts2, the moving ranges of the standardized values are, by default, screened for extreme values -- following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
+
+## When to use prime charts
+
+Laney's prime charts were developed to handle overdispersion (and underdispersion), that is, when data show more (or less) variation than expected under a binomial or Poisson distribution, which is often seen with very large subgroup sizes. But how do we know when to suspect overdispersion?
+
+A red flag is when a traditional P or U chart shows unusually tight control limits that seem unnatural. If plotting the same data on an I chart produces significantly wider control limits, it is a strong indication that the assumptions behind the P or U chart may not hold. In such cases, switching to Laney’s P' or U' charts is typically the better choice.
+
+Note that when the adjustment factor ($\sigma_z$) is close to one -- indicating little to no overdispersion -- the Laney P′ or U′ chart closely resembles the traditional P or U chart. For this reason, Laney recommends using prime charts as a generally safe and robust default.
+
+In the next chapter, we will explore a modified I chart -- the I' (I prime) chart -- which generates control limits for count data that closely align with Laney’s prime charts, while also accommodating measurement data with varying subgroup sizes.
+
+----
+
+## Example data for P prime charts {- #pp-data}
 
 ```{r pcharts-tab1, echo=FALSE}
 d <- nhs_accidents
-names(d) <- c('Week (i)', 'Attendances seen within 4 hours (r)',
+names(d) <- c('Week (i)',
+              'Attendances seen within 4 hours (r)',
               'Number of attendances (n)')
 knitr::kable(d, 
              format.args = list(big.mark = ','),
