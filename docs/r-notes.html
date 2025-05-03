@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-02" />
+<meta name="date" content="2025-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -300,7 +300,11 @@ div.csl-indent {
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
 <li class="chapter" data-level="12" data-path="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
 <li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a></li>
-<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a></li>
+<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#p-charts"><i class="fa fa-check"></i><b>14.1</b> P’ charts</a></li>
+<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#u-charts"><i class="fa fa-check"></i><b>14.2</b> U’ charts</a></li>
+</ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
@@ -382,18 +386,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-04-20    13    32
- 2 2025-04-21    14    29
- 3 2025-04-22    16    33
- 4 2025-04-23    19    30
- 5 2025-04-24    13    32
- 6 2025-04-25    18    35
- 7 2025-04-26    19    29
- 8 2025-04-27    16    33
- 9 2025-04-28    16    34
-10 2025-04-29    11    27
-11 2025-04-30    13    32
-12 2025-05-01    12    26</code></pre>
+ 1 2025-04-21    13    32
+ 2 2025-04-22    14    29
+ 3 2025-04-23    16    33
+ 4 2025-04-24    19    30
+ 5 2025-04-25    13    32
+ 6 2025-04-26    18    35
+ 7 2025-04-27    19    29
+ 8 2025-04-28    16    33
+ 9 2025-04-29    16    34
+10 2025-04-30    11    27
+11 2025-05-01    13    32
+12 2025-05-02    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="r-notes.html#cb80-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb80-2"><a href="r-notes.html#cb80-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

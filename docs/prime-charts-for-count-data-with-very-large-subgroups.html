@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-02" />
+<meta name="date" content="2025-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -300,7 +300,11 @@ div.csl-indent {
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
 <li class="chapter" data-level="12" data-path="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
 <li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a></li>
-<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a></li>
+<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#p-charts"><i class="fa fa-check"></i><b>14.1</b> P’ charts</a></li>
+<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#u-charts"><i class="fa fa-check"></i><b>14.2</b> U’ charts</a></li>
+</ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
@@ -369,7 +373,31 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="prime-charts-for-count-data-with-very-large-subgroups" class="section level1 hasAnchor" number="14">
 <h1><span class="header-section-number">Chapter 14</span> Prime Charts for Count Data with Very Large Subgroups<a href="prime-charts-for-count-data-with-very-large-subgroups.html#prime-charts-for-count-data-with-very-large-subgroups" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The control limits for a traditional <strong>P chart</strong> are calculated as:</p>
+<p><span class="math display">\[\bar{p}\pm3\sigma_{pi}\]</span></p>
+<p>where <span class="math inline">\(\bar{p}\)</span> is the average proportion and <span class="math inline">\(\sigma_{pi}\)</span> is the within-subgroup standard deviation for the i-th subgroup:</p>
+<p><span class="math display">\[\sigma_{pi}=\sqrt{\bar{p}(1-\bar{p})/{n_{i}}}\]</span></p>
+<p>where <span class="math inline">\(n_i\)</span> is the sample size of the i-th subgroup.</p>
+<div id="p-charts" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> P’ charts<a href="prime-charts-for-count-data-with-very-large-subgroups.html#p-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>P′ chart</strong> accounts for both within and between subgroup variation. The control limits are given by:</p>
+<p><span class="math display">\[\bar{p}\pm3\sigma_{pi}\sigma_z\]</span></p>
+<p>where <span class="math inline">\(\sigma_z\)</span> represents the between-subgroup variation, calculated using the moving ranges of the standardized proportions defined as:</p>
+<p><span class="math display">\[z_i=(p_i - \bar{p})/\sigma_{pi}\]</span></p>
+<p>The moving range is:</p>
+<p><span class="math display">\[MR_i=|z_i-z_{i-1}|\]</span></p>
+<p>Then, the estimate of between-subgroup variation <span class="math inline">\(\sigma_z\)</span> is the average moving range devided by the constant 1.128:</p>
+<p><span class="math display">\[\sigma_z=\overline{MR_z}/1.128\]</span>
+Thus, the control limits for the P′ chart are:</p>
+<p><span class="math display">\[\bar{p}\pm3\sigma_{pi}\sigma_z \]</span></p>
+</div>
+<div id="u-charts" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> U’ charts<a href="prime-charts-for-count-data-with-very-large-subgroups.html#u-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Similarly, control limits for the U’ chart are:</p>
+<p><span class="math display">\[\bar{u}\pm3\sigma_{ui}\sigma_z\]</span></p>
+<p>where <span class="math inline">\(\sigma_{ui}=\sqrt{\bar{u}/n_i}\)</span> and <span class="math inline">\(\sigma_{z}=\overline{MR_z}/1.128\)</span>; and the moving ranges are computed from the standardised rates defined as <span class="math inline">\(z_i=(u_i-\bar{u})/\sigma_{ui}\)</span>.</p>
 
+</div>
 </div>
 
 
