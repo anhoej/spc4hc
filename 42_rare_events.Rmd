@@ -6,3 +6,60 @@ knitr::opts_chunk$set(fig.asp = 2/4,
 
 library(qicharts2)
 ```
+
+The control limits for a traditional **P chart** are calculated as:
+
+$$\bar{p}\pm3\sigma_{pi}$$
+
+where $\bar{p}$ is the average proportion and $\sigma_{pi}$ is the within-subgroup standard deviation for the i-th subgroup:
+
+$$\sigma_{pi}=\sqrt{\bar{p}(1-\bar{p})}/{n_{i}}$$
+
+where $n_i$ is the sample size of the i-th subgroup.
+
+## P' charts
+
+The **P′ chart** accounts for both within and between subgroup variation. The control limits are given by:
+
+$$\bar{p}\pm3\sigma_{pi}\sigma_z$$
+
+where $\sigma_z$ represents the between-subgroup variation, calculated using the moving range of the standardized values $z_i$, defined as:
+
+$$z_i=(p_i - \bar{p})/\sigma_{pi}$$
+
+The moving range is:
+
+$$MR_i=|z_i-z_{i-1}|$$
+
+Then, the estimate of between-subgroup variation $\sigma_z$ is:
+
+$$\sigma_z=\overline{MR_z}/1.128$$
+Thus, the final control limits for the P′ chart are:
+
+$$\bar{p}\pm3\sigma_{pi}\sigma_z $$
+
+## U' charts
+
+Similarly, control limits for the U' chart are calculated as:
+
+$$\bar{u}\pm3\sigma_{ui}\sigma_{z}$$
+
+where $\sigma_{ui}$ is the within subgroup variation:
+
+$$\sigma_{ui}=\sqrt{(u_i/n_i)}$$
+
+and $\sigma_{z}$ is the between subgroup variation based on the average moving range of z-scores defined:
+
+$$MR_i=|z_i-z_{i-1}|$$
+
+where
+
+$$z_i=(u_i-\bar{u})/n_i$$
+
+Then the between subgroup variation $\sigma_{z}$ is:
+
+$$\sigma_{z}=\overline{MR}/1.128$$
+
+and the control limits are:
+
+$$\bar{p}\pm3\sigma_{pi}\sigma_z $$
