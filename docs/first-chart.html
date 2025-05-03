@@ -302,10 +302,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a></li>
 <li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#p-charts"><i class="fa fa-check"></i><b>14.1</b> P’ charts</a></li>
-<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#u-charts"><i class="fa fa-check"></i><b>14.2</b> U’ charts</a></li>
+<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#data"><i class="fa fa-check"></i>Data</a></li>
 </ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
+<li class="chapter" data-level="15" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>15</b> Tips for Effective SPC Implementation</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -377,7 +378,7 @@ div.csl-indent {
 <p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower boundaries of the natural variation in data.</p>
 <div id="a-run-chart-of-blood-pressure-data" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> A run chart of blood pressure data<a href="first-chart.html#a-run-chart-of-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Consider the data from Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a>, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
+<p>Consider the data from Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a>, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">M. A. Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>systolic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
 <span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>              <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
 <span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>              <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>

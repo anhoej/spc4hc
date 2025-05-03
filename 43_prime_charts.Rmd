@@ -7,6 +7,44 @@ knitr::opts_chunk$set(fig.asp = 2/4,
 library(qicharts2)
 ```
 
+With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points outside the limits. 
+
+Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 (see data at the [end of this chapter][Data]).
+
+```{r pcharts-fig1, echo=FALSE, fig.cap='P chart of percent emergency attendances seen within 4 hours'}
+qic(i, r, n, 
+    data     = nhs_accidents,
+    chart    = 'p',
+    title    = 'Attendances seen within 4 hours',
+    subtitle = 'P chart',
+    xlab     = 'Week')
+```
+
+This can suggest that the process is highly unstable, even when such a conclusion may not be warranted. Overdispersion occurs when the natural, common cause variation in the data exceeds what is expected under the assumed theoretical distribution -- binomial for proportions and Poisson for rates.
+
+To diagnose this issue, we can plot the data on an I chart, which bases its control limits on the natural variation between successive subgroups rather than on theoretical distributional assumptions. Figure \@ref(fig:pcharts-fig2) is an I chart of the data from Figure \@ref(fig:pcharts-fig1) suggesting only common cause variation.
+
+```{r pcharts-fig2, echo=FALSE, fig.cap='I chart of percent emergency attendances seen within 4 hours'}
+qic(i, r, n, 
+    data      = nhs_accidents,
+    chart     = 'i',
+    y.percent = TRUE,
+    title     = 'Attendances seen within 4 hours',
+    subtitle  = 'I chart',
+    xlab      = 'Week')
+```
+
+As a general rule of thumb, when the control limits from an I chart differ significantly from those of a P or U chart, it suggests that the observed variation is inconsistent with the assumed binomial or Poisson models underlying the P and U charts, respectively.
+
+Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes -- not the least in healthcare -- subgroup sizes matter.
+
+Laney proposed a solution that adjust the (assumed) within subgroup variation in count data ($\sigma_{pi}$) by a factor based on the moving ranges of successive standardised data points ($\sigma_z$).
+
+
+
+
+## Laney's prime chart
+
 The control limits for a traditional **P chart** are calculated as:
 
 $$\bar{p}\pm3\sigma_{pi}$$
@@ -17,9 +55,7 @@ $$\sigma_{pi}=\sqrt{\bar{p}(1-\bar{p})/{n_{i}}}$$
 
 where $n_i$ is the sample size of the i-th subgroup.
 
-## P' charts
-
-The **P′ chart** accounts for both within and between subgroup variation. The control limits are given by:
+The **P′ chart** (pronounced P-prime chart) accounts for both within and between subgroup variation. The control limits are given by:
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z$$
 
@@ -38,13 +74,21 @@ Thus, the control limits for the P′ chart are:
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z $$
 
-
-## U' charts
-
 Similarly, control limits for the U' chart are:
 
 $$\bar{u}\pm3\sigma_{ui}\sigma_z$$
 
 
 where $\sigma_{ui}=\sqrt{\bar{u}/n_i}$ and $\sigma_{z}=\overline{MR_z}/1.128$; and the moving ranges are computed from the standardised rates defined as $z_i=(u_i-\bar{u})/\sigma_{ui}$.
+
+## Data {-}
+
+```{r pcharts-tab1, echo=FALSE}
+d <- nhs_accidents
+names(d) <- c('Week (i)', 'Attendances seen within 4 hours (r)',
+              'Number of attendances (n)')
+knitr::kable(d, 
+             format.args = list(big.mark = ','),
+             caption = 'The number of attendances to major accident and emergency hospital departments in the NHS that were seen within 4 hours of arrival over twenty weeks. Source: [@mohammed2013]')
+```
 

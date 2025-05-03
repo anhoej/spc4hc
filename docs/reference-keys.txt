@@ -48,6 +48,9 @@ fig:qicharts-hais5
 fig:screened-mr1
 fig:screened-mr2
 fig:screened-mr3
+fig:pcharts-fig1
+fig:pcharts-fig2
+tab:pcharts-tab1
 variation
 spc-and-the-nature-of-variation
 charts-intro
@@ -121,8 +124,8 @@ case-1
 screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits
 spc-charts-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
-p-charts
-u-charts
+laneys-prime-chart
+tips-for-effective-spc-implementation
 data-sets
 stat-concepts
 diagnostics

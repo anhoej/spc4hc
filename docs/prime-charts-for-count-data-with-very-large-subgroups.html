@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="spc-charts-for-rare-events.html"/>
-<link rel="next" href="data-sets.html"/>
+<link rel="next" href="tips-for-effective-spc-implementation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -302,10 +302,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a></li>
 <li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#p-charts"><i class="fa fa-check"></i><b>14.1</b> P’ charts</a></li>
-<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#u-charts"><i class="fa fa-check"></i><b>14.2</b> U’ charts</a></li>
+<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#data"><i class="fa fa-check"></i>Data</a></li>
 </ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
+<li class="chapter" data-level="15" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>15</b> Tips for Effective SPC Implementation</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -373,14 +374,33 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="prime-charts-for-count-data-with-very-large-subgroups" class="section level1 hasAnchor" number="14">
 <h1><span class="header-section-number">Chapter 14</span> Prime Charts for Count Data with Very Large Subgroups<a href="prime-charts-for-count-data-with-very-large-subgroups.html#prime-charts-for-count-data-with-very-large-subgroups" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points outside the limits.</p>
+<p>Figure <a href="prime-charts-for-count-data-with-very-large-subgroups.html#fig:pcharts-fig1">14.1</a> demonstrates this phenomenon, known as overdispersion, using data from from <span class="citation">Mohammed A. Mohammed et al. (<a href="#ref-mohammed2013">2013</a>)</span> (see data at the <a href="prime-charts-for-count-data-with-very-large-subgroups.html#data">end of this chapter</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:pcharts-fig1"></span>
+<img src="_main_files/figure-html/pcharts-fig1-1.svg" alt="P chart of percent emergency attendances seen within 4 hours" width="672" />
+<p class="caption">
+Figure 14.1: P chart of percent emergency attendances seen within 4 hours
+</p>
+</div>
+<p>This can suggest that the process is highly unstable, even when such a conclusion may not be warranted. Overdispersion occurs when the natural, common cause variation in the data exceeds what is expected under the assumed theoretical distribution – binomial for proportions and Poisson for rates.</p>
+<p>To diagnose this issue, we can plot the data on an I chart, which bases its control limits on the natural variation between successive subgroups rather than on theoretical distributional assumptions. Figure <a href="prime-charts-for-count-data-with-very-large-subgroups.html#fig:pcharts-fig2">14.2</a> is an I chart of the data from Figure <a href="prime-charts-for-count-data-with-very-large-subgroups.html#fig:pcharts-fig1">14.1</a> suggesting only common cause variation.</p>
+<div class="figure"><span style="display:block;" id="fig:pcharts-fig2"></span>
+<img src="_main_files/figure-html/pcharts-fig2-1.svg" alt="I chart of percent emergency attendances seen within 4 hours" width="672" />
+<p class="caption">
+Figure 14.2: I chart of percent emergency attendances seen within 4 hours
+</p>
+</div>
+<p>As a general rule of thumb, when the control limits from an I chart differ significantly from those of a P or U chart, it suggests that the observed variation is inconsistent with the assumed binomial or Poisson models underlying the P and U charts, respectively.</p>
+<p>Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes – not the least in healthcare – subgroup sizes matter.</p>
+<p>Laney proposed a solution that adjust the (assumed) within subgroup variation in count data (<span class="math inline">\(\sigma_{pi}\)</span>) by a factor based on the moving ranges of successive standardised data points (<span class="math inline">\(\sigma_z\)</span>).</p>
+<div id="laneys-prime-chart" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Laney’s prime chart<a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The control limits for a traditional <strong>P chart</strong> are calculated as:</p>
 <p><span class="math display">\[\bar{p}\pm3\sigma_{pi}\]</span></p>
 <p>where <span class="math inline">\(\bar{p}\)</span> is the average proportion and <span class="math inline">\(\sigma_{pi}\)</span> is the within-subgroup standard deviation for the i-th subgroup:</p>
 <p><span class="math display">\[\sigma_{pi}=\sqrt{\bar{p}(1-\bar{p})/{n_{i}}}\]</span></p>
 <p>where <span class="math inline">\(n_i\)</span> is the sample size of the i-th subgroup.</p>
-<div id="p-charts" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> P’ charts<a href="prime-charts-for-count-data-with-very-large-subgroups.html#p-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>P′ chart</strong> accounts for both within and between subgroup variation. The control limits are given by:</p>
+<p>The <strong>P′ chart</strong> (pronounced P-prime chart) accounts for both within and between subgroup variation. The control limits are given by:</p>
 <p><span class="math display">\[\bar{p}\pm3\sigma_{pi}\sigma_z\]</span></p>
 <p>where <span class="math inline">\(\sigma_z\)</span> represents the between-subgroup variation, calculated using the moving ranges of the standardized proportions defined as:</p>
 <p><span class="math display">\[z_i=(p_i - \bar{p})/\sigma_{pi}\]</span></p>
@@ -390,33 +410,148 @@ div.csl-indent {
 <p><span class="math display">\[\sigma_z=\overline{MR_z}/1.128\]</span>
 Thus, the control limits for the P′ chart are:</p>
 <p><span class="math display">\[\bar{p}\pm3\sigma_{pi}\sigma_z \]</span></p>
-</div>
-<div id="u-charts" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> U’ charts<a href="prime-charts-for-count-data-with-very-large-subgroups.html#u-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Similarly, control limits for the U’ chart are:</p>
 <p><span class="math display">\[\bar{u}\pm3\sigma_{ui}\sigma_z\]</span></p>
 <p>where <span class="math inline">\(\sigma_{ui}=\sqrt{\bar{u}/n_i}\)</span> and <span class="math inline">\(\sigma_{z}=\overline{MR_z}/1.128\)</span>; and the moving ranges are computed from the standardised rates defined as <span class="math inline">\(z_i=(u_i-\bar{u})/\sigma_{ui}\)</span>.</p>
+</div>
+<div id="data" class="section level2 unnumbered hasAnchor">
+<h2>Data<a href="prime-charts-for-count-data-with-very-large-subgroups.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<caption><span id="tab:pcharts-tab1">Table 14.1: </span>The number of attendances to major accident and emergency hospital departments in the NHS that were seen within 4 hours of arrival over twenty weeks. Source: <span class="citation">(<a href="#ref-mohammed2013">Mohammed A. Mohammed et al. 2013</a>)</span></caption>
+<colgroup>
+<col width="12%" />
+<col width="50%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Week (i)</th>
+<th align="right">Attendances seen within 4 hours (r)</th>
+<th align="right">Number of attendances (n)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">266,501</td>
+<td align="right">280,443</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">264,225</td>
+<td align="right">276,823</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">276,532</td>
+<td align="right">291,681</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">281,461</td>
+<td align="right">296,155</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">269,071</td>
+<td align="right">282,343</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">261,215</td>
+<td align="right">275,888</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">270,409</td>
+<td align="right">283,867</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">279,778</td>
+<td align="right">295,251</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">270,483</td>
+<td align="right">284,468</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">270,320</td>
+<td align="right">282,529</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">267,923</td>
+<td align="right">279,618</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">271,478</td>
+<td align="right">283,932</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">255,353</td>
+<td align="right">266,629</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">256,820</td>
+<td align="right">268,091</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">261,835</td>
+<td align="right">276,803</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">259,144</td>
+<td align="right">271,578</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">255,910</td>
+<td align="right">266,005</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">260,863</td>
+<td align="right">273,520</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">264,465</td>
+<td align="right">278,574</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">260,989</td>
+<td align="right">273,772</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
 
 
 
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-mohammed2013" class="csl-entry">
+Mohammed, Mohammed A, Jagdeep S Panesar, David B Laney, and Richard Wilson. 2013. <span>“Statistical Process Control Charts for Attribute Data Involving Very Large Sample Sizes: A Review of Problems and Solutions.”</span> <em>BMJ Quality &amp; Safety</em> 22 (4): 362–68. <a href="https://doi.org/10.1136/bmjqs-2012-001373">https://doi.org/10.1136/bmjqs-2012-001373</a>.
 </div>
-
-
-
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="spc-charts-for-rare-events.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tips-for-effective-spc-implementation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
