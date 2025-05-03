@@ -117,6 +117,7 @@ splitting-chart-by-period
 small-multiple-plots-for-multivariate-data
 to-aggregate-or-not-to-aggregate
 qicharts2-in-short
+case-1
 screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits
 spc-charts-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
@@ -140,3 +141,4 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

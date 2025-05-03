@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # Introducing qicharts2 {#qicharts}
 
 ```{r, echo=FALSE}
@@ -23,7 +18,6 @@ To learn everything about qicharts2, visit its website: https://anhoej.github.io
 * multivariate plots (small multiples)
 
 To get started with qicharts2, install it and load it into your working environment:
-
 
 ```{r, eval=FALSE}
 # install package

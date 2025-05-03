@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Screened I Chart – eliminating freak moving ranges before calculating limits | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 12 Screened I Chart – eliminating freak moving ranges before calculating limits | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Screened I Chart – eliminating freak moving ranges before calculating limits | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 12 Screened I Chart – eliminating freak moving ranges before calculating limits | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Screened I Chart – eliminating freak moving ranges before calculating limits | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 12 Screened I Chart – eliminating freak moving ranges before calculating limits | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-01" />
+<meta name="date" content="2025-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="qicharts.html"/>
+<link rel="prev" href="case-1.html"/>
 <link rel="next" href="spc-charts-for-rare-events.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -296,10 +296,11 @@ div.csl-indent {
 <li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> qicharts2 in short</a></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
+<li class="chapter" data-level="11" data-path="case-1.html"><a href="case-1.html"><i class="fa fa-check"></i><b>11</b> Case 1:</a></li>
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
-<li class="chapter" data-level="11" data-path="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><i class="fa fa-check"></i><b>11</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
-<li class="chapter" data-level="12" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>12</b> SPC Charts for Rare Events</a></li>
-<li class="chapter" data-level="13" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>13</b> Prime Charts for Count Data with Very Large Subgroups</a></li>
+<li class="chapter" data-level="12" data-path="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a></li>
+<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
@@ -366,23 +367,24 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Screened I Chart – eliminating freak moving ranges before calculating limits<a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>As detailed in earlier chapters, control limits are designed to represent the natural, common cause variation and thereby enclose (almost) all data points from a stable process. To estimate the common cause variation we use the within subgroup variation. However, if the subgroups consist of only one data element, as is the case with I charts, there is no within subgroup variation to be calculated. Instead, we use the moving ranges, that is the absolute differences between consecutive data points. Thus, <em>two</em> subgroups is used to define the “within” subgroup variation.</p>
-<p>Consequently, if a shift occurs between two subgroups, this will affect the moving range at this point and possible produce a signal on the moving range chart. For example, take these 24 “random” numbers:</p>
+<div id="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Screened I Chart – eliminating freak moving ranges before calculating limits<a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>As detailed in earlier chapters, control limits are designed to represent the natural, common cause variation and thereby enclose (almost) all data points from a stable process. To estimate the common cause variation we use the within subgroup variation. However, if the subgroups consist of single data elements, as is the case with I charts, there is no within subgroup variation to be calculated. Instead, we use the moving ranges, that is the absolute differences between consecutive data points. Thus, <em>two</em> subgroups is used to define the “within” subgroup variation.</p>
+<p>Consequently, if a shift occurs between two subgroups, this will affect the moving range at this point and possible produce a signal on the moving range chart.</p>
+<p>For example, take these 24 “random” numbers:</p>
 <pre><code>18 16 8 9 10 11 26 14 15 14 18 19 18 11 28 20 16 17 12 13 24 16 15 11</code></pre>
-<p>The average moving range (AMR) is 5, and the upper control AMR limit is 3.267 x 5 = 16.3.</p>
-<p>The range between observations numbers 14 and 15 (|11 – 28| = 17) is unusually large as shown by the moving range chart in Figure <a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#fig:screened-mr1">11.1</a>.</p>
+<p>The average moving range (AMR) is 5. From Table <a href="limits.html#tab:limits-tab1">6.1</a> we find that the natural upper AMR limit is 3.267 x AMR (= 16.3).</p>
+<p>Consequently, the range between observations numbers 14 and 15 (|28 – 11| = 17) is unusually large as shown by the moving range chart in Figure <a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#fig:screened-mr1">12.1</a>.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb75-1" tabindex="-1"></a><span class="fu">qic</span>(y, </span>
 <span id="cb75-2"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb75-2" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;mr&#39;</span>, </span>
 <span id="cb75-3"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb75-3" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Moving range chart&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:screened-mr1"></span>
 <img src="_main_files/figure-html/screened-mr1-1.svg" alt="Moving range chart with one range above the control limit" width="672" />
 <p class="caption">
-Figure 11.1: Moving range chart with one range above the control limit
+Figure 12.1: Moving range chart with one range above the control limit
 </p>
 </div>
-<p>Some authors recommend removing extreme moving ranges before calculating the control limits for the corresponding I chart <span class="citation">(<a href="#ref-nelson1982">Nelson 1982</a>)</span>, as this can slightly improve the chart’s sensitivity. qicharts2 does this by default as shown in Figure <a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#fig:screened-mr2">11.2</a>.</p>
+<p>Some experts recommend removing extreme moving ranges before calculating the control limits for the corresponding I chart <span class="citation">(<a href="#ref-nelson1982">Nelson 1982</a>)</span>, as this can slightly improve the chart’s sensitivity. qicharts2 does this by default as shown in Figure <a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#fig:screened-mr2">12.2</a>.</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb76-1" tabindex="-1"></a><span class="co"># default is to screen moving ranges before calculating control limits</span></span>
 <span id="cb76-2"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb76-2" tabindex="-1"></a><span class="fu">qic</span>(y, </span>
 <span id="cb76-3"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb76-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>, </span>
@@ -390,24 +392,26 @@ Figure 11.1: Moving range chart with one range above the control limit
 <div class="figure"><span style="display:block;" id="fig:screened-mr2"></span>
 <img src="_main_files/figure-html/screened-mr2-1.svg" alt="I chart with control limits calculated after removing freak moving ranges" width="672" />
 <p class="caption">
-Figure 11.2: I chart with control limits calculated after removing freak moving ranges
+Figure 12.2: I chart with control limits calculated after removing freak moving ranges
 </p>
 </div>
-<p>One may argue that this is unnecessary as long as the moving range chart is shown alongside the I chart. To suppress the screening of moving ranges before calculating control limits for I charts (and prime charts) in qicharts2, we can set the qic.screenedmr option to FALSE before plotting as in Figure <a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#fig:screened-mr3">11.3</a>:</p>
+<p>To remove extreme moving ranges, first calculate AMR on the original data (= 5), then remove any MRs greater than 3.267 x AMR (= 16.335) and recalculate AMR (= 4.45). Finally, use the screened AMR to calculate the control limits of the I chart (= 15.8 <span class="math inline">\(\pm\)</span> 2.66 x 4.45).</p>
+<p>To suppress the screening of moving ranges before calculating control limits for I charts (and prime charts) in qicharts2, we can set the qic.screenedmr option to FALSE before plotting as in Figure <a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#fig:screened-mr3">12.3</a>:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb77-1" tabindex="-1"></a><span class="co"># suppress screening of moving ranges</span></span>
 <span id="cb77-2"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb77-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">qic.screenedmr =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb77-3"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb77-3" tabindex="-1"></a><span class="fu">qic</span>(y, </span>
 <span id="cb77-4"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb77-4" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
 <span id="cb77-5"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb77-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;I chart without screened MRs&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:screened-mr3"></span>
-<img src="_main_files/figure-html/screened-mr3-1.svg" alt="I chart with control limits calculated without removing ranges above control limit" width="672" />
+<img src="_main_files/figure-html/screened-mr3-1.svg" alt="I chart with control limits calculated without removing extreme ranges" width="672" />
 <p class="caption">
-Figure 11.3: I chart with control limits calculated without removing ranges above control limit
+Figure 12.3: I chart with control limits calculated without removing extreme ranges
 </p>
 </div>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb78-1" tabindex="-1"></a><span class="co"># reset screening option to default</span></span>
 <span id="cb78-2"><a href="screened-i-chart-eliminating-freak-moving-ranges-before-calculating-limits.html#cb78-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">qic.screenedmr =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>In our experience, presenting moving range charts to non-technical SPC users rarely adds meaningful insight and can sometimes cause confusion. As a result, we prefer to enhance the sensitivity of I charts by excluding extreme moving ranges before calculating control limits while leaving the use and interpretation of moving range charts to data analyst.</p>
+<p>As expected, the control limits on the unscreened chart is sightly wider than on the screened chart. In this example, just enough to suppress a signal that would otherwise have been discovered.</p>
+<p>One may argue that screening moving ranges is unnecessary as long as the moving range chart is shown alongside the I chart. However, in our experience, presenting moving range charts to non-technical SPC users rarely adds meaningful insight and can sometimes cause confusion. As a result, we prefer to enhance the sensitivity of I charts by excluding extreme moving ranges before calculating control limits while leaving the use and interpretation of moving range charts to data analyst.</p>
 
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -421,7 +425,7 @@ Nelson, Lloyd S. 1982. <span>“Control Charts for Individual Measurements.”</
           </div>
         </div>
       </div>
-<a href="qicharts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="case-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="spc-charts-for-rare-events.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
