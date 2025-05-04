@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # SPC Charts for Rare Events
 
 ```{r, echo=FALSE}
@@ -6,3 +11,107 @@ knitr::opts_chunk$set(fig.asp = 2/4,
 
 library(qicharts2)
 ```
+
+When dealing with potentially serious or fatal events, the number of occurrences is often (fortunately) very low, which can present challenges for traditional SPC charts designed for count data.
+
+The challenge arises because traditional SPC charts for count data -- like P and U charts -- assume a relatively higher and more consistent frequency of events to function effectively. When events are rare, the data becomes sparse and highly variable, making these charts unreliable:
+
+* Too many zeros: Frequent zero counts can lead to control limits that are misleadingly narrow or wide. Especially, with run charts, when more than half of the data points are zero, the median will also be zero, which undermines the validity of the runs analysis -- typically resulting in just one long run above the median.
+
+* Low sensitivity: Traditional charts may fail to detect meaningful shifts or trends because the event frequency is too low to produce statistically significant signals.
+
+* False alarms or missed signals: The charts may either trigger false alarms due to natural variation in rare data or miss actual process shifts, leading to poor decision-making.
+
+One useful approach to handling rare events is to plot the number of opportunities or the time between events, rather than focusing on event proportions or rates -- essentially flipping the indicator to look at the gaps between occurrences instead of the occurrences themselves. 
+
+Another approach is to look at the cumulated sums (CUSUM) of binary data.
+
+In this chapter we introduce the G chart for number of opportunities between events, the T chart for time between events, and the Bernoulli CUSUM chart for binary data.
+
+## Introducing the birth dataset
+
+The robson1_births dataset is a data frame with 2193 observations from Robson group 1 deliveries, that is: first time pregnancy, single baby, head first, gestational age at least 37 weeks.
+
+```{r}
+# import data
+births <- read.csv('data/robson1_births.csv',
+              comment.char = '#',
+              colClasses   = c('POSIXct',
+                               'Date',
+                               'logical',
+                               'logical',
+                               'integer',
+                               'integer',
+                               'integer',
+                               'double',
+                               'logical'))
+
+# make sure the rows are sorted in time order
+births <- births[order(births$datetime), ]
+# add dummy variable, case, for counting the denominator for the proportion charts
+births$case <- 1
+# show data structure
+str(births)
+```
+
+We want to know how often neonatal asphyxia happens. In total, there are `r sum(births$asphyxia)` cases corresponding to `r paste0(round(mean(births$asphyxia) * 100, 1), '%')`.
+
+Figure \@ref(fig:rare-fig1) is a run chart of the biweekly counts.
+
+```{r rare-fig1, fig.cap='Run chart of number of deliveries with neonatal asphyxia'}
+# run chart of counts
+qic(biweek, asphyxia, 
+    data    = births, 
+    agg.fun = 'sum')  # use sum() function to aggregate data by subgroup
+```
+
+Notice that because more than half the data points are zero, the centre line (median) is also zero. This invalidates the runs analysis -- there is only one very long run, which may lead to the false conclusion that data contains one or more shifts.
+
+Figure \@ref(fig:rare-fig3) plots the proportions rather than the counts, but reaches the same conclusion.
+
+```{r rare-fig2, fig.cap='Run chart of proportion deliveries with neonatal asphyxia'}
+# run chart of proportions
+qic(biweek, asphyxia, case,  # use the case variable for denominators
+    data = births)
+```
+
+Plotting the data in a P chart helps (Figure \@ref(fig:rare-fig3). The centre line now represents the average proportion, and there are no signals suggesting anything beyond common cause variation.
+
+```{r rare-fig3, fig.cap='P chart of percent deliveries with neonatal asphyxia'}
+# P chart
+qic(biweek, asphyxia, case, 
+    data  = births, 
+    chart = 'p')
+```
+
+
+
+## G and T charts for rare events
+
+```{r}
+asph_cases <- which(births$asphyxia)
+
+asph_g <- diff(c(0, asph_cases))
+qic(asph_g)
+qic(asph_g, chart = 'i')
+qic(asph_g, chart = 'g')
+```
+
+
+```{r}
+asph_t <- diff(c(births$datetime[1] - 1, births$datetime[asph_cases]))
+
+qic(asph_t)
+qic(asph_t, chart = 'i')
+qic(asph_t, chart = 't')
+```
+
+## The Bernoulli CUSUM chart for binary data
+
+```{r}
+bchart(births$asphyxia, target = mean(births$asphyxia))
+bchart(births$asphyxia, target = 0.02)
+bchart(births$asphyxia, target = 0.002)
+bchart(births$asphyxia, target = 500)
+```
+

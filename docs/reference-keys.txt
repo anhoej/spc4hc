@@ -148,3 +148,12 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+introducing-the-birth-dataset
+g-and-t-charts-for-rare-events
+the-bernoulli-cusum-chart-for-binary-data
+fig:rare-fig1
+fig:rare-fig2
+fig:rare-fig1-1
+fig:rare-fig1-2
+fig:rare-fig3
