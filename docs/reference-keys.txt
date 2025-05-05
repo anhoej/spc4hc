@@ -157,3 +157,5 @@ fig:rare-fig2
 fig:rare-fig1-1
 fig:rare-fig1-2
 fig:rare-fig3
+g-charts-for-opportunities-between-cases
+t-charts-for-time-between-events
