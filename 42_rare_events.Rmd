@@ -30,7 +30,7 @@ In this chapter we introduce the G chart for number of opportunities between eve
 
 ## Introducing the birth dataset
 
-The robson1_births dataset is a data frame with 2193 observations from Robson group 1 deliveries, that is: first time pregnancy, single baby, head first, gestational age at least 37 weeks.
+The [Robson group 1 births] dataset is a data frame with 2193 observations from Robson group 1 deliveries, that is: first time pregnancy, single baby, head first, gestational age at least 37 weeks.
 
 ```{r}
 # import data
@@ -54,7 +54,7 @@ births$case <- 1
 str(births)
 ```
 
-We want to know how often neonatal asphyxia happens. In total, there are `r sum(births$asphyxia)` cases corresponding to `r paste0(round(mean(births$asphyxia) * 100, 1), '%')`.
+For this chapter we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either low apgar score or low umbilical cord pH suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage death. In total, there are `r sum(births$asphyxia)` cases corresponding to `r paste0(round(mean(births$asphyxia) * 100, 1), '%')`.
 
 Figure \@ref(fig:rare-fig1) is a run chart of the biweekly counts.
 
@@ -67,7 +67,7 @@ qic(biweek, asphyxia,
 
 Notice that because more than half the data points are zero, the centre line (median) is also zero. This invalidates the runs analysis -- there is only one very long run, which may lead to the false conclusion that data contains one or more shifts.
 
-Figure \@ref(fig:rare-fig3) plots the proportions rather than the counts, but reaches the same conclusion.
+Figure \@ref(fig:rare-fig3) plots proportions rather than counts reaching the same conclusion.
 
 ```{r rare-fig2, fig.cap='Run chart of proportion deliveries with neonatal asphyxia'}
 # run chart of proportions
@@ -75,7 +75,7 @@ qic(biweek, asphyxia, case,  # use the case variable for denominators
     data = births)
 ```
 
-Plotting the data in a P chart helps (Figure \@ref(fig:rare-fig3). The centre line now represents the average proportion, and there are no signals suggesting anything beyond common cause variation.
+Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis -- as the average, in this case, better represents the process centre (figure \@ref(fig:rare-fig3).
 
 ```{r rare-fig3, fig.cap='P chart of percent deliveries with neonatal asphyxia'}
 # P chart
@@ -84,57 +84,66 @@ qic(biweek, asphyxia, case,
     chart = 'p')
 ```
 
-While the P chart remains useful -- presenting data in time order and calculating the mean proportion -- the lower control limit is zero, making it impossible to detect a signal of improvement using the three-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.
+While the P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the three-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.
 
-One solution is to increase the subgroup size by aggregating data over longer periods, such as months or quarters. However, this approach results in much slower detection of process improvement or deterioration.
+One obvious solution is to increase the subgroup size by aggregating data over longer periods, such as months or quarters. However, this approach results in slower detection of process improvement or deterioration.
 
-As an alternative, we look at the G chart.
+As an alternative, we introduce at the G chart.
 
 ## G charts for opportunities between cases
 
-The G chart plots opportunities between cases, for example the number of deliveries between neonatal asphyxia. This type of data often follows a geometric distribution with a standard deviation given by $\sigma = \sqrt{\bar{x}(\bar{x}+1)}$. The control limits are then calculated as:
+The G chart plots opportunities between cases, for example the number of deliveries between neonatal asphyxia. This type of count data often follows a geometric distribution with a standard deviation given by $\sigma = \sqrt{\bar{x}(\bar{x}+1)}$. The control limits are then calculated as:
 
 $$\bar{x}\pm3\sqrt{\bar{x}(\bar{x}+1)}$$ 
+
 where $\bar{x}$ is the average number of opportunities between cases.
 
-To get the number-between variable we calculate the differences between the indices of cases (after sorting data in time order).
+To obtain the number-between variable, we calculate the differences between the indices of cases (remember to first sort the data in time order).
 
 ```{r}
 # get indices of asphyxia cases
 asph_cases <- which(births$asphyxia)
 # calculate the number of deliveries between cases
-asph_g     <- diff(c(0, asph_cases))
+asph_g     <- diff(c(asph_cases))
 
 # plot G chart
 qic(asph_g, chart = 'g')
 ```
 
-Since the geometric distribution is highly skewed, using the average as the centre line is not ideal for runs analysis. Therefore, qicharts2 uses the median as the centre line in the G chart.
+Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used -- as is done by default in qicharts2.
 
 As is the case with the other SPC charts for counts data, negative lower control limits are rounded to 0, as values below this is not possible.
 
-Note that process improvement -- as in fewer cases -- will present itself as the curve going up. To trigger a 3-sigma signal we would need at least 545 deliveries with no cases of asphyxia, which corresponds to about six weeks (454 / 86).
+Note that process improvement -- as in fewer cases -- will present itself as the curve going up. To trigger a 3-sigma signal we would -- in this case -- need at least 518 deliveries with no cases of asphyxia corresponding to about seven weeks (518 / 73).
 
-Thus, G charts are useful alternatives to P charts when occurrences are rare and the primary interest is in detecting process improvement. However, one chart does not exclude the other -- P and G charts go well together. The P may be more familiar to users and is effective in signalling process deterioration, while the G charts helps trigger signals of improvement.
+Thus, G charts are useful alternatives to P charts when occurrences are rare and the primary interest is in detecting process improvement. However, one chart does not exclude the other, and P and G charts go well together. The P chart may be more familiar to users and is more useful for signalling process deterioration, while the G charts helps trigger signals of improvement.
 
 ## T charts for time between events
+
+The T chart plots the time between events -- a continuous variable. While it is possible to use an I chart to plot such data, this approach may be problematic. If events occur according to a Poisson distribution -- which is often the case -- the time between events is more appropriately modelled by the exponential distribution, which is highly skewed.
+
+One way to address this issue is to transform the data prior to plotting it on an I chart. An appropriate transformation is given by:
 
 $$x = y^{(1 / 3.6)}$$
 
 where $x$ is the transformed variable and $y$ is the original time between events variable.
 
-Then compute the control limits using the I chart procedure and back-transform them ($y=x^{3.6}$) to the maintain the original y axis scale.
+Control limits can then be calculated for the transformed data using the standard I chart procedure.
 
+However, the transformed values may be difficult to interpret. A better approach is to plot the original values alongside back-transformed control limits and centre line. The back-transformation is:
 
+$$y=x^{3.6}$$.
 
-
-```{r}
-asph_t <- diff(c(births$datetime[1] - 1, births$datetime[asph_cases]))
-
-qic(asph_t)
-qic(asph_t, chart = 'i')
+```{r rare-fig4, fig.cap='T chart of time (days) between deliveries with neonatal asphyxia'}
+# get time between events
+asph_t <- diff(c(births$datetime[asph_cases]))
+# plot T chart
 qic(asph_t, chart = 't')
 ```
+
+Note that T charts do not accommodate zero time between events -- a situation that may arise when time is not recorded with sufficiently high resolution. For example, if two events -- such as patient falls -- occur on the same day and the time of day is not recorded, the time variable is not truly continuous. In such cases, a G chart plotting days between events, a discrete variable, may be more appropriate.
+
+In fact, to our eyes, the control limits on the T chart in Figure \@ref(fig:rare-fig4) appear unnaturally wide. The upper control limit indicates that at least 190 days (or 27 weeks) must pass without any asphyxia cases before a signal is triggered. This suggests to us that these asphyxia cases (being discrete cases rather than random events) may not be suitable for analysis with a T chart.
 
 ## The Bernoulli CUSUM chart for binary data
 

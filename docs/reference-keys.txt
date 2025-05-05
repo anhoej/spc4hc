@@ -48,6 +48,10 @@ fig:qicharts-hais5
 fig:screened-mr1
 fig:screened-mr2
 fig:screened-mr3
+fig:rare-fig1
+fig:rare-fig2
+fig:rare-fig3
+fig:rare-fig4
 fig:pcharts-fig1
 fig:pcharts-fig2
 fig:pcharts-fig3
@@ -124,6 +128,10 @@ qicharts2-in-short
 case-1
 screenedmr
 spc-charts-for-rare-events
+introducing-the-birth-dataset
+g-charts-for-opportunities-between-cases
+t-charts-for-time-between-events
+the-bernoulli-cusum-chart-for-binary-data
 prime-charts-for-count-data-with-very-large-subgroups
 laneys-prime-chart
 when-to-use-prime-charts
@@ -148,14 +156,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-introducing-the-birth-dataset
-g-and-t-charts-for-rare-events
-the-bernoulli-cusum-chart-for-binary-data
-fig:rare-fig1
-fig:rare-fig2
-fig:rare-fig1-1
-fig:rare-fig1-2
-fig:rare-fig3
-g-charts-for-opportunities-between-cases
-t-charts-for-time-between-events
