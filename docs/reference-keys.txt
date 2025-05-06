@@ -156,3 +156,6 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+fig:rare-fig5
+fig:rare-fig6

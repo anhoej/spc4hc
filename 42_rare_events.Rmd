@@ -75,7 +75,7 @@ qic(biweek, asphyxia, case,  # use the case variable for denominators
     data = births)
 ```
 
-Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis -- as the average, in this case, better represents the process centre (figure \@ref(fig:rare-fig3).
+Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis -- as the average, in this case, better represents the process centre (figure \@ref(fig:rare-fig3)).
 
 ```{r rare-fig3, fig.cap='P chart of percent deliveries with neonatal asphyxia'}
 # P chart
@@ -94,13 +94,13 @@ As an alternative, we introduce at the G chart.
 
 The G chart plots opportunities between cases, for example the number of deliveries between neonatal asphyxia. This type of count data often follows a geometric distribution with a standard deviation given by $\sigma = \sqrt{\bar{x}(\bar{x}+1)}$. The control limits are then calculated as:
 
-$$\bar{x}\pm3\sqrt{\bar{x}(\bar{x}+1)}$$ 
+$$\bar{x}\pm3\sqrt{\bar{x}(\bar{x}+1)}$$
 
 where $\bar{x}$ is the average number of opportunities between cases.
 
 To obtain the number-between variable, we calculate the differences between the indices of cases (remember to first sort the data in time order).
 
-```{r}
+```{r rare-fig4, fig.cap='G chart of deliveries between neonatal asphyxia'}
 # get indices of asphyxia cases
 asph_cases <- which(births$asphyxia)
 # calculate the number of deliveries between cases
@@ -110,7 +110,7 @@ asph_g     <- diff(c(asph_cases))
 qic(asph_g, chart = 'g')
 ```
 
-Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used -- as is done by default in qicharts2.
+Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used -- as is done by default in qicharts2 (\@ref(fig:rare-fig4)).
 
 As is the case with the other SPC charts for counts data, negative lower control limits are rounded to 0, as values below this is not possible.
 
@@ -134,7 +134,7 @@ However, the transformed values may be difficult to interpret. A better approach
 
 $$y=x^{3.6}$$.
 
-```{r rare-fig4, fig.cap='T chart of time (days) between deliveries with neonatal asphyxia'}
+```{r rare-fig5, fig.cap='T chart of time (days) between deliveries with neonatal asphyxia'}
 # get time between events
 asph_t <- diff(c(births$datetime[asph_cases]))
 # plot T chart
@@ -143,14 +143,41 @@ qic(asph_t, chart = 't')
 
 Note that T charts do not accommodate zero time between events -- a situation that may arise when time is not recorded with sufficiently high resolution. For example, if two events -- such as patient falls -- occur on the same day and the time of day is not recorded, the time variable is not truly continuous. In such cases, a G chart plotting days between events, a discrete variable, may be more appropriate.
 
-In fact, to our eyes, the control limits on the T chart in Figure \@ref(fig:rare-fig4) appear unnaturally wide. The upper control limit indicates that at least 190 days (or 27 weeks) must pass without any asphyxia cases before a signal is triggered. This suggests to us that these asphyxia cases (being discrete cases rather than random events) may not be suitable for analysis with a T chart.
+In fact, to our eyes, the control limits on the T chart in Figure \@ref(fig:rare-fig5) appear unnaturally wide. The upper control limit indicates that at least 190 days (or 27 weeks) must pass without any asphyxia cases before a signal is triggered. This suggests to us that these asphyxia cases (being discrete cases rather than random events) may not be suitable for analysis with a T chart.
 
 ## The Bernoulli CUSUM chart for binary data
 
-```{r}
-bchart(births$asphyxia, target = mean(births$asphyxia))
-bchart(births$asphyxia, target = 0.02)
-bchart(births$asphyxia, target = 0.002)
-bchart(births$asphyxia, target = 500)
+The Bernoulli CUSUM chart (or B chart) is a specialised SPC chart designed to detect shifts in case proportions over time. The B chart takes a logical vector (TRUE/FALSE) and plots a trace value, which is a cumulative sum of deviations from a target value. The trace value$s_i$ is calculated at each observation:
+
+$$s_i=s_{i-1}+ increment\ based\ on\ current\ value$$
+
+When the current value (x~i~) is TRUE, the trace increases, and when it is FALSE, the trace decreases.
+
+The size of the increment is based on the target value and the size of the shift we want to detect.
+
+If x = TRUE:
+
+$$s_i=s_{i-1}+logOR-log(1+p_0(OR-1))$$
+
+If x = FALSE:
+
+$$s_i=s_{i-1}-log(1-p_0(OR-1))$$
+
+Here:
+
+* $s_i$ is the CUSUM statistic at time i
+* $p_0$ is the target (or baseline) proportion
+* $OR$ is the odds ratio representing the smallest shift the chart should detect
+
+For example, setting OR = 2 configures the chart to detect a doubling of the target proportion p~0~.
+
+If the trace remains near zero, it means that the process is operating close to target as in Figure \@ref(fig:rare-fig6), which is constructed using the bchart() function from qicharts2.
+
+```{r rare-fig6, fig.cap='B chart of newborns with asphyxia'}
+bchart(births$asphyxia, target = 0.007, or = 2)
+# bchart(births$asphyxia, target = 500)
+# bchart(births$asphyxia, target = 0.001, or = 2, limit = 3.5)
+# bchart(births$asphyxia, target = 0.002)
+# bchart(births$asphyxia, target = mean(births$asphyxia), or = 2)
 ```
 
