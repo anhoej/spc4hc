@@ -147,19 +147,21 @@ In fact, to our eyes, the control limits on the T chart in Figure \@ref(fig:rare
 
 ## The Bernoulli CUSUM chart for binary data
 
-The Bernoulli CUSUM chart (or B chart) is a specialised SPC chart designed to detect shifts in case proportions over time. The B chart takes a logical vector (TRUE/FALSE) and plots a trace value, which is a cumulative sum of deviations from a target value. The trace value$s_i$ is calculated at each observation:
+The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.
+
+The trace value $s_i$ at time $i$ is updated recursively:
 
 $$s_i=s_{i-1}+ increment\ based\ on\ current\ value$$
 
-When the current value (x~i~) is TRUE, the trace increases, and when it is FALSE, the trace decreases.
+When the current observation $x_i$ is TRUE (i.e., an event of interest occurs), the trace increases; when $x_i$ is FALSE, the trace decreases.
 
-The size of the increment is based on the target value and the size of the shift we want to detect.
+The size of each increment is determined by both the target proportion and the magnitude of the shift the chart is designed to detect. This design allows the B chart to accumulate evidence over time, enhancing sensitivity to sustained deviations from the target.
 
-If x = TRUE:
+If $x_i$ = TRUE:
 
 $$s_i=s_{i-1}+logOR-log(1+p_0(OR-1))$$
 
-If x = FALSE:
+If $x_i$ = FALSE:
 
 $$s_i=s_{i-1}-log(1-p_0(OR-1))$$
 
@@ -171,13 +173,40 @@ Here:
 
 For example, setting OR = 2 configures the chart to detect a doubling of the target proportion p~0~.
 
-If the trace remains near zero, it means that the process is operating close to target as in Figure \@ref(fig:rare-fig6), which is constructed using the bchart() function from qicharts2.
+If the trace remains near zero, it means that the process is operating close to target.
 
 ```{r rare-fig6, fig.cap='B chart of newborns with asphyxia'}
-bchart(births$asphyxia, target = 0.007, or = 2)
-# bchart(births$asphyxia, target = 500)
-# bchart(births$asphyxia, target = 0.001, or = 2, limit = 3.5)
-# bchart(births$asphyxia, target = 0.002)
-# bchart(births$asphyxia, target = mean(births$asphyxia), or = 2)
+bchart(births$asphyxia, target = 0.007, or = 2, limit = 3.5)
 ```
+
+Figure \@ref(fig:rare-fig6) places the asphyxia data in a B chart constructed using the bchart() function from the qicharts2 package. The target value corresponds to the known baseline proportion of asphyxia cases with default values for odds ratio (= 2) and limits (= ±3.5).
+
+Several key features are worth noting:
+
+* The chart displays two cumulative traces: the upper trace is configured to detect an increase from the target proportion -- specifically, a doubling in odds (OR = 2) -- while the lower trace is tuned to detect a decrease (OR = 0.5).
+
+* The trace values have no intrinsic meaning beyond their directional movement -- they increase in response to TRUE values and decrease in response to FALSE values. The magnitude of the trace simply reflects the cumulative deviation from the target, not the severity or frequency of events in absolute terms.
+
+* Traces reset to zero whenever they cross the horizontal axis (or a control limit), allowing the chart to remain responsive to new patterns of deviation.
+
+* The control limits are user-defined, rather than statistically derived. Their placement represents a compromise between desired sensitivity (the ability to detect true shifts) and specificity (resistance to false alarms). By default, the limits are set at ±3.5. More on how to chose limits later.
+
+Figure \@ref(fig:rare-fig8) compares our results against a target proportion of 2%.
+
+```{r rare-fig8, fig.cap='B chart of newborns with asphyxia, target = 0.2%'}
+bchart(births$asphyxia, target = 0.02)
+```
+
+The lower trace signals repeatably suggesting that the current process is not centred around a target of 2% -- specifically, it indicates that the process is performing better than expected.
+
+And vice versa, comparing to a target of 0.1% indicates that the process is performing worse than expected (Figure \@ref(fig:rare-fig9)).
+
+```{r rare-fig9, fig.cap='B chart of newborns with asphyxia, target = 0.01%'}
+bchart(births$asphyxia, target = 0.001)
+```
+
+
+
+Control limits for B charts are user-defined and reflect a trade-off between detecting real shifts quickly (sensitivity) and avoiding false alarms (specificity). A common default is ±3.5, suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false positives but may miss smaller shifts. The best choice depends on context, such as the number of available observations and the consequences of missing a signal or triggering a false one. 
+In practice, limits are often chosen based on simulation, historical data, and domain knowledge -- particularly considering the cost or impact of missed detections versus false alerts. See @neuburger2017 for details and guidelines on how to select control limits.
 

@@ -159,3 +159,6 @@ resources
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 fig:rare-fig5
 fig:rare-fig6
+fig:rare-fig7
+fig:rare-fig8
+fig:rare-fig9

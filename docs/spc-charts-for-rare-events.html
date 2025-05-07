@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-06" />
+<meta name="date" content="2025-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -122,6 +122,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -476,13 +499,14 @@ Figure 14.5: T chart of time (days) between deliveries with neonatal asphyxia
 </div>
 <div id="the-bernoulli-cusum-chart-for-binary-data" class="section level2 hasAnchor" number="14.4">
 <h2><span class="header-section-number">14.4</span> The Bernoulli CUSUM chart for binary data<a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The Bernoulli CUSUM chart (or B chart) is a specialised SPC chart designed to detect shifts in case proportions over time. The B chart takes a logical vector (TRUE/FALSE) and plots a trace value, which is a cumulative sum of deviations from a target value. The trace value<span class="math inline">\(s_i\)</span> is calculated at each observation:</p>
+<p>The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.</p>
+<p>The trace value <span class="math inline">\(s_i\)</span> at time <span class="math inline">\(i\)</span> is updated recursively:</p>
 <p><span class="math display">\[s_i=s_{i-1}+ increment\ based\ on\ current\ value\]</span></p>
-<p>When the current value (x<sub>i</sub>) is TRUE, the trace increases, and when it is FALSE, the trace decreases.</p>
-<p>The size of the increment is based on the target value and the size of the shift we want to detect.</p>
-<p>If x = TRUE:</p>
+<p>When the current observation <span class="math inline">\(x_i\)</span> is TRUE (i.e., an event of interest occurs), the trace increases; when <span class="math inline">\(x_i\)</span> is FALSE, the trace decreases.</p>
+<p>The size of each increment is determined by both the target proportion and the magnitude of the shift the chart is designed to detect. This design allows the B chart to accumulate evidence over time, enhancing sensitivity to sustained deviations from the target.</p>
+<p>If <span class="math inline">\(x_i\)</span> = TRUE:</p>
 <p><span class="math display">\[s_i=s_{i-1}+logOR-log(1+p_0(OR-1))\]</span></p>
-<p>If x = FALSE:</p>
+<p>If <span class="math inline">\(x_i\)</span> = FALSE:</p>
 <p><span class="math display">\[s_i=s_{i-1}-log(1-p_0(OR-1))\]</span></p>
 <p>Here:</p>
 <ul>
@@ -491,19 +515,48 @@ Figure 14.5: T chart of time (days) between deliveries with neonatal asphyxia
 <li><span class="math inline">\(OR\)</span> is the odds ratio representing the smallest shift the chart should detect</li>
 </ul>
 <p>For example, setting OR = 2 configures the chart to detect a doubling of the target proportion p<sub>0</sub>.</p>
-<p>If the trace remains near zero, it means that the process is operating close to target as in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">14.6</a>, which is constructed using the bchart() function from qicharts2.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="spc-charts-for-rare-events.html#cb9-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">or =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>If the trace remains near zero, it means that the process is operating close to target.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="spc-charts-for-rare-events.html#cb9-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">or =</span> <span class="dv">2</span>, <span class="at">limit =</span> <span class="fl">3.5</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig6"></span>
 <img src="_main_files/figure-html/rare-fig6-1.svg" alt="B chart of newborns with asphyxia" width="672" />
 <p class="caption">
 Figure 14.6: B chart of newborns with asphyxia
 </p>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="spc-charts-for-rare-events.html#cb10-1" tabindex="-1"></a><span class="co"># bchart(births$asphyxia, target = 500)</span></span>
-<span id="cb10-2"><a href="spc-charts-for-rare-events.html#cb10-2" tabindex="-1"></a><span class="co"># bchart(births$asphyxia, target = 0.001, or = 2, limit = 3.5)</span></span>
-<span id="cb10-3"><a href="spc-charts-for-rare-events.html#cb10-3" tabindex="-1"></a><span class="co"># bchart(births$asphyxia, target = 0.002)</span></span>
-<span id="cb10-4"><a href="spc-charts-for-rare-events.html#cb10-4" tabindex="-1"></a><span class="co"># bchart(births$asphyxia, target = mean(births$asphyxia), or = 2)</span></span></code></pre></div>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">14.6</a> places the asphyxia data in a B chart constructed using the bchart() function from the qicharts2 package. The target value corresponds to the known baseline proportion of asphyxia cases with default values for odds ratio (= 2) and limits (= ±3.5).</p>
+<p>Several key features are worth noting:</p>
+<ul>
+<li><p>The chart displays two cumulative traces: the upper trace is configured to detect an increase from the target proportion – specifically, a doubling in odds (OR = 2) – while the lower trace is tuned to detect a decrease (OR = 0.5).</p></li>
+<li><p>The trace values have no intrinsic meaning beyond their directional movement – they increase in response to TRUE values and decrease in response to FALSE values. The magnitude of the trace simply reflects the cumulative deviation from the target, not the severity or frequency of events in absolute terms.</p></li>
+<li><p>Traces reset to zero whenever they cross the horizontal axis (or a control limit), allowing the chart to remain responsive to new patterns of deviation.</p></li>
+<li><p>The control limits are user-defined, rather than statistically derived. Their placement represents a compromise between desired sensitivity (the ability to detect true shifts) and specificity (resistance to false alarms). By default, the limits are set at ±3.5. More on how to chose limits later.</p></li>
+</ul>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig8">14.7</a> compares our results against a target proportion of 2%.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="spc-charts-for-rare-events.html#cb10-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.02</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:rare-fig8"></span>
+<img src="_main_files/figure-html/rare-fig8-1.svg" alt="B chart of newborns with asphyxia, target = 0.2%" width="672" />
+<p class="caption">
+Figure 14.7: B chart of newborns with asphyxia, target = 0.2%
+</p>
+</div>
+<p>The lower trace signals repeatably suggesting that the current process is not centred around a target of 2% – specifically, it indicates that the process is performing better than expected.</p>
+<p>And vice versa, comparing to a target of 0.1% indicates that the process is performing worse than expected (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig9">14.8</a>).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="spc-charts-for-rare-events.html#cb11-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.001</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:rare-fig9"></span>
+<img src="_main_files/figure-html/rare-fig9-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
+<p class="caption">
+Figure 14.8: B chart of newborns with asphyxia, target = 0.01%
+</p>
+</div>
+<p>Control limits for B charts are user-defined and reflect a trade-off between detecting real shifts quickly (sensitivity) and avoiding false alarms (specificity). A common default is ±3.5, suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false positives but may miss smaller shifts. The best choice depends on context, such as the number of available observations and the consequences of missing a signal or triggering a false one.
+In practice, limits are often chosen based on simulation, historical data, and domain knowledge – particularly considering the cost or impact of missed detections versus false alerts. See <span class="citation">Neuburger et al. (<a href="#ref-neuburger2017">2017</a>)</span> for details and guidelines on how to select control limits.</p>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-neuburger2017" class="csl-entry">
+Neuburger, Jenny, Kate Walker, Chris Sherlaw-Johnson, Jan van der Meulen, and David A Cromwell. 2017. <span>“Comparison of Control Charts for Monitoring Clinical Performance Using Binary Data.”</span> <em>BMJ Quality &amp; Safety</em> 26 (11): 919–28. <a href="https://doi.org/10.1136/bmjqs-2016-005526">https://doi.org/10.1136/bmjqs-2016-005526</a>.
 </div>
 </div>
             </section>
