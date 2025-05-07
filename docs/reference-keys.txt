@@ -52,6 +52,11 @@ fig:rare-fig1
 fig:rare-fig2
 fig:rare-fig3
 fig:rare-fig4
+fig:rare-fig5
+fig:rare-fig6
+fig:rare-fig8
+fig:rare-fig9
+fig:rare-fig10
 fig:pcharts-fig1
 fig:pcharts-fig2
 fig:pcharts-fig3
@@ -132,6 +137,7 @@ introducing-the-birth-dataset
 g-charts-for-opportunities-between-cases
 t-charts-for-time-between-events
 the-bernoulli-cusum-chart-for-binary-data
+selecting-the-rigth-chart-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
 laneys-prime-chart
 when-to-use-prime-charts
@@ -156,9 +162,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-fig:rare-fig5
-fig:rare-fig6
-fig:rare-fig7
-fig:rare-fig8
-fig:rare-fig9

@@ -54,7 +54,7 @@ births$case <- 1
 str(births)
 ```
 
-For this chapter we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either low apgar score or low umbilical cord pH suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage death. In total, there are `r sum(births$asphyxia)` cases corresponding to `r paste0(round(mean(births$asphyxia) * 100, 1), '%')`.
+For this chapter we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either low apgar score or low umbilical cord pH suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage or death. In total, there are `r sum(births$asphyxia)` cases corresponding to `r paste0(round(mean(births$asphyxia) * 100, 1), '%')`.
 
 Figure \@ref(fig:rare-fig1) is a run chart of the biweekly counts.
 
@@ -84,7 +84,7 @@ qic(biweek, asphyxia, case,
     chart = 'p')
 ```
 
-While the P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the three-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.
+While this P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the three-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.
 
 One obvious solution is to increase the subgroup size by aggregating data over longer periods, such as months or quarters. However, this approach results in slower detection of process improvement or deterioration.
 
@@ -114,7 +114,7 @@ Since the geometric distribution is highly skewed, the average is not ideal for 
 
 As is the case with the other SPC charts for counts data, negative lower control limits are rounded to 0, as values below this is not possible.
 
-Note that process improvement -- as in fewer cases -- will present itself as the curve going up. To trigger a 3-sigma signal we would -- in this case -- need at least 518 deliveries with no cases of asphyxia corresponding to about seven weeks (518 / 73).
+Note that process improvement -- as in fewer cases -- will present itself as the curve going up. To trigger a 3-sigma signal we would -- in this case -- need at least 518 successive deliveries without asphyxia.
 
 Thus, G charts are useful alternatives to P charts when occurrences are rare and the primary interest is in detecting process improvement. However, one chart does not exclude the other, and P and G charts go well together. The P chart may be more familiar to users and is more useful for signalling process deterioration, while the G charts helps trigger signals of improvement.
 
@@ -147,7 +147,7 @@ In fact, to our eyes, the control limits on the T chart in Figure \@ref(fig:rare
 
 ## The Bernoulli CUSUM chart for binary data
 
-The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.
+The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time [@neuburger2017]. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.
 
 The trace value $s_i$ at time $i$ is updated recursively:
 
@@ -187,7 +187,7 @@ Several key features are worth noting:
 
 * The trace values have no intrinsic meaning beyond their directional movement -- they increase in response to TRUE values and decrease in response to FALSE values. The magnitude of the trace simply reflects the cumulative deviation from the target, not the severity or frequency of events in absolute terms.
 
-* Traces reset to zero whenever they cross the horizontal axis (or a control limit), allowing the chart to remain responsive to new patterns of deviation.
+* Traces reset to zero whenever they cross the horizontal axis or a control limit, allowing the chart to remain responsive to new patterns of deviation.
 
 * The control limits are user-defined, rather than statistically derived. Their placement represents a compromise between desired sensitivity (the ability to detect true shifts) and specificity (resistance to false alarms). By default, the limits are set at ±3.5. More on how to chose limits later.
 
@@ -205,8 +205,22 @@ And vice versa, comparing to a target of 0.1% indicates that the process is perf
 bchart(births$asphyxia, target = 0.001)
 ```
 
+Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false positives but may miss smaller shifts. The best choice depends on context, such as the number of available observations, size of the shift to be detected, and the consequences of missing a signal or triggering a false one.
 
-
-Control limits for B charts are user-defined and reflect a trade-off between detecting real shifts quickly (sensitivity) and avoiding false alarms (specificity). A common default is ±3.5, suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false positives but may miss smaller shifts. The best choice depends on context, such as the number of available observations and the consequences of missing a signal or triggering a false one. 
 In practice, limits are often chosen based on simulation, historical data, and domain knowledge -- particularly considering the cost or impact of missed detections versus false alerts. See @neuburger2017 for details and guidelines on how to select control limits.
+
+Inspecting Figure \@ref(fig:rare-fig6), which shows a historically stable process based on 2000+ observations and with most or all data points clustered around the centre line, we might conclude that it would be appropriate to tighten the control limits to ±3 or even ±2.5, as demonstrated in Figure \@ref(fig:rare-fig10).
+
+```{r rare-fig10, fig.cap='B chart of newborns with asphyxia, target = 0.01%'}
+bchart(births$asphyxia, target = 0.007, limit = 2.5)
+```
+
+## Selecting the rigth chart for rare events
+
+After reviewing various alternative charting options for rare events -- U and T charts for low event rates, and P, G, and B charts for low case proportions -- we may ask: which should we prefer? Well, that depends. No single chart is universally superior -- and often, presenting two or more charts together can provide complementary insights. In particular, we always recommend pairing a T or G chart with its corresponding U or P chart, as these pairs may offer a more complete picture of the process by highlighting both improvement and deterioration.
+
+The B chart, in particular, is a powerful tool, but it requires careful attention and specialist knowledge to construct and interpret effectively. Its diagnostic performance is highly sensitive to the choice of parameters — target, odds ratio, and control limits -- and these should be selected by individuals with a strong understanding of the underlying process. That said, the default settings -- an odds ratio of 2 and control limits at ±3.5 -- are generally suitable for most processes where the baseline (target) rate is around 1%, and where the goal is to detect a doubling or halving of the event rate relative to that target.
+
+
+
 
