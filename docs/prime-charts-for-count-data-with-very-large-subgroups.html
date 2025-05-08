@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-07" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="spc-charts-for-rare-events.html"/>
-<link rel="next" href="tips-for-effective-spc-implementation.html"/>
+<link rel="next" href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,8 +313,14 @@ div.csl-indent {
 <li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)</a>
+<ul>
+<li class="chapter" data-level="15.0.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="15.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="15.2" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+</ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="15" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>15</b> Tips for Effective SPC Implementation</a></li>
+<li class="chapter" data-level="16" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>16</b> Tips for Effective SPC Implementation</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -323,6 +329,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#diabetes-hba1c"><i class="fa fa-check"></i>Diabetes HbA1c</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
@@ -560,9 +567,6 @@ Figure 14.3: P’ chart of percent emergency attendances seen within 4 hours
 
 </div>
 </div>
-
-
-
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-laney2002" class="csl-entry">
@@ -578,7 +582,7 @@ Mohammed, Mohammed A, Jagdeep S Panesar, David B Laney, and Richard Wilson. 2013
         </div>
       </div>
 <a href="spc-charts-for-rare-events.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tips-for-effective-spc-implementation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

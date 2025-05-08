@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more) | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 15 I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more) | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more) | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 15 I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more) | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more) | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 15 I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more) | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -52,8 +52,74 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -102,7 +168,7 @@ div.csl-indent {
 </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a></li>
@@ -122,137 +188,153 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a>
+<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="variation.html"><a href="variation.html#spc-and-the-nature-of-variation"><i class="fa fa-check"></i><b>2.1</b> SPC and the nature of variation</a></li>
+<li class="chapter" data-level="1.1" data-path="variation.html"><a href="variation.html#spc-and-the-nature-of-variation"><i class="fa fa-check"></i><b>1.1</b> SPC and the nature of variation</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>3</b> Understanding SPC Charts</a>
+<li class="chapter" data-level="2" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>2</b> Understanding SPC Charts</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
-<li class="chapter" data-level="3.2" data-path="charts-intro.html"><a href="charts-intro.html#why-3-sigma-limits"><i class="fa fa-check"></i><b>3.2</b> Why 3-sigma limits?</a></li>
-<li class="chapter" data-level="3.3" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificent-seven"><i class="fa fa-check"></i><b>3.3</b> Some common types of control charts: The Magnificent Seven</a>
+<li class="chapter" data-level="2.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>2.1</b> Anatomy and physiology of SPC charts</a></li>
+<li class="chapter" data-level="2.2" data-path="charts-intro.html"><a href="charts-intro.html#why-3-sigma-limits"><i class="fa fa-check"></i><b>2.2</b> Why 3-sigma limits?</a></li>
+<li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#some-common-types-of-control-charts-the-magnificent-seven"><i class="fa fa-check"></i><b>2.3</b> Some common types of control charts: The Magnificent Seven</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>3.3.1</b> Counts</a></li>
-<li class="chapter" data-level="3.3.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>3.3.2</b> Measurements</a></li>
+<li class="chapter" data-level="2.3.1" data-path="charts-intro.html"><a href="charts-intro.html#counts"><i class="fa fa-check"></i><b>2.3.1</b> Counts</a></li>
+<li class="chapter" data-level="2.3.2" data-path="charts-intro.html"><a href="charts-intro.html#measurements"><i class="fa fa-check"></i><b>2.3.2</b> Measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="charts-intro.html"><a href="charts-intro.html#summary-of-common-spc-charts"><i class="fa fa-check"></i><b>3.4</b> Summary of common SPC charts</a></li>
+<li class="chapter" data-level="2.4" data-path="charts-intro.html"><a href="charts-intro.html#summary-of-common-spc-charts"><i class="fa fa-check"></i><b>2.4</b> Summary of common SPC charts</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Looking for Signals on SPC charts – Beyond the 3-Sigma Rule</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts – Beyond the 3-Sigma Rule</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
+<li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>4.1.1</b> Freaks</a></li>
-<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>4.1.2</b> Shifts</a></li>
-<li class="chapter" data-level="4.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>4.1.3</b> Trends</a></li>
-<li class="chapter" data-level="4.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>4.1.4</b> Other unusual patterns</a></li>
+<li class="chapter" data-level="3.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="3.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="3.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
+<li class="chapter" data-level="3.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>4.2</b> SPC rules</a>
+<li class="chapter" data-level="3.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.2.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="4.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+<li class="chapter" data-level="3.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="3.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>4.3</b> SPC charts without borders – using run charts</a></li>
-<li class="chapter" data-level="4.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>4.4</b> A practical approach to SPC analysis</a></li>
-<li class="chapter" data-level="4.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>4.5</b> SPC rules in summary</a></li>
+<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
+<li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>5</b> Using SPC in healthcare</a>
+<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in healthcare</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>5.1</b> Using SPC to monitor a process</a></li>
-<li class="chapter" data-level="5.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>5.2</b> Using SPC to improve a process</a></li>
-<li class="chapter" data-level="5.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>5.3</b> Successful use of SPC in healthcare</a></li>
+<li class="chapter" data-level="4.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>4.1</b> Using SPC to monitor a process</a></li>
+<li class="chapter" data-level="4.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>4.2</b> Using SPC to improve a process</a></li>
+<li class="chapter" data-level="4.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>4.3</b> Successful use of SPC in healthcare</a></li>
 </ul></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
-<li class="chapter" data-level="6" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>6</b> Your First SPC Charts With Base R</a>
+<li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>6.1</b> A run chart of blood pressure data</a></li>
-<li class="chapter" data-level="6.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>6.2</b> Adding control limits to produce a control chart</a></li>
-<li class="chapter" data-level="6.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>6.3</b> That’s all, Folks!</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart of blood pressure data</a></li>
+<li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>7</b> Calculating Control Limits</a>
+<li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>7.1</b> Introducing the spc() function</a></li>
-<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>7.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>7.3</b> Count data</a>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>6.2</b> Formulas for calculation of control limits</a></li>
+<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#count-data"><i class="fa fa-check"></i><b>6.3</b> Count data</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.3.1</b> C chart</a></li>
-<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.3.2</b> U chart</a></li>
-<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.3.3</b> P chart</a></li>
+<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.3.1</b> C chart</a></li>
+<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.3.2</b> U chart</a></li>
+<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.3.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>7.4</b> Measurement data</a>
+<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>7.4.1</b> I chart (aka X chart)</a></li>
-<li class="chapter" data-level="7.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="7.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="7.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.4.4</b> S chart</a></li>
+<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart-aka-x-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart (aka X chart)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
+<li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="6.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.5</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>8</b> Highlighting Freaks, Shifts, and Trends</a>
+<li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>8.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="8.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>8.2</b> Improved <code>spc()</code> function</a></li>
-<li class="chapter" data-level="8.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>8.3</b> Highlighting special cause variation in short</a></li>
+<li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
+<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>9</b> Core R Functions to Construct SPC Charts</a>
+<li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> Core R Functions to Construct SPC Charts</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>9.1</b> Examples</a>
+<li class="chapter" data-level="8.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>8.1</b> Examples</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>9.1.1</b> Run chart</a></li>
-<li class="chapter" data-level="9.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>9.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="9.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>9.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
-<li class="chapter" data-level="9.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>9.1.4</b> C and U charts for counts and rates</a></li>
-<li class="chapter" data-level="9.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>9.1.5</b> P chart for percentages</a></li>
+<li class="chapter" data-level="8.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>8.1.1</b> Run chart</a></li>
+<li class="chapter" data-level="8.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>8.1.2</b> I and MR charts for individual measurements</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
+<li class="chapter" data-level="8.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>8.1.4</b> C and U charts for counts and rates</a></li>
+<li class="chapter" data-level="8.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>8.1.5</b> P chart for percentages</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>9.2</b> TODO</a></li>
-<li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
+<li class="chapter" data-level="8.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>8.2</b> TODO</a></li>
+<li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with ggplot2</a>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with ggplot2</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>10.1</b> Creating an SPC object for later plotting</a></li>
-<li class="chapter" data-level="10.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>10.2</b> Making a new plot function based on ggplot2</a></li>
-<li class="chapter" data-level="10.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>10.3</b> Customising the plotting theme</a></li>
-<li class="chapter" data-level="10.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>10.4</b> Preparing for qicharts2</a></li>
+<li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>9.1</b> Creating an SPC object for later plotting</a></li>
+<li class="chapter" data-level="9.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>9.2</b> Making a new plot function based on ggplot2</a></li>
+<li class="chapter" data-level="9.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>9.3</b> Customising the plotting theme</a></li>
+<li class="chapter" data-level="9.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>9.4</b> Preparing for qicharts2</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> Introducing qicharts2</a>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> Introducing qicharts2</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>11.1</b> A simple run chart</a></li>
-<li class="chapter" data-level="11.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>11.2</b> A simple control chart</a></li>
-<li class="chapter" data-level="11.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>11.3</b> Excluding data points from analysis</a></li>
-<li class="chapter" data-level="11.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>11.4</b> Freezing baseline period</a></li>
-<li class="chapter" data-level="11.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>11.5</b> Splitting chart by period</a></li>
-<li class="chapter" data-level="11.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>11.6</b> Small multiple plots for multivariate data</a>
+<li class="chapter" data-level="10.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>10.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="10.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>10.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="10.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>10.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>10.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="10.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>10.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>10.6</b> Small multiple plots for multivariate data</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>11.6.1</b> To aggregate or not to aggregate</a></li>
+<li class="chapter" data-level="10.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>10.6.1</b> To aggregate or not to aggregate</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>11.7</b> qicharts2 in short</a></li>
+<li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> qicharts2 in short</a></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="12" data-path="case-1.html"><a href="case-1.html"><i class="fa fa-check"></i><b>12</b> Case 1:</a></li>
+<li class="chapter" data-level="11" data-path="case-1.html"><a href="case-1.html"><i class="fa fa-check"></i><b>11</b> Case 1:</a></li>
 <li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
-<li class="chapter" data-level="13" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>13</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
-<li class="chapter" data-level="14" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>14</b> SPC Charts for Rare Events</a>
+<li class="chapter" data-level="12" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>14.1</b> Introducing the birth dataset</a></li>
-<li class="chapter" data-level="14.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-charts-for-opportunities-between-cases"><i class="fa fa-check"></i><b>14.2</b> G charts for opportunities between cases</a></li>
-<li class="chapter" data-level="14.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-charts-for-time-between-events"><i class="fa fa-check"></i><b>14.3</b> T charts for time between events</a></li>
-<li class="chapter" data-level="14.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>14.4</b> The Bernoulli CUSUM chart for binary data</a></li>
-<li class="chapter" data-level="14.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>14.5</b> Selecting the rigth chart for rare events</a></li>
+<li class="chapter" data-level="13.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>13.1</b> Introducing the birth dataset</a></li>
+<li class="chapter" data-level="13.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-charts-for-opportunities-between-cases"><i class="fa fa-check"></i><b>13.2</b> G charts for opportunities between cases</a></li>
+<li class="chapter" data-level="13.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-charts-for-time-between-events"><i class="fa fa-check"></i><b>13.3</b> T charts for time between events</a></li>
+<li class="chapter" data-level="13.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>13.4</b> The Bernoulli CUSUM chart for binary data</a></li>
+<li class="chapter" data-level="13.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>13.5</b> Selecting the rigth chart for rare events</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>15</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>15.1</b> Laney’s prime chart</a></li>
-<li class="chapter" data-level="15.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>15.2</b> When to use prime charts</a></li>
+<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><i class="fa fa-check"></i><b>16</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)</a></li>
+<li class="chapter" data-level="15" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)</a>
+<ul>
+<li class="chapter" data-level="15.0.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="15.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="15.2" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+</ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="17" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>17</b> Tips for Effective SPC Implementation</a></li>
+<li class="chapter" data-level="16" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>16</b> Tips for Effective SPC Implementation</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a></li>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i>Bacteremia</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#diabetes-hba1c"><i class="fa fa-check"></i>Diabetes HbA1c</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
+</ul></li>
 <li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
 <li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
 <ul>
@@ -305,12 +387,110 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">Chapter 16</span> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid – or even superior – alternative to other Shewhart SPC charts. This is partly because the I chart is based on the actual observable variation in data, rather than on theoretical distributional assumptions, which may or may not be true.</p>
-<p>However, the I chart does not account for variable subgroup sizes – that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. When the variation is small, this may not pose a problem, but often – particularly in healthcare – size matters.</p>
-<p>Several solutions have been proposed. Here we present the normalised I chart or – as we prefer to name it – the I' (pronounced I prime) chart suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
+<div id="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid – or even superior – alternative to other Shewhart SPC charts. This is partly because the I chart is based on the empirical variation in data, rather than on theoretical distributional assumptions, which may or may not be true.</p>
+<p>However, the I chart does not account for variable subgroup sizes – that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. This produces straight control limits, which in some situations may generate false signals or fail to detect true ones. When the variation is small, this may not pose a problem, but often – not the least in healthcare – size matters.</p>
+<p>Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I’)) chart suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
+<p>In summary:</p>
+<ul>
+<li><p>The I’ chart accounts for variable subgroup sizes by adjusting the within subgroup standard deviation with a factor that depends on the size of each subgroup producing wavy control limits when subgroup sizes vary.</p></li>
+<li><p>The I’ chart is useful for measurement and count data with or without denominators.</p></li>
+<li><p>With constant subgroup sizes, the I’ chart is an exact match for the original I chart.</p></li>
+<li><p>For rates and proportions, the I’ chart produces control limits that match those of the U' and P' charts.</p></li>
+</ul>
+<p>Figure <a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#fig:iprime-fig1">15.1</a> shows an I’ and a P’ chart side-by-side demonstrating their similar results.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-1" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
+<span id="cb91-2"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-2" tabindex="-1"></a>    <span class="at">data      =</span> admis, </span>
+<span id="cb91-3"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-3" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;ip&#39;</span>, </span>
+<span id="cb91-4"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-4" tabindex="-1"></a>    <span class="at">y.percent =</span> T,</span>
+<span id="cb91-5"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-5" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;I&#39; chart of hospital mortality&quot;</span>,</span>
+<span id="cb91-6"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-6" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&#39;Month&#39;</span>)</span>
+<span id="cb91-7"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-7" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-8" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
+<span id="cb91-9"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-9" tabindex="-1"></a>    <span class="at">data  =</span> admis, </span>
+<span id="cb91-10"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-10" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;pp&#39;</span>,</span>
+<span id="cb91-11"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;P&#39; chart of hospital mortality&quot;</span>,</span>
+<span id="cb91-12"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb91-12" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:iprime-fig1"></span>
+<img src="_main_files/figure-html/iprime-fig1-1.svg" alt="Comparing I' and P' charts" width="50%" /><img src="_main_files/figure-html/iprime-fig1-2.svg" alt="Comparing I' and P' charts" width="50%" />
+<p class="caption">
+Figure 15.1: Comparing I’ and P’ charts
+</p>
+</div>
+<div id="procedure-for-calculating-centre-line-and-control-limits" class="section level3 hasAnchor" number="15.0.1">
+<h3><span class="header-section-number">15.0.1</span> Procedure for calculating centre line and control limits<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#procedure-for-calculating-centre-line-and-control-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We use the following symbols:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> = numerators</li>
+<li><span class="math inline">\(d\)</span> = denominators</li>
+<li><span class="math inline">\(o\)</span> = number of data values (subgroups)</li>
+<li><span class="math inline">\(i\)</span> = i<sup>th</sup> data value</li>
+</ul>
+<p>Values to plot:</p>
+<p><span class="math display">\[
+y = \frac{n}{d}
+\]</span></p>
+<p>Centre line:</p>
+<p><span class="math display">\[
+CL = \frac{\sum{n}}{\sum{d}}
+\]</span></p>
+<p>Standard deviation of i<sup>th</sup> data point:</p>
+<p><span class="math display">\[
+s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\frac{1}{d_{i-1}}}}
+\]</span></p>
+<p>Average standard deviation:</p>
+<p><span class="math display">\[
+\bar{s} = \frac{\sum{s}}{o}
+\]</span></p>
+<p>Control limits:</p>
+<p><span class="math display">\[
+\text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
+\]</span></p>
+<p>When subgroup sizes equals 1, the control limits simplify to: <span class="math inline">\(CL \pm 2.66\overline{MR}\)</span> as in the original I chart.</p>
+<p>As with the original I chart, qicharts2 screens the moving ranges of <span class="math inline">\(s_i\)</span>, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating <span class="math inline">\(\bar{s}\)</span>.</p>
+</div>
+<div id="i-charts-for-measument-data-with-variable-subgroup-sizes" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> I’ charts for measument data with variable subgroup sizes<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#fig:iprime-fig1">15.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for use with measurement data where subgroup sizes vary. For example, due to privacy considerations, we may only have access to averaged patient data rather than individual records. Traditionally, such data would be plotted on an original I chart, but if the number of patients in each subgroup varies significantly, straight control limits may be suboptimal.</p>
+<p>Figure <a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#fig:iprime-fig2">15.2</a> is an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. Notice the data point above the upper control limit in April 2020 suggesting a special cause. However, when plotting aggregated measurement data, the I chart does not account for variations in subgroup size.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb92-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c, </span>
+<span id="cb92-2"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb92-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
+<span id="cb92-3"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb92-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
+<span id="cb92-4"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb92-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb92-5"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb92-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
+<span id="cb92-6"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb92-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:iprime-fig2"></span>
+<img src="_main_files/figure-html/iprime-fig2-1.svg" alt="I chart of average HbA1c without denominator" width="672" />
+<p class="caption">
+Figure 15.2: I chart of average HbA1c without denominator
+</p>
+</div>
+<p>The I’ chart in Figure <a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#fig:iprime-fig3">15.3</a> takes the subgroup size (number of patients) into account and adjusts the control limits correspondingly.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb93-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c <span class="sc">*</span> n, n, </span>
+<span id="cb93-2"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb93-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
+<span id="cb93-3"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb93-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;ip&#39;</span>,</span>
+<span id="cb93-4"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb93-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb93-5"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb93-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
+<span id="cb93-6"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#cb93-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:iprime-fig3"></span>
+<img src="_main_files/figure-html/iprime-fig3-1.svg" alt="I prime chart of average HbA1c with denominator" width="672" />
+<p class="caption">
+Figure 15.3: I prime chart of average HbA1c with denominator
+</p>
+</div>
+<p>April 2020 was the first month of lockdown during Covid-19 in Denmark, and the number of patients (the denominator) seen during this month was significantly lower than usual, which allowed for larger than usual common cause variation in measurements and consequently wider control limits this month. So, when the subgroup size is taken into account, the apparent special cause in Figure <a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#fig:iprime-fig2">15.2</a> is actually within the limits of the expected common cause variation.</p>
+<p>Also, notice that the centre lines are a bit different (60.6 vs 60.3), because the I prime chart uses the weighted rather than the unweighted mean of the measurements.</p>
+<p>Note that in order to plot the averages we need to multiply the numerators (avg_hba1c, which are already averaged) by the denominators (n) to get the sum of individual measurements to use as the new numerator. Otherwise, the result would be a plot of averages of averages.</p>
+</div>
+<div id="one-chart-to-rule-them-all" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> One chart to rule them all?<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#one-chart-to-rule-them-all" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I’ charts produce results similar to the original I chart for individual measurements, and to the P’ and U’ charts for proportion and count data.</p>
+<p>If we accept Laney’s claim that prime charts are valid substitutes for their non-prime counterparts, it is tempting to conclude that the I’ chart offers a universal solution to most – if not all – of our charting needs. Taylor largely supports this view – although he suggests that the X-bar chart is better suited for measurement data with subgroup sizes greater than one.</p>
+<p>We, however, see no reason that I’ charts cannot be used for data with multiple measurements per subgroup.</p>
+<p>Only one thing prevents us from fully recommending I’ charts as the solution to all our charting needs – we, ourselves, have limited experience with I’ charts, which makes us hesitant to make solid recommendations without further evidence. However, this will change in the future, and I’ charts may be the new Swiss Army Knife of SPC.</p>
 
+</div>
 </div>
 
 
@@ -381,6 +561,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

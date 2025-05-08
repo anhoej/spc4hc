@@ -61,6 +61,9 @@ fig:pcharts-fig1
 fig:pcharts-fig2
 fig:pcharts-fig3
 tab:pcharts-tab1
+fig:iprime-fig1
+fig:iprime-fig2
+fig:iprime-fig3
 variation
 spc-and-the-nature-of-variation
 charts-intro
@@ -141,6 +144,10 @@ selecting-the-rigth-chart-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
 laneys-prime-chart
 when-to-use-prime-charts
+i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more
+procedure-for-calculating-centre-line-and-control-limits
+i-charts-for-measument-data-with-variable-subgroup-sizes
+one-chart-to-rule-them-all
 tips-for-effective-spc-implementation
 data-sets
 stat-concepts
@@ -162,5 +169,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more

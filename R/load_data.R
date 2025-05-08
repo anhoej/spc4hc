@@ -81,3 +81,9 @@ systolic <- c(169, 172, 175, 174, 161, 142,
               157, 183, 177, 171, 185, 176,
               181, 174)
 
+# HbA1c data from children with diabetes
+diabetes <- read.csv('data/diabetes_hba1c.csv',
+                     comment.char = '#',
+                     colClasses = c('Date',
+                                    'double',
+                                    'integer'))

@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-07" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,8 +313,14 @@ div.csl-indent {
 <li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)</a>
+<ul>
+<li class="chapter" data-level="15.0.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="15.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="15.2" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+</ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="15" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>15</b> Tips for Effective SPC Implementation</a></li>
+<li class="chapter" data-level="16" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>16</b> Tips for Effective SPC Implementation</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -323,6 +329,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#diabetes-hba1c"><i class="fa fa-check"></i>Diabetes HbA1c</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
@@ -380,7 +387,7 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="diagnostics" class="section level1 hasAnchor" number="18">
+<div id="diagnostics" class="section level1 hasAnchor" number="19">
 <h1><span class="header-section-number">C</span> Two types of errors when using SPC<a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
 <ul>
@@ -389,9 +396,9 @@ div.csl-indent {
 </ul>
 <p>Either mistake can cause losses. Treating all data as special cause variation maximises the losses from false positives; and treating all data as common cause variation maximises the losses from false negatives.</p>
 <p>Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart sought a strategy to make either mistake only rarely and concluded that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to three standard deviations below and above the mean provides a reasonable balance between making the two types of mistakes.</p>
-<div id="quantifying-the-diagnostic-error-of-spc-charts" class="section level2 hasAnchor" number="18.1">
+<div id="quantifying-the-diagnostic-error-of-spc-charts" class="section level2 hasAnchor" number="19.1">
 <h2><span class="header-section-number">C.1</span> Quantifying the diagnostic error of SPC charts<a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="average-run-length" class="section level3 hasAnchor" number="18.1.1">
+<div id="average-run-length" class="section level3 hasAnchor" number="19.1.1">
 <h3><span class="header-section-number">C.1.1</span> Average run length<a href="diagnostics.html#average-run-length" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Traditionally, the performance characteristics of SPC charts have been evaluated through the so-called average run length (ARL), that is, the average number of data points until a special cause is signalled <span class="citation">(<a href="#ref-montgomery2020">Montgomery 2020, 186</a>)</span>:</p>
 <p><span class="math display">\[ ARL_0=\frac{1}{\alpha} \]</span>
@@ -408,7 +415,7 @@ for the out-of-control ARL, when a special cause is present, where</p>
 <p><span class="math display">\[ specificity=P\{\text{no signal | common cause variation}\}=P\{\text{true negative}\}=1-\alpha \]</span></p>
 <p><span class="math display">\[ sensitivity=P\{\text{signal | special cause variation}\}=P\{\text{true positive}\}=1-\beta \]</span></p>
 </div>
-<div id="likelihood-ratios" class="section level3 hasAnchor" number="18.1.2">
+<div id="likelihood-ratios" class="section level3 hasAnchor" number="19.1.2">
 <h3><span class="header-section-number">C.1.2</span> Likelihood ratios<a href="diagnostics.html#likelihood-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sensitivity and specificity are, however, not that useful on their own – they describe how a special cause predicts a signal, not how a signal predicts a special cause, which is what we really want to know.</p>
 <p>Likelihood ratios are diagnostic measures designed to answer such questions. Assume that an SPC chart signals special cause variation. A perfect test would mean that the chart would certainly come from an unstable process (true positive, TP). However, some charts with only common cause variation also signals (false positive, FP). We therefore correct the true positive rate by the false positive rate by dividing one with the other. Likewise, if a chart does not signal it could be a false negative (FN) rather than a true negative (TN).</p>
@@ -452,7 +459,7 @@ for the out-of-control ARL, when a special cause is present, where</p>
 </ul>
 </div>
 </div>
-<div id="conclusion-keeping-the-balance" class="section level2 hasAnchor" number="18.2">
+<div id="conclusion-keeping-the-balance" class="section level2 hasAnchor" number="19.2">
 <h2><span class="header-section-number">C.2</span> Conclusion: Keeping the balance<a href="diagnostics.html#conclusion-keeping-the-balance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SPC charts, like any statistical or medical tests, can sometimes suggest a problem where none exists or fail to detect a real issue. This can result in losses – either from wasted resources chasing false alarms or from harm caused by overlooked special causes. However, carefully selecting which rules to apply to SPC charts can help minimize losses in both cases.</p>
 <p>Since Shewhart first introduced the control chart in 1924 – using only the 3-sigma rule – many additional rules and rule sets have been proposed to improve the sensitivity of SPC charts to special cause variation. However, increased sensitivity comes at the cost of reduced specificity, and applying too many or overly sensitive rules inevitably leads to wasted resources chasing false alarms. Our goal is to strike the right balance between sensitivity and specificity. Quantifying diagnostic errors using likelihood ratios is a valuable tool in achieving this.</p>

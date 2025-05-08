@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-07" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,8 +313,14 @@ div.csl-indent {
 <li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)</a>
+<ul>
+<li class="chapter" data-level="15.0.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="15.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="15.2" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+</ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="15" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>15</b> Tips for Effective SPC Implementation</a></li>
+<li class="chapter" data-level="16" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>16</b> Tips for Effective SPC Implementation</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -323,6 +329,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#diabetes-hba1c"><i class="fa fa-check"></i>Diabetes HbA1c</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
@@ -380,7 +387,7 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sets" class="section level1 hasAnchor" number="16">
+<div id="data-sets" class="section level1 hasAnchor" number="17">
 <h1><span class="header-section-number">A</span> Data Sets<a href="data-sets.html#data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>All datasets for this book are provided as comma separated values (csv) in text files. For details on how to read data from csv-files, see the <a href="r-notes.html#importing-data-from-text-files">Importing data from text files</a> in Appendix <a href="r-notes.html#r-notes">D</a>.</p>
 <!-- ## Reading csv files {-} -->
@@ -430,6 +437,17 @@ div.csl-indent {
 <li>datetime (datetime): date and time of delivery</li>
 <li>month (date): first day of month</li>
 <li>delay (numeric): time in minutes between decision and delivery</li>
+</ul>
+</div>
+<div id="diabetes-hba1c" class="section level3 unnumbered hasAnchor">
+<h3>Diabetes HbA1c<a href="data-sets.html#diabetes-hba1c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>HbA1c measurements in children with diabetes</p>
+<p>File: diabetes_hba1c.csv</p>
+<p>Variables:</p>
+<ul>
+<li>month (date): month of measurements</li>
+<li>avg_hba1c (numeric): average of HbA1c measurements</li>
+<li>n (integer): number of patients who visited the clinic</li>
 </ul>
 </div>
 <div id="emergency-admission-mortality" class="section level3 unnumbered hasAnchor">

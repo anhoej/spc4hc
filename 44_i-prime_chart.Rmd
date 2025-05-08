@@ -5,23 +5,41 @@ knitr::opts_chunk$set(fig.asp = 2/4,
                       dev     = 'svg')
 
 library(qicharts2)
+source('R/load_data.R', local = knitr::knit_global())
 ```
 
-The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid -- or even superior -- alternative to other Shewhart SPC charts. This is partly because the I chart is based on the actual observable variation in data, rather than on theoretical distributional assumptions, which may or may not be true.
+The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid -- or even superior -- alternative to other Shewhart SPC charts. This is partly because the I chart is based on the empirical variation in data, rather than on theoretical distributional assumptions, which may or may not be true.
 
-However, the I chart does not account for variable subgroup sizes -- that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. When the variation is small, this may not pose a problem, but often -- not the least in healthcare -- size matters.
+However, the I chart does not account for variable subgroup sizes -- that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. This produces straight control limits, which in some situations may generate false signals or fail to detect true ones. When the variation is small, this may not pose a problem, but often -- not the least in healthcare -- size matters.
 
-Several solutions have been proposed. Here we present the normalised I chart or -- as we prefer to name it -- the I prime (I\')) chart suggested by @taylor2018.
+Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I')) chart suggested by @taylor2018.
 
 In summary:
 
-* The I\' chart accounts for variable subgroup sizes by adjusting the within subgroup standard deviation with a factor that depends on the size of each subgroup. 
+* The I' chart accounts for variable subgroup sizes by adjusting the within subgroup standard deviation with a factor that depends on the size of each subgroup producing wavy control limits when subgroup sizes vary.
 
-* When subgroup sizes vary, the I\' chart displays wavy control limits. 
+* The I' chart is useful for measurement and count data with or without denominators.
 
-* With constant subgroup sizes, the I\' chart is an exact match for the original I chart. 
+* With constant subgroup sizes, the I' chart is an exact match for the original I chart. 
 
-* For rates and proportions, the I′ chart produces control limits matching those of U\' and P\' charts.
+* For rates and proportions, the I' chart produces control limits that match those of the U\' and P\' charts.
+
+Figure \@ref(fig:iprime-fig1) shows an I' and a P' chart side-by-side demonstrating their similar results.
+
+```{r iprime-fig1, out.width='50%', fig.show='hold', fig.cap="Comparing I' and P' charts"}
+qic(month, deaths, admissions, 
+    data      = admis, 
+    chart     = 'ip', 
+    y.percent = T,
+    title     = "I' chart of hospital mortality",
+    xlab      = 'Month')
+
+qic(month, deaths, admissions, 
+    data  = admis, 
+    chart = 'pp',
+    title = "P' chart of hospital mortality",
+    xlab  = 'Month')
+```
 
 ### Procedure for calculating centre line and control limits
 
@@ -29,7 +47,7 @@ We use the following symbols:
 
 * $n$ = numerators
 * $d$ = denominators
-* $o$ = number of data values
+* $o$ = number of data values (subgroups)
 * $i$ = i^th^ data value
 
 Values to plot:
@@ -61,3 +79,51 @@ Control limits:
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
 $$
+
+When subgroup sizes equals 1, the control limits simplify to: $CL \pm 2.66\overline{MR}$ as in the original I chart.
+
+As with the original I chart, qicharts2 screens the moving ranges of $s_i$, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating $\bar{s}$.
+
+## I' charts for measument data with variable subgroup sizes
+
+Figure \@ref(fig:iprime-fig1) demonstrates the use of an I' chart with count data. However, the I' chart was originally intended for use with measurement data where subgroup sizes vary. For example, due to privacy considerations, we may only have access to averaged patient data rather than individual records. Traditionally, such data would be plotted on an original I chart, but if the number of patients in each subgroup varies significantly, straight control limits may be suboptimal.
+
+Figure \@ref(fig:iprime-fig2) is an I chart of the monthly HbA1c averages from the [Diabetes HbA1c] dataset. Notice the data point above the upper control limit in April 2020 suggesting a special cause. However, when plotting aggregated measurement data, the I chart does not account for variations in subgroup size.
+
+```{r iprime-fig2, fig.cap='I chart of average HbA1c without denominator'}
+qic(month, avg_hba1c, 
+    data  = diabetes, 
+    chart = 'i',
+    title = NULL,
+    ylab  = 'mmol / mol',
+    xlab  = 'Month')
+```
+
+The I' chart in Figure \@ref(fig:iprime-fig3) takes the subgroup size (number of patients) into account and adjusts the control limits correspondingly.
+
+```{r iprime-fig3, fig.cap='I prime chart of average HbA1c with denominator'}
+qic(month, avg_hba1c * n, n, 
+    data  = diabetes, 
+    chart = 'ip',
+    title = NULL,
+    ylab  = 'mmol / mol',
+    xlab  = 'Month')
+```
+
+April 2020 was the first month of lockdown during Covid-19 in Denmark, and the number of patients (the denominator) seen during this month was significantly lower than usual, which allowed for larger than usual common cause variation in measurements and consequently wider control limits this month. So, when the subgroup size is taken into account, the apparent special cause in Figure \@ref(fig:iprime-fig2) is actually within the limits of the expected common cause variation.
+
+Also, notice that the centre lines are a bit different (60.6 vs 60.3), because the I prime chart uses the weighted rather than the unweighted mean of the measurements.
+
+Note that in order to plot the averages we need to multiply the numerators (avg_hba1c, which are already averaged) by the denominators (n) to get the sum of individual measurements to use as the new numerator. Otherwise, the result would be a plot of averages of averages.
+
+## One chart to rule them all?
+
+I' charts produce results similar to the original I chart for individual measurements, and to the P' and U' charts for proportion and count data.
+
+If we accept Laney’s claim that prime charts are valid substitutes for their non-prime counterparts, it is tempting to conclude that the I' chart offers a universal solution to most – if not all – of our charting needs. Taylor largely supports this view – although he suggests that the X-bar chart is better suited for measurement data with subgroup sizes greater than one.
+
+We, however, see no reason that I' charts cannot be used for data with multiple measurements per subgroup instead of X-bar charts.
+
+
+Only one thing prevents us from fully recommending I' charts as the solution to all our charting needs -- we, ourselves, have limited experience with I' charts, which makes us hesitant to make solid recommendations without further evidence. However, this will change in the future, and I' charts may be the new Swiss Army Knife of SPC.
+
