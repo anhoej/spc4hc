@@ -1,0 +1,63 @@
+# I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/4,
+                      dev     = 'svg')
+
+library(qicharts2)
+```
+
+The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid -- or even superior -- alternative to other Shewhart SPC charts. This is partly because the I chart is based on the actual observable variation in data, rather than on theoretical distributional assumptions, which may or may not be true.
+
+However, the I chart does not account for variable subgroup sizes -- that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. When the variation is small, this may not pose a problem, but often -- not the least in healthcare -- size matters.
+
+Several solutions have been proposed. Here we present the normalised I chart or -- as we prefer to name it -- the I prime (I\')) chart suggested by @taylor2018.
+
+In summary:
+
+* The I\' chart accounts for variable subgroup sizes by adjusting the within subgroup standard deviation with a factor that depends on the size of each subgroup. 
+
+* When subgroup sizes vary, the I\' chart displays wavy control limits. 
+
+* With constant subgroup sizes, the I\' chart is an exact match for the original I chart. 
+
+* For rates and proportions, the I′ chart produces control limits matching those of U\' and P\' charts.
+
+### Procedure for calculating centre line and control limits
+
+We use the following symbols:
+
+* $n$ = numerators
+* $d$ = denominators
+* $o$ = number of data values
+* $i$ = i^th^ data value
+
+Values to plot:
+
+$$
+y = \frac{n}{d}
+$$
+
+Centre line:
+
+$$
+CL = \frac{\sum{n}}{\sum{d}}
+$$
+
+Standard deviation of i^th^ data point:
+
+$$
+s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\frac{1}{d_{i-1}}}}
+$$
+
+Average standard deviation:
+
+$$
+\bar{s} = \frac{\sum{s}}{o}
+$$
+
+Control limits:
+
+$$
+\text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
+$$
