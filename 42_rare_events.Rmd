@@ -14,13 +14,9 @@ library(qicharts2)
 
 When dealing with potentially serious or fatal events, the number of occurrences is often (fortunately) very low, which can present challenges for traditional SPC charts designed for count data.
 
-The challenge arises because traditional SPC charts for count data -- like P and U charts -- assume a relatively higher and more consistent frequency of events to function effectively. When events are rare, the data becomes sparse and highly variable, making these charts unreliable:
+The challenge arises because traditional SPC charts for count data -- like P and U charts -- assume a relatively higher and more consistent frequency of events to function effectively. When counts are low, the data becomes sparse and highly variable, making these charts unreliable.
 
-* Too many zeros: Frequent zero counts can lead to control limits that are misleadingly narrow or wide. Especially, with run charts, when more than half of the data points are zero, the median will also be zero, which undermines the validity of the runs analysis -- typically resulting in just one long run above the median.
-
-* Low sensitivity: Traditional charts may fail to detect meaningful shifts or trends because the event frequency is too low to produce statistically significant signals.
-
-* False alarms or missed signals: The charts may either trigger false alarms due to natural variation in rare data or miss actual process shifts, leading to poor decision-making.
+Sparse data can produce lower control limits that are censored at zero, thereby invalidating the 3-sigma test in that direction. Additionally, runs charts become problematic when more than half of the data points are zero, as this causes the median to also be zero. This undermines the validity of the runs analysis -- resulting in just one long run above the median.
 
 One useful approach to handling rare events is to plot the number of opportunities or the time between events, rather than focusing on event proportions or rates -- essentially flipping the indicator to look at the gaps between occurrences instead of the occurrences themselves. 
 
@@ -75,7 +71,7 @@ qic(biweek, asphyxia, case,  # use the case variable for denominators
     data = births)
 ```
 
-Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis -- as the average, in this case, better represents the process centre (figure \@ref(fig:rare-fig3)).
+Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis -- as the average, in this case, better represents the process centre (Figure \@ref(fig:rare-fig3)).
 
 ```{r rare-fig3, fig.cap='P chart of percent deliveries with neonatal asphyxia'}
 # P chart
@@ -84,7 +80,7 @@ qic(biweek, asphyxia, case,
     chart = 'p')
 ```
 
-While this P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the three-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.
+While this P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the 3-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.
 
 One obvious solution is to increase the subgroup size by aggregating data over longer periods, such as months or quarters. However, this approach results in slower detection of process improvement or deterioration.
 
@@ -110,7 +106,7 @@ asph_g     <- diff(c(asph_cases))
 qic(asph_g, chart = 'g')
 ```
 
-Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used -- as is done by default in qicharts2 (\@ref(fig:rare-fig4)).
+Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used -- as is done by default in qicharts2 (Figure \@ref(fig:rare-fig4)).
 
 As is the case with the other SPC charts for counts data, negative lower control limits are rounded to 0, as values below this is not possible.
 
