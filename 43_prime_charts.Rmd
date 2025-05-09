@@ -8,8 +8,7 @@ library(qicharts2)
 ```
 
 With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points outside the limits. 
-
-Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 (example data are tabulated at the [end of this chapter](#pp-data)).
+Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 included in qicharts2 (data are tabulated at the [end of this chapter](#pp-data)).
 
 ```{r pcharts-fig1, echo=FALSE, fig.cap='P chart of percent emergency attendances seen within 4 hours'}
 qic(i, r, n, 
@@ -38,7 +37,7 @@ As a general rule of thumb, when the control limits from an I chart differ signi
 
 Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes -- not the least in healthcare -- varying subgroup sizes matter.
 
-Laney proposed a solution that adjust the within subgroup variation in count data ($\sigma_{pi}$) by a factor based on the moving ranges of successive standardised data points ($\sigma_z$) [@laney2002].
+Laney proposed a solution that adjust the assumed within subgroup variation in count data by a factor based on the moving ranges of successive standardised data points ($\sigma_z$) [@laney2002].
 
 ## Laney's prime chart
 
@@ -52,7 +51,7 @@ $$\sigma_{pi}=\sqrt{\bar{p}(1-\bar{p})/{n_{i}}}$$
 
 where $n_i$ is the sample size of the i-th subgroup.
 
-The **P′ chart** (pronounced P-prime chart) accounts for both within and between subgroup variation. The control limits are given by:
+The **P′ chart** (pronounced P prime chart) accounts for both within and between subgroup variation. The control limits are given by:
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z$$
 
