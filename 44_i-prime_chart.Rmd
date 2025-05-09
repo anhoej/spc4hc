@@ -1,4 +1,4 @@
-# I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)
+# I Prime Chart for Measurement Data With Variable Subgroup Sizes (and more)
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,
@@ -12,7 +12,7 @@ The I chart is often regarded as the Swiss Army knife of SPC. It is useful in ma
 
 However, the I chart does not account for variable subgroup sizes -- that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. This produces straight control limits, which in some situations may generate false signals or fail to detect true ones. When the variation is small, this may not pose a problem, but often -- not the least in healthcare -- size matters.
 
-Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I')) chart suggested by @taylor2018.
+Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I') chart suggested by @taylor2018.
 
 In summary:
 
@@ -26,7 +26,7 @@ In summary:
 
 Figure \@ref(fig:iprime-fig1) shows an I' and a P' chart side-by-side demonstrating their similar results.
 
-```{r iprime-fig1, out.width='50%', fig.show='hold', fig.cap="Comparing I' and P' charts"}
+```{r iprime-fig1, out.width='50%', fig.width=4.5, fig.asp=0.7, fig.show='hold', fig.cap="Comparing I' and P' charts"}
 qic(month, deaths, admissions, 
     data      = admis, 
     chart     = 'ip', 
@@ -118,12 +118,9 @@ Note that in order to plot the averages we need to multiply the numerators (avg_
 
 ## One chart to rule them all?
 
-I' charts produce results similar to the original I chart for individual measurements, and to the P' and U' charts for proportion and count data.
+The I' chart produces results similar to the original I chart for individual measurements, and to the P' and U' charts for proportion and count data.
 
-If we accept Laney’s claim that prime charts are valid substitutes for their non-prime counterparts, it is tempting to conclude that the I' chart offers a universal solution to most – if not all – of our charting needs. Taylor largely supports this view – although he suggests that the X-bar chart is better suited for measurement data with subgroup sizes greater than one.
+If we accept Laney’s claim that prime charts are valid substitutes for their non-prime counterparts, it is tempting to conclude that the I' chart offers a universal solution to most, if not all, of our charting needs. Taylor largely supports this view -- although he suggests that the X-bar chart is better suited for measurement data with subgroup sizes greater than one. We, however, see no reason that I' charts cannot be used as an alternative to X-bar charts for data with multiple measurements per subgroup.
 
-We, however, see no reason that I' charts cannot be used for data with multiple measurements per subgroup instead of X-bar charts.
-
-
-Only one thing prevents us from fully recommending I' charts as the solution to all our charting needs -- we, ourselves, have limited experience with I' charts, which makes us hesitant to make solid recommendations without further evidence. However, this will change in the future, and I' charts may be the new Swiss Army Knife of SPC.
+In conclusion, while the I' chart is a recent development, its versatility and ability to mimic the behaviour of traditional SPC charts (including prime charts) make it a compelling alternative, that has the potential to streamline chart selection by serving as a single, robust option across various data types and scenarios. As the methodology continues to gain empirical support, the I' chart may well become the preferred tool for modern quality control.
 

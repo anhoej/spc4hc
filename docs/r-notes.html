@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-08" />
+<meta name="date" content="2025-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,11 +313,11 @@ div.csl-indent {
 <li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and much more)</a>
+<li class="chapter" data-level="15" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Chart for Measurement Data With Variable Subgroup Sizes (and more)</a>
 <ul>
-<li class="chapter" data-level="15.0.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
-<li class="chapter" data-level="15.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
-<li class="chapter" data-level="15.2" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+<li class="chapter" data-level="15.0.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="15.1" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="15.2" data-path="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
 </ul></li>
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="chapter" data-level="16" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>16</b> Tips for Effective SPC Implementation</a></li>
@@ -402,18 +402,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-04-26    13    32
- 2 2025-04-27    14    29
- 3 2025-04-28    16    33
- 4 2025-04-29    19    30
- 5 2025-04-30    13    32
- 6 2025-05-01    18    35
- 7 2025-05-02    19    29
- 8 2025-05-03    16    33
- 9 2025-05-04    16    34
-10 2025-05-05    11    27
-11 2025-05-06    13    32
-12 2025-05-07    12    26</code></pre>
+ 1 2025-04-27    13    32
+ 2 2025-04-28    14    29
+ 3 2025-04-29    16    33
+ 4 2025-04-30    19    30
+ 5 2025-05-01    13    32
+ 6 2025-05-02    18    35
+ 7 2025-05-03    19    29
+ 8 2025-05-04    16    33
+ 9 2025-05-05    16    34
+10 2025-05-06    11    27
+11 2025-05-07    13    32
+12 2025-05-08    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="r-notes.html#cb95-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb95-2"><a href="r-notes.html#cb95-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

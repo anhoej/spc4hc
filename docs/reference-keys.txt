@@ -144,7 +144,7 @@ selecting-the-rigth-chart-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
 laneys-prime-chart
 when-to-use-prime-charts
-i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-much-more
+i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more
 procedure-for-calculating-centre-line-and-control-limits
 i-charts-for-measument-data-with-variable-subgroup-sizes
 one-chart-to-rule-them-all
