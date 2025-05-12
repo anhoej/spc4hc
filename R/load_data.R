@@ -87,3 +87,9 @@ diabetes <- read.csv('data/diabetes_hba1c.csv',
                      colClasses = c('Date',
                                     'double',
                                     'integer'))
+
+# Adverse events ----
+ae <- read.csv('data/adverse_events.csv',
+               comment.char = '#',
+               colClasses = c('character',
+                              'character'))

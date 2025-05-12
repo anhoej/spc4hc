@@ -1,0 +1,44 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Funnel Plots for Categorical Subgroups
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/4,
+                      dev     = 'svg')
+
+library(qicharts2)
+```
+
+```{r funnel-fig1, fig.asp=1}
+# get urinary tract infections from hospital infections data
+uti <- hospital_infections[hospital_infections$infection == 'UTI',]
+# plot U chart
+qic(month, n, days,
+    data     = uti,
+    chart    = 'u',
+    multiply = 10000,
+    facets   = ~hospital,
+    ncol     = 2)
+```
+
+```{r funnel-fig2}
+# filter data to latest quarter
+uti_2016q4 <- uti[uti$month >= '2016-10-01', ]
+# plot "funnel" plot
+qic(hospital, n, days,
+    data     = uti_2016q4,
+    chart    = 'u',
+    multiply = 10000)
+```
+
+```{r funnel-fig3}
+# order hospitals by denominator (risk days)
+qic(reorder(hospital, days), n, days,
+    data     = uti_2016q4,
+    chart    = 'u',
+    multiply = 10000)
+```
+

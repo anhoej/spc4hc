@@ -1,0 +1,30 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Pareto Charts for Ranking Problems
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/4,
+                      dev     = 'svg')
+
+library(qicharts2)
+
+source('R/load_data.R', local = knitr::knit_global())
+```
+
+```{r}
+paretochart(ae$category)
+```
+
+```{r}
+paretochart(ae$severity)
+```
+
+```{r}
+tbl <- table(ae$category)
+
+rep(tbl)
+```
+
