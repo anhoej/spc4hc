@@ -171,3 +171,7 @@ runs-limits
 resources
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 funnel-plots-for-categorical-subgroups
+pareto-charts-for-ranking-problems
+fig:funnel-fig1
+fig:funnel-fig2
+fig:funnel-fig3
