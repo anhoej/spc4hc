@@ -175,3 +175,4 @@ pareto-charts-for-ranking-problems
 fig:funnel-fig1
 fig:funnel-fig2
 fig:funnel-fig3
+fig:funnel-fig0

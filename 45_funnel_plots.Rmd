@@ -3,24 +3,43 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+
 # Funnel Plots for Categorical Subgroups
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.asp = 3/4,
+knitr::opts_chunk$set(fig.asp = 3/5,
                       dev     = 'svg')
 
 library(qicharts2)
 ```
 
-Funnel plots are SPC charts with categorical subgroups, which are often sorted after size to produce funnel shaped control limits. Because there is no natural time order, funnel plots have no connecting lines between data points and runs analysis is also not useful.
+Funnel plots are SPC charts with categorical subgroups, which are often sorted after size to produce funnel shaped control limits. Funnel plots are useful for comparing indicator levels from different categories, for example complication rates from different hospitals.
 
-Funnel plots are useful for comparing indicator levels from different categories, for example infection rates from different hospitals.
+Figure \@ref(fig:funnel-fig0) compares the levels of some indicator across six organisational units. One unit (E) falls below the lower control limit, indicating that its data may reflect a fundamentally different process compared to the others.
 
-We use data on urinary tract infections from the `hospital_infections` dataset from qicharts2.
+```{r funnel-fig0, fig.cap='Funnel plot', echo=FALSE}
+f <- hospital_infections[hospital_infections$infection == 'UTI' &
+                           hospital_infections$month >= '2016-10-01',]
+
+f$hospital <- factor(f$hospital, labels = LETTERS[1:6])
+
+qic(reorder(hospital, days), n, days,
+    data     = f,
+    chart    = 'u',
+    multiply = 10000,
+    title = NULL,
+    ylab = 'Indicator',
+    xlab = 'Subgroup')
+```
+
+Because funnel plots do not involve a natural time sequence, data points are not connected by lines, and run analysis is not applicable.
+
+To demonstrate the construction of funnel plots we use data on urinary tract infections from the hospital_infections dataset from qicharts2.
 
 ```{r funnel-fig1, fig.asp=1, fig.cap='U chart of urinary tract infections'}
 # get urinary tract infections from hospital infections data
 uti <- hospital_infections[hospital_infections$infection == 'UTI',]
+
 # plot U chart
 qic(month, n, days,
     data     = uti,
@@ -28,29 +47,30 @@ qic(month, n, days,
     multiply = 10000,
     facets   = ~hospital,
     ncol     = 2,
-    title = 'Hospital acquired urinary tract infections in six hospitals',
-    ylab = 'Counts per 10,000 risk days',
-    xlab = 'Month')
+    title    = 'Hospital acquired urinary tract infections in six hospitals',
+    ylab     = 'Infections per 10,000 risk days',
+    xlab     = 'Month')
 ```
 
 Figure \@ref(fig:funnel-fig1) is a traditional U chart of infection rates in six hospital. There are signals of special cause variation in two hospitals (BOH, NOH), which makes direct comparison of infection rates between hospitals pointless -- it makes no sense to compare levels from data that are moving.
 
-It is therefore important to select data from a recent and stable period of time before constructing funnel plots. In Figure \@ref(fig:funnel-fig2) we have selected data from the most recent quarter and plotted them using hospital as the subgrouping variable.
+It is therefore important to select data from a recent and stable period of time before constructing funnel plots. In Figure \@ref(fig:funnel-fig2) we have selected data from the most recent quarter and plotted them using hospital (rather than time) as the subgrouping variable.
 
 ```{r funnel-fig2, fig.cap="Unordered 'funnel' plot of urinary tract infections"}
 # filter data to latest quarter
 uti_2016q4 <- uti[uti$month >= '2016-10-01', ]
+
 # plot "funnel" plot
 qic(hospital, n, days,
     data     = uti_2016q4,
     chart    = 'u',
     multiply = 10000,
-    title = 'Hospital acquired urinary tract infections in six hospitals',
-    ylab = 'Counts per 10,000 risk days',
-    xlab = 'Hospital')
+    title    = 'Hospital acquired urinary tract infections in six hospitals',
+    ylab     = 'Infections per 10,000 risk days',
+    xlab     = 'Hospital')
 ```
 
-By default the x-axis will be sorted alphabetically. To produce a funnel plot, we need to sort the subgroups by size as is shown in Figure \@ref(fig-funnel-fig).
+By default the x-axis will be sorted alphabetically. To produce a funnel plot, we need to sort the subgroups by size as is shown in Figure \@ref(fig:funnel-fig3).
 
 ```{r funnel-fig3, fig.cap='Ordered funnel plot of urinary tract infections'}
 # order hospitals by denominator (risk days) to produce funnel
@@ -58,9 +78,9 @@ qic(reorder(hospital, days), n, days,
     data     = uti_2016q4,
     chart    = 'u',
     multiply = 10000,
-    title = 'Hospital acquired urinary tract infections in six hospitals',
-    ylab = 'Counts per 10,000 risk days',
-    xlab = 'Hospital')
+    title    = 'Hospital acquired urinary tract infections in six hospitals',
+    ylab     = 'Infections per 10,000 risk days',
+    xlab     = 'Hospital')
 ```
 
-
+In summary, funnel plots are SPC charts with categorical subgroups. They are useful for comparing indicator levels across organisational units. To ensure valid comparisons, it is essential to use data from a recent, stable period that reflects only common cause variation before constructing a funnel plot.
