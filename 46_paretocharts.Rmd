@@ -6,25 +6,41 @@ editor_options:
 # Pareto Charts for Ranking Problems
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.asp = 2/4,
+knitr::opts_chunk$set(fig.asp = 3/4,
                       dev     = 'svg')
 
 library(qicharts2)
 
 source('R/load_data.R', local = knitr::knit_global())
+
+ae.tbl <- as.data.frame(table(ae$category))
+names(ae.tbl) <- c('category', 'count')
 ```
 
 ```{r}
+# print structure of ae data
+str(ae)
+```
+
+
+```{r pareto-fig1, fig.cap=""}
 paretochart(ae$category)
 ```
 
-```{r}
+```{r pareto-fig2, fig.cap=""}
 paretochart(ae$severity)
 ```
 
-```{r}
-tbl <- table(ae$category)
+```{r, comment=''}
+ae.tbl
+```
 
-rep(tbl)
+```{r}
+ae.cat <- rep(ae.tbl$category, ae.tbl$count)
+head(ae.cat)
+```
+
+```{r pareto-fig3, fig.cap=""}
+paretochart(ae.cat)
 ```
 
