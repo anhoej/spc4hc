@@ -123,6 +123,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -355,15 +378,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="pareto-charts-for-ranking-problems" class="section level1 hasAnchor" number="18">
 <h1><span class="header-section-number">Chapter 18</span> Pareto Charts for Ranking Problems<a href="pareto-charts-for-ranking-problems.html#pareto-charts-for-ranking-problems" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The Pareto chart, named after <a href="https://en.wikipedia.org/wiki/Vilfredo_Pareto">Vilfred Pareto</a>, was invented by <a href="https://en.wikipedia.org/wiki/Joseph_M._Juran">Joseph M. Juran</a> as a tool to identify the most important causes of a problem.</p>
+<p>For this example, we use the dataset on <a href="#adverse-events">adverse events</a> causing harm to patients, collected during a number of Global Trigger Tool reviews <span class="citation">(<a href="#ref-plessen2012">Plessen, Kodal, and Anhøj 2012</a>)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="pareto-charts-for-ranking-problems.html#cb1-1" tabindex="-1"></a><span class="co"># print structure of ae data</span></span>
 <span id="cb1-2"><a href="pareto-charts-for-ranking-problems.html#cb1-2" tabindex="-1"></a><span class="fu">str</span>(ae)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    131 obs. of  2 variables:
 ##  $ severity: chr  &quot;E&quot; &quot;F&quot; &quot;E&quot; &quot;F&quot; ...
 ##  $ category: chr  &quot;Pressure ulcer&quot; &quot;Gastrointestinal&quot; &quot;Infection&quot; &quot;Infection&quot; ...</code></pre>
+<p>The paretochart() function (from qicharts2) takes a categorical vector as argument and plots a Pareto chart as demonstrated in Figure <a href="pareto-charts-for-ranking-problems.html#fig:pareto-fig1">18.1</a>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="pareto-charts-for-ranking-problems.html#cb3-1" tabindex="-1"></a><span class="fu">paretochart</span>(ae<span class="sc">$</span>category)</span></code></pre></div>
-<p><img src="_main_files/figure-html/pareto-fig1-1.svg" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:pareto-fig1"></span>
+<img src="_main_files/figure-html/pareto-fig1-1.svg" alt="Pareto chart of patient harm." width="672" />
+<p class="caption">
+Figure 18.1: Pareto chart of patient harm.
+</p>
+</div>
+<p>The bars show the number in each category, and the curve shows the cumulated percentage over categories. Almost 80% of harms come from 3 categories: gastrointestinal, infection, and procedure.</p>
+<p>Figure <a href="pareto-charts-for-ranking-problems.html#fig:pareto-fig2">18.2</a> is a Pareto chart of harm severity demonstrating that nearly all events resulted in temporary harm (E-F).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="pareto-charts-for-ranking-problems.html#cb4-1" tabindex="-1"></a><span class="fu">paretochart</span>(ae<span class="sc">$</span>severity)</span></code></pre></div>
-<p><img src="_main_files/figure-html/pareto-fig2-1.svg" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:pareto-fig2"></span>
+<img src="_main_files/figure-html/pareto-fig2-1.svg" alt="Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm." width="672" />
+<p class="caption">
+Figure 18.2: Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm.
+</p>
+</div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="pareto-charts-for-ranking-problems.html#cb5-1" tabindex="-1"></a>ae.tbl</span></code></pre></div>
 <pre><code>          category count
 1             Fall     1
@@ -385,6 +423,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-plessen2012" class="csl-entry">
+Plessen, Christian von, Anne Marie Kodal, and Jacob Anhøj. 2012. <span>“Experiences with Global Trigger Tool Reviews in Five Danish Hospitals: An Implementation Study.”</span> <em>BMJ Open</em> 2 (5). <a href="https://doi.org/10.1136/bmjopen-2012-001324">https://doi.org/10.1136/bmjopen-2012-001324</a>.
+</div>
+</div>
             </section>
 
           </div>

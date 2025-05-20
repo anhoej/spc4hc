@@ -64,6 +64,10 @@ tab:pcharts-tab1
 fig:iprime-fig1
 fig:iprime-fig2
 fig:iprime-fig3
+fig:funnel-fig0
+fig:funnel-fig1
+fig:funnel-fig2
+fig:funnel-fig3
 variation
 spc-and-the-nature-of-variation
 charts-intro
@@ -148,6 +152,8 @@ i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more
 procedure-for-calculating-centre-line-and-control-limits
 i-charts-for-measument-data-with-variable-subgroup-sizes
 one-chart-to-rule-them-all
+funnel-plots-for-categorical-subgroups
+pareto-charts-for-ranking-problems
 tips-for-effective-spc-implementation
 data-sets
 stat-concepts
@@ -170,9 +176,5 @@ naming-files-and-variables
 runs-limits
 resources
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-funnel-plots-for-categorical-subgroups
-pareto-charts-for-ranking-problems
-fig:funnel-fig1
-fig:funnel-fig2
-fig:funnel-fig3
-fig:funnel-fig0
+fig:pareto-fig1
+fig:pareto-fig2

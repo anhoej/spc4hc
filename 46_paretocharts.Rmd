@@ -17,19 +17,30 @@ ae.tbl <- as.data.frame(table(ae$category))
 names(ae.tbl) <- c('category', 'count')
 ```
 
+The Pareto chart, named after [Vilfred Pareto](https://en.wikipedia.org/wiki/Vilfredo_Pareto), was invented by [Joseph M. Juran](https://en.wikipedia.org/wiki/Joseph_M._Juran) as a tool to identify the most important causes of a problem.
+
+For this example, we use the dataset on [adverse events](#adverse-events) causing harm to patients, collected during a number of Global Trigger Tool reviews [@plessen2012].
+
 ```{r}
 # print structure of ae data
 str(ae)
 ```
 
+The paretochart() function (from qicharts2) takes a categorical vector as argument and plots a Pareto chart as demonstrated in Figure \@ref(fig:pareto-fig1).
 
-```{r pareto-fig1, fig.cap=""}
+```{r pareto-fig1, fig.cap="Pareto chart of patient harm."}
 paretochart(ae$category)
 ```
 
-```{r pareto-fig2, fig.cap=""}
+The bars show the number in each category, and the curve shows the cumulated percentage over categories. Almost 80% of harms come from 3 categories: gastrointestinal, infection, and procedure.
+
+Figure \@ref(fig:pareto-fig2) is a Pareto chart of harm severity demonstrating that nearly all events resulted in temporary harm (E-F).
+
+```{r pareto-fig2, fig.cap="Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm."}
 paretochart(ae$severity)
 ```
+
+
 
 ```{r, comment=''}
 ae.tbl
