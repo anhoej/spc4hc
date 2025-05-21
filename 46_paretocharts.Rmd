@@ -19,7 +19,7 @@ names(ae.tbl) <- c('category', 'count')
 
 The Pareto chart, named after [Vilfred Pareto](https://en.wikipedia.org/wiki/Vilfredo_Pareto), was invented by [Joseph M. Juran](https://en.wikipedia.org/wiki/Joseph_M._Juran) as a tool to identify the most important causes of a problem.
 
-For this example, we use the dataset on [adverse events](#adverse-events) causing harm to patients, collected during a number of Global Trigger Tool reviews [@plessen2012].
+For this example, we use the dataset on [adverse events](#adverse-events) causing harm to patients, collected using the Global Trigger Tool method [@plessen2012].
 
 ```{r}
 # print structure of ae data
@@ -32,7 +32,7 @@ The paretochart() function (from qicharts2) takes a categorical vector as argume
 paretochart(ae$category)
 ```
 
-The bars show the number in each category, and the curve shows the cumulated percentage over categories. Almost 80% of harms come from 3 categories: gastrointestinal, infection, and procedure.
+The bars show the count in each category, and the curve shows the cumulated percentage over categories. Almost 80% of harms come from 3 categories: gastrointestinal, infection, and procedure.
 
 Figure \@ref(fig:pareto-fig2) is a Pareto chart of harm severity demonstrating that nearly all events resulted in temporary harm (E-F).
 
@@ -40,18 +40,23 @@ Figure \@ref(fig:pareto-fig2) is a Pareto chart of harm severity demonstrating t
 paretochart(ae$severity)
 ```
 
-
+The paretochart() function takes a character or factor vector, but often data have already been aggregated into tabular format:
 
 ```{r, comment=''}
 ae.tbl
 ```
 
-```{r}
-ae.cat <- rep(ae.tbl$category, ae.tbl$count)
-head(ae.cat)
-```
+To make a Pareto chart from tabular data, we first need to convert data back into a vector. This can be achieved with the rep() function repeating each category by its count:
 
 ```{r pareto-fig3, fig.cap=""}
+# make vector from counts
+ae.cat <- rep(ae.tbl$category, ae.tbl$count)
+
+# show first six rows of vector
+head(ae.cat)
+
+# plot Pareto chart
 paretochart(ae.cat)
 ```
 
+In conclusion, the Pareto chart is useful for identifying the most common causes of a problem. Often most of the problems are caused by relatively few of the causes. In the example above eliminating gastrointestinal harm (most often obstipation) and hospital associated infections would more half the rate of adverse events.
