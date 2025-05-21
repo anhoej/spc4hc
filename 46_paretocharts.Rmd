@@ -48,7 +48,7 @@ ae.tbl
 
 To make a Pareto chart from tabular data, we first need to convert data back into a vector. This can be achieved with the rep() function repeating each category by its count:
 
-```{r pareto-fig3, fig.cap=""}
+```{r pareto-fig3, fig.cap="Pareto chart constructed from tabular data."}
 # make vector from counts
 ae.cat <- rep(ae.tbl$category, ae.tbl$count)
 

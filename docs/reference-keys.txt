@@ -70,6 +70,7 @@ fig:funnel-fig2
 fig:funnel-fig3
 fig:pareto-fig1
 fig:pareto-fig2
+fig:pareto-fig3
 variation
 spc-and-the-nature-of-variation
 charts-intro
@@ -177,4 +178,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
