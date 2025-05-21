@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-05-20" />
+<meta name="date" content="2025-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -405,23 +405,23 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-05-08    13    32
- 2 2025-05-09    14    29
- 3 2025-05-10    16    33
- 4 2025-05-11    19    30
- 5 2025-05-12    13    32
- 6 2025-05-13    18    35
- 7 2025-05-14    19    29
- 8 2025-05-15    16    33
- 9 2025-05-16    16    34
-10 2025-05-17    11    27
-11 2025-05-18    13    32
-12 2025-05-19    12    26</code></pre>
+ 1 2025-05-09    13    32
+ 2 2025-05-10    14    29
+ 3 2025-05-11    16    33
+ 4 2025-05-12    19    30
+ 5 2025-05-13    13    32
+ 6 2025-05-14    18    35
+ 7 2025-05-15    19    29
+ 8 2025-05-16    16    33
+ 9 2025-05-17    16    34
+10 2025-05-18    11    27
+11 2025-05-19    13    32
+12 2025-05-20    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="r-notes.html#cb107-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb107-2"><a href="r-notes.html#cb107-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
 <span id="cb107-3"><a href="r-notes.html#cb107-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-37-1.svg" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-36-1.svg" width="672" /></p>
 <p>Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).</p>
 </div>
 <div id="importing-data-from-text-files" class="section level2 hasAnchor" number="22.3">

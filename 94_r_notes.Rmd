@@ -102,7 +102,7 @@ The C-section data contains `r nrow(d)` rows representing individual C-sections.
 
 ### Adding variables to data frames
 
-The delay variable is the number of minutes from decision to perform a C-section to delivery og the baby. The standard target value for grade 2 C-sections is less than 30 minutes. If we want to plot the proportion of C-sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
+The delay variable is the number of minutes from decision to perform a C-section to delivery of the baby. The standard target value for grade 2 C-sections is less than 30 minutes. If we want to plot the proportion of C-sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.
 
 ```{r}
 d$ontime <- d$delay < 30  # Dichotomise delays.
