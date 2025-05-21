@@ -158,6 +158,12 @@ one-chart-to-rule-them-all
 funnel-plots-for-categorical-subgroups
 pareto-charts-for-ranking-problems
 tips-for-effective-spc-implementation
+common-pitfalls-to-avoid
+a-note-on-rational-subgrouping-and-sampling
+the-control-charts-vs-run-charts-debate
+do-data-have-to-be-normally-distributed-and-why-not
+high-volume-data
+scaling-up-charts
 data-sets
 stat-concepts
 diagnostics

@@ -44,11 +44,11 @@ editor_options:
     - T Charts for Time Between Events
     - G Charts for Opportunities Between Cases
     - Bernoulli CUSUM charts for binary data
-1. Dual charting
 1. Prime Charts for Count Data with Very Large Subgroups
-1. Improved (normalised) I chart
+1. I Prime Chart for Measurement Data With Variable Subgroup Sizes
 1. Funnel Plots for Categorical Subgroups
 1. Pareto Charts for Ranking Problems
+1. Dual charting (omit?)
 
 ## Part 5: Best Practices and Tips {-}
 
@@ -63,15 +63,13 @@ editor_options:
     - Automating recalculation of control limits
     - One-to-one relation between PDSA cycles and dots on the plot
 1. A Note on Rational Subgrouping and Sampling
-1. When to Transform Data Before Plotting
 1. High Volume Data
 1. Scaling Up Charts (technical issues, tabular charts, grids)
+1. When to Transform Data Before Plotting (omit?)
 
 ## Part 6: Conclusion and Final Thoughts {-}
 
 1. Summary of Key Points
-    - jfældsajfsaækf
-1. The Control Charts vs Run Charts Debate
 1. Emerging trends in SPC and healthcare analytics
 1. Encouragement for Continuous Learning and Application
 1. Final Thoughts
@@ -79,9 +77,9 @@ editor_options:
 ## Appendices {-}
 
 a. Included Data Sets
-a. A Note on R
 a. Basic Statistical Concepts
 a. Diagnostic Properties of SPC Charts (Two Types of Errors When Using SPC)
+a. A Note on R
 a. Table of Critical Values for Longest Runs and Number of Crossings
 a. Resources and Further Readings
 a. Glossary of Terms

@@ -1,3 +1,29 @@
 # (PART\*) Part 5: Best Practices, Controversies, and Tips {-}
 
 # Tips for Effective SPC Implementation
+
+- Automating production of SPC charts
+- Engaging stakeholders
+- Continuous monitoring and improvement.
+- Problems and challenges with SPC
+
+# Common Pitfalls to Avoid
+
+- Data issues, misinterpretation of charts
+- Overreacting to common cause variation (over-sensitive runs rules, too tight control limits)
+- Automating recalculation of control limits
+- One-to-one relation between PDSA cycles and dots on the plot
+
+# A Note on Rational Subgrouping and Sampling
+
+# The Control Charts vs Run Charts Debate
+
+# Do Data Have to Be Normally Distributed? -- and why not
+
+# High Volume Data
+
+# Scaling Up Charts
+
+- technical issues
+- tabular charts
+- grids

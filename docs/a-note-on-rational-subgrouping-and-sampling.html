@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Funnel Plots for Categorical Subgroups | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 20 A Note on Rational Subgrouping and Sampling | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Funnel Plots for Categorical Subgroups | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 20 A Note on Rational Subgrouping and Sampling | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Funnel Plots for Categorical Subgroups | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 20 A Note on Rational Subgrouping and Sampling | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html"/>
-<link rel="next" href="pareto-charts-for-ranking-problems.html"/>
+<link rel="prev" href="common-pitfalls-to-avoid.html"/>
+<link rel="next" href="the-control-charts-vs-run-charts-debate.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -396,81 +396,16 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="funnel-plots-for-categorical-subgroups" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Funnel Plots for Categorical Subgroups<a href="funnel-plots-for-categorical-subgroups.html#funnel-plots-for-categorical-subgroups" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Funnel plots are SPC charts with categorical subgroups, which are often sorted after size to produce funnel shaped control limits. Funnel plots are useful for comparing indicator levels from different categories, for example complication rates from different hospitals.</p>
-<p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig0">16.1</a> compares the levels of some indicator across six organisational units. One unit (E) falls below the lower control limit, indicating that its data may reflect a fundamentally different process compared to the others.</p>
-<div class="figure"><span style="display:block;" id="fig:funnel-fig0"></span>
-<img src="_main_files/figure-html/funnel-fig0-1.svg" alt="Funnel plot" width="672" />
-<p class="caption">
-Figure 16.1: Funnel plot
-</p>
-</div>
-<p>Because funnel plots do not involve a natural time sequence, data points are not connected by lines, and run analysis is not applicable.</p>
-<p>To demonstrate the construction of funnel plots we use data on urinary tract infections from the hospital_infections dataset from qicharts2.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="funnel-plots-for-categorical-subgroups.html#cb94-1" tabindex="-1"></a><span class="co"># get urinary tract infections from hospital infections data</span></span>
-<span id="cb94-2"><a href="funnel-plots-for-categorical-subgroups.html#cb94-2" tabindex="-1"></a>uti <span class="ot">&lt;-</span> hospital_infections[hospital_infections<span class="sc">$</span>infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>,]</span>
-<span id="cb94-3"><a href="funnel-plots-for-categorical-subgroups.html#cb94-3" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="funnel-plots-for-categorical-subgroups.html#cb94-4" tabindex="-1"></a><span class="co"># plot U chart</span></span>
-<span id="cb94-5"><a href="funnel-plots-for-categorical-subgroups.html#cb94-5" tabindex="-1"></a><span class="fu">qic</span>(month, n, days,</span>
-<span id="cb94-6"><a href="funnel-plots-for-categorical-subgroups.html#cb94-6" tabindex="-1"></a>    <span class="at">data     =</span> uti,</span>
-<span id="cb94-7"><a href="funnel-plots-for-categorical-subgroups.html#cb94-7" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb94-8"><a href="funnel-plots-for-categorical-subgroups.html#cb94-8" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb94-9"><a href="funnel-plots-for-categorical-subgroups.html#cb94-9" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,</span>
-<span id="cb94-10"><a href="funnel-plots-for-categorical-subgroups.html#cb94-10" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,</span>
-<span id="cb94-11"><a href="funnel-plots-for-categorical-subgroups.html#cb94-11" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
-<span id="cb94-12"><a href="funnel-plots-for-categorical-subgroups.html#cb94-12" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
-<span id="cb94-13"><a href="funnel-plots-for-categorical-subgroups.html#cb94-13" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:funnel-fig1"></span>
-<img src="_main_files/figure-html/funnel-fig1-1.svg" alt="U chart of urinary tract infections" width="672" />
-<p class="caption">
-Figure 16.2: U chart of urinary tract infections
-</p>
-</div>
-<p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig1">16.2</a> is a traditional U chart of infection rates in six hospital. There are signals of special cause variation in two hospitals (BOH, NOH), which makes direct comparison of infection rates between hospitals pointless – it makes no sense to compare levels from data that are moving.</p>
-<p>It is therefore important to select data from a recent and stable period of time before constructing funnel plots. In Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig2">16.3</a> we have selected data from the most recent quarter and plotted them using hospital (rather than time) as the subgrouping variable.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="funnel-plots-for-categorical-subgroups.html#cb95-1" tabindex="-1"></a><span class="co"># filter data to latest quarter</span></span>
-<span id="cb95-2"><a href="funnel-plots-for-categorical-subgroups.html#cb95-2" tabindex="-1"></a>uti_2016q4 <span class="ot">&lt;-</span> uti[uti<span class="sc">$</span>month <span class="sc">&gt;=</span> <span class="st">&#39;2016-10-01&#39;</span>, ]</span>
-<span id="cb95-3"><a href="funnel-plots-for-categorical-subgroups.html#cb95-3" tabindex="-1"></a></span>
-<span id="cb95-4"><a href="funnel-plots-for-categorical-subgroups.html#cb95-4" tabindex="-1"></a><span class="co"># plot &quot;funnel&quot; plot</span></span>
-<span id="cb95-5"><a href="funnel-plots-for-categorical-subgroups.html#cb95-5" tabindex="-1"></a><span class="fu">qic</span>(hospital, n, days,</span>
-<span id="cb95-6"><a href="funnel-plots-for-categorical-subgroups.html#cb95-6" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
-<span id="cb95-7"><a href="funnel-plots-for-categorical-subgroups.html#cb95-7" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb95-8"><a href="funnel-plots-for-categorical-subgroups.html#cb95-8" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb95-9"><a href="funnel-plots-for-categorical-subgroups.html#cb95-9" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
-<span id="cb95-10"><a href="funnel-plots-for-categorical-subgroups.html#cb95-10" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
-<span id="cb95-11"><a href="funnel-plots-for-categorical-subgroups.html#cb95-11" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Hospital&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:funnel-fig2"></span>
-<img src="_main_files/figure-html/funnel-fig2-1.svg" alt="Unordered 'funnel' plot of urinary tract infections" width="672" />
-<p class="caption">
-Figure 16.3: Unordered ‘funnel’ plot of urinary tract infections
-</p>
-</div>
-<p>By default the x-axis will be sorted alphabetically. To produce a funnel plot, we need to sort the subgroups by size as is shown in Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig3">16.4</a>.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="funnel-plots-for-categorical-subgroups.html#cb96-1" tabindex="-1"></a><span class="co"># order hospitals by denominator (risk days) to produce funnel</span></span>
-<span id="cb96-2"><a href="funnel-plots-for-categorical-subgroups.html#cb96-2" tabindex="-1"></a><span class="fu">qic</span>(<span class="fu">reorder</span>(hospital, days), n, days,</span>
-<span id="cb96-3"><a href="funnel-plots-for-categorical-subgroups.html#cb96-3" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
-<span id="cb96-4"><a href="funnel-plots-for-categorical-subgroups.html#cb96-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb96-5"><a href="funnel-plots-for-categorical-subgroups.html#cb96-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb96-6"><a href="funnel-plots-for-categorical-subgroups.html#cb96-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
-<span id="cb96-7"><a href="funnel-plots-for-categorical-subgroups.html#cb96-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
-<span id="cb96-8"><a href="funnel-plots-for-categorical-subgroups.html#cb96-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Hospital&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:funnel-fig3"></span>
-<img src="_main_files/figure-html/funnel-fig3-1.svg" alt="Ordered funnel plot of urinary tract infections" width="672" />
-<p class="caption">
-Figure 16.4: Ordered funnel plot of urinary tract infections
-</p>
-</div>
-<p>In summary, funnel plots are SPC charts with categorical subgroups. They are useful for comparing indicator levels across organisational units. To ensure valid comparisons, it is essential to use data from a recent, stable period that reflects only common cause variation before constructing a funnel plot.</p>
-
+<div id="a-note-on-rational-subgrouping-and-sampling" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number">Chapter 20</span> A Note on Rational Subgrouping and Sampling<a href="a-note-on-rational-subgrouping-and-sampling.html#a-note-on-rational-subgrouping-and-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="i-prime-chart-for-measurement-data-with-variable-subgroup-sizes-and-more.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pareto-charts-for-ranking-problems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="common-pitfalls-to-avoid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-control-charts-vs-run-charts-debate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
