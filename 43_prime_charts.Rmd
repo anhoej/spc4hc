@@ -37,7 +37,7 @@ As a general rule of thumb, when the control limits from an I chart differ signi
 
 Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes -- not the least in healthcare -- varying subgroup sizes matter.
 
-Laney proposed a solution that adjust the assumed within subgroup variation in count data by a factor based on the moving ranges of successive standardised data points ($\sigma_z$) [@laney2002].
+Laney proposed a solution that adjusts the assumed within subgroup variation in count data by a factor based on the moving ranges of successive standardised data points ($\sigma_z$) [@laney2002].
 
 ## Laney's prime chart
 

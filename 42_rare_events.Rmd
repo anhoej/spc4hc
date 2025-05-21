@@ -99,8 +99,9 @@ To obtain the number-between variable, we calculate the differences between the 
 ```{r rare-fig4, fig.cap='G chart of deliveries between neonatal asphyxia'}
 # get indices of asphyxia cases
 asph_cases <- which(births$asphyxia)
+
 # calculate the number of deliveries between cases
-asph_g     <- diff(c(asph_cases))
+asph_g <- diff(asph_cases)
 
 # plot G chart
 qic(asph_g, chart = 'g')

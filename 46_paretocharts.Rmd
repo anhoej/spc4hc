@@ -59,4 +59,4 @@ head(ae.cat)
 paretochart(ae.cat)
 ```
 
-In conclusion, the Pareto chart is useful for identifying the most common causes of a problem. Often most of the problems are caused by relatively few of the causes. In the example above eliminating gastrointestinal harm (most often obstipation) and hospital associated infections would more half the rate of adverse events.
+In conclusion, the Pareto chart is useful for identifying the most common causes of a problem. Often most of the problems are caused by relatively few of the causes. In the example above eliminating gastrointestinal harm (most often obstipation) and hospital associated infections would more than half the rate of adverse events.
