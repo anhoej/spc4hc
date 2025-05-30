@@ -1,0 +1,20 @@
+Licensing
+
+We wish to publish the book under an open-access model, for example using the CC BY-SA 4.0 license (https://creativecommons.org/licenses/by-sa/4.0/).
+
+Workflow
+
+The book is authored in R Markdown and published as HTML, with Git and GitHub used for version control. Rmarkdown makes it easy to mix programming code with code output and to automate the production of figures. Converting it to Word is challenging due to Word's tendency to introduce errors in figures and formulas, and because tracking and maintaining changes becomes cumbersome.
+
+Is it feasible to prepare the book manuscript entirely in Rmarkdown? If not, what is the best way to take the manuscript as far as possible in Rmarkdown before converting it to Word?
+
+Figures
+
+Why not use pdf for figures? Pdf scales well, which is not the case for bitmapped formats like TIF and JPEG.
+
+Colours are important in our graphs. Can we have that in the printed book?
+
+Dealine
+
+Extend deadline to, say, Dec 2026
+
