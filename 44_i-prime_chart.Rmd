@@ -118,9 +118,9 @@ Note that in order to plot the averages we need to multiply the numerators (avg_
 
 ## One chart to rule them all?
 
-The I' chart produces results similar to the original I chart for individual measurements, and to the P' and U' charts for proportion and count data.
+The I' chart produces results that match the original I chart for individual measurements and P' and U' charts for proportion and count data.
 
-If we accept Laney’s claim that prime charts are valid substitutes for their non-prime counterparts, it is tempting to conclude that the I' chart offers a universal solution to most, if not all, of our charting needs. Taylor largely supports this view -- although he suggests that the X-bar chart is better suited for measurement data with subgroup sizes greater than one. We, however, see no reason that I' charts cannot be used as an alternative to X-bar charts for data with multiple measurements per subgroup.
+If we accept Laney’s claim that prime charts are valid -- or even better -- substitutes for their non-prime counterparts, it is tempting to conclude that the I' chart offers a universal solution to most, if not all, of our charting needs.
 
-In conclusion, while the I' chart is a recent development, its versatility and ability to mimic the behaviour of traditional SPC charts (including prime charts) make it a compelling alternative, that has the potential to streamline chart selection by serving as a single, robust option across various data types and scenarios. As the methodology continues to gain empirical support, the I' chart may well become the preferred tool for modern quality control.
+In conclusion, while the I' chart is a recent development, its versatility and ability to mimic the behaviour of traditional SPC charts make it a compelling alternative, that has the potential to streamline chart selection by serving as a single, robust option across various data types and scenarios. As the methodology continues to gain empirical support, the I' chart may well become the preferred tool for modern quality control.
 
