@@ -50,7 +50,7 @@ editor_options:
 1. Pareto Charts for Ranking Problems
 1. Dual charting (omit?)
 
-## Part 5: Best Practices and Tips {-}
+## Part 5: Best Practices, Controversies, and Tips {-}
 
 1. Tips for Effective SPC Implementation
     - Automating production of SPC charts
@@ -62,6 +62,7 @@ editor_options:
     - Overreacting to common cause variation (over-sensitive runs rules, too tight control limits)
     - Automating recalculation of control limits
     - One-to-one relation between PDSA cycles and dots on the plot
+    - The Control Charts vs Run Charts Debate
 1. A Note on Rational Subgrouping and Sampling
 1. High Volume Data
 1. Scaling Up Charts (technical issues, tabular charts, grids)
