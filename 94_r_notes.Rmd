@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Notes on R {#r-notes}
+# r Notes {#r-notes}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,
