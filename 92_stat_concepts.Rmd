@@ -1,21 +1,28 @@
 # Basic Statistical Concepts {#stat-concepts}
 
-* Data types
-    - categorical (qualitative)
-        - nominal (e.g. male, female, ...)
-        - ordinal (e.g. low, medium, high)
-    - numerical (quantitative)
-        - discrete (e.g. counts)
-        - continious (e.g. measurements)
-* Distributions
-    * Shape
-        - modality
-        - symmetry
-    * Centre
-        - mean
-        - median
-    * Spread
-        - range
-        - quantiles
-        - variance
-        - standard deviation
+## Data types
+
+* Categorical data (qualitative)
+    - nominal (e.g. male, female, ...)
+    - ordinal (e.g. low, medium, high)
+* Numerical data (quantitative)
+    - discrete (e.g. counts)
+    - continuous (e.g. measurements)
+
+## Distributions
+
+* Centre
+    - mean
+    - median
+* Spread
+    - range
+    - quantiles
+    - variance
+    - standard deviation
+* Shape
+    - modality
+    - symmetry
+* Theoretical distributions
+    - Gaussian (normal)
+    - Poisson
+    - Binomial
