@@ -1,13 +1,77 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Basic Statistical Concepts {#stat-concepts}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 3/5,
+                      fig.width = 10,
+                      dev     = 'svg')
+
+source('R/load_data.R', local = knitr::knit_global())
+```
 
 ## Data types
 
-* Categorical data (qualitative)
-    - nominal (e.g. male, female, ...)
-    - ordinal (e.g. low, medium, high)
-* Numerical data (quantitative)
-    - discrete (e.g. counts)
-    - continuous (e.g. measurements)
+Data can be classified into several types, with the most common being categorical and numerical data.
+
+## Categorical data
+
+Categorical data, also known as qualitative or count data, represent characteristics that cannot be meaningfully measured on a numerical scale, for example [red, green, blue], [left, right], or [low, medium, high].
+
+Categorical data can be divided into:
+
+* Nominal data: Categories without a natural order, e.g. [red, green, blue] or [single, married, divorced, widowed].
+
+* Ordinal data: Categories with a meaningful order, but without consistent intervals between them, e.g. [low < medium < high].
+
+If categorical data consist of only two possible values -- such as yes/no, true/false, or pregnant/not pregnant -- they are referred to as binary or binomial data.
+
+Categorical data are most commonly summarised by counting the number of observations in each category, typically presented as frequencies or counts. For binary data, a summary often involves calculating the proportion or percentage of one category relative to the total.
+
+```{r}
+(ae.tbl <- table(ae$category))
+```
+
+```{r}
+barplot(ae.tbl)
+```
+
+Note that by counting we are effectively converting categorical data into numbers.
+
+## Numerical data
+
+Numerical data, also known as quantitative or measurement data, consist of values that represent measurable quantities. These data can be meaningfully analysed using arithmetic operations such as addition, subtraction, multiplication, and division.
+
+Numerical data fall in two main subtypes:
+
+* Discrete data: Distinct, separate values that result from counting and are always expressed as whole numbers (including zero). Examples include number of pregnancies, pressure ulcers, or surgical complications.
+
+* Continuous data: Data that usually result from measuring and can take on any of infinitely many values in a given range and may include decimals, fractions, and negative numbers. Examples include height, weight, waiting time, or blood pressure
+
+Numerical data are commonly summarised using three key characteristics: central tendency, spread (variation), and distribution shape.
+
+```{r}
+summary(csect$delay)
+```
+
+```{r}
+hist(csect$delay)
+```
+
+```{r}
+hist(csect$delay, breaks = 12)
+```
+
+```{r}
+boxplot(csect$delay)
+```
+
+```{r}
+boxplot(weight ~ csect, births)
+```
 
 ## Distributions
 
