@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-03" />
+<meta name="date" content="2025-06-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -343,7 +343,22 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
 <li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a></li>
+<li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="stat-concepts.html"><a href="stat-concepts.html#data-types"><i class="fa fa-check"></i><b>B.1</b> Data types</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="stat-concepts.html"><a href="stat-concepts.html#categorical-data"><i class="fa fa-check"></i><b>B.1.1</b> Categorical data</a></li>
+<li class="chapter" data-level="B.1.2" data-path="stat-concepts.html"><a href="stat-concepts.html#numerical-data"><i class="fa fa-check"></i><b>B.1.2</b> Numerical data</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="stat-concepts.html"><a href="stat-concepts.html#summarising-categorical-data"><i class="fa fa-check"></i><b>B.2</b> Summarising categorical data</a></li>
+<li class="chapter" data-level="B.3" data-path="stat-concepts.html"><a href="stat-concepts.html#summarising-numerical-data"><i class="fa fa-check"></i><b>B.3</b> Summarising numerical data</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="stat-concepts.html"><a href="stat-concepts.html#centre"><i class="fa fa-check"></i><b>B.3.1</b> Centre</a></li>
+<li class="chapter" data-level="B.3.2" data-path="stat-concepts.html"><a href="stat-concepts.html#shape"><i class="fa fa-check"></i><b>B.3.2</b> Shape</a></li>
+<li class="chapter" data-level="B.3.3" data-path="stat-concepts.html"><a href="stat-concepts.html#spread"><i class="fa fa-check"></i><b>B.3.3</b> Spread</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="stat-concepts.html"><a href="stat-concepts.html#theoretical-distributions"><i class="fa fa-check"></i><b>B.4</b> Theoretical distributions</a></li>
+</ul></li>
 <li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
 <ul>
 <li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying the diagnostic error of SPC charts</a>
@@ -353,7 +368,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="C.2" data-path="diagnostics.html"><a href="diagnostics.html#conclusion-keeping-the-balance"><i class="fa fa-check"></i><b>C.2</b> Conclusion: Keeping the balance</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> Notes on R</a>
+<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> r Notes</a>
 <ul>
 <li class="chapter" data-level="D.1" data-path="r-notes.html"><a href="r-notes.html#data-structures-and-classes"><i class="fa fa-check"></i><b>D.1</b> Data structures and classes</a></li>
 <li class="chapter" data-level="D.2" data-path="r-notes.html"><a href="r-notes.html#plot-ready-data-frames"><i class="fa fa-check"></i><b>D.2</b> Plot-ready data frames</a></li>
@@ -408,28 +423,30 @@ div.csl-indent {
 <p>The <a href="data-sets.html#robson-group-1-births">Robson group 1 births</a> dataset is a data frame with 2193 observations from Robson group 1 deliveries, that is: first time pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="spc-charts-for-rare-events.html#cb79-1" tabindex="-1"></a><span class="co"># import data</span></span>
 <span id="cb79-2"><a href="spc-charts-for-rare-events.html#cb79-2" tabindex="-1"></a>births <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/robson1_births.csv&#39;</span>,</span>
-<span id="cb79-3"><a href="spc-charts-for-rare-events.html#cb79-3" tabindex="-1"></a>              <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
-<span id="cb79-4"><a href="spc-charts-for-rare-events.html#cb79-4" tabindex="-1"></a>              <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="st">&#39;POSIXct&#39;</span>,</span>
-<span id="cb79-5"><a href="spc-charts-for-rare-events.html#cb79-5" tabindex="-1"></a>                               <span class="st">&#39;Date&#39;</span>,</span>
-<span id="cb79-6"><a href="spc-charts-for-rare-events.html#cb79-6" tabindex="-1"></a>                               <span class="st">&#39;logical&#39;</span>,</span>
-<span id="cb79-7"><a href="spc-charts-for-rare-events.html#cb79-7" tabindex="-1"></a>                               <span class="st">&#39;logical&#39;</span>,</span>
-<span id="cb79-8"><a href="spc-charts-for-rare-events.html#cb79-8" tabindex="-1"></a>                               <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb79-9"><a href="spc-charts-for-rare-events.html#cb79-9" tabindex="-1"></a>                               <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb79-10"><a href="spc-charts-for-rare-events.html#cb79-10" tabindex="-1"></a>                               <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb79-11"><a href="spc-charts-for-rare-events.html#cb79-11" tabindex="-1"></a>                               <span class="st">&#39;double&#39;</span>,</span>
-<span id="cb79-12"><a href="spc-charts-for-rare-events.html#cb79-12" tabindex="-1"></a>                               <span class="st">&#39;logical&#39;</span>))</span>
-<span id="cb79-13"><a href="spc-charts-for-rare-events.html#cb79-13" tabindex="-1"></a></span>
-<span id="cb79-14"><a href="spc-charts-for-rare-events.html#cb79-14" tabindex="-1"></a><span class="co"># make sure the rows are sorted in time order</span></span>
-<span id="cb79-15"><a href="spc-charts-for-rare-events.html#cb79-15" tabindex="-1"></a>births <span class="ot">&lt;-</span> births[<span class="fu">order</span>(births<span class="sc">$</span>datetime), ]</span>
-<span id="cb79-16"><a href="spc-charts-for-rare-events.html#cb79-16" tabindex="-1"></a><span class="co"># add dummy variable, case, for counting the denominator for the proportion charts</span></span>
-<span id="cb79-17"><a href="spc-charts-for-rare-events.html#cb79-17" tabindex="-1"></a>births<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb79-18"><a href="spc-charts-for-rare-events.html#cb79-18" tabindex="-1"></a><span class="co"># show data structure</span></span>
-<span id="cb79-19"><a href="spc-charts-for-rare-events.html#cb79-19" tabindex="-1"></a><span class="fu">str</span>(births)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    2193 obs. of  10 variables:
+<span id="cb79-3"><a href="spc-charts-for-rare-events.html#cb79-3" tabindex="-1"></a>                   <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb79-4"><a href="spc-charts-for-rare-events.html#cb79-4" tabindex="-1"></a>                   <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="st">&#39;POSIXct&#39;</span>,</span>
+<span id="cb79-5"><a href="spc-charts-for-rare-events.html#cb79-5" tabindex="-1"></a>                                    <span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb79-6"><a href="spc-charts-for-rare-events.html#cb79-6" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>,</span>
+<span id="cb79-7"><a href="spc-charts-for-rare-events.html#cb79-7" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>,</span>
+<span id="cb79-8"><a href="spc-charts-for-rare-events.html#cb79-8" tabindex="-1"></a>                                    <span class="st">&#39;factor&#39;</span>,</span>
+<span id="cb79-9"><a href="spc-charts-for-rare-events.html#cb79-9" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb79-10"><a href="spc-charts-for-rare-events.html#cb79-10" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb79-11"><a href="spc-charts-for-rare-events.html#cb79-11" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb79-12"><a href="spc-charts-for-rare-events.html#cb79-12" tabindex="-1"></a>                                    <span class="st">&#39;double&#39;</span>,</span>
+<span id="cb79-13"><a href="spc-charts-for-rare-events.html#cb79-13" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>))</span>
+<span id="cb79-14"><a href="spc-charts-for-rare-events.html#cb79-14" tabindex="-1"></a></span>
+<span id="cb79-15"><a href="spc-charts-for-rare-events.html#cb79-15" tabindex="-1"></a><span class="co"># make sure the rows are sorted in time order</span></span>
+<span id="cb79-16"><a href="spc-charts-for-rare-events.html#cb79-16" tabindex="-1"></a>births <span class="ot">&lt;-</span> births[<span class="fu">order</span>(births<span class="sc">$</span>datetime), ]</span>
+<span id="cb79-17"><a href="spc-charts-for-rare-events.html#cb79-17" tabindex="-1"></a><span class="co"># add dummy variable, case, for counting the denominator for the proportion charts</span></span>
+<span id="cb79-18"><a href="spc-charts-for-rare-events.html#cb79-18" tabindex="-1"></a>births<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb79-19"><a href="spc-charts-for-rare-events.html#cb79-19" tabindex="-1"></a><span class="co"># show data structure</span></span>
+<span id="cb79-20"><a href="spc-charts-for-rare-events.html#cb79-20" tabindex="-1"></a><span class="fu">str</span>(births)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    2193 obs. of  11 variables:
 ##  $ datetime: POSIXct, format: &quot;2016-01-04 06:13:00&quot; &quot;2016-01-04 07:20:00&quot; ...
 ##  $ biweek  : Date, format: &quot;2016-01-04&quot; &quot;2016-01-04&quot; ...
 ##  $ csect   : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
 ##  $ cup     : logi  FALSE FALSE FALSE FALSE TRUE TRUE ...
+##  $ sex     : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 2 2 2 1 2 2 2 ...
 ##  $ length  : int  55 52 50 47 55 50 50 47 50 53 ...
 ##  $ weight  : int  3872 3750 3458 3145 4224 2730 3130 2755 3270 3645 ...
 ##  $ apgar   : int  10 10 10 10 10 10 10 10 10 10 ...

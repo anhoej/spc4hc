@@ -71,6 +71,12 @@ fig:funnel-fig3
 fig:pareto-fig1
 fig:pareto-fig2
 fig:pareto-fig3
+fig:stat-bar1
+fig:stat-bar2
+fig:stat-hist1
+fig:stat-hist2
+fig:stat-box1
+fig:stat-box2
 variation
 spc-and-the-nature-of-variation
 charts-intro
@@ -165,6 +171,15 @@ high-volume-data
 scaling-up-charts
 data-sets
 stat-concepts
+data-types
+categorical-data
+numerical-data
+summarising-categorical-data
+summarising-numerical-data
+centre
+shape
+spread
+theoretical-distributions
 diagnostics
 quantifying-the-diagnostic-error-of-spc-charts
 average-run-length
@@ -183,8 +198,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-data-types
-distributions
-categorical-data
-numerical-data

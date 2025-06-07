@@ -31,16 +31,17 @@ The [Robson group 1 births] dataset is a data frame with 2193 observations from 
 ```{r}
 # import data
 births <- read.csv('data/robson1_births.csv',
-              comment.char = '#',
-              colClasses   = c('POSIXct',
-                               'Date',
-                               'logical',
-                               'logical',
-                               'integer',
-                               'integer',
-                               'integer',
-                               'double',
-                               'logical'))
+                   comment.char = '#',
+                   colClasses   = c('POSIXct',
+                                    'Date',
+                                    'logical',
+                                    'logical',
+                                    'factor',
+                                    'integer',
+                                    'integer',
+                                    'integer',
+                                    'double',
+                                    'logical'))
 
 # make sure the rows are sorted in time order
 births <- births[order(births$datetime), ]
