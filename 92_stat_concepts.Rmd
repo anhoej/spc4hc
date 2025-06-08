@@ -19,15 +19,19 @@ Data can be classified into several types, with the most common being categorica
 
 ### Categorical data
 
-Categorical data, also known as qualitative data, represent characteristics that cannot be meaningfully measured on a numerical scale, for example [red, green, blue], [single, married, divorced, widowed] or [low, medium, high]. Categorical data cannot be directly analysed using arithmetic operations. What is, for example, the sum of red, green and blue?
+Categorical data, also known as qualitative data, represent characteristics that cannot be meaningfully measured on a numerical scale, for example [red, green, blue], [medicine, surgery, psychiatry] or [low, medium, high]. Categorical data cannot be directly analysed using arithmetic operations -- what is the sum of red, green and blue, for example?
 
 Categorical data can be divided into:
 
-* Nominal data: Categories without a natural order, e.g. [red, green, blue] or [single, married, divorced, widowed].
+* Nominal data: Categories without a natural order, e.g. [red, green, blue] or [medicine, surgery, psychiatry].
 
 * Ordinal data: Categories with a meaningful order, but without consistent intervals between them, e.g. [low < medium < high].
 
-If categorical data consist of only two possible values -- such as yes/no, true/false or pregnant/not pregnant -- they are referred to as binary or binomial data.
+If categorical data consist of only two possible values -- such as yes/no, true/false or dead/alive -- they are referred to as binary or binomial data.
+
+Categorical data can be transformed into numerical form by counting the number of observations in each category. In some (rare) cases, it may be appropriate to assign numerical values to ordinal data, such as school grades, thereby enabling the use of arithmetic operations. However, we should be careful not to impose numerical values on any ordinal data unless the intervals are consistent and well-defined. It may be tempting to converts, for instance, cancer stages [I, II, III] into numbers [1, 2, 3]. But this will only make sense, if cancer stage II is exactly twice as severe as stage I, and stage III three times as severe.
+
+Note that some categorical data -- such as postal codes, insurance numbers and phone numbers -- may appear numerical but are actually categorical. To identify such cases, ask whether it makes sense to calculate a sum or an average. If not, the values should be treated as categories rather than numbers.
 
 ### Numerical data
 
@@ -35,7 +39,7 @@ Numerical data, also known as quantitative data, consist of values that represen
 
 Numerical data fall in two main subtypes:
 
-* Discrete data: Distinct, separate values that result from counting and are always expressed as whole numbers (including zero). Examples include number of pregnancies, pressure ulcers and surgical complications.
+* Discrete data: Distinct, separate values that result from counting and are always expressed as whole numbers (including zero). Examples include number of pregnancies, pressure ulcers and hospital admissions.
 
 * Continuous data: Values obtained through measurement that can take on any value within a given range, including decimals, fractions and negative numbers. Examples include height, weight, waiting time and blood pressure.
 
@@ -43,18 +47,16 @@ Just as categorical data can be converted into numbers through counting, numeric
 
 ## Summarising categorical data
 
-In this section we use the [Adverse events](#adverse-events) dataset (assigned to the variable 'ae').
+In this section we use the [Adverse events](#adverse-events) dataset assigned to the variable ae.
  
-Categorical data are most commonly summarised by counting the number of observations in each category, typically presented as frequencies or counts. In R, this can be easily done using the table() function.
+As mentioned, categorical data are most commonly summarised by counting the number of observations in each category, typically presented as frequencies or proportions (or percentages). In R, this can be easily done using the table() function.
 
 ```{r}
 # count number of adverse events in each category
 (ae.tbl <- table(ae$category))
 ```
 
-Note that by counting we are effectively converting categorical data into numbers.
-
-A useful visualisation of categorical data is the bar chart displaying either the frequencies or percentages in each category:
+A useful visualisation of categorical data is the bar chart displaying either the frequencies or proportions in each category:
 
 ```{r stat-bar1, fig.cap='Bar chart of adverse event frequencies'}
 # plot frequencies
@@ -65,6 +67,8 @@ barplot(ae.tbl)
 # plot proportions
 barplot(prop.table(ae.tbl))
 ```
+
+The only difference between figures \@ref(fig:stat-bar1) and \@ref(fig:stat-bar2) is the y-axis scale.
 
 For binary data, a summary may simply involve calculating the proportion or percentage of one category relative to the total, for example the proportion of adverse events with fatal outcome:
 
@@ -77,7 +81,7 @@ mean(ae$severity == 'I')
 
 For this section we use the [Robson group 1 births](#robson-group-1-births) and the [Renography doses](#renography-doses) datasets assigned to the births and reno variables respectively.
 
-Numerical data are commonly summarised using three key characteristics: central tendency, distribution shape and spread (variation). In R, the summary() function provides a quick -- although limited -- overview of all three:
+Numerical data are commonly summarised using three key characteristics: central tendency, distribution shape and spread (variation). In R, the summary() function provides a quick overview of all three:
 
 ```{r}
 # summarise the length of newborn babies
@@ -86,13 +90,15 @@ summary(births$length)
 
 summary() is a generic function that behaves differently depending on the type of input. With numerical input, it returns a table displaying the minimum and maximum values, the three quartiles (1st, Median, 3rd), the mean and the number of NA values (if any).
 
+Quartiles are the three values that divide a dataset into four equally sized parts. 25% of the data values fall below the first quartile, 50% fall below the second quartile (median), and 75% fall below the third quartile.
+
 A most useful visualisation of the distribution of continuous data is the histogram:
 
 ```{r stat-hist1, fig.cap = 'Histogram of birth lengths.'}
 hist(births$length)
 ```
 
-A histogram groups data into intervals (called bins) and shows how many values fall within each interval. It is similar to a bar chart, but the bars are touching to reflect the fact that the data are continuous.
+A histogram groups data into intervals, called bins, and shows how many values fall within each interval. It is similar to a bar chart, but the bars are touching to reflect the fact that the data are continuous.
 
 Note that there are much more to histograms than meets the eye. For a deeper understanding and additional options, read the documentation (`?hist`).
 
@@ -100,17 +106,17 @@ Note that there are much more to histograms than meets the eye. For a deeper und
 
 The central tendency of a dataset refers to the typical or central value around which the data points cluster. It represents the centre of the distribution. Common measures of central tendency include the mean and the median.
 
-The **mean** is perhaps the better-known of the two. It is calculated by summing all the values and dividing by the total number of values. For example, the mean of the values [1,2,3] is (1 + 2 + 3) / 3 = 2.
+The **mean** is perhaps the better-known of the two. It is calculated by summing all the values and dividing by the total number of values. For example, the mean of the values [1, 2, 3] is (1 + 2 + 3) / 3 = 2.
 
-The **median** -- often overlooked but equally important -- is the middle value when the data are sorted in order. For example, given the values [2,1,3], the median is 2 (remember to sort first). If there is an even number of values, the median is the mean of the two central values; for instance, for [1,2,3,4], the median is 2.5.
+The **median** -- often overlooked but equally important -- is the middle value when the data are sorted in order. For example, given the values [2, 1, 3], the median is 2 (remember to sort first). If there is an even number of values, the median is the mean of the two central values; for instance, for [1, 2, 3, 4], the median is 2.5.
 
-In the previous examples, the mean and the median are identical. This occurs when the data are perfectly symmetrical. However, when the data are skewed -- that is, spread unevenly on either side of the centre -- the mean and median can differ significantly. For example, consider the values [1,2,999]. The mean is 334, heavily influenced by the extreme value, whereas the median remains 2, effectively splitting the dataset in two equally sized halves.
+In the previous examples, the mean and the median are identical. This occurs when the data are perfectly symmetrical. However, when the data are skewed -- that is, spread unevenly on either side of the centre -- the mean and median can differ significantly. For example, consider the values [1, 2, 999]. The mean is 334, heavily influenced by the extreme value, whereas the median remains 2, effectively splitting the dataset in halves.
 
 Imagine a playground seesaw with a child and an adult seated at opposite ends. The mean corresponds to the balance point of the seesaw, shifting closer to the heavier adult, reflecting the weighted average of the two positions. In contrast, the median represents the midpoint of the plank itself, simply dividing the seesaw into halves regardless of weight.
 
 The choice between using the mean or the median depends largely on the purpose of the analysis as well as the characteristics of the data distribution. 
 
-The mean is useful when you want to consider every value in the dataset and obtain a measure that reflects the overall average, especially when the data are symmetrically distributed without extreme outliers.
+The mean is useful when we want to consider every value in the dataset and obtain a measure that reflects the overall average, especially when the data are symmetrically distributed without extreme outliers.
 
 On the other hand, the median is often preferred when the data are skewed or contain outliers, as it provides a measure of central tendency that is resistant to extreme values and better represents the "typical" observation in such cases. 
 In SPC the median is particularly useful for runs analysis with run charts. Because the median reflects the midpoint of the data, there is an equal probability -- fifty-fifty -- that any individual data point will fall above or below it. This balance is crucial for runs analysis, as it ensures that the number and length of runs (consecutive points above or below the median) can be assessed against expected probabilities under random variation. Consequently, using the median helps accurately detect non-random patterns or shifts in the process regardless of the shape of data.
@@ -125,9 +131,9 @@ The shape of a dataset refers to the overall pattern or distribution of values. 
 
 **Symmetry** describes how evenly the values are distributed around the centre. In a perfectly symmetrical distribution the left and right sides are mirror images and the mean and the median are identical. 
 
-When one side of the distribution extends further than the other, the data are said to be skewed. If the tail extends towards higher values, the distribution is right-skewed (positively skewed), and the mean is greater than median. If it extends towards lower values, it is left-skewed (negatively skewed), and the mean is less than the median.
+When one side of the distribution extends further than the other, the data are said to be skewed. If the tail extends towards higher values, the distribution is right-skewed (positively skewed), and the mean is greater than the median. If it extends towards lower values, it is left-skewed (negatively skewed), and the mean is less than the median. Examples of data that are often right-skewed include waiting times and income, where most observations cluster around the lower end of the scale, while a few extreme values create a long tail extending towards higher values.
 
-Symmetry is also characterised by the mean being approximately centred between the minimum and maximum values.
+Symmetry is also characterised by the mean and median being approximately centred between the minimum and maximum values.
 
 Because the mean and median of birth length are very close, we may assume that the data are approximately symmetrical. However, neither the mean nor the median is well centred between the minimum and maximum values, suggesting that the distribution may still be slightly skewed or influenced by outliers at one end.
 
@@ -145,15 +151,15 @@ Figure \@ref(fig:stat-hist2) shows an example of bimodal data, suggesting the pr
 
 The concept of spread in data is fundamental to SPC, as we have discussed numerous times throughout this book -- although the term "spread" itself has not been explicitly introduced until now. Spread refers to the variability or diversity within the data, indicating how much the values differ from each other.
 
-When constructing control limits, we rely on the standard deviation (SD or sigma) of common cause variation as a primary measure of spread. However, standard deviation is not the only useful indicator. As demonstrated above, the summary() function provides additional measures that reflect the spread of data.
+When constructing control limits, we rely on the standard deviation (SD or sigma) of common cause variation as a primary measure of spread. However, standard deviation is not the only useful spread indicator. As demonstrated above, the summary() function provides additional measures that reflect the spread of data.
 
-The range represents the distance between the highest and lowest values in a dataset, while the interquartile range (IQR) captures the spread of the middle 50% of the data — calculated as the difference between the first and third quartiles.
+The range represents the distance between the highest and lowest values in a dataset, while the interquartile range (IQR) captures the spread of the middle 50% of the data — calculated as the difference between the third and first quartiles.
 
 The **range** is easy to understand but has limited usefulness on its own, as it tends to increase with sample size. As the number of observations grows, so does the likelihood of including rare -- though not necessarily unusual -- values.
 
-The **interquartile range**  is a more robust measure of spread and can also offer some insight into the shape of the distribution -- indirectly, through the position of the centre relative to the quartiles. However, it becomes unreliable with very small sample sizes. When fewer than five values are present -- at the very least -- calculating quartiles is effectively meaningless.
+The **interquartile range**  is a more robust measure of spread and can also offer some insight into the shape of the distribution through the position of the centre relative to the quartiles. However, it becomes unreliable with very small sample sizes. When fewer than five values are present -- at the very least -- calculating quartiles is effectively meaningless.
 
-A useful and compact alternative to histograms is the box plot, which provides a visual summary of the central tendency and spread of a dataset.
+A simple, useful and compact alternative to histograms is the box plot, which provides a visual summary of the central tendency and spread of a dataset.
 
 ```{r stat-box1, fig.cap='Boxplot of birth lengths.'}
 boxplot(births$length)
@@ -163,7 +169,7 @@ The box in a box plot represents the interquartile range (IQR), while the line i
 
 As long as data have a unimodal shape, the box plot is a very effective visualisation of both the centre, shape and spread of a distribution.
 
-Box plots are especially useful with grouped data like in Figure \@ref(fig:stat-box2), which compares the birth length of boys and girls. The plot indicates that boys are -- on average -- slightly longer than girls.
+Box plots are especially useful with grouped data like in Figure \@ref(fig:stat-box2), which compares the birth length of boys and girls, suggesting that, on average, boys are slightly longer than girls.
 
 ```{r stat-box2, fig.cap='Stratified boxplot.'}
 boxplot(length ~ sex, births)
@@ -189,9 +195,9 @@ Approximately
 * 95% fall within ±2 SD, and
 * 99.7% fall within ±3 SD.
 
-The first two rules depend heavily on the data’s underlying distribution. However, the third rule -- that "most" data points fall within ±3 SD -- holds true for many common distributions. Without delving into technical details, it can be shown that for *any* unimodal distribution, more than 95% of the data lie within 3 standard deviations of the mean, and for *many* unimodal distributions, this proportion rises to around 98%.
+The first two rules depend heavily on data’s underlying distribution. However, the third rule -- that "most" data points fall within ±3 SD -- holds true for many common distributions. Without delving into technical details, it can be shown that for any unimodal distribution, at least 95% of the data lie within three standard deviations of the mean. For many common unimodal distributions, especially those that are roughly symmetric, this proportion can rise to more than 98%.
 
-This fact justifies the use of three-sigma limits in SPC charts regardless of the shape of data and cautions against adopting tighter limits solely to increase sensitivity.
+This fact justifies the use of three-sigma limits in SPC charts regardless of the distribution of data and cautions against adopting tighter limits solely to increase sensitivity.
 
 ## Theoretical distributions
 
