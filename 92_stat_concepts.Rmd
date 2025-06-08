@@ -197,9 +197,78 @@ Approximately
 
 The first two rules depend heavily on data’s underlying distribution. However, the third rule -- that "most" data points fall within ±3 SD -- holds true for many common distributions. Without delving into technical details, it can be shown that for any unimodal distribution, at least 95% of the data lie within three standard deviations of the mean. For many common unimodal distributions, especially those that are roughly symmetric, this proportion can rise to more than 98%.
 
-This fact justifies the use of three-sigma limits in SPC charts regardless of the distribution of data and cautions against adopting tighter limits solely to increase sensitivity.
+This fact supports the use of three-sigma limits in SPC charts regardless of the distribution of data and cautions against adopting tighter limits solely to increase sensitivity.
 
 ## Theoretical distributions
+
+So far we have mainly concerned ourselves with empirical distributions -- examining the centre, shape and spread of real-world datasets. In this section we will take a look at some important theoretical distributions.
+
+A theoretical distribution is a mathematical model that describes the probabilities of different outcomes in a given situation. For instance, consider tossing a fair coin. While we cannot predict the outcome of any single toss, we know that the set of possible outcomes is [heads, tails], each with a probability of 1/2. Similarly, when rolling a fair six-sided die, the possible outcomes are [1, 2, 3, 4, 5, 6], each occurring with a probability of 1/6.
+
+Given this type of information, we are able -- through the use of probability theory -- to predict the probability of any future outcome or combination of outcomes.
+
+Numerous theoretical distributions have been described, but for our purposes in SPC, we are primarily concerned with three: the Poisson, the binomial, and the Gaussian (or normal) distribution. The Poisson and binomial distributions are used for count data, while the Gaussian distribution is applied to measurement data.
+
+### Poisson distribution -- predicting the number of events
+
+The Poisson distribution -- named after the French mathematician Siméon Poisson -- describes the probability of a given number of events occurring within a fixed time interval, assuming that the events happen independently of one another and at a constant average rate, commonly denoted by lambda (λ). It is used to estimate the control limits for C- and U-charts.
+
+Based on the birth data, we estimate the expected birth rate to be approximately 2,200 births per year, averaging to about 6 births per day. 
+
+I R, we can use the dpois() function to calculate the probability (or density) of any given number of births in a day. For example, the probability of having exactly 9 births in one days is `dpois(9, lambda = 6)`= `r dpois(9, 6)`. The standard deviation of a Poisson distribution equals the square root of lambda ($SD = \sqrt{\lambda}$) -- in this case, approximately 2.45.
+
+To visualise discrete probability distributions, we use bar (or stick) charts as demonstrated in Figure \@ref(fig:stat-dpois).
+
+```{r stat-dpois, fig.cap='Poisson probability plot of the number of births in a day (mean = 6).'}
+# plot Poisson probability
+x <- 0:16 # x-axis values
+plot(x, dpois(x, lambda = 6), 
+     type = 'h',
+     lwd  = 2,
+     ylab = 'Probability',
+     xlab = 'Number of births')
+```
+
+Note that the Poisson distribution is censored at zero -- it cannot produce negative counts -- but in principle, it extends towards infinity. As with all probability distributions, the sum of all probabilities is equal to 1.
+
+For low values of lambda, the Poisson distribution is right-skewed; however, as lambda increases, the distribution becomes increasingly symmetric and begins to resemble the normal distribution.
+
+### Binomial distribution -- predicting the number of cases of "success" or "failure"
+
+The binomial distribution describes the probability of obtaining a given number of cases -- often referred to as successes or failures -- in a fixed number of independent trials, each with two possible outcomes (such as yes/no or pass/fail), and a constant probability of success.
+
+The standard deviation of a binomial distribution is $SD = \sqrt{np(1-p)}$, where n is the sample size and p the success proportion. Often, we prefer to work with the proportion of successes rather than the count (as in P-charts). In this case, the standard deviation of the proportion is calculated as $SD = \sqrt{p(1-p)/n}$
+
+For example, if we consider each birth as a trial and define a case as a Caesarean section (C-section), the binomial distribution can be used to model the probability of observing a specific number of C-sections within a set number of births.
+
+In R, the dbinom() function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of trials (sample size) and the average probability of a case (the success rate). Based on our data, we estimate there are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use the following command:
+`dbinom(6, size = 42, prob = 0.09)` = `r dbinom(6, size = 42, prob = 0.09)`.
+
+```{r stat-dbinom1, fig.cap='Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09).'}
+# plot binomial probability
+x <- 0:12
+plot(x, dbinom(x, size = 42, prob = 0.09), 
+     type = 'h', 
+     lwd  = 2,
+     ylab = 'Probability',
+     xlab = 'Number of C-sections')
+```
+
+As with the Poisson distribution, the binomial distribution is censored at zero. However, unlike the Poisson, its upper limit is fixed and equal to the sample size, since it models a finite number of trials. The shape of the binomial distribution is perfectly symmetric when the success probability is close to 50% and grows increasingly skewed when this approaches 0% (right-skew) or 100% (left-skew). The degree of skewness depends largely on the sample size -- bigger samples, less skew, more symmetry.
+
+These considerations are important when designing a sampling plan. To quickly gather enough data points for a control chart, smaller samples are preferable; however, to maintain symmetry -- which is important for the reliability of the P-chart -- larger samples are needed.
+
+### Gaussian distribution -- predicting the probability of continuous outcomes
+
+```{r stat-dnorm1, fig.cap='Gaussian density curve of birth length (mean = 52, sd = 2).'}
+# plot Gaussian density curve
+curve(dnorm(x, mean = 52, sd = 2), 
+      from = 44, 
+      to   = 60,
+      lwd  = 2,
+      ylab = 'Probability density',
+      xlab = 'X')
+```
 
 - Gaussian (normal)
 - Poisson
