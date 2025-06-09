@@ -119,9 +119,9 @@ The choice between using the mean or the median depends largely on the purpose o
 The mean is useful when we want to consider every value in the dataset and obtain a measure that reflects the overall average, especially when the data are symmetrically distributed without extreme outliers.
 
 On the other hand, the median is often preferred when the data are skewed or contain outliers, as it provides a measure of central tendency that is resistant to extreme values and better represents the "typical" observation in such cases. 
-In SPC the median is particularly useful for runs analysis with run charts. Because the median reflects the midpoint of the data, there is an equal probability -- fifty-fifty -- that any individual data point will fall above or below it. This balance is crucial for runs analysis, as it ensures that the number and length of runs (consecutive points above or below the median) can be assessed against expected probabilities under random variation. Consequently, using the median helps accurately detect non-random patterns or shifts in the process regardless of the shape of data.
+In SPC, the median is particularly useful for runs analysis with run charts. Because the median reflects the midpoint of the data, there is an equal probability -- fifty-fifty -- that any individual data point will fall above or below it. This balance is crucial for runs analysis, as it ensures that the number and length of runs (consecutive points above or below the median) can be assessed against expected probabilities under random variation. Consequently, using the median helps accurately detect non-random trends or shifts in the process regardless of the shape of data.
 
-In our birth lengths data, the mean and the median are nearly identical -- 51.7 vs 52.0.
+In our birth lengths data, the mean and the median are nearly identical: 51.7 vs 52.0.
 
 Understanding the shape and spread of the data helps inform which measure will provide the most meaningful summary. 
 
@@ -169,7 +169,7 @@ The box in a box plot represents the interquartile range (IQR), while the line i
 
 As long as data have a unimodal shape, the box plot is a very effective visualisation of both the centre, shape and spread of a distribution.
 
-Box plots are especially useful with grouped data like in Figure \@ref(fig:stat-box2), which compares the birth length of boys and girls, suggesting that, on average, boys are slightly longer than girls.
+Box plots are especially useful with grouped data as in Figure \@ref(fig:stat-box2), which compares the birth length of boys and girls, suggesting that, on average, boys are slightly longer than girls.
 
 ```{r stat-box2, fig.cap='Stratified boxplot.'}
 boxplot(length ~ sex, births)
@@ -185,7 +185,7 @@ $$
 
 That is, the square root of the sum of squared deviations from the mean divided by one less than the number of values.
 
-SD can always be calculated, but its usefulness depends on the underlying distribution of the data. This is why we first introduced the range and interquartile range, which are always reliable measures of spread regardless of distribution.
+SD can always be calculated, but its usefulness depends on the underlying distribution of the data. This is why we first introduced the range and interquartile range, which are reliable measures of spread regardless of the distribution.
 
 When data follow a Gaussian (or normal) distribution -- which we will talk more about in the next section -- the standard deviation has some particularly useful properties:
 
@@ -215,7 +215,7 @@ The Poisson distribution -- named after the French mathematician Siméon Poisson
 
 Based on the birth data, we estimate the expected birth rate to be approximately 2,200 births per year, averaging to about 6 births per day. 
 
-I R, we can use the dpois() function to calculate the probability (or density) of any given number of births in a day. For example, the probability of having exactly 9 births in one days is `dpois(9, lambda = 6)`= `r dpois(9, 6)`. The standard deviation of a Poisson distribution equals the square root of lambda ($SD = \sqrt{\lambda}$) -- in this case, approximately 2.45.
+I R, we can use the dpois() function to calculate the probability (or density) of any given number of births in a day. For example, the probability of having exactly 9 births in one days is `dpois(9, lambda = 6) =` ``r dpois(9, 6)``. The standard deviation of a Poisson distribution conveniently equals the square root of lambda ($SD = \sqrt{\lambda}$), in this case, approximately 2.45.
 
 To visualise discrete probability distributions, we use bar (or stick) charts as demonstrated in Figure \@ref(fig:stat-dpois).
 
@@ -235,14 +235,14 @@ For low values of lambda, the Poisson distribution is right-skewed; however, as 
 
 ### Binomial distribution -- predicting the number of cases of "success" or "failure"
 
-The binomial distribution describes the probability of obtaining a given number of cases -- often referred to as successes or failures -- in a fixed number of independent trials, each with two possible outcomes (such as yes/no or pass/fail), and a constant probability of success.
+The binomial distribution describes the probability of obtaining a given number of cases -- often referred to as successes or failures -- in a fixed number of independent trials (or opportunities), each with two possible outcomes (such as yes/no or pass/fail), and a constant probability of success.
 
-The standard deviation of a binomial distribution is $SD = \sqrt{np(1-p)}$, where n is the sample size and p the success proportion. Often, we prefer to work with the proportion of successes rather than the count (as in P-charts). In this case, the standard deviation of the proportion is calculated as $SD = \sqrt{p(1-p)/n}$
+The standard deviation of a binomial distribution is $SD = \sqrt{np(1-p)}$, where n is the sample size and p the success proportion. Often, we prefer to work with the proportion of cases rather than the count (as in P-charts). In this case, the standard deviation of the proportion is calculated as $SD = \sqrt{p(1-p)/n}$
 
-For example, if we consider each birth as a trial and define a case as a Caesarean section (C-section), the binomial distribution can be used to model the probability of observing a specific number of C-sections within a set number of births.
+For example, if we consider each birth as a trial (opportunity) and define a case as a Caesarean section (C-section), the binomial distribution can be used to model the probability of observing a specific number of C-sections within a set number of births.
 
-In R, the dbinom() function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of trials (sample size) and the average probability of a case (the success rate). Based on our data, we estimate there are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use the following command:
-`dbinom(6, size = 42, prob = 0.09)` = `r dbinom(6, size = 42, prob = 0.09)`.
+In R, the dbinom() function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of opportunites (sample size) and the average probability of a case. Based on the birth data, we estimate there are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use the following command:
+`dbinom(6, size = 42, prob = 0.09) =` ``r dbinom(6, size = 42, prob = 0.09)``.
 
 ```{r stat-dbinom1, fig.cap='Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09).'}
 # plot binomial probability
@@ -254,22 +254,51 @@ plot(x, dbinom(x, size = 42, prob = 0.09),
      xlab = 'Number of C-sections')
 ```
 
-As with the Poisson distribution, the binomial distribution is censored at zero. However, unlike the Poisson, its upper limit is fixed and equal to the sample size, since it models a finite number of trials. The shape of the binomial distribution is perfectly symmetric when the success probability is close to 50% and grows increasingly skewed when this approaches 0% (right-skew) or 100% (left-skew). The degree of skewness depends largely on the sample size -- bigger samples, less skew, more symmetry.
+As with the Poisson distribution, the binomial distribution is censored at zero. However, unlike the Poisson, its upper limit is fixed and equal to the sample size, since it models a finite number of opportunities The shape of the binomial distribution is perfectly symmetric when the success probability is close to 50% and grows increasingly skewed when this approaches 0% (right-skew) or 100% (left-skew). The degree of skewness depends largely on the sample size -- bigger samples, less skew and more symmetry.
 
 These considerations are important when designing a sampling plan. To quickly gather enough data points for a control chart, smaller samples are preferable; however, to maintain symmetry -- which is important for the reliability of the P-chart -- larger samples are needed.
 
 ### Gaussian distribution -- predicting the probability of continuous outcomes
 
-```{r stat-dnorm1, fig.cap='Gaussian density curve of birth length (mean = 52, sd = 2).'}
-# plot Gaussian density curve
-curve(dnorm(x, mean = 52, sd = 2), 
-      from = 44, 
-      to   = 60,
-      lwd  = 2,
-      ylab = 'Probability density',
-      xlab = 'X')
+The Gaussian distribution, named after the German mathematician Carl Gauss and often referred to as the normal distribution -- though there is nothing inherently "normal" about it -- is a continuous probability distribution widely used to model many real-world phenomena.
+
+Figure \@ref(fig:stat-hist3) shows a histogram of birth weights, where each bin represents the number of data points that fall within a specific range.
+
+```{r stat-hist3, fig.cap='Histogram of birth weights'}
+hist(births$weight, breaks = 20)
 ```
 
-- Gaussian (normal)
-- Poisson
-- Binomial
+Now, imagine gradually making the bins narrower and more numerous. As they become smaller, the tops of the bars would begin to blend together, eventually forming a smooth, continuous curve.
+
+In Figure \@ref(fig:stat-hist4), we have overlaid a curve representing the theoretical Gaussian distribution, using the empirical mean and standard deviation of the birth weights.
+
+```{r stat-hist4, fig.cap='Histogram of birth weights with overlayed Gaussian density curve.'}
+avg_w <- mean(births$weight)
+std_w <- sd(births$weight)
+hist(births$weight, breaks = 20, freq = F)
+curve(dnorm(x, 
+            mean = avg_w,
+            sd   = std_w),
+      add = TRUE)
+```
+
+Note that the y-axis now represents density rather than frequency. In a histogram, density reflects the likelihood of values falling within a bin, with the total area summing to 1. The density curve, however, doesn't assign probabilities to individual points -- it represents the overall shape of the distribution, and probabilities are found by calculating the area under the curve over an interval. The total area under the curve -- which, in theory ranges from minus infinity to plus infinity -- also equals 1.
+
+The Gaussian distribution has an associated density function in R, dnorm(), which returns the height of the density curve at a given value. For example, `dnorm(3500, mean = avg_w, sd = std_w` returns `r formatC(dnorm(3500, mean = avg_w, sd = std_w))`. As mentioned earlier, this value is not directly meaningful on its own -- it represents the curve’s height at a point, not a probability.
+
+To find the probability of a value being less than or equal to a given threshold, we use pnorm(), which returns the area under the curve up to that value. For instance, `pnorm(3500, mean = avg_w, sd = std_w) = ` ``r  pnorm(3500, mean = avg_w, sd = std_w)`` indicates that approximately 51.6% of birth weights are expected to be below 3500 grams.
+
+Using pnorm(), we can calculate the probability of outcomes within any interval. To find the probability of data falling within ±3 SD from the mean, we calculate the area under the curve like this:
+
+```{r}
+pnorm(avg_w + 3 * std_w,    # area below mean + 3 SD
+      mean = avg_w,
+      sd   = std_w) - 
+  pnorm(avg_w - 3 * std_w,  # aread below mean - 3 SD
+        mean = avg_w, 
+        sd   = std_w)
+```
+
+## Basic statistical concepts in summary
+
+

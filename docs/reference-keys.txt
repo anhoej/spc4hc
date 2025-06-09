@@ -79,7 +79,8 @@ fig:stat-box1
 fig:stat-box2
 fig:stat-dpois
 fig:stat-dbinom1
-fig:stat-dnorm1
+fig:stat-hist3
+fig:stat-hist4
 variation
 spc-and-the-nature-of-variation
 charts-intro
@@ -186,6 +187,7 @@ theoretical-distributions
 poisson-distribution-predicting-the-number-of-events
 binomial-distribution-predicting-the-number-of-cases-of-success-or-failure
 gaussian-distribution-predicting-the-probability-of-continuous-outcomes
+basic-statistical-concepts-in-summary
 diagnostics
 quantifying-the-diagnostic-error-of-spc-charts
 average-run-length
@@ -204,3 +206,4 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
