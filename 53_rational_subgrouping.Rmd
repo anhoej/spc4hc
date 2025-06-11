@@ -1,0 +1,74 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# The Forgotten Art of Rational Subgrouping {#subgrouping}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/4,
+                      dev     = 'svg')
+
+library(qicharts2)
+source('R/load_data.R', local = knitr::knit_global())
+```
+
+Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms.
+
+A rational subgroup consists of a set of measurements or counts that are:
+
+* produced under conditions that are as similar as possible,
+* taken close together in time, and
+* likely to show only common cause variation.
+
+The underlying logic is that when subgroups are rationally formed, variation between subgroups that exceeds what is expected from the variation within subgroups indicates the presence of special causes.
+
+In our experience, rational subgrouping is -- not the least in healthcare -- a somewhat forgotten art. We tend to use whatever data are available -- often data that have already been aggregated and grouped into monthly, quarterly or even yearly time periods for administrative purposes rather than quality improvement.
+
+## Overly large subgroups — masking meaningful signals
+
+A common mistake is to form subgroups that are too large, incorporating sources of both common and special cause variation, thereby effectively masking the latter.
+
+As an example, figures \@ref(fig:subgrouping-fig1) and \@ref(fig:subgrouping-fig2) displays the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.
+
+```{r subgrouping-fig1, fig.cap='Monthly C. diff. infections.'}
+qic(month, infections, 
+    data = cdiff, 
+    chart = 'c',
+    title = 'C. diff. infections',
+    ylab = 'Count',
+    xlab = 'Months')
+```
+
+```{r subgrouping-fig2, fig.cap='Two-monthly C. diff. infections.'}
+qic(month, infections, 
+    data = cdiff, 
+    chart = 'c',
+    x.period = '2 months',
+    title = 'C. diff. infections',
+    ylab = 'Count',
+    xlab = 'Two-months')
+
+```
+
+By using larger subgoups we effectively mask the two signals -- a freak value and a sustained shift -- that suggest the process is trending downwards. Clearly, if the trend continues, it will eventually become apparent even with two-monthly data, but it will inevitably take longer to detect delaying any potential learning or intervention.
+
+To avoid over-aggregating data by using excessively large subgroups, we need to record data at a temporal resolution that, at minimum, exceeds the expected rate of change we are trying to detect. High-resolution data can always be aggregated to a lower resolution if suitable (or necessary), but low-resolution data cannot be further resolved.
+
+Note that the qic() function from qicharts2 includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure \@ref(fig:subgrouping-fig2).
+
+## Overly small subgroups — revealing unimportant noise
+
+A less common -- but equally important -- mistake is to form subgroups that are too small, capturing natural process noise and misinterpreting it as special cause variation.
+
+Imagine measuring your own blood pressure every hour for 24 hours and plotting the results on an SPC chart. The chart will most likely show noticeable shifts and trends throughout the day, suggesting that your blood pressure is highly unstable. However, these fluctuations simply reflect normal diurnal variations reflecting human physiology and activity levels.
+
+While recording a 24-hour blood pressure profile is a valuable tool in the assessment and management of hypertension, this type of data is not suitable for evaluating the long-term stability of blood pressure during medical treatment. The short-term, natural fluctuations observed over a single day reflect physiological rhythms rather than meaningful trends over time.
+
+For the purpose of monitoring and controlling long-term blood pressure, it is more effective to take fewer daily measurements over an extended period, under conditions that are as consistent as possible. A practical approach is to form subgroups by averaging 3–4 readings taken at the same time of day and under similar conditions — for example, in relation to meals, physical activity, and medication. This helps ensure that the data reflects true long-term trends rather than short-term physiological fluctuations.
+
+It may seem counterintuitive to prefer a sampling strategy that deliberately disregards seemingly important information -- such as diurnal fluctuations in blood pressure. However, rational subgrouping is not about capturing everything, but about capturing the process of interest. In this case, we are concerned with long-term trends, which cannot be reliably detected through short-term, high-frequency measurements alone.
+
+## Striking the balance
+
+As hinted in the chapter title, rational subgrouping is as much an art as a science. 

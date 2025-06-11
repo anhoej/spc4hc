@@ -15,10 +15,6 @@
 - One-to-one relation between PDSA cycles and dots on the plot
 - The Control Charts vs Run Charts Debate
 
-# A Note on Rational Subgrouping and Sampling
-
-# Do Data Have to Be Normally Distributed? -- and why not
-
 # High Volume Data
 
 # Scaling Up Charts

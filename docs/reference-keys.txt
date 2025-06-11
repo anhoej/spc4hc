@@ -169,10 +169,9 @@ funnel-plots-for-categorical-subgroups
 pareto-charts-for-ranking-problems
 tips-for-effective-spc-implementation
 common-pitfalls-to-avoid
-a-note-on-rational-subgrouping-and-sampling
-do-data-have-to-be-normally-distributed-and-why-not
 high-volume-data
 scaling-up-charts
+subgrouping
 data-sets
 stat-concepts
 data-types
@@ -206,3 +205,8 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+fig:subgrouping-fig1
+fig:subgrouping-fig2
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+overly-large-subgroups-masking-meaningful-signals
+overly-small-subgroups-revealing-unimportant-noise

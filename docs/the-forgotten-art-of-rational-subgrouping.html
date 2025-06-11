@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Using SPC in healthcare | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 23 The Forgotten Art of Rational Subgrouping | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Using SPC in healthcare | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 23 The Forgotten Art of Rational Subgrouping | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Using SPC in healthcare | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 23 The Forgotten Art of Rational Subgrouping | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="testing.html"/>
-<link rel="next" href="first-chart.html"/>
+<link rel="prev" href="scaling-up-charts.html"/>
+<link rel="next" href="data-sets.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -324,9 +324,10 @@ div.csl-indent {
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="chapter" data-level="18" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>18</b> Tips for Effective SPC Implementation</a></li>
 <li class="chapter" data-level="19" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html"><i class="fa fa-check"></i><b>19</b> Common Pitfalls to Avoid</a></li>
-<li class="chapter" data-level="20" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>20</b> High Volume Data</a></li>
-<li class="chapter" data-level="21" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>21</b> Scaling Up Charts</a></li>
-<li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a></li>
+<li class="chapter" data-level="20" data-path="a-note-on-rational-subgrouping-and-sampling.html"><a href="a-note-on-rational-subgrouping-and-sampling.html"><i class="fa fa-check"></i><b>20</b> A Note on Rational Subgrouping and Sampling</a></li>
+<li class="chapter" data-level="21" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>21</b> High Volume Data</a></li>
+<li class="chapter" data-level="22" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>22</b> Scaling Up Charts</a></li>
+<li class="chapter" data-level="23" data-path="the-forgotten-art-of-rational-subgrouping.html"><a href="the-forgotten-art-of-rational-subgrouping.html"><i class="fa fa-check"></i><b>23</b> The Forgotten Art of Rational Subgrouping</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -415,133 +416,24 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Using SPC in healthcare<a href="using.html#using" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>As briefly discussed in the previous chapter, in healthcare, we use SPC methodology in two main ways:</p>
-<ul>
-<li><strong>Monitoring</strong> the behaviour or performance of an existing process (e.g. complications following surgery), or</li>
-<li><strong>Improving</strong> an existing process (e.g. redesigning the pathway for patients with fractured hips).</li>
-</ul>
-<div id="using-spc-to-monitor-a-process" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Using SPC to monitor a process<a href="using.html#using-spc-to-monitor-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In the monitoring mode, the primary aim is to determine if a process is deteriorating which is usually indicated by signals of special cause variation where detective work is needed to find the cause and then eliminate it. Such detective work can be undertaken by using the Pyramid Model of Investigation described below.</p>
-<p>The key aim of using statistical process control charts to monitor healthcare processes is to ensure that quality and safety of care are adequate and not deteriorating. So when a signal of special cause variation is seen on a control chart monitoring a given outcome, investigation is necessary. However, the chosen method must recognise that the link between recorded outcomes and quality of care <em>is complex, ambiguous and subject to multiple explanations</em> <span class="citation">(<a href="#ref-lilford2004">Lilford et al. 2004</a>)</span>. Failure to do so may inadvertently contribute to premature conclusions and a blame culture that undermines the engagement of clinical staff and the credibility of statistical process control. As Rogers note:</p>
-<blockquote>
-<p>If monitoring schemes are to be accepted by those whose outcomes are being assessed, an atmosphere of constructive evaluation, not ‘blaming’ or ‘naming and shaming’, is essential as apparent poor performance could arise for a number of reasons that should be explored systematically.</p>
-<p>– <span class="citation">Rogers et al. (<a href="#ref-rogers2004">2004</a>)</span></p>
-</blockquote>
-<p>To address this need, <span class="citation">M. A. Mohammed et al. (<a href="#ref-mohammed2004">2004</a>)</span> proposed the <strong>Pyramid Model</strong> for Investigation of Special Cause Variation in healthcare – a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure/resources, process of care, and carer(s) (Figure <a href="using.html#fig:responding-fig1">4.1</a>).</p>
-<div class="figure"><span style="display:block;" id="fig:responding-fig1"></span>
-<img src="figures/pyramid_model.svg" alt="Pyramid Model for Investigation"  />
-<p class="caption">
-Figure 4.1: Pyramid Model for Investigation
-</p>
-</div>
-<p>These broad categories of candidate explanations are arranged from most likely (data) to least likely (carers), so offering a road map for the investigation that begins at the base of the pyramid and stops at the level that provides a credible, evidence-based explanation for the special cause. The first two layers of the model (data and casemix factors) provide a check on the validity of the data and casemix-adjusted analyses, whereas the remaining upper layers focus more on quality of care related issues.</p>
-<p>A proper investigation requires a team of people with expertise in each of the layers. Such a team is also likely to include those staff whose outcomes or data are being investigated, so that their insights and expertise can inform the investigation while also ensuring their buy-in to the investigation process. Basic steps for using the model are shown below.</p>
-<ol style="list-style-type: decimal">
-<li><p>Form a <strong>multidisciplinary team</strong> that has expertise in each layer of the pyramid, with a decision-making process that allows them to judge the extent to which a credible cause or explanation has been found, based on hypothesis generation and testing.</p></li>
-<li><p>Guided by what type(s) of pattern(s) exist in data (freaks, shifts, trends, mixed, or cyclic patterns) candidate <strong>hypotheses</strong> are generated and tested starting from the lowest level of the Pyramid Model and proceeding to upper levels only if the preceding levels provide no adequate explanation for the special cause.</p></li>
-<li><p>A credible cause requires <strong>quantitative and qualitative evidence</strong>, which is used by the team to test hypotheses and reach closure. If no credible explanation can be found, then the only plausible conclusion is that the signal itself was a false signal.</p></li>
-</ol>
-<p>The types of questions that can be asked when undertaking the detective work are highlighted below.</p>
-<ul>
-<li><strong>Data</strong>: Data quality issues, e.g. coding accuracy, reliability of charts, definitions, and completeness.
-<ul>
-<li>Are the data coded correctly?</li>
-<li>Has there been a change in data coding practices (e.g. are there less experienced coders)?</li>
-<li>Is clinical documentation clear, complete, and consistent?
-<br><br></li>
-</ul></li>
-<li><strong>Casemix</strong>: Although differences in casemix are accounted for in the calculation, it is possible that some residual confounding may remain.
-<ul>
-<li>Are factors peculiar to this hospital not taken into account in the risk adjustment?</li>
-<li>Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?
-<br><br></li>
-</ul></li>
-<li><strong>Structure or resource</strong>: Availability of beds, staff, and medical equipment; institutional processes.
-<ul>
-<li>Has there been a change in the distribution of patients in the hospital, with more patients in this speciality spread throughout the hospital rather than concentrated in a particular unit?</li>
-<li>Has the physical environment or organisational structures changed?
-<br><br></li>
-</ul></li>
-<li><strong>Process of care</strong>: Medical treatments, clinical pathways, patient admission and discharge policies.
-<ul>
-<li>Has there been a change in the care being provided?</li>
-<li>Have new treatment guidelines been introduced?
-<br><br></li>
-</ul></li>
-<li><strong>Professional staff/carers</strong>: Practice and treatment methods etc.
-<ul>
-<li>Has there been a change in staffing for treatment of patients?</li>
-<li>Has a key staff member gained additional training and introduced a new method that has led to improved outcomes?</li>
-</ul></li>
-</ul>
-</div>
-<div id="using-spc-to-improve-a-process" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Using SPC to improve a process<a href="using.html#using-spc-to-improve-a-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a’s after switching to a computer? This is determined by looking to see the impact of the change in the form of signals of special cause variation on an SPC chart (provided we have a creditable measure of “letter quality”).</p>
-<p>The degree of alignment between changes to the process and subsequent signals of special cause variation provide a story which qualitatively and quantitatively describes the impact of changes.</p>
-<p>Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? <strong>The Theory of Constraints</strong> <span class="citation">(<a href="#ref-goldratt2022">Goldratt and Cox 2022</a>)</span> offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints.</p>
-<p><strong>The Model for Improvement</strong>, proposed by <span class="citation">Langley et al. (<a href="#ref-langley2009">2009</a>)</span>, is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>What are we trying to accomplish?</strong>
-This question defines the aim of the improvement effort, which should be specific, measurable, and time-bound along with a rationale for why this is important.</p></li>
-<li><p><strong>How will we know that a change is an improvement?</strong>
-This question focuses on measurement. The team identifies key performance indicators and other metrics to assess whether the change has led to improvement. This includes balancing measures designed to capture unintended negative consequences from changing a system or process.</p></li>
-<li><p><strong>What changes can we make that will result in improvement?</strong>
-This question explores potential change ideas or interventions that could lead to the desired improvement. These ideas are undertaken according to the <strong>PDSA Cycle</strong>, which is a method for iterative small-scale testing of changes:</p>
-<ul>
-<li><strong>Plan</strong>: Develop a plan to test the change, including who, what, when, and where.</li>
-<li><strong>Do</strong>: Implement the change on a small scale.</li>
-<li><strong>Study</strong>: Analyze the results, focusing on the impact of the change.</li>
-<li><strong>Act</strong>: Decide whether to adopt, modify, or abandon the change based on the results.</li>
-</ul></li>
-</ol>
-<p>There are other approaches to improvement in healthcare, such as Lean, Six Sigma, and Systems Engineering. The SPC chart can support each of these approaches because it offers a robust and insightful way to test the success of change ideas.</p>
-</div>
-<div id="successful-use-of-spc-in-healthcare" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Successful use of SPC in healthcare<a href="using.html#successful-use-of-spc-in-healthcare" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart – especially in complex adaptive systems like healthcare. These factors include: engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance – all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see <span class="citation">M. A. Mohammed (<a href="#ref-mohammed2024">2024</a>)</span>.</p>
-<p>Nevertheless, it is important to note that SPC charts are not necessarily easy to construct. After examining 64 statistical process control charts, <span class="citation">Koetsier et al. (<a href="#ref-koetsier2012">2012</a>)</span> found that that almost half the charts had technical problems which suggests a need for more training for those constructing charts – which is the primary motivation for this book.</p>
-<p>This is the end of Part 1. In Part 2, beginning with Chapter <a href="first-chart.html#first-chart">5</a>, we show you how to produce SPC charts using R.</p>
+<div id="the-forgotten-art-of-rational-subgrouping" class="section level1 hasAnchor" number="23">
+<h1><span class="header-section-number">Chapter 23</span> The Forgotten Art of Rational Subgrouping<a href="the-forgotten-art-of-rational-subgrouping.html#the-forgotten-art-of-rational-subgrouping" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
-</div>
 </div>
 
 
 
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-goldratt2022" class="csl-entry">
-Goldratt, Eliyahu M., and Jeff Cox. 2022. <em>The Goal: A Process of Ongoing Improvement, 3rd Edition</em>. Routledge.
 </div>
-<div id="ref-koetsier2012" class="csl-entry">
-Koetsier, A., S. N. van der Veer, K. J. Jager, N. Peek, and N. F. de Keizer. 2012. <span>“Control Charts in Healthcare Quality Improvement.”</span> <em>Methods of Information in Medicine</em>. <a href="https://doi.org/10.3414/ME11-01-0055">https://doi.org/10.3414/ME11-01-0055</a>.
-</div>
-<div id="ref-langley2009" class="csl-entry">
-Langley, Gerald J, Ronald D Moen, Kevin M Nolan, Thomas W Nolan, Clifford L Norman, and Lloyd P Provost. 2009. <em>The Improvement Guide</em>. San Fracisco, CA: Jossey-bass.
-</div>
-<div id="ref-lilford2004" class="csl-entry">
-Lilford, Richard, Mohammed A Mohammed, David Spiegelhalter, and Richard Thomson. 2004. <span>“Use and Misuse of Process and Outcome Data in Managing Performance of Acute Medical Care: Avoiding Institutional Stigma.”</span> <em>The Lancet</em> 363: 1147–54. https://doi.org/<a href="https://doi.org/10.1016/S0140-6736(04)15901-1">https://doi.org/10.1016/S0140-6736(04)15901-1</a>.
-</div>
-<div id="ref-mohammed2024" class="csl-entry">
-Mohammed, M A. 2024. <em>Statistical Process Control</em>. Elements of Improving Quality and Safety in Healthcare. Cambridge University Press. <a href="https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10">https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10</a>.
-</div>
-<div id="ref-mohammed2004" class="csl-entry">
-Mohammed, M A, Anthony Rathbone, Paulette Myers, Divya Patel, Helen Onions, and Andrew Stevens. 2004. <span>“An Investigation into General Practitioners Associated with High Patient Mortality Flagged up Through the Shipman Inquiry: Retrospective Analysis of Routine Data.”</span> <em>BMJ</em> 328 (7454): 1474–77. <a href="https://doi.org/10.1136/bmj.328.7454.1474">https://doi.org/10.1136/bmj.328.7454.1474</a>.
-</div>
-<div id="ref-rogers2004" class="csl-entry">
-Rogers, Chris A., Barnaby C. Reeves, Massimo Caputo, J. Saravana Ganesh, Robert S. Bonser, and Gianni D. Angelini. 2004. <span>“Control Chart Methods for Monitoring Cardiac Surgical Performance and Their Interpretation.”</span> <em>The Journal of Thoracic and Cardiovascular Surgery</em> 128: 811–19. https://doi.org/<a href="https://doi.org/10.1016/j.jtcvs.2004.03.011">https://doi.org/10.1016/j.jtcvs.2004.03.011</a>.
-</div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="first-chart.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="scaling-up-charts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

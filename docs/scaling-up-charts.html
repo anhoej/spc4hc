@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 23 Scaling Up Charts | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 21 Scaling Up Charts | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 23 Scaling Up Charts | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 21 Scaling Up Charts | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 23 Scaling Up Charts | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 21 Scaling Up Charts | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-09" />
+<meta name="date" content="2025-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="high-volume-data.html"/>
-<link rel="next" href="data-sets.html"/>
+<link rel="next" href="subgrouping.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -324,10 +324,9 @@ div.csl-indent {
 <li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
 <li class="chapter" data-level="18" data-path="tips-for-effective-spc-implementation.html"><a href="tips-for-effective-spc-implementation.html"><i class="fa fa-check"></i><b>18</b> Tips for Effective SPC Implementation</a></li>
 <li class="chapter" data-level="19" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html"><i class="fa fa-check"></i><b>19</b> Common Pitfalls to Avoid</a></li>
-<li class="chapter" data-level="20" data-path="a-note-on-rational-subgrouping-and-sampling.html"><a href="a-note-on-rational-subgrouping-and-sampling.html"><i class="fa fa-check"></i><b>20</b> A Note on Rational Subgrouping and Sampling</a></li>
-<li class="chapter" data-level="21" data-path="do-data-have-to-be-normally-distributed-and-why-not.html"><a href="do-data-have-to-be-normally-distributed-and-why-not.html"><i class="fa fa-check"></i><b>21</b> Do Data Have to Be Normally Distributed? – and why not</a></li>
-<li class="chapter" data-level="22" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>22</b> High Volume Data</a></li>
-<li class="chapter" data-level="23" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>23</b> Scaling Up Charts</a></li>
+<li class="chapter" data-level="20" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>20</b> High Volume Data</a></li>
+<li class="chapter" data-level="21" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>21</b> Scaling Up Charts</a></li>
+<li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
@@ -416,8 +415,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="scaling-up-charts" class="section level1 hasAnchor" number="23">
-<h1><span class="header-section-number">Chapter 23</span> Scaling Up Charts<a href="scaling-up-charts.html#scaling-up-charts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="scaling-up-charts" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">Chapter 21</span> Scaling Up Charts<a href="scaling-up-charts.html#scaling-up-charts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ul>
 <li>technical issues</li>
 <li>tabular charts</li>
@@ -425,20 +424,13 @@ div.csl-indent {
 </ul>
 
 </div>
-
-
-
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="high-volume-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="subgrouping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
