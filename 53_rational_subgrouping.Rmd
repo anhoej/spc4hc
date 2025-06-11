@@ -27,7 +27,7 @@ In our experience, rational subgrouping is -- not the least in healthcare -- a s
 
 ## Overly large subgroups — masking meaningful signals
 
-A common mistake is to form subgroups that are too large, incorporating sources of both common and special cause variation, thereby effectively masking the latter.
+A common mistake is forming subgroups across overly broad spans of time or space (e.g. organisational units), which blends common and special cause variation and effectively obscures the latter.
 
 As an example, figures \@ref(fig:subgrouping-fig1) and \@ref(fig:subgrouping-fig2) displays the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.
 
@@ -63,12 +63,19 @@ A less common -- but equally important -- mistake is to form subgroups that are 
 
 Imagine measuring your own blood pressure every hour for 24 hours and plotting the results on an SPC chart. The chart will most likely show noticeable shifts and trends throughout the day, suggesting that your blood pressure is highly unstable. However, these fluctuations simply reflect normal diurnal variations reflecting human physiology and activity levels.
 
-While recording a 24-hour blood pressure profile is a valuable tool in the assessment and management of hypertension, this type of data is not suitable for evaluating the long-term stability of blood pressure during medical treatment. The short-term, natural fluctuations observed over a single day reflect physiological rhythms rather than meaningful trends over time.
+While recording a 24-hour blood pressure profile is a valuable tool in the assessment and management of hypertension, this type of data is not suitable for evaluating the long-term stability of blood pressure during medical treatment.
 
-For the purpose of monitoring and controlling long-term blood pressure, it is more effective to take fewer daily measurements over an extended period, under conditions that are as consistent as possible. A practical approach is to form subgroups by averaging 3–4 readings taken at the same time of day and under similar conditions — for example, in relation to meals, physical activity, and medication. This helps ensure that the data reflects true long-term trends rather than short-term physiological fluctuations.
+For the purpose of monitoring and controlling long-term blood pressure, it is more effective to take fewer daily measurements over an extended period, under conditions that are as consistent as possible. This helps ensure that the data reflects true long-term trends rather than short-term physiological fluctuations.
 
-It may seem counterintuitive to prefer a sampling strategy that deliberately disregards seemingly important information -- such as diurnal fluctuations in blood pressure. However, rational subgrouping is not about capturing everything, but about capturing the process of interest. In this case, we are concerned with long-term trends, which cannot be reliably detected through short-term, high-frequency measurements alone.
+It may seem counterintuitive to prefer a sampling strategy that deliberately disregards seemingly important information such as diurnal fluctuations in blood pressure. However, rational subgrouping is not about capturing everything, but about capturing the process of interest. In this case, we are concerned with long-term trends, which cannot be reliably detected through short-term, high-frequency measurements alone.
 
 ## Striking the balance
 
-As hinted in the chapter title, rational subgrouping is as much an art as a science. 
+As the chapter title suggests, rational subgrouping is as much an art as it is a science. In fact, it remains one of the more complex and unresolved challenges in statistical process control: to understand a process, we need rational subgroups -- but to form rational subgroups, we need to understand the process.
+
+In practice, we frequently need to try multiple approaches to subgrouping our data -- experimenting with different timeframes, organisational units, or other dimensions -- before finding an approach that meaningfully reflects the underlying process behaviour.
+
+That said, in healthcare – in contrast to the production industry – there is often far less flexibility to tailor data collection to the requirements of statistical process control (SPC). In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans – aligned to precise time intervals and structured across machinery, personnel, and organisational units.
+
+In healthcare, by contrast, the smallest meaningful unit is typically the individual patient, situated within a specific organisational context or clinical pathway. Patient outcomes are shaped by a complex interplay of factors – including clinical complexity, comorbidities, social determinants, practitioner judgement, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.
+

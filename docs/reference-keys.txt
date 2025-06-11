@@ -71,6 +71,8 @@ fig:funnel-fig3
 fig:pareto-fig1
 fig:pareto-fig2
 fig:pareto-fig3
+fig:subgrouping-fig1
+fig:subgrouping-fig2
 fig:stat-bar1
 fig:stat-bar2
 fig:stat-hist1
@@ -172,6 +174,9 @@ common-pitfalls-to-avoid
 high-volume-data
 scaling-up-charts
 subgrouping
+overly-large-subgroups-masking-meaningful-signals
+overly-small-subgroups-revealing-unimportant-noise
+striking-the-balance
 data-sets
 stat-concepts
 data-types
@@ -205,8 +210,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-fig:subgrouping-fig1
-fig:subgrouping-fig2
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-overly-large-subgroups-masking-meaningful-signals
-overly-small-subgroups-revealing-unimportant-noise
