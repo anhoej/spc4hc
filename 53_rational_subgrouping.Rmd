@@ -13,23 +13,25 @@ library(qicharts2)
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms.
+A subgroup consists of the data elements that make up a single data point, for example, the waiting times used to calculate the average waiting time for a particular period.
+
+Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms. In other words, rational subgrouping is all about maximising the signal-to-noise ratio.
 
 A rational subgroup consists of a set of measurements or counts that are:
 
 * produced under conditions that are as similar as possible,
-* taken close together in time, and
+* taken close together in time and space, and
 * likely to show only common cause variation.
 
-The underlying logic is that when subgroups are rationally formed, variation between subgroups that exceeds what is expected from the variation within subgroups indicates the presence of special causes.
+The underlying logic is that when subgroups are rationally formed, variation within subgroups reflects common cause variation, whereas variation between subgroups that exceeds what is expected from within-subgroup variation indicates the presence of special causes.
 
-In our experience, rational subgrouping is -- not the least in healthcare -- a somewhat forgotten art. We tend to use whatever data are available -- often data that have already been aggregated and grouped into monthly, quarterly or even yearly time periods for administrative purposes rather than quality improvement.
+In our experience -- particularly in healthcare -- rational subgrouping is something of a forgotten art. We often rely on whatever data are readily available, which are frequently pre-aggregated into monthly, quarterly, or even yearly time periods for administrative purposes rather than for quality improvement. This practice often leads to suboptimal use of data for driving improvement.
 
-## Overly large subgroups — masking meaningful signals
+## Too large subgroups — masking meaningful signals
 
 A common mistake is forming subgroups across overly broad spans of time or space (e.g. organisational units), which blends common and special cause variation and effectively obscures the latter.
 
-As an example, figures \@ref(fig:subgrouping-fig1) and \@ref(fig:subgrouping-fig2) displays the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.
+As an example, figures \@ref(fig:subgrouping-fig1) and \@ref(fig:subgrouping-fig2) display the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.
 
 ```{r subgrouping-fig1, fig.cap='Monthly C. diff. infections.'}
 qic(month, infections, 
@@ -51,31 +53,56 @@ qic(month, infections,
 
 ```
 
-By using larger subgoups we effectively mask the two signals -- a freak value and a sustained shift -- that suggest the process is trending downwards. Clearly, if the trend continues, it will eventually become apparent even with two-monthly data, but it will inevitably take longer to detect delaying any potential learning or intervention.
+By using larger subgoups, as shown in Figure \@ref(fig:subgrouping-fig2), we effectively mask the two signals -- a freak value and a sustained shift -- that suggest the process is trending downwards. Clearly, if the trend continues, it will eventually become apparent even with two-monthly data, but it will inevitably take longer to detect delaying any potential learning or intervention.
 
-To avoid over-aggregating data by using excessively large subgroups, we need to record data at a temporal resolution that, at minimum, exceeds the expected rate of change we are trying to detect. High-resolution data can always be aggregated to a lower resolution if suitable (or necessary), but low-resolution data cannot be further resolved.
+To avoid over-aggregating data by using excessively large subgroups, we need to record data at a temporal resolution that, at minimum, matches the expected rate of change we are trying to detect. High-resolution data can always be aggregated to a lower resolution if suitable (or necessary), but low-resolution data cannot be further resolved.
 
 Note that the qic() function from qicharts2 includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure \@ref(fig:subgrouping-fig2).
 
-## Overly small subgroups — revealing unimportant noise
+## Too small subgroups — revealing unimportant noise
 
 A less common -- but equally important -- mistake is to form subgroups that are too small, capturing natural process noise and misinterpreting it as special cause variation.
 
-Imagine measuring your own blood pressure every hour for 24 hours and plotting the results on an SPC chart. The chart will most likely show noticeable shifts and trends throughout the day, suggesting that your blood pressure is highly unstable. However, these fluctuations simply reflect normal diurnal variations reflecting human physiology and activity levels.
+Imagine stepping on a scale three times each morning for a couple of weeks and plotting the results on an X-bar chart, using the within-subgroup (day) variation as the basis for calculating control limits.
 
-While recording a 24-hour blood pressure profile is a valuable tool in the assessment and management of hypertension, this type of data is not suitable for evaluating the long-term stability of blood pressure during medical treatment.
+Figure \@ref(fig:subgroups-fig3) illustrates this with simulated data. As expected, the variation within each daily subgroup is very low, while the variation between subgroups is noticeably higher suggesting that our body weight is highly unstable from day to day. However, this difference between within- and between-subgroup variation merely reflects natural physiological fluctuations and is irrelevant to our goal of monitoring long-term body weight trends.
 
-For the purpose of monitoring and controlling long-term blood pressure, it is more effective to take fewer daily measurements over an extended period, under conditions that are as consistent as possible. This helps ensure that the data reflects true long-term trends rather than short-term physiological fluctuations.
+```{r subgroups-fig3, fig.cap='Xbar-chart from too small subgroups.'}
+# lock random number generator for reproducibility
+set.seed(5)
 
-It may seem counterintuitive to prefer a sampling strategy that deliberately disregards seemingly important information such as diurnal fluctuations in blood pressure. However, rational subgrouping is not about capturing everything, but about capturing the process of interest. In this case, we are concerned with long-term trends, which cannot be reliably detected through short-term, high-frequency measurements alone.
+# subgroups, 12 subgroups of three values
+x <- rep(1:12, each = 3)
+
+# random values, each repeated three times
+y <- rep(rnorm(12, mean = 80, sd = 0.5), each = 3)
+
+# add a bit of random noise within subgroups
+y <- jitter(y, amount = 0.2)
+
+# plot Xbar-chart
+qic(x, y, chart = 'xbar')
+```
+
+A better strategy would be to plot data using an I-chart of the daily averages. The I-chart uses the moving range between successive subgroups as a basis for calculating control limits, which is -- in this case -- a much better representation of the day-to-day variation, which is really what we want to monitor.
+
+```{r subgroups-fig4, fig.cap='I-chart of average daily body weight.'}
+qic(x, y, chart = 'i')
+```
+
+Alternatively, we could devise a different sampling plan that produces subgroups better representing the process of interest -- for example, using weekly averages of daily measurements as subgroups.
+
+Depending on our goal, different subgrouping strategies may be appropriate. If the aim is to monitor and maintain a stable body weight, weekly subgroups may be sufficient. However, if the objective is to support a weight-reduction plan expecting significant weekly decreases, daily measurements could prove more useful.
 
 ## Striking the balance
 
 As the chapter title suggests, rational subgrouping is as much an art as it is a science. In fact, it remains one of the more complex and unresolved challenges in statistical process control: to understand a process, we need rational subgroups -- but to form rational subgroups, we need to understand the process.
 
-In practice, we frequently need to try multiple approaches to subgrouping our data -- experimenting with different timeframes, organisational units, or other dimensions -- before finding an approach that meaningfully reflects the underlying process behaviour.
+In practice, we frequently need to try multiple approaches to subgrouping our data -- experimenting with different timeframes, organisational units or other dimensions -- before finding an approach that meaningfully reflects the underlying process behaviour.
 
-That said, in healthcare – in contrast to the production industry – there is often far less flexibility to tailor data collection to the requirements of statistical process control (SPC). In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans – aligned to precise time intervals and structured across machinery, personnel, and organisational units.
+That said, in healthcare -- in contrast to the production industry -- there is often far less flexibility to tailor data collection to the requirements of statistical process control (SPC). In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans aligned to precise time intervals and structured across machinery, personnel and organisational units.
 
-In healthcare, by contrast, the smallest meaningful unit is typically the individual patient, situated within a specific organisational context or clinical pathway. Patient outcomes are shaped by a complex interplay of factors – including clinical complexity, comorbidities, social determinants, practitioner judgement, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.
+In healthcare, by contrast, the smallest meaningful unit is typically the individual patient, situated within a specific organisational context or clinical pathway. Patient outcomes are shaped by a complex interplay of factors -- including clinical complexity, social determinants, people, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.
+
+However, that does not mean that we should not care about rational subgrouping. Although we may have limited control over input variation we can still design sampling strategies that aim to minimise the impact of these sources of variation by carefully selecting patient groups, clinical pathways, organisational units and time periods that reliably reflect the processes we aim to understand. Doing so helps preserve an optimal signal-to-noise ratio, enhancing our ability to detect meaningful changes.
 

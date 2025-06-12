@@ -73,6 +73,8 @@ fig:pareto-fig2
 fig:pareto-fig3
 fig:subgrouping-fig1
 fig:subgrouping-fig2
+fig:subgroups-fig3
+fig:subgroups-fig4
 fig:stat-bar1
 fig:stat-bar2
 fig:stat-hist1
@@ -174,8 +176,8 @@ common-pitfalls-to-avoid
 high-volume-data
 scaling-up-charts
 subgrouping
-overly-large-subgroups-masking-meaningful-signals
-overly-small-subgroups-revealing-unimportant-noise
+too-large-subgroups-masking-meaningful-signals
+too-small-subgroups-revealing-unimportant-noise
 striking-the-balance
 data-sets
 stat-concepts

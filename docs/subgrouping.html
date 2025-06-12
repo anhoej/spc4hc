@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-11" />
+<meta name="date" content="2025-06-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,8 +328,8 @@ div.csl-indent {
 <li class="chapter" data-level="21" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>21</b> Scaling Up Charts</a></li>
 <li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="subgrouping.html"><a href="subgrouping.html#overly-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>22.1</b> Overly large subgroups — masking meaningful signals</a></li>
-<li class="chapter" data-level="22.2" data-path="subgrouping.html"><a href="subgrouping.html#overly-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>22.2</b> Overly small subgroups — revealing unimportant noise</a></li>
+<li class="chapter" data-level="22.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>22.1</b> Too large subgroups — masking meaningful signals</a></li>
+<li class="chapter" data-level="22.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>22.2</b> Too small subgroups — revealing unimportant noise</a></li>
 <li class="chapter" data-level="22.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>22.3</b> Striking the balance</a></li>
 </ul></li>
 <li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
@@ -378,7 +378,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="C.2" data-path="diagnostics.html"><a href="diagnostics.html#conclusion-keeping-the-balance"><i class="fa fa-check"></i><b>C.2</b> Conclusion: Keeping the balance</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> r Notes</a>
+<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> R Notes</a>
 <ul>
 <li class="chapter" data-level="D.1" data-path="r-notes.html"><a href="r-notes.html#data-structures-and-classes"><i class="fa fa-check"></i><b>D.1</b> Data structures and classes</a></li>
 <li class="chapter" data-level="D.2" data-path="r-notes.html"><a href="r-notes.html#plot-ready-data-frames"><i class="fa fa-check"></i><b>D.2</b> Plot-ready data frames</a></li>
@@ -422,19 +422,20 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="subgrouping" class="section level1 hasAnchor" number="22">
 <h1><span class="header-section-number">Chapter 22</span> The Forgotten Art of Rational Subgrouping<a href="subgrouping.html#subgrouping" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms.</p>
+<p>A subgroup consists of the data elements that make up a single data point, for example, the waiting times used to calculate the average waiting time for a particular period.</p>
+<p>Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms. In other words, rational subgrouping is all about maximising the signal-to-noise ratio.</p>
 <p>A rational subgroup consists of a set of measurements or counts that are:</p>
 <ul>
 <li>produced under conditions that are as similar as possible,</li>
-<li>taken close together in time, and</li>
+<li>taken close together in time and space, and</li>
 <li>likely to show only common cause variation.</li>
 </ul>
-<p>The underlying logic is that when subgroups are rationally formed, variation between subgroups that exceeds what is expected from the variation within subgroups indicates the presence of special causes.</p>
-<p>In our experience, rational subgrouping is – not the least in healthcare – a somewhat forgotten art. We tend to use whatever data are available – often data that have already been aggregated and grouped into monthly, quarterly or even yearly time periods for administrative purposes rather than quality improvement.</p>
-<div id="overly-large-subgroups-masking-meaningful-signals" class="section level2 hasAnchor" number="22.1">
-<h2><span class="header-section-number">22.1</span> Overly large subgroups — masking meaningful signals<a href="subgrouping.html#overly-large-subgroups-masking-meaningful-signals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The underlying logic is that when subgroups are rationally formed, variation within subgroups reflects common cause variation, whereas variation between subgroups that exceeds what is expected from within-subgroup variation indicates the presence of special causes.</p>
+<p>In our experience – particularly in healthcare – rational subgrouping is something of a forgotten art. We often rely on whatever data are readily available, which are frequently pre-aggregated into monthly, quarterly, or even yearly time periods for administrative purposes rather than for quality improvement. This practice often leads to suboptimal use of data for driving improvement.</p>
+<div id="too-large-subgroups-masking-meaningful-signals" class="section level2 hasAnchor" number="22.1">
+<h2><span class="header-section-number">22.1</span> Too large subgroups — masking meaningful signals<a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A common mistake is forming subgroups across overly broad spans of time or space (e.g. organisational units), which blends common and special cause variation and effectively obscures the latter.</p>
-<p>As an example, figures <a href="subgrouping.html#fig:subgrouping-fig1">22.1</a> and <a href="subgrouping.html#fig:subgrouping-fig2">22.2</a> displays the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.</p>
+<p>As an example, figures <a href="subgrouping.html#fig:subgrouping-fig1">22.1</a> and <a href="subgrouping.html#fig:subgrouping-fig2">22.2</a> display the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="subgrouping.html#cb106-1" tabindex="-1"></a><span class="fu">qic</span>(month, infections, </span>
 <span id="cb106-2"><a href="subgrouping.html#cb106-2" tabindex="-1"></a>    <span class="at">data =</span> cdiff, </span>
 <span id="cb106-3"><a href="subgrouping.html#cb106-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
@@ -460,24 +461,54 @@ Figure 22.1: Monthly C. diff. infections.
 Figure 22.2: Two-monthly C. diff. infections.
 </p>
 </div>
-<p>By using larger subgoups we effectively mask the two signals – a freak value and a sustained shift – that suggest the process is trending downwards. Clearly, if the trend continues, it will eventually become apparent even with two-monthly data, but it will inevitably take longer to detect delaying any potential learning or intervention.</p>
-<p>To avoid over-aggregating data by using excessively large subgroups, we need to record data at a temporal resolution that, at minimum, exceeds the expected rate of change we are trying to detect. High-resolution data can always be aggregated to a lower resolution if suitable (or necessary), but low-resolution data cannot be further resolved.</p>
+<p>By using larger subgoups, as shown in Figure <a href="subgrouping.html#fig:subgrouping-fig2">22.2</a>, we effectively mask the two signals – a freak value and a sustained shift – that suggest the process is trending downwards. Clearly, if the trend continues, it will eventually become apparent even with two-monthly data, but it will inevitably take longer to detect delaying any potential learning or intervention.</p>
+<p>To avoid over-aggregating data by using excessively large subgroups, we need to record data at a temporal resolution that, at minimum, matches the expected rate of change we are trying to detect. High-resolution data can always be aggregated to a lower resolution if suitable (or necessary), but low-resolution data cannot be further resolved.</p>
 <p>Note that the qic() function from qicharts2 includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure <a href="subgrouping.html#fig:subgrouping-fig2">22.2</a>.</p>
 </div>
-<div id="overly-small-subgroups-revealing-unimportant-noise" class="section level2 hasAnchor" number="22.2">
-<h2><span class="header-section-number">22.2</span> Overly small subgroups — revealing unimportant noise<a href="subgrouping.html#overly-small-subgroups-revealing-unimportant-noise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="too-small-subgroups-revealing-unimportant-noise" class="section level2 hasAnchor" number="22.2">
+<h2><span class="header-section-number">22.2</span> Too small subgroups — revealing unimportant noise<a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A less common – but equally important – mistake is to form subgroups that are too small, capturing natural process noise and misinterpreting it as special cause variation.</p>
-<p>Imagine measuring your own blood pressure every hour for 24 hours and plotting the results on an SPC chart. The chart will most likely show noticeable shifts and trends throughout the day, suggesting that your blood pressure is highly unstable. However, these fluctuations simply reflect normal diurnal variations reflecting human physiology and activity levels.</p>
-<p>While recording a 24-hour blood pressure profile is a valuable tool in the assessment and management of hypertension, this type of data is not suitable for evaluating the long-term stability of blood pressure during medical treatment.</p>
-<p>For the purpose of monitoring and controlling long-term blood pressure, it is more effective to take fewer daily measurements over an extended period, under conditions that are as consistent as possible. This helps ensure that the data reflects true long-term trends rather than short-term physiological fluctuations.</p>
-<p>It may seem counterintuitive to prefer a sampling strategy that deliberately disregards seemingly important information such as diurnal fluctuations in blood pressure. However, rational subgrouping is not about capturing everything, but about capturing the process of interest. In this case, we are concerned with long-term trends, which cannot be reliably detected through short-term, high-frequency measurements alone.</p>
+<p>Imagine stepping on a scale three times each morning for a couple of weeks and plotting the results on an X-bar chart, using the within-subgroup (day) variation as the basis for calculating control limits.</p>
+<p>Figure <a href="subgrouping.html#fig:subgroups-fig3">22.3</a> illustrates this with simulated data. As expected, the variation within each daily subgroup is very low, while the variation between subgroups is noticeably higher suggesting that our body weight is highly unstable from day to day. However, this difference between within- and between-subgroup variation merely reflects natural physiological fluctuations and is irrelevant to our goal of monitoring long-term body weight trends.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="subgrouping.html#cb108-1" tabindex="-1"></a><span class="co"># lock random number generator for reproducibility</span></span>
+<span id="cb108-2"><a href="subgrouping.html#cb108-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb108-3"><a href="subgrouping.html#cb108-3" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="subgrouping.html#cb108-4" tabindex="-1"></a><span class="co"># subgroups, 12 subgroups of three values</span></span>
+<span id="cb108-5"><a href="subgrouping.html#cb108-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb108-6"><a href="subgrouping.html#cb108-6" tabindex="-1"></a></span>
+<span id="cb108-7"><a href="subgrouping.html#cb108-7" tabindex="-1"></a><span class="co"># random values, each repeated three times</span></span>
+<span id="cb108-8"><a href="subgrouping.html#cb108-8" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="fl">0.5</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb108-9"><a href="subgrouping.html#cb108-9" tabindex="-1"></a></span>
+<span id="cb108-10"><a href="subgrouping.html#cb108-10" tabindex="-1"></a><span class="co"># add a bit of random noise within subgroups</span></span>
+<span id="cb108-11"><a href="subgrouping.html#cb108-11" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">jitter</span>(y, <span class="at">amount =</span> <span class="fl">0.2</span>)</span>
+<span id="cb108-12"><a href="subgrouping.html#cb108-12" tabindex="-1"></a></span>
+<span id="cb108-13"><a href="subgrouping.html#cb108-13" tabindex="-1"></a><span class="co"># plot Xbar-chart</span></span>
+<span id="cb108-14"><a href="subgrouping.html#cb108-14" tabindex="-1"></a><span class="fu">qic</span>(x, y, <span class="at">chart =</span> <span class="st">&#39;xbar&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:subgroups-fig3"></span>
+<img src="_main_files/figure-html/subgroups-fig3-1.svg" alt="Xbar-chart from too small subgroups." width="672" />
+<p class="caption">
+Figure 22.3: Xbar-chart from too small subgroups.
+</p>
+</div>
+<p>A better strategy would be to plot data using an I-chart of the daily averages. The I-chart uses the moving range between successive subgroups as a basis for calculating control limits, which is – in this case – a much better representation of the day-to-day variation, which is really what we want to monitor.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="subgrouping.html#cb109-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>)</span></code></pre></div>
+<pre><code>## Subgroup size &gt; 1. Data have been aggregated using mean().</code></pre>
+<div class="figure"><span style="display:block;" id="fig:subgroups-fig4"></span>
+<img src="_main_files/figure-html/subgroups-fig4-1.svg" alt="I-chart of average daily body weight." width="672" />
+<p class="caption">
+Figure 22.4: I-chart of average daily body weight.
+</p>
+</div>
+<p>Alternatively, we could devise a different sampling plan that produces subgroups better representing the process of interest – for example, using weekly averages of daily measurements as subgroups.</p>
+<p>Depending on our goal, different subgrouping strategies may be appropriate. If the aim is to monitor and maintain a stable body weight, weekly subgroups may be sufficient. However, if the objective is to support a weight-reduction plan expecting significant weekly decreases, daily measurements could prove more useful.</p>
 </div>
 <div id="striking-the-balance" class="section level2 hasAnchor" number="22.3">
 <h2><span class="header-section-number">22.3</span> Striking the balance<a href="subgrouping.html#striking-the-balance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As the chapter title suggests, rational subgrouping is as much an art as it is a science. In fact, it remains one of the more complex and unresolved challenges in statistical process control: to understand a process, we need rational subgroups – but to form rational subgroups, we need to understand the process.</p>
-<p>In practice, we frequently need to try multiple approaches to subgrouping our data – experimenting with different timeframes, organisational units, or other dimensions – before finding an approach that meaningfully reflects the underlying process behaviour.</p>
-<p>That said, in healthcare – in contrast to the production industry – there is often far less flexibility to tailor data collection to the requirements of statistical process control (SPC). In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans – aligned to precise time intervals and structured across machinery, personnel, and organisational units.</p>
-<p>In healthcare, by contrast, the smallest meaningful unit is typically the individual patient, situated within a specific organisational context or clinical pathway. Patient outcomes are shaped by a complex interplay of factors – including clinical complexity, comorbidities, social determinants, practitioner judgement, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.</p>
+<p>In practice, we frequently need to try multiple approaches to subgrouping our data – experimenting with different timeframes, organisational units or other dimensions – before finding an approach that meaningfully reflects the underlying process behaviour.</p>
+<p>That said, in healthcare – in contrast to the production industry – there is often far less flexibility to tailor data collection to the requirements of statistical process control (SPC). In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans aligned to precise time intervals and structured across machinery, personnel and organisational units.</p>
+<p>In healthcare, by contrast, the smallest meaningful unit is typically the individual patient, situated within a specific organisational context or clinical pathway. Patient outcomes are shaped by a complex interplay of factors – including clinical complexity, social determinants, people, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.</p>
+<p>However, that does not mean that we should not care about rational subgrouping. Although we may have limited control over input variation we can still design sampling strategies that aim to minimise the impact of these sources of variation by carefully selecting patient groups, clinical pathways, organisational units and time periods that reliably reflect the processes we aim to understand. Doing so helps preserve an optimal signal-to-noise ratio, enhancing our ability to detect meaningful changes.</p>
 
 </div>
 </div>
