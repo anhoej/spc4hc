@@ -63,7 +63,7 @@ Note that the qic() function from qicharts2 includes an argument, x.period, whic
 
 A less common -- but equally important -- mistake is to form subgroups that are too small, which fail to capture natural process noise and thus misinterpret it as special cause variation..
 
-Imagine stepping on a scale three times each morning for a couple of weeks and plotting the results on an X-bar chart, using the within-subgroup (within-day) variation as the basis for calculating control limits.
+Imagine stepping on a scale three times each morning for a couple of weeks, and plotting the results on an X-bar chart, using the within-subgroup (within-day) variation as the basis for calculating control limits.
 
 Figure \@ref(fig:subgroups-fig3) illustrates this with simulated data. As expected, the variation within each daily subgroup is very low, while the variation between subgroups is noticeably higher suggesting that our body weight is highly unstable from day to day. However, this difference between within- and between-subgroup variation merely reflects natural physiological fluctuations and is irrelevant to our goal of monitoring long-term body weight trends.
 
@@ -102,15 +102,15 @@ In practice, we frequently need to try multiple approaches to subgrouping our da
 
 That said, in healthcare -- in contrast to the production industry -- there is often far less flexibility to tailor data collection to the requirements of SPC. In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans aligned to precise time intervals and structured across machinery, personnel and organisational units.
 
-In healthcare, by contrast, the smallest meaningful unit is typically the individual patient or procedure, situated within a specific organisational context or clinical pathway. Patient outcomes are shaped by a complex interplay of factors -- including clinical complexity, social determinants, people, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.
+In healthcare, by contrast, the smallest meaningful unit is typically the individual patient or procedure, situated within a specific organisational context or clinical pathway. Outcomes are shaped by a complex interplay of factors -- including clinical complexity, social determinants, people, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.
 
 However, that does not mean that we should not care about rational subgrouping. Although we may have limited control over input variation we can still design sampling strategies that aim to minimise the impact of these sources of variation by carefully selecting patient groups, clinical pathways, organisational units and time periods that reliably reflect the processes we aim to understand. Doing so helps preserve an optimal signal-to-noise ratio, enhancing our ability to detect meaningful changes.
 
 ## A practical approach for rational subgrouping
 
-There is no single ideal procedure for designing rational subgroups. As noted previously, this often requires an iterative process involving trial and error: Plan - Do - Study - Act. 
+There is no single ideal procedure for designing rational subgroups. As noted previously, this often requires an iterative process involving trial and error: Plan-Do-Study-Act. 
 
-Here are a few suggestions for points to consider when designing rational subgroups:
+Here are a few suggestions to consider when designing rational subgroups:
 
 1. Consult individuals with expert knowledge of the process in question -- rational subgrouping is a collaborative effort, not merely a statistical exercise.
 
@@ -122,9 +122,9 @@ Here are a few suggestions for points to consider when designing rational subgro
 
 1. Consider the rate of change you aim to detect.
 
-1. Choose a timeframe that is shorter than the expected rate of change.
+1. Choose a timeframe for sampling that is shorter than the expected rate of change.
 
-1. For count data, select a timeframe expected to capture at least five events or cases (numerator), and, for proportion data, ensure there are at least five additional opportunities (denominator).
+1. For count data, select a timeframe for sampling long enough to capture at least five events or cases (numerator); for proportion data, ensure there are at least five additional opportunities (denominator).
 
 1. Remain flexible and open to revising your sampling strategy as new insights emerge.
 
