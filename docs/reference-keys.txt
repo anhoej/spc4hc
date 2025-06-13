@@ -172,9 +172,10 @@ one-chart-to-rule-them-all
 funnel-plots-for-categorical-subgroups
 pareto-charts-for-ranking-problems
 tips-for-effective-spc-implementation
-common-pitfalls-to-avoid
 high-volume-data
 scaling-up-charts
+common-pitfalls-to-avoid
+data-issues
 subgrouping
 too-large-subgroups-masking-meaningful-signals
 too-small-subgroups-revealing-unimportant-noise
@@ -214,3 +215,5 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+signal-fatigue-from-over-sensitive-spc-rules

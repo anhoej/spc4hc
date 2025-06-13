@@ -1,7 +1,33 @@
 # Common Pitfalls to Avoid
 
-- Data issues, misinterpretation of charts
-- Overreacting to common cause variation (over-sensitive runs rules, too tight control limits)
-- Automating recalculation of control limits
-- One-to-one relation between PDSA cycles and dots on the plot
-- The Control Charts vs Run Charts Debate
+While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities -- and may ultimately erode trust in SPC itself.
+
+This chapter outlines several common pitfalls to avoid.
+
+## Data issues
+
+SPC charts are only as good as the data behind them. Poor data quality, including inaccurate measurements, inconsistent definitions or data collected under conditions that vary over time or between locations can significantly compromise their reliability.
+
+How the subgroups are formed is especially important. Subgroups consist of the data elements included in each data point. The way data are sampled and grouped can greatly affect their ability to distinguish common cause from special cause variation. If subgrouping is not done properly, the SPC chart may generate false signals or obscure important ones. We have devoted a full chapter to [rational subgrouping](#subgrouping).
+
+Time spend developing operational indicators definitions and rational subgroups often yields significant returns. Investing effort upfront ensures that data are meaningful and comparable, enabling better decision-making.
+
+## Signal fatigue from over-sensitive SPC rules
+
+Originally, control charts employed only one rule, the 3-sigma rule. However, to increase the chart's sensitivity to minor sustained shifts and other patterns of non-random variation, a plethora of supplementary rules have since been developed. To name a few, we have the Western Electric rules (four rules), the Nelson rules (ten rules), and the Westgard rules (six rules). All are based on identifying non-random patterns in the position of data points relative to the one-, two-, or three-sigma limits, each with different diagnostic properties.
+
+Furthermore, several distinct sets of rules for runs analysis with run charts have also been published. These are based on identifying non-random patterns relative the the centre line.
+
+As discussed earlier in this book, it may seem tempting to apply as many rules as possible to increase the chance of detecting any signs of special cause variation. However, this strategy comes at a price. While additional rules do increase the sensitivity of SPC analysis, they also raise the risk of false alarms. This topic is further explored in Appendix \@ref(diagnostics), [Two Types of Errors When Using SPC].
+
+Apart from the risk of applying too many rules, the rules themselves may also be either overly sensitive or insufficiently sensitive. A prominent example is a commonly used set of runs rules -- including four tests for trends, shifts, and too many or too few runs -- adopted by many healthcare organisations (@perla2011). This particular set has been shown to produce a very high rate of false signals. For instance, in a run chart with 24 data points, the expected false positive rate is close to 50%. The main contributor appears to be the trend rule -- defined as five or more consecutive data points all increasing or decreasing. Short trends like this are very common, even in sequences of purely random numbers. Moreover, trend rules in general have been thoroughly studied and found to be, at best, unhelpful and, at worst, misleading (@davis1988).
+
+To avoid signal fatigue -- which, at best, results in wasted effort from chasing false signals -- we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book -- the two runs rules and the 3-sigma rule -- have been deliberately designed to detect patterns indicative of one or more of the three types of variation most commonly encountered in healthcare improvement: shifts, trends, or cycles.
+
+## Automatic rephasing
+
+
+## Assuming a one-to-one link between PDSA cycles and data points
+
+
+## The control chart vs run chart debate
