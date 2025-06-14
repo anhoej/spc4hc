@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -263,6 +263,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="22.1" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#data-issues"><i class="fa fa-check"></i><b>22.1</b> Data issues</a></li>
 <li class="chapter" data-level="22.2" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>22.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="22.3" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#automatic-rephasing"><i class="fa fa-check"></i><b>22.3</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="22.4" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>22.4</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="22.5" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>22.5</b> The control chart vs run chart debate</a></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>23</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
@@ -350,14 +353,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="common-pitfalls-to-avoid" class="section level1 hasAnchor" number="22">
 <h1><span class="header-section-number">Chapter 22</span> Common Pitfalls to Avoid<a href="common-pitfalls-to-avoid.html#common-pitfalls-to-avoid" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<ul>
-<li>Data issues, misinterpretation of charts</li>
-<li>Overreacting to common cause variation (over-sensitive runs rules, too tight control limits)</li>
-<li>Automating recalculation of control limits</li>
-<li>One-to-one relation between PDSA cycles and dots on the plot</li>
-<li>The Control Charts vs Run Charts Debate</li>
-</ul>
-<p>While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities – and may ultimately erode trust in SPC itself.</p>
+<p>While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities, and may ultimately erode trust in SPC itself.</p>
 <p>This chapter outlines several common pitfalls to avoid.</p>
 <div id="data-issues" class="section level2 hasAnchor" number="22.1">
 <h2><span class="header-section-number">22.1</span> Data issues<a href="common-pitfalls-to-avoid.html#data-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -370,18 +366,40 @@ div.csl-indent {
 <p>Originally, control charts employed only one rule, the 3-sigma rule. However, to increase the chart’s sensitivity to minor sustained shifts and other patterns of non-random variation, a plethora of supplementary rules have since been developed. To name a few, we have the Western Electric rules (four rules), the Nelson rules (ten rules), and the Westgard rules (six rules). All are based on identifying non-random patterns in the position of data points relative to the one-, two-, or three-sigma limits, each with different diagnostic properties.</p>
 <p>Furthermore, several distinct sets of rules for runs analysis with run charts have also been published. These are based on identifying non-random patterns relative the the centre line.</p>
 <p>As discussed earlier in this book, it may seem tempting to apply as many rules as possible to increase the chance of detecting any signs of special cause variation. However, this strategy comes at a price. While additional rules do increase the sensitivity of SPC analysis, they also raise the risk of false alarms. This topic is further explored in Appendix <a href="diagnostics.html#diagnostics">C</a>, <a href="diagnostics.html#diagnostics">Two Types of Errors When Using SPC</a>.</p>
-<p>Apart from the risk of applying too many rules, the rules themselves may also be either overly sensitive or insufficiently sensitive. A prominent example is a commonly used set of runs rules – including four tests for trends, shifts, and too many or too few runs – adopted by many healthcare organisations (<span class="citation">Perla, Provost, and Murray (<a href="#ref-perla2011">2011</a>)</span>). This particular set has been shown to produce a very high rate of false signals. For instance, in a run chart with 24 data points, the expected false positive rate is close to 50%. The main contributor appears to be the trend rule – defined as five or more consecutive data points all increasing or decreasing. Short trends like this are very common, even in sequences of purely random numbers. Moreover, trend rules in general have been thoroughly studied and found to be, at best, unhelpful and, at worst, misleading (<span class="citation">Davis and Woodall (<a href="#ref-davis1988">1988</a>)</span>).</p>
-<p>To avoid signal fatigue – which, at best, results in wasted effort from chasing false signals – we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book – the two runs rules and the 3-sigma rule – have been deliberately designed to detect patterns indicative of one or more of the three types of variation most commonly encountered in healthcare improvement: shifts, trends, or cycles.</p>
+<p>Apart from the risk of applying too many rules, the rules themselves may also be either overly sensitive or insufficiently sensitive. A prominent example is a commonly used set of runs rules – including four tests for trends, shifts, and too many or too few runs respectively – adopted by many healthcare organisations <span class="citation">(<a href="#ref-provost2011">Provost and Murray 2011</a>; <a href="#ref-perla2011">Perla, Provost, and Murray 2011</a>)</span>. This particular set has been shown to produce a very high rate of false signals. For instance, in a run chart with 24 data points, the expected false positive rate is close to 50% <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>. The main contributor appears to be the trend rule – defined as five or more consecutive data points all increasing or decreasing. Short trends like this are very common, even in sequences of purely random numbers. Moreover, trend rules in general have been thoroughly studied and found to be, at best, unhelpful and, at worst, misleading <span class="citation">(<a href="#ref-davis1988">Davis and Woodall 1988</a>)</span>.</p>
+<p>To make matters worse, some practitioners deliberately tighten control limits in an attempt to increase the sensitivity of the sigma rule. This behaviour often stems from another common mistake: using the overall standard deviation to calculate control limits <span class="citation">(<a href="#ref-wheeler2010">Wheeler 2010</a>, <a href="#ref-wheeler2016">2016</a>)</span>. As emphasised repeatedly throughout this book, the overall variation is not appropriate for this purpose, as it includes both common cause and special cause variation – ultimately inflating the control limits. Inflated limits can, in turn, prompt misguided attempts to narrow them artificially. Instead, control limits, set at ±3-sigma from the centre line, should be based on the estimated within-subgroup standard deviation from rationally formed subgroups. This approach captures common cause variation and provides a sound basis for meaningful process monitoring and improvement.</p>
+<p>To avoid signal fatigue – which, at best, results in wasted effort from chasing false signals – we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book – the two runs rules and the 3-sigma rule – have been deliberately designed to detect patterns indicative of one or more of the three types of variation most commonly encountered in healthcare improvement, shifts, trends, or cycles, while keeping acceptable false alarm rates.</p>
+</div>
+<div id="automatic-rephasing" class="section level2 hasAnchor" number="22.3">
+<h2><span class="header-section-number">22.3</span> Automatic rephasing<a href="common-pitfalls-to-avoid.html#automatic-rephasing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="section level2 hasAnchor" number="22.4">
+<h2><span class="header-section-number">22.4</span> Assuming a one-to-one link between PDSA cycles and data points<a href="common-pitfalls-to-avoid.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="the-control-chart-vs-run-chart-debate" class="section level2 hasAnchor" number="22.5">
+<h2><span class="header-section-number">22.5</span> The control chart vs run chart debate<a href="common-pitfalls-to-avoid.html#the-control-chart-vs-run-chart-debate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-anhoej2015" class="csl-entry">
+Anhøj, Jacob. 2015. <span>“Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0121349">https://doi.org/10.1371/journal.pone.0121349</a>.
+</div>
 <div id="ref-davis1988" class="csl-entry">
 Davis, Robert B, and William H Woodall. 1988. <span>“Performance of the Control Chart Trend Rule Under Linear Shift.”</span> <em>Journal of Quality Technology</em> 20: 260–62.
 </div>
 <div id="ref-perla2011" class="csl-entry">
 Perla, Rocco J, Lloyd P Provost, and Sandy K Murray. 2011. <span>“The Run Chart: A Simple Analytical Tool for Learning from Variation in Healthcare Processes.”</span> <em>BMJ Qual Saf</em> 20: 46–51. <a href="https://doi.org/10.1136/bmjqs.2009.037895">https://doi.org/10.1136/bmjqs.2009.037895</a>.
+</div>
+<div id="ref-provost2011" class="csl-entry">
+Provost, Lloyd P, and Sandra K Murray. 2011. <em>The Health Care Data Guide: Learning from Data for Improvement</em>. San Francisco: John Wiley &amp; Sons Inc.
+</div>
+<div id="ref-wheeler2010" class="csl-entry">
+Wheeler, Donald J. 2010. <span>“The Right and Wrong Ways of Computing Limits.”</span> 2010. <a href="https://www.spcpress.com/pdf/DJW205.pdf">https://www.spcpress.com/pdf/DJW205.pdf</a>.
+</div>
+<div id="ref-wheeler2016" class="csl-entry">
+———. 2016. <span>“The Levey-Jennings Chart – How to Get the Most Out of Your Measurement System.”</span> 2016. <a href="http://www.spcpress.com/pdf/DJW290.pdf">http://www.spcpress.com/pdf/DJW290.pdf</a>.
 </div>
 </div>
             </section>
