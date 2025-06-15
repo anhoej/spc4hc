@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,6 +328,10 @@ div.csl-indent {
 <li class="chapter" data-level="21" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html"><i class="fa fa-check"></i><b>21</b> Common Pitfalls to Avoid</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#data-issues"><i class="fa fa-check"></i><b>21.1</b> Data issues</a></li>
+<li class="chapter" data-level="21.2" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>21.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="21.3" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#automatic-rephasing"><i class="fa fa-check"></i><b>21.3</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="21.4" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>21.4</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="21.5" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>21.5</b> The control chart vs run chart debate</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
@@ -374,7 +378,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="B.5" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.5</b> Basic statistical concepts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
+<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two Types of Errors When Using SPC</a>
 <ul>
 <li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying the diagnostic error of SPC charts</a>
 <ul>
@@ -500,7 +504,8 @@ Figure 9.2: SPC chart using the <code>ggspc()</code> function
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ggplot.html#cb55-1" tabindex="-1"></a><span class="co"># make the spc object into a ggplot2 object</span></span>
 <span id="cb55-2"><a href="ggplot.html#cb55-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggspc</span>(p)</span>
 <span id="cb55-3"><a href="ggplot.html#cb55-3" tabindex="-1"></a><span class="fu">class</span>(p)</span></code></pre></div>
-<pre><code>## [1] &quot;gg&quot;     &quot;ggplot&quot;</code></pre>
+<pre><code>## [1] &quot;ggplot2::ggplot&quot; &quot;ggplot&quot;          &quot;ggplot2::gg&quot;     &quot;S7_object&quot;      
+## [5] &quot;gg&quot;</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ggplot.html#cb57-1" tabindex="-1"></a><span class="co"># plot with modified theme and custom labels</span></span>
 <span id="cb57-2"><a href="ggplot.html#cb57-2" tabindex="-1"></a>p <span class="sc">+</span></span>
 <span id="cb57-3"><a href="ggplot.html#cb57-3" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>

@@ -1,4 +1,16 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Common Pitfalls to Avoid
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.asp = 2/4,
+                      dev     = 'svg')
+
+library(qicharts2)
+```
 
 While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities, and may ultimately erode trust in SPC itself.
 
@@ -28,8 +40,72 @@ To avoid signal fatigue -- which, at best, results in wasted effort from chasing
 
 ## Automatic rephasing
 
+Rephasing involves splitting an SPC chart to recalculate the centre line and control limits after a sustained shift has been identified.
+
+Figure \@ref(fig:pitfalls-fig1) shows the number of hospital infections (C. diff.) before and after an intervention, which began after month 24.
+
+```{r pitfalls-fig1, fig.cap='Hospital infections.'}
+qic(month, n,
+    data  = cdi,
+    chart = 'c',
+    title = 'Hospital associated C. diff.-infections',
+    ylab  = 'Count',
+    xlab  = 'Month')
+```
+
+Figure \@ref(fig:pitfalls-fig2) has been rephased following the intervention and the subsequent shift. This correctly distinguishes two distinct periods, each with stable but differing levels of infections.
+
+```{r pitfalls-fig2, fig.cap='Hospital infections -- rephasing done right!'}
+qic(month, n,
+    data  = cdi,
+    chart = 'c',
+    part  = period,
+    title = 'Hospital associated C. diff.-infections',
+    ylab  = 'Count',
+    xlab  = 'Month')
+```
+
+Automatic rephasing is when the centre line and control limits are recalculated automatically after the software detects a shift -- typically triggered by a prolonged run of data points on one side of the centre line. Some software packages perform automatic rephasing by default (@reading2021).
+
+Figure \@ref(fig:pitfalls-fig3) has been automatically rephased following detection of the shift. Coincidentally, the run that signalled the shift began three months earlier. However, these months occurred prior to the intervention and should correctly be considered part of the baseline period. As a result, the control limits and centre lines do not accurately reflect the distinct before-and-after periods. The centre lines are inflated, and a freak data point falsely suggests instability during the baseline period.
+
+```{r pitfalls-fig3, fig.cap='Hospital infections -- rephasing done wrong!'}
+qic(month, n,
+    data        = cdi,
+    chart       = 'c',
+    part        = 22,
+    part.labels = c('pre', 'post'),
+    title       = 'Hospital associated C. diff.-infections',
+    ylab        = 'Count',
+    xlab        = 'Month')
+```
+
+We strongly discourage the use of automatic rephasing, as it can lead to misleading interpretations of process stability. By automating shift detection, automatic rephasing effectively removes the essential human insight into the process. Therefore, rephasing should be a deliberate decision made by individuals with a thorough understanding of the process and any associated interventions.
+
+Rephasing *may* be appropriate when the following conditions are met:
+
+* there is a sustained shift in data,
+* the reason for the shift is known,
+* the shift is in the desired direction, and
+* the shift is expected to continue.
+
+If any of these conditions is not met, we should rather seek to understand the nature and causes of any shift, following the strategy outlined in Chapter \@ref(using), [Using SPC in Healthcare].
 
 ## Assuming a one-to-one link between PDSA cycles and data points
 
+While this issue may not result in faulty SPC analyses, it often causes confusion among practitioners. SPC is frequently taught alongside improvement work using PDSA cycles, which can lead to the mistaken belief that there must be a one-to-one correspondence between PDSA cycles and data points on an SPC chart. In other words, any detected freak, shift or trend is assumed to be directly linked to specific PDSA cycles testing particular actions.
+
+This is, however, far from always the case. PDSA cycles tend to run quickly (minutes, hours, days), while SPC charts reflect changes more slowly (days, weeks, months).
+
+Therefore, it is important for practitioners to recognise that SPC charts and PDSA cycles operate on different timescales and serve complementary but distinct purposes. SPC should be used as a broader monitoring tool to observe trends and shifts over time, while PDSA cycles focus on rapid, iterative testing and learning. Understanding this distinction helps ensure more effective use of both methods in quality improvement efforts.
 
 ## The control chart vs run chart debate
+
+It is a common and persistent misconception that control charts are inherently superior to run charts in detecting special cause variation (@carey2002b). Similarly, run charts and control charts are often viewed as fundamentally different methods, warranting distinct terminologies (@perla2011). We disagree with both notions.
+
+We refer to run charts and control charts collectively as SPC charts -- time series charts that use statistical tests to detect signs of special cause variation. These tests -- known as rules -- employ various techniques to identify patterns in data that are unlikely to arise in stable (i.e., purely random) processes.
+
+All SPC rules share a common basis: they rely on the position of data points relative to the process centre and/or spread. For a detailed discussion of these concepts, see Appendix \@ref(diagnostics), [Basic Statistical Concepts].
+
+Traditionally, control charts use rules based on sigma limits, while run charts apply rules based on the centre line. However, combining rules based on both centre and spread -- as we advocate throughout this book -- is not a new practice. Consider Rule #4 of the Western Electric rules — a run of eight or more consecutive data points on the same side of the centre line. This rule, which is independent of sigma limits, is grounded in the same statistical principle as the rule for unusually long runs.
+

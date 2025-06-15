@@ -71,6 +71,9 @@ fig:funnel-fig3
 fig:pareto-fig1
 fig:pareto-fig2
 fig:pareto-fig3
+fig:pitfalls-fig1
+fig:pitfalls-fig2
+fig:pitfalls-fig3
 fig:subgrouping-fig1
 fig:subgrouping-fig2
 fig:subgroups-fig3
@@ -176,6 +179,10 @@ high-volume-data
 scaling-up-charts
 common-pitfalls-to-avoid
 data-issues
+signal-fatigue-from-over-sensitive-spc-rules
+automatic-rephasing
+assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points
+the-control-chart-vs-run-chart-debate
 subgrouping
 too-large-subgroups-masking-meaningful-signals
 too-small-subgroups-revealing-unimportant-noise
@@ -216,7 +223,3 @@ naming-files-and-variables
 runs-limits
 resources
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-signal-fatigue-from-over-sensitive-spc-rules
-automatic-rephasing
-assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points
-the-control-chart-vs-run-chart-debate

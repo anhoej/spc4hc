@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,6 +328,10 @@ div.csl-indent {
 <li class="chapter" data-level="21" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html"><i class="fa fa-check"></i><b>21</b> Common Pitfalls to Avoid</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#data-issues"><i class="fa fa-check"></i><b>21.1</b> Data issues</a></li>
+<li class="chapter" data-level="21.2" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>21.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="21.3" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#automatic-rephasing"><i class="fa fa-check"></i><b>21.3</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="21.4" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>21.4</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="21.5" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>21.5</b> The control chart vs run chart debate</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
@@ -374,7 +378,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="B.5" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.5</b> Basic statistical concepts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
+<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two Types of Errors When Using SPC</a>
 <ul>
 <li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying the diagnostic error of SPC charts</a>
 <ul>
@@ -440,23 +444,23 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-06-01    13    32
- 2 2025-06-02    14    29
- 3 2025-06-03    16    33
- 4 2025-06-04    19    30
- 5 2025-06-05    13    32
- 6 2025-06-06    18    35
- 7 2025-06-07    19    29
- 8 2025-06-08    16    33
- 9 2025-06-09    16    34
-10 2025-06-10    11    27
-11 2025-06-11    13    32
-12 2025-06-12    12    26</code></pre>
+ 1 2025-06-03    13    32
+ 2 2025-06-04    14    29
+ 3 2025-06-05    16    33
+ 4 2025-06-06    19    30
+ 5 2025-06-07    13    32
+ 6 2025-06-08    18    35
+ 7 2025-06-09    19    29
+ 8 2025-06-10    16    33
+ 9 2025-06-11    16    34
+10 2025-06-12    11    27
+11 2025-06-13    13    32
+12 2025-06-14    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="r-notes.html#cb130-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
-<span id="cb130-2"><a href="r-notes.html#cb130-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
-<span id="cb130-3"><a href="r-notes.html#cb130-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-42-1.svg" width="960" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-notes.html#cb134-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
+<span id="cb134-2"><a href="r-notes.html#cb134-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
+<span id="cb134-3"><a href="r-notes.html#cb134-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.svg" width="960" /></p>
 <p>Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).</p>
 </div>
 <div id="importing-data-from-text-files" class="section level2 hasAnchor" number="26.3">
@@ -486,17 +490,17 @@ month,ha_infections,risk_days,deaths,patients
 <p>Note how the dates in the first column are formatted using the only unmistakeable way of writing dates: year-month-day (yyyy-mm-dd). We highly recommend to always store dates in this format, which also happens to be the international ISO standard for writing dates. Also, ISO dates, when used in file names, sort correctly and also have the advantage of being easily recognised as dates by R (and other statistical software).</p>
 <p>If dates are stored in any other format (e.g. dd-mm-yyyy), we may need to import them as character values and later convert them to dates using the as.Date() function.</p>
 <p>When reading data in R programmes for use in production environments, we recommend that you specify the data type (class) of each column using the colClasses argument.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="r-notes.html#cb132-1" tabindex="-1"></a><span class="co"># read data from file and assign to variable named d</span></span>
-<span id="cb132-2"><a href="r-notes.html#cb132-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/bacteremia.csv&#39;</span>,</span>
-<span id="cb132-3"><a href="r-notes.html#cb132-3" tabindex="-1"></a>              <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
-<span id="cb132-4"><a href="r-notes.html#cb132-4" tabindex="-1"></a>              <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="at">month         =</span> <span class="st">&#39;Date&#39;</span>,</span>
-<span id="cb132-5"><a href="r-notes.html#cb132-5" tabindex="-1"></a>                               <span class="at">ha_infections =</span> <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb132-6"><a href="r-notes.html#cb132-6" tabindex="-1"></a>                               <span class="at">risk_days     =</span> <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb132-7"><a href="r-notes.html#cb132-7" tabindex="-1"></a>                               <span class="at">deaths        =</span> <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb132-8"><a href="r-notes.html#cb132-8" tabindex="-1"></a>                               <span class="at">patients      =</span> <span class="st">&#39;integer&#39;</span>))</span>
-<span id="cb132-9"><a href="r-notes.html#cb132-9" tabindex="-1"></a></span>
-<span id="cb132-10"><a href="r-notes.html#cb132-10" tabindex="-1"></a><span class="co"># print the first six lines of data</span></span>
-<span id="cb132-11"><a href="r-notes.html#cb132-11" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-notes.html#cb136-1" tabindex="-1"></a><span class="co"># read data from file and assign to variable named d</span></span>
+<span id="cb136-2"><a href="r-notes.html#cb136-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/bacteremia.csv&#39;</span>,</span>
+<span id="cb136-3"><a href="r-notes.html#cb136-3" tabindex="-1"></a>              <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb136-4"><a href="r-notes.html#cb136-4" tabindex="-1"></a>              <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="at">month         =</span> <span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb136-5"><a href="r-notes.html#cb136-5" tabindex="-1"></a>                               <span class="at">ha_infections =</span> <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb136-6"><a href="r-notes.html#cb136-6" tabindex="-1"></a>                               <span class="at">risk_days     =</span> <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb136-7"><a href="r-notes.html#cb136-7" tabindex="-1"></a>                               <span class="at">deaths        =</span> <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb136-8"><a href="r-notes.html#cb136-8" tabindex="-1"></a>                               <span class="at">patients      =</span> <span class="st">&#39;integer&#39;</span>))</span>
+<span id="cb136-9"><a href="r-notes.html#cb136-9" tabindex="-1"></a></span>
+<span id="cb136-10"><a href="r-notes.html#cb136-10" tabindex="-1"></a><span class="co"># print the first six lines of data</span></span>
+<span id="cb136-11"><a href="r-notes.html#cb136-11" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 <pre><code>       month ha_infections risk_days deaths patients
 1 2017-01-01            24     32421     23      100
 2 2017-02-01            29     29349     22      105
@@ -504,8 +508,8 @@ month,ha_infections,risk_days,deaths,patients
 4 2017-04-01            16     29588     14       85
 5 2017-05-01            28     30856     17       98
 6 2017-06-01            16     30544     15       85</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-notes.html#cb134-1" tabindex="-1"></a><span class="co"># print the data structure</span></span>
-<span id="cb134-2"><a href="r-notes.html#cb134-2" tabindex="-1"></a><span class="fu">str</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-notes.html#cb138-1" tabindex="-1"></a><span class="co"># print the data structure</span></span>
+<span id="cb138-2"><a href="r-notes.html#cb138-2" tabindex="-1"></a><span class="fu">str</span>(d)</span></code></pre></div>
 <pre><code>&#39;data.frame&#39;:   24 obs. of  5 variables:
  $ month        : Date, format: &quot;2017-01-01&quot; &quot;2017-02-01&quot; ...
  $ ha_infections: int  24 29 26 16 28 16 14 18 27 30 ...
@@ -516,13 +520,13 @@ month,ha_infections,risk_days,deaths,patients
 <div id="manipulating-data-frames" class="section level2 hasAnchor" number="26.4">
 <h2><span class="header-section-number">D.4</span> Manipulating data frames<a href="r-notes.html#manipulating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will import the <a href="data-sets.html#ceasearian-section-delay">C-section</a> data set to demonstrate adding variables and aggregating data.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-notes.html#cb136-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/csection_delay.csv&#39;</span>,</span>
-<span id="cb136-2"><a href="r-notes.html#cb136-2" tabindex="-1"></a>              <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
-<span id="cb136-3"><a href="r-notes.html#cb136-3" tabindex="-1"></a>              <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="at">datetime =</span> <span class="st">&#39;POSIXct&#39;</span>,</span>
-<span id="cb136-4"><a href="r-notes.html#cb136-4" tabindex="-1"></a>                               <span class="at">month    =</span> <span class="st">&#39;Date&#39;</span>,</span>
-<span id="cb136-5"><a href="r-notes.html#cb136-5" tabindex="-1"></a>                               <span class="at">delay    =</span> <span class="st">&#39;integer&#39;</span>))</span>
-<span id="cb136-6"><a href="r-notes.html#cb136-6" tabindex="-1"></a></span>
-<span id="cb136-7"><a href="r-notes.html#cb136-7" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="r-notes.html#cb140-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/csection_delay.csv&#39;</span>,</span>
+<span id="cb140-2"><a href="r-notes.html#cb140-2" tabindex="-1"></a>              <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb140-3"><a href="r-notes.html#cb140-3" tabindex="-1"></a>              <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="at">datetime =</span> <span class="st">&#39;POSIXct&#39;</span>,</span>
+<span id="cb140-4"><a href="r-notes.html#cb140-4" tabindex="-1"></a>                               <span class="at">month    =</span> <span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb140-5"><a href="r-notes.html#cb140-5" tabindex="-1"></a>                               <span class="at">delay    =</span> <span class="st">&#39;integer&#39;</span>))</span>
+<span id="cb140-6"><a href="r-notes.html#cb140-6" tabindex="-1"></a></span>
+<span id="cb140-7"><a href="r-notes.html#cb140-7" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 <pre><code>             datetime      month delay
 1 2016-01-06 03:55:40 2016-01-01    22
 2 2016-01-06 20:52:34 2016-01-01    22
@@ -534,9 +538,9 @@ month,ha_infections,risk_days,deaths,patients
 <div id="adding-variables-to-data-frames" class="section level3 hasAnchor" number="26.4.1">
 <h3><span class="header-section-number">D.4.1</span> Adding variables to data frames<a href="r-notes.html#adding-variables-to-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The delay variable is the number of minutes from decision to perform a C-section to delivery of the baby. The standard target value for grade 2 C-sections is less than 30 minutes. If we want to plot the proportion of C-sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-notes.html#cb138-1" tabindex="-1"></a>d<span class="sc">$</span>ontime <span class="ot">&lt;-</span> d<span class="sc">$</span>delay <span class="sc">&lt;</span> <span class="dv">30</span>  <span class="co"># Dichotomise delays.</span></span>
-<span id="cb138-2"><a href="r-notes.html#cb138-2" tabindex="-1"></a></span>
-<span id="cb138-3"><a href="r-notes.html#cb138-3" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="r-notes.html#cb142-1" tabindex="-1"></a>d<span class="sc">$</span>ontime <span class="ot">&lt;-</span> d<span class="sc">$</span>delay <span class="sc">&lt;</span> <span class="dv">30</span>  <span class="co"># Dichotomise delays.</span></span>
+<span id="cb142-2"><a href="r-notes.html#cb142-2" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="r-notes.html#cb142-3" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 <pre><code>             datetime      month delay ontime
 1 2016-01-06 03:55:40 2016-01-01    22   TRUE
 2 2016-01-06 20:52:34 2016-01-01    22   TRUE
@@ -548,17 +552,17 @@ month,ha_infections,risk_days,deaths,patients
 <div id="aggregating-data-frames" class="section level3 hasAnchor" number="26.4.2">
 <h3><span class="header-section-number">D.4.2</span> Aggregating data frames<a href="r-notes.html#aggregating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Then we aggregate data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list collapsing into a one-row data frame. Finally, we combine the elements back into a data frame again.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="r-notes.html#cb140-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">split</span>(d, d<span class="sc">$</span>month)                      <span class="co"># Split data frame by month.</span></span>
-<span id="cb140-2"><a href="r-notes.html#cb140-2" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(d2, <span class="cf">function</span>(x) {               <span class="co"># Apply summaries to each group.</span></span>
-<span id="cb140-3"><a href="r-notes.html#cb140-3" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">month     =</span> x<span class="sc">$</span>month[<span class="dv">1</span>],</span>
-<span id="cb140-4"><a href="r-notes.html#cb140-4" tabindex="-1"></a>             <span class="at">avg_delay =</span> <span class="fu">mean</span>(x<span class="sc">$</span>delay),</span>
-<span id="cb140-5"><a href="r-notes.html#cb140-5" tabindex="-1"></a>             <span class="at">n         =</span> <span class="fu">nrow</span>(x),</span>
-<span id="cb140-6"><a href="r-notes.html#cb140-6" tabindex="-1"></a>             <span class="at">n_ontime  =</span> <span class="fu">sum</span>(x<span class="sc">$</span>ontime))</span>
-<span id="cb140-7"><a href="r-notes.html#cb140-7" tabindex="-1"></a>})</span>
-<span id="cb140-8"><a href="r-notes.html#cb140-8" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind,                          <span class="co"># Combine groups into data frame.</span></span>
-<span id="cb140-9"><a href="r-notes.html#cb140-9" tabindex="-1"></a>              <span class="fu">c</span>(d2, <span class="at">make.row.names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb140-10"><a href="r-notes.html#cb140-10" tabindex="-1"></a></span>
-<span id="cb140-11"><a href="r-notes.html#cb140-11" tabindex="-1"></a><span class="fu">head</span>(d2)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="r-notes.html#cb144-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">split</span>(d, d<span class="sc">$</span>month)                      <span class="co"># Split data frame by month.</span></span>
+<span id="cb144-2"><a href="r-notes.html#cb144-2" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(d2, <span class="cf">function</span>(x) {               <span class="co"># Apply summaries to each group.</span></span>
+<span id="cb144-3"><a href="r-notes.html#cb144-3" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">month     =</span> x<span class="sc">$</span>month[<span class="dv">1</span>],</span>
+<span id="cb144-4"><a href="r-notes.html#cb144-4" tabindex="-1"></a>             <span class="at">avg_delay =</span> <span class="fu">mean</span>(x<span class="sc">$</span>delay),</span>
+<span id="cb144-5"><a href="r-notes.html#cb144-5" tabindex="-1"></a>             <span class="at">n         =</span> <span class="fu">nrow</span>(x),</span>
+<span id="cb144-6"><a href="r-notes.html#cb144-6" tabindex="-1"></a>             <span class="at">n_ontime  =</span> <span class="fu">sum</span>(x<span class="sc">$</span>ontime))</span>
+<span id="cb144-7"><a href="r-notes.html#cb144-7" tabindex="-1"></a>})</span>
+<span id="cb144-8"><a href="r-notes.html#cb144-8" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind,                          <span class="co"># Combine groups into data frame.</span></span>
+<span id="cb144-9"><a href="r-notes.html#cb144-9" tabindex="-1"></a>              <span class="fu">c</span>(d2, <span class="at">make.row.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb144-10"><a href="r-notes.html#cb144-10" tabindex="-1"></a></span>
+<span id="cb144-11"><a href="r-notes.html#cb144-11" tabindex="-1"></a><span class="fu">head</span>(d2)</span></code></pre></div>
 <pre><code>       month avg_delay  n n_ontime
 1 2016-01-01  23.85714  7        7
 2 2016-02-01  24.45455 11        9
@@ -566,7 +570,7 @@ month,ha_infections,risk_days,deaths,patients
 4 2016-04-01  22.66667  9        9
 5 2016-05-01  22.50000  8        8
 6 2016-06-01  22.00000  5        4</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="r-notes.html#cb142-1" tabindex="-1"></a><span class="fu">str</span>(d2)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="r-notes.html#cb146-1" tabindex="-1"></a><span class="fu">str</span>(d2)</span></code></pre></div>
 <pre><code>&#39;data.frame&#39;:   24 obs. of  4 variables:
  $ month    : Date, format: &quot;2016-01-01&quot; &quot;2016-02-01&quot; ...
  $ avg_delay: num  23.9 24.5 22.5 22.7 22.5 ...
@@ -582,58 +586,58 @@ month,ha_infections,risk_days,deaths,patients
 <h3><span class="header-section-number">D.5.1</span> Cutting dates and datetimes<a href="r-notes.html#cutting-dates-and-datetimes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the C-section data set the month variable represents the time period of each delivery used for subgrouping data, that is counting events and cases per month. The month variable was created by “cutting” the datetime variable into monthly chunks.</p>
 <p>Converting dates and datetimes into time period – for example weeks, months or quarters – is a common task, not the least in SPC. It is easily done using the cut() function, which is a generic function with many uses. However, the syntax for cutting dates is poorly documented. To cut dates we use two arguments: first, the vector of date(time)s to be cut; second, the interval we want.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="r-notes.html#cb144-1" tabindex="-1"></a><span class="co"># R&#39;s date of birth (using parentheses to print the result)</span></span>
-<span id="cb144-2"><a href="r-notes.html#cb144-2" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2000-02-29&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="r-notes.html#cb148-1" tabindex="-1"></a><span class="co"># R&#39;s date of birth (using parentheses to print the result)</span></span>
+<span id="cb148-2"><a href="r-notes.html#cb148-2" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2000-02-29&#39;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;2000-02-29&quot;</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="r-notes.html#cb146-1" tabindex="-1"></a><span class="co"># The first day of the month of R&#39;s date of birth</span></span>
-<span id="cb146-2"><a href="r-notes.html#cb146-2" tabindex="-1"></a><span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="r-notes.html#cb150-1" tabindex="-1"></a><span class="co"># The first day of the month of R&#39;s date of birth</span></span>
+<span id="cb150-2"><a href="r-notes.html#cb150-2" tabindex="-1"></a><span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>)</span></code></pre></div>
 <pre><code>[1] 2000-02-01
 Levels: 2000-02-01</code></pre>
 <p>Notice that cut() returns a factor. We need to convert it back to a date:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="r-notes.html#cb148-1" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="r-notes.html#cb152-1" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;2000-02-01&quot;</code></pre>
 <p>The breaks argument accepts a character string that qualifies for a time period, for example:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="r-notes.html#cb150-1" tabindex="-1"></a><span class="co"># Cutting to the first day of a week (monday)</span></span>
-<span id="cb150-2"><a href="r-notes.html#cb150-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;week&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="r-notes.html#cb154-1" tabindex="-1"></a><span class="co"># Cutting to the first day of a week (monday)</span></span>
+<span id="cb154-2"><a href="r-notes.html#cb154-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;week&#39;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;2000-02-28&quot;</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="r-notes.html#cb152-1" tabindex="-1"></a><span class="co"># Quarter</span></span>
-<span id="cb152-2"><a href="r-notes.html#cb152-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;quarter&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="r-notes.html#cb156-1" tabindex="-1"></a><span class="co"># Quarter</span></span>
+<span id="cb156-2"><a href="r-notes.html#cb156-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;quarter&#39;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;2000-01-01&quot;</code></pre>
 <p>We can even specify multiples of time periods in the breaks argument:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="r-notes.html#cb154-1" tabindex="-1"></a><span class="co"># The first day of biweekly periods</span></span>
-<span id="cb154-2"><a href="r-notes.html#cb154-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;2 weeks&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="r-notes.html#cb158-1" tabindex="-1"></a><span class="co"># The first day of biweekly periods</span></span>
+<span id="cb158-2"><a href="r-notes.html#cb158-2" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="st">&#39;2 weeks&#39;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;2000-02-28&quot;</code></pre>
 <p>Cutting dates is such a common task that we may want to make our own function for the purpose:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="r-notes.html#cb156-1" tabindex="-1"></a>cutdate <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>) {</span>
-<span id="cb156-2"><a href="r-notes.html#cb156-2" tabindex="-1"></a>  <span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> breaks))</span>
-<span id="cb156-3"><a href="r-notes.html#cb156-3" tabindex="-1"></a>}</span>
-<span id="cb156-4"><a href="r-notes.html#cb156-4" tabindex="-1"></a></span>
-<span id="cb156-5"><a href="r-notes.html#cb156-5" tabindex="-1"></a><span class="fu">cutdate</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="r-notes.html#cb160-1" tabindex="-1"></a>cutdate <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">breaks =</span> <span class="st">&#39;month&#39;</span>) {</span>
+<span id="cb160-2"><a href="r-notes.html#cb160-2" tabindex="-1"></a>  <span class="fu">as.Date</span>(<span class="fu">cut</span>(x, <span class="at">breaks =</span> breaks))</span>
+<span id="cb160-3"><a href="r-notes.html#cb160-3" tabindex="-1"></a>}</span>
+<span id="cb160-4"><a href="r-notes.html#cb160-4" tabindex="-1"></a></span>
+<span id="cb160-5"><a href="r-notes.html#cb160-5" tabindex="-1"></a><span class="fu">cutdate</span>(x)</span></code></pre></div>
 <pre><code>[1] &quot;2000-02-01&quot;</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="r-notes.html#cb158-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;week&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="r-notes.html#cb162-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;week&#39;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;2000-02-28&quot;</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="r-notes.html#cb160-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;quarter&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="r-notes.html#cb164-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;quarter&#39;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;2000-01-01&quot;</code></pre>
 </div>
 <div id="getting-age-from-date-of-birth" class="section level3 hasAnchor" number="26.5.2">
 <h3><span class="header-section-number">D.5.2</span> Getting age from date of birth<a href="r-notes.html#getting-age-from-date-of-birth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In healthcare we often need to know the patient’s age on a certain date. By “age” we usually mean a whole number of years since the patient’s date of birth. However, year is not a well defined unit of time, and age is really a continuous variable. Therefore, we are usually better off knowing the patient’s age in days, which in turn can always be converted to decimal or integer years if necessary.</p>
 <p>How old is R today?</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="r-notes.html#cb162-1" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2025-04-24&#39;</span>)</span>
-<span id="cb162-2"><a href="r-notes.html#cb162-2" tabindex="-1"></a>r_dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2000-02-29&#39;</span>)</span>
-<span id="cb162-3"><a href="r-notes.html#cb162-3" tabindex="-1"></a></span>
-<span id="cb162-4"><a href="r-notes.html#cb162-4" tabindex="-1"></a><span class="co"># calculate age in days</span></span>
-<span id="cb162-5"><a href="r-notes.html#cb162-5" tabindex="-1"></a>(age_in_days <span class="ot">&lt;-</span> today <span class="sc">-</span> r_dob)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="r-notes.html#cb166-1" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2025-04-24&#39;</span>)</span>
+<span id="cb166-2"><a href="r-notes.html#cb166-2" tabindex="-1"></a>r_dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2000-02-29&#39;</span>)</span>
+<span id="cb166-3"><a href="r-notes.html#cb166-3" tabindex="-1"></a></span>
+<span id="cb166-4"><a href="r-notes.html#cb166-4" tabindex="-1"></a><span class="co"># calculate age in days</span></span>
+<span id="cb166-5"><a href="r-notes.html#cb166-5" tabindex="-1"></a>(age_in_days <span class="ot">&lt;-</span> today <span class="sc">-</span> r_dob)</span></code></pre></div>
 <pre><code>Time difference of 9186 days</code></pre>
 <p>When subtracting dates we get back a difftime object. Usually we want to convert this to an integer:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="r-notes.html#cb164-1" tabindex="-1"></a><span class="co"># convert from difftime object to integer:</span></span>
-<span id="cb164-2"><a href="r-notes.html#cb164-2" tabindex="-1"></a>(age_in_days <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(age_in_days))</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="r-notes.html#cb168-1" tabindex="-1"></a><span class="co"># convert from difftime object to integer:</span></span>
+<span id="cb168-2"><a href="r-notes.html#cb168-2" tabindex="-1"></a>(age_in_days <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(age_in_days))</span></code></pre></div>
 <pre><code>[1] 9186</code></pre>
 <p>A calendar year is on average a little less than 365.25 days. We can converts age in days to age in years:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="r-notes.html#cb166-1" tabindex="-1"></a>(age_in_years <span class="ot">&lt;-</span> age_in_days <span class="sc">/</span> <span class="fl">365.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="r-notes.html#cb170-1" tabindex="-1"></a>(age_in_years <span class="ot">&lt;-</span> age_in_days <span class="sc">/</span> <span class="fl">365.25</span>)</span></code></pre></div>
 <pre><code>[1] 25.1499</code></pre>
 <p>Putting everything together:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="r-notes.html#cb168-1" tabindex="-1"></a>(age_in_years <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(today <span class="sc">-</span> r_dob) <span class="sc">/</span> <span class="fl">365.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="r-notes.html#cb172-1" tabindex="-1"></a>(age_in_years <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(today <span class="sc">-</span> r_dob) <span class="sc">/</span> <span class="fl">365.25</span>)</span></code></pre></div>
 <pre><code>[1] 25.1499</code></pre>
 <p>Notice that this calculation may be off by up to one day depending on the number and position of leap years. However, this is far better than relying on age expressed in whole years.</p>
 </div>

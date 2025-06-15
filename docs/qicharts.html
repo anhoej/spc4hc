@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,6 +328,10 @@ div.csl-indent {
 <li class="chapter" data-level="21" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html"><i class="fa fa-check"></i><b>21</b> Common Pitfalls to Avoid</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#data-issues"><i class="fa fa-check"></i><b>21.1</b> Data issues</a></li>
+<li class="chapter" data-level="21.2" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>21.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="21.3" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#automatic-rephasing"><i class="fa fa-check"></i><b>21.3</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="21.4" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>21.4</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="21.5" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>21.5</b> The control chart vs run chart debate</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
@@ -374,7 +378,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="B.5" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.5</b> Basic statistical concepts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two types of errors when using SPC</a>
+<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two Types of Errors When Using SPC</a>
 <ul>
 <li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying the diagnostic error of SPC charts</a>
 <ul>
@@ -491,6 +495,8 @@ Figure 10.3: I chart with one data point excluded from calculations
 <p>In production industry this technique is referred to as phase one and phase two studies. In healthcare freezing is especially useful when we have historical data from before the start of some type of intervention or improvement programme. When plotting future data with the centre line and control limits from a stable baseline period shifts and trends will show up faster than if the limits were recalculated with every new data point.</p>
 <p>The cdi dataset comes with qicharts2 and contains monthly counts of infections two years before and one year after the initiation of an improvement programme. Check the documentation for details, <code>?cdi</code>.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="qicharts.html#cb63-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">freeze =</span> <span class="dv">24</span>)</span></code></pre></div>
+<pre><code>## Warning in scale_x_datetime(): A &lt;numeric&gt; value was passed to a Datetime scale.
+## ℹ The value was converted to a &lt;POSIXct&gt; object.</code></pre>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi1"></span>
 <img src="_main_files/figure-html/qicharts-cdi1-1.svg" alt="Infections before and after intervention" width="672" />
 <p class="caption">
@@ -502,7 +508,7 @@ Figure 10.4: Infections before and after intervention
 <div id="splitting-chart-by-period" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Splitting chart by period<a href="qicharts.html#splitting-chart-by-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When a sustained shift in data has been discovered <em>and</em> the cause is known it is allowable to split the graph by periods. We use the part argument for this (Figure <a href="qicharts.html#fig:qicharts-cdi2">10.5</a>).</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="qicharts.html#cb64-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="qicharts.html#cb65-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi2"></span>
 <img src="_main_files/figure-html/qicharts-cdi2-1.svg" alt="Splitting using index" width="672" />
 <p class="caption">
@@ -510,7 +516,7 @@ Figure 10.5: Splitting using index
 </p>
 </div>
 <p>The part argument takes either the indices of the data points to split after, or a categorical variable naming the time periods in which case the periods will be labelled (Figure <a href="qicharts.html#fig:qicharts-cdi3">10.6</a>).</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="qicharts.html#cb65-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="qicharts.html#cb66-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi3"></span>
 <img src="_main_files/figure-html/qicharts-cdi3-1.svg" alt="Splitting using a period variable" width="672" />
 <p class="caption">
@@ -526,7 +532,7 @@ Figure 10.6: Splitting using a period variable
 </ul>
 <p>If any of these conditions is not met we should rather look for the root cause and – if need be – eliminate it.</p>
 <p>Because we now have data from two very different but stable processes we may choose to add control limits to better detect future changes, especially freaks, in process behaviour (Figure <a href="qicharts.html#fig:qicharts-cdi4">10.7</a>).</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="qicharts.html#cb66-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period, <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="qicharts.html#cb67-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period, <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi4"></span>
 <img src="_main_files/figure-html/qicharts-cdi4-1.svg" alt="Splitting using a period variable" width="672" />
 <p class="caption">
@@ -538,8 +544,8 @@ Figure 10.7: Splitting using a period variable
 <h2><span class="header-section-number">10.6</span> Small multiple plots for multivariate data<a href="qicharts.html#small-multiple-plots-for-multivariate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Process data is all about time. But often data – not the least in healthcare – have more dimensions, which are important to understand in order to interpret data correctly.</p>
 <p>For example, the hospital_infections dataset, which is also included in the qicharts2 package, contains monthly counts of three types of hospital infections: bacteremia (BAC), C. diff. (CDI), and urinary tract infections (UTI) from six hospitals: AHH, BFH, BOH, HGH, NOH, RGH.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="qicharts.html#cb67-1" tabindex="-1"></a><span class="co"># show the first six rows of the hospitals_infections dataset</span></span>
-<span id="cb67-2"><a href="qicharts.html#cb67-2" tabindex="-1"></a><span class="fu">head</span>(hospital_infections)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="qicharts.html#cb68-1" tabindex="-1"></a><span class="co"># show the first six rows of the hospitals_infections dataset</span></span>
+<span id="cb68-2"><a href="qicharts.html#cb68-2" tabindex="-1"></a><span class="fu">head</span>(hospital_infections)</span></code></pre></div>
 <pre><code>##   hospital infection      month  n     days
 ## 1      AHH       BAC 2015-01-01 17 17233.67
 ## 2      AHH       BAC 2015-02-01 18 15308.25
@@ -549,14 +555,14 @@ Figure 10.7: Splitting using a period variable
 ## 6      AHH       BAC 2015-06-01 14 15660.04</code></pre>
 <p>In addition to the time dimension, these data have two extra dimensions, infection and hospital.</p>
 <p>Figure <a href="qicharts.html#fig:qicharts-hais1">10.8</a> shows the total (aggregated) monthly counts of hospital associated urinary tract infections from six hospitals.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="qicharts.html#cb69-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb69-2"><a href="qicharts.html#cb69-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections,</span>
-<span id="cb69-3"><a href="qicharts.html#cb69-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb69-4"><a href="qicharts.html#cb69-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb69-5"><a href="qicharts.html#cb69-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb69-6"><a href="qicharts.html#cb69-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
-<span id="cb69-7"><a href="qicharts.html#cb69-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb69-8"><a href="qicharts.html#cb69-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="qicharts.html#cb70-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb70-2"><a href="qicharts.html#cb70-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections,</span>
+<span id="cb70-3"><a href="qicharts.html#cb70-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
+<span id="cb70-4"><a href="qicharts.html#cb70-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb70-5"><a href="qicharts.html#cb70-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb70-6"><a href="qicharts.html#cb70-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
+<span id="cb70-7"><a href="qicharts.html#cb70-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb70-8"><a href="qicharts.html#cb70-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais1"></span>
 <img src="_main_files/figure-html/qicharts-hais1-1.svg" alt="Aggregated U chart of urinary tract infections from six hospital" width="672" />
 <p class="caption">
@@ -564,16 +570,16 @@ Figure 10.8: Aggregated U chart of urinary tract infections from six hospital
 </p>
 </div>
 <p>Figure <a href="qicharts.html#fig:qicharts-hais2">10.9</a> shows the same data as Figure <a href="qicharts.html#fig:qicharts-hais1">10.8</a>, but this time data have been stratified into so-called small multiple plots – one plot per hospital.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="qicharts.html#cb70-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb70-2"><a href="qicharts.html#cb70-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
-<span id="cb70-3"><a href="qicharts.html#cb70-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb70-4"><a href="qicharts.html#cb70-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb70-5"><a href="qicharts.html#cb70-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb70-6"><a href="qicharts.html#cb70-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,                     <span class="co"># stratify by hospital</span></span>
-<span id="cb70-7"><a href="qicharts.html#cb70-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,                             <span class="co"># two-column arrangement of plots</span></span>
-<span id="cb70-8"><a href="qicharts.html#cb70-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
-<span id="cb70-9"><a href="qicharts.html#cb70-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb70-10"><a href="qicharts.html#cb70-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="qicharts.html#cb71-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb71-2"><a href="qicharts.html#cb71-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
+<span id="cb71-3"><a href="qicharts.html#cb71-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
+<span id="cb71-4"><a href="qicharts.html#cb71-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb71-5"><a href="qicharts.html#cb71-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb71-6"><a href="qicharts.html#cb71-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,                     <span class="co"># stratify by hospital</span></span>
+<span id="cb71-7"><a href="qicharts.html#cb71-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,                             <span class="co"># two-column arrangement of plots</span></span>
+<span id="cb71-8"><a href="qicharts.html#cb71-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
+<span id="cb71-9"><a href="qicharts.html#cb71-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb71-10"><a href="qicharts.html#cb71-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais2"></span>
 <img src="_main_files/figure-html/qicharts-hais2-1.svg" alt="Stratified (small multiple) U charts of urinary tract infections from six hospital" width="672" />
 <p class="caption">
@@ -582,16 +588,16 @@ Figure 10.9: Stratified (small multiple) U charts of urinary tract infections fr
 </div>
 <p>In the litterature, small multiples are also known as trellis, lattice, or grid plots.</p>
 <p>Likewise, we may construct a small multiple plot of different infection types from one hospital (Figure <a href="qicharts.html#fig:qicharts-hais3">10.10</a>).</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="qicharts.html#cb71-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb71-2"><a href="qicharts.html#cb71-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
-<span id="cb71-3"><a href="qicharts.html#cb71-3" tabindex="-1"></a>                      hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
-<span id="cb71-4"><a href="qicharts.html#cb71-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb71-5"><a href="qicharts.html#cb71-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb71-6"><a href="qicharts.html#cb71-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,                   <span class="co"># stratify by infection type</span></span>
-<span id="cb71-7"><a href="qicharts.html#cb71-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
-<span id="cb71-8"><a href="qicharts.html#cb71-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb71-9"><a href="qicharts.html#cb71-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb71-10"><a href="qicharts.html#cb71-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="qicharts.html#cb72-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb72-2"><a href="qicharts.html#cb72-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
+<span id="cb72-3"><a href="qicharts.html#cb72-3" tabindex="-1"></a>                      hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
+<span id="cb72-4"><a href="qicharts.html#cb72-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb72-5"><a href="qicharts.html#cb72-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb72-6"><a href="qicharts.html#cb72-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,                   <span class="co"># stratify by infection type</span></span>
+<span id="cb72-7"><a href="qicharts.html#cb72-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
+<span id="cb72-8"><a href="qicharts.html#cb72-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb72-9"><a href="qicharts.html#cb72-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb72-10"><a href="qicharts.html#cb72-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais3"></span>
 <img src="_main_files/figure-html/qicharts-hais3-1.svg" alt="U charts from one hospital stratified by infection type" width="672" />
 <p class="caption">
@@ -599,16 +605,16 @@ Figure 10.10: U charts from one hospital stratified by infection type
 </p>
 </div>
 <p>By default, <code>qic()</code> uses fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure <a href="qicharts.html#fig:qicharts-hais4">10.11</a> we use individual y-axes.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="qicharts.html#cb72-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb72-2"><a href="qicharts.html#cb72-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
-<span id="cb72-3"><a href="qicharts.html#cb72-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb72-4"><a href="qicharts.html#cb72-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb72-5"><a href="qicharts.html#cb72-5" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,</span>
-<span id="cb72-6"><a href="qicharts.html#cb72-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,                      <span class="co"># free y-axes</span></span>
-<span id="cb72-7"><a href="qicharts.html#cb72-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
-<span id="cb72-8"><a href="qicharts.html#cb72-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb72-9"><a href="qicharts.html#cb72-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb72-10"><a href="qicharts.html#cb72-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="qicharts.html#cb73-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb73-2"><a href="qicharts.html#cb73-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
+<span id="cb73-3"><a href="qicharts.html#cb73-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb73-4"><a href="qicharts.html#cb73-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb73-5"><a href="qicharts.html#cb73-5" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,</span>
+<span id="cb73-6"><a href="qicharts.html#cb73-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,                      <span class="co"># free y-axes</span></span>
+<span id="cb73-7"><a href="qicharts.html#cb73-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
+<span id="cb73-8"><a href="qicharts.html#cb73-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb73-9"><a href="qicharts.html#cb73-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb73-10"><a href="qicharts.html#cb73-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais4"></span>
 <img src="_main_files/figure-html/qicharts-hais4-1.svg" alt="Small multiple plot with individual y-axes" width="672" />
 <p class="caption">
@@ -617,15 +623,15 @@ Figure 10.11: Small multiple plot with individual y-axes
 </div>
 <p>The decision about when to use fixed or free axis scales should be taken deliberately depending on the purpose of the plot. Sometimes it may even be useful to display both plots with fixed and free axes side by side.</p>
 <p>Finally, we may want to display both dimensions, infection and hospital, at the same time as in Figure <a href="qicharts.html#fig:qicharts-hais5">10.12</a>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="qicharts.html#cb73-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb73-2"><a href="qicharts.html#cb73-2" tabindex="-1"></a>    <span class="at">data     =</span> hospital_infections,</span>
-<span id="cb73-3"><a href="qicharts.html#cb73-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb73-4"><a href="qicharts.html#cb73-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb73-5"><a href="qicharts.html#cb73-5" tabindex="-1"></a>    <span class="at">facets   =</span> infection <span class="sc">~</span> hospital,         <span class="co"># two-dimensional faceting</span></span>
-<span id="cb73-6"><a href="qicharts.html#cb73-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,</span>
-<span id="cb73-7"><a href="qicharts.html#cb73-7" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb73-8"><a href="qicharts.html#cb73-8" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb73-9"><a href="qicharts.html#cb73-9" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="qicharts.html#cb74-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb74-2"><a href="qicharts.html#cb74-2" tabindex="-1"></a>    <span class="at">data     =</span> hospital_infections,</span>
+<span id="cb74-3"><a href="qicharts.html#cb74-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb74-4"><a href="qicharts.html#cb74-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb74-5"><a href="qicharts.html#cb74-5" tabindex="-1"></a>    <span class="at">facets   =</span> infection <span class="sc">~</span> hospital,         <span class="co"># two-dimensional faceting</span></span>
+<span id="cb74-6"><a href="qicharts.html#cb74-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,</span>
+<span id="cb74-7"><a href="qicharts.html#cb74-7" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb74-8"><a href="qicharts.html#cb74-8" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb74-9"><a href="qicharts.html#cb74-9" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais5"></span>
 <img src="_main_files/figure-html/qicharts-hais5-1.svg" alt="Hospital infections stratified by infection and hospital" width="672" />
 <p class="caption">
