@@ -183,6 +183,7 @@ signal-fatigue-from-over-sensitive-spc-rules
 automatic-rephasing
 assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points
 the-control-chart-vs-run-chart-debate
+confusing-the-voice-of-the-customer-with-the-voice-of-the-process
 subgrouping
 too-large-subgroups-masking-meaningful-signals
 too-small-subgroups-revealing-unimportant-noise

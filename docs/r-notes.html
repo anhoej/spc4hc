@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-06-16" />
+<meta name="date" content="2025-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -332,6 +332,7 @@ div.csl-indent {
 <li class="chapter" data-level="21.3" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#automatic-rephasing"><i class="fa fa-check"></i><b>21.3</b> Automatic rephasing</a></li>
 <li class="chapter" data-level="21.4" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>21.4</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
 <li class="chapter" data-level="21.5" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>21.5</b> The control chart vs run chart debate</a></li>
+<li class="chapter" data-level="21.6" data-path="common-pitfalls-to-avoid.html"><a href="common-pitfalls-to-avoid.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>21.6</b> Confusing the voice of the customer with the voice of the process</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>22</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
@@ -444,18 +445,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-06-04    13    32
- 2 2025-06-05    14    29
- 3 2025-06-06    16    33
- 4 2025-06-07    19    30
- 5 2025-06-08    13    32
- 6 2025-06-09    18    35
- 7 2025-06-10    19    29
- 8 2025-06-11    16    33
- 9 2025-06-12    16    34
-10 2025-06-13    11    27
-11 2025-06-14    13    32
-12 2025-06-15    12    26</code></pre>
+ 1 2025-06-05    13    32
+ 2 2025-06-06    14    29
+ 3 2025-06-07    16    33
+ 4 2025-06-08    19    30
+ 5 2025-06-09    13    32
+ 6 2025-06-10    18    35
+ 7 2025-06-11    19    29
+ 8 2025-06-12    16    33
+ 9 2025-06-13    16    34
+10 2025-06-14    11    27
+11 2025-06-15    13    32
+12 2025-06-16    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-notes.html#cb134-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb134-2"><a href="r-notes.html#cb134-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
