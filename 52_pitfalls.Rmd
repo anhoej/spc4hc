@@ -3,6 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+
 # Common Pitfalls to Avoid
 
 ```{r, echo=FALSE}
@@ -37,6 +38,30 @@ Apart from the risk of applying too many rules, the rules themselves may also be
 To make matters worse, some practitioners deliberately tighten control limits in an attempt to increase the sensitivity of the sigma rule. This behaviour often stems from another common mistake: using the overall standard deviation to calculate control limits [@wheeler2010; @wheeler2016]. As emphasised repeatedly throughout this book, the overall variation is not appropriate for this purpose, as it includes both common cause and special cause variation -- ultimately inflating the control limits. Inflated limits can, in turn, prompt misguided attempts to narrow them artificially. Instead, control limits, set at ±3-sigma from the centre line, should be based on the estimated within-subgroup standard deviation from rationally formed subgroups. This approach captures common cause variation and provides a sound basis for meaningful process monitoring and improvement.
 
 To avoid signal fatigue -- which, at best, results in wasted effort from chasing false signals -- we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book -- the two runs rules and the 3-sigma rule -- have been deliberately designed to detect patterns indicative of one or more of the types of variation most commonly encountered in healthcare improvement: freaks, shifts, trends or cycles, while keeping acceptable false alarm rates.
+
+## Confusing the voice of the customer with the voice of the process
+
+"Hearing voices" is essential to effective SPC implementation. Two voices demand close attention: the voice of the customer and the voice of the process. Both are important, but confusing one for the other  can lead to misguided actions, wasted effort, and poor decision-making.
+
+The voice of the customer refers to the expected or desired outcomes of the process, while the voice of the process reflects its actual capability and stability regardless of what the customer wants.
+
+The voice of the customer is often expressed through specification limits that define the desired level of outcomes. These limits may take the form of an upper or lower acceptance threshold, or an interval specifying the acceptable range for a given outcome.  For example, based on literature reviews or results from comparable units, it may be determined that an acute caesarean section should be completed within 30 minutes of the decision to operate. Any procedure taking longer than this would be considered unacceptable.
+
+If we listen only to the voice of the customer, it may be tempting to treat any caesarean section taking longer than 30 minutes as a special cause -- and perhaps even initiate a root cause analysis in each case. However, without also considering the voice of the process -- which tells us whether the process is stable and what it is actually capable of, as indicated by the control limits -- such an approach is flawed.
+
+Unacceptable outcomes may well arise from highly stable and predictable processes -- and conversely, acceptable outcomes may result from unstable ones. Before taking action based on specific outcomes, we must first determine whether they are the result of common cause or special cause variation. This distinction is crucial, as each type of variation calls for a fundamentally different approach to improvement.
+
+As detailed in Chapter \@ref(variation), [Understanding Variation], addressing common cause variation requires a thorough redesign of the entire process, while addressing special cause variation involves identifying the root causes of the special cause(s) and either eliminating or reinforcing them, depending on whether they are undesirable or beneficial. 
+
+The long-term goal of any improvement initiative is to establish stable processes that consistently deliver acceptable results. 
+
+The two voices and the corresponding four appropriate actions are summarised in the table below:
+
+|                          | **Process Stable**                      | **Process Unstable**                      |
+| ------------------------ | --------------------------------------- | ----------------------------------------- |
+| **Customer Satisfied**   | OK -- hands off and continue to monitor | Trouble ahead -- stabilise the process    |
+| **Customer Unsatisfied** | Trouble now -- revise the process       | Chaos -- revise and stabilise the process |
+Table: The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.
 
 ## Automatic rephasing
 
@@ -91,14 +116,6 @@ Rephasing *may* be appropriate when the following conditions are met:
 
 If any of these conditions is not met, we should rather seek to understand the nature and causes of any shift, following the strategy outlined in Chapter \@ref(using), [Using SPC in Healthcare].
 
-## Assuming a one-to-one link between PDSA cycles and data points
-
-While this issue may not result in faulty SPC analyses, it often causes confusion among practitioners. SPC is frequently taught alongside improvement work using PDSA cycles, which can lead to the mistaken belief that there must be a one-to-one correspondence between PDSA cycles and data points on an SPC chart. In other words, any detected freak, shift or trend is assumed to be directly linked to specific PDSA cycles testing particular actions. Conversely, the absence of signals may be misinterpreted as evidence that a PDSA cycle has failed.
-
-This is, however, far from always the case. PDSA cycles tend to run quickly (minutes, hours, days), while SPC charts reflect changes more slowly (days, weeks, months).
-
-Therefore, it is important for practitioners to recognise that SPC charts and PDSA cycles operate on different timescales and serve complementary but distinct purposes. SPC should be used as a broader monitoring tool to observe trends and shifts over time, while PDSA cycles focus on rapid, iterative testing and learning. Understanding this distinction helps ensure more effective use of both methods in quality improvement efforts.
-
 ## The control chart vs run chart debate
 
 It is a common and persistent misconception that control charts are inherently superior to run charts in detecting special cause variation (e.g. @carey2002b). Similarly, run charts and control charts are often viewed as fundamentally different methods, warranting distinct terminologies (e.g. @perla2011). We disagree with both notions.
@@ -117,27 +134,10 @@ Additionally, using the median rather than the mean as the centre line effective
 
 Finally, because runs analysis is most effective for detecting minor to moderate sustained shifts, which is ultimately what we seek when aiming to improve processes, run charts may be all that is needed during the improvement phase. Once a satisfactory level of improvement has been achieved, control limits can be added -- along with switching to the mean as the centre line -- to monitor process stability and quickly detect sudden larger, and possibly transient, shifts in the data.
 
-## Confusing the voice of the customer with the voice of the process
+## Assuming a one-to-one link between PDSA cycles and data points
 
-"Hearing voices" is essential to effective SPC implementation. Two voices demand close attention: the voice of the customer and the voice of the process. Both are important, but confusing one for the other  can lead to misguided actions, wasted effort, and poor decision-making.
+While this issue may not result in faulty SPC analyses, it often causes confusion among practitioners. SPC is frequently taught alongside improvement work using PDSA cycles, which can lead to the mistaken belief that there must be a one-to-one correspondence between PDSA cycles and data points on an SPC chart. In other words, any detected freak, shift or trend is assumed to be directly linked to specific PDSA cycles testing particular actions. Conversely, the absence of signals may be misinterpreted as evidence that a PDSA cycle has failed.
 
-The voice of the customer refers to the expected or desired outcomes of the process, while the voice of the process reflects its actual capability and stability regardless of what the customer wants.
+This is, however, far from always the case. PDSA cycles tend to run quickly (minutes, hours, days), while SPC charts reflect changes more slowly (days, weeks, months).
 
-The voice of the customer is often expressed through specification limits that define the desired level of outcomes. These limits may take the form of an upper or lower acceptance threshold, or an interval specifying the acceptable range for a given outcome.  For example, based on literature reviews or results from comparable units, it may be determined that an acute caesarean section should be completed within 30 minutes of the decision to operate. Any procedure taking longer than this would be considered unacceptable.
-
-If we listen only to the voice of the customer, it may be tempting to treat any caesarean section taking longer than 30 minutes as a special cause -- and perhaps even initiate a root cause analysis in each case. However, without also considering the voice of the process -- which tells us whether the process is stable and what it is actually capable of, as indicated by the control limits -- such an approach is flawed.
-
-Unacceptable outcomes may well arise from highly stable and predictable processes -- and conversely, acceptable outcomes may result from unstable ones. Before taking action based on specific outcomes, we must first determine whether they are the result of common cause or special cause variation. This distinction is crucial, as each type of variation calls for a fundamentally different approach to improvement.
-
-As detailed in Chapter \@ref(variation), [Understanding Variation], addressing common cause variation requires a thorough redesign of the entire process, while addressing special cause variation involves identifying the root causes of the special cause(s) and either eliminating or reinforcing them, depending on whether they are undesirable or beneficial. 
-
-The long-term goal of any improvement initiative is to establish stable processes that consistently deliver acceptable results. 
-
-The two voices and the corresponding four appropriate actions are summarised in the table below:
-
-|                          | **Process Stable**                      | **Process Unstable**                      |
-| ------------------------ | --------------------------------------- | ----------------------------------------- |
-| **Customer Satisfied**   | OK -- hands off and continue to monitor | Trouble ahead -- stabilise the process    |
-| **Customer Unsatisfied** | Trouble now -- revise the process       | Chaos -- revise and stabilise the process |
-Table: The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.
-
+Therefore, it is important for practitioners to recognise that SPC charts and PDSA cycles operate on different timescales and serve complementary but distinct purposes. SPC should be used as a broader monitoring tool to observe trends and shifts over time, while PDSA cycles focus on rapid, iterative testing and learning. Understanding this distinction helps ensure more effective use of both methods in quality improvement efforts.
