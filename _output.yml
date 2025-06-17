@@ -15,3 +15,6 @@ bookdown::gitbook:
             Published with bookdown
           </a>
         </li>
+# bookdown::pdf_book:
+#   keep_tex: false
+# bookdown::epub_book
