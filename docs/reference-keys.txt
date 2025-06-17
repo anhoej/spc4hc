@@ -180,10 +180,10 @@ scaling-up-charts
 common-pitfalls-to-avoid
 data-issues
 signal-fatigue-from-over-sensitive-spc-rules
-automatic-rephasing
-assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points
-the-control-chart-vs-run-chart-debate
 confusing-the-voice-of-the-customer-with-the-voice-of-the-process
+automatic-rephasing
+the-control-chart-vs-run-chart-debate
+assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points
 subgrouping
 too-large-subgroups-masking-meaningful-signals
 too-small-subgroups-revealing-unimportant-noise
@@ -223,4 +223,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
