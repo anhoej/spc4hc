@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Looking for Signals on SPC charts – Beyond the 3-Sigma Rule | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 15 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Looking for Signals on SPC charts – Beyond the 3-Sigma Rule | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 15 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Looking for Signals on SPC charts – Beyond the 3-Sigma Rule | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 15 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="charts-intro.html"/>
-<link rel="next" href="using.html"/>
+<link rel="prev" href="prime-charts-for-count-data-with-very-large-subgroups.html"/>
+<link rel="next" href="funnel-plots-for-categorical-subgroups.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -431,169 +431,114 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="testing" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Looking for Signals on SPC charts – Beyond the 3-Sigma Rule<a href="testing.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Until now, we have primarily focused on Shewhart’s 3-sigma rule, which identifies special cause variation when one or more data points fall outside the control limits.</p>
-<p>The 3-sigma rule is effective at detecting large shifts in data. To illustrate:</p>
-<p><strong>Large shifts (3 SDs)</strong>: Imagine a process with data following a normal distribution that suddenly shifts upward by three standard deviations (SDs). In this case, the old upper control limit (UCL) would effectively become the new centre line (CL). Consequently, about 50% of subsequent data points would fall above the old UCL, providing a clear signal of the shift.</p>
-<p><strong>Smaller shifts (1 SD)</strong>: For a smaller shift of one standard deviation, the old UCL would align with the new 2-sigma limit. As a result, about 2.5% of future data points would exceed this line, signalling the shift but with less frequency.</p>
-<p>The 3-sigma rule’s sensitivity makes it an invaluable guide for identifying material, easily detectable changes in the behaviour of a process. However, for smaller, subtler shifts, additional rules or techniques are often necessary to ensure reliable detection whilst balancing the number of false alarms (Figure <a href="testing.html#fig:testing-fig1">3.1</a>).</p>
-<div class="figure"><span style="display:block;" id="fig:testing-fig1"></span>
-<img src="_main_files/figure-html/testing-fig1-1.svg" alt="Control chart with progressive shifts in data" width="672" />
-<p class="caption">
-Figure 3.1: Control chart with progressive shifts in data
-</p>
-</div>
-<p>The performance of the 3-sigma rule has been studied extensively (see, for instance, <span class="citation">Montgomery (<a href="#ref-montgomery2020">2020</a>)</span> or <span class="citation">Anhøj and Wentzel-Larsen (<a href="#ref-anhoej2018b">2018</a>)</span>). To summarize, the 3-sigma rule is most effective when detecting shifts in data of at least 1.5 to 2 standard deviations (SDs). Minor to moderate shifts may go undetected for significant periods. To increase the sensitivity of SPC charts to smaller shifts, a variety of additional rules have been proposed. However, before diving into these rules, it is important to first explore the different patterns in data that often signal the presence of special causes.</p>
-<div id="patterns-of-non-random-variation-in-time-series-data" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Patterns of non-random variation in time series data<a href="testing.html#patterns-of-non-random-variation-in-time-series-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In the iconic Western Electric Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span> a variety of control chart patterns are described to assist engineers in interpreting control charts based on the notion that certain patterns often reflect specific causes. In our experience, the most common special cause patterns found in healthcare data are freaks, shifts, and trends.</p>
-<div id="freaks" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Freaks<a href="testing.html#freaks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A freak is a data point or a small number of data points that are distinctly different from the rest, as shown in Figure <a href="testing.html#fig:testing-fig2">3.2</a>. By definition, freaks are transient – they appear suddenly and then disappear.</p>
-<div class="figure"><span style="display:block;" id="fig:testing-fig2"></span>
-<img src="_main_files/figure-html/testing-fig2-1.svg" alt="Control chart with a large (2 SD) transient shift in data" width="672" />
-<p class="caption">
-Figure 3.2: Control chart with a large (2 SD) transient shift in data
-</p>
-</div>
-<p>Freaks are often caused by data or sampling errors, but they can also result from temporary external factors influencing the process, such as shifts in patient case mix during a holiday season. In some cases, a freak may simply be a false alarm.</p>
-</div>
-<div id="shifts" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Shifts<a href="testing.html#shifts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Shifts are caused by sudden and sustained changes in process behaviour as in Figure <a href="testing.html#fig:testing-fig3">3.3</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:testing-fig3"></span>
-<img src="_main_files/figure-html/testing-fig3-1.svg" alt="Control chart with a minor (1 SD) sustained shift in data introduced at data point #16" width="672" />
-<p class="caption">
-Figure 3.3: Control chart with a minor (1 SD) sustained shift in data introduced at data point #16
-</p>
-</div>
-<p>In fact, in healthcare improvement we strive to induce shifts in the desired direction by improving the structures and procedures that are behind data.</p>
-</div>
-<div id="trends" class="section level3 hasAnchor" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Trends<a href="testing.html#trends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A trend is a gradual change in the process centre, as shown in Figure <a href="testing.html#fig:testing-fig4">3.4</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:testing-fig4"></span>
-<img src="_main_files/figure-html/testing-fig4-1.svg" alt="Control chart with a trend in data" width="672" />
-<p class="caption">
-Figure 3.4: Control chart with a trend in data
-</p>
-</div>
-<p>While some texts define a trend more specifically as a series of data points moving consistently up or down, in this book we use the term in a broader sense to refer to any gradual shift in one direction.</p>
-<p>Trends occur when external forces are consistently influencing the data in one direction, particularly when this influence is continuous and cumulative. Trends are commonly observed when improvements are implemented incrementally, such as in large organizations. In such cases, sequential shifts in data at the department level may accumulate into a broader trend at the organizational level.</p>
-</div>
-<div id="other-unusual-patterns" class="section level3 hasAnchor" number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> Other unusual patterns<a href="testing.html#other-unusual-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are numerous other types of “unusual” or mixed patterns that may appear in data. However, based on our experience in healthcare, process improvement or deterioration is most commonly associated with freaks, shifts, or trends. Learning to recognize these patterns is essential for uncovering the underlying causes of change.</p>
-<p>That being said, depending on the context and the purpose of using SPC, it may be valuable to look for other types of patterns in the data. This is particularly true for cyclic or seasonal data, where specific patterns repeat based on time of day, week, month, or year <span class="citation">(<a href="#ref-jeppegaard2023">Jeppegaard et al. 2023</a>)</span>. For example, excess mortality linked to weekend admissions might not present itself as a freak, shift, or trend, but it is still an important pattern to recognize in order to address the issue effectively.</p>
-</div>
-</div>
-<div id="spc-rules" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> SPC rules<a href="testing.html#spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>If patterns of special cause variation were always as clear as in the figures <a href="testing.html#fig:testing-fig2">3.2</a>, <a href="testing.html#fig:testing-fig3">3.3</a>, and <a href="testing.html#fig:testing-fig4">3.4</a> there would be no need for SPC. However, in practice, special causes often manifest in more subtle ways and so we use additional statistical tests or SPC rules that are designed to signal the presence, or rather the likelihood, of special cause variation.</p>
-<p>Many additional rules have been developed to identify minor shifts, trends, and other specific patterns in data. While it may seem tempting to apply all known rules to the data, it’s important to remember that the more tests we apply, the more signals we generate and this increases the risk of false alarms where common cause variation is mistakenly identified as special cause variation.</p>
-<p>Therefore, it is crucial to strike a balance: we must select as few rules as necessary to minimize false alarms while ensuring the detection of true special cause signals. This topic will be discussed in greater detail in the chapter on <a href="diagnostics.html#diagnostics">Diagnostic Errors</a> later in this book.</p>
-<p>For this book, we will concentrate on two sets of rules that have been thoroughly studied and validated for their effectiveness.</p>
-<div id="tests-based-on-sigma-limits" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Tests based on sigma limits<a href="testing.html#tests-based-on-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook <span class="citation">(<a href="#ref-we1956">Western Electric Company 1956</a>)</span>. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the centre lines and the control limits.</p>
-<ol style="list-style-type: decimal">
-<li><p>One or more points outside of the 3-sigma limits (Shewhart’s original 3-sigma rule).</p></li>
-<li><p>Two out of three successive points beyond a 2-sigma limit (two thirds of the distance between the centre line and the control line).</p></li>
-<li><p>Four out of five successive points beyond a 1-sigma limit.</p></li>
-<li><p>A run of eight successive points on one side of the centre line.</p></li>
-</ol>
-<p>We leave it to the reader to apply WE rules #2-#4 to figures <a href="testing.html#fig:testing-fig3">3.3</a> and <a href="testing.html#fig:testing-fig4">3.4</a>.</p>
-<p>The WE rules have proven their worth during most of a century. One thing to notice though is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives).</p>
-<p>WE rule #4 is independent of the sigma limits. It is based on assumptions regarding the length of runs on either side of the centre line. A run is defined as one or more successive data points on the same side of the centre line. Rules based on runs analysis are further discussed below.</p>
-</div>
-<div id="runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Runs analysis – tests based on the distribution of data points around the centre line<a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If we assume that the centre line divides the data into two halves, the probability of any data point falling above or below the centre is fifty-fifty. Similarly, the probability that two neighbouring points fall on the same or opposite side of the centre line is also fifty-fifty.</p>
-<p>By dichotomizing the data into runs of points either above or below a certain value – such as the centre line – we enter the realm of runs analysis. The fundamental idea behind runs analysis is that the length and number of runs in a random process are governed by natural laws, making them predictable within certain limits.</p>
-<p>In essence, when a process shifts or trends, runs tend to become longer and fewer. Therefore, we can design runs tests to detect unusually long or unusually few runs. The key question is: what constitutes “unusually” long or “unusually” few runs?</p>
-<p>To illustrate, imagine flipping a coin ten times. Would you be surprised to get three or four heads in a row? Probably not. But what if you got ten heads in a row? That would definitely be surprising. Now, imagine tossing the coin 100 times. Would a sequence of ten heads be surprising then? Probably not, because as the number of trials increases, the likelihood of observing a run of ten heads also increases.</p>
-<p>This intuitive understanding highlights that what constitutes an “unusually” long run depends on the total number of observations or subgroups. The more subgroups we have in our SPC chart, the longer the longest runs are likely to be. From practical experiments, some theoretical considerations <span class="citation">(<a href="#ref-anhoej2014">Anhøj and Olesen 2014</a>; <a href="#ref-anhoej2015">Anhøj 2015</a>; <a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span>, and years of experience we suggest these two runs tests:</p>
+<div id="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid – or even superior – alternative to other Shewhart SPC charts. This is partly because the I chart is based on the empirical variation in data, rather than on theoretical distributional assumptions, which may or may not be true.</p>
+<p>However, the I chart does not account for variable subgroup sizes – that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. This produces straight control limits, which in some situations may generate false signals or fail to detect true ones. When the variation is small, this may not pose a problem, but often – not the least in healthcare – size matters.</p>
+<p>Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I’) chart suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
+<p>In summary:</p>
 <ul>
-<li><p><strong>Unusually long runs</strong>: A run is one or more consecutive data points on the same side of the centre line. Data points that fall directly on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately <span class="math inline">\(log_2(n)+3\)</span> (rounded to the nearest integer), where <span class="math inline">\(n\)</span> is the number of useful data points (data points not on the centre line). For example, in a run chart with 24 useful data points a run of <em>more</em> than <code>round(log2(24) + 3)</code> = 8 would suggest a shift in the process <span class="citation">(<a href="#ref-schilling2012">Schilling 2012</a>)</span>.</p></li>
-<li><p><strong>Unusually few crossings</strong>: Rather than counting the number of runs, we count the number of crossings, which by definition is one less than the number of runs. A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution. The lower 5% prediction limit for number of crossings is found using the cumulative probability distribution, <code>qbinom(p = 0.05, size = n - 1, prob = 0.5)</code>. Thus, in a run chart with 24 useful data points, <em>fewer</em> than <code>qbinom(0.05, 24 - 1, 0.5)</code> = 8 crossings would suggest that the process is shifting <span class="citation">(<a href="#ref-chen2010">Chen 2010</a>)</span>.</p></li>
+<li><p>The I’ chart accounts for variable subgroup sizes by adjusting the within subgroup standard deviation with a factor that depends on the size of each subgroup producing wavy control limits when subgroup sizes vary.</p></li>
+<li><p>The I’ chart is useful for measurement and count data with or without denominators.</p></li>
+<li><p>With constant subgroup sizes, the I’ chart is an exact match for the original I chart.</p></li>
+<li><p>For rates and proportions, the I’ chart produces control limits that match those of the U' and P' charts.</p></li>
 </ul>
-<p>The two runs rules are two sides of the same coin – when runs get longer, crossings get fewer and vice versa – and either of them may signal special cause variation.</p>
-<p>Figure <a href="testing.html#fig:testing-fig3">3.3</a> has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.</p>
-<p>In Figure <a href="testing.html#fig:testing-fig4">3.4</a> there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.</p>
-<p>It is important to note that the tests themselves do not identify the specific types of patterns in the data, nor do they reveal the underlying causes of shifts or trends. The responsibility for interpreting the results lies with the data analyst and the individuals involved in the process. This is the topic of the next chapter (<a href="using.html#using">4</a>).</p>
-<p>Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix <a href="runs-limits.html#runs-limits">E</a>.</p>
-<p>Apart from being comparable in sensitivity and specificity to WE rules #2-#4 with 20-30 data points <span class="citation">(<a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span>, these runs rules have some advantages:</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">15.1</a> shows an I’ and a P’ chart side-by-side demonstrating their similar results.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-1" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
+<span id="cb92-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-2" tabindex="-1"></a>    <span class="at">data      =</span> admis, </span>
+<span id="cb92-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-3" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;ip&#39;</span>, </span>
+<span id="cb92-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-4" tabindex="-1"></a>    <span class="at">y.percent =</span> T,</span>
+<span id="cb92-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-5" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;I&#39; chart of hospital mortality&quot;</span>,</span>
+<span id="cb92-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-6" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&#39;Month&#39;</span>)</span>
+<span id="cb92-7"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-7" tabindex="-1"></a></span>
+<span id="cb92-8"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-8" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
+<span id="cb92-9"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-9" tabindex="-1"></a>    <span class="at">data  =</span> admis, </span>
+<span id="cb92-10"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-10" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;pp&#39;</span>,</span>
+<span id="cb92-11"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;P&#39; chart of hospital mortality&quot;</span>,</span>
+<span id="cb92-12"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-12" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:iprime-fig1"></span>
+<img src="_main_files/figure-html/iprime-fig1-1.svg" alt="Comparing I' and P' charts" width="50%" /><img src="_main_files/figure-html/iprime-fig1-2.svg" alt="Comparing I' and P' charts" width="50%" />
+<p class="caption">
+Figure 15.1: Comparing I’ and P’ charts
+</p>
+</div>
+<div id="procedure-for-calculating-centre-line-and-control-limits" class="section level3 hasAnchor" number="15.0.1">
+<h3><span class="header-section-number">15.0.1</span> Procedure for calculating centre line and control limits<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We use the following symbols:</p>
 <ul>
-<li><p>They do not depend on sigma limits and thus are useful as stand-alone rules with run charts (more on run charts in the next section).</p></li>
-<li><p>They adapt dynamically to the number of available data points, and can be applied to charts with as few as 10 and up to indefinitely many data points without losing sensitivity or specificity.</p></li>
+<li><span class="math inline">\(n\)</span> = numerators</li>
+<li><span class="math inline">\(d\)</span> = denominators</li>
+<li><span class="math inline">\(o\)</span> = number of data values (subgroups)</li>
+<li><span class="math inline">\(i\)</span> = i<sup>th</sup> data value</li>
 </ul>
-<p>In practice these runs rules may be used as alternatives to WE rules #2-#4 to help identify shifts and trends alongside the WE rule #1 for freaks.</p>
+<p>Values to plot:</p>
+<p><span class="math display">\[
+y = \frac{n}{d}
+\]</span></p>
+<p>Centre line:</p>
+<p><span class="math display">\[
+CL = \frac{\sum{n}}{\sum{d}}
+\]</span></p>
+<p>Standard deviation of i<sup>th</sup> data point:</p>
+<p><span class="math display">\[
+s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\frac{1}{d_{i-1}}}}
+\]</span></p>
+<p>Average standard deviation:</p>
+<p><span class="math display">\[
+\bar{s} = \frac{\sum{s}}{o}
+\]</span></p>
+<p>Control limits:</p>
+<p><span class="math display">\[
+\text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
+\]</span></p>
+<p>When subgroup sizes equals 1, the control limits simplify to: <span class="math inline">\(CL \pm 2.66\overline{MR}\)</span> as in the original I chart.</p>
+<p>As with the original I chart, qicharts2 screens the moving ranges of <span class="math inline">\(s_i\)</span>, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating <span class="math inline">\(\bar{s}\)</span>.</p>
 </div>
-</div>
-<div id="spc-charts-without-borders-using-run-charts" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> SPC charts without borders – using run charts<a href="testing.html#spc-charts-without-borders-using-run-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As discussed in the previous section, some rules rely solely on a single line representing the centre of the data. We assumed that the centre line divides the data into two equal halves. While the process average typically serves as a good representation of this centre, this assumption may not hold if the data are skewed. However, if we use the median instead of the mean, the assumption always holds true, because the median is by definition the middle value.</p>
-<p>So, what happens if we remove the sigma lines and use the median as the centre line? We get a run chart, which is one of the most valuable tools in quality improvement and control.</p>
-<div class="figure"><span style="display:block;" id="fig:testing-fig5"></span>
-<img src="_main_files/figure-html/testing-fig5-1.svg" alt="Run chart" width="672" />
+<div id="i-charts-for-measument-data-with-variable-subgroup-sizes" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> I’ charts for measument data with variable subgroup sizes<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">15.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for use with measurement data where subgroup sizes vary. For example, due to privacy considerations, we may only have access to averaged patient data rather than individual records. Traditionally, such data would be plotted on an original I chart, but if the number of patients in each subgroup varies significantly, straight control limits may be suboptimal.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">15.2</a> is an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. Notice the data point above the upper control limit in April 2020 suggesting a special cause. However, when plotting aggregated measurement data, the I chart does not account for variations in subgroup size.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c, </span>
+<span id="cb93-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
+<span id="cb93-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
+<span id="cb93-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb93-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
+<span id="cb93-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:iprime-fig2"></span>
+<img src="_main_files/figure-html/iprime-fig2-1.svg" alt="I chart of average HbA1c without denominator" width="672" />
 <p class="caption">
-Figure 3.5: Run chart
+Figure 15.2: I chart of average HbA1c without denominator
 </p>
 </div>
-<p>Figure <a href="testing.html#fig:testing-fig5">3.5</a> is a run chart of the data from Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a>. We notice that the centre line is a little different from the control chart because we have used the empirical median rather than the theoretical mean. Consequently, data are now evenly distributed around the centre line with 12 data points on each side. The longest run have 3 data points (#13-#15 and #22-#24), and the data line crosses the centre line 13 times. Since there are no unusually long runs and not unusually few crossing we conclude that this process shows no signs of persistent shifts in data.</p>
-<p>Figure <a href="testing.html#fig:testing-fig6">3.6</a> is a run chart with data from Figure <a href="testing.html#fig:testing-fig4">3.4</a> containing a trend. The runs analysis confirms our “analysis-by-eye” by finding two unusually long runs with 9 data points and unusually few crossings (4).</p>
-<div class="figure"><span style="display:block;" id="fig:testing-fig6"></span>
-<img src="_main_files/figure-html/testing-fig6-1.svg" alt="Run chart with a trend" width="672" />
+<p>The I’ chart in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig3">15.3</a> takes the subgroup size (number of patients) into account and adjusts the control limits correspondingly.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c <span class="sc">*</span> n, n, </span>
+<span id="cb94-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
+<span id="cb94-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;ip&#39;</span>,</span>
+<span id="cb94-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb94-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
+<span id="cb94-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:iprime-fig3"></span>
+<img src="_main_files/figure-html/iprime-fig3-1.svg" alt="I prime chart of average HbA1c with denominator" width="672" />
 <p class="caption">
-Figure 3.6: Run chart with a trend
+Figure 15.3: I prime chart of average HbA1c with denominator
 </p>
 </div>
-<p>Run charts are a lot easier to construct than are control charts. They do not make assumptions about the distribution of data. And they have better sensitivity to minor and moderate <em>persistent</em> shifts and trends than control charts based on only the 3-sigma rule.</p>
-<p>So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (for example freaks) that may go unnoticed by run charts, and 2) the control limits reflect the common cause variability of the process and hence define its <em>capability</em>, that is the process’ ability to meet specifications.</p>
-<p>Fortunately, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.</p>
+<p>April 2020 was the first month of lockdown during Covid-19 in Denmark, and the number of patients (the denominator) seen during this month was significantly lower than usual, which allowed for larger than usual common cause variation in measurements and consequently wider control limits this month. So, when the subgroup size is taken into account, the apparent special cause in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">15.2</a> is actually within the limits of the expected common cause variation.</p>
+<p>Also, notice that the centre lines are a bit different (60.6 vs 60.3), because the I prime chart uses the weighted rather than the unweighted mean of the measurements.</p>
+<p>Note that in order to plot the averages we need to multiply the numerators (avg_hba1c, which are already averaged) by the denominators (n) to get the sum of individual measurements to use as the new numerator. Otherwise, the result would be a plot of averages of averages.</p>
 </div>
-<div id="a-practical-approach-to-spc-analysis" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> A practical approach to SPC analysis<a href="testing.html#a-practical-approach-to-spc-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before we move on, let’s take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see <a href="using.html#using">4</a>), SPC charts support two distinct purposes: process improvement and process monitoring.</p>
-<p>When we are focused on <strong>process improvement</strong>, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.</p>
-<p>In <strong>process monitoring</strong>, the objective is to maintain process stability, with no expected shifts in the data. Here, our focus is on detecting any signs of process deterioration as quickly as possible. For this, the 3-sigma rule is effective. To improve sensitivity to minor or moderate shifts, we may combine the 3-sigma rule with <em>either</em> the rest of the Western Electric (WE) rules <em>or</em> the two runs rules. However, we must be mindful that adding more tests increases the risk of false alarms.</p>
-<p>Regardless of the task, we recommend starting any SPC analysis with an “assumption-free” run chart, using the median as the centre line. If runs analysis indicates non-random variation, calculating sigma limits becomes meaningless, as these values are irrelevant when shifts are already evident. In such cases, the focus should shift to identifying special causes, rather than calculating control limits.</p>
-<p>If the goal is process improvement, we continue with the run chart until we observe significant and sustained improvement, leading to a new and better process. Once this new process stabilizes and appears set to continue, we may transition to monitoring mode by adding control limits and using the mean as the centre line.</p>
-<p>Process monitoring is appropriate when the process is stable (common cause variation only) and the outcome is satisfactory. If either condition is not met, we should return to improvement mode.</p>
-</div>
-<div id="spc-rules-in-summary" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> SPC rules in summary<a href="testing.html#spc-rules-in-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC rules are statistical tests designed to detect special cause variation in time series data. Given the variety of patterns that can indicate special causes, many rules have been developed. However, applying too many rules increases the risk of false alarms. Therefore, it is important to choose a small set of rules that strike a balance: maximizing the ability to detect true alarms (special causes) while minimizing false alarms.</p>
-<p>We recommend starting any SPC analysis with a median-based run chart and using the two runs rules to test for unusually long runs or an unusually small number of crossings. If, and only if, the runs analysis indicates random variation (no special cause), and the process outcome is stable and satisfactory, we may proceed to use the mean as the centre line and add control limits to help identify large shifts and freak data points more easily.</p>
+<div id="one-chart-to-rule-them-all" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> One chart to rule them all?<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The I’ chart produces results that match the original I chart for individual measurements and P’ and U’ charts for proportion and count data.</p>
+<p>If we accept Laney’s claim that prime charts are valid – or even better – substitutes for their non-prime counterparts, it is tempting to conclude that the I’ chart offers a universal solution to most, if not all, of our charting needs.</p>
+<p>In conclusion, while the I’ chart is a recent development, its versatility and ability to mimic the behaviour of traditional SPC charts make it a compelling alternative, that has the potential to streamline chart selection by serving as a single, robust option across various data types and scenarios. As the methodology continues to gain empirical support, the I’ chart may well become the preferred tool for modern quality control.</p>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-anhoej2015" class="csl-entry">
-Anhøj, Jacob. 2015. <span>“Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0121349">https://doi.org/10.1371/journal.pone.0121349</a>.
-</div>
-<div id="ref-anhoej2014" class="csl-entry">
-Anhøj, Jacob, and Anne Vingaard Olesen. 2014. <span>“Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0113825">https://doi.org/10.1371/journal.pone.0113825</a>.
-</div>
-<div id="ref-anhoej2018b" class="csl-entry">
-Anhøj, Jacob, and Tore Wentzel-Larsen. 2018. <span>“Sense and Sensibility: On the Diagnostic Value of Control Chart Rules for Detection of Shifts in Time Series Data.”</span> <em>BMC Medical Research Methodology</em>. <a href="https://doi.org/10.1186/s12874-018-0564-0">https://doi.org/10.1186/s12874-018-0564-0</a>.
-</div>
-<div id="ref-chen2010" class="csl-entry">
-Chen, Zhenmin. 2010. <span>“A Note on the Runs Test.”</span> <em>Model Assisted Statistics and Applications</em> 5: 73–77. <a href="https://doi.org/10.3233/MAS-2010-0142">https://doi.org/10.3233/MAS-2010-0142</a>.
-</div>
-<div id="ref-jeppegaard2023" class="csl-entry">
-Jeppegaard, Maria, Steen C. Rasmussen, Jacob Anhøj, and Lone Krebs. 2023. <span>“Winter, Spring, Summer or Fall: Temporal Patterns in Placenta-Mediated Pregnancy Complications—an Exploratory Analysis.”</span> <em>Gynecol Obstet</em> 309: 1991–98. https://doi.org/<a href="https://doi.org/10.1007/s00404-023-07094-6">https://doi.org/10.1007/s00404-023-07094-6</a>.
-</div>
-<div id="ref-montgomery2020" class="csl-entry">
-Montgomery, Douglas C. 2020. <em>Introduction to Statistical Quality Control, Eighths Ed.</em> Wiley.
-</div>
-<div id="ref-schilling2012" class="csl-entry">
-Schilling, Mark F. 2012. <span>“The Surprising Predictability of Long Runs.”</span> <em>Mathematics Magazine</em> 85: 141–49. <a href="https://doi.org/10.4169/math.mag.85.2.141">https://doi.org/10.4169/math.mag.85.2.141</a>.
-</div>
-<div id="ref-we1956" class="csl-entry">
-Western Electric Company. 1956. <em>Statistical Quality Control Handbook</em>. New York: Western Electric Company inc.
+<div id="ref-taylor2018" class="csl-entry">
+Taylor, Wayne. 2018. <em>Normalized Individuals (IN) Control Chart</em>. <a href="https://variation.com/normalized-individuals-control-chart/">https://variation.com/normalized-individuals-control-chart/</a>.
 </div>
 </div>
             </section>
@@ -601,8 +546,8 @@ Western Electric Company. 1956. <em>Statistical Quality Control Handbook</em>.
           </div>
         </div>
       </div>
-<a href="charts-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prime-charts-for-count-data-with-very-large-subgroups.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="funnel-plots-for-categorical-subgroups.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

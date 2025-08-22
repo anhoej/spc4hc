@@ -61,6 +61,7 @@ The two voices and the corresponding four appropriate actions are summarised in 
 | ------------------------ | --------------------------------------- | ----------------------------------------- |
 | **Customer Satisfied**   | OK -- hands off and continue to monitor | Trouble ahead -- stabilise the process    |
 | **Customer Unsatisfied** | Trouble now -- revise the process       | Chaos -- revise and stabilise the process |
+
 Table: The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.
 
 ## Automatic rephasing

@@ -1,4 +1,4 @@
-# I Prime Chart for Measurement Data With Variable Subgroup Sizes (and more)
+# I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,
