@@ -2,10 +2,19 @@
 
 # Tips for Effective SPC Implementation
 
-- Automating production of SPC charts
-- Engaging stakeholders
-- Continuous monitoring and improvement.
-- Problems and challenges with SPC
+Successful implementation of SPC involves far more than plotting control charts. It requires establishing a sustainable system that integrates data collection, analysis, interpretation, and action into everyday practice.
+
+Building such a system demands -- at the very least -- active engagement of stakeholders at all levels of the organisation, automation of chart production, continuous evaluation and refinement of the system itself, and early recognition of common pitfalls.
+
+## Engaging stakeholders
+
+## Automating production of SPC charts
+
+## Continuous evaluation and improvement
+
+## Problems and challenges with SPC
+
+
 
 # High Volume Data
 
