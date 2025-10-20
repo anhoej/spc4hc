@@ -175,6 +175,10 @@ one-chart-to-rule-them-all
 funnel-plots-for-categorical-subgroups
 pareto-charts-for-ranking-problems
 tips-for-effective-spc-implementation
+engaging-stakeholders
+automating-production-of-spc-charts
+continuous-evaluation-and-improvement
+problems-and-challenges-with-spc
 high-volume-data
 scaling-up-charts
 common-pitfalls-to-avoid

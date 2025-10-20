@@ -8,6 +8,38 @@ Building such a system demands -- at the very least -- active engagement of stak
 
 ## Engaging stakeholders
 
+Apart from the data scientist for whom this book is primarily intended, stakeholders include not only the front-line staff and analysts responsible for data collection and interpretation, but also -- and most importantly -- middle and senior management, whose understanding of SPC principles and commitment to improvement rather than blame are essential to success.
+
+Without management support, SPC is easily reduced to a routine reporting exercise or box-ticking activity, rather than a powerful tool for learning and continuous improvement.
+
+SPC implementation relies on both **knowledge** and **skills**. For successful adoption, the organisation as a whole must possess the necessary expertise in both areas:
+
+* **Knowledge**
+    - Understanding variation
+    - Understanding SPC charts
+    - Understanding the Pyramid Model for Investigation
+
+* **Skills**
+    - Developing operational indicator definitions
+    - Designing rational data sampling plans
+    - Constructing SPC charts
+    - Creating SPC reports and dashboards
+    - Identifying signals of special-cause variation
+    - Recognising patterns of change over time
+    
+However, not all stakeholder groups need to know everything or have every skill:
+    
+| Stakeholder Group    | Knowledge                                                                                  | Skills                                                                                                                                                                                                                |
+|----------------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Front-line staff** | Understanding variation.<br>Basic understanding of SPC charts.                             | Recognising signals of special cause variation.<br>Following operational definitions and data collection procedures.<br>Contributing to the development of indicators and sampling plans.                             |
+| **Team leaders**     | Understanding variation.<br>SPC charts interpretation.<br>Pyramid Model for Investigation. | Interpreting SPC charts.<br>Guiding investigations for special-cause variation.<br>Supporting data collection and sampling.                                                                                           |
+| **Data scientists**  | Understanding variation.<br>SPC charts in detail.<br>Pyramid Model for Investigation.      | Guiding the development of operational indicators and sampling plans.<br>Constructing SPC charts and reports/dashboards.<br>Analysing signals and patterns in time series.                                            |
+| **Management**       | Understanding variation.<br>SPC charts and metrics.<br>Pyramid Model for Investigation.    | Guiding the selection of topics/indicators to monitor.<br>Interpreting SPC reports to make decisions.<br>Supporting investigations and improvement initiatives.<br>Promoting a culture of learning rather than blame. |
+Table: Knowledge and skills by stakeholder group
+
+Successfully engaging stakeholders while implementing SPC is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small sections (departments or centres), while gradually expanding the scope as staff gain confidence, processes stabilise, and lessons are learned from early trials.
+
+
 ## Automating production of SPC charts
 
 ## Continuous evaluation and improvement
