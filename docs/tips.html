@@ -59,6 +59,29 @@
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -239,8 +262,7 @@
 <li class="chapter" data-level="19.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>19.2</b> Automating production of SPC charts</a>
 <ul>
 <li class="chapter" data-level="19.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>19.2.1</b> Data collection and storage</a></li>
-<li class="chapter" data-level="19.2.2" data-path="tips.html"><a href="tips.html#chart-production-and-analysis"><i class="fa fa-check"></i><b>19.2.2</b> Chart production and analysis</a></li>
-<li class="chapter" data-level="19.2.3" data-path="tips.html"><a href="tips.html#reports-and-dashboards"><i class="fa fa-check"></i><b>19.2.3</b> Reports and dashboards</a></li>
+<li class="chapter" data-level="19.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>19.2.2</b> Charts, reports, and dashboards</a></li>
 </ul></li>
 <li class="chapter" data-level="19.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>19.3</b> Continuous evaluation and improvement</a></li>
 </ul></li>
@@ -403,7 +425,7 @@
 </tr>
 </tbody>
 </table>
-<p>Successfully building knowledge and skills throughout and organisation is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small units (departments or centres), while gradually expanding the scope as staff gain confidence, processes stabilise, and lessons are learned from early trials.</p>
+<p>Successfully building knowledge and skills throughout an organisation is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small units (departments or centres), while gradually expanding the scope as staff gain confidence and lessons are learned from early trials.</p>
 </div>
 <div id="automating-production-of-spc-charts" class="section level2 hasAnchor" number="19.2">
 <h2><span class="header-section-number">19.2</span> Automating production of SPC charts<a href="tips.html#automating-production-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -412,19 +434,31 @@
 <div id="data-collection-and-storage" class="section level3 hasAnchor" number="19.2.1">
 <h3><span class="header-section-number">19.2.1</span> Data collection and storage<a href="tips.html#data-collection-and-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ideally, data collection and storage should be integrated into routine clinical or administrative procedures, adding no extra workload for front-line staff and allowing for easy import into analysis software.</p>
-<p>In practice, however, routine data are often insufficient for SPC analysis. Key variables may be missing, recorded inconsistently, or saved as unstructured data – for example, as free text rather than structured information – making it difficult to construct meaningful SPC charts. This frequently creates a need for supplementary procedures specifically designed to capture the necessary information.</p>
-<p>To address this, organisations can adopt a stepwise approach: start by identifying critical data elements, determine which can be captured routinely, and design additional collection methods only for those elements that cannot be obtained otherwise. When combined with automated data import and chart generation, this strategy helps minimise the burden on staff while maximising the quality and usability of data for SPC.</p>
+<p>In practice, however, routine data are often insufficient for SPC analysis. Key variables may be missing, recorded inconsistently, or stored as unstructured data in free text form rather than structured information making it difficult to construct meaningful SPC charts. This frequently creates a need for supplementary procedures specifically designed to capture the necessary information.</p>
+<p>To address this, organisations can adopt a stepwise approach: start by identifying critical data elements, determine which can be captured routinely, and design additional collection methods only for those elements that cannot be obtained otherwise. When combined with automated data capture and chart generation, this strategy helps minimise the burden on staff while maximising the quality and usability of data for SPC.</p>
 <p>Over time, it pays to plan ahead when designing patient record systems, ensuring that all necessary data elements for SPC and quality improvement are included – or, ideally, creating a system that can be easily expanded and adapted to future, currently unforeseen needs.</p>
 </div>
-<div id="chart-production-and-analysis" class="section level3 hasAnchor" number="19.2.2">
-<h3><span class="header-section-number">19.2.2</span> Chart production and analysis<a href="tips.html#chart-production-and-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-</div>
-<div id="reports-and-dashboards" class="section level3 hasAnchor" number="19.2.3">
-<h3><span class="header-section-number">19.2.3</span> Reports and dashboards<a href="tips.html#reports-and-dashboards" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="charts-reports-and-dashboards" class="section level3 hasAnchor" number="19.2.2">
+<h3><span class="header-section-number">19.2.2</span> Charts, reports, and dashboards<a href="tips.html#charts-reports-and-dashboards" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Individual SPC charts are tools for understanding specific outcomes or processes. However, to gain insight into a system – for example, a clinical pathway – as a whole, it is often necessary to examine multiple charts together.</p>
+<p>Reports and dashboards are useful for presenting multiple SPC charts, often in combination with text and other types of data.</p>
+<p><strong>Reports</strong> are typically static, structured documents – for example, a monthly or quarterly summary – that combine SPC charts with explanatory text, narrative context, and interpretation. They are often used for formal review, documentation, and communication of findings. Reports emphasise completeness and explanation. Reports are most often shared as static documents, typically on paper or as PDF documents.</p>
+<p><strong>Dashboards</strong>, by contrast, are dynamic, interactive displays designed for ongoing monitoring. They present multiple SPC charts or summary indicators in real time or near real time, allowing users to filter, drill down, and examine data. Dashboards emphasise timeliness and accessibility rather than detailed commentary or interpretation – the latter being best left to humans. Dashboards – given their interactive nature – are presented on digital displays.</p>
+<p>Unsurprisingly, reports including explanation and interpretation usually require human involvement, whereas dashboards can be fully automated. However, one does not exclude the other – on the contrary, an organisation may benefit from a combination of regular reports targeting specific stakeholder groups and interactive dashboards for front-line teams and analysts who need to act on real-time data.</p>
+<p>Designing and producing reports and dashboards is outside the scope of this book, but R is well suited for both. Using RMarkdown <span class="citation">(<a href="#ref-xie2023">Yihui Xie 2023</a>)</span> or Quarto <span class="citation">(<a href="#ref-allaire2025">Allaire et al. 2025</a>)</span> – in combination with Shiny for interactive dashboards – makes it easy to combine data import, management, analysis, and presentation into a single seamless workflow.</p>
 </div>
 </div>
 <div id="continuous-evaluation-and-improvement" class="section level2 hasAnchor" number="19.3">
 <h2><span class="header-section-number">19.3</span> Continuous evaluation and improvement<a href="tips.html#continuous-evaluation-and-improvement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-allaire2025" class="csl-entry">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, Christophe Dervieux, and Gordon Woodhull. 2025. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
+<div id="ref-xie2023" class="csl-entry">
+Yihui Xie, Garrett Grolemund, J. J. Allaire. 2023. <em>R Markdown: The Definitive Guide</em>. Chapman &amp; Hall/CRC.
 </div>
 </div>
             </section>

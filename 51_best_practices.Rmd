@@ -36,7 +36,7 @@ However, not all stakeholder groups need knowledge at the same level or to have 
 | **Management**       | Fundamental  | Guiding the selection of topics/indicators to monitor.<br>Interpreting SPC reports to make decisions.<br>Supporting investigations and improvement initiatives.<br>Promoting a culture of learning rather than blame. |
 Table: Knowledge and skills by stakeholder group.<br>- **Fundamental**: essential concepts and terminology are understood.<br>- **Intermediate**: principles can be applied and explained.<br>- **Deep**: concepts are integrated, adapted, and used.
 
-Successfully building knowledge and skills throughout and organisation is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small units (departments or centres), while gradually expanding the scope as staff gain confidence, processes stabilise, and lessons are learned from early trials.
+Successfully building knowledge and skills throughout an organisation is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small units (departments or centres), while gradually expanding the scope as staff gain confidence and lessons are learned from early trials.
 
 ## Automating production of SPC charts
 
@@ -50,16 +50,25 @@ At this stage, it is crucial to distinguish between tasks best handled by comput
 
 Ideally, data collection and storage should be integrated into routine clinical or administrative procedures, adding no extra workload for front-line staff and allowing for easy import into analysis software.
 
-In practice, however, routine data are often insufficient for SPC analysis. Key variables may be missing, recorded inconsistently, or saved as unstructured data -- for example, as free text rather than structured information -- making it difficult to construct meaningful SPC charts. This frequently creates a need for supplementary procedures specifically designed to capture the necessary information.
+In practice, however, routine data are often insufficient for SPC analysis. Key variables may be missing, recorded inconsistently, or stored as unstructured data in free text form rather than structured information making it difficult to construct meaningful SPC charts. This frequently creates a need for supplementary procedures specifically designed to capture the necessary information.
 
-To address this, organisations can adopt a stepwise approach: start by identifying critical data elements, determine which can be captured routinely, and design additional collection methods only for those elements that cannot be obtained otherwise. When combined with automated data import and chart generation, this strategy helps minimise the burden on staff while maximising the quality and usability of data for SPC.
+To address this, organisations can adopt a stepwise approach: start by identifying critical data elements, determine which can be captured routinely, and design additional collection methods only for those elements that cannot be obtained otherwise. When combined with automated data capture and chart generation, this strategy helps minimise the burden on staff while maximising the quality and usability of data for SPC.
 
 Over time, it pays to plan ahead when designing patient record systems, ensuring that all necessary data elements for SPC and quality improvement are included -- or, ideally, creating a system that can be easily expanded and adapted to future, currently unforeseen needs.
 
-### Chart production and analysis
+### Charts, reports, and dashboards
 
-### Reports and dashboards
+Individual SPC charts are tools for understanding specific outcomes or processes. However, to gain insight into a system -- for example, a clinical pathway -- as a whole, it is often necessary to examine multiple charts together.
 
+Reports and dashboards are useful for presenting multiple SPC charts, often in combination with text and other types of data.
+
+**Reports** are typically static, structured documents -- for example, a monthly or quarterly summary -- that combine SPC charts with explanatory text, narrative context, and interpretation. They are often used for formal review, documentation, and communication of findings. Reports emphasise completeness and explanation. Reports are most often shared as static documents, typically on paper or as PDF documents.
+
+**Dashboards**, by contrast, are dynamic, interactive displays designed for ongoing monitoring. They present multiple SPC charts or summary indicators in real time or near real time, allowing users to filter, drill down, and examine data. Dashboards emphasise timeliness and accessibility rather than detailed commentary or interpretation -- the latter being best left to humans. Dashboards -- given their interactive nature -- are presented on digital displays.
+
+Unsurprisingly, reports including explanation and interpretation usually require human involvement, whereas dashboards can be fully automated. However, one does not exclude the other -- on the contrary, an organisation may benefit from a combination of regular reports targeting specific stakeholder groups and interactive dashboards for front-line teams and analysts who need to act on real-time data.
+
+Designing and producing reports and dashboards is outside the scope of this book, but R is well suited for both. Using RMarkdown [@xie2023] or Quarto [@allaire2025] -- in combination with Shiny for interactive dashboards -- makes it easy to combine data import, management, analysis, and presentation into a single seamless workflow.
 
 
 ## Continuous evaluation and improvement

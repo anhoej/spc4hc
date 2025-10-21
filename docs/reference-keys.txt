@@ -231,3 +231,4 @@ cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 data-collection-and-storage
 chart-production-and-analysis
 reports-and-dashboards
+charts-reports-and-dashboards
