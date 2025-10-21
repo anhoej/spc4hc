@@ -177,8 +177,9 @@ pareto-charts-for-ranking-problems
 tips
 engaging-stakeholders
 automating-production-of-spc-charts
+data-collection-and-storage
+charts-reports-and-dashboards
 continuous-evaluation-and-improvement
-problems-and-challenges-with-spc
 high-volume-data
 scaling-up-charts
 pitfalls
@@ -227,8 +228,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-data-collection-and-storage
-chart-production-and-analysis
-reports-and-dashboards
-charts-reports-and-dashboards
