@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>C Two Types of Errors When Using SPC | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 21 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="C Two Types of Errors When Using SPC | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 21 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="C Two Types of Errors When Using SPC | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 21 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="stat-concepts.html"/>
-<link rel="next" href="r-notes.html"/>
+<link rel="prev" href="scaling-up-charts.html"/>
+<link rel="next" href="subgrouping.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -438,83 +438,135 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="diagnostics" class="section level1 hasAnchor" number="25">
-<h1><span class="header-section-number">C</span> Two Types of Errors When Using SPC<a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
-<ul>
-<li><p>False positive (type 1 error): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
-<li><p>False negative (type 2 eroor): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
-</ul>
-<p>Either mistake can cause losses. Treating all data as special cause variation maximises the losses from false positives; and treating all data as common cause variation maximises the losses from false negatives.</p>
-<p>Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart sought a strategy to make either mistake only rarely and concluded that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to three standard deviations below and above the mean provides a reasonable balance between making the two types of mistakes.</p>
-<div id="quantifying-the-diagnostic-error-of-spc-charts" class="section level2 hasAnchor" number="25.1">
-<h2><span class="header-section-number">C.1</span> Quantifying the diagnostic error of SPC charts<a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="average-run-length" class="section level3 hasAnchor" number="25.1.1">
-<h3><span class="header-section-number">C.1.1</span> Average run length<a href="diagnostics.html#average-run-length" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Traditionally, the performance characteristics of SPC charts have been evaluated through the so-called average run length (ARL), that is, the average number of data points until a special cause is signalled <span class="citation">(<a href="#ref-montgomery2020">Montgomery 2020, 186</a>)</span>:</p>
-<p><span class="math display">\[ ARL_0=\frac{1}{\alpha} \]</span>
-for the in-control ARL, when no special cause is present, and</p>
-<p><span class="math display">\[ ARL_1=\frac{1}{1-\beta} \]</span>
-for the out-of-control ARL, when a special cause is present, where</p>
-<p><span class="math display">\[ \alpha=P\{\text{signal | common cause variation}\}=P\{\text{false positive}\}=P\{\text{type 1 error}\} \]</span></p>
-<p><span class="math display">\[ \beta=P\{\text{no signal | special cause variation}\}=P\{\text{false negative}\}=P\{\text{type 2 error}\} \]</span></p>
-<p>For example, in a common cause process with normal data the chance (<span class="math inline">\(\alpha\)</span>) of a data point falling outside the 3-sigma limits is 0.0027 and <span class="math inline">\(ARL_0=1/0.0027=370\)</span>, meaning that we should expect to wait on average 370 data points between false alarms.</p>
-<p>The out-of-control ARL depends on the false negative risk, <span class="math inline">\(\beta\)</span>, which in turn depends on the size of the shift (signal) relative to the size of the common cause variation (noise).</p>
-<p>The ideal control charts would have <span class="math inline">\(ARL_0=\infty\)</span> and <span class="math inline">\(ARL_1=1\)</span>. In practice, this is not possible because ARLs are linked – if one goes up, the other goes up too.</p>
-<p>ARLs are related to sensitivity and specificity, which may be more familiar to healthcare workers. In general, sensitivity and specificity tell how well a test is able to identify the presence or absence of a certain condition.</p>
-<p>Specifically, regarding SPC charts:</p>
-<p><span class="math display">\[ specificity=P\{\text{no signal | common cause variation}\}=P\{\text{true negative}\}=1-\alpha \]</span></p>
-<p><span class="math display">\[ sensitivity=P\{\text{signal | special cause variation}\}=P\{\text{true positive}\}=1-\beta \]</span></p>
+<div id="pitfalls" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">Chapter 21</span> Common Pitfalls to Avoid<a href="pitfalls.html#pitfalls" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities, and may ultimately erode trust in SPC itself.</p>
+<p>This chapter outlines several common pitfalls to avoid.</p>
+<div id="data-issues" class="section level2 hasAnchor" number="21.1">
+<h2><span class="header-section-number">21.1</span> Data issues<a href="pitfalls.html#data-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SPC charts are only as good as the data behind them. Poor data quality, including inaccurate measurements, inconsistent definitions or data collected under conditions that vary over time or between locations can significantly compromise their reliability.</p>
+<p>How the subgroups are formed is especially important. Subgroups consist of the data elements included in each data point. The way data are sampled and grouped can greatly affect their ability to distinguish common cause variation from special cause variation. If subgrouping is not done properly, the SPC chart may generate false signals or obscure important ones. We have devoted a full chapter (<a href="subgrouping.html#subgrouping">22</a>) to <a href="subgrouping.html#subgrouping">rational subgrouping</a>.</p>
+<p>Time spend developing operational indicator definition and rational subgroups often yields significant returns. Investing effort upfront ensures that data are meaningful and comparable, enabling better decision-making.</p>
 </div>
-<div id="likelihood-ratios" class="section level3 hasAnchor" number="25.1.2">
-<h3><span class="header-section-number">C.1.2</span> Likelihood ratios<a href="diagnostics.html#likelihood-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Sensitivity and specificity are, however, not that useful on their own – they describe how a special cause predicts a signal, not how a signal predicts a special cause, which is what we really want to know.</p>
-<p>Likelihood ratios are diagnostic measures designed to answer such questions. Assume that an SPC chart signals special cause variation. A perfect test would mean that the chart would certainly come from an unstable process (true positive, TP). However, some charts with only common cause variation also signals (false positive, FP). We therefore correct the true positive rate by the false positive rate by dividing one with the other. Likewise, if a chart does not signal it could be a false negative (FN) rather than a true negative (TN).</p>
-<p><span class="math display">\[ LR+=TP/FP=sensitivity/(1-specificity) \]</span></p>
-<p><span class="math display">\[ LR-=FN/TN=(1-sensitivity)/specificity \]</span></p>
-<p>A likelihood ratio greater than 1 speaks in favour of the condition being tested for, which in our case is special cause variation, while a likelihood ratio less than 1 speaks against special cause variation. The further a likelihood ratio is from 1, the more or less likely is the presence of special cause variation.</p>
-<p>As a rule of thumb, a positive likelihood ratio greater than 10 is considered strong evidence that the condition being tested for is present. A negative likelihood ratio smaller than 0.1 is considered strong evidence against the condition <span class="citation">(<a href="#ref-deeks2004">Deeks and Altman 2004</a>)</span>.</p>
-<p>Thus, likelihood ratios allow us to quantify the probability of special causes in data and are useful quality characteristics of SPC rules <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>. All else being equal, a “good” rule (or combination of rules) is one with a high positive likelihood ratio <em>and</em> a low negative likelihood ratio.</p>
-<p>A worked example is presented in the table below:</p>
+<div id="signal-fatigue-from-over-sensitive-spc-rules" class="section level2 hasAnchor" number="21.2">
+<h2><span class="header-section-number">21.2</span> Signal fatigue from over-sensitive SPC rules<a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Originally, control charts employed only one rule, the 3-sigma rule. However, to increase the chart’s sensitivity to minor sustained shifts and other patterns of non-random variation, a plethora of supplementary rules have since been developed. To name a few, we have the Western Electric rules (four basic rules plus many more for specialised purposes), the Nelson rules (ten rules), and the Westgard rules (six rules). Most rules are based on identifying non-random patterns in the position of data points relative to the one-, two-, or three-sigma limits, each with different diagnostic properties.</p>
+<p>Furthermore, several distinct sets of rules for runs analysis based on identifying non-random patterns relative the the centre line have been published <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>.</p>
+<p>As discussed earlier in this book, it may seem tempting to apply as many rules as possible to increase the chance of detecting any signs of special cause variation. However, this strategy comes at a price. While additional rules do increase the sensitivity of SPC analysis, they also raise the risk of false alarms. This topic is further explored in Appendix <a href="diagnostics.html#diagnostics">C</a>, <a href="diagnostics.html#diagnostics">Two Types of Errors When Using SPC</a>.</p>
+<p>Apart from the risk of applying too many rules, the rules themselves may also be either overly sensitive or insufficiently sensitive. A prominent example is a commonly used set of runs rules – including four tests for trends, shifts, and too many or too few runs respectively – adopted by many healthcare organisations <span class="citation">(<a href="#ref-provost2011">Provost and Murray 2011</a>; <a href="#ref-perla2011">Perla, Provost, and Murray 2011</a>)</span>. This particular set has been shown to produce a very high rate of false signals. For instance, in a run chart with 24 data points, the expected false positive rate is close to 50% <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>. The main contributor appears to be the trend rule – defined as five or more consecutive data points all increasing or decreasing. Short trends like this are very common, even in sequences of purely random numbers. Moreover, trend rules in general have been thoroughly studied and found to be, at best, unhelpful and, at worst, misleading <span class="citation">(<a href="#ref-davis1988">Davis and Woodall 1988</a>)</span>.</p>
+<p>To make matters worse, some practitioners deliberately tighten control limits in an attempt to increase the sensitivity of the sigma rule. This behaviour often stems from another common mistake: using the overall standard deviation to calculate control limits <span class="citation">(<a href="#ref-wheeler2010">Wheeler 2010</a>, <a href="#ref-wheeler2016">2016</a>)</span>. As emphasised repeatedly throughout this book, the overall variation is not appropriate for this purpose, as it includes both common cause and special cause variation – ultimately inflating the control limits. Inflated limits can, in turn, prompt misguided attempts to narrow them artificially. Instead, control limits, set at ±3-sigma from the centre line, should be based on the estimated within-subgroup standard deviation from rationally formed subgroups. This approach captures common cause variation and provides a sound basis for meaningful process monitoring and improvement.</p>
+<p>To avoid signal fatigue – which, at best, results in wasted effort from chasing false signals – we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book – the two runs rules and the 3-sigma rule – have been deliberately designed to detect patterns indicative of one or more of the types of variation most commonly encountered in healthcare improvement: freaks, shifts, trends or cycles, while keeping acceptable false alarm rates.</p>
+</div>
+<div id="confusing-the-voice-of-the-customer-with-the-voice-of-the-process" class="section level2 hasAnchor" number="21.3">
+<h2><span class="header-section-number">21.3</span> Confusing the voice of the customer with the voice of the process<a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>“Hearing voices” is essential to effective SPC implementation. Two voices demand close attention: the voice of the customer and the voice of the process. Both are important, but confusing one for the other can lead to misguided actions, wasted effort, and poor decision-making.</p>
+<p>The voice of the customer refers to the expected or desired outcomes of the process, while the voice of the process reflects its actual capability and stability regardless of what the customer wants.</p>
+<p>The voice of the customer is often expressed through specification limits that define the desired level of outcomes. These limits may take the form of an upper or lower acceptance threshold, or an interval specifying the acceptable range for a given outcome. For example, based on literature reviews or results from comparable units, it may be determined that an acute caesarean section should be completed within 30 minutes of the decision to operate. Any procedure taking longer than this would be considered unacceptable.</p>
+<p>If we listen only to the voice of the customer, it may be tempting to treat any caesarean section taking longer than 30 minutes as a special cause – and perhaps even initiate a root cause analysis in each case. However, without also considering the voice of the process – which tells us whether the process is stable and what it is actually capable of, as indicated by the control limits – such an approach is flawed.</p>
+<p>Unacceptable outcomes may well arise from highly stable and predictable processes – and conversely, acceptable outcomes may result from unstable ones. Before taking action based on specific outcomes, we must first determine whether they are the result of common cause or special cause variation. This distinction is crucial, as each type of variation calls for a fundamentally different approach to improvement.</p>
+<p>As detailed in Chapter <a href="variation.html#variation">1</a>, <a href="variation.html#variation">Understanding Variation</a>, addressing common cause variation requires a thorough redesign of the entire process, while addressing special cause variation involves identifying the root causes of the special cause(s) and either eliminating or reinforcing them, depending on whether they are undesirable or beneficial.</p>
+<p>The long-term goal of any improvement initiative is to establish stable processes that consistently deliver acceptable results.</p>
+<p>The two voices and the corresponding four appropriate actions are summarised in the table below:</p>
 <table>
-<caption>Results from runs analyses of 2000 simulated run charts with 24 data points. In half the simulations a shift of 2 SD was introduced in the last 12 subgroups. Shift +/– indicates the presence or absence of true shifts in process mean. Signal +/– indicates the result from the run chart analysis using the two runs analysis rules <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>.</caption>
+<caption>The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.</caption>
+<colgroup>
+<col width="23%" />
+<col width="37%" />
+<col width="39%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th>Shift–</th>
-<th align="right">Shift+</th>
-<th align="left">Likelihood ratio</th>
+<th><strong>Process Stable</strong></th>
+<th><strong>Process Unstable</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Signal–</strong></td>
-<td>927</td>
-<td align="right">115</td>
-<td align="left">LR– = 115 / 927 = 0.12</td>
+<td><strong>Customer Satisfied</strong></td>
+<td>OK – hands off and continue to monitor</td>
+<td>Trouble ahead – stabilise the process</td>
 </tr>
 <tr class="even">
-<td><strong>Signal+</strong></td>
-<td>73</td>
-<td align="right">885</td>
-<td align="left">LR+ = 885 / 73 = 12</td>
+<td><strong>Customer Unsatisfied</strong></td>
+<td>Trouble now – revise the process</td>
+<td>Chaos – revise and stabilise the process</td>
 </tr>
 </tbody>
 </table>
-<p>Studies comparing different combination of rules using likelihood ratios <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>; <a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span> found that:</p>
+</div>
+<div id="automatic-rephasing" class="section level2 hasAnchor" number="21.4">
+<h2><span class="header-section-number">21.4</span> Automatic rephasing<a href="pitfalls.html#automatic-rephasing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Rephasing involves splitting an SPC chart to recalculate the centre line and control limits after a sustained shift has been identified.</p>
+<p>Figure <a href="pitfalls.html#fig:pitfalls-fig1">21.1</a> shows the number of hospital infections (C. diff.) before and after an intervention, which began after month 24.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="pitfalls.html#cb107-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
+<span id="cb107-2"><a href="pitfalls.html#cb107-2" tabindex="-1"></a>    <span class="at">data  =</span> cdi,</span>
+<span id="cb107-3"><a href="pitfalls.html#cb107-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb107-4"><a href="pitfalls.html#cb107-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
+<span id="cb107-5"><a href="pitfalls.html#cb107-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb107-6"><a href="pitfalls.html#cb107-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:pitfalls-fig1"></span>
+<img src="_main_files/figure-html/pitfalls-fig1-1.svg" alt="Hospital infections." width="672" />
+<p class="caption">
+Figure 21.1: Hospital infections.
+</p>
+</div>
+<p>Figure <a href="pitfalls.html#fig:pitfalls-fig2">21.2</a> has been rephased following the start of the intervention and the subsequent shift. This correctly distinguishes two distinct periods, each with stable but differing levels of infections.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="pitfalls.html#cb108-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
+<span id="cb108-2"><a href="pitfalls.html#cb108-2" tabindex="-1"></a>    <span class="at">data  =</span> cdi,</span>
+<span id="cb108-3"><a href="pitfalls.html#cb108-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb108-4"><a href="pitfalls.html#cb108-4" tabindex="-1"></a>    <span class="at">part  =</span> period,</span>
+<span id="cb108-5"><a href="pitfalls.html#cb108-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
+<span id="cb108-6"><a href="pitfalls.html#cb108-6" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb108-7"><a href="pitfalls.html#cb108-7" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:pitfalls-fig2"></span>
+<img src="_main_files/figure-html/pitfalls-fig2-1.svg" alt="Hospital infections -- rephasing done right!" width="672" />
+<p class="caption">
+Figure 21.2: Hospital infections – rephasing done right!
+</p>
+</div>
+<p>Automatic rephasing is when the centre line and control limits are recalculated <em>automatically</em> after the software detects a shift – typically triggered by a prolonged run of data points on one side of the centre line. Some software packages perform automatic rephasing by default (<span class="citation">Reading et al. (<a href="#ref-reading2021">2021</a>)</span>).</p>
+<p>Figure <a href="pitfalls.html#fig:pitfalls-fig3">21.3</a> has been automatically rephased following detection of the shift. Coincidentally, the run that signalled the shift began three months prior to the intervention. However, these months should correctly be considered part of the baseline period. As a result, the control limits and centre lines do not accurately reflect the distinct before-and-after periods. The centre lines are inflated, and a freak data point falsely suggests instability during the baseline period.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="pitfalls.html#cb109-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
+<span id="cb109-2"><a href="pitfalls.html#cb109-2" tabindex="-1"></a>    <span class="at">data        =</span> cdi,</span>
+<span id="cb109-3"><a href="pitfalls.html#cb109-3" tabindex="-1"></a>    <span class="at">chart       =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb109-4"><a href="pitfalls.html#cb109-4" tabindex="-1"></a>    <span class="at">part        =</span> <span class="dv">22</span>,</span>
+<span id="cb109-5"><a href="pitfalls.html#cb109-5" tabindex="-1"></a>    <span class="at">part.labels =</span> <span class="fu">c</span>(<span class="st">&#39;pre&#39;</span>, <span class="st">&#39;post&#39;</span>),</span>
+<span id="cb109-6"><a href="pitfalls.html#cb109-6" tabindex="-1"></a>    <span class="at">title       =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
+<span id="cb109-7"><a href="pitfalls.html#cb109-7" tabindex="-1"></a>    <span class="at">ylab        =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb109-8"><a href="pitfalls.html#cb109-8" tabindex="-1"></a>    <span class="at">xlab        =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:pitfalls-fig3"></span>
+<img src="_main_files/figure-html/pitfalls-fig3-1.svg" alt="Hospital infections -- rephasing done wrong!" width="672" />
+<p class="caption">
+Figure 21.3: Hospital infections – rephasing done wrong!
+</p>
+</div>
+<p>We strongly discourage the use of automatic rephasing, as it can lead to misleading interpretations of process stability. By automating shift detection, automatic rephasing effectively removes the essential human insight into the process. Therefore, rephasing should be a deliberate decision made by individuals with a thorough understanding of the process and any associated interventions.</p>
+<p>Rephasing <em>may</em> be appropriate when the following conditions are met:</p>
 <ul>
-<li><p>The 3-sigma rule is effective (high LR+, low LR–) in signalling moderate to large possibly <em>transient</em> shifts in data.</p></li>
-<li><p>The 3-sigma rule looses specificity (more false positive signals) with increasing number of data points.</p></li>
-<li><p>Runs analysis using the two rules proposed in Chapter <a href="testing.html#testing">3</a> is effective in signalling minor to moderate <em>sustained</em> shifts in data regardless of the number of data points.</p></li>
-<li><p>Combining the 3-sigma rule with runs analysis and keeping the number of data points between 20 and 30 strikes a good balance between false positive and false negative signals.</p></li>
+<li>there is a sustained shift in data,</li>
+<li>the reason for the shift is known,</li>
+<li>the shift is in the desired direction, and</li>
+<li>the shift is expected to continue.</li>
 </ul>
+<p>If any of these conditions is not met, we should rather seek to understand the nature and causes of any shift, following the strategy outlined in Chapter <a href="using.html#using">4</a>, <a href="using.html#using">Using SPC in Healthcare</a>.</p>
 </div>
+<div id="the-control-chart-vs-run-chart-debate" class="section level2 hasAnchor" number="21.5">
+<h2><span class="header-section-number">21.5</span> The control chart vs run chart debate<a href="pitfalls.html#the-control-chart-vs-run-chart-debate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is a common and persistent misconception that control charts are inherently superior to run charts in detecting special cause variation (e.g. <span class="citation">Carey (<a href="#ref-carey2002b">2002</a>)</span>). Similarly, run charts and control charts are often viewed as fundamentally different methods, warranting distinct terminologies (e.g. <span class="citation">Perla, Provost, and Murray (<a href="#ref-perla2011">2011</a>)</span>). We disagree with both notions.</p>
+<p>We refer to run charts and control charts collectively as SPC charts – time series charts that use statistical tests to detect signs of special cause variation. These tests – known as rules – employ various techniques to identify patterns in data that are unlikely to arise in stable (i.e., purely random) processes.</p>
+<p>All SPC rules share a common basis: they rely on the position of data points relative to the process centre and/or process spread. For a detailed discussion of these concepts, see Appendix <a href="diagnostics.html#diagnostics">C</a>, <a href="stat-concepts.html#stat-concepts">Basic Statistical Concepts</a>.</p>
+<p>Traditionally, control charts use rules based on sigma limits, while run charts apply rules based on the centre line. However, combining rules based on both centre and spread – as we advocate throughout this book – is not a new practice. Consider Rule #4 of the Western Electric rules – a run of eight or more consecutive data points on the same side of the centre line. This rule, which is independent of sigma limits, is grounded in the same statistical principle as the two runs rules for unusually long or few runs.</p>
+<p>Thus, run charts and control charts are two sides of the same coin, with the key difference being the presence or absence of control limits. These limits serve to quickly signal sudden, significant shifts in the data and to provide a visual representation of natural process variation. Runs analysis – using rules for unusually long or few runs (or crossings) – is more effective than control limits for detecting minor to moderate <em>sustained</em> shifts or trends in data. Combining these two principles offers the best of both worlds.</p>
+<p>Nonetheless, standalone run charts present some advantages over control charts. A key benefit is that run charts are a lot easier to construct than control charts using pen and paper only: plot the dots, and draw a horizontal line that splits data in half.</p>
+<p>Additionally, using the median rather than the mean as the centre line effectively divides the data symmetrically, making the chart largely independent of distributional assumptions and less prone to misapplication. The latter being particularly important i healthcare were many practitioners lack formal statistical training.</p>
+<p>Finally, because runs analysis is most effective for detecting minor to moderate sustained shifts, which is ultimately what we seek when aiming to improve processes, run charts may be all that is needed during the improvement phase. Once a satisfactory level of improvement has been achieved, control limits can be added – along with switching to the mean as the centre line – to monitor process stability and quickly detect sudden larger, and possibly transient, shifts in the data.</p>
 </div>
-<div id="conclusion-keeping-the-balance" class="section level2 hasAnchor" number="25.2">
-<h2><span class="header-section-number">C.2</span> Conclusion: Keeping the balance<a href="diagnostics.html#conclusion-keeping-the-balance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC charts, like any statistical or medical tests, can sometimes suggest a problem where none exists or fail to detect a real issue. This can result in losses – either from wasted resources chasing false alarms or from harm caused by overlooked special causes. However, carefully selecting which rules to apply to SPC charts can help minimize losses in both cases.</p>
-<p>Since Shewhart first introduced the control chart in 1924 – using only the 3-sigma rule – many additional rules and rule sets have been proposed to improve the sensitivity of SPC charts to special cause variation. However, increased sensitivity comes at the cost of reduced specificity, and applying too many or overly sensitive rules inevitably leads to wasted resources chasing false alarms. Our goal is to strike the right balance between sensitivity and specificity. Quantifying diagnostic errors using likelihood ratios is a valuable tool in achieving this.</p>
-<p>The rules proposed in this book – the two runs rules and the 3-sigma rule – have been validated through careful studies and years of practical experience, demonstrating a useful balance between sensitivity and specificity.</p>
+<div id="assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="section level2 hasAnchor" number="21.6">
+<h2><span class="header-section-number">21.6</span> Assuming a one-to-one link between PDSA cycles and data points<a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While this issue may not result in faulty SPC analyses, it often causes confusion among practitioners. SPC is frequently taught alongside improvement work using PDSA cycles, which can lead to the mistaken belief that there must be a one-to-one correspondence between PDSA cycles and data points on an SPC chart. In other words, any detected freak, shift or trend is assumed to be directly linked to specific PDSA cycles testing particular actions. Conversely, the absence of signals may be misinterpreted as evidence that a PDSA cycle has failed.</p>
+<p>This is, however, far from always the case. PDSA cycles tend to run quickly (minutes, hours, days), while SPC charts reflect changes more slowly (days, weeks, months).</p>
+<p>Therefore, it is important for practitioners to recognise that SPC charts and PDSA cycles operate on different timescales and serve complementary but distinct purposes. SPC should be used as a broader monitoring tool to observe trends and shifts over time, while PDSA cycles focus on rapid, iterative testing and learning. Understanding this distinction helps ensure more effective use of both methods in quality improvement efforts.</p>
 
 </div>
 </div>
@@ -523,14 +575,26 @@ for the out-of-control ARL, when a special cause is present, where</p>
 <div id="ref-anhoej2015" class="csl-entry">
 Anhøj, Jacob. 2015. <span>“Diagnostic Value of Run Chart Analysis: Using Likelihood Ratios to Compare Run Chart Rules on Simulated Data Series.”</span> <em>PLoS ONE</em>. <a href="https://doi.org/10.1371/journal.pone.0121349">https://doi.org/10.1371/journal.pone.0121349</a>.
 </div>
-<div id="ref-anhoej2018b" class="csl-entry">
-Anhøj, Jacob, and Tore Wentzel-Larsen. 2018. <span>“Sense and Sensibility: On the Diagnostic Value of Control Chart Rules for Detection of Shifts in Time Series Data.”</span> <em>BMC Medical Research Methodology</em>. <a href="https://doi.org/10.1186/s12874-018-0564-0">https://doi.org/10.1186/s12874-018-0564-0</a>.
+<div id="ref-carey2002b" class="csl-entry">
+Carey, Raymond G. 2002. <span>“How Do You Know That Your Care Is Improving? Part 2: Using Control Charts to Learn from Your Data.”</span> <em>J Ambulatory Care Manage</em> 25(2): 78–88.
 </div>
-<div id="ref-deeks2004" class="csl-entry">
-Deeks, Jonathan J, and Douglas G Altman. 2004. <span>“Diagnostic Tests 4: Likelihood Ratios.”</span> <em>BMJ</em> 329: 168–69. <a href="https://doi.org/10.1136/bmj.329.7458.168">https://doi.org/10.1136/bmj.329.7458.168</a>.
+<div id="ref-davis1988" class="csl-entry">
+Davis, Robert B, and William H Woodall. 1988. <span>“Performance of the Control Chart Trend Rule Under Linear Shift.”</span> <em>Journal of Quality Technology</em> 20: 260–62.
 </div>
-<div id="ref-montgomery2020" class="csl-entry">
-Montgomery, Douglas C. 2020. <em>Introduction to Statistical Quality Control, Eighths Ed.</em> Wiley.
+<div id="ref-perla2011" class="csl-entry">
+Perla, Rocco J, Lloyd P Provost, and Sandy K Murray. 2011. <span>“The Run Chart: A Simple Analytical Tool for Learning from Variation in Healthcare Processes.”</span> <em>BMJ Qual Saf</em> 20: 46–51. <a href="https://doi.org/10.1136/bmjqs.2009.037895">https://doi.org/10.1136/bmjqs.2009.037895</a>.
+</div>
+<div id="ref-provost2011" class="csl-entry">
+Provost, Lloyd P, and Sandra K Murray. 2011. <em>The Health Care Data Guide: Learning from Data for Improvement</em>. San Francisco: John Wiley &amp; Sons Inc.
+</div>
+<div id="ref-reading2021" class="csl-entry">
+Reading, Christopher, Simon Wellesley-Miller, Zoë Turner, Tom Jemmett, Tom Smith, Chris Mainey, and John MacKintosh. 2021. <em>NHSRplotthedots: Draw XmR Charts for NHSE/i ’Making Data Count’ Programme</em>. <a href="https://doi.org/10.32614/CRAN.package.NHSRplotthedots">https://doi.org/10.32614/CRAN.package.NHSRplotthedots</a>.
+</div>
+<div id="ref-wheeler2010" class="csl-entry">
+———. 2010. <span>“The Right and Wrong Ways of Computing Limits.”</span> 2010. <a href="https://www.spcpress.com/pdf/DJW205.pdf">https://www.spcpress.com/pdf/DJW205.pdf</a>.
+</div>
+<div id="ref-wheeler2016" class="csl-entry">
+———. 2016. <span>“The Levey-Jennings Chart – How to Get the Most Out of Your Measurement System.”</span> 2016. <a href="http://www.spcpress.com/pdf/DJW290.pdf">http://www.spcpress.com/pdf/DJW290.pdf</a>.
 </div>
 </div>
             </section>
@@ -538,8 +602,8 @@ Montgomery, Douglas C. 2020. <em>Introduction to Statistical Quality Control, Ei
           </div>
         </div>
       </div>
-<a href="stat-concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-notes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="scaling-up-charts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="subgrouping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

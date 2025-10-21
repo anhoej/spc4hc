@@ -4,7 +4,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Common Pitfalls to Avoid
+# Common Pitfalls to Avoid {#pitfalls}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,

@@ -174,14 +174,14 @@ i-charts-for-measument-data-with-variable-subgroup-sizes
 one-chart-to-rule-them-all
 funnel-plots-for-categorical-subgroups
 pareto-charts-for-ranking-problems
-tips-for-effective-spc-implementation
+tips
 engaging-stakeholders
 automating-production-of-spc-charts
 continuous-evaluation-and-improvement
 problems-and-challenges-with-spc
 high-volume-data
 scaling-up-charts
-common-pitfalls-to-avoid
+pitfalls
 data-issues
 signal-fatigue-from-over-sensitive-spc-rules
 confusing-the-voice-of-the-customer-with-the-voice-of-the-process
@@ -227,3 +227,7 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+data-collection-and-storage
+chart-production-and-analysis
+reports-and-dashboards

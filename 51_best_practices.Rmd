@@ -1,16 +1,16 @@
 # (PART\*) Part 5: Best Practices, Controversies, and Tips {-}
 
-# Tips for Effective SPC Implementation
+# Tips for Effective SPC Implementation {#tips}
 
 Successful implementation of SPC involves far more than plotting control charts. It requires establishing a sustainable system that integrates data collection, analysis, interpretation, and action into everyday practice.
 
-Building such a system demands -- at the very least -- active engagement of stakeholders at all levels of the organisation, automation of chart production, continuous evaluation and refinement of the system itself, and early recognition of common pitfalls.
+Building such a system requires -- at the very least -- active engagement of stakeholders at all levels of the organisation, automation of chart production, continuous evaluation and ongoing refinement of the system itself, as well as early recognition of potential pitfalls and challenges.
+
+The first three of these will be addressed in this chapter; pitfalls and challenges are discussed separately in Chapter \@ref(pitfalls).
 
 ## Engaging stakeholders
 
-Apart from the data scientist for whom this book is primarily intended, stakeholders include not only the front-line staff and analysts responsible for data collection and interpretation, but also -- and most importantly -- middle and senior management, whose understanding of SPC principles and commitment to improvement rather than blame are essential to success.
-
-Without management support, SPC is easily reduced to a routine reporting exercise or box-ticking activity, rather than a powerful tool for learning and continuous improvement.
+Apart from the data scientists for whom this book is primarily intended, stakeholders include not only the front-line staff and team leaders responsible for data collection and interpretation, but also -- and most importantly -- middle and senior management, whose understanding of SPC principles and commitment to improvement rather than blame are essential to success. Without management support, SPC is easily reduced to a routine reporting exercise or box-ticking activity, rather than a powerful tool for learning and continuous improvement.
 
 SPC implementation relies on both **knowledge** and **skills**. For successful adoption, the organisation as a whole must possess the necessary expertise in both areas:
 
@@ -24,27 +24,46 @@ SPC implementation relies on both **knowledge** and **skills**. For successful a
     - Designing rational data sampling plans
     - Constructing SPC charts
     - Creating SPC reports and dashboards
-    - Identifying signals of special-cause variation
-    - Recognising patterns of change over time
+    - Identifying and investigating signals of special-cause variation
     
-However, not all stakeholder groups need to know everything or have every skill:
+However, not all stakeholder groups need knowledge at the same level or to have every skill:
     
-| Stakeholder Group    | Knowledge                                                                                  | Skills                                                                                                                                                                                                                |
-|----------------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Front-line staff** | Understanding variation.<br>Basic understanding of SPC charts.                             | Recognising signals of special cause variation.<br>Following operational definitions and data collection procedures.<br>Contributing to the development of indicators and sampling plans.                             |
-| **Team leaders**     | Understanding variation.<br>SPC charts interpretation.<br>Pyramid Model for Investigation. | Interpreting SPC charts.<br>Guiding investigations for special-cause variation.<br>Supporting data collection and sampling.                                                                                           |
-| **Data scientists**  | Understanding variation.<br>SPC charts in detail.<br>Pyramid Model for Investigation.      | Guiding the development of operational indicators and sampling plans.<br>Constructing SPC charts and reports/dashboards.<br>Analysing signals and patterns in time series.                                            |
-| **Management**       | Understanding variation.<br>SPC charts and metrics.<br>Pyramid Model for Investigation.    | Guiding the selection of topics/indicators to monitor.<br>Interpreting SPC reports to make decisions.<br>Supporting investigations and improvement initiatives.<br>Promoting a culture of learning rather than blame. |
-Table: Knowledge and skills by stakeholder group
+| Stakeholder Group    | Knowledge    | Skills                                                                                                                                                                                                                |
+|----------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Front-line staff** | Fundamental  | Contributing to the development of indicators and sampling plans.<br>Following operational definitions and data collection procedures.<br>Recognising signals of special cause variation in SPC charts.               |
+| **Team leaders**     | Intermediate | Developing indicators and sampling plans.<br>Supporting data collection and sampling.<br>Interpreting SPC charts.<br>Guiding investigations for special cause variation.                                              |
+| **Data scientists**  | Deep         | Guiding the development of indicators and sampling plans.<br>Constructing SPC charts and reports/dashboards.<br>Analysing signals and patterns in SPC charts.                                                         |
+| **Management**       | Fundamental  | Guiding the selection of topics/indicators to monitor.<br>Interpreting SPC reports to make decisions.<br>Supporting investigations and improvement initiatives.<br>Promoting a culture of learning rather than blame. |
+Table: Knowledge and skills by stakeholder group.<br>- **Fundamental**: essential concepts and terminology are understood.<br>- **Intermediate**: principles can be applied and explained.<br>- **Deep**: concepts are integrated, adapted, and used.
 
-Successfully engaging stakeholders while implementing SPC is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small sections (departments or centres), while gradually expanding the scope as staff gain confidence, processes stabilise, and lessons are learned from early trials.
-
+Successfully building knowledge and skills throughout and organisation is no easy feat. For large healthcare organisations, it may be helpful to gather experience through stepwise implementation in suitably small units (departments or centres), while gradually expanding the scope as staff gain confidence, processes stabilise, and lessons are learned from early trials.
 
 ## Automating production of SPC charts
 
+Automation plays a key role in making SPC both effective and sustainable. While small-scale or temporary local projects can be managed manually using pen and paper only, long-term or system-wide implementation requires systems that can handle data efficiently and present results consistently, with minimal human intervention.
+
+At this stage, it is crucial to distinguish between tasks best handled by computers -- such as data management, analysis, and presentation -- and those that require human involvement, including data interpretation and data-driven decision-making. Automating routine tasks frees up time for humans to focus on making informed decisions as detailed in Chapter \@ref(using).
+
+
+
+### Data collection and storage
+
+Ideally, data collection and storage should be integrated into routine clinical or administrative procedures, adding no extra workload for front-line staff and allowing for easy import into analysis software.
+
+In practice, however, routine data are often insufficient for SPC analysis. Key variables may be missing, recorded inconsistently, or saved as unstructured data -- for example, as free text rather than structured information -- making it difficult to construct meaningful SPC charts. This frequently creates a need for supplementary procedures specifically designed to capture the necessary information.
+
+To address this, organisations can adopt a stepwise approach: start by identifying critical data elements, determine which can be captured routinely, and design additional collection methods only for those elements that cannot be obtained otherwise. When combined with automated data import and chart generation, this strategy helps minimise the burden on staff while maximising the quality and usability of data for SPC.
+
+Over time, it pays to plan ahead when designing patient record systems, ensuring that all necessary data elements for SPC and quality improvement are included -- or, ideally, creating a system that can be easily expanded and adapted to future, currently unforeseen needs.
+
+### Chart production and analysis
+
+### Reports and dashboards
+
+
+
 ## Continuous evaluation and improvement
 
-## Problems and challenges with SPC
 
 
 
