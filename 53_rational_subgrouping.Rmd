@@ -135,3 +135,16 @@ Note that decisions about temporal and organisational granularity (#4–6) may c
 Despite the section header, there is no truly concise way to explain rational subgrouping. It is one of the most challenging aspects of SPC to understand and apply correctly -- not least because there is no single recipe for getting it right.
 
 Still, there is no excuse -- getting rational subgrouping right is what separates meaningful SPC charts from those that mislead or fall short.
+
+
+
+
+
+# High Volume Data
+
+# Scaling Up Charts
+
+- technical issues
+- tabular charts
+- grids
+

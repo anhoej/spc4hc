@@ -180,8 +180,6 @@ automating-production-of-spc-charts
 data-collection-and-storage
 charts-reports-and-dashboards
 continuous-evaluation-and-improvement
-high-volume-data
-scaling-up-charts
 pitfalls
 data-issues
 signal-fatigue-from-over-sensitive-spc-rules
@@ -195,6 +193,8 @@ too-small-subgroups-revealing-unimportant-noise
 striking-the-balance
 a-practical-approach-for-rational-subgrouping
 rational-subgrouping-in-short
+high-volume-data
+scaling-up-charts
 data-sets
 stat-concepts
 data-types
