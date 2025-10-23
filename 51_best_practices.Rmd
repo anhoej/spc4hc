@@ -66,7 +66,7 @@ Reports and dashboards are useful for presenting multiple SPC charts, often in c
 
 Unsurprisingly, reports including explanation and interpretation usually require human involvement, whereas dashboards can be fully automated. However, one does not exclude the other -- on the contrary, an organisation may benefit from a combination of regular reports targeting specific stakeholder groups and interactive dashboards for front-line teams and analysts who need to act on real-time data.
 
-Designing and producing reports and dashboards is outside the scope of this book, but R is well suited for both. Using RMarkdown [@xie2023] or Quarto [@allaire2025], possibly in combination with Shiny for interactive dashboards, makes it easy to integrate data import, management, analysis, and presentation into a single, seamless workflow that requires minimal human involvement.
+Designing and producing reports and dashboards is outside the scope of this book, but R is well suited for both. Using RMarkdown [@xie2023] or Quarto [@allaire2025], possibly in combination with Shiny for interactive dashboards, makes it feasible to integrate data import, management, analysis, and presentation into a single, seamless workflow that requires minimal human involvement.
 
 ## Continuous evaluation and improvement
 
