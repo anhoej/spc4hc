@@ -192,7 +192,7 @@ too-large-subgroups-masking-meaningful-signals
 too-small-subgroups-revealing-unimportant-noise
 striking-the-balance
 a-practical-approach-for-rational-subgrouping
-rational-subgrouping-in-short
+rational-subgrouping-in-summary
 high-volume-data
 scaling-up-charts
 data-sets
@@ -228,4 +228,3 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 resources
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

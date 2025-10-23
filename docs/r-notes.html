@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-22" />
+<meta name="date" content="2025-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -348,7 +348,7 @@ div.csl-indent {
 <li class="chapter" data-level="20.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>20.2</b> Too small subgroups — revealing unimportant noise</a></li>
 <li class="chapter" data-level="20.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>20.3</b> Striking the balance</a></li>
 <li class="chapter" data-level="20.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>20.4</b> A practical approach for rational subgrouping</a></li>
-<li class="chapter" data-level="20.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-short"><i class="fa fa-check"></i><b>20.5</b> Rational subgrouping “in short”</a></li>
+<li class="chapter" data-level="20.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>20.5</b> Rational subgrouping in summary</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>21</b> High Volume Data</a></li>
 <li class="chapter" data-level="22" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>22</b> Scaling Up Charts</a></li>
@@ -456,18 +456,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-10-10    13    32
- 2 2025-10-11    14    29
- 3 2025-10-12    16    33
- 4 2025-10-13    19    30
- 5 2025-10-14    13    32
- 6 2025-10-15    18    35
- 7 2025-10-16    19    29
- 8 2025-10-17    16    33
- 9 2025-10-18    16    34
-10 2025-10-19    11    27
-11 2025-10-20    13    32
-12 2025-10-21    12    26</code></pre>
+ 1 2025-10-11    13    32
+ 2 2025-10-12    14    29
+ 3 2025-10-13    16    33
+ 4 2025-10-14    19    30
+ 5 2025-10-15    13    32
+ 6 2025-10-16    18    35
+ 7 2025-10-17    19    29
+ 8 2025-10-18    16    33
+ 9 2025-10-19    16    34
+10 2025-10-20    11    27
+11 2025-10-21    13    32
+12 2025-10-22    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-notes.html#cb134-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb134-2"><a href="r-notes.html#cb134-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

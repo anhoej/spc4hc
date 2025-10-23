@@ -130,7 +130,7 @@ Here are a few suggestions to consider when designing rational subgroups:
 
 Note that decisions about temporal and organisational granularity (#4–6) may conflict with the requirement for sufficiently large subgroups (#7) to ensure meaningful analysis. In such cases, it may be necessary to compromise or explore alternative methods to monitor the processes of interest -- for example using different indicators or charts better suited for rare events.
 
-## Rational subgrouping "in short"
+## Rational subgrouping in summary
 
 Despite the section header, there is no truly concise way to explain rational subgrouping. It is one of the most challenging aspects of SPC to understand and apply correctly -- not least because there is no single recipe for getting it right.
 
