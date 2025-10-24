@@ -60,9 +60,7 @@ variation, chance variation, or noise.    variation, systematic variation, or
 --------------------------------------------------------------------------------
 Table: Characteristics of common versus special cause variation
 
-## SPC and the nature of variation
-
-Statistical Process Control (SPC) revolves around understanding variation and identifying its causes -- whether common or special -- in order to drive meaningful improvement. Contrary to common misconceptions, SPC is not merely a method for spotting outliers; it’s a framework for enhancing processes and outcomes.
+In summary, statistical Process Control (SPC) revolves around understanding variation and identifying its causes -- whether common or special -- in order to drive meaningful improvement. Contrary to common misconceptions, SPC is not merely a method for spotting outliers; it’s a framework for enhancing processes and outcomes.
 
 >Statistical Process Control is not about statistics, it is not about 'process-hyphen-control', and it is not about conformance to specifications. […] It is about the continual improvement of processes and outcomes. And it is, first and foremost, a way of thinking with some tools attached.
 >

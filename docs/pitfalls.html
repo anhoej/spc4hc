@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 19 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 18 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 19 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 18 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 19 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 18 Common Pitfalls to Avoid | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-23" />
+<meta name="date" content="2025-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,17 +182,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-2-constructing-spc-charts-with-r"><i class="fa fa-check"></i>Part 2: Constructing SPC Charts with R</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-case-studies-and-worked-examples"><i class="fa fa-check"></i>Part 3: Case Studies and Worked Examples</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-advanced-spc-techniques"><i class="fa fa-check"></i>Part 4: Advanced SPC Techniques</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 5: Best Practices, Controversies, and Tips</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-6-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 6: Conclusion and Final Thoughts</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-advanced-spc-techniques"><i class="fa fa-check"></i>Part 3: Advanced SPC Techniques</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 4: Best Practices, Controversies, and Tips</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 5: Conclusion and Final Thoughts</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="variation.html"><a href="variation.html#spc-and-the-nature-of-variation"><i class="fa fa-check"></i><b>1.1</b> SPC and the nature of variation</a></li>
-</ul></li>
+<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
 <li class="chapter" data-level="2" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>2</b> Understanding SPC Charts</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>2.1</b> Anatomy and physiology of SPC charts</a></li>
@@ -296,63 +292,66 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> qicharts2 in short</a></li>
 </ul></li>
-<li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="11" data-path="case-1.html"><a href="case-1.html"><i class="fa fa-check"></i><b>11</b> Case 1:</a></li>
-<li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
-<li class="chapter" data-level="12" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
-<li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a>
+<li class="part"><span><b>Part 3: Advanced SPC Techniques</b></span></li>
+<li class="chapter" data-level="11" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>11</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="12" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>12</b> SPC Charts for Rare Events</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>13.1</b> Introducing the birth dataset</a></li>
-<li class="chapter" data-level="13.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-charts-for-opportunities-between-cases"><i class="fa fa-check"></i><b>13.2</b> G charts for opportunities between cases</a></li>
-<li class="chapter" data-level="13.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-charts-for-time-between-events"><i class="fa fa-check"></i><b>13.3</b> T charts for time between events</a></li>
-<li class="chapter" data-level="13.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>13.4</b> The Bernoulli CUSUM chart for binary data</a></li>
-<li class="chapter" data-level="13.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>13.5</b> Selecting the rigth chart for rare events</a></li>
+<li class="chapter" data-level="12.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>12.1</b> Introducing the birth dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases"><i class="fa fa-check"></i><b>12.2</b> G chart for opportunities between cases</a></li>
+<li class="chapter" data-level="12.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events"><i class="fa fa-check"></i><b>12.3</b> T chart for time between events</a></li>
+<li class="chapter" data-level="12.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>12.4</b> The Bernoulli CUSUM chart for binary data</a></li>
+<li class="chapter" data-level="12.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>12.5</b> Selecting the rigth chart for rare events</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<li class="chapter" data-level="13" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>13</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
-<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
+<li class="chapter" data-level="13.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>13.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="13.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>13.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
+<li class="chapter" data-level="14" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>14</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
 <ul>
-<li class="chapter" data-level="15.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
-<li class="chapter" data-level="15.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
-<li class="chapter" data-level="15.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+<li class="chapter" data-level="14.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>14.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="14.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>14.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="14.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>14.2</b> One chart to rule them all?</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>16</b> Funnel Plots for Categorical Subgroups</a></li>
-<li class="chapter" data-level="17" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>17</b> Pareto Charts for Ranking Problems</a></li>
-<li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="18" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>18</b> Tips for Effective SPC Implementation</a>
+<li class="chapter" data-level="15" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>15</b> Funnel Plots for Categorical Subgroups</a></li>
+<li class="chapter" data-level="16" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>16</b> Pareto Charts for Ranking Problems</a></li>
+<li class="part"><span><b>Part 4: Best Practices, Controversies, and Tips</b></span></li>
+<li class="chapter" data-level="17" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>17</b> Tips for Effective SPC Implementation</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>18.1</b> Engaging stakeholders</a></li>
-<li class="chapter" data-level="18.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>18.2</b> Automating production of SPC charts</a>
+<li class="chapter" data-level="17.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>17.1</b> Engaging stakeholders</a></li>
+<li class="chapter" data-level="17.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>17.2</b> Automating production of SPC charts</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>18.2.1</b> Data collection and storage</a></li>
-<li class="chapter" data-level="18.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>18.2.2</b> Charts, reports, and dashboards</a></li>
+<li class="chapter" data-level="17.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>17.2.1</b> Data collection and storage</a></li>
+<li class="chapter" data-level="17.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>17.2.2</b> Charts, reports, and dashboards</a></li>
 </ul></li>
-<li class="chapter" data-level="18.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>18.3</b> Continuous evaluation and improvement</a></li>
+<li class="chapter" data-level="17.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>17.3</b> Continuous evaluation and improvement</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>19</b> Common Pitfalls to Avoid</a>
+<li class="chapter" data-level="18" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>18</b> Common Pitfalls to Avoid</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>19.1</b> Data issues</a></li>
-<li class="chapter" data-level="19.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>19.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
-<li class="chapter" data-level="19.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>19.3</b> Confusing the voice of the customer with the voice of the process</a></li>
-<li class="chapter" data-level="19.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>19.4</b> Automatic rephasing</a></li>
-<li class="chapter" data-level="19.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>19.5</b> The control chart vs run chart debate</a></li>
-<li class="chapter" data-level="19.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>19.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="18.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>18.1</b> Data issues</a></li>
+<li class="chapter" data-level="18.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>18.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="18.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>18.3</b> Confusing the voice of the customer with the voice of the process</a></li>
+<li class="chapter" data-level="18.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>18.4</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="18.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>18.5</b> The control chart vs run chart debate</a></li>
+<li class="chapter" data-level="18.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>18.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>20</b> The Forgotten Art of Rational Subgrouping</a>
+<li class="chapter" data-level="19" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>19</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>20.1</b> Too large subgroups — masking meaningful signals</a></li>
-<li class="chapter" data-level="20.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>20.2</b> Too small subgroups — revealing unimportant noise</a></li>
-<li class="chapter" data-level="20.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>20.3</b> Striking the balance</a></li>
-<li class="chapter" data-level="20.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>20.4</b> A practical approach for rational subgrouping</a></li>
-<li class="chapter" data-level="20.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>20.5</b> Rational subgrouping in summary</a></li>
+<li class="chapter" data-level="19.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>19.1</b> Too large subgroups — masking meaningful signals</a></li>
+<li class="chapter" data-level="19.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>19.2</b> Too small subgroups — revealing unimportant noise</a></li>
+<li class="chapter" data-level="19.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>19.3</b> Striking the balance</a></li>
+<li class="chapter" data-level="19.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>19.4</b> A practical approach for rational subgrouping</a></li>
+<li class="chapter" data-level="19.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>19.5</b> Rational subgrouping in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>21</b> High Volume Data</a></li>
-<li class="chapter" data-level="22" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>22</b> Scaling Up Charts</a></li>
-<li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
+<li class="part"><span><b>Part 5: Conclusion and Final Thoughts</b></span></li>
+<li class="chapter" data-level="20" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html"><i class="fa fa-check"></i><b>20</b> Conclusion and Final Thoughts</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#summary-of-key-points"><i class="fa fa-check"></i><b>20.1</b> Summary of Key Points</a></li>
+<li class="chapter" data-level="20.2" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#emerging-trends-in-spc-and-healthcare-analytics"><i class="fa fa-check"></i><b>20.2</b> Emerging trends in SPC and healthcare analytics</a></li>
+<li class="chapter" data-level="20.3" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#encouragement-for-continuous-learning-and-application"><i class="fa fa-check"></i><b>20.3</b> Encouragement for Continuous Learning and Application</a></li>
+<li class="chapter" data-level="20.4" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#final-thoughts"><i class="fa fa-check"></i><b>20.4</b> Final Thoughts</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
 <ul>
@@ -416,7 +415,6 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
-<li class="chapter" data-level="F" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>F</b> Resources and Further Readings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -441,18 +439,18 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pitfalls" class="section level1 hasAnchor" number="19">
-<h1><span class="header-section-number">Chapter 19</span> Common Pitfalls to Avoid<a href="pitfalls.html#pitfalls" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="pitfalls" class="section level1 hasAnchor" number="18">
+<h1><span class="header-section-number">Chapter 18</span> Common Pitfalls to Avoid<a href="pitfalls.html#pitfalls" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities, and may ultimately erode trust in SPC itself.</p>
 <p>This chapter outlines several common pitfalls to avoid.</p>
-<div id="data-issues" class="section level2 hasAnchor" number="19.1">
-<h2><span class="header-section-number">19.1</span> Data issues<a href="pitfalls.html#data-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-issues" class="section level2 hasAnchor" number="18.1">
+<h2><span class="header-section-number">18.1</span> Data issues<a href="pitfalls.html#data-issues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SPC charts are only as good as the data behind them. Poor data quality, including inaccurate measurements, inconsistent definitions or data collected under conditions that vary over time or between locations can significantly compromise their reliability.</p>
-<p>How the subgroups are formed is especially important. Subgroups consist of the data elements included in each data point. The way data are sampled and grouped can greatly affect their ability to distinguish common cause variation from special cause variation. If subgrouping is not done properly, the SPC chart may generate false signals or obscure important ones. We have devoted a full chapter (<a href="subgrouping.html#subgrouping">20</a>) to <a href="subgrouping.html#subgrouping">rational subgrouping</a>.</p>
+<p>How the subgroups are formed is especially important. Subgroups consist of the data elements included in each data point. The way data are sampled and grouped can greatly affect their ability to distinguish common cause variation from special cause variation. If subgrouping is not done properly, the SPC chart may generate false signals or obscure important ones. We have devoted a full chapter (<a href="subgrouping.html#subgrouping">19</a>) to <a href="subgrouping.html#subgrouping">rational subgrouping</a>.</p>
 <p>Time spend developing operational indicator definition and rational subgroups often yields significant returns. Investing effort upfront ensures that data are meaningful and comparable, enabling better decision-making.</p>
 </div>
-<div id="signal-fatigue-from-over-sensitive-spc-rules" class="section level2 hasAnchor" number="19.2">
-<h2><span class="header-section-number">19.2</span> Signal fatigue from over-sensitive SPC rules<a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="signal-fatigue-from-over-sensitive-spc-rules" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Signal fatigue from over-sensitive SPC rules<a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Originally, control charts employed only one rule, the 3-sigma rule. However, to increase the chart’s sensitivity to minor sustained shifts and other patterns of non-random variation, a plethora of supplementary rules have since been developed. To name a few, we have the Western Electric rules (four basic rules plus many more for specialised purposes), the Nelson rules (ten rules), and the Westgard rules (six rules). Most rules are based on identifying non-random patterns in the position of data points relative to the one-, two-, or three-sigma limits, each with different diagnostic properties.</p>
 <p>Furthermore, several distinct sets of rules for runs analysis based on identifying non-random patterns relative the the centre line have been published <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>.</p>
 <p>As discussed earlier in this book, it may seem tempting to apply as many rules as possible to increase the chance of detecting any signs of special cause variation. However, this strategy comes at a price. While additional rules do increase the sensitivity of SPC analysis, they also raise the risk of false alarms. This topic is further explored in Appendix <a href="diagnostics.html#diagnostics">C</a>, <a href="diagnostics.html#diagnostics">Two Types of Errors When Using SPC</a>.</p>
@@ -460,8 +458,8 @@ div.csl-indent {
 <p>To make matters worse, some practitioners deliberately tighten control limits in an attempt to increase the sensitivity of the sigma rule. This behaviour often stems from another common mistake: using the overall standard deviation to calculate control limits <span class="citation">(<a href="#ref-wheeler2010">Wheeler 2010</a>, <a href="#ref-wheeler2016">2016</a>)</span>. As emphasised repeatedly throughout this book, the overall variation is not appropriate for this purpose, as it includes both common cause and special cause variation – ultimately inflating the control limits. Inflated limits can, in turn, prompt misguided attempts to narrow them artificially. Instead, control limits, set at ±3-sigma from the centre line, should be based on the estimated within-subgroup standard deviation from rationally formed subgroups. This approach captures common cause variation and provides a sound basis for meaningful process monitoring and improvement.</p>
 <p>To avoid signal fatigue – which, at best, results in wasted effort from chasing false signals – we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book – the two runs rules and the 3-sigma rule – have been deliberately designed to detect patterns indicative of one or more of the types of variation most commonly encountered in healthcare improvement: freaks, shifts, trends or cycles, while keeping acceptable false alarm rates.</p>
 </div>
-<div id="confusing-the-voice-of-the-customer-with-the-voice-of-the-process" class="section level2 hasAnchor" number="19.3">
-<h2><span class="header-section-number">19.3</span> Confusing the voice of the customer with the voice of the process<a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="confusing-the-voice-of-the-customer-with-the-voice-of-the-process" class="section level2 hasAnchor" number="18.3">
+<h2><span class="header-section-number">18.3</span> Confusing the voice of the customer with the voice of the process<a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>“Hearing voices” is essential to effective SPC implementation. Two voices demand close attention: the voice of the customer and the voice of the process. Both are important, but confusing one for the other can lead to misguided actions, wasted effort, and poor decision-making.</p>
 <p>The voice of the customer refers to the expected or desired outcomes of the process, while the voice of the process reflects its actual capability and stability regardless of what the customer wants.</p>
 <p>The voice of the customer is often expressed through specification limits that define the desired level of outcomes. These limits may take the form of an upper or lower acceptance threshold, or an interval specifying the acceptable range for a given outcome. For example, based on literature reviews or results from comparable units, it may be determined that an acute caesarean section should be completed within 30 minutes of the decision to operate. Any procedure taking longer than this would be considered unacceptable.</p>
@@ -498,10 +496,10 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="automatic-rephasing" class="section level2 hasAnchor" number="19.4">
-<h2><span class="header-section-number">19.4</span> Automatic rephasing<a href="pitfalls.html#automatic-rephasing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="automatic-rephasing" class="section level2 hasAnchor" number="18.4">
+<h2><span class="header-section-number">18.4</span> Automatic rephasing<a href="pitfalls.html#automatic-rephasing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rephasing involves splitting an SPC chart to recalculate the centre line and control limits after a sustained shift has been identified.</p>
-<p>Figure <a href="pitfalls.html#fig:pitfalls-fig1">19.1</a> shows the number of hospital infections (C. diff.) before and after an intervention, which began after month 24.</p>
+<p>Figure <a href="pitfalls.html#fig:pitfalls-fig1">18.1</a> shows the number of hospital infections (C. diff.) before and after an intervention, which began after month 24.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="pitfalls.html#cb107-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
 <span id="cb107-2"><a href="pitfalls.html#cb107-2" tabindex="-1"></a>    <span class="at">data  =</span> cdi,</span>
 <span id="cb107-3"><a href="pitfalls.html#cb107-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
@@ -511,10 +509,10 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:pitfalls-fig1"></span>
 <img src="_main_files/figure-html/pitfalls-fig1-1.svg" alt="Hospital infections." width="672" />
 <p class="caption">
-Figure 19.1: Hospital infections.
+Figure 18.1: Hospital infections.
 </p>
 </div>
-<p>Figure <a href="pitfalls.html#fig:pitfalls-fig2">19.2</a> has been rephased following the start of the intervention and the subsequent shift. This correctly distinguishes two distinct periods, each with stable but differing levels of infections.</p>
+<p>Figure <a href="pitfalls.html#fig:pitfalls-fig2">18.2</a> has been rephased following the start of the intervention and the subsequent shift. This correctly distinguishes two distinct periods, each with stable but differing levels of infections.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="pitfalls.html#cb108-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
 <span id="cb108-2"><a href="pitfalls.html#cb108-2" tabindex="-1"></a>    <span class="at">data  =</span> cdi,</span>
 <span id="cb108-3"><a href="pitfalls.html#cb108-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
@@ -525,11 +523,11 @@ Figure 19.1: Hospital infections.
 <div class="figure"><span style="display:block;" id="fig:pitfalls-fig2"></span>
 <img src="_main_files/figure-html/pitfalls-fig2-1.svg" alt="Hospital infections -- rephasing done right!" width="672" />
 <p class="caption">
-Figure 19.2: Hospital infections – rephasing done right!
+Figure 18.2: Hospital infections – rephasing done right!
 </p>
 </div>
 <p>Automatic rephasing is when the centre line and control limits are recalculated <em>automatically</em> after the software detects a shift – typically triggered by a prolonged run of data points on one side of the centre line. Some software packages perform automatic rephasing by default (<span class="citation">Reading et al. (<a href="#ref-reading2021">2021</a>)</span>).</p>
-<p>Figure <a href="pitfalls.html#fig:pitfalls-fig3">19.3</a> has been automatically rephased following detection of the shift. Coincidentally, the run that signalled the shift began three months prior to the intervention. However, these months should correctly be considered part of the baseline period. As a result, the control limits and centre lines do not accurately reflect the distinct before-and-after periods. The centre lines are inflated, and a freak data point falsely suggests instability during the baseline period.</p>
+<p>Figure <a href="pitfalls.html#fig:pitfalls-fig3">18.3</a> has been automatically rephased following detection of the shift. Coincidentally, the run that signalled the shift began three months prior to the intervention. However, these months should correctly be considered part of the baseline period. As a result, the control limits and centre lines do not accurately reflect the distinct before-and-after periods. The centre lines are inflated, and a freak data point falsely suggests instability during the baseline period.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="pitfalls.html#cb109-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
 <span id="cb109-2"><a href="pitfalls.html#cb109-2" tabindex="-1"></a>    <span class="at">data        =</span> cdi,</span>
 <span id="cb109-3"><a href="pitfalls.html#cb109-3" tabindex="-1"></a>    <span class="at">chart       =</span> <span class="st">&#39;c&#39;</span>,</span>
@@ -541,7 +539,7 @@ Figure 19.2: Hospital infections – rephasing done right!
 <div class="figure"><span style="display:block;" id="fig:pitfalls-fig3"></span>
 <img src="_main_files/figure-html/pitfalls-fig3-1.svg" alt="Hospital infections -- rephasing done wrong!" width="672" />
 <p class="caption">
-Figure 19.3: Hospital infections – rephasing done wrong!
+Figure 18.3: Hospital infections – rephasing done wrong!
 </p>
 </div>
 <p>We strongly discourage the use of automatic rephasing, as it can lead to misleading interpretations of process stability. By automating shift detection, automatic rephasing effectively removes the essential human insight into the process. Therefore, rephasing should be a deliberate decision made by individuals with a thorough understanding of the process and any associated interventions.</p>
@@ -554,8 +552,8 @@ Figure 19.3: Hospital infections – rephasing done wrong!
 </ul>
 <p>If any of these conditions is not met, we should rather seek to understand the nature and causes of any shift, following the strategy outlined in Chapter <a href="using.html#using">4</a>, <a href="using.html#using">Using SPC in Healthcare</a>.</p>
 </div>
-<div id="the-control-chart-vs-run-chart-debate" class="section level2 hasAnchor" number="19.5">
-<h2><span class="header-section-number">19.5</span> The control chart vs run chart debate<a href="pitfalls.html#the-control-chart-vs-run-chart-debate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-control-chart-vs-run-chart-debate" class="section level2 hasAnchor" number="18.5">
+<h2><span class="header-section-number">18.5</span> The control chart vs run chart debate<a href="pitfalls.html#the-control-chart-vs-run-chart-debate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It is a common and persistent misconception that control charts are inherently superior to run charts in detecting special cause variation (e.g. <span class="citation">Carey (<a href="#ref-carey2002b">2002</a>)</span>). Similarly, run charts and control charts are often viewed as fundamentally different methods, warranting distinct terminologies (e.g. <span class="citation">Perla, Provost, and Murray (<a href="#ref-perla2011">2011</a>)</span>). We disagree with both notions.</p>
 <p>We refer to run charts and control charts collectively as SPC charts – time series charts that use statistical tests to detect signs of special cause variation. These tests – known as rules – employ various techniques to identify patterns in data that are unlikely to arise in stable (i.e., purely random) processes.</p>
 <p>All SPC rules share a common basis: they rely on the position of data points relative to the process centre and/or process spread. For a detailed discussion of these concepts, see Appendix <a href="diagnostics.html#diagnostics">C</a>, <a href="stat-concepts.html#stat-concepts">Basic Statistical Concepts</a>.</p>
@@ -565,8 +563,8 @@ Figure 19.3: Hospital infections – rephasing done wrong!
 <p>Additionally, using the median rather than the mean as the centre line effectively divides the data symmetrically, making the chart largely independent of distributional assumptions and less prone to misapplication. The latter being particularly important i healthcare were many practitioners lack formal statistical training.</p>
 <p>Finally, because runs analysis is most effective for detecting minor to moderate sustained shifts, which is ultimately what we seek when aiming to improve processes, run charts may be all that is needed during the improvement phase. Once a satisfactory level of improvement has been achieved, control limits can be added – along with switching to the mean as the centre line – to monitor process stability and quickly detect sudden larger, and possibly transient, shifts in the data.</p>
 </div>
-<div id="assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="section level2 hasAnchor" number="19.6">
-<h2><span class="header-section-number">19.6</span> Assuming a one-to-one link between PDSA cycles and data points<a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="section level2 hasAnchor" number="18.6">
+<h2><span class="header-section-number">18.6</span> Assuming a one-to-one link between PDSA cycles and data points<a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While this issue may not result in faulty SPC analyses, it often causes confusion among practitioners. SPC is frequently taught alongside improvement work using PDSA cycles, which can lead to the mistaken belief that there must be a one-to-one correspondence between PDSA cycles and data points on an SPC chart. In other words, any detected freak, shift or trend is assumed to be directly linked to specific PDSA cycles testing particular actions. Conversely, the absence of signals may be misinterpreted as evidence that a PDSA cycle has failed.</p>
 <p>This is, however, far from always the case. PDSA cycles tend to run quickly (minutes, hours, days), while SPC charts reflect changes more slowly (days, weeks, months).</p>
 <p>Therefore, it is important for practitioners to recognise that SPC charts and PDSA cycles operate on different timescales and serve complementary but distinct purposes. SPC should be used as a broader monitoring tool to observe trends and shifts over time, while PDSA cycles focus on rapid, iterative testing and learning. Understanding this distinction helps ensure more effective use of both methods in quality improvement efforts.</p>

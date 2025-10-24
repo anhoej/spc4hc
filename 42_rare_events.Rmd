@@ -87,7 +87,7 @@ One obvious solution is to increase the subgroup size by aggregating data over l
 
 As an alternative, we introduce at the G chart.
 
-## G charts for opportunities between cases
+## G chart for opportunities between cases
 
 The G chart plots opportunities between cases, for example the number of deliveries between neonatal asphyxia. This type of count data often follows a geometric distribution with a standard deviation given by $\sigma = \sqrt{\bar{x}(\bar{x}+1)}$. The control limits are then calculated as:
 
@@ -116,7 +116,7 @@ Note that process improvement -- as in fewer cases -- will present itself as the
 
 Thus, G charts are useful alternatives to P charts when occurrences are rare and the primary interest is in detecting process improvement. However, one chart does not exclude the other, and P and G charts go well together. The P chart may be more familiar to users and is more useful for signalling process deterioration, while the G charts helps trigger signals of improvement.
 
-## T charts for time between events
+## T chart for time between events
 
 The T chart plots the time between events -- a continuous variable. While it is possible to use an I chart to plot such data, this approach may be problematic. If events occur according to a Poisson distribution -- which is often the case -- the time between events is more appropriately modelled by the exponential distribution, which is highly skewed.
 

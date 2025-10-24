@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 14 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 14 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 14 I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more) | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-23" />
+<meta name="date" content="2025-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,17 +182,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-2-constructing-spc-charts-with-r"><i class="fa fa-check"></i>Part 2: Constructing SPC Charts with R</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-case-studies-and-worked-examples"><i class="fa fa-check"></i>Part 3: Case Studies and Worked Examples</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-advanced-spc-techniques"><i class="fa fa-check"></i>Part 4: Advanced SPC Techniques</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 5: Best Practices, Controversies, and Tips</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-6-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 6: Conclusion and Final Thoughts</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-advanced-spc-techniques"><i class="fa fa-check"></i>Part 3: Advanced SPC Techniques</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 4: Best Practices, Controversies, and Tips</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 5: Conclusion and Final Thoughts</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="variation.html"><a href="variation.html#spc-and-the-nature-of-variation"><i class="fa fa-check"></i><b>1.1</b> SPC and the nature of variation</a></li>
-</ul></li>
+<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
 <li class="chapter" data-level="2" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>2</b> Understanding SPC Charts</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>2.1</b> Anatomy and physiology of SPC charts</a></li>
@@ -296,63 +292,66 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> qicharts2 in short</a></li>
 </ul></li>
-<li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="11" data-path="case-1.html"><a href="case-1.html"><i class="fa fa-check"></i><b>11</b> Case 1:</a></li>
-<li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
-<li class="chapter" data-level="12" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
-<li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a>
+<li class="part"><span><b>Part 3: Advanced SPC Techniques</b></span></li>
+<li class="chapter" data-level="11" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>11</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="12" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>12</b> SPC Charts for Rare Events</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>13.1</b> Introducing the birth dataset</a></li>
-<li class="chapter" data-level="13.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-charts-for-opportunities-between-cases"><i class="fa fa-check"></i><b>13.2</b> G charts for opportunities between cases</a></li>
-<li class="chapter" data-level="13.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-charts-for-time-between-events"><i class="fa fa-check"></i><b>13.3</b> T charts for time between events</a></li>
-<li class="chapter" data-level="13.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>13.4</b> The Bernoulli CUSUM chart for binary data</a></li>
-<li class="chapter" data-level="13.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>13.5</b> Selecting the rigth chart for rare events</a></li>
+<li class="chapter" data-level="12.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>12.1</b> Introducing the birth dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases"><i class="fa fa-check"></i><b>12.2</b> G chart for opportunities between cases</a></li>
+<li class="chapter" data-level="12.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events"><i class="fa fa-check"></i><b>12.3</b> T chart for time between events</a></li>
+<li class="chapter" data-level="12.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>12.4</b> The Bernoulli CUSUM chart for binary data</a></li>
+<li class="chapter" data-level="12.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>12.5</b> Selecting the rigth chart for rare events</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<li class="chapter" data-level="13" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>13</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
-<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
+<li class="chapter" data-level="13.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>13.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="13.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>13.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
+<li class="chapter" data-level="14" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>14</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
 <ul>
-<li class="chapter" data-level="15.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
-<li class="chapter" data-level="15.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
-<li class="chapter" data-level="15.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+<li class="chapter" data-level="14.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>14.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="14.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>14.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="14.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>14.2</b> One chart to rule them all?</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>16</b> Funnel Plots for Categorical Subgroups</a></li>
-<li class="chapter" data-level="17" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>17</b> Pareto Charts for Ranking Problems</a></li>
-<li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="18" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>18</b> Tips for Effective SPC Implementation</a>
+<li class="chapter" data-level="15" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>15</b> Funnel Plots for Categorical Subgroups</a></li>
+<li class="chapter" data-level="16" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>16</b> Pareto Charts for Ranking Problems</a></li>
+<li class="part"><span><b>Part 4: Best Practices, Controversies, and Tips</b></span></li>
+<li class="chapter" data-level="17" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>17</b> Tips for Effective SPC Implementation</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>18.1</b> Engaging stakeholders</a></li>
-<li class="chapter" data-level="18.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>18.2</b> Automating production of SPC charts</a>
+<li class="chapter" data-level="17.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>17.1</b> Engaging stakeholders</a></li>
+<li class="chapter" data-level="17.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>17.2</b> Automating production of SPC charts</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>18.2.1</b> Data collection and storage</a></li>
-<li class="chapter" data-level="18.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>18.2.2</b> Charts, reports, and dashboards</a></li>
+<li class="chapter" data-level="17.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>17.2.1</b> Data collection and storage</a></li>
+<li class="chapter" data-level="17.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>17.2.2</b> Charts, reports, and dashboards</a></li>
 </ul></li>
-<li class="chapter" data-level="18.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>18.3</b> Continuous evaluation and improvement</a></li>
+<li class="chapter" data-level="17.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>17.3</b> Continuous evaluation and improvement</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>19</b> Common Pitfalls to Avoid</a>
+<li class="chapter" data-level="18" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>18</b> Common Pitfalls to Avoid</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>19.1</b> Data issues</a></li>
-<li class="chapter" data-level="19.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>19.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
-<li class="chapter" data-level="19.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>19.3</b> Confusing the voice of the customer with the voice of the process</a></li>
-<li class="chapter" data-level="19.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>19.4</b> Automatic rephasing</a></li>
-<li class="chapter" data-level="19.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>19.5</b> The control chart vs run chart debate</a></li>
-<li class="chapter" data-level="19.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>19.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="18.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>18.1</b> Data issues</a></li>
+<li class="chapter" data-level="18.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>18.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="18.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>18.3</b> Confusing the voice of the customer with the voice of the process</a></li>
+<li class="chapter" data-level="18.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>18.4</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="18.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>18.5</b> The control chart vs run chart debate</a></li>
+<li class="chapter" data-level="18.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>18.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>20</b> The Forgotten Art of Rational Subgrouping</a>
+<li class="chapter" data-level="19" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>19</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>20.1</b> Too large subgroups — masking meaningful signals</a></li>
-<li class="chapter" data-level="20.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>20.2</b> Too small subgroups — revealing unimportant noise</a></li>
-<li class="chapter" data-level="20.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>20.3</b> Striking the balance</a></li>
-<li class="chapter" data-level="20.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>20.4</b> A practical approach for rational subgrouping</a></li>
-<li class="chapter" data-level="20.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>20.5</b> Rational subgrouping in summary</a></li>
+<li class="chapter" data-level="19.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>19.1</b> Too large subgroups — masking meaningful signals</a></li>
+<li class="chapter" data-level="19.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>19.2</b> Too small subgroups — revealing unimportant noise</a></li>
+<li class="chapter" data-level="19.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>19.3</b> Striking the balance</a></li>
+<li class="chapter" data-level="19.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>19.4</b> A practical approach for rational subgrouping</a></li>
+<li class="chapter" data-level="19.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>19.5</b> Rational subgrouping in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>21</b> High Volume Data</a></li>
-<li class="chapter" data-level="22" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>22</b> Scaling Up Charts</a></li>
-<li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
+<li class="part"><span><b>Part 5: Conclusion and Final Thoughts</b></span></li>
+<li class="chapter" data-level="20" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html"><i class="fa fa-check"></i><b>20</b> Conclusion and Final Thoughts</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#summary-of-key-points"><i class="fa fa-check"></i><b>20.1</b> Summary of Key Points</a></li>
+<li class="chapter" data-level="20.2" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#emerging-trends-in-spc-and-healthcare-analytics"><i class="fa fa-check"></i><b>20.2</b> Emerging trends in SPC and healthcare analytics</a></li>
+<li class="chapter" data-level="20.3" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#encouragement-for-continuous-learning-and-application"><i class="fa fa-check"></i><b>20.3</b> Encouragement for Continuous Learning and Application</a></li>
+<li class="chapter" data-level="20.4" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#final-thoughts"><i class="fa fa-check"></i><b>20.4</b> Final Thoughts</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
 <ul>
@@ -416,7 +415,6 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
-<li class="chapter" data-level="F" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>F</b> Resources and Further Readings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -441,8 +439,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">Chapter 15</span> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Chapter 14</span> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid – or even superior – alternative to other Shewhart SPC charts. This is partly because the I chart is based on the empirical variation in data, rather than on theoretical distributional assumptions, which may or may not be true.</p>
 <p>However, the I chart does not account for variable subgroup sizes – that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. This produces straight control limits, which in some situations may generate false signals or fail to detect true ones. When the variation is small, this may not pose a problem, but often – not the least in healthcare – size matters.</p>
 <p>Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I’) chart suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
@@ -453,7 +451,7 @@ div.csl-indent {
 <li><p>With constant subgroup sizes, the I’ chart is an exact match for the original I chart.</p></li>
 <li><p>For rates and proportions, the I’ chart produces control limits that match those of the U' and P' charts.</p></li>
 </ul>
-<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">15.1</a> shows an I’ and a P’ chart side-by-side demonstrating their similar results.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> shows an I’ and a P’ chart side-by-side demonstrating their similar results.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-1" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
 <span id="cb92-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-2" tabindex="-1"></a>    <span class="at">data      =</span> admis, </span>
 <span id="cb92-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-3" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;ip&#39;</span>, </span>
@@ -469,11 +467,11 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:iprime-fig1"></span>
 <img src="_main_files/figure-html/iprime-fig1-1.svg" alt="Comparing I' and P' charts" width="50%" /><img src="_main_files/figure-html/iprime-fig1-2.svg" alt="Comparing I' and P' charts" width="50%" />
 <p class="caption">
-Figure 15.1: Comparing I’ and P’ charts
+Figure 14.1: Comparing I’ and P’ charts
 </p>
 </div>
-<div id="procedure-for-calculating-centre-line-and-control-limits" class="section level3 hasAnchor" number="15.0.1">
-<h3><span class="header-section-number">15.0.1</span> Procedure for calculating centre line and control limits<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="procedure-for-calculating-centre-line-and-control-limits" class="section level3 hasAnchor" number="14.0.1">
+<h3><span class="header-section-number">14.0.1</span> Procedure for calculating centre line and control limits<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We use the following symbols:</p>
 <ul>
 <li><span class="math inline">\(n\)</span> = numerators</li>
@@ -504,10 +502,10 @@ s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\
 <p>When subgroup sizes equals 1, the control limits simplify to: <span class="math inline">\(CL \pm 2.66\overline{MR}\)</span> as in the original I chart.</p>
 <p>As with the original I chart, qicharts2 screens the moving ranges of <span class="math inline">\(s_i\)</span>, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating <span class="math inline">\(\bar{s}\)</span>.</p>
 </div>
-<div id="i-charts-for-measument-data-with-variable-subgroup-sizes" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> I’ charts for measument data with variable subgroup sizes<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">15.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for use with measurement data where subgroup sizes vary. For example, due to privacy considerations, we may only have access to averaged patient data rather than individual records. Traditionally, such data would be plotted on an original I chart, but if the number of patients in each subgroup varies significantly, straight control limits may be suboptimal.</p>
-<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">15.2</a> is an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. Notice the data point above the upper control limit in April 2020 suggesting a special cause. However, when plotting aggregated measurement data, the I chart does not account for variations in subgroup size.</p>
+<div id="i-charts-for-measument-data-with-variable-subgroup-sizes" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> I’ charts for measument data with variable subgroup sizes<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for use with measurement data where subgroup sizes vary. For example, due to privacy considerations, we may only have access to averaged patient data rather than individual records. Traditionally, such data would be plotted on an original I chart, but if the number of patients in each subgroup varies significantly, straight control limits may be suboptimal.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> is an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. Notice the data point above the upper control limit in April 2020 suggesting a special cause. However, when plotting aggregated measurement data, the I chart does not account for variations in subgroup size.</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c, </span>
 <span id="cb93-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
 <span id="cb93-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
@@ -517,10 +515,10 @@ s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\
 <div class="figure"><span style="display:block;" id="fig:iprime-fig2"></span>
 <img src="_main_files/figure-html/iprime-fig2-1.svg" alt="I chart of average HbA1c without denominator" width="672" />
 <p class="caption">
-Figure 15.2: I chart of average HbA1c without denominator
+Figure 14.2: I chart of average HbA1c without denominator
 </p>
 </div>
-<p>The I’ chart in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig3">15.3</a> takes the subgroup size (number of patients) into account and adjusts the control limits correspondingly.</p>
+<p>The I’ chart in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig3">14.3</a> takes the subgroup size (number of patients) into account and adjusts the control limits correspondingly.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c <span class="sc">*</span> n, n, </span>
 <span id="cb94-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
 <span id="cb94-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;ip&#39;</span>,</span>
@@ -530,15 +528,15 @@ Figure 15.2: I chart of average HbA1c without denominator
 <div class="figure"><span style="display:block;" id="fig:iprime-fig3"></span>
 <img src="_main_files/figure-html/iprime-fig3-1.svg" alt="I prime chart of average HbA1c with denominator" width="672" />
 <p class="caption">
-Figure 15.3: I prime chart of average HbA1c with denominator
+Figure 14.3: I prime chart of average HbA1c with denominator
 </p>
 </div>
-<p>April 2020 was the first month of lockdown during Covid-19 in Denmark, and the number of patients (the denominator) seen during this month was significantly lower than usual, which allowed for larger than usual common cause variation in measurements and consequently wider control limits this month. So, when the subgroup size is taken into account, the apparent special cause in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">15.2</a> is actually within the limits of the expected common cause variation.</p>
+<p>April 2020 was the first month of lockdown during Covid-19 in Denmark, and the number of patients (the denominator) seen during this month was significantly lower than usual, which allowed for larger than usual common cause variation in measurements and consequently wider control limits this month. So, when the subgroup size is taken into account, the apparent special cause in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> is actually within the limits of the expected common cause variation.</p>
 <p>Also, notice that the centre lines are a bit different (60.6 vs 60.3), because the I prime chart uses the weighted rather than the unweighted mean of the measurements.</p>
 <p>Note that in order to plot the averages we need to multiply the numerators (avg_hba1c, which are already averaged) by the denominators (n) to get the sum of individual measurements to use as the new numerator. Otherwise, the result would be a plot of averages of averages.</p>
 </div>
-<div id="one-chart-to-rule-them-all" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> One chart to rule them all?<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="one-chart-to-rule-them-all" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> One chart to rule them all?<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The I’ chart produces results that match the original I chart for individual measurements and P’ and U’ charts for proportion and count data.</p>
 <p>If we accept Laney’s claim that prime charts are valid – or even better – substitutes for their non-prime counterparts, it is tempting to conclude that the I’ chart offers a universal solution to most, if not all, of our charting needs.</p>
 <p>In conclusion, while the I’ chart is a recent development, its versatility and ability to mimic the behaviour of traditional SPC charts make it a compelling alternative, that has the potential to streamline chart selection by serving as a single, robust option across various data types and scenarios. As the methodology continues to gain empirical support, the I’ chart may well become the preferred tool for modern quality control.</p>

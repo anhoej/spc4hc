@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 12 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 12 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 12 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-23" />
+<meta name="date" content="2025-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,17 +182,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-2-constructing-spc-charts-with-r"><i class="fa fa-check"></i>Part 2: Constructing SPC Charts with R</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-case-studies-and-worked-examples"><i class="fa fa-check"></i>Part 3: Case Studies and Worked Examples</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-advanced-spc-techniques"><i class="fa fa-check"></i>Part 4: Advanced SPC Techniques</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 5: Best Practices, Controversies, and Tips</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-6-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 6: Conclusion and Final Thoughts</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-advanced-spc-techniques"><i class="fa fa-check"></i>Part 3: Advanced SPC Techniques</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 4: Best Practices, Controversies, and Tips</a></li>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 5: Conclusion and Final Thoughts</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="variation.html"><a href="variation.html#spc-and-the-nature-of-variation"><i class="fa fa-check"></i><b>1.1</b> SPC and the nature of variation</a></li>
-</ul></li>
+<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
 <li class="chapter" data-level="2" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>2</b> Understanding SPC Charts</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>2.1</b> Anatomy and physiology of SPC charts</a></li>
@@ -296,63 +292,66 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> qicharts2 in short</a></li>
 </ul></li>
-<li class="part"><span><b>Part 3: Case Studies and Worked Examples</b></span></li>
-<li class="chapter" data-level="11" data-path="case-1.html"><a href="case-1.html"><i class="fa fa-check"></i><b>11</b> Case 1:</a></li>
-<li class="part"><span><b>Part 4: Advanced SPC Techniques</b></span></li>
-<li class="chapter" data-level="12" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
-<li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a>
+<li class="part"><span><b>Part 3: Advanced SPC Techniques</b></span></li>
+<li class="chapter" data-level="11" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>11</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="12" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>12</b> SPC Charts for Rare Events</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>13.1</b> Introducing the birth dataset</a></li>
-<li class="chapter" data-level="13.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-charts-for-opportunities-between-cases"><i class="fa fa-check"></i><b>13.2</b> G charts for opportunities between cases</a></li>
-<li class="chapter" data-level="13.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-charts-for-time-between-events"><i class="fa fa-check"></i><b>13.3</b> T charts for time between events</a></li>
-<li class="chapter" data-level="13.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>13.4</b> The Bernoulli CUSUM chart for binary data</a></li>
-<li class="chapter" data-level="13.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>13.5</b> Selecting the rigth chart for rare events</a></li>
+<li class="chapter" data-level="12.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>12.1</b> Introducing the birth dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases"><i class="fa fa-check"></i><b>12.2</b> G chart for opportunities between cases</a></li>
+<li class="chapter" data-level="12.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events"><i class="fa fa-check"></i><b>12.3</b> T chart for time between events</a></li>
+<li class="chapter" data-level="12.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>12.4</b> The Bernoulli CUSUM chart for binary data</a></li>
+<li class="chapter" data-level="12.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>12.5</b> Selecting the rigth chart for rare events</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<li class="chapter" data-level="13" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>13</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
-<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
+<li class="chapter" data-level="13.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>13.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="13.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>13.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
+<li class="chapter" data-level="14" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>14</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
 <ul>
-<li class="chapter" data-level="15.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
-<li class="chapter" data-level="15.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
-<li class="chapter" data-level="15.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+<li class="chapter" data-level="14.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>14.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="14.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>14.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="14.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>14.2</b> One chart to rule them all?</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>16</b> Funnel Plots for Categorical Subgroups</a></li>
-<li class="chapter" data-level="17" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>17</b> Pareto Charts for Ranking Problems</a></li>
-<li class="part"><span><b>Part 5: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="18" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>18</b> Tips for Effective SPC Implementation</a>
+<li class="chapter" data-level="15" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>15</b> Funnel Plots for Categorical Subgroups</a></li>
+<li class="chapter" data-level="16" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>16</b> Pareto Charts for Ranking Problems</a></li>
+<li class="part"><span><b>Part 4: Best Practices, Controversies, and Tips</b></span></li>
+<li class="chapter" data-level="17" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>17</b> Tips for Effective SPC Implementation</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>18.1</b> Engaging stakeholders</a></li>
-<li class="chapter" data-level="18.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>18.2</b> Automating production of SPC charts</a>
+<li class="chapter" data-level="17.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>17.1</b> Engaging stakeholders</a></li>
+<li class="chapter" data-level="17.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>17.2</b> Automating production of SPC charts</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>18.2.1</b> Data collection and storage</a></li>
-<li class="chapter" data-level="18.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>18.2.2</b> Charts, reports, and dashboards</a></li>
+<li class="chapter" data-level="17.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>17.2.1</b> Data collection and storage</a></li>
+<li class="chapter" data-level="17.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>17.2.2</b> Charts, reports, and dashboards</a></li>
 </ul></li>
-<li class="chapter" data-level="18.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>18.3</b> Continuous evaluation and improvement</a></li>
+<li class="chapter" data-level="17.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>17.3</b> Continuous evaluation and improvement</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>19</b> Common Pitfalls to Avoid</a>
+<li class="chapter" data-level="18" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>18</b> Common Pitfalls to Avoid</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>19.1</b> Data issues</a></li>
-<li class="chapter" data-level="19.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>19.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
-<li class="chapter" data-level="19.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>19.3</b> Confusing the voice of the customer with the voice of the process</a></li>
-<li class="chapter" data-level="19.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>19.4</b> Automatic rephasing</a></li>
-<li class="chapter" data-level="19.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>19.5</b> The control chart vs run chart debate</a></li>
-<li class="chapter" data-level="19.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>19.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="18.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>18.1</b> Data issues</a></li>
+<li class="chapter" data-level="18.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>18.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="18.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>18.3</b> Confusing the voice of the customer with the voice of the process</a></li>
+<li class="chapter" data-level="18.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>18.4</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="18.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>18.5</b> The control chart vs run chart debate</a></li>
+<li class="chapter" data-level="18.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>18.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>20</b> The Forgotten Art of Rational Subgrouping</a>
+<li class="chapter" data-level="19" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>19</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>20.1</b> Too large subgroups — masking meaningful signals</a></li>
-<li class="chapter" data-level="20.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>20.2</b> Too small subgroups — revealing unimportant noise</a></li>
-<li class="chapter" data-level="20.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>20.3</b> Striking the balance</a></li>
-<li class="chapter" data-level="20.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>20.4</b> A practical approach for rational subgrouping</a></li>
-<li class="chapter" data-level="20.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>20.5</b> Rational subgrouping in summary</a></li>
+<li class="chapter" data-level="19.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>19.1</b> Too large subgroups — masking meaningful signals</a></li>
+<li class="chapter" data-level="19.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>19.2</b> Too small subgroups — revealing unimportant noise</a></li>
+<li class="chapter" data-level="19.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>19.3</b> Striking the balance</a></li>
+<li class="chapter" data-level="19.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>19.4</b> A practical approach for rational subgrouping</a></li>
+<li class="chapter" data-level="19.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>19.5</b> Rational subgrouping in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="high-volume-data.html"><a href="high-volume-data.html"><i class="fa fa-check"></i><b>21</b> High Volume Data</a></li>
-<li class="chapter" data-level="22" data-path="scaling-up-charts.html"><a href="scaling-up-charts.html"><i class="fa fa-check"></i><b>22</b> Scaling Up Charts</a></li>
-<li class="part"><span><b>Part 6: Conclusion and Final Thoughts</b></span></li>
+<li class="part"><span><b>Part 5: Conclusion and Final Thoughts</b></span></li>
+<li class="chapter" data-level="20" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html"><i class="fa fa-check"></i><b>20</b> Conclusion and Final Thoughts</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#summary-of-key-points"><i class="fa fa-check"></i><b>20.1</b> Summary of Key Points</a></li>
+<li class="chapter" data-level="20.2" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#emerging-trends-in-spc-and-healthcare-analytics"><i class="fa fa-check"></i><b>20.2</b> Emerging trends in SPC and healthcare analytics</a></li>
+<li class="chapter" data-level="20.3" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#encouragement-for-continuous-learning-and-application"><i class="fa fa-check"></i><b>20.3</b> Encouragement for Continuous Learning and Application</a></li>
+<li class="chapter" data-level="20.4" data-path="conclusion-and-final-thoughts.html"><a href="conclusion-and-final-thoughts.html#final-thoughts"><i class="fa fa-check"></i><b>20.4</b> Final Thoughts</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
 <ul>
@@ -416,7 +415,6 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
-<li class="chapter" data-level="F" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>F</b> Resources and Further Readings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -441,16 +439,16 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="spc-charts-for-rare-events" class="section level1 hasAnchor" number="13">
-<h1><span class="header-section-number">Chapter 13</span> SPC Charts for Rare Events<a href="spc-charts-for-rare-events.html#spc-charts-for-rare-events" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="spc-charts-for-rare-events" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> SPC Charts for Rare Events<a href="spc-charts-for-rare-events.html#spc-charts-for-rare-events" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>When dealing with potentially serious or fatal events, the number of occurrences is often (fortunately) very low, which can present challenges for traditional SPC charts designed for count data.</p>
 <p>The challenge arises because traditional SPC charts for count data – like P and U charts – assume a relatively higher and more consistent frequency of events to function effectively. When counts are low, the data becomes sparse and highly variable, making these charts unreliable.</p>
 <p>Sparse data can produce lower control limits that are censored at zero, thereby invalidating the 3-sigma test in that direction. Additionally, runs charts become problematic when more than half of the data points are zero, as this causes the median to also be zero. This undermines the validity of the runs analysis – resulting in just one long run above the median.</p>
 <p>One useful approach to handling rare events is to plot the number of opportunities or the time between events, rather than focusing on event proportions or rates – essentially flipping the indicator to look at the gaps between occurrences instead of the occurrences themselves.</p>
 <p>Another approach is to look at the cumulated sums (CUSUM) of binary data.</p>
 <p>In this chapter we introduce the G chart for number of opportunities between events, the T chart for time between events, and the Bernoulli CUSUM chart for binary data.</p>
-<div id="introducing-the-birth-dataset" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> Introducing the birth dataset<a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introducing-the-birth-dataset" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Introducing the birth dataset<a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <a href="data-sets.html#robson-group-1-births">Robson group 1 births</a> dataset is a data frame with 2193 observations from Robson group 1 deliveries, that is: first time pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="spc-charts-for-rare-events.html#cb80-1" tabindex="-1"></a><span class="co"># import data</span></span>
 <span id="cb80-2"><a href="spc-charts-for-rare-events.html#cb80-2" tabindex="-1"></a>births <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/robson1_births.csv&#39;</span>,</span>
@@ -485,7 +483,7 @@ div.csl-indent {
 ##  $ asphyxia: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
 ##  $ case    : num  1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>For this chapter we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either low apgar score or low umbilical cord pH suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage or death. In total, there are 16 cases corresponding to 0.7%.</p>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig1">13.1</a> is a run chart of the biweekly counts.</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig1">12.1</a> is a run chart of the biweekly counts.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="spc-charts-for-rare-events.html#cb82-1" tabindex="-1"></a><span class="co"># run chart of counts</span></span>
 <span id="cb82-2"><a href="spc-charts-for-rare-events.html#cb82-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, </span>
 <span id="cb82-3"><a href="spc-charts-for-rare-events.html#cb82-3" tabindex="-1"></a>    <span class="at">data    =</span> births, </span>
@@ -494,21 +492,21 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:rare-fig1"></span>
 <img src="_main_files/figure-html/rare-fig1-1.svg" alt="Run chart of number of deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
-Figure 13.1: Run chart of number of deliveries with neonatal asphyxia
+Figure 12.1: Run chart of number of deliveries with neonatal asphyxia
 </p>
 </div>
 <p>Notice that because more than half the data points are zero, the centre line (median) is also zero. This invalidates the runs analysis – there is only one very long run, which may lead to the false conclusion that data contains one or more shifts.</p>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">13.3</a> plots proportions rather than counts reaching the same conclusion.</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a> plots proportions rather than counts reaching the same conclusion.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="spc-charts-for-rare-events.html#cb84-1" tabindex="-1"></a><span class="co"># run chart of proportions</span></span>
 <span id="cb84-2"><a href="spc-charts-for-rare-events.html#cb84-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case,  <span class="co"># use the case variable for denominators</span></span>
 <span id="cb84-3"><a href="spc-charts-for-rare-events.html#cb84-3" tabindex="-1"></a>    <span class="at">data =</span> births)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig2"></span>
 <img src="_main_files/figure-html/rare-fig2-1.svg" alt="Run chart of proportion deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
-Figure 13.2: Run chart of proportion deliveries with neonatal asphyxia
+Figure 12.2: Run chart of proportion deliveries with neonatal asphyxia
 </p>
 </div>
-<p>Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis – as the average, in this case, better represents the process centre (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">13.3</a>).</p>
+<p>Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis – as the average, in this case, better represents the process centre (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a>).</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="spc-charts-for-rare-events.html#cb85-1" tabindex="-1"></a><span class="co"># P chart</span></span>
 <span id="cb85-2"><a href="spc-charts-for-rare-events.html#cb85-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case, </span>
 <span id="cb85-3"><a href="spc-charts-for-rare-events.html#cb85-3" tabindex="-1"></a>    <span class="at">data  =</span> births, </span>
@@ -516,15 +514,15 @@ Figure 13.2: Run chart of proportion deliveries with neonatal asphyxia
 <div class="figure"><span style="display:block;" id="fig:rare-fig3"></span>
 <img src="_main_files/figure-html/rare-fig3-1.svg" alt="P chart of percent deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
-Figure 13.3: P chart of percent deliveries with neonatal asphyxia
+Figure 12.3: P chart of percent deliveries with neonatal asphyxia
 </p>
 </div>
 <p>While this P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the 3-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.</p>
 <p>One obvious solution is to increase the subgroup size by aggregating data over longer periods, such as months or quarters. However, this approach results in slower detection of process improvement or deterioration.</p>
 <p>As an alternative, we introduce at the G chart.</p>
 </div>
-<div id="g-charts-for-opportunities-between-cases" class="section level2 hasAnchor" number="13.2">
-<h2><span class="header-section-number">13.2</span> G charts for opportunities between cases<a href="spc-charts-for-rare-events.html#g-charts-for-opportunities-between-cases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="g-chart-for-opportunities-between-cases" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> G chart for opportunities between cases<a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The G chart plots opportunities between cases, for example the number of deliveries between neonatal asphyxia. This type of count data often follows a geometric distribution with a standard deviation given by <span class="math inline">\(\sigma = \sqrt{\bar{x}(\bar{x}+1)}\)</span>. The control limits are then calculated as:</p>
 <p><span class="math display">\[\bar{x}\pm3\sqrt{\bar{x}(\bar{x}+1)}\]</span></p>
 <p>where <span class="math inline">\(\bar{x}\)</span> is the average number of opportunities between cases.</p>
@@ -540,16 +538,16 @@ Figure 13.3: P chart of percent deliveries with neonatal asphyxia
 <div class="figure"><span style="display:block;" id="fig:rare-fig4"></span>
 <img src="_main_files/figure-html/rare-fig4-1.svg" alt="G chart of deliveries between neonatal asphyxia" width="672" />
 <p class="caption">
-Figure 13.4: G chart of deliveries between neonatal asphyxia
+Figure 12.4: G chart of deliveries between neonatal asphyxia
 </p>
 </div>
-<p>Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used – as is done by default in qicharts2 (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig4">13.4</a>).</p>
+<p>Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used – as is done by default in qicharts2 (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig4">12.4</a>).</p>
 <p>As is the case with the other SPC charts for counts data, negative lower control limits are rounded to 0, as values below this is not possible.</p>
 <p>Note that process improvement – as in fewer cases – will present itself as the curve going up. To trigger a 3-sigma signal we would – in this case – need at least 518 successive deliveries without asphyxia.</p>
 <p>Thus, G charts are useful alternatives to P charts when occurrences are rare and the primary interest is in detecting process improvement. However, one chart does not exclude the other, and P and G charts go well together. The P chart may be more familiar to users and is more useful for signalling process deterioration, while the G charts helps trigger signals of improvement.</p>
 </div>
-<div id="t-charts-for-time-between-events" class="section level2 hasAnchor" number="13.3">
-<h2><span class="header-section-number">13.3</span> T charts for time between events<a href="spc-charts-for-rare-events.html#t-charts-for-time-between-events" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="t-chart-for-time-between-events" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> T chart for time between events<a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The T chart plots the time between events – a continuous variable. While it is possible to use an I chart to plot such data, this approach may be problematic. If events occur according to a Poisson distribution – which is often the case – the time between events is more appropriately modelled by the exponential distribution, which is highly skewed.</p>
 <p>One way to address this issue is to transform the data prior to plotting it on an I chart. An appropriate transformation is given by:</p>
 <p><span class="math display">\[x = y^{(1 / 3.6)}\]</span></p>
@@ -564,14 +562,14 @@ Figure 13.4: G chart of deliveries between neonatal asphyxia
 <div class="figure"><span style="display:block;" id="fig:rare-fig5"></span>
 <img src="_main_files/figure-html/rare-fig5-1.svg" alt="T chart of time (days) between deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
-Figure 13.5: T chart of time (days) between deliveries with neonatal asphyxia
+Figure 12.5: T chart of time (days) between deliveries with neonatal asphyxia
 </p>
 </div>
 <p>Note that T charts do not accommodate zero time between events – a situation that may arise when time is not recorded with sufficiently high resolution. For example, if two events – such as patient falls – occur on the same day and the time of day is not recorded, the time variable is not truly continuous. In such cases, a G chart plotting days between events, a discrete variable, may be more appropriate.</p>
-<p>In fact, to our eyes, the control limits on the T chart in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig5">13.5</a> appear unnaturally wide. The upper control limit indicates that at least 190 days (or 27 weeks) must pass without any asphyxia cases before a signal is triggered. This suggests to us that these asphyxia cases (being discrete cases rather than random events) may not be suitable for analysis with a T chart.</p>
+<p>In fact, to our eyes, the control limits on the T chart in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig5">12.5</a> appear unnaturally wide. The upper control limit indicates that at least 190 days (or 27 weeks) must pass without any asphyxia cases before a signal is triggered. This suggests to us that these asphyxia cases (being discrete cases rather than random events) may not be suitable for analysis with a T chart.</p>
 </div>
-<div id="the-bernoulli-cusum-chart-for-binary-data" class="section level2 hasAnchor" number="13.4">
-<h2><span class="header-section-number">13.4</span> The Bernoulli CUSUM chart for binary data<a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-bernoulli-cusum-chart-for-binary-data" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> The Bernoulli CUSUM chart for binary data<a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time <span class="citation">(<a href="#ref-neuburger2017">Neuburger et al. 2017</a>)</span>. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.</p>
 <p>The trace value <span class="math inline">\(s_i\)</span> at time <span class="math inline">\(i\)</span> is updated recursively:</p>
 <p><span class="math display">\[s_i=s_{i-1}+ increment\ based\ on\ current\ value\]</span></p>
@@ -593,10 +591,10 @@ Figure 13.5: T chart of time (days) between deliveries with neonatal asphyxia
 <div class="figure"><span style="display:block;" id="fig:rare-fig6"></span>
 <img src="_main_files/figure-html/rare-fig6-1.svg" alt="B chart of newborns with asphyxia" width="672" />
 <p class="caption">
-Figure 13.6: B chart of newborns with asphyxia
+Figure 12.6: B chart of newborns with asphyxia
 </p>
 </div>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">13.6</a> places the asphyxia data in a B chart constructed using the bchart() function from the qicharts2 package. The target value corresponds to the known baseline proportion of asphyxia cases with default values for odds ratio (= 2) and limits (= ±3.5).</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a> places the asphyxia data in a B chart constructed using the bchart() function from the qicharts2 package. The target value corresponds to the known baseline proportion of asphyxia cases with default values for odds ratio (= 2) and limits (= ±3.5).</p>
 <p>Several key features are worth noting:</p>
 <ul>
 <li><p>The chart displays two cumulative traces: the upper trace is configured to detect an increase from the target proportion – specifically, a doubling in odds (OR = 2) – while the lower trace is tuned to detect a decrease (OR = 0.5).</p></li>
@@ -604,36 +602,36 @@ Figure 13.6: B chart of newborns with asphyxia
 <li><p>Traces reset to zero whenever they cross the horizontal axis or a control limit, allowing the chart to remain responsive to new patterns of deviation.</p></li>
 <li><p>The control limits are user-defined, rather than statistically derived. Their placement represents a compromise between desired sensitivity (the ability to detect true shifts) and specificity (resistance to false alarms). By default, the limits are set at ±3.5. More on how to chose limits later.</p></li>
 </ul>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig8">13.7</a> compares our results against a target proportion of 2%.</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig8">12.7</a> compares our results against a target proportion of 2%.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="spc-charts-for-rare-events.html#cb89-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.02</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig8"></span>
 <img src="_main_files/figure-html/rare-fig8-1.svg" alt="B chart of newborns with asphyxia, target = 0.2%" width="672" />
 <p class="caption">
-Figure 13.7: B chart of newborns with asphyxia, target = 0.2%
+Figure 12.7: B chart of newborns with asphyxia, target = 0.2%
 </p>
 </div>
 <p>The lower trace signals repeatably suggesting that the current process is not centred around a target of 2% – specifically, it indicates that the process is performing better than expected.</p>
-<p>And vice versa, comparing to a target of 0.1% indicates that the process is performing worse than expected (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig9">13.8</a>).</p>
+<p>And vice versa, comparing to a target of 0.1% indicates that the process is performing worse than expected (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig9">12.8</a>).</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="spc-charts-for-rare-events.html#cb90-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.001</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig9"></span>
 <img src="_main_files/figure-html/rare-fig9-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
 <p class="caption">
-Figure 13.8: B chart of newborns with asphyxia, target = 0.01%
+Figure 12.8: B chart of newborns with asphyxia, target = 0.01%
 </p>
 </div>
 <p>Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false positives but may miss smaller shifts. The best choice depends on context, such as the number of available observations, size of the shift to be detected, and the consequences of missing a signal or triggering a false one.</p>
 <p>In practice, limits are often chosen based on simulation, historical data, and domain knowledge – particularly considering the cost or impact of missed detections versus false alerts. See <span class="citation">Neuburger et al. (<a href="#ref-neuburger2017">2017</a>)</span> for details and guidelines on how to select control limits.</p>
-<p>Inspecting Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">13.6</a>, which shows a historically stable process based on 2000+ observations and with most or all data points clustered around the centre line, we might conclude that it would be appropriate to tighten the control limits to ±3 or even ±2.5, as demonstrated in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig10">13.9</a>.</p>
+<p>Inspecting Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a>, which shows a historically stable process based on 2000+ observations and with most or all data points clustered around the centre line, we might conclude that it would be appropriate to tighten the control limits to ±3 or even ±2.5, as demonstrated in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig10">12.9</a>.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="spc-charts-for-rare-events.html#cb91-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">limit =</span> <span class="fl">2.5</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig10"></span>
 <img src="_main_files/figure-html/rare-fig10-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
 <p class="caption">
-Figure 13.9: B chart of newborns with asphyxia, target = 0.01%
+Figure 12.9: B chart of newborns with asphyxia, target = 0.01%
 </p>
 </div>
 </div>
-<div id="selecting-the-rigth-chart-for-rare-events" class="section level2 hasAnchor" number="13.5">
-<h2><span class="header-section-number">13.5</span> Selecting the rigth chart for rare events<a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="selecting-the-rigth-chart-for-rare-events" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Selecting the rigth chart for rare events<a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>After reviewing various alternative charting options for rare events – U and T charts for low event rates, and P, G, and B charts for low case proportions – we may ask: which should we prefer? Well, that depends. No single chart is universally superior – and often, presenting two or more charts together can provide complementary insights. In particular, we always recommend pairing a T or G chart with its corresponding U or P chart, as these pairs may offer a more complete picture of the process by highlighting both improvement and deterioration.</p>
 <p>The B chart, in particular, is a powerful tool, but it requires careful attention and specialist knowledge to construct and interpret effectively. Its diagnostic performance is highly sensitive to the choice of parameters — target, odds ratio, and control limits – and these should be selected by individuals with a strong understanding of the underlying process. That said, the default settings – an odds ratio of 2 and control limits at ±3.5 – are generally suitable for most processes where the baseline (target) rate is around 1%, and where the goal is to detect a doubling or halving of the event rate relative to that target.</p>
 

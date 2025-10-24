@@ -89,7 +89,6 @@ fig:stat-dbinom1
 fig:stat-hist3
 fig:stat-hist4
 variation
-spc-and-the-nature-of-variation
 charts-intro
 anatomy-and-physiology-of-spc-charts
 why-3-sigma-limits
@@ -157,12 +156,11 @@ splitting-chart-by-period
 small-multiple-plots-for-multivariate-data
 to-aggregate-or-not-to-aggregate
 qicharts2-in-short
-case-1
 screenedmr
 spc-charts-for-rare-events
 introducing-the-birth-dataset
-g-charts-for-opportunities-between-cases
-t-charts-for-time-between-events
+g-chart-for-opportunities-between-cases
+t-chart-for-time-between-events
 the-bernoulli-cusum-chart-for-binary-data
 selecting-the-rigth-chart-for-rare-events
 prime-charts-for-count-data-with-very-large-subgroups
@@ -193,8 +191,11 @@ too-small-subgroups-revealing-unimportant-noise
 striking-the-balance
 a-practical-approach-for-rational-subgrouping
 rational-subgrouping-in-summary
-high-volume-data
-scaling-up-charts
+conclusion-and-final-thoughts
+summary-of-key-points
+emerging-trends-in-spc-and-healthcare-analytics
+encouragement-for-continuous-learning-and-application
+final-thoughts
 data-sets
 stat-concepts
 data-types
@@ -227,4 +228,3 @@ cutting-dates-and-datetimes
 getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
-resources

@@ -1,6 +1,0 @@
-# Resources and Further Readings {#resources}
-
-- books
-- websites
-- communities
-- R packages

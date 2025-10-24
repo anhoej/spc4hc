@@ -1,4 +1,4 @@
-# (PART\*) Part 4: Advanced SPC Techniques {-}
+# (PART\*) Part 3: Advanced SPC Techniques {-}
 
 # Screened I Chart -- eliminating freak moving ranges before calculating limits {#screenedmr}
 
