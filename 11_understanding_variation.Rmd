@@ -16,8 +16,7 @@ To reduce variation and improve the quality of the letter a, we might consider c
 
 Now consider the rightmost letter in Figure \@ref(fig:variation-fig1), produced with the non-dominant hand. Its marked difference from the others suggests a special cause. Special cause variation arises from factors external to the usual process and requires investigation. When encountering special cause variation, the response involves detective work to identify the underlying cause.
 
-If the special cause undermines the quality of the process, efforts should focus on eliminating it.
-If the special cause enhances the quality of the process, then efforts should focus on trying to understand it and integrate it into the process where possible.
+If the special cause undermines the quality of the process, efforts should focus on eliminating it. If the special cause enhances the quality of the process, then efforts should focus on trying to understand it and integrate it into the process where possible.
 
 The handwritten letters exemplify the two types of variation:
 
@@ -25,11 +24,11 @@ The handwritten letters exemplify the two types of variation:
 
 * Special Cause Variation: Arising from external factors, this variation is unpredictable and requires investigation. The response depends on whether the variation is beneficial or harmful.
 
-In summary then, the handwritten a's demonstrate that a process exhibits two types of variation –- common cause and special cause -- and the action required to address each type of cause is fundamentally different. To address common cause variation, we must take action on a major portion of the process. To address special cause variation, we must first do some detective work to find the cause and then we can decide to eradicate that cause (if it is unfavourable) or keep it (if it is favourable).
+<!-- In summary then, the handwritten a's demonstrate that a process exhibits two types of variation –- common cause and special cause -- and the action required to address each type of cause is fundamentally different. To address common cause variation, we must take action on a major portion of the process. To address special cause variation, we must first do some detective work to find the cause and then we can decide to eradicate that cause (if it is unfavourable) or keep it (if it is favourable). -->
 
-The originator of this theory was Walter A. Shewhart, who, in the 1920s, sought to improve industrial product quality. Shewhart recognized that quality involves more than meeting specifications; it requires understanding and managing variation. He distinguished between common cause variation, inherent to a stable process, and special cause variation, which results from specific, external factors [@shewhart1931].
+The originator of this theory was Walter A. Shewhart, who, in the 1920s, sought to improve industrial product quality. Shewhart recognised that quality involves more than meeting specifications; it requires understanding and managing variation. He distinguished between common cause variation, inherent to a stable process, and special cause variation, which results from specific, external factors [@shewhart1931].
 
-There are various characteristics and descriptions of common and special cause variation which are highlighted below.
+The various characteristics and descriptions of common and special cause variation are highlighted below.
 
 --------------------------------------------------------------------------------
 Common Cause Variation                    Special Cause Variation
