@@ -54,7 +54,7 @@ y2[13] <- y2[13] + 2
 stdchart(y2)
 ```
 
-Freaks are often caused by data or sampling errors, but they can also result from temporary external factors influencing the process, such as shifts in patient case mix during a holiday season. In some cases, a freak may simply be a false alarm.
+Freaks are often caused by data or sampling errors, but they can also result from temporary external factors influencing the process, such as shifts in patient case mix during a holiday season. In some cases, a freak may simply be a false alarm, which is to be expected from time to time.
 
 ### Shifts
 
@@ -95,13 +95,13 @@ If patterns of special cause variation were always as clear as in the figures \@
 
 Many additional rules have been developed to identify minor shifts, trends, and other specific patterns in data. While it may seem tempting to apply all known rules to the data, it’s important to remember that the more tests we apply, the more signals we generate and this increases the risk of false alarms where common cause variation is mistakenly identified as special cause variation.
 
-Therefore, it is crucial to strike a balance: we must select as few rules as necessary to minimize false alarms while ensuring the detection of true special cause signals. This topic will be discussed in greater detail in the chapter on [Diagnostic Errors](#diagnostics) later in this book.
+Therefore, it is crucial to strike a balance: we must select as few rules as necessary to minimize false alarms while ensuring the detection of true special cause signals. This topic will be discussed in greater detail in Appendix \@ref(diagnostics) on [Diagnostic Errors](#diagnostics) later in this book.
 
-For this book, we will concentrate on two sets of rules that have been thoroughly studied and validated for their effectiveness.
+Throughout this book, we will concentrate on two sets of rules that have been thoroughly studied and validated for their effectiveness.
 
 ### Tests based on sigma limits
 
-The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook [@we1956]. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the centre lines and the control limits.
+The best known tests for special cause variation are probably the Western Electric Rules (WE) described in the Statistical Quality Control Handbook [@we1956]. The WE rules consist of four simple tests that can be applied to control charts by visual inspection and are based on the identification of unusual patterns in the distribution of data points relative to the centre line or the control limits.
 
 1. One or more points outside of the 3-sigma limits (Shewhart's original 3-sigma rule).
 
@@ -111,15 +111,15 @@ The best known tests for special cause variation are probably the Western Electr
 
 4. A run of eight successive points on one side of the centre line.
 
-We leave it to the reader to apply WE rules #2-#4 to figures \@ref(fig:testing-fig3) and \@ref(fig:testing-fig4).
+We leave it to the reader to apply WE rules #2-4 to figures \@ref(fig:testing-fig3) and \@ref(fig:testing-fig4).
 
-The WE rules have proven their worth during most of a century. One thing to notice though is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives). 
+The WE rules have proven their worth during most of a century. One thing to notice though is that the WE rules are most effective with control charts that have between 20 and 30 data points. With fewer data points, they lose sensitivity (more false negatives), and with more data points they lose specificity (more false positives).
 
 WE rule #4 is independent of the sigma limits. It is based on assumptions regarding the length of runs on either side of the centre line. A run is defined as one or more successive data points on the same side of the centre line. Rules based on runs analysis are further discussed below.
 
 ### Runs analysis -- tests based on the distribution of data points around the centre line
 
-If we assume that the  centre line divides the data into two halves, the probability of any data point falling above or below the  centre is fifty-fifty. Similarly, the probability that two neighbouring points fall on the same or opposite side of the  centre line is also fifty-fifty.
+If we assume that the  centre line divides the data into two halves, the probability of any data point falling above or below the centre is fifty-fifty. Similarly, the probability that two neighbouring points fall on the same or opposite side of the  centre line is also fifty-fifty.
 
 By dichotomizing the data into runs of points either above or below a certain value -- such as the  centre line -- we enter the realm of runs analysis. The fundamental idea behind runs analysis is that the length and number of runs in a random process are governed by natural laws, making them predictable within certain limits.
 
@@ -135,7 +135,7 @@ This intuitive understanding highlights that what constitutes an "unusually" lon
 
 The two runs rules are two sides of the same coin -- when runs get longer, crossings get fewer and vice versa -- and either of them may signal special cause variation.
 
-Figure \@ref(fig:testing-fig3) has 24 data points, the longest run consists of 12 data points (#13 - #24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.
+Figure \@ref(fig:testing-fig3) has 24 data points, the longest run consists of 12 data points (#13-24), and the line crosses the centre line 9 times. Since the longest run is longer than expected, we may conclude that there is reason to believe that the process is shifting.
 
 In Figure \@ref(fig:testing-fig4) there are two long runs with 9 data points and only 5 crossings also suggesting that data are shifting.
 
@@ -143,17 +143,17 @@ It is important to note that the tests themselves do not identify the specific t
 
 Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix \@ref(runs-limits).
 
-Apart from being comparable in sensitivity and specificity to WE rules #2-#4 with 20-30 data points [@anhoej2018b], these runs rules have some advantages:
+Apart from being comparable in sensitivity and specificity to WE rules #2-4 with 20-30 data points [@anhoej2018b], these runs rules have some advantages:
 
 * They do not depend on sigma limits and thus are useful as stand-alone rules with run charts (more on run charts in the next section).
 
 * They adapt dynamically to the number of available data points, and can be applied to charts with as few as 10 and up to indefinitely many data points without losing sensitivity or specificity.
 
-In practice these runs rules may be used as alternatives to WE rules #2-#4 to help identify shifts and trends alongside the WE rule #1 for freaks.
+In practice these runs rules may be used as alternatives to WE rules #2-4 to help identify shifts and trends alongside the WE rule #1 for freaks.
 
 ## SPC charts without borders -- using run charts
 
-As discussed in the previous section, some rules rely solely on a single line representing the  centre of the data. We assumed that the  centre line divides the data into two equal halves. While the process average typically serves as a good representation of this  centre, this assumption may not hold if the data are skewed. However, if we use the median instead of the mean, the assumption always holds true, because the median is by definition the middle value.
+As discussed in the previous section, some rules rely solely on a single line representing the  centre of the data. We assumed that the  centre line divides the data into two equal halves. While the process mean typically serves as a good representation of this  centre, this assumption may not hold if the data are skewed. However, if we use the median instead of the mean, the assumption always holds true, because the median is by definition the middle value.
 
 So, what happens if we remove the sigma lines and use the median as the centre line? We get a run chart, which is one of the most valuable tools in quality improvement and control.
 
@@ -161,7 +161,7 @@ So, what happens if we remove the sigma lines and use the median as the centre l
 stdchart(y1, lcl = NA_real_, ucl = NA_real_, cl = median(y1))
 ```
 
-Figure \@ref(fig:testing-fig5) is a run chart of the data from Figure \@ref(fig:spc-fig1). We notice that the centre line is a little different from the control chart because we have used the empirical median rather than the theoretical mean. Consequently, data are now evenly distributed around the centre line with 12 data points on each side. The longest run have 3 data points (#13-#15 and #22-#24), and the data line crosses the centre line 13 times. Since there are no unusually long runs and not unusually few crossing we conclude that this process shows no signs of persistent shifts in data.
+Figure \@ref(fig:testing-fig5) is a run chart of the data from Figure \@ref(fig:spc-fig1). We notice that the centre line is a little different from the control chart because we have used the empirical median rather than the theoretical mean. Consequently, data are now evenly distributed around the centre line with 12 data points on each side. The longest run have 3 data points (#13-15 and #22-24), and the data line crosses the centre line 13 times. Since there are neither unusually long runs nor unusually few crossings, we conclude that this process shows no signs of *persistent* shifts in the data.
 
 Figure \@ref(fig:testing-fig6) is a run chart with data from Figure \@ref(fig:testing-fig4) containing a trend. The runs analysis confirms our "analysis-by-eye" by finding two unusually long runs with 9 data points and unusually few crossings (4).
 
@@ -171,21 +171,21 @@ stdchart(y4, lcl = NA_real_, ucl = NA_real_, cl = median(y4))
 
 Run charts are a lot easier to construct than are control charts. They do not make assumptions about the distribution of data. And they have better sensitivity to minor and moderate *persistent* shifts and trends than control charts based on only the 3-sigma rule.
 
-So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (for example freaks) that may go unnoticed by run charts, and 2) the control limits reflect the common cause variability of the process and hence define its *capability*, that is the process' ability to meet specifications.
+So why do we bother making control charts at all? In fact, we can only think of two reasons: 1) control charts quickly pick up large, possibly transient, shifts (freaks) that may go unnoticed by run charts, and 2) the control limits reflect the common cause variability of the process and hence define its *capability*, that is the process' ability to meet specifications.
 
 Fortunately, we do not need to choose between run and control charts. In fact, they are good companions for use at different stages of quality improvement and control.
 
 ## A practical approach to SPC analysis
 
-Before we move on, let's take a moment to clarify the purpose of SPC charts. As we will explore in detail in the next chapter (see \@ref(using)), SPC charts support two distinct purposes: process improvement and process monitoring.
+Before we move on, let's take a moment to clarify the purpose of SPC charts. As we will explore in detail in Chapter \@ref(using) on [Using SPC in Healthcare](#using), SPC charts support two distinct purposes: process improvement and process monitoring.
 
-When we are focused on **process improvement**, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, as improvements often happen gradually. Since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.
+When we are focused on **process improvement**, our goal is to create sustained shifts in the desired direction. Shifts are expected in this context, and since we aim for lasting changes, runs analysis is our primary tool to detect these shifts.
 
 In **process monitoring**, the objective is to maintain process stability, with no expected shifts in the data. Here, our focus is on detecting any signs of process deterioration as quickly as possible. For this, the 3-sigma rule is effective. To improve sensitivity to minor or moderate shifts, we may combine the 3-sigma rule with *either* the rest of the Western Electric (WE) rules *or* the two runs rules. However, we must be mindful that adding more tests increases the risk of false alarms.
 
 Regardless of the task, we recommend starting any SPC analysis with an "assumption-free" run chart, using the median as the  centre line. If runs analysis indicates non-random variation, calculating sigma limits becomes meaningless, as these values are irrelevant when shifts are already evident. In such cases, the focus should shift to identifying special causes, rather than calculating control limits.
 
-If the goal is process improvement, we continue with the run chart until we observe significant and sustained improvement, leading to a new and better process. Once this new process stabilizes and appears set to continue, we may transition to monitoring mode by adding control limits and using the mean as the centre line.
+If the goal is process improvement, we continue with the run chart until we observe significant and sustained improvement, leading to a new and better process. Once this new process stabilises and appears set to continue, we may transition to monitoring mode by adding control limits and using the mean as the centre line.
 
 Process monitoring is appropriate when the process is stable (common cause variation only) and the outcome is satisfactory. If either condition is not met, we should return to improvement mode.
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-25" />
+<meta name="date" content="2025-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -218,7 +218,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
 <li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in healthcare</a>
+<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in Healthcare</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>4.1</b> Using SPC to monitor a process</a></li>
 <li class="chapter" data-level="4.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>4.2</b> Using SPC to improve a process</a></li>
@@ -441,7 +441,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="charts-intro" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Understanding SPC Charts<a href="charts-intro.html#charts-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Now that we’ve explored the concepts of common and special cause variation through the example of handwritten letters, the next step is understanding how to apply these ideas to healthcare processes. This application involves creating charts that represent the “voice” or behaviour of a process (usually) over time. By leveraging statistical theory, these charts help determine whether a process is exhibiting common or special cause variation. Such visualisations are known as SPC charts, control charts, or process behaviour charts.</p>
+<p>Now that we’ve explored the concepts of common and special cause variation through the example of handwritten letters, the next step is understanding how to apply these ideas to healthcare processes. This application involves creating charts that represent the “voice” or behaviour of a process over time. By leveraging statistical theory, these charts help determine whether a process is exhibiting common or special cause variation. Such visualisations are known as SPC charts, control charts, or process behaviour charts.</p>
 <p>SPC charts are point-and-line plots of data collected over time. They serve as operational definitions for identifying common and special cause variation. An operational definition is one that is designed to be practical, useful, and ensures consistency in interpretation across different individuals.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig0"></span>
 <img src="_main_files/figure-html/spc-fig0-1.svg" alt="Control chart of systolic blood pressure" width="672" />
@@ -451,25 +451,25 @@ Figure 2.1: Control chart of systolic blood pressure
 </div>
 <p>Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a> illustrates a control chart showing daily blood pressure measurements. One data point (#6), marked with a red dot, stands out from the others. This deviation triggers a signal, indicating that the data point is likely due to a special cause.</p>
 <p>Special causes are signalled by unusual patterns in data. By “unusual” we mean something that is unlikely to have happened purely by chance, like a freak data point. Common cause variation is simply noise. The absence of signals of special cause variation is evidence that the behaviour of the process is consistent with common cause variation. The presence of signals is consistent with special cause variation.</p>
-<p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, (most) SPC charts look the same and are interpreted the same way, by employing a set of statistical tests (or rules) to help identify unusual patterns.</p>
+<p>There are many different types of control charts and the chart to be used is determined mostly by the type of data to be plotted. But regardless of the type of data, (most) SPC charts look the same and are interpreted the same way, by employing a set of statistical tests, also called rules, to help identify unusual patterns.</p>
 <p>In this chapter, we introduce seven of of the most common types of control charts (The Magnificent Seven) used in healthcare and their practical applications. In the following chapter (<a href="testing.html#testing">3</a>), we delve into the rules and statistical tests for identifying unusual patterns in data. Later, in Part 2 of this book, we provide a detailed guide on performing the calculations necessary to construct and analyse control charts.</p>
 <div id="anatomy-and-physiology-of-spc-charts" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Anatomy and physiology of SPC charts<a href="charts-intro.html#anatomy-and-physiology-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Shewhart’s groundbreaking innovation was the introduction of control limits, which define the boundaries of common cause variation in data. Data points falling within these limits (without unusual patterns) indicate common cause variation, while those outside indicate special cause variation.</p>
+<p>Shewhart’s groundbreaking innovation was the introduction of control limits, which define the boundaries of common cause variation in data. Data points falling within these limits indicate common cause variation, while those outside indicate special cause variation.</p>
 <div class="figure"><span style="display:block;" id="fig:spc-fig1"></span>
 <img src="_main_files/figure-html/spc-fig1-1.svg" alt="Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit" width="672" />
 <p class="caption">
 Figure 2.2: Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit
 </p>
 </div>
-<p>Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a> demonstrates a standardized Shewhart control chart, created using random numbers from a normal distribution with a mean of 0 and a standard deviation of 1. The x-axis represents time or sequence order, while the y-axis displays the indicator values. Each dot, connected by a line, represents a data point sampled sequentially. The data included in a data point is called a subgroup representing a set of observations (a sample) collected together at a specific point in time and under similar conditions.</p>
-<p>The chart features a Centre Line (CL), which represents the mean of the data values, and a Lower Control Limit (LCL) and an Upper Control Limit (UCL), defining the range of common cause variation. Because the control limits are (usually) positioned three standard deviations (sigma) on each side of the centre line they are often referred to as 3-sigma limits.</p>
-<p>The data points cluster symmetrically around the centre line, with most near the mean. As the distance from the centre line increases, data points become increasingly sparse. The control limits are positioned to encompass nearly all data points arising from common cause variation. Conversely, points outside the limits are likely to represent special causes.</p>
+<p>Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a> demonstrates a standardised Shewhart control chart, created using random numbers from a normal distribution with a mean of 0 and a standard deviation of 1. The x-axis represents time or sequence order, while the y-axis displays the indicator values. Each dot, connected by a line, represents a data point sampled sequentially. The data included in a data point is called a subgroup representing a set of observations (a sample) collected together at a specific point in time and under similar conditions.</p>
+<p>The chart features a Centre Line (CL), which represents the average of the data values (usually the arithmetic mean or the median), and a Lower Control Limit (LCL) and an Upper Control Limit (UCL), defining the range of common cause variation. Because the control limits are positioned three standard deviations (sigma) on each side of the centre line they are often referred to as 3-sigma limits.</p>
+<p>The data points cluster symmetrically around the centre line, with most near the centre. As the distance from the centre line increases, data points become increasingly sparse. The control limits are positioned to encompass nearly all data points arising from common cause variation. Conversely, points outside the limits are likely to represent special causes.</p>
 </div>
 <div id="why-3-sigma-limits" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Why 3-sigma limits?<a href="charts-intro.html#why-3-sigma-limits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Shewhart’s choice of 3-sigma limits was based on empirical observations from real-world experiments. For data following a normal distribution, like in Figure <a href="charts-intro.html#fig:spc-fig1">2.2</a>, these limits contain about 99.7% of all data points, meaning the likelihood of a point falling outside the limits purely by chance is approximately 3 in 1000 (0.3%). In a control chart with a total of 20 data points the chance of <em>all</em> data points being within the control limits is about 95% (1 - 0.997<sup>20</sup>).</p>
-<p>But before we go down that rabbit hole we note that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because they “work” (<span class="citation">Shewhart (<a href="#ref-shewhart1931">1931</a>)</span>, p. 18), because this practical choice balances sensitivity (detecting special causes) with specificity (avoiding false alarms), regardless of the data type or distribution. More on this will be discussed in Appendix <a href="diagnostics.html#diagnostics">C</a>.</p>
+<p>But before we go down that rabbit hole we note that these theoretical considerations were rejected by Shewhart who found that most real-life data are not normally distributed. Shewhart argued that the choice of 3-sigma limits was made simply because “they work” (<span class="citation">Shewhart (<a href="#ref-shewhart1931">1931</a>)</span>, p. 18), because this practical choice balances sensitivity (detecting special causes) with specificity (avoiding false alarms), regardless of the data type or distribution. More on this will be discussed in Appendix <a href="diagnostics.html#diagnostics">C</a>.</p>
 </div>
 <div id="some-common-types-of-control-charts-the-magnificent-seven" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Some common types of control charts: The Magnificent Seven<a href="charts-intro.html#some-common-types-of-control-charts-the-magnificent-seven" class="anchor-section" aria-label="Anchor link to header"></a></h2>

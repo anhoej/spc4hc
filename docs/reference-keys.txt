@@ -228,4 +228,3 @@ cutting-dates-and-datetimes
 getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

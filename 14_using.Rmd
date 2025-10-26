@@ -1,4 +1,4 @@
-# Using SPC in healthcare {#using}
+# Using SPC in Healthcare {#using}
 
 As briefly discussed in the previous chapter, in healthcare, we use SPC methodology in two main ways:
 

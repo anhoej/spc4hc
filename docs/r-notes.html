@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-25" />
+<meta name="date" content="2025-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -218,7 +218,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
 <li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in healthcare</a>
+<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in Healthcare</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>4.1</b> Using SPC to monitor a process</a></li>
 <li class="chapter" data-level="4.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>4.2</b> Using SPC to improve a process</a></li>
@@ -454,18 +454,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-10-13    13    32
- 2 2025-10-14    14    29
- 3 2025-10-15    16    33
- 4 2025-10-16    19    30
- 5 2025-10-17    13    32
- 6 2025-10-18    18    35
- 7 2025-10-19    19    29
- 8 2025-10-20    16    33
- 9 2025-10-21    16    34
-10 2025-10-22    11    27
-11 2025-10-23    13    32
-12 2025-10-24    12    26</code></pre>
+ 1 2025-10-14    13    32
+ 2 2025-10-15    14    29
+ 3 2025-10-16    16    33
+ 4 2025-10-17    19    30
+ 5 2025-10-18    13    32
+ 6 2025-10-19    18    35
+ 7 2025-10-20    19    29
+ 8 2025-10-21    16    33
+ 9 2025-10-22    16    34
+10 2025-10-23    11    27
+11 2025-10-24    13    32
+12 2025-10-25    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-notes.html#cb134-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb134-2"><a href="r-notes.html#cb134-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
