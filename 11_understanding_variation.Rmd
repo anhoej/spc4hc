@@ -22,41 +22,49 @@ The handwritten letters exemplify the two types of variation:
 
 * Common Cause Variation: Intrinsic to the process, this variation is stable and predictable within a range. Addressing it requires systemic changes to the process as a whole.
 
-* Special Cause Variation: Arising from external factors, this variation is unpredictable and requires investigation. The response depends on whether the variation is beneficial or harmful.
+* Special Cause Variation: Arising from external factors, this variation is unstable and unpredictable and requires investigation. The response depends on whether the variation is beneficial or harmful.
 
 <!-- In summary then, the handwritten a's demonstrate that a process exhibits two types of variation –- common cause and special cause -- and the action required to address each type of cause is fundamentally different. To address common cause variation, we must take action on a major portion of the process. To address special cause variation, we must first do some detective work to find the cause and then we can decide to eradicate that cause (if it is unfavourable) or keep it (if it is favourable). -->
 
-The originator of this theory was Walter A. Shewhart, who, in the 1920s, sought to improve industrial product quality. Shewhart recognised that quality involves more than meeting specifications; it requires understanding and managing variation. He distinguished between common cause variation, inherent to a stable process, and special cause variation, which results from specific, external factors [@shewhart1931].
+The originator of this theory was Walter A. Shewhart, who, in the 1920s, sought to improve industrial product quality. Shewhart recognised that quality involves more than meeting specifications; it requires understanding and managing variation. He distinguished between chance cause variation, inherent to a stable process, and assignable cause variation, which results from specific, external factors [@shewhart1931]. Later, the terms common cause variation and special cause variation were adopted.
 
 The various characteristics and descriptions of common and special cause variation are highlighted below.
 
---------------------------------------------------------------------------------
-Common Cause Variation                    Special Cause Variation
-----------------------------------------  --------------------------------------
-Is caused by a stable process (like       Is caused by an assignable cause that
-writing a signature) and is intrinsic     it extrinsic to the process.
-to the process.
-                                          
-Reflects the voice or behaviour of a      Is a distinct signal which differs
-stable process and affects all those      from the usual voice or behaviour of
-who are part of the process.              the process and requires further
-                                          detective work to identify the
-                                          assignable cause.
+<!-- -------------------------------------------------------------------------------- -->
+<!-- Common Cause Variation                    Special Cause Variation -->
+<!-- ----------------------------------------  -------------------------------------- -->
+<!-- Is caused by a stable and predictable     Is caused by an assignable cause that -->
+<!-- process and is intrinsic to the process.  is extrinsic to the process making -->
+<!--                                           the process unstable and -->
+<!--                                           unpredictable. -->
 
-Is neither good or bad, it just is.       Can be favourable or unfavourable and
-                                          premediated (as part of an improvement
-                                          project) or incidental (not part of an
-                                          improvement project)
-                                          
-Can be reduced (but not eliminated) by    Unfavourable special cause can be
-changing the underlying process.          eliminated. Favourable special cause
-Such changes may be informed by           can be adopted and adapted into a new
-special cause variation.                  process.
+<!-- Reflects the behaviour of a stable        Is a distinct signal, which differs -->
+<!-- process and affects all those who are     from the usual behaviour of the  -->
+<!-- part of the process.                      process and requires further detective -->
+<!--                                           work to identify the underlying cause. -->
 
-Is sometimes referred to as random        Is sometimes referred to as non-random
-variation, chance variation, or noise.    variation, systematic variation, or
-                                          signal.
---------------------------------------------------------------------------------
+<!-- Is neither good or bad, it just is.       Can be favourable or unfavourable and -->
+<!--                                           premediated or incidental. -->
+
+<!-- Can be reduced (but not eliminated) by    Unfavourable special cause can be -->
+<!-- changing the underlying process.          eliminated. Favourable special cause -->
+<!-- Such changes may be informed by           can be adopted and adapted into a new -->
+<!-- special cause variation.                  improved process. -->
+
+<!-- Is sometimes referred to as random        Is sometimes referred to as non-random -->
+<!-- variation, chance variation, natural      variation, assignable variation, -->
+<!-- variation, or noise.                      systematic variation, or signal. -->
+<!-- -------------------------------------------------------------------------------- -->
+<!-- Table: Characteristics of common versus special cause variation -->
+
+
+| **Common Cause Variation** | **Special Cause Variation** |
+|:---------------------------|:----------------------------|
+| Arises from a stable, predictable system and is intrinsic to the process. | Arises from an assignable cause external to the process, making it unstable and unpredictable. |
+| Reflects the normal behaviour of the process and affects all who are part of it. | Represents a distinct signal differing from the usual behaviour and requiring investigation to identify its cause. |
+| Is neither good nor bad -- it simply is. | May be favourable or unfavourable, and deliberate or incidental. |
+| Can be reduced (but not eliminated) by changing the underlying process; such changes may be informed by special causes. | Unfavourable special causes can be removed; favourable ones can be adopted and incorporated into an improved process. |
+| Also known as *random variation*, *chance variation*, *natural variation*, or *noise*. | Also known as *non-random variation*, *assignable variation*, *systematic variation*, or *signal*. |
 Table: Characteristics of common versus special cause variation
 
 In summary, statistical Process Control (SPC) revolves around understanding variation and identifying its causes -- whether common or special -- in order to drive meaningful improvement. Contrary to common misconceptions, SPC is not merely a method for spotting outliers; it’s a framework for enhancing processes and outcomes.
