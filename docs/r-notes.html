@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D R Notes | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D R Notes | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-26" />
+<meta name="date" content="2026-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -454,18 +454,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2025-10-14    13    32
- 2 2025-10-15    14    29
- 3 2025-10-16    16    33
- 4 2025-10-17    19    30
- 5 2025-10-18    13    32
- 6 2025-10-19    18    35
- 7 2025-10-20    19    29
- 8 2025-10-21    16    33
- 9 2025-10-22    16    34
-10 2025-10-23    11    27
-11 2025-10-24    13    32
-12 2025-10-25    12    26</code></pre>
+ 1 2026-01-04    13    32
+ 2 2026-01-05    14    29
+ 3 2026-01-06    16    33
+ 4 2026-01-07    19    30
+ 5 2026-01-08    13    32
+ 6 2026-01-09    18    35
+ 7 2026-01-10    19    29
+ 8 2026-01-11    16    33
+ 9 2026-01-12    16    34
+10 2026-01-13    11    27
+11 2026-01-14    13    32
+12 2026-01-15    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-notes.html#cb134-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb134-2"><a href="r-notes.html#cb134-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
@@ -587,7 +587,7 @@ month,ha_infections,risk_days,deaths,patients
  $ n        : int  7 11 11 9 8 5 7 12 7 12 ...
  $ n_ontime : int  7 9 10 9 8 4 5 12 6 11 ...</code></pre>
 <p>The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them – read the documentation.</p>
-<p>The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or table.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.</p>
+<p>The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or data.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.</p>
 </div>
 </div>
 <div id="tips-and-tricks" class="section level2 hasAnchor" number="24.5">
@@ -663,8 +663,8 @@ Levels: 2000-02-01</code></pre>
 </ul>
 <p><strong>Newer</strong>:</p>
 <ul>
-<li><p>use spaces, e.g.: “my variable”, “my file.R”;</p></li>
-<li><p>versionize files using words like “final”, “finalfinal”, “new”, “draft”, etc. Instead, use ISO dates, e.g.: “my_file_2001-02-03.R”.</p></li>
+<li><p>use spaces, e.g.: “my variable”, “my file.R”; instead, use underscores, e.g.: my_file.R;</p></li>
+<li><p>versionise files using words like “final”, “finalfinal”, “new”, “draft”, etc.; instead, use ISO dates, e.g.: “my_file_2001-02-03.R”.</p></li>
 </ul>
 
 </div>

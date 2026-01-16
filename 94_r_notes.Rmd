@@ -131,7 +131,7 @@ str(d2)
 
 The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them -- read the documentation.
 
-The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or table.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.
+The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or data.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.
 
 ## Tips and tricks
 
@@ -235,7 +235,7 @@ Book have been written about how to and how not to name variables and files. Her
 
 **Newer**:
 
-* use spaces, e.g.: "my variable", "my file.R";
+* use spaces, e.g.: "my variable", "my file.R"; instead, use underscores, e.g.: my_file.R;
 
-* versionize files using words like "final", "finalfinal", "new", "draft", etc. Instead, use ISO dates, e.g.: "my_file_2001-02-03.R".
+* versionise files using words like "final", "finalfinal", "new", "draft", etc.; instead, use ISO dates, e.g.: "my_file_2001-02-03.R".
 

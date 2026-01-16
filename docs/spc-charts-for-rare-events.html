@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 SPC Charts for Rare Events | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2025-10-26" />
+<meta name="date" content="2026-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -570,7 +570,7 @@ Figure 12.5: T chart of time (days) between deliveries with neonatal asphyxia
 </div>
 <div id="the-bernoulli-cusum-chart-for-binary-data" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> The Bernoulli CUSUM chart for binary data<a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time <span class="citation">(<a href="#ref-neuburger2017">Neuburger et al. 2017</a>)</span>. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.</p>
+<p>The Bernoulli CUSUM chart (also known as the B chart) is a specialised control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time <span class="citation">(<a href="#ref-neuburger2017">Neuburger et al. 2017</a>)</span>. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.</p>
 <p>The trace value <span class="math inline">\(s_i\)</span> at time <span class="math inline">\(i\)</span> is updated recursively:</p>
 <p><span class="math display">\[s_i=s_{i-1}+ increment\ based\ on\ current\ value\]</span></p>
 <p>When the current observation <span class="math inline">\(x_i\)</span> is TRUE (i.e., an event of interest occurs), the trace increases; when <span class="math inline">\(x_i\)</span> is FALSE, the trace decreases.</p>

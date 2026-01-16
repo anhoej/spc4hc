@@ -105,7 +105,7 @@ As an example, consider waiting or "door-to-needle" times. These may be plotted 
 
 For individual measurements, we use an I chart (also called an X chart) where each subgroup represents one individual measurement. The I chart is often used in combination with a Moving Range (MR) chart to plot the variability between consecutive individual measurements.
 
-For subgroup averages, we use an X-bar chart where subgroups consist of multiple measurements, such as the average of several patients' waiting times within a given period. the X-bar chart is often used in combination with an S chart to plot the within-subgroup standard deviations, which helps visualize the variability within each subgroup.
+For subgroup averages, we use an X-bar chart where subgroups consist of multiple measurements, such as the average of several patients' waiting times within a given period. the X-bar chart is often used in combination with an S chart to plot the within-subgroup standard deviations, which helps visualise the variability within each subgroup.
 
 * I and MR charts: individual measurement, subgroup size = 1.
 * X-bar and S charts: multiple measurements, subgroup size > 1.

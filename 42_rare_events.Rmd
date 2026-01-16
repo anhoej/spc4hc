@@ -145,7 +145,7 @@ In fact, to our eyes, the control limits on the T chart in Figure \@ref(fig:rare
 
 ## The Bernoulli CUSUM chart for binary data
 
-The Bernoulli CUSUM chart (also known as the B chart) is a specialized control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time [@neuburger2017]. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.
+The Bernoulli CUSUM chart (also known as the B chart) is a specialised control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time [@neuburger2017]. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.
 
 The trace value $s_i$ at time $i$ is updated recursively:
 

@@ -88,7 +88,7 @@ $$\bar{u}\pm3\sigma_{ui}\sigma_z$$
 
 where $\sigma_{ui}=\sqrt{\bar{u}/n_i}$ and $\sigma_{z}=\overline{MR_z}/1.128$; and the moving ranges are computed from the standardised rates defined as $z_i=(u_i-\bar{u})/\sigma_{ui}$.
 
-Note that in qicharts2, the moving ranges of the standardized values are, by default, screened for extreme values -- following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
+Note that in qicharts2, the moving ranges of the standardised values are, by default, screened for extreme values -- following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
 
 ## When to use prime charts
 

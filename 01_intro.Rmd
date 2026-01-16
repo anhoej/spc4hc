@@ -19,12 +19,12 @@ This book seeks to address this paradox by providing a straightforward, practica
 
 ## What Sets This Book Apart? {-}
 
-This book is a **step-by-step guide to easily and correctly producing SPC charts**. Since this involves statistics, computing, and visualization, our software of choice is **R** -- often referred to as the *lingua franca* of statistical computing and visualization.
+This book is a **step-by-step guide to easily and correctly producing SPC charts**. Since this involves statistics, computing, and visualisation, our software of choice is **R** -- often referred to as the *lingua franca* of statistical computing and visualization.
 
-What makes this book unique is its **specialized, practical, and modern approach**, specifically tailored for data scientists and practitioners in the healthcare sector. Here's what you can expect:
+What makes this book unique is its **specialised, practical, and modern approach**, specifically tailored for data scientists and practitioners in the healthcare sector. Here's what you can expect:
 
 1. **Target audience**<br>
-This book is for anyone looking to produce SPC charts using modern tools. While it is specifically geared toward **data scientists**, we recognize that our readers may include analysts, practitioners, managers, educators, students, researchers, clinicians, or even patients. Regardless of your role, if you work with healthcare data and want to master SPC, then this book is for you.
+This book is for anyone looking to produce SPC charts using modern tools. While it is specifically geared toward **data scientists**, we recognise that our readers may include analysts, practitioners, managers, educators, students, researchers, clinicians, or even patients. Regardless of your role, if you work with healthcare data and want to master SPC, then this book is for you.
 
 1. **Why R?**<br>
 We’ve chosen R as our primary tool because it is popular, free, and open-source. While we are pro-R, we are not anti-other software; readers can adapt the concepts in this book to their preferred tools.

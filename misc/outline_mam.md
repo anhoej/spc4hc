@@ -42,7 +42,7 @@ A practical guide for data scientists with worked examples using R"
   - Formatting data for SPC analysis.
 - **Exploratory Data Analysis (EDA)**
   - Descriptive statistics.
-  - Visualizing data distributions.
+  - Visualising data distributions.
 
 #### **Chapter 4: Creating Basic SPC Charts in R**
 - **P-charts for Proportion Data**
