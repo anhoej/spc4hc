@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Preface | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Preface | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-03-11" />
+<meta name="date" content="2026-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,9 +172,11 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#who-this-book-is-for"><i class="fa fa-check"></i>Who this book is for?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#why-r"><i class="fa fa-check"></i>Why R?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
@@ -441,65 +443,75 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="preface.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This book is about the practical application of <strong>Statistical Process Control</strong> (SPC) methodology in healthcare.</p>
-<p>At its core, SPC is founded on a powerful, intuitive insight: processes are subject to two sources of variation – <strong>common cause</strong> and <strong>special cause</strong>. This distinction enables us to understand, monitor, and improve a wide range of processes. With this insight comes a suite of visual tools – <strong>run charts</strong> and <strong>control charts</strong> – that help differentiate between common and special cause variation with ease.</p>
-<p>However, while SPC tools are conceptually simple to use, applying them correctly can be a challenge. As noted in a systematic review of SPC in healthcare:</p>
+<p>This book is about making better decisions in healthcare using data.
+Every day, healthcare teams track data: waiting times, infection rates, mortality, patient experience. These data go up and down. The challenge is knowing when and how to act.</p>
+<p>Act too quickly, and you risk chasing noise. Wait too long, and you may miss an important signal to improve care. Take the wrong action and you risk making things worse.</p>
+<p><strong>Statistical Process Control</strong> (SPC) provides a practical way to navigate this uncertainty.</p>
+<p>At its core, SPC is built on a simple but powerful idea: all processes vary, and that variation arises from two fundamentally different sources – <strong>common cause</strong> and <strong>special cause</strong>. Understanding this distinction is crucial to help us interpret data more reliably and act more effectively.</p>
+<p>SPC brings these idea’s to life through simple visual tools – <strong>run charts</strong> and <strong>control charts</strong>. Yet despite their conceptual simplicity, applying these tools correctly can be challenging. As noted in a systematic review of SPC in healthcare:</p>
 <blockquote>
 <p>… although SPC charts may be easy to use even for patients, clinicians, or managers without extensive SPC training, they may not be equally simple to <em>construct correctly</em>. To apply SPC is, paradoxically, both simple and difficult at the same time.</p>
 <p>– <span class="citation">Thor et al. (<a href="#ref-thor2007">2007</a>)</span></p>
 </blockquote>
-<p>This book seeks to address this paradox by providing a straightforward, practical guide to the correct construction of SPC charts in healthcare using modern software.</p>
+<p>This book addresses that paradox. It provides a clear, practical guide to constructing and using SPC charts appropriately in healthcare, using modern software and reproducible methods.</p>
+<div id="who-this-book-is-for" class="section level2 unnumbered hasAnchor">
+<h2>Who this book is for?<a href="preface.html#who-this-book-is-for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This book is for anyone working with healthcare data who wants to use SPC in practice. While it is particularly suited to data scientists and analysts, we recognise that our readers may include, healthcare professionals, educators, students, patients and improvers. If you are involved in monitoring or improving healthcare processes, this book, as highlighted below, is for you.</p>
+</div>
 <div id="what-sets-this-book-apart" class="section level2 unnumbered hasAnchor">
 <h2>What Sets This Book Apart?<a href="preface.html#what-sets-this-book-apart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This book is a <strong>step-by-step guide to easily and correctly producing SPC charts</strong>. Since this involves statistics, computing, and visualisation, our software of choice is <strong>R</strong> – often referred to as the <em>lingua franca</em> of statistical computing and visualization.</p>
-<p>What makes this book unique is its <strong>specialised, practical, and modern approach</strong>, specifically tailored for data scientists and practitioners in the healthcare sector. Here’s what you can expect:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Target audience</strong><br>
-This book is for anyone looking to produce SPC charts using modern tools. While it is specifically geared toward <strong>data scientists</strong>, we recognise that our readers may include analysts, practitioners, managers, educators, students, researchers, clinicians, or even patients. Regardless of your role, if you work with healthcare data and want to master SPC, then this book is for you.</p></li>
-<li><p><strong>Why R?</strong><br>
-We’ve chosen R as our primary tool because it is popular, free, and open-source. While we are pro-R, we are not anti-other software; readers can adapt the concepts in this book to their preferred tools.
-<br>
-R has several key advantages:<br></p>
+<p>This is a hands-on, step-by-step guide to producing SPC charts correctly and confidently. What makes this book distinctive is its practical, healthcare-focused and modern approach.</p>
 <ul>
-<li><strong>Transparency and reproducibility</strong>: R’s programming capabilities ensure every step of data analysis and SPC chart construction is documented, making your work both readable and reproducible – something rarely achieved with “point-and-click” software.</li>
-<li><strong>Automation</strong>: R allows for automating repetitive tasks such as generating monthly reports, slide decks, and SPC dashboards with customizable, high-quality graphics.</li>
-</ul></li>
-<li><p><strong>Healthcare-focused</strong><br>
-Unlike general SPC books, this one focuses on <strong>healthcare-specific applications</strong>, addressing challenges like patient safety, clinical outcomes, and operational efficiency. It complements the foundational concepts in our companion book, <em>Statistical Process Control: Elements of Improving Quality and Safety in Healthcare</em> <span class="citation">(<a href="#ref-mohammed2024">M. A. Mohammed 2024</a>)</span>.</p></li>
-<li><p><strong>Practical and hands-on</strong><br>
-The book takes a hands-on approach, providing real-world examples and case studies to help readers produce and use SPC charts confidently. This practical emphasis bridges the gap between theory and application.</p></li>
+<li><p><strong>Healthcare focus</strong><br>
+Unlike general SPC texts, this book is grounded in real healthcare applications, including patient safety, clinical outcomes, and operational performance. It complements the companion book, <em>Statistical Process Control: Elements of Improving Quality and Safety in Healthcare</em> <span class="citation">(<a href="#ref-mohammed2024">M. A. Mohammed 2024</a>)</span>, by focusing on practical implementation.</p></li>
+<li><p><strong>Practical and applied</strong><br>
+This is not a theoretical text. You will find: worked examples, real datasets, and step-by-step guidance. The aim is to help you understand SPC and use it confidently in practice to improve healthcare.</p></li>
 <li><p><strong>Comprehensive coverage</strong><br>
-From foundational principles to advanced SPC techniques, this book covers it all. It’s designed to cater to both beginners and experienced data scientists, ensuring everyone finds value.</p></li>
+From foundational principles to advanced SPC techniques, this book covers it all. It is designed to cater to both beginners and experienced data scientists, ensuring everyone finds value.</p></li>
 <li><p><strong>Additional resources</strong><br>
-Readers will gain access to supplemental materials, including:</p>
-<ul>
-<li>R scripts</li>
-<li>Datasets</li>
-<li>A dedicated <a href="https://github.com/anhoej/spc4hc">GitHub repository</a> for continued learning and collaboration.</li>
-</ul></li>
-</ol>
+To support your learning, we provide: R scripts, datasets, and a dedicated <a href="https://github.com/anhoej/spc4hc">GitHub repository</a> for continued learning and collaboration.</p></li>
+</ul>
+<p>These resources are designed to help you apply what you learn and continue developing your skills.</p>
 </div>
 <div id="prerequisites" class="section level2 unnumbered hasAnchor">
 <h2>Prerequisites<a href="preface.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>No prior knowledge of SPC is assumed. However, basic familiarity with R is necessary to follow the steps and algorithms for constructing SPC charts. For those new to R, we recommend excellent (and free) resources such as the <a href="https://nhsrcommunity.com/">NHS-R Community</a>.</p>
+<p>No prior knowledge of SPC is required. However, some familiarity with the <a href="https://www.r-project.org/">R programming language</a> will be helpful.</p>
+<p>If you are new to R, we recommend resources such as:</p>
+<ul>
+<li><p><a href="https://www.youtube.com/playlist?list=PLVext98k2evi8mDNRo4MwIgVgSmwM3cS8">Learn R Programming with Johns Hopkins University</a>, an excellent series of video tutorials covering all aspects of R programming – everything you need (and more) for this book;</p></li>
+<li><p><a href="https://bookdown.org/rdpeng/rprogdatascience/">R Programming for Data Science</a>, Roger D. Peng’s companion book to the R Programming video series;</p></li>
+<li><p><a href="https://nhsrcommunity.com/">NHS-R Community</a>, which provides excellent free learning materials.</p></li>
+</ul>
+</div>
+<div id="why-r" class="section level2 unnumbered hasAnchor">
+<h2>Why R?<a href="preface.html#why-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Because SPC sits at the intersection of statistics, computing, and visualisation, our software of choice is R – widely regarded as the <em>lingua franca</em> of statistical computing.</p>
+<p>R is free, open-source, and widely used. More importantly, it supports:</p>
+<ul>
+<li><p><strong>Transparency and reproducibility</strong><br>
+Every step – from raw data to final chart – can be documented and reproduced.</p></li>
+<li><p><strong>Automation</strong><br>
+Routine tasks such as generating reports, dashboards, and visualisations can be automated, saving time and reducing error.</p></li>
+</ul>
+<p>However, although we use R throughout, the principles in this book apply regardless of the software you use.</p>
 </div>
 <div id="how-to-use-this-book" class="section level2 unnumbered hasAnchor">
-<h2>How to Use This Book<a href="preface.html#how-to-use-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>How to Use This Book?<a href="preface.html#how-to-use-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p><strong>New to SPC?</strong>: Start with Chapter <a href="variation.html#variation">1</a> to learn about variation.</p></li>
-<li><p><strong>Eager to start plotting?</strong>: Jump straight to Chapters <a href="first-chart.html#first-chart">5</a> and <a href="limits.html#limits">6</a>.</p></li>
-<li><p><strong>Want to go deeper?</strong>: Advanced chart types and topics are covered in later chapters for both beginners and experts.</p></li>
-<li><p><strong>Need more resources?</strong>: Visit our <a href="https://github.com/anhoej/spc4hc">GitHub repository</a> for datasets, code, and updates.</p></li>
+<li><p><strong>New to SPC?</strong>: Start with Chapter <a href="variation.html#variation">1</a> to understand variation.</p></li>
+<li><p><strong>Want to get started quickly?</strong>: Jump to Chapters <a href="first-chart.html#first-chart">5</a> and <a href="limits.html#limits">6</a> to begin creating charts.</p></li>
+<li><p><strong>Looking to deepen your understanding?</strong>: Later chapters cover more advanced topics and chart types.</p></li>
+<li><p><strong>Need code and data?</strong>: Visit the <a href="https://github.com/anhoej/spc4hc">GitHub repository</a> for additional materials and updates.</p></li>
 </ul>
 <p>We hope this book proves valuable, and we welcome your feedback for ongoing improvement.</p>
 </div>
 <div id="about-the-authors" class="section level2 unnumbered hasAnchor">
 <h2>About the Authors<a href="preface.html#about-the-authors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p><strong>Jacob Anhøj</strong>: Medical doctor with over 30 years of experience and a diploma in Information Technology. With 45+ published papers, two books, and extensive teaching expertise, he is deeply passionate about patient safety and quality improvement in healthcare. Jacob is an experienced R user and the creator of several R packages, including <strong>qicharts2</strong>, widely used for SPC chart construction and analysis.
+<li><p><strong>Jacob Anhøj</strong>: Medical doctor with over 30 years of experience and a diploma in Information Technology. Author of 45+ publications and several books, Jacob is passionate about patient safety and quality improvement. He has extensive teaching experience and is also the creator of several R packages, including <em>qicharts2</em>.
 <br>
 Contact: <a href="mailto:jacob@anhoej.net" class="email">jacob@anhoej.net</a></p></li>
-<li><p><strong>Mohammed Amin Mohammed</strong>: Emeritus Professor of Healthcare Quality and Effectiveness at the University of Bradford, Mohammed has over 100 peer-reviewed publications. His landmark paper introducing SPC to healthcare <span class="citation">(<a href="#ref-mohammed2001">M. A. Mohammed, Cheng, and Marshall 2001</a>)</span> and his book <em>Statistical Process Control: Elements of Improving Quality and Safety in Healthcare</em> <span class="citation">(<a href="#ref-mohammed2024">M. A. Mohammed 2024</a>)</span> are seminal works in the field. He is also the founder of the <a href="https://nhsrcommunity.com/">NHS-R Community</a>, promoting the use of R in healthcare.
+<li><p><strong>Mohammed Amin Mohammed</strong>: Emeritus Professor of Healthcare Quality and Effectiveness at the University of Bradford, with over 100 peer-reviewed publications. His work has been central to introducing SPC into healthcare practice. He is also founder of the <a href="https://nhsrcommunity.com/">NHS-R Community</a>.
 <br>
 Contact: <a href="mailto:profmaminm@gmail.com" class="email">profmaminm@gmail.com</a>; <a href="mailto:m.a.mohammed5@bradford.ac.uk" class="email">m.a.mohammed5@bradford.ac.uk</a></p></li>
 </ul>
@@ -510,9 +522,6 @@ Contact: <a href="mailto:profmaminm@gmail.com" class="email">profmaminm@gmail.co
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-mohammed2024" class="csl-entry">
 Mohammed, M A. 2024. <em>Statistical Process Control</em>. Elements of Improving Quality and Safety in Healthcare. Cambridge University Press. <a href="https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10">https://www.cambridge.org/core/elements/statistical-process-control/60B6025BF62017A9A203960A9E223C10</a>.
-</div>
-<div id="ref-mohammed2001" class="csl-entry">
-Mohammed, M A, Rouse Cheng KK, and T Marshall. 2001. <span>“Bristol, Shipman, and Clinical Governance: Shewhart’s Forgotten Lessons.”</span> <em>Lancet</em> 357. <a href="https://doi.org/10.1016/s0140-6736(00)04019-8">https://doi.org/10.1016/s0140-6736(00)04019-8</a>.
 </div>
 <div id="ref-thor2007" class="csl-entry">
 Thor, Johan, Jonas Lundberg, Jakob Ask, Jesper Olsson, Cheryl Carli, Karin Pukk Härenstam, and Mats Brommels. 2007. <span>“Application of Statistical Process Control in Healthcare Improvement: Systematic Review.”</span> <em>BMJ Qual Saf</em> 16: 387–99. <a href="https://doi.org/10.1136/qshc.2006.022194">https://doi.org/10.1136/qshc.2006.022194</a>.

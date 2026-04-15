@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D R Notes | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
-  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D R Notes | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-03-11" />
+<meta name="date" content="2026-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,9 +172,11 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#who-this-book-is-for"><i class="fa fa-check"></i>Who this book is for?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-sets-this-book-apart"><i class="fa fa-check"></i>What Sets This Book Apart?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#why-r"><i class="fa fa-check"></i>Why R?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
@@ -454,23 +456,23 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2026-02-27    13    32
- 2 2026-02-28    14    29
- 3 2026-03-01    16    33
- 4 2026-03-02    19    30
- 5 2026-03-03    13    32
- 6 2026-03-04    18    35
- 7 2026-03-05    19    29
- 8 2026-03-06    16    33
- 9 2026-03-07    16    34
-10 2026-03-08    11    27
-11 2026-03-09    13    32
-12 2026-03-10    12    26</code></pre>
+ 1 2026-04-03    13    32
+ 2 2026-04-04    14    29
+ 3 2026-04-05    16    33
+ 4 2026-04-06    19    30
+ 5 2026-04-07    13    32
+ 6 2026-04-08    18    35
+ 7 2026-04-09    19    29
+ 8 2026-04-10    16    33
+ 9 2026-04-11    16    34
+10 2026-04-12    11    27
+11 2026-04-13    13    32
+12 2026-04-14    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="r-notes.html#cb133-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb133-2"><a href="r-notes.html#cb133-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
 <span id="cb133-3"><a href="r-notes.html#cb133-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-43-1.svg" width="960" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.svg" alt="" width="960" /></p>
 <p>Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).</p>
 </div>
 <div id="importing-data-from-text-files" class="section level2 hasAnchor" number="24.3">
