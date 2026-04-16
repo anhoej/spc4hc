@@ -26,7 +26,7 @@ This book addresses that paradox. It provides a clear, practical guide to constr
 
 This book is for anyone working with healthcare data who wants to use SPC in practice. While it is particularly suited to data scientists and analysts, we recognise that our readers may include, healthcare professionals, educators, students, patients and improvers. If you are involved in monitoring or improving healthcare processes, this book, as highlighted below, is for you.
 
-## What Sets This Book Apart? {-}
+## What sets this book apart? {-}
 
 This is a hands-on, step-by-step guide to producing SPC charts correctly and confidently. What makes this book distinctive is its practical, healthcare-focused and modern approach.
 
@@ -70,7 +70,7 @@ Routine tasks such as generating reports, dashboards, and visualisations can be 
 
 However, although we use R throughout, the principles in this book apply regardless of the software you use.
 
-## How to Use This Book? {-}
+## How to use this book? {-}
 
 - **New to SPC?**: Start with Chapter \@ref(variation) to understand variation.
 
@@ -82,7 +82,7 @@ However, although we use R throughout, the principles in this book apply regardl
 
 We hope this book proves valuable, and we welcome your feedback for ongoing improvement.
 
-## About the Authors {-}
+## About the authors {-}
 
 - **Jacob Anhøj**: Medical doctor with over 30 years of experience and a diploma in Information Technology. Author of 45+ publications and several books, Jacob is passionate about patient safety and quality improvement. He has extensive teaching experience and is also the creator of several R packages, including *qicharts2*.
 <br>

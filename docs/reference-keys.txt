@@ -92,9 +92,9 @@ variation
 charts-intro
 anatomy-and-physiology-of-spc-charts
 why-3-sigma-limits
-some-common-types-of-control-charts-the-magnificent-seven
-counts
-measurements
+common-types-of-control-charts-the-magnificent-seven
+count-data
+measurement-data
 summary-of-common-spc-charts
 testing
 patterns-of-non-random-variation-in-time-series-data
@@ -119,11 +119,11 @@ thats-all-folks
 limits
 introducing-the-spc-function
 formulas-for-calculation-of-control-limits
-count-data
+count-data-1
 c-chart
 u-chart
 p-chart
-measurement-data
+measurement-data-1
 i-chart-aka-x-chart
 mr-chart
 x-bar-chart
