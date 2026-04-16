@@ -1,4 +1,4 @@
-# Synopsis {-#synopsis}
+# Table of Contents {-#synopsis}
 
 ## Introduction {-}
 
@@ -8,80 +8,43 @@
 
 ## Part 1: Understanding Variation {-}
 
-1. Understanding Variation
-1. Understanding SPC Charts
-1. Looking for Signals
-1. Using SPC in Healthcare
+1. Understanding common versus special causes of variation 
+1. Understanding variation using SPC Charts 
+1. Looking for Signals of special cause variation on SPC Charts 
+1. Using SPC charts in Healthcare 
 
 ## Part 2: Constructing SPC Charts with R {-}
 
 1. Your First SPC Charts with Base R
 1. Calculating Control Limits
 1. Highlighting Freaks, Shifts, and Trends
-1. Core R Functions to Construct SPC Charts
-1. SPC Charts with ggplot2
-1. Introducing qicharts2
+1. Core R Functions for SPC Charts
+1. SPC Charting with ggplot2
+1. SPC Charting with the *qicharts2* package
 
 ## Part 3: Advanced SPC Techniques {-}
 
-1. Screened I Chart (eliminating freak moving ranges before calculating limits)
-1. SPC Charts for Rare Events
-    - T Chart for Time Between Events
-    - G Chart for Opportunities Between Cases
-    - Bernoulli CUSUM chart for binary data
-1. Prime Charts for Count Data with Very Large Subgroups
-1. I Prime Chart for Measurement Data With Variable Subgroup Sizes
-1. Funnel Plots for Categorical Subgroups
-1. Pareto Charts for Ranking Problems
+1. Screened I Charts: Removing Freak Moving Ranges Before Calculating Limits 
+1. SPC Charts for Rare Events 
+1. Prime Charts for Count Data with Very Large Subgroups 
+1. Prime Charts for Measurement Data with Variable Subgroup Sizes 
+1. Funnel Plots for Categorical Subgroups 
+1. Pareto Charts for Ranking Problems 
 
 ## Part 4: Best Practices, Controversies, and Tips {-}
 
 1. Tips for Effective SPC Implementation
-    - Engaging stakeholders
-    - Automating production of SPC charts
-    - Continuous monitoring and improvement.
 1. Common Pitfalls to Avoid
-    - Data issues, misinterpretation of charts
-    - Signal fatigue
-    - Automating rephasing
-    - The control chart vs run chart debate
-    - One-to-one relation between PDSA cycles and dots on the plot
 1. The forgotten Art of Rational Subgrouping
 
 ## Part 5: Conclusion and Final Thoughts {-}
 
 1. Conclusion and Final Thoughts
-    - Summary of Key Points
-    - Emerging trends in SPC and healthcare analytics
-    - Encouragement for Continuous Learning and Application
-    - Final Thoughts
 
 ## Appendices {-}
 
-a. Included Data Sets
+a. Data Sets
 a. Basic Statistical Concepts
 a. Two Types of Errors When Using SPC
 a. R Notes
-a. Table of Critical Values for Longest Runs and Number of Crossings
-
-----
-
-- Ideas for chapters / topics
-    - Case Studies and Worked Examples
-    - Dual Charting
-    - High Volume Data
-    - Scaling Up Charts (technical issues, tabular charts, grids)
-    - When to Transform Data Before Plotting
-    - Resources and Further Readings (books, websites, communities, R packages)
-    - Glossary of Terms
-    - Improved Runs Analysis Using the Bestbox and Cutbox approaches
-    - Multivariate charts
-    
-----
-
-- Ideas for papers:
-  - Improved I chart (in process)
-  - The problem with SPC
-  - RAGs to RICHes (two voices)
-  - Big data issues -- CUSUM vs 3000 SPC charts
-
+a. Critical Values for Longest Runs and Number of Crossings

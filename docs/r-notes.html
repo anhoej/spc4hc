@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D R Notes | Mastering Statistical Process Control Charts in Healthcare</title>
-  <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta name="description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D R Notes | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta property="og:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="D R Notes | Mastering Statistical Process Control Charts in Healthcare" />
   
-  <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta name="twitter:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   
 
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-15" />
+<meta name="date" content="2026-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,7 +179,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Table of Contents</a>
 <ul>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
@@ -456,18 +456,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2026-04-03    13    32
- 2 2026-04-04    14    29
- 3 2026-04-05    16    33
- 4 2026-04-06    19    30
- 5 2026-04-07    13    32
- 6 2026-04-08    18    35
- 7 2026-04-09    19    29
- 8 2026-04-10    16    33
- 9 2026-04-11    16    34
-10 2026-04-12    11    27
-11 2026-04-13    13    32
-12 2026-04-14    12    26</code></pre>
+ 1 2026-04-04    13    32
+ 2 2026-04-05    14    29
+ 3 2026-04-06    16    33
+ 4 2026-04-07    19    30
+ 5 2026-04-08    13    32
+ 6 2026-04-09    18    35
+ 7 2026-04-10    19    29
+ 8 2026-04-11    16    33
+ 9 2026-04-12    16    34
+10 2026-04-13    11    27
+11 2026-04-14    13    32
+12 2026-04-15    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="r-notes.html#cb133-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb133-2"><a href="r-notes.html#cb133-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

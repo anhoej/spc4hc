@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Synopsis | Mastering Statistical Process Control Charts in Healthcare</title>
-  <meta name="description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <title>Table of Contents | Mastering Statistical Process Control Charts in Healthcare</title>
+  <meta name="description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Synopsis | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Table of Contents | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta property="og:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Synopsis | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Table of Contents | Mastering Statistical Process Control Charts in Healthcare" />
   
-  <meta name="twitter:description" content="This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare." />
+  <meta name="twitter:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   
 
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-15" />
+<meta name="date" content="2026-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,7 +179,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to Use This Book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Synopsis</a>
+<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Table of Contents</a>
 <ul>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
@@ -442,7 +442,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="synopsis" class="section level1 unnumbered hasAnchor">
-<h1>Synopsis<a href="synopsis.html#synopsis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1>Table of Contents<a href="synopsis.html#synopsis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introduction" class="section level2 unnumbered hasAnchor">
 <h2>Introduction<a href="synopsis.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
@@ -454,10 +454,10 @@ div.csl-indent {
 <div id="part-1-understanding-variation" class="section level2 unnumbered hasAnchor">
 <h2>Part 1: Understanding Variation<a href="synopsis.html#part-1-understanding-variation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Understanding Variation</li>
-<li>Understanding SPC Charts</li>
-<li>Looking for Signals</li>
-<li>Using SPC in Healthcare</li>
+<li>Understanding common versus special causes of variation</li>
+<li>Understanding variation using SPC Charts</li>
+<li>Looking for Signals of special cause variation on SPC Charts</li>
+<li>Using SPC charts in Healthcare</li>
 </ol>
 </div>
 <div id="part-2-constructing-spc-charts-with-r" class="section level2 unnumbered hasAnchor">
@@ -466,23 +466,18 @@ div.csl-indent {
 <li>Your First SPC Charts with Base R</li>
 <li>Calculating Control Limits</li>
 <li>Highlighting Freaks, Shifts, and Trends</li>
-<li>Core R Functions to Construct SPC Charts</li>
-<li>SPC Charts with ggplot2</li>
-<li>Introducing qicharts2</li>
+<li>Core R Functions for SPC Charts</li>
+<li>SPC Charting with ggplot2</li>
+<li>SPC Charting with the <em>qicharts2</em> package</li>
 </ol>
 </div>
 <div id="part-3-advanced-spc-techniques" class="section level2 unnumbered hasAnchor">
 <h2>Part 3: Advanced SPC Techniques<a href="synopsis.html#part-3-advanced-spc-techniques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Screened I Chart (eliminating freak moving ranges before calculating limits)</li>
-<li>SPC Charts for Rare Events
-<ul>
-<li>T Chart for Time Between Events</li>
-<li>G Chart for Opportunities Between Cases</li>
-<li>Bernoulli CUSUM chart for binary data</li>
-</ul></li>
+<li>Screened I Charts: Removing Freak Moving Ranges Before Calculating Limits</li>
+<li>SPC Charts for Rare Events</li>
 <li>Prime Charts for Count Data with Very Large Subgroups</li>
-<li>I Prime Chart for Measurement Data With Variable Subgroup Sizes</li>
+<li>Prime Charts for Measurement Data with Variable Subgroup Sizes</li>
 <li>Funnel Plots for Categorical Subgroups</li>
 <li>Pareto Charts for Ranking Problems</li>
 </ol>
@@ -490,69 +485,26 @@ div.csl-indent {
 <div id="part-4-best-practices-controversies-and-tips" class="section level2 unnumbered hasAnchor">
 <h2>Part 4: Best Practices, Controversies, and Tips<a href="synopsis.html#part-4-best-practices-controversies-and-tips" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Tips for Effective SPC Implementation
-<ul>
-<li>Engaging stakeholders</li>
-<li>Automating production of SPC charts</li>
-<li>Continuous monitoring and improvement.</li>
-</ul></li>
-<li>Common Pitfalls to Avoid
-<ul>
-<li>Data issues, misinterpretation of charts</li>
-<li>Signal fatigue</li>
-<li>Automating rephasing</li>
-<li>The control chart vs run chart debate</li>
-<li>One-to-one relation between PDSA cycles and dots on the plot</li>
-</ul></li>
+<li>Tips for Effective SPC Implementation</li>
+<li>Common Pitfalls to Avoid</li>
 <li>The forgotten Art of Rational Subgrouping</li>
 </ol>
 </div>
 <div id="part-5-conclusion-and-final-thoughts" class="section level2 unnumbered hasAnchor">
 <h2>Part 5: Conclusion and Final Thoughts<a href="synopsis.html#part-5-conclusion-and-final-thoughts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Conclusion and Final Thoughts
-<ul>
-<li>Summary of Key Points</li>
-<li>Emerging trends in SPC and healthcare analytics</li>
-<li>Encouragement for Continuous Learning and Application</li>
-<li>Final Thoughts</li>
-</ul></li>
+<li>Conclusion and Final Thoughts</li>
 </ol>
 </div>
 <div id="appendices" class="section level2 unnumbered hasAnchor">
 <h2>Appendices<a href="synopsis.html#appendices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: lower-alpha">
-<li>Included Data Sets</li>
+<li>Data Sets</li>
 <li>Basic Statistical Concepts</li>
 <li>Two Types of Errors When Using SPC</li>
 <li>R Notes</li>
-<li>Table of Critical Values for Longest Runs and Number of Crossings</li>
+<li>Critical Values for Longest Runs and Number of Crossings</li>
 </ol>
-<hr />
-<ul>
-<li>Ideas for chapters / topics
-<ul>
-<li>Case Studies and Worked Examples</li>
-<li>Dual Charting</li>
-<li>High Volume Data</li>
-<li>Scaling Up Charts (technical issues, tabular charts, grids)</li>
-<li>When to Transform Data Before Plotting</li>
-<li>Resources and Further Readings (books, websites, communities, R packages)</li>
-<li>Glossary of Terms</li>
-<li>Improved Runs Analysis Using the Bestbox and Cutbox approaches</li>
-<li>Multivariate charts</li>
-</ul></li>
-</ul>
-<hr />
-<ul>
-<li>Ideas for papers:
-<ul>
-<li>Improved I chart (in process)</li>
-<li>The problem with SPC</li>
-<li>RAGs to RICHes (two voices)</li>
-<li>Big data issues – CUSUM vs 3000 SPC charts</li>
-</ul></li>
-</ul>
 
 </div>
 </div>

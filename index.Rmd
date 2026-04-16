@@ -10,12 +10,12 @@ url: https://anhoej.github.io/spc4hc/
 # cover-image: path to the social sharing image like images/cover.jpg
 link-citations: yes
 github-repo: anhoej/spc4hc
-description: This is a book (currently under early development) for data scientists about the practical application of statistical process control methodology in healthcare.
+description: This is a book for data scientists about the practical application of statistical process control methodology in healthcare.
 ---
 
 # What is Statistical Process Control? {-#what}
 
->This is the online version of *Mastering Statistical Process Control Charts in Healthcare*, a book currently under early development.
+>This is the online version of *Mastering Statistical Process Control Charts in Healthcare*, a book under continous development.
 
 ---
 
