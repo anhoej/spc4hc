@@ -133,11 +133,11 @@ Based on theoretical work and practical experience [@anhoej2014; @anhoej2015; @a
 
 These two measures are closely related: as runs become longer, crossings become fewer.
 
+Critical values for longest runs and number of crossings for 10-100 data points are given in Appendix \@ref(runs-limits). For example, in a run chart with 24–26 useful observations (i.e. data points not on the centre line), a longest run of *more* than eight points or *fewer* than eight crossings signals a shift in the data.
+
 In Figure \@ref(fig:testing-fig3) the longest run exceeds the expected limit, indicating a shift. In Figure \@ref(fig:testing-fig4), long runs and few crossings similarly suggest non-random behaviour.
 
 It is important to note that these tests indicate the presence of non-random variation but do not explain its cause. Interpretation requires knowledge of the process and context.
-
-Critical values for longest runs and number of crossings for 10-100 data points are tabulated in Appendix \@ref(runs-limits).
 
 ## SPC charts without borders -- using run charts
 
