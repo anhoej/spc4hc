@@ -23,18 +23,20 @@ ucl        <- cl + 2.66 * amr
 
 ```
 
-In the previous chapter we established the basis for constructing SPC charts with R using the I chart as an example. In this chapter we continue with the rest of The Magnificent Seven control charts and how to construct their control limits.
+In the previous chapter, we established the basic steps for constructing SPC charts in R using the I chart as an example. In this chapter, we continue with the rest of *The Magnificent Seven* and show how to calculate their control limits.
 
 ## Introducing the spc() function
 
-To avoid repeating ourselves, let's begin by creating a function to automate the plotting for us.
+To avoid repeating the same plotting code, let us begin by creating a simple function to automate the plotting for us.
 
 ```{r spc1, file='R/spc1.R'}
 ```
 
-The `spc()` function takes five arguments of which only the first, x, is mandatory. If only x is provided, a simple point-and-line chart will be drawn from the x values. If y is also provided, x values will be used for the x axis. The line arguments (cl, lcl, ucl) are used (if provided) for the centre line and control limits respectively. Line arguments may be given as either single values or vectors of the same length as x. In addition, we may provide additional arguments for the `plot()` function, e.g. main, xlab, and ylab for title and axis labels.
+The `spc()` function takes five arguments, of which only the first, x, is required. If only x is supplied, a simple point-and-line chart is drawn using those values as the y-values and their sequence numbers on the x-axis. If y is also supplied, then x is used for the x-axis and y for the plotted data values.
 
-Let us test it with the blood pressure data from Chapter \@ref(first-chart) (Figure \@ref(fig:limits-fig1)).
+The remaining arguments, cl, lcl, and ucl, are used for the centre line and the lower and upper control limits. These may be given either as single values or as vectors of the same length as the data. Additional graphical arguments, such as main, xlab, and ylab, may be passed on to the `plot()` function.
+
+Let us test the function using the blood pressure data from Chapter \@ref(first-chart) (Figure \@ref(fig:limits-fig1)).
 
 ```{r limits-fig1, fig.cap='Control chart of systolic blood pressure'}
 # create an x variable, not that is it necessary in this case, just because we can
@@ -44,11 +46,11 @@ day <- seq_along(systolic)
 spc(day, systolic, cl, lcl, ucl)
 ```
 
-With this function we are now able to construct all kinds of control charts. All we need to know is how to calculate the centre line and the control limits.
+With this function in hand, we are now able to construct many different kinds of control charts. All we need to know is how to calculate the centre line and the control limits.
 
 ## Formulas for calculation of control limits
 
-The formulas for calculation control limits for The Magnificent Seven introduced in Chapter \@ref(charts-intro) are provided in Table \@ref(tab:limits-tab1). Don't be alarmed by the number of strange symbols, we will translate the formulas to R code one by one as we move along.
+The formulas for calculation control limits for The Magnificent Seven introduced in Chapter \@ref(charts-intro) are shown in Table \@ref(tab:limits-tab1). Do not be alarmed by the number of strange symbols. We will translate the formulas to R code one by one as we move through the chapter.
 
 ```{r limits-tab1, echo=FALSE}
 read.delim('input/limit_formulas.tsv', check.names = F) |> 
@@ -57,11 +59,11 @@ read.delim('input/limit_formulas.tsv', check.names = F) |>
   pack_rows('Measurement data', 4, 7)
 ```
 
-As discussed in Chapter \@ref(charts-intro), data come in two flavours: count data and measurement data. **Counts** are positive integers that represent counts of events or cases, for example patient falls, surgical complications, or healthy babies. **Measurements** are data that are measured on continuous scales and may have decimals, for example blood pressure, height and weight, or waiting times.
+As discussed in Chapter \@ref(charts-intro), data come in two broad forms: **count data** and **measurement data**. Counts are non-negative integers representing events or cases, for example patient falls, surgical complications, or healthy babies. Measurements are values on a continuous scale and may include decimals, such as blood pressure, height, weight, or waiting times.
 
 ## Count data
 
-For count charts in this chapter we will use the bacteremia data set:
+For count charts in this chapter we use the bacteremia data set:
 
 ```{r}
 # read data from file
@@ -81,23 +83,22 @@ head(bact)
 
 The variables are:
 
-* month (date): month of infection
-* ha_infections (numeric): number of hospital acquired infections
-* risk_days (numeric): number of patient days without infection
-* deaths (numeric): number of patients who died within 30-day after a hospital or community acquired (all-cause) infection
-* patients (numeric): number of patients with all-cause infection
+* month: month of infection
+* ha_infections: number of hospital-acquired infections
+* risk_days: number of patient-days without infection
+* deaths: number of patients who died within 30-day after a hospital- or community-acquired (all-cause) infection
+* patients: number of patients with all-cause infection
 
-We use C charts for event counts and U chart for event rates. For case proportions we use the P chart.
+We use C charts for event counts, U charts for event rates, and P charts for case proportions.
 
 ### C chart
 
-The C charts (C for counts) is the simplest of all control charts and the easiest to produce. The process standard deviation is simply estimated as the square root of the process mean.
+The C chart (C for counts) is the simplest of all control charts and the easiest to construct. The process standard deviation is estimated simply as the square root of the process mean.
+C charts are appropriate when counting events over subgroups that are approximately equal in size, whether these subgroups represent periods of time or units of space.
 
-C charts are appropriate when counting events from (nearly) equally big chunks of time or space.
+Figure \@ref(fig:limits-c) shows a C chart of the monthly number of hospital-acquired bacteremias.
 
-Figure \@ref(fig:limits-c) shows a C chart of the monthly number of hospital acquired bacteremias.
-
-```{r limits-c, fig.cap='C control chart of monthly numbers of hospital acquired bacteremias'}
+```{r limits-c, fig.cap='C chart of monthly numbers of hospital-acquired bacteremias'}
 with(bact, {
   cl  <- mean(ha_infections)
   lcl <- cl - 3 * sqrt(cl)
@@ -116,13 +117,13 @@ with(bact, {
 })
 ```
 
-The average monthly number of cases is 22.7, and all data points are within the control limits ranging from 8.4 to 36.9. So if nothing changes, we should expect future infection counts to be around 23, and we should not be surprised if once in a while, we observe as little as 9 or as many as 36 infections in a single month.
+The average monthly number of infections is 22.7, and all data points fall within the control limits, which range from 8.4 to 36.9. If nothing changes, we should therefore expect future counts to be around 23, while recognising that from time to time values as low as 9 or as high as 36 may still occur as part of the natural variation in the process.
 
 ### U chart
 
-U charts are useful when events are counted over chunks of time or space that are not equally sized resulting in "unequal area of opportunity" (hence the U). In our case we might want to adjust for for the number of patient days that may vary depending on the time of year or between organisational units. The U chart adjust for this by presenting rates rather than raw counts.
+U charts are used when events are counted over subgroups of unequal size, resulting in unequal areas of opportunity. In our example, the number of patient-days may vary from month to month, so it makes sense to adjust for this by plotting rates rather than raw counts.
 
-Events are often rare in comparison to their areas of opportunity. So to avoid very small numbers on the y-axis it may be useful to multiply the y-axis by some factor before plotting. In Figure \@ref(fig:limits-u) we multiply by 10,000 to display infections per 10,000 risk days rather than per day.
+Because events are often rare relative to the area of opportunity, the resulting rates may be very small. It is therefore often helpful to multiply the rates by a constant before plotting. In Figure 6.3, we multiply by 10,000 to present infections per 10,000 risk-days rather than infections per day.
 
 ```{r limits-u, fig.cap='U chart of monthly number of infections per 10,000 risk days'}
 with(bact, {
@@ -145,13 +146,13 @@ with(bact, {
 })
 ```
 
-The U chart shows that on average we have 7.5 infections per 10,000 risk days, and that all data points are between the control limits ranging from about 3.5 to 12. We see that the control limits vary depending on the denominator  (risk days), for each data point. Large denominator $\rightarrow$ narrow limits; small denominator $\rightarrow$ wide limits.
+The U chart shows an average of 7.5 infections per 10,000 risk days, with all data points within control limits ranging from about 3.5 to 12. Unlike the C chart, the control limits vary from point to point because they depend on the denominator. Large denominators produce narrower limits, whereas small denominators produce wider ones.
 
-In cases like this where the denominator -- the area of opportunity -- only varies little between subgroups, the U charts adds little compared to the C chart. For pedagogical reasons we may prefer the C chart, because it is a lot easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.
+In this example, the denominator varies only slightly between months, so the U chart adds little compared with the C chart. For pedagogical purposes, we may even prefer the C chart, because it is easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.
 
 ### P chart
 
-P charts are for proportions (or percentages). Figure \@ref(fig:limits-p) shows the monthly percentage of patients with bacteremia who died within 30 days. 
+P charts are used for proportions or percentages. Figure \@ref(fig:limits-p) shows the monthly percentage of patients with bacteremia who died within 30 days. 
 
 ```{r limits-p, fig.cap='P chart of monthly 30-day mortality rates'}
 with(bact, {
@@ -174,14 +175,13 @@ with(bact, {
 })
 ```
 
-On average the mortality is 21%, and all data points are within the control limits. As with U charts, the control limits vary depending on the size of the denominator.
+The average mortality is 21%, and all data points fall within the control limits. As with the U chart, the control limits vary with the size of the denominator.
 
 ## Measurement data
 
-For this section we will use a data set on response times for grade 2 caesarean sections, that is, the time (in minutes) it took from the decision to perform a C-section to the baby was delivered. The goal is to keep the response times below 30 minutes.
+For this section, we use a dataset on response times for grade 2 caesarean sections, that is, the time in minutes from the decision to perform the caesarean section until the baby was delivered. The aim is to keep this delay below 30 minutes.
 
-The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for 208 grade 2 section over a two-year period.
-
+The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for 208 grade 2 caesarean sections over a two-year period.
 
 ```{r}
 # read raw data
@@ -197,17 +197,17 @@ csect <- csect[order(csect$datetime), ]
 head(csect)
 ```
 
-### I chart (aka X chart)
+### I chart (also called X chart)
 
-The "I" in I chart stand for "individuals" because it plots individual values from subgroups of size 1. I charts are also often referred to as X charts.
+The "I" in I chart stand for "individuals" because each subgroup consists of a single value. I charts are also often referred to as X charts.
 
-I charts are useful when measurements come from individual units, for example waiting times or blood pressure measurements for individual patients.
+They are useful when measurements are available for individual units, for example waiting times or blood pressure measurements for individual patients.
 
-As we will see later, I charts are in fact useful for all kinds of data because they base their estimations on the actual variation that is present in data rather than theoretical parameters from assumed distributions. For this reason, the I chart is considered the *Swiss army knife* of SPC.
+As we shall see later, the I chart is in fact useful for many types of data, because it bases its estimate of variation on the actual variation observed in the data rather than on theoretical parameters from an assumed distribution. For this reason, the I chart is often described as the *Swiss Army knife* of SPC.
 
-When subgroups consist of single values we use the average absolute difference between neighbouring data points, the average moving range ($\overline{MR}$), as an estimate of the within subgroup variation. By dividing this value with 1.128 we get an estimate of the process standard deviation. Alternatively, we may multiply $\overline{MR}$ by 3&nbsp;/&nbsp;1.128&nbsp;=&nbsp;2.66 to get 3 $SD$s.
+When subgroups consist of single values, we estimate within-subgroup variation using the average moving range, that is, the average absolute difference between neighbouring data points. Dividing this value by 1.128 gives an estimate of the process standard deviation. Equivalently, we may multiply the average moving range by (3 / 1.128 = 2.66) to obtain 3 standard deviations.
 
-Let's have a look at individual delay times for the latest 60 C-sections (Figure \@ref(fig:limits-i)).
+Let us look at the delay times for the most recent 60 caesarean sections (Figure \@ref(fig:limits-i)).
 
 ```{r limits-i, fig.cap='I-chart'}
 with(tail(csect, 60), {
@@ -224,11 +224,11 @@ with(tail(csect, 60), {
 
 ```
 
-On average, the delay time for these cases is 24 minutes. Three data points are outside the control limits (#1, #4 and #31) suggesting that these cases were special and that it might be useful to have a closer look to find out what went well with case #1 and not so well with cases #4 and #31.
+The average delay for these cases is 24 minutes. Three data points fall outside the control limits (#1, #4, and #31), suggesting that these cases were unusual. It may therefore be useful to look more closely at what went particularly well in case #1 and less well in cases #4 and #31.
 
 ### MR chart
 
-The MR chart plots the moving ranges, that is, the absolute pairwise differences of neighbouring data points. It is a companion to the I chart. Since moving ranges can always be zero but never negative, the MR chart has no lower control limit.
+The MR chart plots the moving ranges, that is, the absolute pairwise differences between neighbouring observations. It is a companion chart to the I chart. Because moving ranges can be zero but never negative, the MR chart has no lower control limit.
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 60), {
@@ -241,9 +241,9 @@ with(tail(csect, 60), {
 })
 ```
 
-Note that there is one less moving range than individual values. To align the charts, we insert an NA value at the beginning of the MR-chart.
+There is one fewer moving range than individual values. To keep the MR chart aligned with the I chart, we therefore insert an NA at the beginning.
 
-We may plot the two charts together (Figure \@ref(fig:limits-imr)):
+The two charts may also be plotted together (Figure \@ref(fig:limits-imr)):
 
 ```{r limits-imr, fig.cap='I- and MR-charts', fig.asp=3/3}
 with(tail(csect, 60), {
@@ -271,13 +271,13 @@ with(tail(csect, 60), {
 })
 ```
 
-The MR-chart also finds three data points outside the limits. These coincide with two of the special causes found by the I chart and support our conclusion that these deliveries were special. Note that each data point on the I chart (except the first and last ones) produces two moving ranges on the MR chart.
+The MR chart also identifies three data points outside the control limits. Two of these correspond to special causes identified on the I chart and strengthen the conclusion that these deliveries were unusual. Note that each point on the I chart, except the first and last, contributes to two moving ranges on the MR chart.
 
 ### X-bar chart
 
-The X-bar chart is appropriate when the subgroups consist of samples of two or more measurements. 
+The X-bar chart is appropriate when the subgroups consist of two or more measurements. 
 
-To plot a control chart of the monthly average delays, we must first aggregate data to find the mean and the standard deviation of delay times and the number of sections per month.
+To construct a control chart of monthly average delay times, we first need to aggregate the data by month to obtain the subgroup mean, subgroup standard deviation, and subgroup size.
 
 ```{r}
 # split data frame by month
@@ -298,11 +298,11 @@ csect.agg <- do.call(rbind, c(csect.agg, make.row.names = FALSE))
 head(csect.agg)
 ```
 
-See section [Aggregating data frames] in Appendix \@ref(r-notes) for details on the split-apply-combine strategy.
+See the section on aggregating data frames in Appendix \@ref(r-notes) for details of this split-apply-combine strategy.
 
-Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1) where $\bar{\bar{x}}$ (pronounced x bar bar) is the weighted mean of the subgroup means, $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. See the section on [chart constants](#chart-constants) at the end of this chapter for the R code involved in calculating $A_3$ and other constants for control chart construction.
+Next, we calculate the centre line and the control limits using the formula in Table \@ref(tab:limits-tab1). Here $\bar{\bar{x}}$ (x bar bar) is the weighted mean of the subgroup means, $\bar{s}$ (s bar) is the weighted mean of the subgroup standard deviations, and $A_3$ is a constant that depends on the subgroup size. The R code for calculating $A_3$ and other constants is given at the end of the chapter.
 
-With the aggregated data we are now able to construct the X-bar chart (Figure \@ref(fig:limits-xbar)).
+With the aggregated data we can now construct the X-bar chart (Figure \@ref(fig:limits-xbar)).
 
 ```{r limits-xbar, fig.cap='X bar chart'}
 with(csect.agg, {
@@ -318,17 +318,17 @@ with(csect.agg, {
 })
 ```
 
-Figure \@ref(fig:limits-xbar) shows the *average* delay time per month. On average the delay time is 23 minutes (= centre line) and all data points fall between the control limits suggesting that the process is stable and predictable.
+Figure \@ref(fig:limits-xbar) shows the average delay per month. The overall average delay is 23 minutes, and all data points fall within the control limits, suggesting that the process is stable and predictable.
 
-As with U and P charts the control limits vary from month to month reflecting the varying subgroup sizes -- small subgroups $\rightarrow$ wide limits; large subgroups $\rightarrow$ narrow limits.
+As with U and P charts, the control limits vary from month to month because subgroup sizes vary. Small subgroups produce wider limits, while large subgroups produce narrower limits.
 
-Be careful not to fall for the temptation to conclude that just because no months are above the target of 30 minutes all is well. The 30-minute target applies to the delay time of *individual* sections, not the *averages*. Even if the averages are well below the target, individuals may be above, which we already noticed from the I chart above.
+It is important not to conclude that everything is acceptable simply because no monthly average exceeds the target of 30 minutes. That target applies to individual cases, not to monthly averages. As the I chart already showed, individual cases may exceed the target even when the monthly means remain comfortably below it.
 
 ### S chart
 
-The S chart is usually plotted alongside the X-bar chart and shows the within subgroup variation. It is useful for detecting changes in the spread of data over time.
+The S chart is usually plotted alongside the X-bar chart and shows within-subgroup variation. It is useful for detecting changes in the spread of the data over time.
 
-To calculate the centre and control limits for the S chart we need to know the process standard deviation, $\bar{S}$ (same as for the X-bar chart), and the two constants $B_3$ and $B_4$ From Table \@ref(tab:limits-tab1).
+To calculate the centre line and control limits for the S chart, we need the process standard deviation, $\bar{S}$, together with the constants $B_3$ and $B_4$ from Table \@ref(tab:limits-tab1).
 
 ```{r limits-s, fig.cap='S chart'}
 with(csect.agg, {
@@ -344,9 +344,9 @@ with(csect.agg, {
 })
 ```
 
-Figure \@ref(fig:limits-s) shows the average standard deviation of delay times per month. On average the standard deviation is 4.7 minutes and all data points fall between the control limits.
+Figure \@ref(fig:limits-s) shows the monthly standard deviations of delay times. The average standard deviation is 4.7 minutes, and all points lie within the control limits.
 
-We may plot the X-bar and S charts together (Figure \@ref(fig:limits-xbarands)):
+We may also plot the X-bar and S charts together (Figure \@ref(fig:limits-xbarands)):
 
 ```{r limits-xbarands, fig.cap='X-bar and S charts', fig.asp=3/3}
 with(csect.agg, {
@@ -377,11 +377,11 @@ with(csect.agg, {
 
 ## Control limits in short
 
-Control limits attempt to estimate the boundaries of the natural common cause process variation. They are placed 3 standard deviations above and below the centre line, which is the (weighted) mean of the subgroup means.
+Control limits are intended to estimate the boundaries of natural common cause variation. They are placed three standard deviations above and below the centre line, which is usually the mean or weighted mean of the subgroup means.
 
-The procedure for calculating control limits depends on the type of data involved, but the interpretation of charts are the same regardless of data type.
+The exact calculation depends on the type of data and the type of chart, but the interpretation remains the same regardless of chart type.
 
-In the next chapter we will improve our plots by adding visual clues to highlight signs of non-random variation.
+In the next chapter, we improve our plots by adding visual cues that highlight signs of non-random variation in the data.
 
 ---
 

@@ -124,7 +124,7 @@ c-chart
 u-chart
 p-chart
 measurement-data-1
-i-chart-aka-x-chart
+i-chart-also-called-x-chart
 mr-chart
 x-bar-chart
 s-chart
