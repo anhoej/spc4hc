@@ -1,89 +1,87 @@
 # Using SPC in Healthcare {#using}
 
-As briefly discussed in the previous chapter, in healthcare, we use SPC methodology in two main ways:
-
-* **Monitoring** the behaviour or performance of an existing process (e.g. complications following surgery), or
-* **Improving** an existing process (e.g. redesigning the pathway for patients with fractured hips).
+As briefly discussed in the previous chapter, SPC methodology is used in healthcare in two main ways: to monitor the behaviour or performance of an existing process, and to support efforts to improve a process. Examples of monitoring include tracking complication rates following surgery, while examples of improvement include redesigning a care pathway for patients with fractured hips.
 
 ## Using SPC to monitor a process
 
-In the monitoring mode, the primary aim is to determine if a process is deteriorating which is usually indicated by signals of special cause variation where detective work is needed to find the cause and then eliminate it. Such detective work can be undertaken by using the Pyramid Model of Investigation  described below.
+In monitoring mode, the primary aim is to determine whether a process is deteriorating. Deterioration is usually indicated by signals of special cause variation, which prompt further investigation to identify and eliminate the cause. One way to undertake such detective work is by using the Pyramid Model of Investigation described below.
 
-The key aim of using statistical process control charts to monitor healthcare processes is to ensure that quality and safety of care are adequate and not deteriorating. So when a signal of special cause variation is seen on a control chart monitoring a given outcome, investigation is necessary. However, the chosen method must recognise that the link between recorded outcomes and quality of care *is complex, ambiguous and subject to multiple explanations* [@lilford2004]. Failure to do so may inadvertently contribute to premature conclusions and a blame culture that undermines the engagement of clinical staff and the credibility of statistical process control. As Rogers note:
+The central purpose of using SPC charts to monitor healthcare processes is to ensure that the quality and safety of care are adequate and not worsening. When a signal of special cause variation appears on a control chart, investigation is therefore necessary. However, the chosen method of investigation must recognise that the relationship between recorded outcomes and quality of care is often *complex, ambiguous, and open to several possible explanations* [@lilford2004]. Failure to recognise this may lead to premature conclusions and foster a culture of blame that undermines both the engagement of clinical staff and the credibility of SPC.
+
+As @rogers2004 noted:
 
 > If monitoring schemes are to be accepted by those whose outcomes are being assessed, an atmosphere of constructive evaluation, not 'blaming' or 'naming and shaming', is essential as apparent poor performance could arise for a number of reasons that should be explored systematically.
->
-> -- @rogers2004
 
-To address this need, @mohammed2004 proposed the **Pyramid Model** for Investigation of Special Cause Variation in healthcare -- a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure/resources, process of care, and carer(s) (Figure \@ref(fig:responding-fig1)).
+To address this need, @mohammed2004 proposed the **Pyramid Model for Investigation of Special Cause Variation in healthcare**, a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure or resources, process of care, and carer(s) (Figure \@ref(fig:responding-fig1)).
 
 ```{r responding-fig1, fig.cap='Pyramid Model for Investigation', echo=FALSE}
 knitr::include_graphics('figures/pyramid_model.svg')
 ```
 
-These broad categories of candidate explanations are arranged from most likely (data) to least likely (carers), so offering a road map for the investigation that begins at the base of the pyramid and stops at the level that provides a credible, evidence-based explanation for the special cause. The first two layers of the model (data and casemix factors) provide a check on the validity of the data and casemix-adjusted analyses, whereas the remaining upper layers focus more on quality of care related issues.
+These broad categories are arranged from the most likely explanation at the base of the pyramid to the least likely at the top. In this way, the model provides a roadmap for investigation, beginning with the simplest and most plausible explanations and progressing only as needed. The first two layers, data and casemix, focus on the validity of the data and the adequacy of any casemix adjustment. The upper three layers focus more directly on aspects of care delivery and professional practice.
 
-A proper investigation requires a team of people with expertise in each of the layers. Such a team is also likely to include those staff whose outcomes or data are being investigated, so that their insights and expertise can inform the investigation while also ensuring their buy-in to the investigation process. Basic steps for using the model are shown below.
+A proper investigation requires a multidisciplinary team with expertise relevant to each layer of the pyramid. Such a team is also likely to include staff whose outcomes or data are being investigated, so that their experience and insight can inform the enquiry and so that they remain engaged in the process.
 
-1. Form a **multidisciplinary team** that has expertise in each layer of the pyramid, with a decision-making process that allows them to judge the extent to which a credible cause or explanation has been found, based on hypothesis generation and testing.
+The basic steps in using the model are as follows. First, a multidisciplinary team is formed with sufficient expertise to assess each layer of the pyramid and to judge whether a credible explanation has been found. Next, guided by the type of pattern seen in the data -- whether freaks, shifts, trends, mixed patterns, or cyclic variation -- the team generates and tests candidate explanations, beginning at the lowest level of the pyramid and moving upwards only if the lower levels do not provide an adequate explanation. A credible cause should be supported by both quantitative and qualitative evidence. If no credible explanation can be found, the remaining possibility is that the signal was a false one.
 
-1. Guided by what type(s) of pattern(s) exist in data (freaks, shifts, trends, mixed, or cyclic patterns) candidate **hypotheses** are generated and tested starting from the lowest level of the Pyramid Model and proceeding to upper levels only if the preceding levels provide no adequate explanation for the special cause.
+The kinds of questions that may be asked during such an investigation include the following.
 
-1. A credible cause requires **quantitative and qualitative evidence**, which is used by the team to test hypotheses and reach closure. If no credible explanation can be found, then the only plausible conclusion is that the signal itself was a false signal.
+**Data**: At this level the focus is on data quality, including coding accuracy, definitions, completeness, and reliability.
 
-The types of questions that can be asked when undertaking the detective work are highlighted below.
+- Are the data coded correctly?
+- Has there been a change in coding practice, for example because less experienced coders are involved?
+- Is the clinical documentation clear, complete, and consistent?
 
-* **Data**: Data quality issues, e.g. coding accuracy, reliability of charts, definitions, and completeness.
-    * Are the data coded correctly?
-    * Has there been a change in data coding practices (e.g. are there less experienced coders)?
-    * Is clinical documentation clear, complete, and  consistent?
-<br><br>
-* **Casemix**: Although differences in casemix are accounted for in the calculation, it is possible that some residual confounding may remain.
-    * Are factors peculiar to this hospital not taken into account in the risk adjustment?
-    * Has the pattern of referrals to this hospital changed in a way not considered in risk adjustment?
-<br><br>
-* **Structure or resource**: Availability of beds, staff, and medical equipment; institutional processes.
-    * Has there been a change in the distribution of patients in the hospital, with more patients in this speciality spread throughout the hospital rather than concentrated in a particular unit?
-    * Has the physical environment or organisational structures changed?
-<br><br>
-* **Process of care**: Medical treatments, clinical pathways, patient admission and discharge policies.
-    * Has there been a change in the care being provided?
-    * Have new treatment guidelines been introduced?
-<br><br>
-* **Professional staff/carers**: Practice and treatment methods etc.
-    * Has there been a change in staffing for treatment of patients?
-    * Has a key staff member gained additional training and introduced a new method that has led to improved outcomes?
+**Casemix**: Although differences in casemix may be accounted for in the analysis, some residual confounding may remain.
+
+- Are there factors specific to this hospital that are not captured in the risk adjustment?
+- Has the pattern of referrals changed in a way that is not reflected in the adjustment model?
+
+**Structure or resources**: This includes the availability of staff, beds, equipment, and relevant organisational arrangements.
+
+- Has there been a change in the distribution of patients across the hospital, so that more patients in this specialty are now spread across multiple wards rather than concentrated in one unit?
+- Has the physical environment or organisational structure changed?
+
+**Process of care**: This concerns treatments, pathways, and care policies.
+
+- Has there been a change in the care being provided?
+- Have new treatment guidelines been introduced?
+
+**Professional staff or carers**: This concerns the practice and methods of those delivering care.
+
+- Has there been a change in staffing?
+- Has a key staff member received additional training and introduced a new method that may have affected outcomes?
 
 ## Using SPC to improve a process
 
-SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small scale changes and measuring their impact on an SPC chart. In the improving mode, the primary aim is to determine if changes made to a process have been successful (or not). For example, in the handwriting process considered earlier, do we get better a's after switching to a computer? This is determined by looking to see the impact of the change in the form of signals of special cause variation on an SPC chart (provided we have a creditable measure of "letter quality").
+SPC is also used to support efforts to improve a process. In healthcare, this usually involves making small-scale changes and measuring their impact on an SPC chart. In improvement mode, the main aim is to determine whether the changes made to a process have resulted in improvement. Returning to the earlier handwriting example, we might ask whether we produce better letters after switching from pen and paper to a computer. The answer depends on whether the change is followed by signals of special cause variation in the desired direction, assuming we have a credible measure of "letter quality".
 
-The degree of alignment between changes to the process and subsequent signals of special cause variation provide a story which qualitatively and quantitatively describes the impact of changes.
+The degree of alignment between changes made to the process and subsequent signals on the chart provides a story that describes the impact of those changes, both qualitatively and quantitatively.
 
-Common cause variation can only be addressed by changing a major portion of the process. What do we mean by a major portion? **The Theory of Constraints** [@goldratt2022] offers the analogy of a chain to demonstrate that the strength of the chain is determined by the weakest link. If we increase the strength of the weakest link the whole chain is strengthened. If we increase the strength of other links but not the weakest link, then the chain does not get stronger. The weakest link is the constraint on the performance of the system, and it is argued that in real systems there are usually only a few, perhaps one or two, constraining factors, all other factors are non-constraints.
+Common cause variation can only be reduced by changing a major part of the process. But what do we mean by a major part? The Theory of Constraints [@goldratt2022] offers the analogy of a chain, whose strength is determined by its weakest link. Strengthening that weakest link strengthens the whole chain. Strengthening other links while leaving the weakest unchanged does not improve the system as a whole. In this sense, the weakest link represents the constraint on performance, and in most real systems there are only a few such constraints, perhaps only one or two, while the remaining factors are non-constraints.
 
-**The Model for Improvement**, proposed by @langley2009, is a widely used framework in healthcare to guide improvement efforts. It consists of three fundamental questions and the Plan-Do-Study-Act (PDSA) cycle.
+A widely used framework for improvement in healthcare is the Model for Improvement, developed by [@langley2009]. This model consists of three fundamental questions together with the Plan-Do-Study-Act (PDSA) cycle.
 
-1. **What are we trying to accomplish?**
-This question defines the aim of the improvement effort, which should be specific, measurable, and time-bound along with a rationale for why this is important.
+The first question is: **What are we trying to accomplish?** This defines the aim of the improvement effort. The aim should be specific, measurable, and time-bound, and it should include a clear rationale.
 
-1. **How will we know that a change is an improvement?**
-This question focuses on measurement. The team identifies key performance indicators and other metrics to assess whether the change has led to improvement. This includes balancing measures designed to capture unintended negative consequences from changing a system or process. 
+The second question is: **How will we know that a change is an improvement?** This focuses attention on measurement. The team identifies the key indicators that will be used to determine whether improvement has occurred. This should also include balancing measures, which are intended to detect unintended negative consequences of change.
 
-1. **What changes can we make that will result in improvement?**
-This question explores potential change ideas or interventions that could lead to the desired improvement. These ideas are undertaken according to the **PDSA Cycle**, which is a method for iterative small-scale testing of changes:
+The third question is: **What changes can we make that will result in improvement?** This concerns the generation and testing of change ideas. These ideas are tested using the PDSA cycle:
 
-    - **Plan**: Develop a plan to test the change, including who, what, when, and where.
-    - **Do**: Implement the change on a small scale.
-    - **Study**: Analyze the results, focusing on the impact of the change.
-    - **Act**: Decide whether to adopt, modify, or abandon the change based on the results.
+**Plan**: Develop a plan for testing the change, including who will do what, when, and where.
 
-There are other approaches to improvement in healthcare, such as Lean, Six Sigma, and Systems Engineering. The SPC chart can support each of these approaches because it offers a robust and insightful way to test the success of change ideas.
+**Do**: Carry out the change on a small scale.
+
+**Study**: Examine the results, paying particular attention to the effect of the change.
+
+**Act**: Decide whether to adopt, adapt, or abandon the change on the basis of what has been learned.
+
+There are, of course, other approaches to improvement in healthcare, including Lean, Six Sigma, and Systems Engineering. SPC charts can support each of these approaches because they provide a robust and informative way of assessing whether a change has had the intended effect.
 
 ## Successful use of SPC in healthcare
 
-The successful use of SPC in healthcare requires a number of factors which is more than the production of an SPC chart -- especially in complex adaptive systems like healthcare. These factors include: engaging the stakeholders; forming a team; defining the aim; selecting the process of interest; defining the metrics of interest; ensuring that data can be reliably measured, collected and fed back; and establishing baseline performance -- all in a culture of continual learning and improvement that is supported by the leadership team. To see examples of SPC in action in healthcare, please see @mohammed2024.
+Successful use of SPC in healthcare requires more than simply producing a chart, especially in a complex adaptive system such as healthcare. Important factors include engaging stakeholders, forming an appropriate team, defining a clear aim, selecting the process of interest, choosing the relevant measures, ensuring that data can be collected and fed back reliably, and establishing a baseline. All of this needs to take place within a culture of continual learning and improvement, supported by leadership. For examples of SPC in healthcare practice, see @mohammed2024.
 
-Nevertheless, it is important to note that SPC charts are not necessarily easy to construct. After examining 64 statistical process control charts, @koetsier2012 found that that almost half the charts had technical problems which suggests a need for more training for those constructing charts -- which is the primary motivation for this book. 
+At the same time, it is important to recognise that SPC charts are not always easy to construct correctly. After reviewing 64 SPC charts, @koetsier2012 found that almost half contained technical problems. This suggests a need for better training among those who construct charts and helps explain the motivation for this book.
 
-This is the end of Part 1. In Part 2, beginning with Chapter \@ref(first-chart), we show you how to produce SPC charts using R.
+This concludes Part 1. In Part 2, beginning with Chapter \@ref(first-chart), we turn to the practical task of producing SPC charts in R.
