@@ -8,13 +8,13 @@ knitr::opts_chunk$set(fig.asp = 2/3,
                       dev     = 'svg')
 ```
 
-From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from ggplot2 and qicharts2 (an R package developed by JA).
+From Part 1 of this book, we now have a good understanding of what SPC is and how SPC charts work. In this chapter, we begin constructing SPC charts using functions from base R. In later chapters, we will introduce functions from *ggplot2* and *qicharts2* (an R package developed by JA).
 
-In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and -- in case of a control chart -- two lines to represent the estimated upper and lower boundaries of the natural variation in data.
+At its core, an SPC chart is a point-and-line plot of data over time, with a horizontal line representing the centre of the data and -- when constructing a control chart -- two additional lines representing the estimated upper and lower bounds of natural variation.
 
 ## A run chart of blood pressure data
 
-Consider the data from Figure \@ref(fig:spc-fig0), which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days [@mohammed2008].
+Consider the data from Figure \@ref(fig:spc-fig0), which show systolic blood pressure measurements (mm Hg) for a patient recorded each morning over 26 consecutive days [@mohammed2008].
 
 ```{r}
 systolic <- c(169, 172, 175, 174, 161, 142,
@@ -24,7 +24,7 @@ systolic <- c(169, 172, 175, 174, 161, 142,
               181, 174)
 ```
 
-First we plot a simple point-and-line chart without any additional lines (Figure \@ref(fig:first-chart-run1)):
+We begin by plotting a simple point-and-line chart without any additional reference lines (Figure \@ref(fig:first-chart-run1)):
 
 ```{r first-chart-run1, fig.cap='Simple run chart'}
 # Make point-and-line plot
@@ -33,7 +33,7 @@ plot(systolic, type = 'o')
 
 (As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time." &#128513;)
 
-To guide the runs analysis we will add a horizontal centre line, which in run charts is usually the median of the data points (Figure \@ref(fig:first-chart-run2)):
+To support runs analysis, we add a horizontal centre line. In a run chart, this is typically the median of the data (Figure \@ref(fig:first-chart-run2)):
 
 ```{r first-chart-run2, fig.cap='Run chart with centre line'}
 # Create systolic-coordinates for the centre line
@@ -45,15 +45,15 @@ plot(systolic, type = 'o')
 lines(cl)
 ```
 
-We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the two runs rules proposed in Chapter \@ref(testing), the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of *sustained* shifts or trends in data over time.
+From the chart, we observe that the longest run consists of four data points (#14-#17), and the data cross the centre line nine times. Four observations (#4, #7, #10, #26) lie exactly on the centre line, leaving 22 useful observations. Using the runs rules described in Chapter \@ref(testing), the upper limit for the longest run is 7, which also corresponds to the lower limit for the number of crossings. Since neither limit is exceeded, there is no evidence of sustained shifts or trends in the data.
 
 ## Adding control limits to produce a control chart
 
-We use the same technique to add the lower and upper control limits. 
+We now extend the run chart by adding control limits to produce a control chart.
 
-Remember that the control limits are usually set to $CL \pm 3 SD$, where CL is the centre line, usually the mean, and SD is the estimated standard deviation -- that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both common cause and any special cause variation.
+Recall that control limits are typically defined as CL &plusmn; 3SD, where the centre line (CL) is usually the mean, and the standard deviation (SD) represents the natural variation in the process. Importantly, this is not the overall standard deviation of all observations, but an estimate based on common cause variation.
 
-For data consisting of single measurements, we choose the I chart (see Chapter \@ref(charts-intro)). To estimate the common cause standard deviation we use the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter \@ref(limits).
+For individual measurements, we use an I chart (see Chapter \@ref(charts-intro)). In this case, the process standard deviation is estimated from the average moving range divided by a constant (1.128). The moving ranges are the absolute differences between consecutive observations. This will be explained in more detail in Chapter \@ref(limits).
 
 ```{r}
 # Calulate the centre line (mean)
@@ -76,7 +76,7 @@ lcl <- cl - 3 * s
 ucl <- cl + 3 * s
 ```
 
-When plotting data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure \@ref(fig:first-chart-ctrl1)):
+When plotting the chart, we must ensure that the y-axis accommodates both the data and the control limits (Figure \@ref(fig:first-chart-ctrl1)):
 
 ```{r first-chart-ctrl1, fig.cap='Standardised control chart'}
 # Plot data while expanding the y-axis to make room for all data and lines
@@ -88,12 +88,12 @@ lines(cl)
 lines(lcl)
 ```
 
-One (freak) data point is below the lower control limit suggesting that this reading has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement.
+One data point falls below the lower control limit. This suggests that the observation is unlikely to be due to common cause variation alone and may reflect a special cause. The chart itself does not explain the cause, but it highlights the need for further investigation with the aim of learning and improvement.
 
 ## That's all, Folks!
 
-So constructing an SPC chart using R may be done using a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.
+Constructing an SPC chart in R requires only a few lines of code. Most of the work involves preparing the data and calculating the necessary statistics. The plotting itself follows a simple pattern: first plot the data points, then add the relevant lines.
 
-Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.
+In later chapters, we will wrap these steps into functions that automate the calculations, highlight signals of non-random variation, and produce more refined visualisations than the basic plots shown here.
 
-In the next chapter we will produce SPC charts that are most commonly used in healthcare, "The Magnificent Seven".
+In the next chapter, we turn to the construction of the most commonly used SPC charts in healthcare -- *the Magnificent Seven*.

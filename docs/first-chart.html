@@ -443,17 +443,17 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="first-chart" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Your First SPC Charts With Base R<a href="first-chart.html#first-chart" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>From Part 1 of this book we have a good grasp of what SPC is and how SPC charts work. In this chapter we will start constructing SPC charts using functions from base R. In later chapters we will include functions from ggplot2 and qicharts2 (an R package developed by JA).</p>
-<p>In essence, an SPC charts is a (point-and-)line plot of data over time with a horizontal line to represent the data centre and – in case of a control chart – two lines to represent the estimated upper and lower boundaries of the natural variation in data.</p>
+<p>From Part 1 of this book, we now have a good understanding of what SPC is and how SPC charts work. In this chapter, we begin constructing SPC charts using functions from base R. In later chapters, we will introduce functions from <em>ggplot2</em> and <em>qicharts2</em> (an R package developed by JA).</p>
+<p>At its core, an SPC chart is a point-and-line plot of data over time, with a horizontal line representing the centre of the data and – when constructing a control chart – two additional lines representing the estimated upper and lower bounds of natural variation.</p>
 <div id="a-run-chart-of-blood-pressure-data" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> A run chart of blood pressure data<a href="first-chart.html#a-run-chart-of-blood-pressure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Consider the data from Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a>, which show systolic blood pressure measurements (mm Hg) for a patient taken in the morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">M. A. Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
+<p>Consider the data from Figure <a href="charts-intro.html#fig:spc-fig0">2.1</a>, which show systolic blood pressure measurements (mm Hg) for a patient recorded each morning over 26 consecutive days <span class="citation">(<a href="#ref-mohammed2008">M. A. Mohammed, Worthington, and Woodall 2008</a>)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="first-chart.html#cb1-1" tabindex="-1"></a>systolic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">169</span>, <span class="dv">172</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">161</span>, <span class="dv">142</span>,</span>
 <span id="cb1-2"><a href="first-chart.html#cb1-2" tabindex="-1"></a>              <span class="dv">174</span>, <span class="dv">171</span>, <span class="dv">168</span>, <span class="dv">174</span>, <span class="dv">180</span>, <span class="dv">194</span>,</span>
 <span id="cb1-3"><a href="first-chart.html#cb1-3" tabindex="-1"></a>              <span class="dv">161</span>, <span class="dv">181</span>, <span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">186</span>, <span class="dv">166</span>,</span>
 <span id="cb1-4"><a href="first-chart.html#cb1-4" tabindex="-1"></a>              <span class="dv">157</span>, <span class="dv">183</span>, <span class="dv">177</span>, <span class="dv">171</span>, <span class="dv">185</span>, <span class="dv">176</span>,</span>
 <span id="cb1-5"><a href="first-chart.html#cb1-5" tabindex="-1"></a>              <span class="dv">181</span>, <span class="dv">174</span>)</span></code></pre></div>
-<p>First we plot a simple point-and-line chart without any additional lines (Figure <a href="first-chart.html#fig:first-chart-run1">5.1</a>):</p>
+<p>We begin by plotting a simple point-and-line chart without any additional reference lines (Figure <a href="first-chart.html#fig:first-chart-run1">5.1</a>):</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="first-chart.html#cb2-1" tabindex="-1"></a><span class="co"># Make point-and-line plot</span></span>
 <span id="cb2-2"><a href="first-chart.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-chart-run1"></span>
@@ -463,7 +463,7 @@ Figure 5.1: Simple run chart
 </p>
 </div>
 <p>(As a side note, this reminds me (JA) of a manager, who once said to me: “You make such beautiful graphs, but can’t you stop them from going up and down all the time.” 😁)</p>
-<p>To guide the runs analysis we will add a horizontal centre line, which in run charts is usually the median of the data points (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
+<p>To support runs analysis, we add a horizontal centre line. In a run chart, this is typically the median of the data (Figure <a href="first-chart.html#fig:first-chart-run2">5.2</a>):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="first-chart.html#cb3-1" tabindex="-1"></a><span class="co"># Create systolic-coordinates for the centre line</span></span>
 <span id="cb3-2"><a href="first-chart.html#cb3-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">median</span>(systolic)           <span class="co"># calculate median</span></span>
 <span id="cb3-3"><a href="first-chart.html#cb3-3" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(cl, <span class="fu">length</span>(systolic))  <span class="co"># repeat to match the length of y</span></span>
@@ -477,13 +477,13 @@ Figure 5.1: Simple run chart
 Figure 5.2: Run chart with centre line
 </p>
 </div>
-<p>We find that the longest run has 4 data points (#14-#17) and that the curve crosses the centre line 9 times. Four data points (#4, #7, #10, #26) lie directly on the centre line, so we have 22 useful observations. With 22 useful observations and using the two runs rules proposed in Chapter <a href="testing.html#testing">3</a>, the upper limit for longest run is 7 as is (coincidentally) the lower limit for number of crossings. Consequently, there are no signs of <em>sustained</em> shifts or trends in data over time.</p>
+<p>From the chart, we observe that the longest run consists of four data points (#14-#17), and the data cross the centre line nine times. Four observations (#4, #7, #10, #26) lie exactly on the centre line, leaving 22 useful observations. Using the runs rules described in Chapter <a href="testing.html#testing">3</a>, the upper limit for the longest run is 7, which also corresponds to the lower limit for the number of crossings. Since neither limit is exceeded, there is no evidence of sustained shifts or trends in the data.</p>
 </div>
 <div id="adding-control-limits-to-produce-a-control-chart" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Adding control limits to produce a control chart<a href="first-chart.html#adding-control-limits-to-produce-a-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We use the same technique to add the lower and upper control limits.</p>
-<p>Remember that the control limits are usually set to <span class="math inline">\(CL \pm 3 SD\)</span>, where CL is the centre line, usually the mean, and SD is the estimated standard deviation – that is, the standard deviation of the natural variation in data, not the pooled standard deviation that would include both common cause and any special cause variation.</p>
-<p>For data consisting of single measurements, we choose the I chart (see Chapter <a href="charts-intro.html#charts-intro">2</a>). To estimate the common cause standard deviation we use the average moving range divided by a constant, 1.128. The moving ranges are the absolute pairwise differences between consecutive data points. We will talk much more about control limits in Chapter <a href="limits.html#limits">6</a>.</p>
+<p>We now extend the run chart by adding control limits to produce a control chart.</p>
+<p>Recall that control limits are typically defined as CL ± 3SD, where the centre line (CL) is usually the mean, and the standard deviation (SD) represents the natural variation in the process. Importantly, this is not the overall standard deviation of all observations, but an estimate based on common cause variation.</p>
+<p>For individual measurements, we use an I chart (see Chapter <a href="charts-intro.html#charts-intro">2</a>). In this case, the process standard deviation is estimated from the average moving range divided by a constant (1.128). The moving ranges are the absolute differences between consecutive observations. This will be explained in more detail in Chapter <a href="limits.html#limits">6</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="first-chart.html#cb4-1" tabindex="-1"></a><span class="co"># Calulate the centre line (mean)</span></span>
 <span id="cb4-2"><a href="first-chart.html#cb4-2" tabindex="-1"></a>cl  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">mean</span>(systolic), <span class="fu">length</span>(systolic))</span>
 <span id="cb4-3"><a href="first-chart.html#cb4-3" tabindex="-1"></a></span>
@@ -502,7 +502,7 @@ Figure 5.2: Run chart with centre line
 <span id="cb6-7"><a href="first-chart.html#cb6-7" tabindex="-1"></a><span class="co"># Create y-coordinates for the control limits</span></span>
 <span id="cb6-8"><a href="first-chart.html#cb6-8" tabindex="-1"></a>lcl <span class="ot">&lt;-</span> cl <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> s</span>
 <span id="cb6-9"><a href="first-chart.html#cb6-9" tabindex="-1"></a>ucl <span class="ot">&lt;-</span> cl <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> s</span></code></pre></div>
-<p>When plotting data, we need to expand the y-axis limits to make room not only for the data points but also the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
+<p>When plotting the chart, we must ensure that the y-axis accommodates both the data and the control limits (Figure <a href="first-chart.html#fig:first-chart-ctrl1">5.3</a>):</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="first-chart.html#cb7-1" tabindex="-1"></a><span class="co"># Plot data while expanding the y-axis to make room for all data and lines</span></span>
 <span id="cb7-2"><a href="first-chart.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(systolic, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">ylim =</span> <span class="fu">range</span>(systolic, lcl, ucl))</span>
 <span id="cb7-3"><a href="first-chart.html#cb7-3" tabindex="-1"></a></span>
@@ -516,13 +516,13 @@ Figure 5.2: Run chart with centre line
 Figure 5.3: Standardised control chart
 </p>
 </div>
-<p>One (freak) data point is below the lower control limit suggesting that this reading has most likely been influenced by something outside the natural process. The control chart itself does not tell what caused the special cause, but it tells us that this data point should be investigated with the purpose of learning and improvement.</p>
+<p>One data point falls below the lower control limit. This suggests that the observation is unlikely to be due to common cause variation alone and may reflect a special cause. The chart itself does not explain the cause, but it highlights the need for further investigation with the aim of learning and improvement.</p>
 </div>
 <div id="thats-all-folks" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> That’s all, Folks!<a href="first-chart.html#thats-all-folks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>So constructing an SPC chart using R may be done using a few lines of code. In fact, most of the code in this chapter went to prepare the data to be plotted. The charts themselves are rather simple and plotting is the same every time: 1. plot the dots; 2. add the lines.</p>
-<p>Later we will wrap all the steps in a function that automates the calculation of centre and control lines, highlights signals of non-random variation in data, and makes plots that are a lot nicer to look at than the rather crude ones we have produces so far.</p>
-<p>In the next chapter we will produce SPC charts that are most commonly used in healthcare, “The Magnificent Seven”.</p>
+<p>Constructing an SPC chart in R requires only a few lines of code. Most of the work involves preparing the data and calculating the necessary statistics. The plotting itself follows a simple pattern: first plot the data points, then add the relevant lines.</p>
+<p>In later chapters, we will wrap these steps into functions that automate the calculations, highlight signals of non-random variation, and produce more refined visualisations than the basic plots shown here.</p>
+<p>In the next chapter, we turn to the construction of the most commonly used SPC charts in healthcare – <em>the Magnificent Seven</em>.</p>
 
 </div>
 </div>
