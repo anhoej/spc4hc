@@ -131,7 +131,7 @@ s-chart
 control-limits-in-short
 highlighting
 introducing-the-cdiff-data-set
-improved-spc-function
+an-improved-spc-function
 highlighting-special-cause-variation-in-short
 r-functions
 examples

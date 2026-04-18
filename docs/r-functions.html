@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-17" />
+<meta name="date" content="2026-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -256,7 +256,7 @@ div.csl-indent {
 <li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#an-improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> An improved <code>spc()</code> function</a></li>
 <li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
@@ -443,19 +443,17 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="r-functions" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Core R Functions to Construct SPC Charts<a href="r-functions.html#r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Until now, we have calculated control limits manually before plotting. In this chapter we will introduce a library of functions that work together to automate all the steps involved in constructing SPC charts.</p>
-<p>We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your own needs.</p>
-<p>In total there are 17 functions that work together to construct SPC charts. But the user only needs to interact with one of them, <code>spc()</code>. See the <a href="r-functions.html#funs">R functions library</a> section at the end of this chapter for the source code.</p>
-<p>The main function, <code>spc()</code> is an improved version of the improved <code>spc()</code> function from Chapter <a href="highlighting.html#highlighting">7</a>.</p>
-<ul>
-<li><p>Most importantly, it is no longer necessary to calculate the limits manually. Instead, we provide a <code>chart</code> argument, which should be one of the following: ‘run’, ‘xbar’, ‘s’, ‘i’, ‘mr’, ‘c’, ‘u’, ‘p’. If no chart argument is provided, a run chart will be drawn.</p></li>
-<li><p>Also, we no longer have to use the clumsy $-notation or <code>with()</code> function to access variables inside a data frame. Instead, we may pass the name of the data frame to the data argument.</p></li>
-<li><p>Finally, we do not need to aggregate data for X-bar and S charts in advance. That job is delegated to the <code>spc.aggregate()</code> function, which is also responsible for calling the appropriate functions to calculate the centre line and control limits and perform the runs analysis.</p></li>
-</ul>
-<p>After doing its job, <code>spc.aggregate()</code> returns a data frame with all the necessary information needed to construct a plot. This, in turn, is handled by the <code>plot.spc()</code> function.</p>
+<p>Until now, we have calculated control limits manually before plotting. In this chapter, we introduce a small library of R functions that work together to automate the main steps involved in constructing SPC charts.</p>
+<p>We will not go through each of these functions in detail, but we encourage you to study them carefully in order to understand how they work individually and how they work together. We also encourage you to adapt and improve them to suit your own needs.</p>
+<p>In total, the library consists of 17 functions. However, the user only needs to interact directly with one of them: <code>spc()</code>. The source code for the full function library is provided in the section at the end of this chapter.</p>
+<p>The main function, <code>spc()</code>, is an extended version of the improved <code>spc()</code> function introduced in Chapter 7.</p>
+<p>Most importantly, it is no longer necessary to calculate control limits manually. Instead, we provide a <code>chart</code> argument, which should be one of the following: ‘run’, ‘xbar’, ‘s’, ‘i’, ‘mr’, ‘c’, ‘u’, or ‘p’. If no chart argument is supplied, the function produces a run chart.</p>
+<p>We also no longer need to use the somewhat clumsy $ notation or the <code>with()</code> function to access variables inside a data frame. Instead, we can pass the name of the data frame to the data argument.</p>
+<p>Finally, for X-bar and S charts, there is no longer any need to aggregate the data in advance. That task is handled by the <code>spc.aggregate()</code> function, which is also responsible for calling the appropriate functions to calculate centre lines and control limits and to perform the runs analysis.</p>
+<p>After completing these steps, <code>spc.aggregate()</code> returns a data frame containing all the information needed to construct the plot. The actual drawing of the chart is then handled by the <code>plot.spc()</code> function.</p>
 <div id="examples" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Examples<a href="r-functions.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Here are examples of a run chart and each of the Magnificent Seven. See Appendix <a href="data-sets.html#data-sets">A</a> for documentation of the data sets used in the examples.</p>
+<p>This section gives examples of a run chart and each of the <em>Magnificent Seven</em>. Documentation for the datasets used in the examples is provided in Appendix <a href="data-sets.html#data-sets">A</a>.</p>
 <div id="run-chart" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Run chart<a href="r-functions.html#run-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-functions.html#cb33-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/blood_pressure.csv&#39;</span>,</span>
@@ -564,7 +562,7 @@ Figure 8.3: X-bar and S charts
 <span id="cb44-3"><a href="r-functions.html#cb44-3" tabindex="-1"></a><span class="fu">spc</span>(month, ha_infections,</span>
 <span id="cb44-4"><a href="r-functions.html#cb44-4" tabindex="-1"></a>    <span class="at">data =</span> d,</span>
 <span id="cb44-5"><a href="r-functions.html#cb44-5" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb44-6"><a href="r-functions.html#cb44-6" tabindex="-1"></a>    <span class="at">main     =</span> <span class="st">&#39;Hospital acquired bacteremia&#39;</span>,</span>
+<span id="cb44-6"><a href="r-functions.html#cb44-6" tabindex="-1"></a>    <span class="at">main     =</span> <span class="st">&#39;Hospital-acquired bacteremia&#39;</span>,</span>
 <span id="cb44-7"><a href="r-functions.html#cb44-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count&#39;</span>,</span>
 <span id="cb44-8"><a href="r-functions.html#cb44-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="cn">NA</span>)</span>
 <span id="cb44-9"><a href="r-functions.html#cb44-9" tabindex="-1"></a><span class="fu">spc</span>(month, ha_infections, risk_days,</span>
@@ -572,7 +570,7 @@ Figure 8.3: X-bar and S charts
 <span id="cb44-11"><a href="r-functions.html#cb44-11" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
 <span id="cb44-12"><a href="r-functions.html#cb44-12" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
 <span id="cb44-13"><a href="r-functions.html#cb44-13" tabindex="-1"></a>    <span class="at">main     =</span> <span class="cn">NA</span>,</span>
-<span id="cb44-14"><a href="r-functions.html#cb44-14" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb44-14"><a href="r-functions.html#cb44-14" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk-days&#39;</span>,</span>
 <span id="cb44-15"><a href="r-functions.html#cb44-15" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rfun-cu"></span>
 <img src="_main_files/figure-html/rfun-cu-1.svg" alt="C and U charts" width="672" />
@@ -601,12 +599,12 @@ Figure 8.5: P chart
 </div>
 <div id="todo" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> TODO<a href="r-functions.html#todo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n arguments have the same lengths. TIP: check the <code>stopifnot()</code> function.</p>
+<p>One obvious shortcoming of this function library is that it lacks error checking. If you plan to use these functions in a production environment or as part of your own SPC package, you will need to add this yourself. At a minimum, you should check automatically that the inputs are of the expected types and that the x, y, and n arguments have the same lengths. As a starting point, see the <code>stopifnot()</code> function.</p>
 </div>
 <div id="further-up-further-in" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Further up, further in<a href="r-functions.html#further-up-further-in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We now have a functioning library of R functions that automate most of the steps involved in the construction of SPC charts. There is still plenty of room for improvement. But this should get you started and – most importantly – give you a deeper understanding of the considerations involved in plotting SPC charts.</p>
-<p>In the next chapter we will take a quick look at how to use <code>ggplot2()</code> for plotting rather than the <code>plot()</code> function from base R.</p>
+<p>We now have a functioning library of R functions that automates most of the steps involved in constructing SPC charts. There is still plenty of room for improvement, but the library should be enough to get you started and, more importantly, to give you a deeper understanding of the considerations involved in plotting SPC charts.</p>
+<p>In the next chapter, we take a brief look at how to use <code>ggplot2()</code> for plotting instead of the <code>plot()</code> function from base R.</p>
 <hr />
 </div>
 <div id="funs" class="section level2 unnumbered hasAnchor">

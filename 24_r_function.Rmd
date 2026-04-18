@@ -12,25 +12,25 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 source('R/spc_functions.R', local = knitr::knit_global())
 ```
 
-Until now, we have calculated control limits manually before plotting. In this chapter we will introduce a library of functions that work together to automate all the steps involved in constructing SPC charts.
+Until now, we have calculated control limits manually before plotting. In this chapter, we introduce a small library of R functions that work together to automate the main steps involved in constructing SPC charts.
 
-We will not go through each of these functions in detail, but we encourage you to study them to get a good grasp of how they work and work together. And we encourage you to improve and adapt them to your own needs. 
+We will not go through each of these functions in detail, but we encourage you to study them carefully in order to understand how they work individually and how they work together. We also encourage you to adapt and improve them to suit your own needs.
 
-In total there are 17 functions that work together to construct SPC charts. But the user only needs to interact with one of them, `spc()`. See the [R functions library](#funs) section at the end of this chapter for the source code.
+In total, the library consists of 17 functions. However, the user only needs to interact directly with one of them: `spc()`. The source code for the full function library is provided in the section at the end of this chapter.
 
-The main function, `spc()` is an improved version of the improved `spc()` function from Chapter \@ref(highlighting).
+The main function, `spc()`, is an extended version of the improved `spc()` function introduced in Chapter 7.
 
-* Most importantly, it is no longer necessary to calculate the limits manually. Instead, we provide a `chart` argument, which should be one of the following: 'run', 'xbar', 's', 'i', 'mr', 'c', 'u', 'p'. If no chart argument is provided, a run chart will be drawn.
+Most importantly, it is no longer necessary to calculate control limits manually. Instead, we provide a `chart` argument, which should be one of the following: 'run', 'xbar', 's', 'i', 'mr', 'c', 'u', or 'p'. If no chart argument is supplied, the function produces a run chart.
 
-* Also, we no longer have to use the clumsy $-notation or `with()` function to access variables inside a data frame. Instead, we may pass the name of the data frame to the data argument.
+We also no longer need to use the somewhat clumsy $ notation or the `with()` function to access variables inside a data frame. Instead, we can pass the name of the data frame to the data argument.
 
-* Finally, we do not need to aggregate data for X-bar and S charts in advance. That job is delegated to the `spc.aggregate()` function, which is also responsible for calling the appropriate functions to calculate the centre line and control limits and perform the runs analysis.
+Finally, for X-bar and S charts, there is no longer any need to aggregate the data in advance. That task is handled by the `spc.aggregate()` function, which is also responsible for calling the appropriate functions to calculate centre lines and control limits and to perform the runs analysis.
 
-After doing its job, `spc.aggregate()` returns a data frame with all the necessary information needed to construct a plot. This, in turn, is handled by the `plot.spc()` function.
+After completing these steps, `spc.aggregate()` returns a data frame containing all the information needed to construct the plot. The actual drawing of the chart is then handled by the `plot.spc()` function.
 
 ## Examples
 
-Here are examples of a run chart and each of the Magnificent Seven. See Appendix \@ref(data-sets) for documentation of the data sets used in the examples.
+This section gives examples of a run chart and each of the *Magnificent Seven*. Documentation for the datasets used in the examples is provided in Appendix \@ref(data-sets).
 
 ### Run chart
 
@@ -111,7 +111,7 @@ op <- par(mfrow = c(2, 1),
 spc(month, ha_infections,
     data = d,
     chart    = 'c',
-    main     = 'Hospital acquired bacteremia',
+    main     = 'Hospital-acquired bacteremia',
     ylab     = 'Count',
     xlab     = NA)
 spc(month, ha_infections, risk_days,
@@ -119,7 +119,7 @@ spc(month, ha_infections, risk_days,
     chart    = 'u',
     multiply = 10000,
     main     = NA,
-    ylab     = 'Count per 10,000 risk days',
+    ylab     = 'Count per 10,000 risk-days',
     xlab     = 'Month')
 
 par(op)
@@ -139,13 +139,14 @@ spc(month, deaths, patients,
 
 ## TODO
 
-One obvious shortcoming of this function library is that the functions lack error checking. So if you are going to use them in a production environment or for your own SPC package you will need to build that yourself. At the least, you need to automatically check that inputs are of the expected types and that the x, y, and n arguments have the same lengths. TIP: check the `stopifnot()` function.
+One obvious shortcoming of this function library is that it lacks error checking. If you plan to use these functions in a production environment or as part of your own SPC package, you will need to add this yourself. At a minimum, you should check automatically that the inputs are of the expected types and that the x, y, and n arguments have the same lengths. As a starting point, see the `stopifnot()` function.
+
 
 ## Further up, further in
 
-We now have a functioning library of R functions that automate most of the steps involved in the construction of SPC charts. There is still plenty of room for improvement. But this should get you started and -- most importantly -- give you a deeper understanding of the considerations involved in plotting SPC charts.
+We now have a functioning library of R functions that automates most of the steps involved in constructing SPC charts. There is still plenty of room for improvement, but the library should be enough to get you started and, more importantly, to give you a deeper understanding of the considerations involved in plotting SPC charts.
 
-In the next chapter we will take a quick look at how to use `ggplot2()` for plotting rather than the `plot()` function from base R.
+In the next chapter, we take a brief look at how to use `ggplot2()` for plotting instead of the `plot()` function from base R.
 
 ----
 

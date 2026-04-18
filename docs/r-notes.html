@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-17" />
+<meta name="date" content="2026-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -256,7 +256,7 @@ div.csl-indent {
 <li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> Improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#an-improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> An improved <code>spc()</code> function</a></li>
 <li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
@@ -456,18 +456,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2026-04-05    13    32
- 2 2026-04-06    14    29
- 3 2026-04-07    16    33
- 4 2026-04-08    19    30
- 5 2026-04-09    13    32
- 6 2026-04-10    18    35
- 7 2026-04-11    19    29
- 8 2026-04-12    16    33
- 9 2026-04-13    16    34
-10 2026-04-14    11    27
-11 2026-04-15    13    32
-12 2026-04-16    12    26</code></pre>
+ 1 2026-04-06    13    32
+ 2 2026-04-07    14    29
+ 3 2026-04-08    16    33
+ 4 2026-04-09    19    30
+ 5 2026-04-10    13    32
+ 6 2026-04-11    18    35
+ 7 2026-04-12    19    29
+ 8 2026-04-13    16    33
+ 9 2026-04-14    16    34
+10 2026-04-15    11    27
+11 2026-04-16    13    32
+12 2026-04-17    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="r-notes.html#cb133-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb133-2"><a href="r-notes.html#cb133-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

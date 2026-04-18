@@ -12,15 +12,15 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 source('R/spc1.R', local = knitr::knit_global())
 ```
 
-In the Chapter \@ref(limits) we calculated control limits for commonly used control charts. Control limits show the boundaries of the natural common cause process variation. Thus, data points outside the control limits (freaks) are signals of special cause variation in data -- that is, unexpected change caused by something outside the usual system.
+In Chapter \@ref(limits) we calculated control limits for commonly used control charts. These limits define the boundaries of natural common cause variation. Data points falling outside the control limits -- freaks -- are therefore signals of special cause variation, that is, unexpected change caused by something outside the usual system.
 
-Control limits are designed to signal rather large (> 2SD), possibly transient, changes in the system. However, as discussed in detail in Chapter \@ref(testing), minor to moderate changes in the form of shifts or trends in data may go unnoticed by the control limits for long periods of time. For this purpose, many supplementary tests (rules) have been suggested. To balance the need to quickly detect special causes while keeping the false alarm rate as low as possible we recommend using the 3-sigma rule to signal freaks and the two runs rules for unusually long runs and unusually few crossings to signal shifts and trends.
+Control limits are designed primarily to detect relatively large, and possibly transient, changes in a process. However, as discussed in Chapter \@ref(testing), smaller but sustained changes in the form of shifts or trends may remain undetected by the control limits for long periods. For this reason, a number of supplementary tests, or rules, have been proposed. To balance the need for timely detection of special causes against the risk of false alarms, we recommend using the 3-sigma rule to identify freaks and the two runs rules -- unusually long runs and unusually few crossings -- to identify shifts and trends.
 
-In this chapter we will improve the `spc()` function to automatically visualise special cause variation in the form of freaks, shifts, and trends.
+In this chapter, we will improve the `spc()` function so that it automatically highlights special cause variation in the form of freaks, shifts, and trends.
 
 ## Introducing the cdiff data set
 
-The cdiff data set contains 24 observations of monthly numbers of hospital acquired *Clostridioides difficile* infections from an acute care hospital.
+The cdiff data set contains 24 monthly observations of hospital-acquired *Clostridioides difficile* infections from an acute care hospital.
 
 ```{r}
 # read data from file
@@ -41,35 +41,31 @@ cdiff <- within(cdiff, {
 head(cdiff)
 ```
 
-Figure \@ref(fig:highlighting-spc1) shows data plotted with `spc()` function. We see that there is one data point (#1) above the upper control limit. If we look carefully we also find an unusually long run of 11 data points below the centre line (#14-#24) and that the curve crosses the centre line only 7 times. Thus, in addition to the freak, there is also a shift in data, which is not large enough to break the limits but sustained enough to trigger the runs rules. 
+Figure \@ref(fig:highlighting-spc1)  shows these data plotted with the `spc()` function. We can see that one data point (#1) lies above the upper control limit. Looking more closely, we also find an unusually long run of 11 data points below the centre line (#14–#24), and the line crosses the centre line only 7 times. Thus, in addition to the freak, there is also a shift in the data, not large enough to break the control limits, but sustained enough to trigger the runs rules.
 
-```{r highlighting-spc1, fig.cap='C control chart of CDiff infections'}
+```{r highlighting-spc1, fig.cap='C control chart of Clostrioides difficile infections'}
 with(cdiff, {
   spc(month, infections, cl, lcl, ucl)
 })
 ```
 
-Notice that we censored the lower control limit at zero even if the exact value is negative ($\bar{c}-3\sqrt{\bar{c}}$). This is purely cosmetic, but since the data values themselves cannot be negative it makes little sense to show negative control limits. For the same reason we usually censor P chart control limits at 0 and 1 (100%) respectively.
+Notice that the lower control limit has been censored at zero, even though its exact value is negative ($\bar{c}-3\sqrt{\bar{c}}$).  This is done purely for cosmetic reasons. Since the data themselves cannot take negative values, it makes little sense to display negative control limits. For the same reason, P chart limits are often censored at 0 and 1 (or 100%).
 
-To help us signal special cause variation we will improve the `spc()` function.
+To help us identify special cause variation more easily, we now improve the `spc()` function.
 
-## Improved `spc()` function
+## An improved `spc()` function
 
-The new, improved `spc()` function has a few changes:
+The revised version of the `spc()` function includes a number of changes.
 
-* Line 10: Import a function, `runs.analysis()`, from a separate R script to test for unusually long runs and unusually few crossings. See this function in the [R function for runs analysis] section at the end of this chapter.
+First, it imports the function `runs.analysis()` from a separate R script in order to test for unusually long runs and unusually few crossings. This function at the end of this chapter.
 
-* Lines 19-20: If no cl argument is given, use the median for centre line.
+Second, if no centre line is supplied, the function uses the median of the data.
 
-* Lines 33-34: Create a logical vector identifying data points that lie outside the control limits.
+Third, it creates a logical vector identifying points that fall outside the control limits.
 
-* Line 37: Test for unusually long runs or unusually few crossings.
+Fourth, it performs runs analysis to check for sustained shifts and trends.
 
-* Line 40: Start with an empty plot.
-
-* Line 47-49: Format the centre line according to the result of runs analysis.
-
-* Lines 56-49: Add the data line and points and colour data points outside control limits.
+Finally, it changes the plotting so that the plot is first created empty, after which the centre line, control limits, and data are added in a way that allows special cause signals to be highlighted visually.
 
 ```{r, file='R/spc2.R', attr.source='.numberLines'}
 ```
@@ -80,15 +76,16 @@ with(cdiff, {
 })
 ```
 
-Now it is a lot easier to immediately see if a chart signals special cause variation or not (Figure \@ref(fig:highlighting-spc2)). Freak data points are red, and the centre line turns red and dashed if there are any unusually long runs or if the curve crossed the centre line unusually few times.
+The chart now makes it much easier to see immediately whether special cause variation is present (Figure \@ref(fig:highlighting-spc2)).  Freak data points are shown in red, and the centre line turns red and dashed when the runs analysis identifies unusually long runs or unusually few crossings.
 
-Remember, the chart itself does not tell us what caused the signals. This interpretation of a chart -- common or special cause variation -- still relies on humans with a deep understanding the process and the data.
+It is important to remember, however, that the chart itself does not explain the cause of the signal. Interpretation still depends on people with a good understanding of both the process and the data.
 
 ## Highlighting special cause variation in short
 
-In this chapter we have improved the `spc()` function to automatically highlight signs of special cause variation using visual clues that signal special cause variation.
+In this chapter, we improved the `spc()` function so that it automatically highlights signals of special cause variation by using visual cues to signal freaks, shifts, and trends.
 
-In the next chapter we will improve the `spc()` function further to automatically aggregate data and calculate control limits.
+In the next chapter, we will improve the spc() function further so that it can automatically aggregate data and calculate control limits.
+
 
 ----
 
