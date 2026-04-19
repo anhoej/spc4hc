@@ -1,4 +1,4 @@
-# Introducing qicharts2 {#qicharts}
+# SPC Charting with qicharts2 {#qicharts}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/6,
@@ -9,15 +9,15 @@ library(qicharts2)
 options(qic.clshade = T)
 ```
 
-qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for SPC aimed at healthcare data analysts. It is based on the same principles that we have developed in the previous chapters of this book. It contains functions to construct run charts and all of the Magnificent Seven plus a number of specialised charts including pareto charts and control charts for rare events data.
+qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for  statistical process control aimed primarily at healthcare data analysts. It is built on the same principles that we have developed throughout this book and provides functions for constructing run charts and all of the Magnificent Seven. In addition, it includes specialised charts such as Pareto charts and control charts for rare events data.
 
-To learn everything about qicharts2, visit its website: https://anhoej.github.io/qicharts2/. In this chapter we will concentrate on some key facilities that is missing from the function library we have build so far:
+Full documentation and examples are available on the package website: https://anhoej.github.io/qicharts2/. In this chapter, we focus on a few key features that extend the functionality of the simple function library we developed earlier:
 
 * excluding data points from analysis
 * freezing and splitting charts by periods
 * multivariate plots (small multiples)
 
-To get started with qicharts2, install it and load it into your working environment:
+To get started, install and load the package:
 
 ```{r, eval=FALSE}
 # install package
@@ -27,31 +27,27 @@ install.packages('qicharts2')
 library(qicharts2)
 ```
 
-Remember, you only need to install a package once, but you need to load it every time you want to use it. 
+Note that installation is only required once, whereas the package must be loaded in each R session.
 
-Next, you may want to read the vignette: `vignette('qicharts2')` -- or you may want to get started right away.
+You may also wish to explore the vignette: `vignette('qicharts2')`.
+
+Alternatively, you can begin using the package immediately.
 
 ## A simple run chart
 
-The main function of qicharts2 is `qic()`. It takes the same arguments as the `spc()` function we built previously plus many more. Check the documentation for a complete list of arguments: `?qic`.
+The main function of qicharts2 is `qic()`. It accepts the same core arguments as the spc() function developed earlier, along with many additional options. For a full overview, consult the documentation: `?qic`.
 
-To reproduce our first run chart from Chapter \@ref(first-chart), run:
+To reproduce our first run chart from Chapter \@ref(first-chart):
 
 ```{r qicharts-qic1, fig.cap='Run chart produced with the `qic()` function from the qicharts2 package'}
 qic(systolic)
 ```
 
-There are several things to note in Figure \@ref(fig:qicharts-qic1):
-
-* Default chart title and axis labels are created automatically. These can be changed using the title, ylab, and xlab arguments.
-
-* Data points that fall directly on the centre line are greyed out. These do not count as useful observation in the runs analysis.
-
-* The centre line value is printed on the chart.
+Several features are worth noting in Figure \@ref(fig:qicharts-qic1). Default titles and axis labels are generated automatically, though these can be modified using the title, ylab, and xlab arguments. Data points that fall exactly on the centre line are displayed in grey, reflecting that they are not counted as useful observations in runs analysis. The value of the centre line is also displayed directly on the chart.
 
 ## A simple control chart
 
-To produce a control chart, we simply add a chart argument (Figure \@ref(fig:qicharts-qic2)):
+To produce a control chart, we simply specify the chart type (Figure \@ref(fig:qicharts-qic2)):
 
 ```{r qicharts-qic2, fig.cap='I chart produced with `qic()`'}
 qic(systolic, chart = 'i')
@@ -61,54 +57,52 @@ By default `qic()` uses a grey background area to show the natural process limit
 
 ## Excluding data points from analysis
 
-Sometimes it is useful to exclude one or more data points from the calculation of control limits and from the runs analysis. This may be the case when specific data points are known to have been influenced by factors that are not part of the natural process, for example data points that fall outside the control limits. We use the exclude argument to do this:
+In some situations, it may be appropriate to exclude specific data points from the calculation of control limits and runs analysis. This is done using the exclude argument (Figure \@ref(fig:qicharts-qic3)):
 
 ```{r qicharts-qic3, fig.cap='I chart with one data point excluded from calculations'}
 qic(systolic, chart = 'i', exclude = 6)
 ```
 
-Notice how the values for the centre line and control limits in Figure \@ref(fig:qicharts-qic3) changed a little. Specifically, the control limits became slightly narrower.
+Excluding a data point affects the estimated centre line and control limits -- in this example, the limits become slightly narrower.
 
-Excluding data points should be a deliberate decision and not something that is done automatically just because one or more data points are outside the control limits. Exclusion should be based on a thorough understanding of the process and only when the reason(s) for a special cause has been established. Otherwise, the whole idea of SPC as a way of understanding variation and its sources is lost.
+Such exclusions should be made deliberately and only when there is a clear understanding of why the data point does not represent the underlying process. Excluding points simply because they fall outside the control limits undermines the purpose of SPC, which is to learn from variation.
 
 ## Freezing baseline period
 
-When data have been collected for a long enough period of time to establish the centre line and control limits of a stable and predictable process -- that is, a process with only common cause variation -- it is often useful to "freeze" the limits and use them for future data.
+When a stable baseline has been established, it is often useful to “freeze” the centre line and control limits and apply them to future data. In industrial settings, this is known as phase I and phase II analysis.
 
-In production industry this technique is referred to as phase one and phase two studies. In healthcare freezing is especially useful when we have historical data from before the start of some type of intervention or improvement programme. When plotting future data with the centre line and control limits from a stable baseline period shifts and trends will show up faster than if the limits were recalculated with every new data point.
-
-The cdi dataset comes with qicharts2 and contains monthly counts of infections two years before and one year after the initiation of an improvement programme. Check the documentation for details, `?cdi`.
+In healthcare, freezing is particularly useful when evaluating the impact of an intervention. The dataset cdi, included with qicharts2, contains monthly infection counts before and after an improvement programme:
 
 ```{r qicharts-cdi1, fig.cap='Infections before and after intervention'}
 qic(month, n, data = cdi, freeze = 24)
 ```
 
-Figure \@ref(fig:qicharts-cdi1) shows a run chart of data where the centre line has been established from the baseline period (month 1-24) using the freeze argument. After the intervention, marked by the dotted vertical line, there is a sustained shift in data in the desired direction.
+In Figure \@ref(fig:qicharts-cdi1), the centre line is calculated from the first 24 months (the baseline period) and applied to subsequent data. This makes it easier to detect sustained changes following the intervention.
 
 ## Splitting chart by period
 
-When a sustained shift in data has been discovered *and* the cause is known it is allowable to split the graph by periods. We use the part argument for this (Figure \@ref(fig:qicharts-cdi2)).
+When a sustained shift has been identified and its cause is understood, it may be appropriate to split the chart into distinct periods using the part argument (Figure \@ref(fig:qicharts-cdi2)):
 
 ```{r qicharts-cdi2, fig.cap='Splitting using index'}
 qic(month, n, data = cdi, part = 24)
 ```
 
-The part argument takes either the indices of the data points to split after, or a categorical variable naming the time periods in which case the periods will be labelled (Figure \@ref(fig:qicharts-cdi3)).
+Alternatively, a categorical variable can be used to define periods(Figure \@ref(fig:qicharts-cdi3)):
 
 ```{r qicharts-cdi3, fig.cap='Splitting using a period variable'}
 qic(month, n, data = cdi, part = period)
 ```
 
-As with excluding data points, splitting should be based on deliberate decisions and thorough understanding of the process. Some SPC applications allow for automatic splitting whenever a shift is detected. We strongly advise against this approach. Splitting *may* be useful when:
+Splitting should be done cautiously and only when justified. It is typically appropriate when:
 
-* there is a sustained shift in data
-* the reason for the shift is known
+* a sustained shift is present
+* the cause of the shift is known
 * the shift is in the desired direction
-* the shift is expected to continue
+* the new level is expected to persist
 
-If any of these conditions is not met we should rather look for the root cause and -- if need be -- eliminate it.
+If these conditions are not met, the focus should remain on understanding the underlying causes of variation.
 
-Because we now have data from two very different but stable processes we may choose to add control limits to better detect future changes, especially freaks, in process behaviour (Figure \@ref(fig:qicharts-cdi4)).
+Once distinct stable periods have been identified, control limits may be added: (Figure \@ref(fig:qicharts-cdi4)).
 
 ```{r qicharts-cdi4, fig.cap='Splitting using a period variable'}
 qic(month, n, data = cdi, part = period, chart = 'c')
@@ -116,18 +110,18 @@ qic(month, n, data = cdi, part = period, chart = 'c')
 
 ## Small multiple plots for multivariate data
 
-Process data is all about time. But often data -- not the least in healthcare -- have more dimensions, which are important to understand in order to interpret data correctly.
+While SPC charts are inherently time-based, many healthcare datasets include additional dimensions that are important for interpretation.
 
-For example, the hospital_infections dataset, which is also included in the qicharts2 package, contains monthly counts of three types of hospital infections: bacteremia (BAC), C. diff. (CDI), and urinary tract infections (UTI) from six hospitals: AHH, BFH, BOH, HGH, NOH, RGH.
+The hospital_infections dataset, included in qicharts2, contains infection counts by hospital and infection type:
 
 ```{r}
 # show the first six rows of the hospitals_infections dataset
 head(hospital_infections)
 ```
 
-In addition to the time dimension, these data have two extra dimensions, infection and hospital.
+In addition to time, the data vary by hospital and infection type.
 
-Figure \@ref(fig:qicharts-hais1) shows the total (aggregated) monthly counts of hospital associated urinary tract infections from six hospitals.
+Figure \@ref(fig:qicharts-hais1) shows aggregated data for urinary tract infections across all hospitals:
 
 ```{r qicharts-hais1, fig.cap='Aggregated U chart of urinary tract infections from six hospital'}
 qic(month, n, days, 
@@ -140,7 +134,7 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-Figure \@ref(fig:qicharts-hais2) shows the same data as Figure \@ref(fig:qicharts-hais1), but this time data have been stratified into so-called small multiple plots -- one plot per hospital.
+The same data can be stratified into separate panels using the facets argument (Figure \@ref(fig:qicharts-hais2)):
 
 ```{r qicharts-hais2, fig.cap='Stratified (small multiple) U charts of urinary tract infections from six hospital', fig.asp=5/6}
 qic(month, n, days, 
@@ -155,9 +149,9 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-In the litterature, small multiples are also known as trellis, lattice, or grid plots.
+These small multiple plots (also known as trellis or lattice plots) allow comparison across categories.
 
-Likewise, we may construct a small multiple plot of different infection types from one hospital (Figure \@ref(fig:qicharts-hais3)).
+Similarly, we can stratify by infection type within a single hospital: (Figure \@ref(fig:qicharts-hais3)).
 
 ```{r qicharts-hais3, fig.cap='U charts from one hospital stratified by infection type', fig.asp=5/5}
 qic(month, n, days, 
@@ -172,9 +166,9 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-By default, `qic()` uses fixed axis scales. This makes it easy to compare both the indicator levels (y-axis) and the patterns of variation over time (x-axis) between facets. However, sometimes it makes little sense to compare levels from very different indicators as in this example where different types of infections occur at very different rates. Because urinary tract infections is much more frequent that the other two types of infection, it is hard to interpret the patterns over time from these. In Figure \@ref(fig:qicharts-hais4) we use individual y-axes.
+By default, all panels share the same axis scales. This facilitates comparison of levels and patterns. However, when indicators differ greatly in magnitude, it may be more useful to allow separate scales as in Figure \@ref(fig:qicharts-hais4):
 
-```{r qicharts-hais4, fig.cap='Small multiple plot with individual y-axes', fig.asp=5/5}
+```{r qicharts-hais4, fig.cap='Small multiples free y-axes', fig.asp=5/5}
 qic(month, n, days, 
     data     = subset(hospital_infections, hospital == 'NOH'),
     chart    = 'u',
@@ -187,9 +181,7 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-The decision about when to use fixed or free axis scales should be taken deliberately depending on the purpose of the plot. Sometimes it may even be useful to display both plots with fixed and free axes side by side.
-
-Finally, we may want to display both dimensions, infection and hospital, at the same time as in Figure \@ref(fig:qicharts-hais5).
+Finally, both dimensions can be displayed simultaneously as in Figure \@ref(fig:qicharts-hais5):
 
 ```{r qicharts-hais5, fig.cap='Hospital infections stratified by infection and hospital'}
 qic(month, n, days, 
@@ -205,12 +197,16 @@ qic(month, n, days,
 
 ### To aggregate or not to aggregate
 
-When data come from multiple organisational units, for example hospitals or hospital departments, we must decide if we want to aggregate  or stratify data. 
+When working with data from multiple organisational units, a key decision is whether to aggregate or stratify.
 
-Figures \@ref(fig:qicharts-hais1) and \@ref(fig:qicharts-hais2) demonstrate the difference. Notice how the aggregated data show no signs of special causes while the stratified data show shifts in two hospitals (BOH and NOH). If data, as in this case, move in different directions in two or more units, aggregation has a tendency to mask or cancel out special causes. However, when minor shifts in data, that are too small to produce signals in the small multiple plots, move in the same direction the shifts tend to add up resulting in a better chance of detecting the special cause with aggregated data.
+Aggregation can simplify interpretation but may mask important variation. In contrast, stratification can reveal differences between units that would otherwise be hidden. For example, aggregated data may appear stable even when individual units exhibit shifts in opposite directions.
 
-As usual, the decision to aggregate or stratify must be taken deliberately by persons with a thorough understanding of the structures and processes that have produced data. And often it may be useful to produce several plots at different levels of aggregation.     
+Conversely, small shifts occurring consistently across multiple units may become more visible when data are aggregated.
+
+The choice between aggregation and stratification should therefore be made deliberately, based on an understanding of the context and purpose of the analysis. In many cases, it is useful to examine the data at multiple levels.
 
 ## qicharts2 in short
 
-qicharts2 is an R package for constructing SPC charts aimed specifically at healthcare but usefull in many other areas. Besides functions for the most commonly used SPC charts, qicharts2 has a number of specialist charts for rare events data and count data with very large denominators.
+qicharts2 is a flexible and powerful package for constructing SPC charts, particularly in healthcare settings. It builds on the same principles introduced in this book while providing additional functionality for automation, visualisation, and handling of complex data structures.
+
+In the following chapters, we will explore specialised chart types and further extensions of SPC methodology.
