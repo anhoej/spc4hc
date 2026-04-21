@@ -21,19 +21,17 @@ colnames(m) <- seq_along(y)
 m <- cbind(m, avg = round(rowMeans(m, na.rm = TRUE), 2))
 ```
 
-As detailed in earlier chapters, control limits are designed to represent the natural, common cause variation and thereby enclose (almost) all data points from a stable process. To estimate the common cause variation we use the within subgroup variation. However, if the subgroups consist of single data elements, as is the case with I charts, there is no within subgroup variation to be calculated. Instead, we use the moving ranges, that is the absolute differences between consecutive data points. Thus, *two* subgroups is used to define the "within" subgroup variation.
+As discussed in earlier chapters, control limits are designed to represent natural (common cause) variation and thereby enclose almost all data points from a stable process. Estimation of this variation typically relies on within-subgroup variation. However, when subgroups consist of single observations -- as in I charts -- there is no within-subgroup variation to calculate. Instead, we use moving ranges, defined as the absolute differences between consecutive data points. In effect, pairs of consecutive observations are used to estimate the within-subgroup variation.
 
-Consequently, if a shift occurs between two subgroups, this will affect the moving range at this point and possible produce a signal on the moving range chart.
+This approach has an important implication. If a shift occurs between two consecutive observations, the moving range at that point will be inflated and may produce a signal on the moving range chart.
 
-For example, take these 24 "random" numbers:
+To illustrate, consider the following 24 values:
 
 ```{r, echo=FALSE, comment=''}
 cat(y)
 ```
 
-The average moving range (AMR) is `r amr`. From Table \@ref(tab:limits-tab1) we find that the natural upper AMR limit is 3.267 x AMR (= `r round(3.267 * amr, 1)`).
-
-Consequently, the range between observations numbers 14 and 15 (|28 -- 11| = 17) is unusually large as shown by the moving range chart in Figure \@ref(fig:screened-mr1).
+The average moving range (AMR) is `r amr`. From Table \@ref(tab:limits-tab1), the natural upper limit for moving ranges is 3.267 x AMR (= `r round(3.267 * amr, 1)`). The moving range between observations 14 and 15 is |28 − 11| = 17, which exceeds this limit and is therefore unusually large, as shown in Figure \@ref(fig:screened-mr1).
 
 ```{r screened-mr1, fig.cap='Moving range chart with one range above the control limit'}
 
@@ -42,7 +40,7 @@ qic(y,
     title = 'Moving range chart')
 ```
 
-Some experts recommend removing extreme moving ranges before calculating the control limits for the corresponding I chart [@nelson1982], as this can slightly improve the chart's sensitivity. qicharts2 does this by default as shown in Figure \@ref(fig:screened-mr2).
+Some authors recommend removing such extreme moving ranges before calculating the control limits for the corresponding I chart, as this may improve sensitivity to meaningful changes [@nelson1982]. By default, qicharts2 applies this approach, as illustrated in Figure \@ref(fig:screened-mr2).
 
 ```{r screened-mr2, fig.cap='I chart with control limits calculated after removing freak moving ranges'}
 # default is to screen moving ranges before calculating control limits
@@ -51,9 +49,9 @@ qic(y,
     title = 'I chart with screened MRs')
 ```
 
-To remove extreme moving ranges, first calculate AMR on the original data (= `r amr`), then remove any MRs greater than 3.267 x AMR (= `r 3.267 * amr`) and recalculate AMR (= `r round(amr_screened, 2)`). Finally, use the screened AMR to calculate the control limits of the I chart (= 15.8 $\pm$ 2.66 x 4.45).
+The procedure is as follows. First, calculate the AMR from the original data (= `r amr`). Next, remove any moving ranges greater than 3.267 × AMR (= `r 3.267 * amr`) and recalculate the AMR (= `r round(amr_screened, 2)`). Finally, use this screened AMR to calculate the control limits for the I chart: (= 15.8 $\pm$ 2.66 x 4.45).
  
-To suppress the screening of moving ranges before calculating control limits for I charts (and prime charts) in qicharts2, we can set the qic.screenedmr option to FALSE before plotting as in Figure \@ref(fig:screened-mr3):
+To suppress this screening step in qicharts2, the qic.screenedmr option can be set to FALSE as in Figure \@ref(fig:screened-mr3):
 
 ```{r screened-mr3, fig.cap='I chart with control limits calculated without removing extreme ranges'}
 # suppress screening of moving ranges
@@ -66,6 +64,6 @@ qic(y,
 options(qic.screenedmr = TRUE)
 ```
 
-As expected, the control limits on the unscreened chart is sightly wider than on the screened chart. In this example, just enough to suppress a signal that would otherwise have been discovered.
+As expected, the control limits in the unscreened chart are slightly wider than those in the screened chart -- in this example, just wide enough to suppress a signal that would otherwise have been detected.
 
-One may argue that screening moving ranges is unnecessary as long as the moving range chart is shown alongside the I chart. However, in our experience, presenting moving range charts to non-technical SPC users rarely adds meaningful insight and can sometimes cause confusion. As a result, we prefer to enhance the sensitivity of I charts by excluding extreme moving ranges before calculating control limits while leaving the use and interpretation of moving range charts to data analyst.
+One might argue that screening moving ranges is unnecessary if the moving range chart is presented alongside the I chart. However, in our experience, moving range charts rarely add value for non-technical users and may even introduce confusion. For this reason, we prefer to increase the sensitivity of I charts by excluding extreme moving ranges before calculating control limits, while reserving moving range charts for more technical analysis.
