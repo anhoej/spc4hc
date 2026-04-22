@@ -7,8 +7,8 @@ knitr::opts_chunk$set(fig.asp = 2/4,
 library(qicharts2)
 ```
 
-With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points outside the limits. 
-Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 included in qicharts2 (data are tabulated at the [end of this chapter](#pp-data)).
+With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points falling outside the limits. 
+Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 included in qicharts2. The data are tabulated at the end of this chapter.
 
 ```{r pcharts-fig1, echo=FALSE, fig.cap='P chart of percent emergency attendances seen within 4 hours'}
 qic(i, r, n, 
@@ -19,9 +19,9 @@ qic(i, r, n,
     xlab     = 'Week')
 ```
 
-This can suggest that the process is highly unstable, even when such a conclusion may not be warranted. Overdispersion occurs when the natural, common cause variation in the data exceeds what is expected under the assumed theoretical distribution -- binomial for proportions and Poisson for rates.
+At first sight, this may suggest that the process is highly unstable, even when such a conclusion may not be justified. Overdispersion occurs when the natural, common cause variation in the data exceeds what is expected under the assumed theoretical distribution -- binomial for proportions and Poisson for rates.
 
-To diagnose this issue, we can plot the data on an I chart, which bases its control limits on the natural variation between successive subgroups rather than on theoretical distributional assumptions. Figure \@ref(fig:pcharts-fig2) is an I chart of the data from Figure \@ref(fig:pcharts-fig1) suggesting only common cause variation.
+One way to diagnose this problem is to plot the same data on an I chart, which bases its control limits on the observed variation between successive subgroups rather than on theoretical distributional assumptions. Figure \@ref(fig:pcharts-fig2) is an I chart of the same data as Figure \@ref(fig:pcharts-fig1) and suggests only common cause variation.
 
 ```{r pcharts-fig2, echo=FALSE, fig.cap='I chart of percent emergency attendances seen within 4 hours'}
 qic(i, r, n, 
@@ -33,15 +33,15 @@ qic(i, r, n,
     xlab      = 'Week')
 ```
 
-As a general rule of thumb, when the control limits from an I chart differ significantly from those of the P or U chart, this suggests that the observed variation is inconsistent with the assumed binomial or Poisson models underlying the P and U charts, respectively.
+As a general rule of thumb, when the control limits from an I chart differ markedly from those of the corresponding P or U chart, this suggests that the observed variation is not consistent with the binomial or Poisson assumptions underlying the P and U charts.
 
-Several solution to the problem with overdispersion and tight control limits have been proposed. The obvious pragmatic solution is to simply use I charts for count data as well as for (individual) measurements. However, I charts have straight control limits that do not account for varying subgroup sizes. If the subgroup sizes only vary little, this may not be a problem. But sometimes -- not the least in healthcare -- varying subgroup sizes matter.
+Several solutions to the problem of overdispersion and overly tight control limits have been proposed. One pragmatic solution is simply to use I charts for count data as well as for individual measurements. However, I charts have straight control limits and do not take varying subgroup sizes into account. If subgroup sizes vary only a little, this may not matter. But sometimes -- particularly in healthcare -- variation in subgroup size does matter.
 
-Laney proposed a solution that adjusts the assumed within subgroup variation in count data by a factor based on the moving ranges of successive standardised data points ($\sigma_z$) [@laney2002].
+Laney proposed a solution in which the assumed within-subgroup variation in count data is adjusted by a factor based on the moving ranges of successive standardised data points, $\sigma_z$ [@laney2002].
 
 ## Laney's prime chart
 
-As shown earlier in Table \@ref(tab:limits-tab1), the control limits for a **traditional P chart** are calculated as:
+As shown earlier in Table \@ref(tab:limits-tab1), the control limits for a traditional P chart are calculated as:
 
 $$\bar{p}\pm3\sigma_{pi}$$
 
@@ -51,22 +51,22 @@ $$\sigma_{pi}=\sqrt{\bar{p}(1-\bar{p})/{n_{i}}}$$
 
 where $n_i$ is the sample size of the i-th subgroup.
 
-The **P′ chart** (pronounced P prime chart) accounts for both within and between subgroup variation. The control limits are given by:
+The P′ chart, pronounced P prime chart, takes both within and between subgroup variation into account. its control limits are given by:
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z$$
 
-where $\sigma_z$ represents the between-subgroup variation, calculated using the moving ranges of the standardised proportions defined as:
+where $\sigma_z$ represents the between-subgroup variation. This is calculated from the moving ranges of the standardised proportions, defined as:
 
 $$z_i=(p_i - \bar{p})/\sigma_{pi}$$
 
-The moving ranges are:
+The moving ranges are then:
 
 $$MR_i=|z_i-z_{i-1}|$$
 
-Then, the estimated between-subgroup variation $\sigma_z$ is the average moving range devided by the constant 1.128:
+The estimat of between-subgroup variation, $\sigma_z$, is the average moving range devided by the constant 1.128:
 
 $$\sigma_z=\overline{MR_z}/1.128$$
-Thus, the control limits for the P′ chart are:
+Thus, the control limits for the P′ chart become:
 
 $$\bar{p}\pm3\sigma_{pi}\sigma_z $$
 
@@ -80,25 +80,35 @@ qic(i, r, n,
     xlab      = 'Week')
 ```
 
-The control limits in Figure \@ref(fig:pcharts-fig3) are very close to the I chart limits from Figure \@ref(fig:pcharts-fig3), but vary slightly due to varying subgroup sizes.
+The control limits in Figure \@ref(fig:pcharts-fig3) are very close to those of the I chart, though they vary slightly because subgroup sizes vary.
 
 Similarly, control limits for the U' chart are:
 
 $$\bar{u}\pm3\sigma_{ui}\sigma_z$$
 
-where $\sigma_{ui}=\sqrt{\bar{u}/n_i}$ and $\sigma_{z}=\overline{MR_z}/1.128$; and the moving ranges are computed from the standardised rates defined as $z_i=(u_i-\bar{u})/\sigma_{ui}$.
+where
 
-Note that in qicharts2, the moving ranges of the standardised values are, by default, screened for extreme values -- following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
+$$\sigma_{ui}=\sqrt{\bar{u}/n_i}$$
+
+and
+
+$$\sigma_{z}=\overline{MR_z}/1.128$$
+
+and the moving ranges are computed from the standardised rates defined as
+
+$$z_i=(u_i-\bar{u})/\sigma_{ui}$$
+
+In qicharts2, the moving ranges of the standardised values are, by default, screened for extreme values, following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
 
 ## When to use prime charts
 
-Laney's prime charts were developed to handle overdispersion (and underdispersion), that is, when data show more (or less) variation than expected under a binomial or Poisson distribution, which is often seen with very large subgroup sizes. But how do we know when to suspect overdispersion?
+Laney's prime charts were developed to handle overdispersion, and also underdispersion, that is, situations in which the data show more or less variation than expected under a binomial or Poisson distribution. This is often seen when subgroup sizes are very large. But how do we know when to suspect overdispersion?
 
-A red flag is when a traditional P or U chart shows unusually tight control limits that seem unnatural. If plotting the same data on an I chart produces significantly wider control limits, it is a strong indication that the assumptions behind the P or U chart may not hold. In such cases, switching to Laney’s P' or U' charts is typically the better choice.
+A warning sign is when a traditional P or U chart shows unusually tight control limits that seem unnatural. If plotting the same data on an I chart produces substantially wider limits, this is a strong indication that the assumptions behind the P or U chart may not hold. In such cases, Laney's P′ or U′ chart will often be the better choice.
 
-Note that when the adjustment factor ($\sigma_z$) is close to one -- indicating little to no overdispersion -- the Laney P′ or U′ chart closely resembles the traditional P or U chart. For this reason, Laney recommends using prime charts as a generally safe and robust default.
+When the adjustment factor ($\sigma_z$) is close to one, indicating little or no overdispersion, the P′ or U′ chart closely resembles the traditional P or U chart. For this reason, Laney recommends prime charts as a generally safe and robust default.
 
-In the next chapter, we will explore a modified I chart -- the I' (I prime) chart -- which generates control limits for count data that closely align with Laney’s prime charts, while also accommodating measurement data with varying subgroup sizes.
+In the next chapter, we introduce a modified I chart -- the I′, or I prime, chart -- which produces control limits for count data that closely match those of Laney's prime charts while also accommodating measurement data with varying subgroup sizes.
 
 ----
 
