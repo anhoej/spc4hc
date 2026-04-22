@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-21" />
+<meta name="date" content="2026-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -443,15 +443,15 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="spc-charts-for-rare-events" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">Chapter 12</span> SPC Charts for Rare Events<a href="spc-charts-for-rare-events.html#spc-charts-for-rare-events" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>When dealing with potentially serious or fatal events, the number of occurrences is often (fortunately) very low, which can present challenges for traditional SPC charts designed for count data.</p>
-<p>The challenge arises because traditional SPC charts for count data – like P and U charts – assume a relatively higher and more consistent frequency of events to function effectively. When counts are low, the data becomes sparse and highly variable, making these charts unreliable.</p>
-<p>Sparse data can produce lower control limits that are censored at zero, thereby invalidating the 3-sigma test in that direction. Additionally, runs charts become problematic when more than half of the data points are zero, as this causes the median to also be zero. This undermines the validity of the runs analysis – resulting in just one long run above the median.</p>
-<p>One useful approach to handling rare events is to plot the number of opportunities or the time between events, rather than focusing on event proportions or rates – essentially flipping the indicator to look at the gaps between occurrences instead of the occurrences themselves.</p>
-<p>Another approach is to look at the cumulated sums (CUSUM) of binary data.</p>
-<p>In this chapter we introduce the G chart for number of opportunities between events, the T chart for time between events, and the Bernoulli CUSUM chart for binary data.</p>
+<p>When dealing with potentially serious or fatal events, the number of occurrences is often, fortunately, very low. This creates challenges for traditional SPC charts designed for count data.</p>
+<p>The difficulty arises because charts such as the P and U charts assume a sufficiently frequent and reasonably stable occurrence of events. When counts are low, the data become sparse and highly variable, which makes these charts less useful.</p>
+<p>Sparse data can produce lower control limits that are censored at zero, thereby invalidating the 3-sigma test in that direction. Run charts may also become problematic when more than half of the data points are zero, because the median then becomes zero as well. This undermines the runs analysis by producing one long run above the median.</p>
+<p>One way of dealing with rare events is to plot the number of opportunities or the time between events rather than event proportions or rates. In other words, we turn the indicator around and focus on the gaps between occurrences rather than on the occurrences themselves.</p>
+<p>Another approach is to examine the cumulative sums (CUSUM) of binary data.</p>
+<p>In this chapter, we introduce the G chart for the number of opportunities between events, the T chart for time between events, and the Bernoulli CUSUM chart for binary data.</p>
 <div id="introducing-the-birth-dataset" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> Introducing the birth dataset<a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <a href="data-sets.html#robson-group-1-births">Robson group 1 births</a> dataset is a data frame with 2193 observations from Robson group 1 deliveries, that is: first time pregnancy, single baby, head first, gestational age at least 37 weeks.</p>
+<p>The <a href="data-sets.html#robson-group-1-births">Robson group 1 births</a> dataset is a data frame containing 2193 observations from Robson group 1 deliveries, that is, first pregnancy, single baby, head first, and gestational age of at least 37 weeks.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="spc-charts-for-rare-events.html#cb80-1" tabindex="-1"></a><span class="co"># import data</span></span>
 <span id="cb80-2"><a href="spc-charts-for-rare-events.html#cb80-2" tabindex="-1"></a>births <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/robson1_births.csv&#39;</span>,</span>
 <span id="cb80-3"><a href="spc-charts-for-rare-events.html#cb80-3" tabindex="-1"></a>                   <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
@@ -484,7 +484,7 @@ div.csl-indent {
 ##  $ ph      : num  7.1 7.26 7.36 7.31 7.16 7.14 7.23 7.21 7.17 7.2 ...
 ##  $ asphyxia: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
 ##  $ case    : num  1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<p>For this chapter we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either low apgar score or low umbilical cord pH suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage or death. In total, there are 16 cases corresponding to 0.7%.</p>
+<p>In this chapter, we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either a low Apgar score or a low umbilical cord pH, suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage or death. In total, there are 16 cases corresponding to 0.7%.</p>
 <p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig1">12.1</a> is a run chart of the biweekly counts.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="spc-charts-for-rare-events.html#cb82-1" tabindex="-1"></a><span class="co"># run chart of counts</span></span>
 <span id="cb82-2"><a href="spc-charts-for-rare-events.html#cb82-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, </span>
@@ -497,8 +497,8 @@ div.csl-indent {
 Figure 12.1: Run chart of number of deliveries with neonatal asphyxia
 </p>
 </div>
-<p>Notice that because more than half the data points are zero, the centre line (median) is also zero. This invalidates the runs analysis – there is only one very long run, which may lead to the false conclusion that data contains one or more shifts.</p>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a> plots proportions rather than counts reaching the same conclusion.</p>
+<p>Because more than half of the data points are zero, the centre line, that is, the median, is also zero. This invalidates the runs analysis, because the chart then contains only one very long run. As a result, the chart may falsely suggest one or more shifts in the data.</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a> plots proportions rather than counts and leads to the same conclusion.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="spc-charts-for-rare-events.html#cb84-1" tabindex="-1"></a><span class="co"># run chart of proportions</span></span>
 <span id="cb84-2"><a href="spc-charts-for-rare-events.html#cb84-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case,  <span class="co"># use the case variable for denominators</span></span>
 <span id="cb84-3"><a href="spc-charts-for-rare-events.html#cb84-3" tabindex="-1"></a>    <span class="at">data =</span> births)</span></code></pre></div>
@@ -508,7 +508,7 @@ Figure 12.1: Run chart of number of deliveries with neonatal asphyxia
 Figure 12.2: Run chart of proportion deliveries with neonatal asphyxia
 </p>
 </div>
-<p>Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis – as the average, in this case, better represents the process centre (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a>).</p>
+<p>Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis, because in this case the average is a better representation of the process centre (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a>).</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="spc-charts-for-rare-events.html#cb85-1" tabindex="-1"></a><span class="co"># P chart</span></span>
 <span id="cb85-2"><a href="spc-charts-for-rare-events.html#cb85-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case, </span>
 <span id="cb85-3"><a href="spc-charts-for-rare-events.html#cb85-3" tabindex="-1"></a>    <span class="at">data  =</span> births, </span>
@@ -519,16 +519,18 @@ Figure 12.2: Run chart of proportion deliveries with neonatal asphyxia
 Figure 12.3: P chart of percent deliveries with neonatal asphyxia
 </p>
 </div>
-<p>While this P chart remains useful, the lower control limit is zero, making it impossible to detect a signal of improvement using the 3-sigma rule. As a result, we must rely solely on runs analysis to identify improvement.</p>
-<p>One obvious solution is to increase the subgroup size by aggregating data over longer periods, such as months or quarters. However, this approach results in slower detection of process improvement or deterioration.</p>
-<p>As an alternative, we introduce at the G chart.</p>
+<p>While this P chart is still useful, the lower control limit is zero, which makes it impossible to detect a signal of improvement using the 3-sigma rule. We are therefore left to rely on runs analysis alone when looking for improvement.</p>
+<p>One obvious solution is to increase subgroup size by aggregating data over longer periods, such as months or quarters. However, this comes at the cost of slower detection of both improvement and deterioration.</p>
+<p>As an alternative, we now introduce the G chart.</p>
 </div>
 <div id="g-chart-for-opportunities-between-cases" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">12.2</span> G chart for opportunities between cases<a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The G chart plots opportunities between cases, for example the number of deliveries between neonatal asphyxia. This type of count data often follows a geometric distribution with a standard deviation given by <span class="math inline">\(\sigma = \sqrt{\bar{x}(\bar{x}+1)}\)</span>. The control limits are then calculated as:</p>
+<p>The G chart plots the number of opportunities between cases, for example the number of deliveries between cases of neonatal asphyxia. This kind of data often follows a geometric distribution with standard deviation</p>
+<p><span class="math display">\[\sigma = \sqrt{\bar{x}(\bar{x}+1)}\]</span></p>
+<p>and control limits</p>
 <p><span class="math display">\[\bar{x}\pm3\sqrt{\bar{x}(\bar{x}+1)}\]</span></p>
 <p>where <span class="math inline">\(\bar{x}\)</span> is the average number of opportunities between cases.</p>
-<p>To obtain the number-between variable, we calculate the differences between the indices of cases (remember to first sort the data in time order).</p>
+<p>To obtain the number-between variable, we calculate the differences between the indices of the cases. As always, the data must first be sorted in time order.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="spc-charts-for-rare-events.html#cb86-1" tabindex="-1"></a><span class="co"># get indices of asphyxia cases</span></span>
 <span id="cb86-2"><a href="spc-charts-for-rare-events.html#cb86-2" tabindex="-1"></a>asph_cases <span class="ot">&lt;-</span> <span class="fu">which</span>(births<span class="sc">$</span>asphyxia)</span>
 <span id="cb86-3"><a href="spc-charts-for-rare-events.html#cb86-3" tabindex="-1"></a></span>
@@ -543,19 +545,18 @@ Figure 12.3: P chart of percent deliveries with neonatal asphyxia
 Figure 12.4: G chart of deliveries between neonatal asphyxia
 </p>
 </div>
-<p>Since the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes the data are symmetrically distributed around the centre. Instead, the median may be used – as is done by default in qicharts2 (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig4">12.4</a>).</p>
-<p>As is the case with the other SPC charts for counts data, negative lower control limits are rounded to 0, as values below this is not possible.</p>
-<p>Note that process improvement – as in fewer cases – will present itself as the curve going up. To trigger a 3-sigma signal we would – in this case – need at least 518 successive deliveries without asphyxia.</p>
-<p>Thus, G charts are useful alternatives to P charts when occurrences are rare and the primary interest is in detecting process improvement. However, one chart does not exclude the other, and P and G charts go well together. The P chart may be more familiar to users and is more useful for signalling process deterioration, while the G charts helps trigger signals of improvement.</p>
+<p>Because the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes that the data are distributed symmetrically around the centre. For this reason, qicharts2 uses the median by default in the runs analysis for G charts (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig4">12.4</a>).</p>
+<p>As with other count charts, negative lower control limits are rounded up to zero, since values below zero are not possible.</p>
+<p>Notice that process improvement, that is, fewer cases, appears as the curve moving upwards. In this example, a 3-sigma signal would require at least 518 consecutive deliveries without asphyxia.</p>
+<p>G charts are therefore useful alternatives to P charts when events are rare and the main interest is in detecting improvement. The two charts are complementary rather than competing. The P chart is often more familiar and more useful for signalling deterioration, whereas the G chart is more helpful when looking for improvement.</p>
 </div>
 <div id="t-chart-for-time-between-events" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> T chart for time between events<a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The T chart plots the time between events – a continuous variable. While it is possible to use an I chart to plot such data, this approach may be problematic. If events occur according to a Poisson distribution – which is often the case – the time between events is more appropriately modelled by the exponential distribution, which is highly skewed.</p>
-<p>One way to address this issue is to transform the data prior to plotting it on an I chart. An appropriate transformation is given by:</p>
+<p>The T chart plots the time between events, which is a continuous variable. Although such data could in principle be plotted on an I chart, this may not be ideal. If events occur according to a Poisson process, as is often assumed, then the time between events follows an exponential distribution, which is highly skewed.
+One way to deal with this is to transform the data before plotting them on an I chart. A suitable transformation is</p>
 <p><span class="math display">\[x = y^{(1 / 3.6)}\]</span></p>
-<p>where <span class="math inline">\(x\)</span> is the transformed variable and <span class="math inline">\(y\)</span> is the original time between events variable.</p>
-<p>Control limits can then be calculated for the transformed data using the standard I chart procedure.</p>
-<p>However, the transformed values may be difficult to interpret. A better approach is to plot the original values alongside back-transformed control limits and centre line. The back-transformation is:</p>
+<p>where <span class="math inline">\(x\)</span> is the transformed variable and <span class="math inline">\(y\)</span> is the original time-between-events variable.</p>
+<p>Control limits can then be calculated for the transformed data in the usual way. Because transformed values are difficult to interpret, it is often preferable to plot the original values together with back-transformed centre and control lines. The back-transformation is</p>
 <p><span class="math display">\[y=x^{3.6}\]</span>.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="spc-charts-for-rare-events.html#cb87-1" tabindex="-1"></a><span class="co"># get time between events</span></span>
 <span id="cb87-2"><a href="spc-charts-for-rare-events.html#cb87-2" tabindex="-1"></a>asph_t <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">c</span>(births<span class="sc">$</span>datetime[asph_cases]))</span>
@@ -567,28 +568,19 @@ Figure 12.4: G chart of deliveries between neonatal asphyxia
 Figure 12.5: T chart of time (days) between deliveries with neonatal asphyxia
 </p>
 </div>
-<p>Note that T charts do not accommodate zero time between events – a situation that may arise when time is not recorded with sufficiently high resolution. For example, if two events – such as patient falls – occur on the same day and the time of day is not recorded, the time variable is not truly continuous. In such cases, a G chart plotting days between events, a discrete variable, may be more appropriate.</p>
-<p>In fact, to our eyes, the control limits on the T chart in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig5">12.5</a> appear unnaturally wide. The upper control limit indicates that at least 190 days (or 27 weeks) must pass without any asphyxia cases before a signal is triggered. This suggests to us that these asphyxia cases (being discrete cases rather than random events) may not be suitable for analysis with a T chart.</p>
+<p>T charts do not allow zero time between events. This may become a problem when time is recorded with insufficient precision. For example, if two events occur on the same day and time of day is not recorded, the variable is not truly continuous. In such situations, a G chart plotting days between events may be more appropriate.</p>
+<p>In this example, the control limits on the T chart in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig5">12.5</a> appear rather wide. The upper control limit indicates that about 190 days, or 27 weeks, must pass without any asphyxia before a signal is triggered. This suggests that these asphyxia cases, being discrete cases rather than random events, may not be especially well suited to analysis with a T chart.</p>
 </div>
 <div id="the-bernoulli-cusum-chart-for-binary-data" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> The Bernoulli CUSUM chart for binary data<a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The Bernoulli CUSUM chart (also known as the B chart) is a specialised control chart used to detect small shifts in the proportion of binary outcomes (e.g., pass/fail, success/failure) over time <span class="citation">(<a href="#ref-neuburger2017">Neuburger et al. 2017</a>)</span>. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic, computed as the cumulative sum of deviations from a predefined target proportion.</p>
-<p>The trace value <span class="math inline">\(s_i\)</span> at time <span class="math inline">\(i\)</span> is updated recursively:</p>
-<p><span class="math display">\[s_i=s_{i-1}+ increment\ based\ on\ current\ value\]</span></p>
-<p>When the current observation <span class="math inline">\(x_i\)</span> is TRUE (i.e., an event of interest occurs), the trace increases; when <span class="math inline">\(x_i\)</span> is FALSE, the trace decreases.</p>
-<p>The size of each increment is determined by both the target proportion and the magnitude of the shift the chart is designed to detect. This design allows the B chart to accumulate evidence over time, enhancing sensitivity to sustained deviations from the target.</p>
+<p>The Bernoulli CUSUM chart, also known as the B chart, is a specialised control chart for detecting small shifts in the proportion of binary outcomes over time <span class="citation">(<a href="#ref-neuburger2017">Neuburger et al. 2017</a>)</span>. It operates on a logical vector (TRUE/FALSE), where each observation contributes to a trace statistic calculated as the cumulative sum of deviations from a predefined target proportion.</p>
+<p>The trace value <span class="math inline">\(s_i\)</span> at time <span class="math inline">\(i\)</span> is updated recursively. When the current observation <span class="math inline">\(x_i\)</span> is TRUE, the trace increases; when <span class="math inline">\(x_i\)</span> is FALSE, the trace decreases. The size of each increment depends on both the target proportion and the size of the shift the chart is designed to detect. In this way, the B chart accumulates evidence over time and becomes sensitive to sustained deviations from the target.</p>
 <p>If <span class="math inline">\(x_i\)</span> = TRUE:</p>
 <p><span class="math display">\[s_i=s_{i-1}+logOR-log(1+p_0(OR-1))\]</span></p>
 <p>If <span class="math inline">\(x_i\)</span> = FALSE:</p>
 <p><span class="math display">\[s_i=s_{i-1}-log(1-p_0(OR-1))\]</span></p>
-<p>Here:</p>
-<ul>
-<li><span class="math inline">\(s_i\)</span> is the CUSUM statistic at time i</li>
-<li><span class="math inline">\(p_0\)</span> is the target (or baseline) proportion</li>
-<li><span class="math inline">\(OR\)</span> is the odds ratio representing the smallest shift the chart should detect</li>
-</ul>
-<p>For example, setting OR = 2 configures the chart to detect a doubling of the target proportion p<sub>0</sub>.</p>
-<p>If the trace remains near zero, it means that the process is operating close to target.</p>
+<p>Here, <span class="math inline">\(s_i\)</span> is the CUSUM statistic at time i, <span class="math inline">\(p_0\)</span> is the target or baseline proportion, and <span class="math inline">\(OR\)</span> is the odds ratio representing the smallest shift the chart is designed to detect. For example, setting OR = 2 configures the chart to detect a doubling of the target proportion.</p>
+<p>If the trace remains close to zero, the process is operating near target.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="spc-charts-for-rare-events.html#cb88-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">or =</span> <span class="dv">2</span>, <span class="at">limit =</span> <span class="fl">3.5</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig6"></span>
 <img src="_main_files/figure-html/rare-fig6-1.svg" alt="B chart of newborns with asphyxia" width="672" />
@@ -596,15 +588,13 @@ Figure 12.5: T chart of time (days) between deliveries with neonatal asphyxia
 Figure 12.6: B chart of newborns with asphyxia
 </p>
 </div>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a> places the asphyxia data in a B chart constructed using the bchart() function from the qicharts2 package. The target value corresponds to the known baseline proportion of asphyxia cases with default values for odds ratio (= 2) and limits (= ±3.5).</p>
-<p>Several key features are worth noting:</p>
-<ul>
-<li><p>The chart displays two cumulative traces: the upper trace is configured to detect an increase from the target proportion – specifically, a doubling in odds (OR = 2) – while the lower trace is tuned to detect a decrease (OR = 0.5).</p></li>
-<li><p>The trace values have no intrinsic meaning beyond their directional movement – they increase in response to TRUE values and decrease in response to FALSE values. The magnitude of the trace simply reflects the cumulative deviation from the target, not the severity or frequency of events in absolute terms.</p></li>
-<li><p>Traces reset to zero whenever they cross the horizontal axis or a control limit, allowing the chart to remain responsive to new patterns of deviation.</p></li>
-<li><p>The control limits are user-defined, rather than statistically derived. Their placement represents a compromise between desired sensitivity (the ability to detect true shifts) and specificity (resistance to false alarms). By default, the limits are set at ±3.5. More on how to chose limits later.</p></li>
-</ul>
-<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig8">12.7</a> compares our results against a target proportion of 2%.</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a> shows the asphyxia data plotted in a B chart using the bchart() function from qicharts2. The target corresponds to the known baseline proportion of asphyxia cases, and the default settings are used for odds ratio (= 2) and control limits (= ±3.5).</p>
+<p>Several features are worth noting:</p>
+<p>The chart displays two cumulative traces. The upper trace is configured to detect an increase from the target proportion, specifically a doubling in the odds, while the lower trace is configured to detect a decrease, corresponding to an odds ratio of 0.5.</p>
+<p>The trace values themselves have no direct meaning beyond their direction of movement. They increase in response to TRUE values and decrease in response to FALSE values. Their magnitude reflects the cumulative departure from target, not the absolute severity or frequency of events.</p>
+<p>The traces are reset to zero whenever they cross the horizontal axis or a control limit, so that the chart remains responsive to new patterns of deviation.</p>
+<p>The control limits are user-defined rather than statistically derived. Their placement therefore reflects a compromise between sensitivity, that is, the ability to detect true shifts, and specificity, that is, resistance to false alarms. By default, the limits are set at ±3.5.</p>
+<p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig8">12.7</a> compares the data with a target proportion of 2%.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="spc-charts-for-rare-events.html#cb89-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.02</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig8"></span>
 <img src="_main_files/figure-html/rare-fig8-1.svg" alt="B chart of newborns with asphyxia, target = 0.2%" width="672" />
@@ -612,8 +602,8 @@ Figure 12.6: B chart of newborns with asphyxia
 Figure 12.7: B chart of newborns with asphyxia, target = 0.2%
 </p>
 </div>
-<p>The lower trace signals repeatably suggesting that the current process is not centred around a target of 2% – specifically, it indicates that the process is performing better than expected.</p>
-<p>And vice versa, comparing to a target of 0.1% indicates that the process is performing worse than expected (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig9">12.8</a>).</p>
+<p>Here, the lower trace signals repeatedly, suggesting that the process is not centred around a target of 2%. More specifically, the chart suggests that the current process is performing better than that target.</p>
+<p>Conversely, when the target is set to 0.1%, the chart suggests that the process is performing worse than the target (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig9">12.8</a>).</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="spc-charts-for-rare-events.html#cb90-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.001</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig9"></span>
 <img src="_main_files/figure-html/rare-fig9-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
@@ -621,9 +611,9 @@ Figure 12.7: B chart of newborns with asphyxia, target = 0.2%
 Figure 12.8: B chart of newborns with asphyxia, target = 0.01%
 </p>
 </div>
-<p>Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false positives but may miss smaller shifts. The best choice depends on context, such as the number of available observations, size of the shift to be detected, and the consequences of missing a signal or triggering a false one.</p>
-<p>In practice, limits are often chosen based on simulation, historical data, and domain knowledge – particularly considering the cost or impact of missed detections versus false alerts. See <span class="citation">Neuburger et al. (<a href="#ref-neuburger2017">2017</a>)</span> for details and guidelines on how to select control limits.</p>
-<p>Inspecting Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a>, which shows a historically stable process based on 2000+ observations and with most or all data points clustered around the centre line, we might conclude that it would be appropriate to tighten the control limits to ±3 or even ±2.5, as demonstrated in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig10">12.9</a>.</p>
+<p>Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, which is suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false alarms but may miss smaller shifts. The most appropriate choice depends on the context, including the amount of available data, the size of shift of interest, and the consequences of missing a signal or raising a false one.</p>
+<p>In practice, limits are often chosen on the basis of simulation, historical data, and domain knowledge, especially in relation to the consequences of missed detections and false alerts. See <span class="citation">Neuburger et al. (<a href="#ref-neuburger2017">2017</a>)</span> for details on the selection of control limits.</p>
+<p>Looking at Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a>, which shows a historically stable process based on more than 2000 observations, with most data points clustered around the centre line, one might judge it reasonable to tighten the control limits to ±3 or even ±2.5, as shown in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig10">12.9</a>.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="spc-charts-for-rare-events.html#cb91-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">limit =</span> <span class="fl">2.5</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig10"></span>
 <img src="_main_files/figure-html/rare-fig10-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
@@ -634,8 +624,9 @@ Figure 12.9: B chart of newborns with asphyxia, target = 0.01%
 </div>
 <div id="selecting-the-rigth-chart-for-rare-events" class="section level2 hasAnchor" number="12.5">
 <h2><span class="header-section-number">12.5</span> Selecting the rigth chart for rare events<a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>After reviewing various alternative charting options for rare events – U and T charts for low event rates, and P, G, and B charts for low case proportions – we may ask: which should we prefer? Well, that depends. No single chart is universally superior – and often, presenting two or more charts together can provide complementary insights. In particular, we always recommend pairing a T or G chart with its corresponding U or P chart, as these pairs may offer a more complete picture of the process by highlighting both improvement and deterioration.</p>
-<p>The B chart, in particular, is a powerful tool, but it requires careful attention and specialist knowledge to construct and interpret effectively. Its diagnostic performance is highly sensitive to the choice of parameters — target, odds ratio, and control limits – and these should be selected by individuals with a strong understanding of the underlying process. That said, the default settings – an odds ratio of 2 and control limits at ±3.5 – are generally suitable for most processes where the baseline (target) rate is around 1%, and where the goal is to detect a doubling or halving of the event rate relative to that target.</p>
+<p>Having reviewed several alternatives for rare events data – U and T charts for low event rates, and P, G, and B charts for low case proportions – we may ask which chart should be preferred. The answer is that it depends. No single chart is universally best, and in many situations two or more charts provide complementary insights.</p>
+<p>In particular, we recommend pairing a T or G chart with its corresponding U or P chart. Together, these pairs provide a fuller picture by helping to detect both deterioration and improvement.</p>
+<p>The B chart is a particularly powerful tool, but it requires careful attention and specialist knowledge to construct and interpret. Its diagnostic performance depends strongly on the chosen target, odds ratio, and control limits, and these choices should be made by people with a good understanding of the underlying process. That said, the default settings – an odds ratio of 2 and control limits of ±3.5 – are generally reasonable for processes with a baseline rate around 1%, where the aim is to detect a doubling or halving of the event rate relative to that baseline.</p>
 
 </div>
 </div>
