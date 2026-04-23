@@ -13,9 +13,9 @@ knitr::opts_chunk$set(fig.asp = 3/5,
 library(qicharts2)
 ```
 
-Funnel plots are SPC charts with categorical subgroups, which are often sorted after size to produce funnel shaped control limits. Funnel plots are useful for comparing indicator levels from different categories, for example complication rates from different hospitals.
+Funnel plots are SPC charts used for categorical subgroups [@spiegelhalter2005]. The subgroups are often ordered by size, producing the characteristic funnel-shaped control limits. Funnel plots are useful for comparing indicator levels across categories, for example complication rates between hospitals.
 
-Figure \@ref(fig:funnel-fig0) compares the levels of some indicator across six organisational units. One unit (E) falls below the lower control limit, indicating that its data may reflect a fundamentally different process compared to the others.
+Figure \@ref(fig:funnel-fig0) compares the level of an indicator across six organisational units. One unit (E) falls below the lower control limit, suggesting that its results may reflect a fundamentally different process compared with the others.
 
 ```{r funnel-fig0, fig.cap='Funnel plot', echo=FALSE}
 f <- hospital_infections[hospital_infections$infection == 'UTI' &
@@ -32,9 +32,9 @@ qic(reorder(hospital, days), n, days,
     xlab = 'Subgroup')
 ```
 
-Because funnel plots do not involve a natural time sequence, data points are not connected by lines, and run analysis is not applicable.
+Because funnel plots do not involve a natural time sequence, the data points are not connected, and run analysis is not applicable.
 
-To demonstrate the construction of funnel plots we use data on urinary tract infections from the hospital_infections dataset from qicharts2.
+To demonstrate the construction of funnel plots, we use data on urinary tract infections from the hospital_infections dataset included in qicharts2. We begin by plotting the data over time using a traditional U chart:
 
 ```{r funnel-fig1, fig.asp=1, fig.cap='U chart of urinary tract infections'}
 # get urinary tract infections from hospital infections data
@@ -52,9 +52,9 @@ qic(month, n, days,
     xlab     = 'Month')
 ```
 
-Figure \@ref(fig:funnel-fig1) is a traditional U chart of infection rates in six hospital. There are signals of special cause variation in two hospitals (BOH, NOH), which makes direct comparison of infection rates between hospitals pointless -- it makes no sense to compare levels from data that are moving.
+Figure \@ref(fig:funnel-fig1) shows signals of special cause variation in two hospitals (BOH and NOH). In such cases, direct comparison of infection rates between hospitals is problematic, as it does not make sense to compare levels based on data that are changing over time.
 
-It is therefore important to select data from a recent and stable period of time before constructing funnel plots. In Figure \@ref(fig:funnel-fig2) we have selected data from the most recent quarter and plotted them using hospital (rather than time) as the subgrouping variable.
+For this reason, we select data from a recent period before constructing the funnel plot. In Figure \@ref(fig:funnel-fig2), the data are restricted to the most recent quarter and plotted using hospital, rather than time, as the subgrouping variable:
 
 ```{r funnel-fig2, fig.cap="Unordered 'funnel' plot of urinary tract infections"}
 # filter data to latest quarter
@@ -70,7 +70,7 @@ qic(hospital, n, days,
     xlab     = 'Hospital')
 ```
 
-By default the x-axis will be sorted alphabetically. To produce a funnel plot, we need to sort the subgroups by size as is shown in Figure \@ref(fig:funnel-fig3).
+By default, the subgroups are ordered alphabetically along the x-axis. To produce a funnel plot, the subgroups must be ordered by size, as shown in Figure \@ref(fig:funnel-fig3).
 
 ```{r funnel-fig3, fig.cap='Ordered funnel plot of urinary tract infections'}
 # order hospitals by denominator (risk days) to produce funnel
@@ -83,4 +83,4 @@ qic(reorder(hospital, days), n, days,
     xlab     = 'Hospital')
 ```
 
-In summary, funnel plots are SPC charts with categorical subgroups. They are useful for comparing indicator levels across organisational units. To ensure valid comparisons, it is essential to use data from a recent, stable period that reflects only common cause variation before constructing a funnel plot.
+In summary, funnel plots are SPC charts for categorical subgroups and are useful for comparing indicator levels across organisational units. To support meaningful comparison, it is important to use data from a recent period before constructing the funnel plot.

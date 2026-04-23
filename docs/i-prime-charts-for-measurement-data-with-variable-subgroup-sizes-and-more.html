@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-22" />
+<meta name="date" content="2026-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +131,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -443,17 +442,11 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="section level1 hasAnchor" number="14">
 <h1><span class="header-section-number">Chapter 14</span> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can frequently serve as a valid – or even superior – alternative to other Shewhart SPC charts. This is partly because the I chart is based on the empirical variation in data, rather than on theoretical distributional assumptions, which may or may not be true.</p>
-<p>However, the I chart does not account for variable subgroup sizes – that is, when the area of opportunity varies between samples, such as when the number of patients fluctuates from month to month. This produces straight control limits, which in some situations may generate false signals or fail to detect true ones. When the variation is small, this may not pose a problem, but often – not the least in healthcare – size matters.</p>
-<p>Several solutions have been proposed. Here we present the normalised I chart or, as we prefer to name it, the I prime (I’) chart suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
-<p>In summary:</p>
-<ul>
-<li><p>The I’ chart accounts for variable subgroup sizes by adjusting the within subgroup standard deviation with a factor that depends on the size of each subgroup producing wavy control limits when subgroup sizes vary.</p></li>
-<li><p>The I’ chart is useful for measurement and count data with or without denominators.</p></li>
-<li><p>With constant subgroup sizes, the I’ chart is an exact match for the original I chart.</p></li>
-<li><p>For rates and proportions, the I’ chart produces control limits that match those of the U' and P' charts.</p></li>
-</ul>
-<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> shows an I’ and a P’ chart side-by-side demonstrating their similar results.</p>
+<p>The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can often serve as a valid, or even superior, alternative to other Shewhart charts. One reason for this is that the I chart is based on the empirical variation in the data rather than on theoretical distributional assumptions, which may or may not hold.</p>
+<p>However, the I chart does not account for variable subgroup sizes. In other words, it does not adjust when the area of opportunity varies between samples, for example when the number of patients fluctuates from month to month. This results in straight control limits, which in some situations may generate false signals or fail to detect true ones. When subgroup sizes vary only slightly, this may not matter. But often – especially in healthcare – size matters.</p>
+<p>Several solutions to this problem have been proposed. Here we present the normalised I chart, or, as we prefer to call it, the I prime (I’) chart, suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
+<p>In summary, the I’ chart accounts for variable subgroup sizes by adjusting the within-subgroup standard deviation using a factor that depends on the size of each subgroup. This produces wavy control limits when subgroup sizes vary. The I’ chart is useful for both measurement and count data, with or without denominators. When subgroup sizes are constant, the I’ chart is identical to the original I chart. For rates and proportions, the I’ chart produces control limits that match those of the U’ and P’ charts.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> shows an I’ and a P’ chart side-by-side illustrating how similar their results are.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-1" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
 <span id="cb92-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-2" tabindex="-1"></a>    <span class="at">data      =</span> admis, </span>
 <span id="cb92-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-3" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;ip&#39;</span>, </span>
@@ -481,33 +474,35 @@ Figure 14.1: Comparing I’ and P’ charts
 <li><span class="math inline">\(o\)</span> = number of data values (subgroups)</li>
 <li><span class="math inline">\(i\)</span> = i<sup>th</sup> data value</li>
 </ul>
-<p>Values to plot:</p>
+<p>The values to be plotted are</p>
 <p><span class="math display">\[
 y = \frac{n}{d}
 \]</span></p>
-<p>Centre line:</p>
-<p><span class="math display">\[
+<p>The centre line is:
+<span class="math display">\[
 CL = \frac{\sum{n}}{\sum{d}}
 \]</span></p>
-<p>Standard deviation of i<sup>th</sup> data point:</p>
+<p>The standard deviation of i<sup>th</sup> data point is</p>
 <p><span class="math display">\[
 s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\frac{1}{d_{i-1}}}}
 \]</span></p>
-<p>Average standard deviation:</p>
+<p>The average standard deviation is</p>
 <p><span class="math display">\[
 \bar{s} = \frac{\sum{s}}{o}
 \]</span></p>
-<p>Control limits:</p>
+<p>The control limits are then</p>
 <p><span class="math display">\[
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
 \]</span></p>
-<p>When subgroup sizes equals 1, the control limits simplify to: <span class="math inline">\(CL \pm 2.66\overline{MR}\)</span> as in the original I chart.</p>
+<p>When subgroup sizes are all equal to 1, these limits reduce to</p>
+<p><span class="math inline">\(CL \pm 2.66\overline{MR}\)</span></p>
+<p>which is the same as for original I chart.</p>
 <p>As with the original I chart, qicharts2 screens the moving ranges of <span class="math inline">\(s_i\)</span>, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating <span class="math inline">\(\bar{s}\)</span>.</p>
 </div>
 <div id="i-charts-for-measument-data-with-variable-subgroup-sizes" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> I’ charts for measument data with variable subgroup sizes<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for use with measurement data where subgroup sizes vary. For example, due to privacy considerations, we may only have access to averaged patient data rather than individual records. Traditionally, such data would be plotted on an original I chart, but if the number of patients in each subgroup varies significantly, straight control limits may be suboptimal.</p>
-<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> is an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. Notice the data point above the upper control limit in April 2020 suggesting a special cause. However, when plotting aggregated measurement data, the I chart does not account for variations in subgroup size.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for measurement data with variable subgroup sizes. One example is when, for reasons of privacy, only aggregated patient data are available rather than individual measurements. Traditionally, such data would be plotted on an ordinary I chart. But if the number of patients in each subgroup varies substantially, straight control limits may be inappropriate.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> shows an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. In April 2020, one data point lies above the upper control limit, suggesting a special cause. However, the ordinary I chart does not take subgroup size into account.</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c, </span>
 <span id="cb93-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
 <span id="cb93-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
@@ -520,7 +515,7 @@ s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\
 Figure 14.2: I chart of average HbA1c without denominator
 </p>
 </div>
-<p>The I’ chart in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig3">14.3</a> takes the subgroup size (number of patients) into account and adjusts the control limits correspondingly.</p>
+<p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig3">14.3</a> shows the corresponding I’ chart, which incorporates subgroup size, that is, the number of patients, and adjusts the control limits accordingly.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c <span class="sc">*</span> n, n, </span>
 <span id="cb94-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
 <span id="cb94-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;ip&#39;</span>,</span>
@@ -533,20 +528,20 @@ Figure 14.2: I chart of average HbA1c without denominator
 Figure 14.3: I prime chart of average HbA1c with denominator
 </p>
 </div>
-<p>April 2020 was the first month of lockdown during Covid-19 in Denmark, and the number of patients (the denominator) seen during this month was significantly lower than usual, which allowed for larger than usual common cause variation in measurements and consequently wider control limits this month. So, when the subgroup size is taken into account, the apparent special cause in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> is actually within the limits of the expected common cause variation.</p>
-<p>Also, notice that the centre lines are a bit different (60.6 vs 60.3), because the I prime chart uses the weighted rather than the unweighted mean of the measurements.</p>
-<p>Note that in order to plot the averages we need to multiply the numerators (avg_hba1c, which are already averaged) by the denominators (n) to get the sum of individual measurements to use as the new numerator. Otherwise, the result would be a plot of averages of averages.</p>
+<p>April 2020 was the first month of lockdown during COVID-19 in Denmark, and the number of patients seen that month was markedly lower than usual. A smaller denominator allows for greater common cause variation in the measurements and therefore leads to wider control limits. When subgroup size is taken into account, the apparent special cause in Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> turns out to fall within the limits of expected variation.</p>
+<p>To plot averages correctly, we must multiply the subgroup averages (avg_hba1c) by the subgroup sizes (n) in order to recover the sums of individual measurements. Otherwise, the chart would be based on averages of averages.</p>
+<p>Notice also that the centre lines differ slightly (60.6 versus 60.3), because the I’ chart uses a weighted mean rather than an unweighted mean.</p>
 </div>
 <div id="one-chart-to-rule-them-all" class="section level2 hasAnchor" number="14.2">
 <h2><span class="header-section-number">14.2</span> One chart to rule them all?<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The I’ chart produces results that match the original I chart for individual measurements and P’ and U’ charts for proportion and count data.</p>
-<p>If we accept Laney’s claim that prime charts are valid – or even better – substitutes for their non-prime counterparts, it is tempting to conclude that the I’ chart offers a universal solution to most, if not all, of our charting needs.</p>
-<p>In conclusion, while the I’ chart is a recent development, its versatility and ability to mimic the behaviour of traditional SPC charts make it a compelling alternative, that has the potential to streamline chart selection by serving as a single, robust option across various data types and scenarios. As the methodology continues to gain empirical support, the I’ chart may well become the preferred tool for modern quality control.</p>
+<p>The I’ chart reproduces the original I chart for individual measurements and matches the P’ and U’ charts for proportion and count data.</p>
+<p>If we accept Laney’s argument that prime charts are valid, and perhaps even preferable, substitutes for their non-prime counterparts, it is tempting to view the I’ chart as a universal solution to most, if not all, charting needs.</p>
+<p>The I’ chart is a relatively recent development, but its versatility and its ability to mimic the behaviour of more traditional SPC charts make it a compelling alternative. It has the potential to simplify chart selection by providing a single, robust method that can be used across a wide range of data types and situations. As empirical support for the method grows, the I’ chart may well become a preferred tool in modern SPC practice.</p>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-taylor2018" class="csl-entry">
 Taylor, Wayne. 2018. <em>Normalized Individuals (IN) Control Chart</em>. <a href="https://variation.com/normalized-individuals-control-chart/">https://variation.com/normalized-individuals-control-chart/</a>.
 </div>

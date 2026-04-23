@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-22" />
+<meta name="date" content="2026-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +131,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -443,16 +442,16 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="funnel-plots-for-categorical-subgroups" class="section level1 hasAnchor" number="15">
 <h1><span class="header-section-number">Chapter 15</span> Funnel Plots for Categorical Subgroups<a href="funnel-plots-for-categorical-subgroups.html#funnel-plots-for-categorical-subgroups" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Funnel plots are SPC charts with categorical subgroups, which are often sorted after size to produce funnel shaped control limits. Funnel plots are useful for comparing indicator levels from different categories, for example complication rates from different hospitals.</p>
-<p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig0">15.1</a> compares the levels of some indicator across six organisational units. One unit (E) falls below the lower control limit, indicating that its data may reflect a fundamentally different process compared to the others.</p>
+<p>Funnel plots are SPC charts used for categorical subgroups <span class="citation">(<a href="#ref-spiegelhalter2005">Spiegelhalter 2005</a>)</span>. The subgroups are often ordered by size, producing the characteristic funnel-shaped control limits. Funnel plots are useful for comparing indicator levels across categories, for example complication rates between hospitals.</p>
+<p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig0">15.1</a> compares the level of an indicator across six organisational units. One unit (E) falls below the lower control limit, suggesting that its results may reflect a fundamentally different process compared with the others.</p>
 <div class="figure"><span style="display:block;" id="fig:funnel-fig0"></span>
 <img src="_main_files/figure-html/funnel-fig0-1.svg" alt="Funnel plot" width="672" />
 <p class="caption">
 Figure 15.1: Funnel plot
 </p>
 </div>
-<p>Because funnel plots do not involve a natural time sequence, data points are not connected by lines, and run analysis is not applicable.</p>
-<p>To demonstrate the construction of funnel plots we use data on urinary tract infections from the hospital_infections dataset from qicharts2.</p>
+<p>Because funnel plots do not involve a natural time sequence, the data points are not connected, and run analysis is not applicable.</p>
+<p>To demonstrate the construction of funnel plots, we use data on urinary tract infections from the hospital_infections dataset included in qicharts2. We begin by plotting the data over time using a traditional U chart:</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="funnel-plots-for-categorical-subgroups.html#cb95-1" tabindex="-1"></a><span class="co"># get urinary tract infections from hospital infections data</span></span>
 <span id="cb95-2"><a href="funnel-plots-for-categorical-subgroups.html#cb95-2" tabindex="-1"></a>uti <span class="ot">&lt;-</span> hospital_infections[hospital_infections<span class="sc">$</span>infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>,]</span>
 <span id="cb95-3"><a href="funnel-plots-for-categorical-subgroups.html#cb95-3" tabindex="-1"></a></span>
@@ -472,8 +471,8 @@ Figure 15.1: Funnel plot
 Figure 15.2: U chart of urinary tract infections
 </p>
 </div>
-<p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig1">15.2</a> is a traditional U chart of infection rates in six hospital. There are signals of special cause variation in two hospitals (BOH, NOH), which makes direct comparison of infection rates between hospitals pointless – it makes no sense to compare levels from data that are moving.</p>
-<p>It is therefore important to select data from a recent and stable period of time before constructing funnel plots. In Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig2">15.3</a> we have selected data from the most recent quarter and plotted them using hospital (rather than time) as the subgrouping variable.</p>
+<p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig1">15.2</a> shows signals of special cause variation in two hospitals (BOH and NOH). In such cases, direct comparison of infection rates between hospitals is problematic, as it does not make sense to compare levels based on data that are changing over time.</p>
+<p>For this reason, we select data from a recent period before constructing the funnel plot. In Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig2">15.3</a>, the data are restricted to the most recent quarter and plotted using hospital, rather than time, as the subgrouping variable:</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="funnel-plots-for-categorical-subgroups.html#cb96-1" tabindex="-1"></a><span class="co"># filter data to latest quarter</span></span>
 <span id="cb96-2"><a href="funnel-plots-for-categorical-subgroups.html#cb96-2" tabindex="-1"></a>uti_2016q4 <span class="ot">&lt;-</span> uti[uti<span class="sc">$</span>month <span class="sc">&gt;=</span> <span class="st">&#39;2016-10-01&#39;</span>, ]</span>
 <span id="cb96-3"><a href="funnel-plots-for-categorical-subgroups.html#cb96-3" tabindex="-1"></a></span>
@@ -491,7 +490,7 @@ Figure 15.2: U chart of urinary tract infections
 Figure 15.3: Unordered ‘funnel’ plot of urinary tract infections
 </p>
 </div>
-<p>By default the x-axis will be sorted alphabetically. To produce a funnel plot, we need to sort the subgroups by size as is shown in Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig3">15.4</a>.</p>
+<p>By default, the subgroups are ordered alphabetically along the x-axis. To produce a funnel plot, the subgroups must be ordered by size, as shown in Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig3">15.4</a>.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="funnel-plots-for-categorical-subgroups.html#cb97-1" tabindex="-1"></a><span class="co"># order hospitals by denominator (risk days) to produce funnel</span></span>
 <span id="cb97-2"><a href="funnel-plots-for-categorical-subgroups.html#cb97-2" tabindex="-1"></a><span class="fu">qic</span>(<span class="fu">reorder</span>(hospital, days), n, days,</span>
 <span id="cb97-3"><a href="funnel-plots-for-categorical-subgroups.html#cb97-3" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
@@ -506,8 +505,14 @@ Figure 15.3: Unordered ‘funnel’ plot of urinary tract infections
 Figure 15.4: Ordered funnel plot of urinary tract infections
 </p>
 </div>
-<p>In summary, funnel plots are SPC charts with categorical subgroups. They are useful for comparing indicator levels across organisational units. To ensure valid comparisons, it is essential to use data from a recent, stable period that reflects only common cause variation before constructing a funnel plot.</p>
+<p>In summary, funnel plots are SPC charts for categorical subgroups and are useful for comparing indicator levels across organisational units. To support meaningful comparison, it is important to use data from a recent period before constructing the funnel plot.</p>
 
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-spiegelhalter2005" class="csl-entry">
+Spiegelhalter, David J. 2005. <span>“Funnel Plots for Comparing Institutional Performance.”</span> <em>Statistics in Medicine</em> 24 (8): 1185–202. https://doi.org/<a href="https://doi.org/10.1002/sim.1970">https://doi.org/10.1002/sim.1970</a>.
+</div>
 </div>
             </section>
 
