@@ -73,7 +73,6 @@ fig:pareto-fig2
 fig:pareto-fig3
 fig:pitfalls-fig1
 fig:pitfalls-fig2
-fig:pitfalls-fig3
 fig:subgrouping-fig1
 fig:subgrouping-fig2
 fig:subgroups-fig3

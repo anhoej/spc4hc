@@ -13,75 +13,57 @@ knitr::opts_chunk$set(fig.asp = 2/4,
 library(qicharts2)
 ```
 
-While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a range of common missteps. Misinterpretation of data, misuse of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities, and may ultimately erode trust in SPC itself.
+While SPC is a powerful framework for data-driven quality improvement, its effectiveness can be undermined by a number of common missteps. Misinterpretation of data, inappropriate use of run and control charts, and faulty assumptions can lead to wasted effort or missed opportunities -- and may ultimately erode trust in SPC itself.
 
-This chapter outlines several common pitfalls to avoid.
+This chapter outlines some of the most common pitfalls and how to avoid them.
 
 ## Data issues
 
-SPC charts are only as good as the data behind them. Poor data quality, including inaccurate measurements, inconsistent definitions or data collected under conditions that vary over time or between locations can significantly compromise their reliability.
+SPC charts are only as good as the data on which they are based. Poor data quality -- such as inaccurate measurements, inconsistent definitions, or data collected under varying conditions across time or location -- can significantly compromise their reliability.
 
-How the subgroups are formed is especially important. Subgroups consist of the data elements included in each data point. The way data are sampled and grouped can greatly affect their ability to distinguish common cause variation from special cause variation. If subgrouping is not done properly, the SPC chart may generate false signals or obscure important ones. We have devoted a full chapter (\@ref(subgrouping)) to [rational subgrouping](#subgrouping).
+Particular attention must be paid to how subgroups are formed. Subgroups consist of the data elements that make up each plotted data point, and the way data are sampled and grouped has a major influence on the chart’s ability to distinguish between common cause and special cause variation. Poor subgrouping may generate false signals or obscure meaningful ones. For this reason, we devote an entire chapter (\@ref(subgrouping)) to rational subgrouping.
 
-Time spend developing operational indicator definition and rational subgroups often yields significant returns. Investing effort upfront ensures that data are meaningful and comparable, enabling better decision-making.
+Time spent developing clear operational definitions and rational subgrouping strategies is rarely wasted. Investing effort at this stage ensures that data are meaningful, comparable, and suitable for analysis.
 
 ## Signal fatigue from over-sensitive SPC rules
 
-Originally, control charts employed only one rule, the 3-sigma rule. However, to increase the chart's sensitivity to minor sustained shifts and other patterns of non-random variation, a plethora of supplementary rules have since been developed. To name a few, we have the Western Electric rules (four basic rules plus many more for specialised purposes), the Nelson rules (ten rules), and the Westgard rules (six rules). Most rules are based on identifying non-random patterns in the position of data points relative to the one-, two-, or three-sigma limits, each with different diagnostic properties.
+Originally, control charts relied on a single rule: the 3-sigma rule. Over time, numerous supplementary rules have been developed to increase sensitivity to smaller shifts and other patterns of non-random variation. These include the Western Electric rules, Nelson rules, Westgard rules, and various sets of runs rules.
 
-Furthermore, several distinct sets of rules for runs analysis based on identifying non-random patterns relative the the centre line have been published [@anhoej2015].
+While it may be tempting to apply many rules in order to detect every possible signal, this approach comes at a cost. Additional rules increase sensitivity, but they also increase the risk of false alarms. This trade-off is discussed in more detail in Appendix \@ref(diagnostics), [Two Types of Errors When Using SPC].
 
-As discussed earlier in this book, it may seem tempting to apply as many rules as possible to increase the chance of detecting any signs of special cause variation. However, this strategy comes at a price. While additional rules do increase the sensitivity of SPC analysis, they also raise the risk of false alarms. This topic is further explored in Appendix \@ref(diagnostics), [Two Types of Errors When Using SPC].
+Some commonly used rule sets are particularly prone to false signals. For example, a widely used set of run chart rules -- including tests for trends, shifts, and run counts [@perla2011] -- has been shown to produce a very high false positive rate. In a run chart with 24 data points, the probability of at least one false signal may approach 50% [@anhoej2015]. A major contributor is the "trend rule", defined as five or more consecutive data points increasing or decreasesing. Such short trends are common even in random data and are therefore unreliable indicators of change [@davis1988].
 
-Apart from the risk of applying too many rules, the rules themselves may also be either overly sensitive or insufficiently sensitive. A prominent example is a commonly used set of runs rules -- including four tests for trends, shifts, and too many or too few runs respectively -- adopted by many healthcare organisations [@provost2011; @perla2011]. This particular set has been shown to produce a very high rate of false signals. For instance, in a run chart with 24 data points, the expected false positive rate is close to 50% [@anhoej2015]. The main contributor appears to be the trend rule -- defined as five or more consecutive data points all increasing or decreasing. Short trends like this are very common, even in sequences of purely random numbers. Moreover, trend rules in general have been thoroughly studied and found to be, at best, unhelpful and, at worst, misleading [@davis1988].
+Another related pitfall is the deliberate tightening of control limits in an attempt to increase sensitivity. This often arises from an incorrect use of the overall standard deviation when calculating limits [@wheeler2010; @wheeler2016]. As emphasised throughout this book, control limits should be based on within-subgroup variation, not overall variation. Using the overall standard deviation incorporates special cause variation and inflates the limits, which may then prompt misguided attempts to narrow them artificially.
 
-To make matters worse, some practitioners deliberately tighten control limits in an attempt to increase the sensitivity of the sigma rule. This behaviour often stems from another common mistake: using the overall standard deviation to calculate control limits [@wheeler2010; @wheeler2016]. As emphasised repeatedly throughout this book, the overall variation is not appropriate for this purpose, as it includes both common cause and special cause variation -- ultimately inflating the control limits. Inflated limits can, in turn, prompt misguided attempts to narrow them artificially. Instead, control limits, set at ±3-sigma from the centre line, should be based on the estimated within-subgroup standard deviation from rationally formed subgroups. This approach captures common cause variation and provides a sound basis for meaningful process monitoring and improvement.
-
-To avoid signal fatigue -- which, at best, results in wasted effort from chasing false signals -- we recommend that practitioners select their rules carefully, focusing on capturing patterns that are most likely to signal special cause variation in their specific context. The three rules suggested in this book -- the two runs rules and the 3-sigma rule -- have been deliberately designed to detect patterns indicative of one or more of the types of variation most commonly encountered in healthcare improvement: freaks, shifts, trends or cycles, while keeping acceptable false alarm rates.
+To avoid signal fatigue, practitioners should use a small, carefully selected set of rules. The three rules recommended in this book -- the 3-sigma rule and the two runs rules -- provide a balanced approach, offering reasonable sensitivity while maintaining an acceptable false alarm rate.
 
 ## Confusing the voice of the customer with the voice of the process
 
-"Hearing voices" is essential to effective SPC implementation. Two voices demand close attention: the voice of the customer and the voice of the process. Both are important, but confusing one for the other  can lead to misguided actions, wasted effort, and poor decision-making.
+Effective SPC requires listening to two distinct "voices": the voice of the customer and the voice of the process. Confusing the two can lead to inappropriate actions and poor decisions.
 
-The voice of the customer refers to the expected or desired outcomes of the process, while the voice of the process reflects its actual capability and stability regardless of what the customer wants.
+The voice of the customer reflects desired performance and is typically expressed through specification limits or targets. The voice of the process, by contrast, reflects actual performance and capability, as revealed by the data and the control limits.
 
-The voice of the customer is often expressed through specification limits that define the desired level of outcomes. These limits may take the form of an upper or lower acceptance threshold, or an interval specifying the acceptable range for a given outcome.  For example, based on literature reviews or results from comparable units, it may be determined that an acute caesarean section should be completed within 30 minutes of the decision to operate. Any procedure taking longer than this would be considered unacceptable.
+For example, a target may specify that an emergency caesarean section should be completed within 30 minutes. It may be tempting to treat any case exceeding this threshold as a special cause requiring investigation. However, without considering whether the process is stable and what it is capable of, such an approach is misleading.
 
-If we listen only to the voice of the customer, it may be tempting to treat any caesarean section taking longer than 30 minutes as a special cause -- and perhaps even initiate a root cause analysis in each case. However, without also considering the voice of the process -- which tells us whether the process is stable and what it is actually capable of, as indicated by the control limits -- such an approach is flawed.
+Unacceptable outcomes may arise from stable processes, and acceptable outcomes may occur in unstable ones. Before acting on individual observations, we must determine whether variation is due to common causes or special causes. This distinction is crucial, as the appropriate response differs fundamentally.
 
-Unacceptable outcomes may well arise from highly stable and predictable processes -- and conversely, acceptable outcomes may result from unstable ones. Before taking action based on specific outcomes, we must first determine whether they are the result of common cause or special cause variation. This distinction is crucial, as each type of variation calls for a fundamentally different approach to improvement.
+Common cause variation requires changes to the system itself, while special cause variation requires investigation of specific events. The ultimate goal is to establish stable processes that consistently deliver acceptable outcomes.
+The relationship between these two "voices" can be summarised as follows:
 
-As detailed in Chapter \@ref(variation), [Understanding Variation], addressing common cause variation requires a thorough redesign of the entire process, while addressing special cause variation involves identifying the root causes of the special cause(s) and either eliminating or reinforcing them, depending on whether they are undesirable or beneficial. 
-
-The long-term goal of any improvement initiative is to establish stable processes that consistently deliver acceptable results. 
-
-The two voices and the corresponding four appropriate actions are summarised in the table below:
-
-|                          | **Process Stable**                      | **Process Unstable**                      |
-| ------------------------ | --------------------------------------- | ----------------------------------------- |
-| **Customer Satisfied**   | OK -- hands off and continue to monitor | Trouble ahead -- stabilise the process    |
-| **Customer Unsatisfied** | Trouble now -- revise the process       | Chaos -- revise and stabilise the process |
+|                          | **Process Stable**   | **Process Unstable**   |
+| ------------------------ | -------------------- | ---------------------- |
+| **Customer Satisfied**   | Maintain and monitor | Stabilise the process  |
+| **Customer Unsatisfied** | Redesign the process | Redesign and stabilise |
 
 Table: The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.
 
 ## Automatic rephasing
 
-Rephasing involves splitting an SPC chart to recalculate the centre line and control limits after a sustained shift has been identified.
+Rephasing involves splitting an SPC chart and recalculating the centre line and control limits after a sustained shift has been identified.
 
-Figure \@ref(fig:pitfalls-fig1) shows the number of hospital infections (C. diff.) before and after an intervention, which began after month 24.
+When done deliberately and with understanding of the underlying process, rephasing can be useful. Figure \@ref(fig:pitfalls-fig1), for example, correctly separates two stable periods before and after an intervention.
 
-```{r pitfalls-fig1, fig.cap='Hospital infections.'}
-qic(month, n,
-    data  = cdi,
-    chart = 'c',
-    title = 'Hospital associated C. diff.-infections',
-    ylab  = 'Count',
-    xlab  = 'Month')
-```
-
-Figure \@ref(fig:pitfalls-fig2) has been rephased following the start of the intervention and the subsequent shift. This correctly distinguishes two distinct periods, each with stable but differing levels of infections.
-
-```{r pitfalls-fig2, fig.cap='Hospital infections -- rephasing done right!'}
+```{r pitfalls-fig1, fig.cap='Hospital infections -- rephasing done right!'}
 qic(month, n,
     data  = cdi,
     chart = 'c',
@@ -91,11 +73,11 @@ qic(month, n,
     xlab  = 'Month')
 ```
 
-Automatic rephasing is when the centre line and control limits are recalculated *automatically* after the software detects a shift -- typically triggered by a prolonged run of data points on one side of the centre line. Some software packages perform automatic rephasing by default (@reading2021).
+However, some software systems perform automatic rephasing whenever a shift is detected. This can lead to misleading results.
 
-Figure \@ref(fig:pitfalls-fig3) has been automatically rephased following detection of the shift. Coincidentally, the run that signalled the shift began three months prior to the intervention. However, these months should correctly be considered part of the baseline period. As a result, the control limits and centre lines do not accurately reflect the distinct before-and-after periods. The centre lines are inflated, and a freak data point falsely suggests instability during the baseline period.
+In Figure \@ref(fig:pitfalls-fig2), automatic rephasing occurs too early, incorrectly assigning data points to the post-intervention period. This distorts the centre lines and control limits and may even create false signals of instability.
 
-```{r pitfalls-fig3, fig.cap='Hospital infections -- rephasing done wrong!'}
+```{r pitfalls-fig2, fig.cap='Hospital infections -- rephasing done wrong!'}
 qic(month, n,
     data        = cdi,
     chart       = 'c',
@@ -106,39 +88,38 @@ qic(month, n,
     xlab        = 'Month')
 ```
 
-We strongly discourage the use of automatic rephasing, as it can lead to misleading interpretations of process stability. By automating shift detection, automatic rephasing effectively removes the essential human insight into the process. Therefore, rephasing should be a deliberate decision made by individuals with a thorough understanding of the process and any associated interventions.
+Automatic rephasing removes essential human judgement from the process. For this reason, we strongly discourage its use. Rephasing should always be a deliberate decision, based on a clear understanding of the process and any associated interventions.
 
 Rephasing *may* be appropriate when the following conditions are met:
 
 * there is a sustained shift in data,
-* the reason for the shift is known,
+* the cause of the shift is known,
 * the shift is in the desired direction, and
-* the shift is expected to continue.
+* the shift is expected to persist.
 
-If any of these conditions is not met, we should rather seek to understand the nature and causes of any shift, following the strategy outlined in Chapter \@ref(using), [Using SPC in Healthcare].
+If these conditions are not met, the focus should remain on understanding the causes of variation.
 
 ## The control chart vs run chart debate
 
-It is a common and persistent misconception that control charts are inherently superior to run charts in detecting special cause variation (e.g. @carey2002b). Similarly, run charts and control charts are often viewed as fundamentally different methods, warranting distinct terminologies (e.g. @perla2011). We disagree with both notions.
+A common misconception is that control charts are inherently superior to run charts (e.g. @carey2002b). Similarly, the two are sometimes presented as fundamentally different methods (e.g. @perla2011). We disagree with both views.
 
-We refer to run charts and control charts collectively as SPC charts -- time series charts that use statistical tests to detect signs of special cause variation. These tests -- known as rules -- employ various techniques to identify patterns in data that are unlikely to arise in stable (i.e., purely random) processes.
 
-All SPC rules share a common basis: they rely on the position of data points relative to the process centre and/or process spread. For a detailed discussion of these concepts, see Appendix \@ref(diagnostics), [Basic Statistical Concepts].
+Run charts and control charts are best understood as variations of the same underlying concept: SPC charts -- time series charts that use statistical rules to detect non-random variation.
 
-Traditionally, control charts use rules based on sigma limits, while run charts apply rules based on the centre line. However, combining rules based on both centre and spread -- as we advocate throughout this book -- is not a new practice. Consider Rule #4 of the Western Electric rules -- a run of eight or more consecutive data points on the same side of the centre line. This rule, which is independent of sigma limits, is grounded in the same statistical principle as the two runs rules for unusually long or few runs.
+The main difference is that control charts include control limits, while run charts do not. Control limits help detect large, sudden changes and provide a visual representation of process variation. Runs analysis, on the other hand, is particularly effective for detecting smaller, sustained shifts and trends.
 
-Thus, run charts and control charts are two sides of the same coin, with the key difference being the presence or absence of control limits. These limits serve to quickly signal sudden, significant shifts in the data and to provide a visual representation of natural process variation. Runs analysis -- using rules for unusually long or few runs (or crossings) -- is more effective than control limits for detecting minor to moderate *sustained* shifts or trends in data. Combining these two principles offers the best of both worlds.
+These approaches are complementary rather than competing. In fact, some traditional control chart rules -- such as the Western Electric rule for runs -- are based on the same principles as runs analysis.
 
-Nonetheless, standalone run charts present some advantages over control charts. A key benefit is that run charts are a lot easier to construct than control charts using pen and paper only: plot the dots, and draw a horizontal line that splits data in half. 
+Run charts also offer practical advantages. They are simpler to construct, especially without specialised software, and they rely on fewer assumptions. Using the median as the centre line ensures a balanced division of data and reduces sensitivity to distributional assumptions.
 
-Additionally, using the median rather than the mean as the centre line effectively divides the data symmetrically, making the chart largely independent of distributional assumptions and less prone to misapplication. The latter being particularly important i healthcare were many practitioners lack formal statistical training.
-
-Finally, because runs analysis is most effective for detecting minor to moderate sustained shifts, which is ultimately what we seek when aiming to improve processes, run charts may be all that is needed during the improvement phase. Once a satisfactory level of improvement has been achieved, control limits can be added -- along with switching to the mean as the centre line -- to monitor process stability and quickly detect sudden larger, and possibly transient, shifts in the data.
+For improvement work, where the goal is to detect sustained changes, run charts are often sufficient. Control limits can be added later when the focus shifts to monitoring stability and detecting large, sudden changes.
 
 ## Assuming a one-to-one link between PDSA cycles and data points
 
-While this issue may not result in faulty SPC analyses, it often causes confusion among practitioners. SPC is frequently taught alongside improvement work using PDSA cycles, which can lead to the mistaken belief that there must be a one-to-one correspondence between PDSA cycles and data points on an SPC chart. In other words, any detected freak, shift or trend is assumed to be directly linked to specific PDSA cycles testing particular actions. Conversely, the absence of signals may be misinterpreted as evidence that a PDSA cycle has failed.
+A final source of confusion arises from the relationship between SPC charts and Plan-Do-Study-Act (PDSA) cycles. Because the two are often taught together, it is sometimes assumed that each data point on an SPC chart corresponds directly to a specific PDSA cycle.
 
-This is, however, far from always the case. PDSA cycles tend to run quickly (minutes, hours, days), while SPC charts reflect changes more slowly (days, weeks, months).
+In practice, this is rarely the case. PDSA cycles typically operate on short timescales -- minutes, hours, or days -- while SPC charts often reflect aggregated data over longer periods -- days, weeks, or months.
 
-Therefore, it is important for practitioners to recognise that SPC charts and PDSA cycles operate on different timescales and serve complementary but distinct purposes. SPC should be used as a broader monitoring tool to observe trends and shifts over time, while PDSA cycles focus on rapid, iterative testing and learning. Understanding this distinction helps ensure more effective use of both methods in quality improvement efforts.
+As a result, signals on an SPC chart cannot always be directly attributed to individual PDSA cycles, and the absence of signals does not necessarily imply that a change has failed.
+
+SPC and PDSA serve complementary but distinct purposes. SPC provides a broader view of process behaviour over time, while PDSA supports rapid, iterative testing and learning. Recognising this distinction helps ensure that both methods are used effectively in practice.
