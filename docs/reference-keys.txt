@@ -227,3 +227,10 @@ cutting-dates-and-datetimes
 getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+from-charts-to-practice-what-it-really-takes
+building-spc-into-everyday-systems
+working-with-variation-discipline-over-reaction
+scaling-spc-in-a-data-rich-world
+a-shared-future-principles-practice-and-community
+closing-remarks

@@ -16,7 +16,9 @@ source('R/load_data.R', local = knitr::knit_global())
 
 A subgroup consists of the data elements that make up a single data point, for example, the waiting times used to calculate the average waiting time for a particular period.
 
-Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms. In other words, rational subgrouping is all about maximising the signal-to-noise ratio.
+Rational subgrouping is one of the most important -- and most frequently misunderstood -- aspects of statistical process control. Poor subgrouping is a common reason why SPC charts fail in practice.
+
+Rational subgrouping is the intentional and intelligent sampling and grouping of data into data points for SPC charts, with the aim of maximising the chances of detecting special cause variation while minimising the risk of false alarms. In other words, rational subgrouping is about maximising the signal-to-noise ratio.
 
 A rational subgroup consists of a set of measurements or counts that are:
 
@@ -24,13 +26,13 @@ A rational subgroup consists of a set of measurements or counts that are:
 * taken close together in time and space, and
 * likely to show only common cause variation.
 
-The underlying logic is that when subgroups are rationally formed, variation within subgroups reflects common cause variation, whereas variation between subgroups that exceeds what is expected from within-subgroup variation indicates the presence of special causes.
+The underlying logic is simple but powerful: when subgroups are rationally formed, variation *within subgroups* reflects common cause variation, while variation *between subgroups* that exceeds what is expected from within-subgroup variation indicates the presence of special causes.
 
-In our experience -- particularly in healthcare -- rational subgrouping is something of a forgotten art. We often rely on whatever data are readily available, which are frequently pre-aggregated into monthly, quarterly, or even yearly time periods for administrative purposes rather than for quality improvement. This practice often leads to suboptimal use of data for driving improvement.
+In our experience -- particularly in healthcare -- rational subgrouping is something of a forgotten art. Too often, we rely on whatever data are readily available, typically pre-aggregated into monthly, quarterly, or yearly summaries for administrative purposes rather than for improvement. This often leads to suboptimal charts that obscure meaningful signals.
 
-## Too large subgroups — masking meaningful signals
+## Too large subgroups  --  masking meaningful signals
 
-A common mistake is forming subgroups across overly broad spans of time or space (e.g. organisational units), which blends common and special cause variation and effectively obscures the latter.
+A common mistake is to form subgroups across overly broad spans of time or space (e.g. large organisational units). This blends common and special cause variation and effectively hides the latter.
 
 As an example, figures \@ref(fig:subgrouping-fig1) and \@ref(fig:subgrouping-fig2) display the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.
 
@@ -54,19 +56,21 @@ qic(month, infections,
 
 ```
 
-By using larger subgoups, as shown in Figure \@ref(fig:subgrouping-fig2), we effectively mask the two signals -- a freak value and a sustained shift -- that suggest the process is trending downwards. Clearly, if the trend continues, it will eventually become apparent even with two-monthly data, but it will inevitably take longer to detect delaying any potential learning or intervention.
+By using larger subgroups, we mask two important signals -- a freak value and a sustained shift -- suggesting that the process is improving. While this trend may eventually become visible even with coarser data, detection is delayed, postponing learning and potential intervention.
 
-To avoid over-aggregating data by using excessively large subgroups, we need to record data at a temporal resolution that, at minimum, matches the expected rate of change we are trying to detect. High-resolution data can always be aggregated to a lower resolution if suitable (or necessary), but low-resolution data cannot be further resolved.
+A useful rule of thumb is: Collect data at a resolution at least as fine as the rate of change you want to detect.
 
-Note that the qic() function from qicharts2 includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure \@ref(fig:subgrouping-fig2).
+High-resolution data can always be aggregated later if needed. Low-resolution data cannot be disaggregated.
 
-## Too small subgroups — revealing unimportant noise
+Notice that the `qic()` function from qicharts2 includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure \@ref(fig:subgrouping-fig2).
 
-A less common -- but equally important -- mistake is to form subgroups that are too small, which fail to capture natural process noise and thus misinterpret it as special cause variation..
+## Too small subgroups  --  revealing unimportant noise
 
-Imagine stepping on a scale three times each morning for a couple of weeks, and plotting the results on an X-bar chart, using the within-subgroup (within-day) variation as the basis for calculating control limits.
+A less common -- but equally important -- mistake is to use subgroups that are too small. In this case, natural process variation may be misinterpreted as special cause variation.
 
-Figure \@ref(fig:subgroups-fig3) illustrates this with simulated data. As expected, the variation within each daily subgroup is very low, while the variation between subgroups is noticeably higher suggesting that our body weight is highly unstable from day to day. However, this difference between within- and between-subgroup variation merely reflects natural physiological fluctuations and is irrelevant to our goal of monitoring long-term body weight trends.
+Imagine weighing yourself three times each morning for a couple of weeks and plotting the results on an X-bar chart, using within-day variation to calculate control limits.
+
+Figure \@ref(fig:subgroups-fig3) illustrates this with simulated data.
 
 ```{r subgroups-fig3, fig.cap='Xbar-chart from too small subgroups.'}
 # lock random number generator for reproducibility
@@ -85,54 +89,74 @@ y <- jitter(y, amount = 0.2)
 qic(x, y, chart = 'xbar')
 ```
 
-A better strategy would be to plot data using an I-chart of the daily averages. The I-chart uses the moving range between successive subgroups as a basis for calculating control limits, which is -- in this case -- a much better representation of the day-to-day variation, which is really what we want to monitor.
+Here, within-subgroup variation is very small, while between-subgroup variation appears large -- suggesting instability. In reality, this reflects normal day-to-day physiological variation, not a meaningful signal.
+
+A better approach is to use an I chart of daily averages as in Figure \@ref(fig:subgroups-fig4):
 
 ```{r subgroups-fig4, fig.cap='I-chart of average daily body weight.'}
 qic(x, y, chart = 'i')
 ```
 
-Alternatively, we could devise a different sampling plan that produces subgroups better representing the process of interest -- for example, using weekly averages of daily measurements as subgroups.
+Alternatively, we could define subgroups differently -- for example, weekly averages -- depending on our goal.
 
-Depending on our goal, different subgrouping strategies may be appropriate. If the aim is to monitor and maintain a stable body weight, weekly subgroups may be sufficient. However, if the objective is to support a weight-reduction plan expecting significant weekly decreases, daily measurements could prove more useful.
+A practical guideline:
+
+* Monitoring stability → larger subgroups (e.g. weekly)
+* Detecting change → smaller subgroups (e.g. daily)
 
 ## Striking the balance
 
-As the chapter title suggests, rational subgrouping is as much an art as it is a science. In fact, it remains one of the more complex and unresolved challenges in statistical process control: to understand a process, we need rational subgroups -- but to form rational subgroups, we need to understand the process.
+Rational subgrouping is both an art and a science. It presents a fundamental challenge:
 
-In practice, we frequently need to try multiple approaches to subgrouping our data -- experimenting with different timeframes, organisational units or other dimensions -- before finding an approach that meaningfully reflects the underlying process behaviour.
+To understand a process, we need rational subgroups -- but to form rational subgroups, we need to understand the process.
 
-That said, in healthcare -- in contrast to the production industry -- there is often far less flexibility to tailor data collection to the requirements of SPC. In a production setting, where outputs are counted in the thousands and inputs are largely under control, it is possible to design highly specific sampling plans aligned to precise time intervals and structured across machinery, personnel and organisational units.
+In practice, subgrouping is often iterative. We experiment with different timeframes, organisational units, or groupings until the data begin to reflect meaningful process behaviour.
 
-In healthcare, by contrast, the smallest meaningful unit is typically the individual patient or procedure, situated within a specific organisational context or clinical pathway. Outcomes are shaped by a complex interplay of factors -- including clinical complexity, social determinants, people, and system-level variation. Unlike components in a production process, this variability cannot be standardised or controlled with the same degree of precision.
+This challenge is particularly pronounced in healthcare. Unlike manufacturing, where inputs and processes can be tightly controlled, healthcare processes are inherently complex. Outcomes are influenced by patient characteristics, clinical decisions, staffing, and system-level factors.
 
-However, that does not mean that we should not care about rational subgrouping. Although we may have limited control over input variation we can still design sampling strategies that aim to minimise the impact of these sources of variation by carefully selecting patient groups, clinical pathways, organisational units and time periods that reliably reflect the processes we aim to understand. Doing so helps preserve an optimal signal-to-noise ratio, enhancing our ability to detect meaningful changes.
+However, limited control does not mean no control. By carefully selecting:
+
+* patient groups
+* clinical pathways
+* organisational units
+* time intervals
+
+we can still design subgrouping strategies that reduce noise and improve signal detection.
 
 ## A practical approach for rational subgrouping
 
-There is no single ideal procedure for designing rational subgroups. As noted previously, this often requires an iterative process involving trial and error: Plan-Do-Study-Act. 
+There is no single correct method for defining rational subgroups. In practice, subgrouping is best approached as an iterative process -- often aligned with Plan-Do-Study-Act cycles.
 
-Here are a few suggestions to consider when designing rational subgroups:
+The following principles can guide your decisions:
 
-1. Consult individuals with expert knowledge of the process in question -- rational subgrouping is a collaborative effort, not merely a statistical exercise.
+* Work with process experts<br>
+  Rational subgrouping is not purely statistical -- it requires contextual understanding.
 
-1. Develop a detailed model of the process -- including inputs, outputs, and factors that may influence either.
+* Map the process<br>
+  Identify inputs, outputs, and sources of variation.
 
-1. Consider whether your objective is monitoring or improving the process.
+* Clarify your purpose<br>
+  Are you monitoring stability or trying to detect improvement?
 
-1. Consider the level of organisational granularity at which the data should be analysed, and whether aggregation or stratification is appropriate.
+* Choose appropriate granularity<br>
+  Decide whether to aggregate or stratify by time, location, or population.
 
-1. Consider the rate of change you aim to detect.
+* Match sampling to expected change<br>
+  Sample more frequently than the rate at which change is expected.
 
-1. Choose a timeframe for sampling that is shorter than the expected rate of change.
+* Ensure sufficient data per subgroup<br>
+  Count data: aim for ≥5 events.<br>
+  Proportion data: ensure sufficient denominator.
 
-1. For count data, select a timeframe for sampling long enough to capture at least five events or cases (numerator); for proportion data, ensure there are at least five additional opportunities (denominator).
+* Be prepared to adapt<br>
+  Revise your approach as you learn more about the process.
 
-1. Remain flexible and open to revising your sampling strategy as new insights emerge.
-
-Note that decisions about temporal and organisational granularity (#4–6) may conflict with the requirement for sufficiently large subgroups (#7) to ensure meaningful analysis. In such cases, it may be necessary to compromise or explore alternative methods to monitor the processes of interest -- for example using different indicators or charts better suited for rare events.
+These principles often involve trade-offs. For example, increasing temporal resolution may reduce subgroup size. In such cases, alternative approaches -- such as different chart types (e.g. rare event charts) -- may be more appropriate.
 
 ## Rational subgrouping in summary
 
-Despite the section header, there is no truly concise way to explain rational subgrouping. It is one of the most challenging aspects of SPC to understand and apply correctly -- not least because there is no single recipe for getting it right.
+Rational subgrouping is one of the most challenging aspects of SPC -- and one of the most important. There is no universal recipe. It requires judgement, experimentation, and a deepening understanding of the process over time.
 
-Still, there is no excuse -- getting rational subgrouping right is what separates meaningful SPC charts from those that mislead or fall short.
+But one thing is clear: Poor subgrouping produces misleading charts. Good subgrouping reveals the truth about the process.
+
+Getting subgrouping right is not optional - it is what separates SPC charts that inform improvement from those that obscure it.
