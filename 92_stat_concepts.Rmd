@@ -13,52 +13,51 @@ knitr::opts_chunk$set(fig.asp = 3/5,
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-Understanding data is the cornerstone of effective decision-making in any quality improvement context. While this chapter is not intended as a comprehensive statistical tutorial, it introduces key concepts related to data types, basic statistical summaries, and visualisation techniques that support meaningful application of appropriate SPC charts and help ensure that valid data-driven conclusions can be drawn.
+Understanding data is the foundation of effective decision-making in quality improvement. While this chapter is not intended as a comprehensive statistics course, it introduces key concepts related to data types, summarisation, and visualisation.
+
+These concepts are essential for selecting appropriate SPC charts, interpreting patterns correctly, and ensuring that conclusions drawn from data are valid.
 
 ## Data types
 
-Data can be classified into several types, with the most common being categorical and numerical data.
+Data can broadly be classified into categorical and numerical types. Distinguishing between these is crucial, as it determines how data can be analysed and visualised.
 
 ### Categorical data
 
-Categorical data, also known as qualitative data, represent characteristics that cannot be meaningfully measured on a numerical scale, for example [red, green, blue], [medicine, surgery, psychiatry] or [low, medium, high]. Categorical data cannot be directly analysed using arithmetic operations -- what is the sum of red, green and blue, for example?
+Categorical (qualitative) data describe characteristics rather than quantities. Examples include: colours [red, green, blue], specialities [medicine, surgery, psychiatry], and risk levels [low, medium, high]. 
 
-Categorical data can be divided into:
+These data cannot be meaningfully combined using arithmetic operations. Categorical data can be further divided into:
 
-* Nominal data: Categories without a natural order, e.g. [red, green, blue] or [medicine, surgery, psychiatry].
+* **Nominal** data: Categories without inherent order, e.g. [red, green, blue].
+* **Ordinal** data: Categories with a meaningful order but unequal intervals, e.g. [low < medium < high].
 
-* Ordinal data: Categories with a meaningful order, but without consistent intervals between them, e.g. [low < medium < high].
+If only two categories exist (e.g. yes/no, alive/dead), the data are binary (or binomial).
 
-If categorical data consist of only two possible values -- such as yes/no, true/false or dead/alive -- they are referred to as binary or binomial data.
+Categorical data are often converted into numbers by counting frequencies. In some cases, ordinal categories may be assigned numerical scores, but this should only be done when the intervals are meaningful. For example, converting cancer stages [I, II, III] to [1, 2, 3] is misleading unless the progression is truly proportional.
 
-Categorical data can be transformed into numerical form by counting the number of observations in each category. In some (rare) cases, it may be appropriate to assign numerical values to ordinal data, such as school grades, thereby enabling the use of arithmetic operations. However, we should be careful not to impose numerical values on any ordinal data unless the intervals are consistent and well-defined. It may be tempting to converts, for instance, cancer stages [I, II, III] into numbers [1, 2, 3]. But this will only make sense, if cancer stage II is exactly twice as severe as stage I, and stage III three times as severe.
-
-Note that some categorical data -- such as postal codes, insurance numbers and phone numbers -- may appear numerical but are actually categorical. To identify such cases, ask whether it makes sense to calculate a sum or an average. If not, the values should be treated as categories rather than numbers.
+Finally, some data may appear numerical but are actually categorical identifiers (e.g. postal codes, ID numbers). A simple test is to ask: does it make sense to calculate an average? If not, the data are categorical.
 
 ### Numerical data
 
-Numerical data, also known as quantitative data, consist of values that represent measurable quantities. These data can be meaningfully analysed using arithmetic operations such as addition or subtraction.
+Numerical (quantitative) data represent measurable quantities and can be analysed using arithmetic operations.
 
-Numerical data fall in two main subtypes:
+They are divided into:
 
-* Discrete data: Distinct, separate values that result from counting and are always expressed as whole numbers (including zero). Examples include number of pregnancies, pressure ulcers and hospital admissions.
-
-* Continuous data: Values obtained through measurement that can take on any value within a given range, including decimals, fractions and negative numbers. Examples include height, weight, waiting time and blood pressure.
-
-Just as categorical data can be converted into numbers through counting, numerical data can be transformed into categories by grouping values into defined ranges — for example, converting exact blood pressure readings into hypertension categories such as normal, elevated, stage 1 hypertension, and stage 2 hypertension.
+* **Discrete** data: counts (whole numbers), e.g. number of admissions, infections
+* **Continuous** data: measurements (any value within a range), e.g. height, weight, waiting time
+        
+Numerical data can also be grouped into categories (e.g. blood pressure categories), but doing so reduces information and should be done with care.
 
 ## Summarising categorical data
 
-In this section we use the [Adverse events](#adverse-events) dataset assigned to the variable ae.
- 
-As mentioned, categorical data are most commonly summarised by counting the number of observations in each category, typically presented as frequencies or proportions (or percentages). In R, this can be easily done using the table() function.
+Categorical data are typically summarised using counts or proportions.
+Using the [Adverse events](#adverse-events) dataset assigned to the variable ae:
 
 ```{r}
 # count number of adverse events in each category
 (ae.tbl <- table(ae$category))
 ```
 
-A useful visualisation of categorical data is the bar chart displaying either the frequencies or proportions in each category:
+Visualisation is often done using bar charts:
 
 ```{r stat-bar1, fig.cap='Bar chart of adverse event frequencies'}
 # plot frequencies
@@ -72,7 +71,7 @@ barplot(prop.table(ae.tbl))
 
 The only difference between figures \@ref(fig:stat-bar1) and \@ref(fig:stat-bar2) is the y-axis scale.
 
-For binary data, a summary may simply involve calculating the proportion or percentage of one category relative to the total, for example the proportion of adverse events with fatal outcome:
+For binary data, we often summarise using proportions:
 
 ```{r}
 # proportion of fatal adverse events (severity = 'I').
@@ -81,87 +80,73 @@ mean(ae$severity == 'I')
 
 ## Summarising numerical data
 
-For this section we use the [Robson group 1 births](#robson-group-1-births) and the [Renography doses](#renography-doses) datasets assigned to the births and reno variables respectively.
+Numerical data are typically described using:
 
-Numerical data are commonly summarised using three key characteristics: central tendency, distribution shape and spread (variation). In R, the summary() function provides a quick overview of all three:
+* **Centre** (central tendency)
+* **Shape** (distribution)
+* **Spread** (variation)
+
+A quick overview can be obtained using the `summary()` function:
 
 ```{r}
 # summarise the length of newborn babies
 summary(births$length)
 ```
 
-summary() is a generic function that behaves differently depending on the type of input. With numerical input, it returns a table displaying the minimum and maximum values, the three quartiles (1st, Median, 3rd), the mean and the number of NA values (if any).
+### Centre
 
-Quartiles are the three values that divide a dataset into four equally sized parts. 25% of the data values fall below the first quartile, 50% fall below the second quartile (median), and 75% fall below the third quartile.
+The centre describes the “typical” value in the data.
+    
+* **Mean**: average of all values
+* **Median**: middle value
 
-A most useful visualisation of the distribution of continuous data is the histogram:
+The mean is sensitive to extreme values, whereas the median is robust.
+
+Example:
+
+* [1, 2, 3] → mean = 2, median = 2
+* [1, 2, 999] → mean = 334, median = 2
+
+In SPC:
+
+* Mean is used for control charts
+* Median is used for run charts
+
+The median is particularly useful for runs analysis because it splits the data into two equal halves, ensuring balanced probabilities.
+
+### Shape
+
+The shape describes how values are distributed.
+
+Key features include:
+
+* **Symmetry / skewness**
+  - symmetric: mean ≈ median
+  - right-skewed: long tail to the right, mean > median
+  - left-skewed: long tail to the left, mean < median
+* **Modality**
+  - unimodal: one peak
+  - bimodal: two peaks
+
+Histograms provide a clear visualisation (Figure \@ref(fig:stat-hist1)):
 
 ```{r stat-hist1, fig.cap = 'Histogram of birth lengths.'}
 hist(births$length)
 ```
 
-A histogram groups data into intervals, called bins, and shows how many values fall within each interval. It is similar to a bar chart, but the bars are touching to reflect the fact that the data are continuous.
-
-Note that there are much more to histograms than meets the eye. For a deeper understanding and additional options, read the documentation (`?hist`).
-
-### Centre
-
-The central tendency of a dataset refers to the typical or central value around which the data points cluster. It represents the centre of the distribution. Common measures of central tendency include the mean and the median.
-
-The **mean** is perhaps the better-known of the two. It is calculated by summing all the values and dividing by the total number of values. For example, the mean of the values [1, 2, 3] is (1 + 2 + 3) / 3 = 2.
-
-The **median** -- often overlooked but equally important -- is the middle value when the data are sorted in order. For example, given the values [2, 1, 3], the median is 2 (remember to sort first). If there is an even number of values, the median is the mean of the two central values; for instance, for [1, 2, 3, 4], the median is 2.5.
-
-In the previous examples, the mean and the median are identical. This occurs when the data are perfectly symmetrical. However, when the data are skewed -- that is, spread unevenly on either side of the centre -- the mean and median can differ significantly. For example, consider the values [1, 2, 999]. The mean is 334, heavily influenced by the extreme value, whereas the median remains 2, effectively splitting the dataset in halves.
-
-Imagine a playground seesaw with a child and an adult seated at opposite ends. The mean corresponds to the balance point of the seesaw, shifting closer to the heavier adult, reflecting the weighted average of the two positions. In contrast, the median represents the midpoint of the plank itself, simply dividing the seesaw into halves regardless of weight.
-
-The choice between using the mean or the median depends largely on the purpose of the analysis as well as the characteristics of the data distribution. 
-
-The mean is useful when we want to consider every value in the dataset and obtain a measure that reflects the overall average, especially when the data are symmetrically distributed without extreme outliers.
-
-On the other hand, the median is often preferred when the data are skewed or contain outliers, as it provides a measure of central tendency that is resistant to extreme values and better represents the "typical" observation in such cases. 
-In SPC, the median is particularly useful for runs analysis with run charts. Because the median reflects the midpoint of the data, there is an equal probability -- fifty-fifty -- that any individual data point will fall above or below it. This balance is crucial for runs analysis, as it ensures that the number and length of runs (consecutive points above or below the median) can be assessed against expected probabilities under random variation. Consequently, using the median helps accurately detect non-random trends or shifts in the process regardless of the shape of data.
-
-In our birth lengths data, the mean and the median are nearly identical: 51.7 vs 52.0.
-
-Understanding the shape and spread of the data helps inform which measure will provide the most meaningful summary. 
-
-### Shape
-
-The shape of a dataset refers to the overall pattern or distribution of values. Two key features that describe the shape of data are symmetry and modality.
-
-**Symmetry** describes how evenly the values are distributed around the centre. In a perfectly symmetrical distribution the left and right sides are mirror images and the mean and the median are identical. 
-
-When one side of the distribution extends further than the other, the data are said to be skewed. If the tail extends towards higher values, the distribution is right-skewed (positively skewed), and the mean is greater than the median. If it extends towards lower values, it is left-skewed (negatively skewed), and the mean is less than the median. Examples of data that are often right-skewed include waiting times and income, where most observations cluster around the lower end of the scale, while a few extreme values create a long tail extending towards higher values.
-
-Symmetry is also characterised by the mean and median being approximately centred between the minimum and maximum values.
-
-Because the mean and median of birth length are very close, we may assume that the data are approximately symmetrical. However, neither the mean nor the median is well centred between the minimum and maximum values, suggesting that the distribution may still be slightly skewed or influenced by outliers at one end.
-
-The histogram in Figure \@ref(fig:stat-hist1) provides a much clearer and more detailed picture of the shape of the data. The majority of values are symmetrically centred, but a few data points have unusually low values (birth length = 35 cm) suggesting a left-skew. However, these outliers appear unlikely for full-term babies and should be investigated further before proceeding with analysis.
-
-**Modality** refers to the number of peaks or modes in a distribution. A unimodal distribution has one clear peak, bimodal has two peaks, and multimodal has more than two. Bi- or multimodal distributions indicate the presence of important subgroups in data that need to be taken into account when analysing data.
-
-```{r stat-hist2, fig.cap='Histogram of radiation doses used for renography.'}
-hist(reno$dose)
-```
-
-Figure \@ref(fig:stat-hist2) shows an example of bimodal data, suggesting the presence of two distinct groups of renography procedures -- each likely driven by a different underlying cause that is unknown to us. Before plotting these data -- as we did in Chapter \@ref(limits) -- we should first seek an explanation for the observed pattern and consider stratifying the data according to the underlying procedural strategy.
+Bi- and multi-modal data often indicate different underlying processes and should prompt investigation and possible stratification.
 
 ### Spread
 
-The concept of spread in data is fundamental to SPC, as we have discussed numerous times throughout this book -- although the term "spread" itself has not been explicitly introduced until now. Spread refers to the variability or diversity within the data, indicating how much the values differ from each other.
+Spread describes how much the data vary.
 
-When constructing control limits, we rely on the standard deviation (SD or sigma) of common cause variation as a primary measure of spread. However, standard deviation is not the only useful spread indicator. As demonstrated above, the summary() function provides additional measures that reflect the spread of data.
+Common measures:
 
-The range represents the distance between the highest and lowest values in a dataset, while the interquartile range (IQR) captures the spread of the middle 50% of the data — calculated as the difference between the third and first quartiles.
+* **Range**: max − min
+* **Interquartile range** (IQR): middle 50%
+* **Standard deviation** (SD): average distance from the mean
 
-The **range** is easy to understand but has limited usefulness on its own, as it tends to increase with sample size. As the number of observations grows, so does the likelihood of including rare -- though not necessarily unusual -- values.
-
-The **interquartile range**  is a more robust measure of spread and can also offer some insight into the shape of the distribution through the position of the centre relative to the quartiles. However, it becomes unreliable with very small sample sizes. When fewer than five values are present -- at the very least -- calculating quartiles is effectively meaningless.
-
-A simple, useful and compact alternative to histograms is the box plot, which provides a visual summary of the central tendency and spread of a dataset.
+A useful visual summary is the boxplot (Figure \@ref(fig:fig.stat-box1)):
 
 ```{r stat-box1, fig.cap='Boxplot of birth lengths.'}
 boxplot(births$length)
@@ -169,55 +154,33 @@ boxplot(births$length)
 
 The box in a box plot represents the interquartile range (IQR), while the line inside the box indicates the median. The whiskers extend from either end of the box to the smallest and largest values that lie within 1.5 times the IQR from the quartiles. Any dots beyond the whiskers represent more extreme values -- often referred to as outliers, though there is often nothing truly outlandish about them.
 
-As long as data have a unimodal shape, the box plot is a very effective visualisation of both the centre, shape and spread of a distribution.
+In SPC, **standard deviation** is central because it defines control limits.
 
-Box plots are especially useful with grouped data as in Figure \@ref(fig:stat-box2), which compares the birth length of boys and girls, suggesting that, on average, boys are slightly longer than girls.
+For many distributions:
 
-```{r stat-box2, fig.cap='Stratified boxplot.'}
-boxplot(length ~ sex, births)
-```
+* ~68% within ±1 SD
+* ~95% within ±2 SD
+* ~99% within ±3 SD
 
-The **standard deviation** is perhaps the most commonly used measure of spread in a dataset. It tells, on average, how far from the mean each data value lies.
-
-To calculate SD we use 
-
-$$
-SD = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}
-$$
-
-That is, the square root of the sum of squared deviations from the mean divided by one less than the number of values.
-
-SD can always be calculated, but its usefulness depends on the underlying distribution of the data. This is why we first introduced the range and interquartile range, which are reliable measures of spread regardless of the distribution.
-
-When data follow a Gaussian (or normal) distribution -- which we will talk more about in the next section -- the standard deviation has some particularly useful properties:
-
-Approximately
-
-* 68% of data values fall within ±1 SD of the mean,
-* 95% fall within ±2 SD, and
-* 99.7% fall within ±3 SD.
-
-The first two rules depend heavily on data’s underlying distribution. However, the third rule -- that "most" data points fall within ±3 SD -- holds true for many common distributions. Without delving into technical details, it can be shown that for any unimodal distribution, at least 95% of the data lie within three standard deviations of the mean. For many common unimodal distributions, especially those that are roughly symmetric, this proportion can rise to more than 98%.
-
-This fact supports the use of three-sigma limits in SPC charts regardless of the distribution of data and cautions against adopting tighter limits solely to increase sensitivity.
+This supports the use of three-sigma limits even when data are not perfectly normal.
 
 ## Theoretical distributions
 
-So far we have mainly concerned ourselves with empirical distributions -- examining the centre, shape and spread of real-world datasets. In this section we will take a look at some important theoretical distributions.
+While SPC is primarily empirical, theoretical distributions help define expected variation. We focus on three:
 
-A theoretical distribution is a mathematical model that describes the probabilities of different outcomes in a given situation. For instance, consider tossing a fair coin. While we cannot predict the outcome of any single toss, we know that the set of possible outcomes is [heads, tails], each with a probability of 1/2. Similarly, when rolling a fair six-sided die, the possible outcomes are [1, 2, 3, 4, 5, 6], each occurring with a probability of 1/6.
-
-Given this type of information, we are able -- through the use of probability theory -- to predict the probability of any future outcome or combination of outcomes.
-
-Numerous theoretical distributions have been described, but for our purposes in SPC, we are primarily concerned with three: the Poisson, the binomial, and the Gaussian (or normal) distribution. The Poisson and binomial distributions are used for count data, while the Gaussian distribution is applied to measurement data.
+* Poisson (counts)
+* Binomial (proportions)
+* Gaussian (continuous data)
 
 ### Poisson distribution -- predicting the number of events
 
-The Poisson distribution -- named after the French mathematician Siméon Poisson -- describes the probability of a given number of events occurring within a fixed time interval, assuming that the events happen independently of one another and at a constant average rate, commonly denoted by lambda (λ). It is used to estimate the control limits for C- and U-charts.
+The Poisson distribution -- named after the French mathematician [Siméon Poisson](https://en.wikipedia.org/wiki/Sim%C3%A9on_Denis_Poisson) -- describes the probability of a given number of events occurring within a fixed time interval, assuming that the events happen independently of one another and at a constant average rate, commonly denoted by lambda (λ). It is used to estimate the control limits for C- and U-charts.
 
-Based on the birth data, we estimate the expected birth rate to be approximately 2,200 births per year, averaging to about 6 births per day. 
+Based on the birth data, we estimate the expected birth rate to be about 6 births per day. 
 
-I R, we can use the dpois() function to calculate the probability (or density) of any given number of births in a day. For example, the probability of having exactly 9 births in one days is `dpois(9, lambda = 6) =` ``r dpois(9, 6)``. The standard deviation of a Poisson distribution conveniently equals the square root of lambda, $SD = \sqrt{\lambda}$, in this case, approximately 2.45. When working with case rates, $SD = \sqrt{\lambda / n_i}$, where n~i~ is the size of i^th^ time interval (the area of opportunity).
+I R, we can use the `dpois()` function to calculate the probability (or density) of any given number of births in a day. For example, the probability of having exactly 9 births in one days is `dpois(9, lambda = 6) =` ``r dpois(9, 6)``. 
+
+The standard deviation of a Poisson distribution conveniently equals the square root of lambda, $SD = \sqrt{\lambda}$, in this case, approximately 2.45. When working with case rates, $SD = \sqrt{\lambda / n_i}$, where n~i~ is the size of i^th^ time interval (the area of opportunity).
 
 To visualise discrete probability distributions, we use bar (or stick) charts as demonstrated in Figure \@ref(fig:stat-dpois).
 
@@ -239,11 +202,13 @@ For low values of lambda, the Poisson distribution is right-skewed; however, as 
 
 The binomial distribution describes the probability of obtaining a given number of cases -- often referred to as successes or failures -- in a fixed number of independent trials (or opportunities), each with two possible outcomes (such as yes/no or pass/fail), and a constant probability of success.
 
-The standard deviation of a binomial distribution is $SD = \sqrt{np(1-p)}$, where n is the sample size and p the success proportion. Often, we prefer to work with the proportion of cases rather than the count (as in P-charts). In this case, the standard deviation of the proportion is calculated as $SD = \sqrt{p(1-p)/n}$
+The standard deviation of a binomial distribution is $SD = \sqrt{np(1-p)}$, where n is the sample size and p the success proportion. Often, we prefer to work with proportions rather than counts (as in P-charts). In this case, the standard deviation is calculated as $SD = \sqrt{p(1-p)/n}$
 
 For example, if we consider each birth as a trial (opportunity) and define a case as a caesarean section (C-section), the binomial distribution can be used to model the probability of observing a specific number of C-sections within a set number of births.
 
-In R, the dbinom() function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of opportunites (sample size) and the average probability of a case. Based on the birth data, we estimate there are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use the following command:
+In R, the `dbinom()` function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of opportunities (sample size) and the average probability of a case. 
+
+There are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use:
 `dbinom(6, size = 42, prob = 0.09) =` ``r dbinom(6, size = 42, prob = 0.09)``.
 
 ```{r stat-dbinom1, fig.cap='Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09).'}
@@ -256,15 +221,17 @@ plot(x, dbinom(x, size = 42, prob = 0.09),
      xlab = 'Number of C-sections')
 ```
 
-As with the Poisson distribution, the binomial distribution is censored at zero. However, unlike the Poisson, its upper limit is fixed and equal to the sample size, since it models a finite number of opportunities The shape of the binomial distribution is perfectly symmetric when the success probability is close to 50% and grows increasingly skewed when this approaches 0% (right-skew) or 100% (left-skew). The degree of skewness depends largely on the sample size -- bigger samples, less skew and more symmetry.
+As with the Poisson distribution, the binomial distribution is censored at zero (Figure \@ref(fig:stat-dbinom1)). However, unlike the Poisson, its upper limit is fixed and equal to the sample size, since it models a finite number of opportunities.
+
+The shape of the binomial distribution is perfectly symmetric when the success probability is close to 50% and grows increasingly skewed when this approaches 0% (right-skew) or 100% (left-skew). The degree of skewness depends largely on the sample size -- bigger samples, less skew and more symmetry.
 
 These considerations are important when designing a sampling plan. To quickly gather enough data points for a control chart, smaller samples are preferable; however, to maintain symmetry -- which is important for the reliability of the P-chart -- larger samples are needed.
 
 ### Gaussian distribution -- predicting the probability of continuous outcomes
 
-The Gaussian distribution, named after the German mathematician Carl Gauss and often referred to as the normal distribution -- though there is nothing inherently "normal" about it -- is a continuous probability distribution widely used to model many real-world phenomena.
+The Gaussian distribution, named after the German mathematician [Carl Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss) and often referred to as the normal distribution -- though there is nothing inherently "normal" about it -- is a continuous probability distribution widely used to model many real-world phenomena.
 
-Figure \@ref(fig:stat-hist3) shows a histogram of birth weights, where each bin represents the number of data points that fall within a specific range.
+Figure \@ref(fig:stat-hist3) shows a histogram of birth weights, where each bin represents the number of weights that fall within a specific range.
 
 ```{r stat-hist3, fig.cap='Histogram of birth weights'}
 hist(births$weight, breaks = 20)
@@ -303,8 +270,19 @@ pnorm(avg_w + 3 * std_w,    # area below mean + 3 SD
 
 ## Basic statistical concepts in summary
 
-In this chapter, we have explored several fundamental concepts essential for understanding data in general, and for applying SPC methods in particular.
+In this chapter, we have introduced key concepts for understanding data:
 
-We began by examining the two primary types of data: categorical and numerical. Understanding these distinctions is crucial, as they determine the appropriate methods for summarising and analysing information. We then discussed how to generate meaningful summaries of data using both numerical measures (such as the mean, median, interquartile range, and standard deviation) and graphical techniques (including bar charts, histograms and boxplots).
+* Types of data (categorical vs numerical).
+* Methods for summarising data (counts, proportions, centre, spread).
+* Visual tools (bar charts, histograms, boxplots).
+* Theoretical distributions used in SPC.
 
-Before undertaking any detailed data analysis, it is good practice to create initial plots that illustrate key characteristics of the dataset -- specifically its centre, shape and spread. These visualisations can reveal important features such as skewness, the presence of outliers, or potential data quality issues, all of which may influence subsequent analysis and interpretation.
+Before constructing SPC charts, it is good practice to:
+
+* visualise the data,
+* assess centre, shape, and spread, and
+* check for anomalies or data quality issues.
+
+These steps help ensure that SPC methods are applied appropriately and interpreted correctly.
+
+Ultimately, good SPC depends not only on statistical methods, but on understanding the data and the process that generated them.
