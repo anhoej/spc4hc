@@ -443,42 +443,49 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="diagnostics" class="section level1 hasAnchor" number="23">
 <h1><span class="header-section-number">C</span> Two Types of Errors When Using SPC<a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Classifying variation into common cause or special cause is the primary focus of statistical process control methodology. In practice, this classification is subject to two types of error which can be compared to an imperfect screening test that sometimes shows a patient has disease when in fact the patient is free from disease (false positive), or the patient is free from disease when in fact the patient has disease (false negative).</p>
-<ul>
-<li><p>False positive (type 1 error): Treating an outcome resulting from a common cause as if it were a special cause and (wrongly) seeking to find a special cause, when in fact the cause is the underlying process.</p></li>
-<li><p>False negative (type 2 eroor): Treating an outcome resulting from a special cause as if it were a common cause and so (wrongly) overlooking the special cause.</p></li>
-</ul>
-<p>Either mistake can cause losses. Treating all data as special cause variation maximises the losses from false positives; and treating all data as common cause variation maximises the losses from false negatives.</p>
-<p>Unfortunately, in practice it is impossible to reduce both mistakes to zero. Shewhart sought a strategy to make either mistake only rarely and concluded that this depended largely upon the costs of looking unnecessarily for special cause variation. Using mathematical theory, empirical evidence, and pragmatism, he argued that setting control limits to three standard deviations below and above the mean provides a reasonable balance between making the two types of mistakes.</p>
+<p>The primary aim of statistical process control is to distinguish between common cause and special cause variation. In practice, this classification is not perfect. As with any diagnostic method, SPC is subject to two types of error. A useful analogy is a screening test that may indicate disease in a healthy patient (a false positive) or fail to detect disease in a patient who is actually ill (a false negative).</p>
+<p>Applied to SPC, the two errors are:</p>
+<p><strong>False positive</strong> (Type I error): Treating an outcome arising from common cause variation as if it were due to a special cause, and therefore wrongly searching for a special cause when the true source of variation is the underlying process.</p>
+<p><strong>False negative</strong> (Type II error): Treating an outcome arising from a special cause as if it were due to common cause variation, and therefore wrongly overlooking the special cause.</p>
+<p>Either mistake can be costly. If we treat all variation as special cause variation, we maximise the losses associated with false positives. If we treat all variation as common cause variation, we maximise the losses associated with false negatives.</p>
+<p>Unfortunately, it is impossible to reduce both kinds of error to zero. Shewhart therefore sought a practical strategy that would make both errors relatively rare. He concluded that this depended largely on the cost of looking unnecessarily for special causes. Drawing on theory, empirical evidence, and pragmatism, he argued that control limits placed three standard deviations above and below the mean provide a reasonable balance between the two kinds of error.</p>
 <div id="quantifying-the-diagnostic-error-of-spc-charts" class="section level2 hasAnchor" number="23.1">
 <h2><span class="header-section-number">C.1</span> Quantifying the diagnostic error of SPC charts<a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="average-run-length" class="section level3 hasAnchor" number="23.1.1">
 <h3><span class="header-section-number">C.1.1</span> Average run length<a href="diagnostics.html#average-run-length" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Traditionally, the performance characteristics of SPC charts have been evaluated through the so-called average run length (ARL), that is, the average number of data points until a special cause is signalled <span class="citation">(<a href="#ref-montgomery2020">Montgomery 2020, 186</a>)</span>:</p>
+<p>Traditionally, the performance of SPC charts has been described using the average run length (ARL), that is, the average number of data points before a signal occurs <span class="citation">(<a href="#ref-montgomery2020">Montgomery 2020, 186</a>)</span>.</p>
+<p>The in-control average run length is:</p>
 <p><span class="math display">\[ ARL_0=\frac{1}{\alpha} \]</span>
-for the in-control ARL, when no special cause is present, and</p>
+where the process is stable and only common cause variation is present.</p>
+<p>The out-of-control average run length is:</p>
 <p><span class="math display">\[ ARL_1=\frac{1}{1-\beta} \]</span>
-for the out-of-control ARL, when a special cause is present, where</p>
+where a special cause is present.</p>
+<p>Here,</p>
 <p><span class="math display">\[ \alpha=P\{\text{signal | common cause variation}\}=P\{\text{false positive}\}=P\{\text{type 1 error}\} \]</span></p>
+<p>is the probability of a false positive, and</p>
 <p><span class="math display">\[ \beta=P\{\text{no signal | special cause variation}\}=P\{\text{false negative}\}=P\{\text{type 2 error}\} \]</span></p>
-<p>For example, in a common cause process with normal data the chance (<span class="math inline">\(\alpha\)</span>) of a data point falling outside the 3-sigma limits is 0.0027 and <span class="math inline">\(ARL_0=1/0.0027=370\)</span>, meaning that we should expect to wait on average 370 data points between false alarms.</p>
-<p>The out-of-control ARL depends on the false negative risk, <span class="math inline">\(\beta\)</span>, which in turn depends on the size of the shift (signal) relative to the size of the common cause variation (noise).</p>
-<p>The ideal control charts would have <span class="math inline">\(ARL_0=\infty\)</span> and <span class="math inline">\(ARL_1=1\)</span>. In practice, this is not possible because ARLs are linked – if one goes up, the other goes down.</p>
-<p>ARLs are related to sensitivity and specificity, which may be more familiar to healthcare workers. In general, sensitivity and specificity tell how well a test is able to identify the presence or absence of a certain condition.</p>
-<p>Specifically, regarding SPC charts:</p>
+<p>is the probability of a false negative.</p>
+<p>For example, in a stable process with normally distributed data, the probability, <span class="math inline">\(\alpha\)</span>, of a point falling outside 3-sigma limits is 0.0027. Thus,</p>
+<p><span class="math display">\[ARL_0=1/0.0027\approx370\]</span></p>
+<p>meaning that, on average, we would expect one false alarm every 370 data points.</p>
+<p>The value of <span class="math inline">\(ARL_1\)</span> depends on <span class="math inline">\(\beta\)</span>, which in turn depends on the size of the special cause relative to the natural variation in the process. Large shifts are easier to detect and therefore result in shorter out-of-control run lengths.</p>
+<p>In an ideal world, we would like <span class="math inline">\(ARL_0=\infty\)</span> and <span class="math inline">\(ARL_1=1\)</span>. That is, no false alarms and immediate detection of real signals. In practice, this is impossible, because improving one usually worsens the other.</p>
+<p>ARL is closely related to the more familiar concepts of sensitivity and specificity. In the context of SPC:</p>
 <p><span class="math display">\[ specificity=P\{\text{no signal | common cause variation}\}=P\{\text{true negative}\}=1-\alpha \]</span></p>
 <p><span class="math display">\[ sensitivity=P\{\text{signal | special cause variation}\}=P\{\text{true positive}\}=1-\beta \]</span></p>
+<p>Specificity tells us how well a chart avoids false alarms. Sensitivity tells us how well it detects real special causes.</p>
 </div>
 <div id="likelihood-ratios" class="section level3 hasAnchor" number="23.1.2">
 <h3><span class="header-section-number">C.1.2</span> Likelihood ratios<a href="diagnostics.html#likelihood-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Sensitivity and specificity are, however, not that useful on their own – they describe how a special cause predicts a signal, not how a signal predicts a special cause, which is what we really want to know.</p>
-<p>Likelihood ratios are diagnostic measures designed to answer such questions. Assume that an SPC chart signals special cause variation. A perfect test would mean that the chart would certainly come from an unstable process (true positive, TP). However, some charts with only common cause variation also signals (false positive, FP). We therefore correct the true positive rate by the false positive rate by dividing one with the other. Likewise, if a chart does not signal it could be a false negative (FN) rather than a true negative (TN).</p>
+<p>Sensitivity and specificity are useful, but they do not directly answer the question that often matters most in practice: If the chart signals, how likely is it that a special cause is truly present?</p>
+<p>Likelihood ratios are more helpful for answering this kind of question.</p>
+<p>If a chart signals, it may be a true positive or a false positive. The positive likelihood ratio tells us how much more likely a signal is to come from a process with special cause variation than from a stable process:</p>
 <p><span class="math display">\[ LR+=TP/FP=sensitivity/(1-specificity) \]</span></p>
 <p><span class="math display">\[ LR-=FN/TN=(1-sensitivity)/specificity \]</span></p>
-<p>A likelihood ratio greater than 1 speaks in favour of the condition being tested for, which in our case is special cause variation, while a likelihood ratio less than 1 speaks against special cause variation. The further a likelihood ratio is from 1, the more or less likely is the presence of special cause variation.</p>
-<p>As a rule of thumb, a positive likelihood ratio greater than 10 is considered strong evidence that the condition being tested for is present. A negative likelihood ratio smaller than 0.1 is considered strong evidence against the condition <span class="citation">(<a href="#ref-deeks2004">Deeks and Altman 2004</a>)</span>.</p>
-<p>Thus, likelihood ratios allow us to quantify the probability of special causes in data and are useful quality characteristics of SPC rules <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>. All else being equal, a “good” rule (or combination of rules) is one with a high positive likelihood ratio <em>and</em> a low negative likelihood ratio.</p>
-<p>A worked example is presented in the table below:</p>
+<p>A likelihood ratio greater than 1 supports the presence of special cause variation. A likelihood ratio less than 1 argues against it. The further the value is from 1, the stronger the evidence.
+As a rule of thumb, a positive likelihood ratio above 10 is considered strong evidence in favour of the condition being tested for, while a negative likelihood ratio below 0.1 is considered strong evidence against it <span class="citation">(<a href="#ref-deeks2004">Deeks and Altman 2004</a>)</span>.</p>
+<p>Likelihood ratios are therefore useful measures of the diagnostic value of SPC rules <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>. All else being equal, a good rule, or a good combination of rules, has a high positive likelihood ratio and a low negative likelihood ratio.</p>
+<p>A worked example is shown below.</p>
 <table>
 <caption>Results from runs analyses of 2000 simulated run charts with 24 data points. In half the simulations a shift of 2 SD was introduced in the last 12 subgroups. Shift +/– indicates the presence or absence of true shifts in process mean. Signal +/– indicates the result from the run chart analysis using the two runs analysis rules <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>)</span>.</caption>
 <thead>
@@ -504,20 +511,21 @@ for the out-of-control ARL, when a special cause is present, where</p>
 </tr>
 </tbody>
 </table>
-<p>Studies comparing different combination of rules using likelihood ratios <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>; <a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span> found that:</p>
+<p>Studies comparing different combination of rules using likelihood ratios <span class="citation">(<a href="#ref-anhoej2015">Anhøj 2015</a>; <a href="#ref-anhoej2018b">Anhøj and Wentzel-Larsen 2018</a>)</span> have shown that:</p>
 <ul>
-<li><p>The 3-sigma rule is effective (high LR+, low LR–) in signalling moderate to large possibly <em>transient</em> shifts in data.</p></li>
-<li><p>The 3-sigma rule looses specificity (more false positive signals) with increasing number of data points.</p></li>
-<li><p>Runs analysis using the two rules proposed in Chapter <a href="testing.html#testing">3</a> is effective in signalling minor to moderate <em>sustained</em> shifts in data regardless of the number of data points.</p></li>
-<li><p>Combining the 3-sigma rule with runs analysis and keeping the number of data points between 20 and 30 strikes a good balance between false positive and false negative signals.</p></li>
+<li><p>The 3-sigma rule is effective in detecting moderate to large, possibly transient, shifts.</p></li>
+<li><p>The 3-sigma rule loses specificity as the number of data points increases.</p></li>
+<li><p>Runs analysis using the two rules proposed in Chapter 3 is effective in detecting minor to moderate sustained shifts, regardless of the number of data points.</p></li>
+<li><p>Combining the 3-sigma rule with the two runs rules, and keeping the number of data points between 20 and 30, provides a good balance between false positive and false negative signals.</p></li>
 </ul>
 </div>
 </div>
 <div id="conclusion-keeping-the-balance" class="section level2 hasAnchor" number="23.2">
 <h2><span class="header-section-number">C.2</span> Conclusion: Keeping the balance<a href="diagnostics.html#conclusion-keeping-the-balance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>SPC charts, like any statistical or medical tests, can sometimes suggest a problem where none exists or fail to detect a real issue. This can result in losses – either from wasted resources chasing false alarms or from harm caused by overlooked special causes. However, carefully selecting which rules to apply to SPC charts can help minimise losses in both cases.</p>
-<p>Since Shewhart first introduced the control chart in 1924 – using only the 3-sigma rule – many additional rules and rule sets have been proposed to improve the sensitivity of SPC charts to special cause variation. However, increased sensitivity comes at the cost of reduced specificity, and applying too many or overly sensitive rules inevitably leads to wasted resources chasing false alarms. Our goal is to strike the right balance between sensitivity and specificity. Quantifying diagnostic errors using likelihood ratios is a valuable tool in achieving this.</p>
-<p>The rules proposed in this book – the two runs rules and the 3-sigma rule – have been validated through careful studies and years of practical experience, demonstrating a useful balance between sensitivity and specificity.</p>
+<p>SPC charts, like all statistical and medical tests, are imperfect. They may suggest a problem where none exists, or fail to detect a real one. Either type of error can lead to losses: wasted time and effort from chasing false alarms, or missed opportunities and harm from overlooking genuine special causes.</p>
+<p>For this reason, the choice of SPC rules matters. Since Shewhart first introduced the control chart in 1924 using only the 3-sigma rule, many supplementary rules have been proposed to increase sensitivity. But increased sensitivity comes at the cost of reduced specificity. Applying too many rules, or overly sensitive rules, can quickly lead to a stream of false alarms and unnecessary investigation.</p>
+<p>The aim is therefore not to maximise sensitivity at all costs, but to strike a practical balance between sensitivity and specificity. Likelihood ratios provide a useful way of judging whether a particular rule set achieves that balance.</p>
+<p>The three rules recommended in this book – the 3-sigma rule and the two runs rules – have been supported by both empirical studies and practical experience. Together, they offer a useful balance between detecting real signals and avoiding false ones.</p>
 
 </div>
 </div>
