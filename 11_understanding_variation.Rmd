@@ -14,7 +14,7 @@ knitr::include_graphics('figures/handwritten1.jpg')
 
 Now look closely at the seven letters on the left. Even though they were written under the same conditions -- same hand, same time, same place, same pen, paper, lighting, and so on -- they are not identical. Instead, even under essentially identical conditions, they show small, natural differences. This type of variation is called common cause variation because it is caused by the process itself.
 
-When we see this kind of variation, it’s tempting to judge or rank the results -- deciding which letters look "better" and trying to copy those while avoiding the "worse" ones. However, this approach misses the point. Since all seven letters were produced under the same conditions, none is inherently better or worse than the others. From a process perspective, they are all equivalent. The differences between them are simply the natural result of the process.
+When we see this kind of variation, it’s tempting to judge or rank the results deciding which letters look "better" and trying to copy those while avoiding the "worse" ones. However, this approach misses the point. Since all seven letters were produced under the same conditions, none is inherently better or worse than the others. From a process perspective, they are all equivalent. The differences between them are simply the natural result of the process.
 
 So, how do we improve the quality of these letters? The key is to focus on improving the process, not the individual outcomes.
 
@@ -30,10 +30,10 @@ If the special cause makes things worse, we should try to eliminate it. If it im
 
 These handwritten letters illustrate the two fundamental types of variation:
 
-* Common cause variation<br>
+* **Common cause variation**<br>
 This is the natural variation within a stable process. It is predictable within limits and can only be reduced by changing the process itself.
 
-* Special cause variation<br>
+* **Special cause variation**<br>
 This arises from specific, external factors. It is unpredictable and requires investigation to understand its source.
 
 These ideas were first developed by Walter A. Shewhart in the 1920s as he worked to improve industrial quality [@shewhart1931]. Shewhart recognised that quality is not just about meeting specifications -- it is about understanding and managing variation. He originally described these as chance causes and assignable causes, which later became known as common and special causes.
@@ -50,7 +50,7 @@ The key differences are summarised below:
 | Also called random, chance, or natural variation. | Also called assignable or non-random variation. |
 Table: Common versus special cause variation
 
-In summary, Statistical Process Control (SPC) is about understanding variation—what kind it is, where it comes from, and what to do about it. It’s not just about spotting outliers; it’s about improving processes and outcomes in a meaningful way.
+In summary, Statistical Process Control (SPC) is about understanding variation -- what kind it is, where it comes from, and what to do about it. It’s not just about spotting outliers; it’s about improving processes and outcomes in a meaningful way.
 
 As Donald J. Wheeler puts it:
 
