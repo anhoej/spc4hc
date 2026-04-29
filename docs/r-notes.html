@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-27" />
+<meta name="date" content="2026-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,16 +177,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#why-r"><i class="fa fa-check"></i>Why R?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Table of Contents</a>
-<ul>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-2-constructing-spc-charts-with-r"><i class="fa fa-check"></i>Part 2: Constructing SPC Charts with R</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-advanced-spc-techniques"><i class="fa fa-check"></i>Part 3: Advanced SPC Techniques</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 4: Best Practices, Controversies, and Tips</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 5: Conclusion and Final Thoughts</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
 <li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
@@ -456,18 +446,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2026-04-15    13    32
- 2 2026-04-16    14    29
- 3 2026-04-17    16    33
- 4 2026-04-18    19    30
- 5 2026-04-19    13    32
- 6 2026-04-20    18    35
- 7 2026-04-21    19    29
- 8 2026-04-22    16    33
- 9 2026-04-23    16    34
-10 2026-04-24    11    27
-11 2026-04-25    13    32
-12 2026-04-26    12    26</code></pre>
+ 1 2026-04-17    13    32
+ 2 2026-04-18    14    29
+ 3 2026-04-19    16    33
+ 4 2026-04-20    19    30
+ 5 2026-04-21    13    32
+ 6 2026-04-22    18    35
+ 7 2026-04-23    19    29
+ 8 2026-04-24    16    33
+ 9 2026-04-25    16    34
+10 2026-04-26    11    27
+11 2026-04-27    13    32
+12 2026-04-28    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-notes.html#cb131-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb131-2"><a href="r-notes.html#cb131-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

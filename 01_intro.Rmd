@@ -12,9 +12,9 @@ Act too quickly, and you risk chasing noise. Wait too long, and you may miss an 
 
 **Statistical Process Control** (SPC) provides a practical way to navigate this uncertainty.
 
-At its core, SPC is built on a simple but powerful idea: all processes vary, and that variation arises from two fundamentally different sources -- **common cause** and **special cause**. Understanding this distinction is crucial to help us interpret data more reliably and act more effectively.
+At its core, SPC is built on a simple but powerful idea: all processes vary, and that variation arises from two fundamentally different sources: **common cause** and **special cause**. Understanding this distinction is crucial to help us interpret data more reliably and act more effectively.
 
-SPC brings these idea’s to life through simple visual tools -- **run charts** and **control charts**. Yet despite their conceptual simplicity, applying these tools correctly can be challenging. As noted in a systematic review of SPC in healthcare:
+SPC brings these ideas to life through simple visual tools: **run charts** and **control charts**. Yet despite their conceptual simplicity, applying these tools correctly can be challenging. As noted in a systematic review of SPC in healthcare:
 
 > ... although SPC charts may be easy to use even for patients, clinicians, or managers without extensive SPC training, they may not be equally simple to *construct correctly*. To apply SPC is, paradoxically, both simple and difficult at the same time.
 >
@@ -34,7 +34,7 @@ This is a hands-on, step-by-step guide to producing SPC charts correctly and con
 Unlike general SPC texts, this book is grounded in real healthcare applications, including patient safety, clinical outcomes, and operational performance. It complements the companion book, *Statistical Process Control: Elements of Improving Quality and Safety in Healthcare* [@mohammed2024], by focusing on practical implementation.
 
 - **Practical and applied**<br>
-This is not a theoretical text. You will find: worked examples, real datasets, and step-by-step guidance. The aim is to help you understand SPC and use it confidently in practice to improve healthcare.
+This is not a theoretical text. You will find worked examples, real datasets, and step-by-step guidance. The aim is to help you understand SPC and use it confidently in practice to improve healthcare.
 
 - **Comprehensive coverage**<br>
 From foundational principles to advanced SPC techniques, this book covers it all. It is designed to cater to both beginners and experienced data scientists, ensuring everyone finds value.
@@ -50,9 +50,9 @@ No prior knowledge of SPC is required. However, some familiarity with the [R pro
 
 If you are new to R, we recommend resources such as:
 
-- [Learn R Programming with Johns Hopkins University](https://www.youtube.com/playlist?list=PLVext98k2evi8mDNRo4MwIgVgSmwM3cS8), an excellent series of video tutorials covering all aspects of R programming -- everything you need (and more) for this book;
+- [Learn R Programming with Johns Hopkins University](https://www.youtube.com/playlist?list=PLVext98k2evi8mDNRo4MwIgVgSmwM3cS8), an excellent series of video tutorials covering all aspects of R programming -- everything you need (and more) for this book.
 
-- [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/), Roger D. Peng’s companion book to the R Programming video series;
+- [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/), Roger D. Peng’s companion book to the R Programming video series.
 
 - [NHS-R Community](https://nhsrcommunity.com/), which provides excellent free learning materials.
 
@@ -84,7 +84,7 @@ We hope this book proves valuable, and we welcome your feedback for ongoing impr
 
 ## About the authors {-}
 
-- **Jacob Anhøj**: Medical doctor with over 30 years of experience and a diploma in Information Technology. Author of 45+ publications and several books, Jacob is passionate about patient safety and quality improvement. He has extensive teaching experience and is also the creator of several R packages, including *qicharts2*.
+- **Jacob Anhøj**: Medical doctor with over 30 years of experience and a diploma in Information Technology. Author of 45+ peer-reviewed papers and several books, Jacob is committed to patient safety and quality improvement. He has extensive teaching experience and is also the creator of several R packages, including [qicharts2](https://anhoej.github.io/qicharts2/).
 <br>
 Contact: jacob@anhoej.net  
 

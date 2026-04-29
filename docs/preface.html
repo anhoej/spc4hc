@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-27" />
+<meta name="date" content="2026-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="synopsis.html"/>
+<link rel="next" href="variation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -177,16 +177,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#why-r"><i class="fa fa-check"></i>Why R?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html"><i class="fa fa-check"></i>Table of Contents</a>
-<ul>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-1-understanding-variation"><i class="fa fa-check"></i>Part 1: Understanding Variation</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-2-constructing-spc-charts-with-r"><i class="fa fa-check"></i>Part 2: Constructing SPC Charts with R</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-3-advanced-spc-techniques"><i class="fa fa-check"></i>Part 3: Advanced SPC Techniques</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-4-best-practices-controversies-and-tips"><i class="fa fa-check"></i>Part 4: Best Practices, Controversies, and Tips</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#part-5-conclusion-and-final-thoughts"><i class="fa fa-check"></i>Part 5: Conclusion and Final Thoughts</a></li>
-<li class="chapter" data-level="" data-path="synopsis.html"><a href="synopsis.html#appendices"><i class="fa fa-check"></i>Appendices</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
 <li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
@@ -447,8 +437,8 @@ div.csl-indent {
 Every day, healthcare teams track data: waiting times, infection rates, mortality, patient experience. These data go up and down. The challenge is knowing when and how to act.</p>
 <p>Act too quickly, and you risk chasing noise. Wait too long, and you may miss an important signal to improve care. Take the wrong action and you risk making things worse.</p>
 <p><strong>Statistical Process Control</strong> (SPC) provides a practical way to navigate this uncertainty.</p>
-<p>At its core, SPC is built on a simple but powerful idea: all processes vary, and that variation arises from two fundamentally different sources – <strong>common cause</strong> and <strong>special cause</strong>. Understanding this distinction is crucial to help us interpret data more reliably and act more effectively.</p>
-<p>SPC brings these idea’s to life through simple visual tools – <strong>run charts</strong> and <strong>control charts</strong>. Yet despite their conceptual simplicity, applying these tools correctly can be challenging. As noted in a systematic review of SPC in healthcare:</p>
+<p>At its core, SPC is built on a simple but powerful idea: all processes vary, and that variation arises from two fundamentally different sources: <strong>common cause</strong> and <strong>special cause</strong>. Understanding this distinction is crucial to help us interpret data more reliably and act more effectively.</p>
+<p>SPC brings these ideas to life through simple visual tools: <strong>run charts</strong> and <strong>control charts</strong>. Yet despite their conceptual simplicity, applying these tools correctly can be challenging. As noted in a systematic review of SPC in healthcare:</p>
 <blockquote>
 <p>… although SPC charts may be easy to use even for patients, clinicians, or managers without extensive SPC training, they may not be equally simple to <em>construct correctly</em>. To apply SPC is, paradoxically, both simple and difficult at the same time.</p>
 <p>– <span class="citation">Thor et al. (<a href="#ref-thor2007">2007</a>)</span></p>
@@ -465,7 +455,7 @@ Every day, healthcare teams track data: waiting times, infection rates, mortalit
 <li><p><strong>Healthcare focus</strong><br>
 Unlike general SPC texts, this book is grounded in real healthcare applications, including patient safety, clinical outcomes, and operational performance. It complements the companion book, <em>Statistical Process Control: Elements of Improving Quality and Safety in Healthcare</em> <span class="citation">(<a href="#ref-mohammed2024">Mohammed 2024</a>)</span>, by focusing on practical implementation.</p></li>
 <li><p><strong>Practical and applied</strong><br>
-This is not a theoretical text. You will find: worked examples, real datasets, and step-by-step guidance. The aim is to help you understand SPC and use it confidently in practice to improve healthcare.</p></li>
+This is not a theoretical text. You will find worked examples, real datasets, and step-by-step guidance. The aim is to help you understand SPC and use it confidently in practice to improve healthcare.</p></li>
 <li><p><strong>Comprehensive coverage</strong><br>
 From foundational principles to advanced SPC techniques, this book covers it all. It is designed to cater to both beginners and experienced data scientists, ensuring everyone finds value.</p></li>
 <li><p><strong>Additional resources</strong><br>
@@ -478,8 +468,8 @@ To support your learning, we provide: R scripts, datasets, and a dedicated <a hr
 <p>No prior knowledge of SPC is required. However, some familiarity with the <a href="https://www.r-project.org/">R programming language</a> will be helpful.</p>
 <p>If you are new to R, we recommend resources such as:</p>
 <ul>
-<li><p><a href="https://www.youtube.com/playlist?list=PLVext98k2evi8mDNRo4MwIgVgSmwM3cS8">Learn R Programming with Johns Hopkins University</a>, an excellent series of video tutorials covering all aspects of R programming – everything you need (and more) for this book;</p></li>
-<li><p><a href="https://bookdown.org/rdpeng/rprogdatascience/">R Programming for Data Science</a>, Roger D. Peng’s companion book to the R Programming video series;</p></li>
+<li><p><a href="https://www.youtube.com/playlist?list=PLVext98k2evi8mDNRo4MwIgVgSmwM3cS8">Learn R Programming with Johns Hopkins University</a>, an excellent series of video tutorials covering all aspects of R programming – everything you need (and more) for this book.</p></li>
+<li><p><a href="https://bookdown.org/rdpeng/rprogdatascience/">R Programming for Data Science</a>, Roger D. Peng’s companion book to the R Programming video series.</p></li>
 <li><p><a href="https://nhsrcommunity.com/">NHS-R Community</a>, which provides excellent free learning materials.</p></li>
 </ul>
 </div>
@@ -508,7 +498,7 @@ Routine tasks such as generating reports, dashboards, and visualisations can be 
 <div id="about-the-authors" class="section level2 unnumbered hasAnchor">
 <h2>About the authors<a href="preface.html#about-the-authors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p><strong>Jacob Anhøj</strong>: Medical doctor with over 30 years of experience and a diploma in Information Technology. Author of 45+ publications and several books, Jacob is passionate about patient safety and quality improvement. He has extensive teaching experience and is also the creator of several R packages, including <em>qicharts2</em>.
+<li><p><strong>Jacob Anhøj</strong>: Medical doctor with over 30 years of experience and a diploma in Information Technology. Author of 45+ peer-reviewed papers and several books, Jacob is committed to patient safety and quality improvement. He has extensive teaching experience and is also the creator of several R packages, including <a href="https://anhoej.github.io/qicharts2/">qicharts2</a>.
 <br>
 Contact: <a href="mailto:jacob@anhoej.net" class="email">jacob@anhoej.net</a></p></li>
 <li><p><strong>Mohammed Amin Mohammed</strong>: Emeritus Professor of Healthcare Quality and Effectiveness at the University of Bradford, with over 100 peer-reviewed publications. His work has been central to introducing SPC into healthcare practice. He is also founder of the <a href="https://nhsrcommunity.com/">NHS-R Community</a>.
@@ -518,6 +508,9 @@ Contact: <a href="mailto:profmaminm@gmail.com" class="email">profmaminm@gmail.co
 
 </div>
 </div>
+
+
+
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-mohammed2024" class="csl-entry">
@@ -533,7 +526,7 @@ Thor, Johan, Jonas Lundberg, Jakob Ask, et al. 2007. <span>“Application of Sta
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="synopsis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
