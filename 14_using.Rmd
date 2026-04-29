@@ -1,6 +1,6 @@
 # Using SPC in Healthcare {#using}
 
-As briefly discussed in the previous chapter, SPC methodology is used in healthcare in two main ways: to monitor the behaviour or performance of an existing process, and to support efforts to improve a process. Examples of monitoring include tracking complication rates following surgery, while examples of improvement include redesigning a care pathway for patients with fractured hips.
+As briefly discussed in the previous chapter, SPC methodology is used in healthcare in two main ways: to **monitor** the behaviour or performance of an existing process, and to support efforts to **improve** a process. Examples of monitoring include tracking complication rates following surgery, while examples of improvement include redesigning a care pathway for patients with fractured hips.
 
 ## Using SPC to monitor a process
 
@@ -12,7 +12,7 @@ As @rogers2004 noted:
 
 > If monitoring schemes are to be accepted by those whose outcomes are being assessed, an atmosphere of constructive evaluation, not 'blaming' or 'naming and shaming', is essential as apparent poor performance could arise for a number of reasons that should be explored systematically.
 
-To address this need, @mohammed2004 proposed the **Pyramid Model for Investigation of Special Cause Variation in healthcare**, a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure or resources, process of care, and carer(s) (Figure \@ref(fig:responding-fig1)).
+To address this need, @mohammed2004 proposed the **Pyramid Model for Investigation of Special Cause Variation in healthcare**, a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure or resources, process of care, and carers (Figure \@ref(fig:responding-fig1)).
 
 ```{r responding-fig1, fig.cap='Pyramid Model for Investigation', echo=FALSE}
 knitr::include_graphics('figures/pyramid_model.svg')
@@ -60,7 +60,7 @@ The degree of alignment between changes made to the process and subsequent signa
 
 Common cause variation can only be reduced by changing a major part of the process. But what do we mean by a major part? The Theory of Constraints [@goldratt2022] offers the analogy of a chain, whose strength is determined by its weakest link. Strengthening that weakest link strengthens the whole chain. Strengthening other links while leaving the weakest unchanged does not improve the system as a whole. In this sense, the weakest link represents the constraint on performance, and in most real systems there are only a few such constraints, perhaps only one or two, while the remaining factors are non-constraints.
 
-A widely used framework for improvement in healthcare is the Model for Improvement, developed by [@langley2009]. This model consists of three fundamental questions together with the Plan-Do-Study-Act (PDSA) cycle.
+A widely used framework for improvement in healthcare is the Model for Improvement, developed by @langley2009. This model consists of three fundamental questions together with the Plan-Do-Study-Act (PDSA) cycle.
 
 The first question is: **What are we trying to accomplish?** This defines the aim of the improvement effort. The aim should be specific, measurable, and time-bound, and it should include a clear rationale.
 
