@@ -47,7 +47,7 @@ In our experience, the most common patterns encountered in healthcare data are f
 
 ### Freaks
 
-A freak is a data point or a small number of data points that are distinctly different from the rest of the data (Figure \@ref(fig:testing-fig2)). By definition, freaks are transient -- they appear suddenly and then disappear.
+A freak is a data point, or a small number of data points, that are distinctly different from the rest of the data (Figure \@ref(fig:testing-fig2)). By definition, freaks are transient -- they appear suddenly and then disappear.
 
 ```{r testing-fig2, fig.cap='Control chart with a large (2 SD) transient shift in data', echo=FALSE}
 
@@ -96,7 +96,7 @@ If patterns of special cause variation were always as clear as in the figures \@
 
 A large number of such rules have been proposed. While it may be tempting to apply many rules simultaneously, doing so increases the likelihood of false alarms, where common cause variation is mistakenly interpreted as special cause variation.
 
-It is therefore important to strike a balance: using as few rules as necessary to detect meaningful signals while limiting the number of false alarms. This issue is discussed further in Appendix \@ref(diagnostics).
+It is therefore important to strike a balance: using as few rules as necessary to detect meaningful signals while limiting the number of false alarms.
 
 In this book, we focus on two sets of rules that have been well studied and shown to perform effectively.
 
@@ -168,10 +168,10 @@ In process improvement, the goal is to achieve sustained changes in performance.
 
 In process monitoring, the aim is to maintain stability. Here, the focus is on detecting deterioration as early as possible. The 3-sigma rule is effective for this purpose, and additional rules may be used to increase sensitivity.
 
-Regardless of the purpose, it is often useful to begin with a run chart using the median as the centre line. If the data show evidence of non-random variation, the focus should be on understanding the causes of change. If the data appear stable and the outcome is satisfactory, control limits may be added to support ongoing monitoring.
+Regardless of the purpose, it is often useful to begin with a run chart using the median as the centre line. If the data show evidence of non-random variation, the focus should be on understanding the causes of change. If the data appear stable and the outcome is satisfactory, control limits may be added to support ongoing monitoring using the 3-sigma rule in combination with either the remaining WE rules or the two runs-tests.
 
 ## SPC rules in summary
 
-SPC rules are statistical tools used to detect non-random variation in time series data. While many rules exist, using too many increases the risk of false alarms. A small number of well-chosen rules can provide an effective balance between sensitivity and specificity.
+SPC rules are statistical tools used to signal special cause variation in time series data. While many rules exist, using too many increases the risk of false alarms. A small number of well-chosen rules can provide an effective balance between sensitivity and specificity.
 
 In this chapter, we have introduced the 3-sigma rule, the Western Electric rules, and runs-based tests. Together, these provide a practical framework for identifying signals of special cause variation.
