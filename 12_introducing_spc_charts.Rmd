@@ -36,7 +36,7 @@ Figure \@ref(fig:spc-fig0) shows a control chart of daily systolic blood pressur
 
 Special causes are identified through unusual patterns in the data. By "unusual", we mean patterns that are unlikely to occur purely by chance, such as an extreme data point. In contrast, common cause variation represents the natural, inherent noise in a stable process. When no signals are present, the observed variation is consistent with common cause variation. When signals are present, the data are consistent with special cause variation.
 
-There are many types of control charts, and the choice of chart depends primarily on the type of data being analysed. Despite these differences, most SPC charts share a common appearance and are interpreted in the same way, using a set of statistical tests -- or rules -- to identify unusual patterns.
+There are many types of control charts, and the choice of chart depends primarily on the type of data being analysed. Despite these differences, most SPC charts share a common appearance and are interpreted in the same way, using a set of statistical tests (or rules) to identify unusual patterns.
 
 In this chapter, we introduce seven of the most commonly used control charts in healthcare, often referred to as the Magnificent Seven, along with their practical applications. In Chapter \@ref(testing), we examine the rules used to detect unusual patterns in greater detail. Later, in Part 2 of the book, we provide a detailed guide to the calculations required to construct and analyse control charts.
 
@@ -63,7 +63,7 @@ Shewhart’s choice of 3-sigma limits was informed by empirical observations fro
 
 In a chart with 20 data points, the probability that all points fall within the control limits is therefore approximately 95%.
 
-However, Shewhart did not base his method solely on theoretical considerations. He recognised that most real-world data are not normally distributed and argued that the use of 3-sigma limits is justified because "they work" (@shewhart1931, p. 18). In practice, this choice provides a reasonable balance between sensitivity (detecting special causes) and specificity (avoiding false alarms), regardless of the underlying distribution. This issue is discussed further in Appendix \@ref(diagnostics).
+However, Shewhart did not base his method solely on theoretical considerations. He recognised that most real-world data are not normally distributed and argued that the use of 3-sigma limits is justified because "they work" (@shewhart1931, p. 18). In practice, this choice provides a reasonable balance between sensitivity (detecting special causes) and specificity (avoiding false alarms), regardless of the underlying distribution.
 
 ## Common types of control charts: The Magnificent Seven
 
