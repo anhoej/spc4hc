@@ -227,3 +227,4 @@ getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+i-chart

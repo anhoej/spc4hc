@@ -59,11 +59,11 @@ read.delim('input/limit_formulas.tsv', check.names = F) |>
   pack_rows('Measurement data', 4, 7)
 ```
 
-As discussed in Chapter \@ref(charts-intro), data come in two broad forms: **count data** and **measurement data**. Counts are non-negative integers representing events or cases, for example patient falls, surgical complications, or healthy babies. Measurements are values on a continuous scale and may include decimals, such as blood pressure, height, weight, or waiting times.
+As discussed in Chapter \@ref(charts-intro), data come in two broad forms: count data and measurement data. Counts are non-negative integers representing events or cases, for example patient falls, surgical complications, or healthy babies. Measurements are values on a continuous scale and may include decimals, such as blood pressure, height, weight, or waiting times.
 
 ## Count data
 
-For count charts in this chapter we use the bacteremia data set:
+For count charts in this chapter we use the [Bacteremia] data set, which contain monthly counts of infection events and related mortality cases:
 
 ```{r}
 # read data from file
@@ -81,19 +81,12 @@ bact <- read.csv('data/bacteremia.csv',  # path to data file
 head(bact)
 ```
 
-The variables are:
-
-* month: month of infection
-* ha_infections: number of hospital-acquired infections
-* risk_days: number of patient-days without infection
-* deaths: number of patients who died within 30-day after a hospital- or community-acquired (all-cause) infection
-* patients: number of patients with all-cause infection
-
 We use C charts for event counts, U charts for event rates, and P charts for case proportions.
 
 ### C chart
 
 The C chart (C for counts) is the simplest of all control charts and the easiest to construct. The process standard deviation is estimated simply as the square root of the process mean.
+
 C charts are appropriate when counting events over subgroups that are approximately equal in size, whether these subgroups represent periods of time or units of space.
 
 Figure \@ref(fig:limits-c) shows a C chart of the monthly number of hospital-acquired bacteremias.
@@ -121,7 +114,7 @@ The average monthly number of infections is 22.7, and all data points fall withi
 
 ### U chart
 
-U charts are used when events are counted over subgroups of unequal size, resulting in unequal areas of opportunity. In our example, the number of patient-days may vary from month to month, so it makes sense to adjust for this by plotting rates rather than raw counts.
+U charts are used when events are counted over subgroups of unequal size, resulting in unequal areas of opportunity (U for unequal). In our example, the number of patient-days may vary from month to month, so it makes sense to adjust for this by plotting rates rather than raw counts.
 
 Because events are often rare relative to the area of opportunity, the resulting rates may be very small. It is therefore often helpful to multiply the rates by a constant before plotting. In Figure 6.3, we multiply by 10,000 to present infections per 10,000 risk-days rather than infections per day.
 
@@ -146,7 +139,7 @@ with(bact, {
 })
 ```
 
-The U chart shows an average of 7.5 infections per 10,000 risk days, with all data points within control limits ranging from about 3.5 to 12. Unlike the C chart, the control limits vary from point to point because they depend on the denominator. Large denominators produce narrower limits, whereas small denominators produce wider ones.
+The U chart in Figure \@ref(fig:limits-u) shows an average of 7.5 infections per 10,000 risk days, with all data points within control limits ranging from about 3.5 to 12. Unlike the C chart, the control limits vary from point to point because they depend on the denominator. Large denominators produce narrower limits, whereas small denominators produce wider ones.
 
 In this example, the denominator varies only slightly between months, so the U chart adds little compared with the C chart. For pedagogical purposes, we may even prefer the C chart, because it is easier to relate to 23 infections per month than to 7.5 infections per 10,000 risk days.
 
@@ -179,9 +172,7 @@ The average mortality is 21%, and all data points fall within the control limits
 
 ## Measurement data
 
-For this section, we use a dataset on response times for grade 2 caesarean sections, that is, the time in minutes from the decision to perform the caesarean section until the baby was delivered. The aim is to keep this delay below 30 minutes.
-
-The csect data frame contains the date and time, the month, and the number of minutes from decision to delivery for 208 grade 2 caesarean sections over a two-year period.
+For this section, we use the [Ceasearian section delay] dataset on response times for 208 grade 2 caesarean sections, that is, the time in minutes from the decision to perform the caesarean section until the baby was delivered. The aim is to keep this delay below 30 minutes.
 
 ```{r}
 # read raw data
@@ -197,13 +188,13 @@ csect <- csect[order(csect$datetime), ]
 head(csect)
 ```
 
-### I chart (also called X chart)
+### I chart
 
 The "I" in I chart stand for "individuals" because each subgroup consists of a single value. I charts are also often referred to as X charts.
 
 They are useful when measurements are available for individual units, for example waiting times or blood pressure measurements for individual patients.
 
-As we shall see later, the I chart is in fact useful for many types of data, because it bases its estimate of variation on the actual variation observed in the data rather than on theoretical parameters from an assumed distribution. For this reason, the I chart is often described as the *Swiss Army knife* of SPC.
+As we shall see later, the I chart is in fact useful for many types of data because it bases its estimate of variation on the actual variation observed in the data rather than on theoretical parameters from an assumed distribution. For this reason, the I chart is often described as the *Swiss Army knife* of SPC.
 
 When subgroups consist of single values, we estimate within-subgroup variation using the average moving range, that is, the average absolute difference between neighbouring data points. Dividing this value by 1.128 gives an estimate of the process standard deviation. Equivalently, we may multiply the average moving range by (3 / 1.128 = 2.66) to obtain 3 standard deviations.
 
@@ -228,7 +219,7 @@ The average delay for these cases is 24 minutes. Three data points fall outside 
 
 ### MR chart
 
-The MR chart plots the moving ranges, that is, the absolute pairwise differences between neighbouring observations. It is a companion chart to the I chart. Because moving ranges can be zero but never negative, the MR chart has no lower control limit.
+The MR chart plots the moving ranges, that is, the absolute pairwise differences between neighbouring observations. It is a companion chart to the I chart. Because moving ranges can be zero but never negative, the MR chart has no lower control limit (Figure \@ref(fig:limits-mr)).
 
 ```{r limits-mr, fig.cap='MR-chart'}
 with(tail(csect, 60), {
