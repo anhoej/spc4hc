@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 SPC Charting with qicharts2 | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>Chapter 10 SPC Charting with qicharts2 | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 SPC Charting with qicharts2 | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="Chapter 10 SPC Charting with qicharts2 | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 SPC Charting with qicharts2 | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="Chapter 10 SPC Charting with qicharts2 | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -166,7 +168,7 @@ div.csl-indent {
 </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is Statistical Process Control?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#who-this-book-is-for"><i class="fa fa-check"></i>Who this book is for?</a></li>
@@ -177,173 +179,185 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
 </ul></li>
 <li class="part"><span><b>Part 1: Understanding Variation</b></span></li>
-<li class="chapter" data-level="2" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>2</b> Understanding Variation</a></li>
-<li class="chapter" data-level="3" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>3</b> Understanding SPC Charts</a>
+<li class="chapter" data-level="1" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>1</b> Understanding Variation</a></li>
+<li class="chapter" data-level="2" data-path="charts-intro.html"><a href="charts-intro.html"><i class="fa fa-check"></i><b>2</b> Understanding SPC Charts</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>3.1</b> Anatomy and physiology of SPC charts</a></li>
-<li class="chapter" data-level="3.2" data-path="charts-intro.html"><a href="charts-intro.html#why-3-sigma-limits"><i class="fa fa-check"></i><b>3.2</b> Why 3-sigma limits?</a></li>
-<li class="chapter" data-level="3.3" data-path="charts-intro.html"><a href="charts-intro.html#common-types-of-control-charts-the-magnificent-seven"><i class="fa fa-check"></i><b>3.3</b> Common types of control charts: The Magnificent Seven</a>
+<li class="chapter" data-level="2.1" data-path="charts-intro.html"><a href="charts-intro.html#anatomy-and-physiology-of-spc-charts"><i class="fa fa-check"></i><b>2.1</b> Anatomy and physiology of SPC charts</a></li>
+<li class="chapter" data-level="2.2" data-path="charts-intro.html"><a href="charts-intro.html#why-3-sigma-limits"><i class="fa fa-check"></i><b>2.2</b> Why 3-sigma limits?</a></li>
+<li class="chapter" data-level="2.3" data-path="charts-intro.html"><a href="charts-intro.html#common-types-of-control-charts-the-magnificent-seven"><i class="fa fa-check"></i><b>2.3</b> Common types of control charts: The Magnificent Seven</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="charts-intro.html"><a href="charts-intro.html#count-data"><i class="fa fa-check"></i><b>3.3.1</b> Count data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="charts-intro.html"><a href="charts-intro.html#measurement-data"><i class="fa fa-check"></i><b>3.3.2</b> Measurement data</a></li>
+<li class="chapter" data-level="2.3.1" data-path="charts-intro.html"><a href="charts-intro.html#count-data"><i class="fa fa-check"></i><b>2.3.1</b> Count data</a></li>
+<li class="chapter" data-level="2.3.2" data-path="charts-intro.html"><a href="charts-intro.html#measurement-data"><i class="fa fa-check"></i><b>2.3.2</b> Measurement data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="charts-intro.html"><a href="charts-intro.html#summary-of-common-spc-charts"><i class="fa fa-check"></i><b>3.4</b> Summary of common SPC charts</a></li>
+<li class="chapter" data-level="2.4" data-path="charts-intro.html"><a href="charts-intro.html#summary-of-common-spc-charts"><i class="fa fa-check"></i><b>2.4</b> Summary of common SPC charts</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>4</b> Looking for Signals on SPC charts – Beyond the 3-Sigma Rule</a>
+<li class="chapter" data-level="3" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>3</b> Looking for Signals on SPC charts – Beyond the 3-Sigma Rule</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>4.1</b> Patterns of non-random variation in time series data</a>
+<li class="chapter" data-level="3.1" data-path="testing.html"><a href="testing.html#patterns-of-non-random-variation-in-time-series-data"><i class="fa fa-check"></i><b>3.1</b> Patterns of non-random variation in time series data</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>4.1.1</b> Freaks</a></li>
-<li class="chapter" data-level="4.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>4.1.2</b> Shifts</a></li>
-<li class="chapter" data-level="4.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>4.1.3</b> Trends</a></li>
-<li class="chapter" data-level="4.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>4.1.4</b> Other unusual patterns</a></li>
+<li class="chapter" data-level="3.1.1" data-path="testing.html"><a href="testing.html#freaks"><i class="fa fa-check"></i><b>3.1.1</b> Freaks</a></li>
+<li class="chapter" data-level="3.1.2" data-path="testing.html"><a href="testing.html#shifts"><i class="fa fa-check"></i><b>3.1.2</b> Shifts</a></li>
+<li class="chapter" data-level="3.1.3" data-path="testing.html"><a href="testing.html#trends"><i class="fa fa-check"></i><b>3.1.3</b> Trends</a></li>
+<li class="chapter" data-level="3.1.4" data-path="testing.html"><a href="testing.html#other-unusual-patterns"><i class="fa fa-check"></i><b>3.1.4</b> Other unusual patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>4.2</b> SPC rules</a>
+<li class="chapter" data-level="3.2" data-path="testing.html"><a href="testing.html#spc-rules"><i class="fa fa-check"></i><b>3.2</b> SPC rules</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>4.2.1</b> Tests based on sigma limits</a></li>
-<li class="chapter" data-level="4.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>4.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
+<li class="chapter" data-level="3.2.1" data-path="testing.html"><a href="testing.html#tests-based-on-sigma-limits"><i class="fa fa-check"></i><b>3.2.1</b> Tests based on sigma limits</a></li>
+<li class="chapter" data-level="3.2.2" data-path="testing.html"><a href="testing.html#runs-analysis-tests-based-on-the-distribution-of-data-points-around-the-centre-line"><i class="fa fa-check"></i><b>3.2.2</b> Runs analysis – tests based on the distribution of data points around the centre line</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>4.3</b> SPC charts without borders – using run charts</a></li>
-<li class="chapter" data-level="4.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>4.4</b> A practical approach to SPC analysis</a></li>
-<li class="chapter" data-level="4.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>4.5</b> SPC rules in summary</a></li>
+<li class="chapter" data-level="3.3" data-path="testing.html"><a href="testing.html#spc-charts-without-borders-using-run-charts"><i class="fa fa-check"></i><b>3.3</b> SPC charts without borders – using run charts</a></li>
+<li class="chapter" data-level="3.4" data-path="testing.html"><a href="testing.html#a-practical-approach-to-spc-analysis"><i class="fa fa-check"></i><b>3.4</b> A practical approach to SPC analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="testing.html"><a href="testing.html#spc-rules-in-summary"><i class="fa fa-check"></i><b>3.5</b> SPC rules in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>5</b> Using SPC in Healthcare</a>
+<li class="chapter" data-level="4" data-path="using.html"><a href="using.html"><i class="fa fa-check"></i><b>4</b> Using SPC in Healthcare</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>5.1</b> Using SPC to monitor a process</a></li>
-<li class="chapter" data-level="5.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>5.2</b> Using SPC to improve a process</a></li>
-<li class="chapter" data-level="5.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>5.3</b> Successful use of SPC in healthcare</a></li>
+<li class="chapter" data-level="4.1" data-path="using.html"><a href="using.html#using-spc-to-monitor-a-process"><i class="fa fa-check"></i><b>4.1</b> Using SPC to monitor a process</a></li>
+<li class="chapter" data-level="4.2" data-path="using.html"><a href="using.html#using-spc-to-improve-a-process"><i class="fa fa-check"></i><b>4.2</b> Using SPC to improve a process</a></li>
+<li class="chapter" data-level="4.3" data-path="using.html"><a href="using.html#successful-use-of-spc-in-healthcare"><i class="fa fa-check"></i><b>4.3</b> Successful use of SPC in healthcare</a></li>
 </ul></li>
 <li class="part"><span><b>Part 2: Constructing SPC Charts</b></span></li>
-<li class="chapter" data-level="6" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>6</b> Your First SPC Charts With Base R</a>
+<li class="chapter" data-level="5" data-path="first-chart.html"><a href="first-chart.html"><i class="fa fa-check"></i><b>5</b> Your First SPC Charts With Base R</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>6.1</b> A run chart of blood pressure data</a></li>
-<li class="chapter" data-level="6.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>6.2</b> Adding control limits to produce a control chart</a></li>
-<li class="chapter" data-level="6.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>6.3</b> That’s all, Folks!</a></li>
+<li class="chapter" data-level="5.1" data-path="first-chart.html"><a href="first-chart.html#a-run-chart-of-blood-pressure-data"><i class="fa fa-check"></i><b>5.1</b> A run chart of blood pressure data</a></li>
+<li class="chapter" data-level="5.2" data-path="first-chart.html"><a href="first-chart.html#adding-control-limits-to-produce-a-control-chart"><i class="fa fa-check"></i><b>5.2</b> Adding control limits to produce a control chart</a></li>
+<li class="chapter" data-level="5.3" data-path="first-chart.html"><a href="first-chart.html#thats-all-folks"><i class="fa fa-check"></i><b>5.3</b> That’s all, Folks!</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>7</b> Calculating Control Limits</a>
+<li class="chapter" data-level="6" data-path="limits.html"><a href="limits.html"><i class="fa fa-check"></i><b>6</b> Calculating Control Limits</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>7.1</b> Introducing the spc() function</a></li>
-<li class="chapter" data-level="7.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>7.2</b> Formulas for calculation of control limits</a></li>
-<li class="chapter" data-level="7.3" data-path="limits.html"><a href="limits.html#count-data-1"><i class="fa fa-check"></i><b>7.3</b> Count data</a>
+<li class="chapter" data-level="6.1" data-path="limits.html"><a href="limits.html#introducing-the-spc-function"><i class="fa fa-check"></i><b>6.1</b> Introducing the spc() function</a></li>
+<li class="chapter" data-level="6.2" data-path="limits.html"><a href="limits.html#formulas-for-calculation-of-control-limits"><i class="fa fa-check"></i><b>6.2</b> Formulas for calculation of control limits</a></li>
+<li class="chapter" data-level="6.3" data-path="limits.html"><a href="limits.html#count-data-1"><i class="fa fa-check"></i><b>6.3</b> Count data</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>7.3.1</b> C chart</a></li>
-<li class="chapter" data-level="7.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>7.3.2</b> U chart</a></li>
-<li class="chapter" data-level="7.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>7.3.3</b> P chart</a></li>
+<li class="chapter" data-level="6.3.1" data-path="limits.html"><a href="limits.html#c-chart"><i class="fa fa-check"></i><b>6.3.1</b> C chart</a></li>
+<li class="chapter" data-level="6.3.2" data-path="limits.html"><a href="limits.html#u-chart"><i class="fa fa-check"></i><b>6.3.2</b> U chart</a></li>
+<li class="chapter" data-level="6.3.3" data-path="limits.html"><a href="limits.html#p-chart"><i class="fa fa-check"></i><b>6.3.3</b> P chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="limits.html"><a href="limits.html#measurement-data-1"><i class="fa fa-check"></i><b>7.4</b> Measurement data</a>
+<li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data-1"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="limits.html"><a href="limits.html#i-chart"><i class="fa fa-check"></i><b>7.4.1</b> I chart</a></li>
-<li class="chapter" data-level="7.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>7.4.2</b> MR chart</a></li>
-<li class="chapter" data-level="7.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>7.4.3</b> X-bar chart</a></li>
-<li class="chapter" data-level="7.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>7.4.4</b> S chart</a></li>
+<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart</a></li>
+<li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
+<li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
+<li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>7.5</b> Control limits in short</a></li>
+<li class="chapter" data-level="6.5" data-path="limits.html"><a href="limits.html#control-limits-in-short"><i class="fa fa-check"></i><b>6.5</b> Control limits in short</a></li>
 <li class="chapter" data-level="" data-path="limits.html"><a href="limits.html#chart-constants"><i class="fa fa-check"></i>Control chart constants</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>8</b> Highlighting Freaks, Shifts, and Trends</a>
+<li class="chapter" data-level="7" data-path="highlighting.html"><a href="highlighting.html"><i class="fa fa-check"></i><b>7</b> Highlighting Freaks, Shifts, and Trends</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>8.1</b> Introducing the cdiff data set</a></li>
-<li class="chapter" data-level="8.2" data-path="highlighting.html"><a href="highlighting.html#an-improved-spc-function"><i class="fa fa-check"></i><b>8.2</b> An improved <code>spc()</code> function</a></li>
-<li class="chapter" data-level="8.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>8.3</b> Highlighting special cause variation in short</a></li>
+<li class="chapter" data-level="7.1" data-path="highlighting.html"><a href="highlighting.html#introducing-the-cdiff-data-set"><i class="fa fa-check"></i><b>7.1</b> Introducing the cdiff data set</a></li>
+<li class="chapter" data-level="7.2" data-path="highlighting.html"><a href="highlighting.html#an-improved-spc-function"><i class="fa fa-check"></i><b>7.2</b> An improved <code>spc()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="highlighting.html"><a href="highlighting.html#highlighting-special-cause-variation-in-short"><i class="fa fa-check"></i><b>7.3</b> Highlighting special cause variation in short</a></li>
 <li class="chapter" data-level="" data-path="highlighting.html"><a href="highlighting.html#r-function-for-runs-analysis"><i class="fa fa-check"></i>R function for runs analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>9</b> Core R Functions to Construct SPC Charts</a>
+<li class="chapter" data-level="8" data-path="r-functions.html"><a href="r-functions.html"><i class="fa fa-check"></i><b>8</b> Core R Functions to Construct SPC Charts</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>9.1</b> Examples</a>
+<li class="chapter" data-level="8.1" data-path="r-functions.html"><a href="r-functions.html#examples"><i class="fa fa-check"></i><b>8.1</b> Examples</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>9.1.1</b> Run chart</a></li>
-<li class="chapter" data-level="9.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>9.1.2</b> I and MR charts for individual measurements</a></li>
-<li class="chapter" data-level="9.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>9.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
-<li class="chapter" data-level="9.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>9.1.4</b> C and U charts for counts and rates</a></li>
-<li class="chapter" data-level="9.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>9.1.5</b> P chart for percentages</a></li>
+<li class="chapter" data-level="8.1.1" data-path="r-functions.html"><a href="r-functions.html#run-chart"><i class="fa fa-check"></i><b>8.1.1</b> Run chart</a></li>
+<li class="chapter" data-level="8.1.2" data-path="r-functions.html"><a href="r-functions.html#i-and-mr-charts-for-individual-measurements"><i class="fa fa-check"></i><b>8.1.2</b> I and MR charts for individual measurements</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-functions.html"><a href="r-functions.html#x-bar-and-s-charts-for-averages-and-standard-deviations-of-measurements"><i class="fa fa-check"></i><b>8.1.3</b> X-bar and S charts for averages and standard deviations of measurements</a></li>
+<li class="chapter" data-level="8.1.4" data-path="r-functions.html"><a href="r-functions.html#c-and-u-charts-for-counts-and-rates"><i class="fa fa-check"></i><b>8.1.4</b> C and U charts for counts and rates</a></li>
+<li class="chapter" data-level="8.1.5" data-path="r-functions.html"><a href="r-functions.html#p-chart-for-percentages"><i class="fa fa-check"></i><b>8.1.5</b> P chart for percentages</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>9.2</b> TODO</a></li>
-<li class="chapter" data-level="9.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>9.3</b> Further up, further in</a></li>
+<li class="chapter" data-level="8.2" data-path="r-functions.html"><a href="r-functions.html#todo"><i class="fa fa-check"></i><b>8.2</b> TODO</a></li>
+<li class="chapter" data-level="8.3" data-path="r-functions.html"><a href="r-functions.html#further-up-further-in"><i class="fa fa-check"></i><b>8.3</b> Further up, further in</a></li>
 <li class="chapter" data-level="" data-path="r-functions.html"><a href="r-functions.html#funs"><i class="fa fa-check"></i>R function library</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>10</b> SPC Charts with <em>ggplot2</em></a>
+<li class="chapter" data-level="9" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>9</b> SPC Charts with <em>ggplot2</em></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>10.1</b> Creating an SPC object for later plotting</a></li>
-<li class="chapter" data-level="10.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>10.2</b> Making a new plot function based on <em>ggplot2</em></a></li>
-<li class="chapter" data-level="10.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>10.3</b> Customising the plotting theme</a></li>
-<li class="chapter" data-level="10.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>10.4</b> Preparing for <em>qicharts2</em></a></li>
+<li class="chapter" data-level="9.1" data-path="ggplot.html"><a href="ggplot.html#creating-an-spc-object-for-later-plotting"><i class="fa fa-check"></i><b>9.1</b> Creating an SPC object for later plotting</a></li>
+<li class="chapter" data-level="9.2" data-path="ggplot.html"><a href="ggplot.html#making-a-new-plot-function-based-on-ggplot2"><i class="fa fa-check"></i><b>9.2</b> Making a new plot function based on <em>ggplot2</em></a></li>
+<li class="chapter" data-level="9.3" data-path="ggplot.html"><a href="ggplot.html#customising-the-plotting-theme"><i class="fa fa-check"></i><b>9.3</b> Customising the plotting theme</a></li>
+<li class="chapter" data-level="9.4" data-path="ggplot.html"><a href="ggplot.html#preparing-for-qicharts2"><i class="fa fa-check"></i><b>9.4</b> Preparing for <em>qicharts2</em></a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>11</b> SPC Charting with <em>qicharts2</em></a>
+<li class="chapter" data-level="10" data-path="qicharts.html"><a href="qicharts.html"><i class="fa fa-check"></i><b>10</b> SPC Charting with <em>qicharts2</em></a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>11.1</b> A simple run chart</a></li>
-<li class="chapter" data-level="11.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>11.2</b> A simple control chart</a></li>
-<li class="chapter" data-level="11.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>11.3</b> Excluding data points from analysis</a></li>
-<li class="chapter" data-level="11.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>11.4</b> Freezing baseline period</a></li>
-<li class="chapter" data-level="11.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>11.5</b> Splitting chart by period</a></li>
-<li class="chapter" data-level="11.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>11.6</b> Small multiple plots for multivariate data</a>
+<li class="chapter" data-level="10.1" data-path="qicharts.html"><a href="qicharts.html#a-simple-run-chart"><i class="fa fa-check"></i><b>10.1</b> A simple run chart</a></li>
+<li class="chapter" data-level="10.2" data-path="qicharts.html"><a href="qicharts.html#a-simple-control-chart"><i class="fa fa-check"></i><b>10.2</b> A simple control chart</a></li>
+<li class="chapter" data-level="10.3" data-path="qicharts.html"><a href="qicharts.html#excluding-data-points-from-analysis"><i class="fa fa-check"></i><b>10.3</b> Excluding data points from analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="qicharts.html"><a href="qicharts.html#freezing-baseline-period"><i class="fa fa-check"></i><b>10.4</b> Freezing baseline period</a></li>
+<li class="chapter" data-level="10.5" data-path="qicharts.html"><a href="qicharts.html#splitting-chart-by-period"><i class="fa fa-check"></i><b>10.5</b> Splitting chart by period</a></li>
+<li class="chapter" data-level="10.6" data-path="qicharts.html"><a href="qicharts.html#small-multiple-plots-for-multivariate-data"><i class="fa fa-check"></i><b>10.6</b> Small multiple plots for multivariate data</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>11.6.1</b> To aggregate or not to aggregate</a></li>
+<li class="chapter" data-level="10.6.1" data-path="qicharts.html"><a href="qicharts.html#to-aggregate-or-not-to-aggregate"><i class="fa fa-check"></i><b>10.6.1</b> To aggregate or not to aggregate</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>11.7</b> <em>qicharts2</em> in short</a></li>
+<li class="chapter" data-level="10.7" data-path="qicharts.html"><a href="qicharts.html#qicharts2-in-short"><i class="fa fa-check"></i><b>10.7</b> <em>qicharts2</em> in short</a></li>
 </ul></li>
 <li class="part"><span><b>Part 3: Advanced SPC Techniques</b></span></li>
-<li class="chapter" data-level="12" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>12</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
-<li class="chapter" data-level="13" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>13</b> SPC Charts for Rare Events</a>
+<li class="chapter" data-level="11" data-path="screenedmr.html"><a href="screenedmr.html"><i class="fa fa-check"></i><b>11</b> Screened I Chart – eliminating freak moving ranges before calculating limits</a></li>
+<li class="chapter" data-level="12" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html"><i class="fa fa-check"></i><b>12</b> SPC Charts for Rare Events</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>13.1</b> Introducing the birth dataset</a></li>
-<li class="chapter" data-level="13.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases"><i class="fa fa-check"></i><b>13.2</b> G chart for opportunities between cases</a></li>
-<li class="chapter" data-level="13.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events"><i class="fa fa-check"></i><b>13.3</b> T chart for time between events</a></li>
-<li class="chapter" data-level="13.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>13.4</b> The Bernoulli CUSUM chart for binary data</a></li>
-<li class="chapter" data-level="13.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>13.5</b> Selecting the rigth chart for rare events</a></li>
+<li class="chapter" data-level="12.1" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset"><i class="fa fa-check"></i><b>12.1</b> Introducing the birth dataset</a></li>
+<li class="chapter" data-level="12.2" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#g-chart-for-opportunities-between-cases"><i class="fa fa-check"></i><b>12.2</b> G chart for opportunities between cases</a></li>
+<li class="chapter" data-level="12.3" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#t-chart-for-time-between-events"><i class="fa fa-check"></i><b>12.3</b> T chart for time between events</a></li>
+<li class="chapter" data-level="12.4" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#the-bernoulli-cusum-chart-for-binary-data"><i class="fa fa-check"></i><b>12.4</b> The Bernoulli CUSUM chart for binary data</a></li>
+<li class="chapter" data-level="12.5" data-path="spc-charts-for-rare-events.html"><a href="spc-charts-for-rare-events.html#selecting-the-rigth-chart-for-rare-events"><i class="fa fa-check"></i><b>12.5</b> Selecting the rigth chart for rare events</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>14</b> Prime Charts for Count Data with Very Large Subgroups</a>
+<li class="chapter" data-level="13" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html"><i class="fa fa-check"></i><b>13</b> Prime Charts for Count Data with Very Large Subgroups</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>14.1</b> Laney’s prime chart</a></li>
-<li class="chapter" data-level="14.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>14.2</b> When to use prime charts</a></li>
+<li class="chapter" data-level="13.1" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#laneys-prime-chart"><i class="fa fa-check"></i><b>13.1</b> Laney’s prime chart</a></li>
+<li class="chapter" data-level="13.2" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#when-to-use-prime-charts"><i class="fa fa-check"></i><b>13.2</b> When to use prime charts</a></li>
 <li class="chapter" data-level="" data-path="prime-charts-for-count-data-with-very-large-subgroups.html"><a href="prime-charts-for-count-data-with-very-large-subgroups.html#pp-data"><i class="fa fa-check"></i>Example data for P prime charts</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>15</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
+<li class="chapter" data-level="14" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><i class="fa fa-check"></i><b>14</b> I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)</a>
 <ul>
-<li class="chapter" data-level="15.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>15.0.1</b> Procedure for calculating centre line and control limits</a></li>
-<li class="chapter" data-level="15.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>15.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
-<li class="chapter" data-level="15.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>15.2</b> One chart to rule them all?</a></li>
+<li class="chapter" data-level="14.0.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#procedure-for-calculating-centre-line-and-control-limits"><i class="fa fa-check"></i><b>14.0.1</b> Procedure for calculating centre line and control limits</a></li>
+<li class="chapter" data-level="14.1" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes"><i class="fa fa-check"></i><b>14.1</b> I’ charts for measument data with variable subgroup sizes</a></li>
+<li class="chapter" data-level="14.2" data-path="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#one-chart-to-rule-them-all"><i class="fa fa-check"></i><b>14.2</b> One chart to rule them all?</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>16</b> Funnel Plots for Categorical Subgroups</a></li>
-<li class="chapter" data-level="17" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>17</b> Pareto Charts for Ranking Problems</a></li>
+<li class="chapter" data-level="15" data-path="funnel-plots-for-categorical-subgroups.html"><a href="funnel-plots-for-categorical-subgroups.html"><i class="fa fa-check"></i><b>15</b> Funnel Plots for Categorical Subgroups</a></li>
+<li class="chapter" data-level="16" data-path="pareto-charts-for-ranking-problems.html"><a href="pareto-charts-for-ranking-problems.html"><i class="fa fa-check"></i><b>16</b> Pareto Charts for Ranking Problems</a></li>
 <li class="part"><span><b>Part 4: Best Practices, Controversies, and Tips</b></span></li>
-<li class="chapter" data-level="18" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>18</b> Tips for Effective SPC Implementation</a>
+<li class="chapter" data-level="17" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>17</b> Tips for Effective SPC Implementation</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>18.1</b> Engaging stakeholders</a></li>
-<li class="chapter" data-level="18.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>18.2</b> Automating production of SPC charts</a>
+<li class="chapter" data-level="17.1" data-path="tips.html"><a href="tips.html#engaging-stakeholders"><i class="fa fa-check"></i><b>17.1</b> Engaging stakeholders</a></li>
+<li class="chapter" data-level="17.2" data-path="tips.html"><a href="tips.html#automating-production-of-spc-charts"><i class="fa fa-check"></i><b>17.2</b> Automating production of SPC charts</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>18.2.1</b> Data collection and storage</a></li>
-<li class="chapter" data-level="18.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>18.2.2</b> Charts, reports, and dashboards</a></li>
+<li class="chapter" data-level="17.2.1" data-path="tips.html"><a href="tips.html#data-collection-and-storage"><i class="fa fa-check"></i><b>17.2.1</b> Data collection and storage</a></li>
+<li class="chapter" data-level="17.2.2" data-path="tips.html"><a href="tips.html#charts-reports-and-dashboards"><i class="fa fa-check"></i><b>17.2.2</b> Charts, reports, and dashboards</a></li>
 </ul></li>
-<li class="chapter" data-level="18.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>18.3</b> Continuous evaluation and improvement</a></li>
+<li class="chapter" data-level="17.3" data-path="tips.html"><a href="tips.html#continuous-evaluation-and-improvement"><i class="fa fa-check"></i><b>17.3</b> Continuous evaluation and improvement</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>19</b> Common Pitfalls to Avoid</a>
+<li class="chapter" data-level="18" data-path="pitfalls.html"><a href="pitfalls.html"><i class="fa fa-check"></i><b>18</b> Common Pitfalls to Avoid</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>19.1</b> Data issues</a></li>
-<li class="chapter" data-level="19.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>19.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
-<li class="chapter" data-level="19.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>19.3</b> Confusing the voice of the customer with the voice of the process</a></li>
-<li class="chapter" data-level="19.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>19.4</b> Automatic rephasing</a></li>
-<li class="chapter" data-level="19.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>19.5</b> The control chart vs run chart debate</a></li>
-<li class="chapter" data-level="19.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>19.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
+<li class="chapter" data-level="18.1" data-path="pitfalls.html"><a href="pitfalls.html#data-issues"><i class="fa fa-check"></i><b>18.1</b> Data issues</a></li>
+<li class="chapter" data-level="18.2" data-path="pitfalls.html"><a href="pitfalls.html#signal-fatigue-from-over-sensitive-spc-rules"><i class="fa fa-check"></i><b>18.2</b> Signal fatigue from over-sensitive SPC rules</a></li>
+<li class="chapter" data-level="18.3" data-path="pitfalls.html"><a href="pitfalls.html#confusing-the-voice-of-the-customer-with-the-voice-of-the-process"><i class="fa fa-check"></i><b>18.3</b> Confusing the voice of the customer with the voice of the process</a></li>
+<li class="chapter" data-level="18.4" data-path="pitfalls.html"><a href="pitfalls.html#automatic-rephasing"><i class="fa fa-check"></i><b>18.4</b> Automatic rephasing</a></li>
+<li class="chapter" data-level="18.5" data-path="pitfalls.html"><a href="pitfalls.html#the-control-chart-vs-run-chart-debate"><i class="fa fa-check"></i><b>18.5</b> The control chart vs run chart debate</a></li>
+<li class="chapter" data-level="18.6" data-path="pitfalls.html"><a href="pitfalls.html#assuming-a-one-to-one-link-between-pdsa-cycles-and-data-points"><i class="fa fa-check"></i><b>18.6</b> Assuming a one-to-one link between PDSA cycles and data points</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>20</b> The Forgotten Art of Rational Subgrouping</a>
+<li class="chapter" data-level="19" data-path="subgrouping.html"><a href="subgrouping.html"><i class="fa fa-check"></i><b>19</b> The Forgotten Art of Rational Subgrouping</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>20.1</b> Too large subgroups – masking meaningful signals</a></li>
-<li class="chapter" data-level="20.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>20.2</b> Too small subgroups – revealing unimportant noise</a></li>
-<li class="chapter" data-level="20.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>20.3</b> Striking the balance</a></li>
-<li class="chapter" data-level="20.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>20.4</b> A practical approach for rational subgrouping</a></li>
-<li class="chapter" data-level="20.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>20.5</b> Rational subgrouping in summary</a></li>
+<li class="chapter" data-level="19.1" data-path="subgrouping.html"><a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals"><i class="fa fa-check"></i><b>19.1</b> Too large subgroups – masking meaningful signals</a></li>
+<li class="chapter" data-level="19.2" data-path="subgrouping.html"><a href="subgrouping.html#too-small-subgroups-revealing-unimportant-noise"><i class="fa fa-check"></i><b>19.2</b> Too small subgroups – revealing unimportant noise</a></li>
+<li class="chapter" data-level="19.3" data-path="subgrouping.html"><a href="subgrouping.html#striking-the-balance"><i class="fa fa-check"></i><b>19.3</b> Striking the balance</a></li>
+<li class="chapter" data-level="19.4" data-path="subgrouping.html"><a href="subgrouping.html#a-practical-approach-for-rational-subgrouping"><i class="fa fa-check"></i><b>19.4</b> A practical approach for rational subgrouping</a></li>
+<li class="chapter" data-level="19.5" data-path="subgrouping.html"><a href="subgrouping.html#rational-subgrouping-in-summary"><i class="fa fa-check"></i><b>19.5</b> Rational subgrouping in summary</a></li>
 </ul></li>
 <li class="part"><span><b>Part 5: Conclusion and Final Thoughts</b></span></li>
-<li class="chapter" data-level="21" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i><b>21</b> Closing Remarks</a>
+<li class="chapter" data-level="20" data-path="closing-remarks.html"><a href="closing-remarks.html"><i class="fa fa-check"></i><b>20</b> Closing Remarks</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="closing-remarks.html"><a href="closing-remarks.html#from-charts-to-practice-what-it-really-takes"><i class="fa fa-check"></i><b>21.1</b> From charts to practice: what it really takes</a></li>
-<li class="chapter" data-level="21.2" data-path="closing-remarks.html"><a href="closing-remarks.html#building-spc-into-everyday-systems"><i class="fa fa-check"></i><b>21.2</b> Building SPC into everyday systems</a></li>
-<li class="chapter" data-level="21.3" data-path="closing-remarks.html"><a href="closing-remarks.html#working-with-variation-discipline-over-reaction"><i class="fa fa-check"></i><b>21.3</b> Working with variation: discipline over reaction</a></li>
-<li class="chapter" data-level="21.4" data-path="closing-remarks.html"><a href="closing-remarks.html#scaling-spc-in-a-data-rich-world"><i class="fa fa-check"></i><b>21.4</b> Scaling SPC in a data-rich world</a></li>
-<li class="chapter" data-level="21.5" data-path="closing-remarks.html"><a href="closing-remarks.html#a-shared-future-principles-practice-and-community"><i class="fa fa-check"></i><b>21.5</b> A shared future: principles, practice, and community</a></li>
+<li class="chapter" data-level="20.1" data-path="closing-remarks.html"><a href="closing-remarks.html#from-charts-to-practice-what-it-really-takes"><i class="fa fa-check"></i><b>20.1</b> From charts to practice: what it really takes</a></li>
+<li class="chapter" data-level="20.2" data-path="closing-remarks.html"><a href="closing-remarks.html#building-spc-into-everyday-systems"><i class="fa fa-check"></i><b>20.2</b> Building SPC into everyday systems</a></li>
+<li class="chapter" data-level="20.3" data-path="closing-remarks.html"><a href="closing-remarks.html#working-with-variation-discipline-over-reaction"><i class="fa fa-check"></i><b>20.3</b> Working with variation: discipline over reaction</a></li>
+<li class="chapter" data-level="20.4" data-path="closing-remarks.html"><a href="closing-remarks.html#scaling-spc-in-a-data-rich-world"><i class="fa fa-check"></i><b>20.4</b> Scaling SPC in a data-rich world</a></li>
+<li class="chapter" data-level="20.5" data-path="closing-remarks.html"><a href="closing-remarks.html#a-shared-future-principles-practice-and-community"><i class="fa fa-check"></i><b>20.5</b> A shared future: principles, practice, and community</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a></li>
+<li class="chapter" data-level="A" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>A</b> Data Sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#adverse-events"><i class="fa fa-check"></i>Adverse Events</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#bacteremia"><i class="fa fa-check"></i>Bacteremia</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#blood-pressure"><i class="fa fa-check"></i>Blood pressure</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#clostridioides-difficile-infections"><i class="fa fa-check"></i>Clostridioides difficile infections</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#ceasearian-section-delay"><i class="fa fa-check"></i>Ceasearian section delay</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#diabetes-hba1c"><i class="fa fa-check"></i>Diabetes HbA1c</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#emergency-admission-mortality"><i class="fa fa-check"></i>Emergency admission mortality</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#on-time-ct"><i class="fa fa-check"></i>On-time CT</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#radiation-doses"><i class="fa fa-check"></i>Radiation doses</a></li>
+<li class="chapter" data-level="" data-path="data-sets.html"><a href="data-sets.html#robson-group-1-births"><i class="fa fa-check"></i>Robson group 1 births</a></li>
+</ul></li>
 <li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a>
 <ul>
 <li class="chapter" data-level="B.1" data-path="stat-concepts.html"><a href="stat-concepts.html#data-types"><i class="fa fa-check"></i><b>B.1</b> Data types</a>
@@ -417,8 +431,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="qicharts" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Chapter 11</span> SPC Charting with <em>qicharts2</em><a href="qicharts.html#qicharts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="qicharts" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> SPC Charting with <em>qicharts2</em><a href="qicharts.html#qicharts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>qicharts2</em> (Quality Improvement Charts, <span class="citation">Anhøj (<a href="#ref-qicharts2">2024</a>)</span>, <span class="citation">Anhøj (<a href="#ref-anhoej2018a">2018</a>)</span>) is an R package for statistical process control aimed primarily at healthcare data analysts. It is built on the same principles that we have developed throughout this book and provides functions for constructing run charts and all of the Magnificent Seven. In addition, it includes specialised charts such as Pareto charts and control charts for rare events data.</p>
 <p>Full documentation and examples are available on the package website: <a href="https://anhoej.github.io/qicharts2/" class="uri">https://anhoej.github.io/qicharts2/</a>. In this chapter, we focus on a few key features that extend the functionality of the simple function library we developed earlier:</p>
 <ul>
@@ -427,81 +441,81 @@ div.csl-indent {
 <li>multivariate plots (small multiples)</li>
 </ul>
 <p>To get started, install and load the package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="qicharts.html#cb1-1" tabindex="-1"></a><span class="co"># install package</span></span>
-<span id="cb1-2"><a href="qicharts.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;qicharts2&#39;</span>)</span>
-<span id="cb1-3"><a href="qicharts.html#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="qicharts.html#cb1-4" tabindex="-1"></a><span class="co"># load package</span></span>
-<span id="cb1-5"><a href="qicharts.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(qicharts2)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="qicharts.html#cb60-1" tabindex="-1"></a><span class="co"># install package</span></span>
+<span id="cb60-2"><a href="qicharts.html#cb60-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;qicharts2&#39;</span>)</span>
+<span id="cb60-3"><a href="qicharts.html#cb60-3" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="qicharts.html#cb60-4" tabindex="-1"></a><span class="co"># load package</span></span>
+<span id="cb60-5"><a href="qicharts.html#cb60-5" tabindex="-1"></a><span class="fu">library</span>(qicharts2)</span></code></pre></div>
 <p>Note that installation is only required once, whereas the package must be loaded in each R session.</p>
 <p>You may also wish to explore the vignette: <code>vignette('qicharts2')</code>.</p>
 <p>Alternatively, you can begin using the package immediately.</p>
-<div id="a-simple-run-chart" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> A simple run chart<a href="qicharts.html#a-simple-run-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-simple-run-chart" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> A simple run chart<a href="qicharts.html#a-simple-run-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The main function of <em>qicharts2</em> is <code>qic()</code>. It accepts the same core arguments as the <code>spc()</code> function developed earlier, along with many additional options. For a full overview, consult the documentation: <code>?qic</code>.</p>
-<p>To reproduce our first run chart from Chapter <a href="first-chart.html#first-chart">6</a>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="qicharts.html#cb2-1" tabindex="-1"></a><span class="fu">qic</span>(systolic)</span></code></pre></div>
+<p>To reproduce our first run chart from Chapter <a href="first-chart.html#first-chart">5</a>:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="qicharts.html#cb61-1" tabindex="-1"></a><span class="fu">qic</span>(systolic)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-qic1"></span>
 <img src="_main_files/figure-html/qicharts-qic1-1.svg" alt="Run chart produced with the `qic()` function from the qicharts2 package" width="672" />
 <p class="caption">
-Figure 11.1: Run chart produced with the <code>qic()</code> function from the qicharts2 package
+Figure 10.1: Run chart produced with the <code>qic()</code> function from the qicharts2 package
 </p>
 </div>
-<p>Several features are worth noting in Figure <a href="qicharts.html#fig:qicharts-qic1">11.1</a>. Default titles and axis labels are generated automatically, though these can be modified using the title, ylab, and xlab arguments. Data points that fall exactly on the centre line are displayed in grey, reflecting that they are not counted as useful observations in runs analysis. The value of the centre line is also displayed directly on the chart.</p>
+<p>Several features are worth noting in Figure <a href="qicharts.html#fig:qicharts-qic1">10.1</a>. Default titles and axis labels are generated automatically, though these can be modified using the title, ylab, and xlab arguments. Data points that fall exactly on the centre line are displayed in grey, reflecting that they are not counted as useful observations in runs analysis. The value of the centre line is also displayed directly on the chart.</p>
 </div>
-<div id="a-simple-control-chart" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">11.2</span> A simple control chart<a href="qicharts.html#a-simple-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To produce a control chart, we simply specify the chart type (Figure <a href="qicharts.html#fig:qicharts-qic2">11.2</a>):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="qicharts.html#cb3-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>)</span></code></pre></div>
+<div id="a-simple-control-chart" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> A simple control chart<a href="qicharts.html#a-simple-control-chart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To produce a control chart, we simply specify the chart type (Figure <a href="qicharts.html#fig:qicharts-qic2">10.2</a>):</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="qicharts.html#cb62-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-qic2"></span>
 <img src="_main_files/figure-html/qicharts-qic2-1.svg" alt="I chart produced with `qic()`" width="672" />
 <p class="caption">
-Figure 11.2: I chart produced with <code>qic()</code>
+Figure 10.2: I chart produced with <code>qic()</code>
 </p>
 </div>
 <p>By default <code>qic()</code> uses a grey background area to show the natural process limits.</p>
 </div>
-<div id="excluding-data-points-from-analysis" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">11.3</span> Excluding data points from analysis<a href="qicharts.html#excluding-data-points-from-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In some situations, it may be appropriate to exclude specific data points from the calculation of control limits and runs analysis. This is done using the exclude argument (Figure <a href="qicharts.html#fig:qicharts-qic3">11.3</a>):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="qicharts.html#cb4-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>, <span class="at">exclude =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div id="excluding-data-points-from-analysis" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Excluding data points from analysis<a href="qicharts.html#excluding-data-points-from-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In some situations, it may be appropriate to exclude specific data points from the calculation of control limits and runs analysis. This is done using the exclude argument (Figure <a href="qicharts.html#fig:qicharts-qic3">10.3</a>):</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="qicharts.html#cb63-1" tabindex="-1"></a><span class="fu">qic</span>(systolic, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>, <span class="at">exclude =</span> <span class="dv">6</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-qic3"></span>
 <img src="_main_files/figure-html/qicharts-qic3-1.svg" alt="I chart with one data point excluded from calculations" width="672" />
 <p class="caption">
-Figure 11.3: I chart with one data point excluded from calculations
+Figure 10.3: I chart with one data point excluded from calculations
 </p>
 </div>
 <p>Excluding a data point affects the estimated centre line and control limits – in this example, the limits become slightly narrower.</p>
 <p>Such exclusions should be made deliberately and only when there is a clear understanding of why the data point does not represent the underlying process. Excluding points simply because they fall outside the control limits undermines the purpose of SPC, which is to learn from variation.</p>
 </div>
-<div id="freezing-baseline-period" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> Freezing baseline period<a href="qicharts.html#freezing-baseline-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="freezing-baseline-period" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Freezing baseline period<a href="qicharts.html#freezing-baseline-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When a stable baseline has been established, it is often useful to “freeze” the centre line and control limits and apply them to future data. In industrial settings, this is known as phase I and phase II analysis.</p>
 <p>In healthcare, freezing is particularly useful when evaluating the impact of an intervention. The cdi dataset, included with <em>qicharts2</em>, contains monthly infection counts before and after an improvement programme:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="qicharts.html#cb5-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">freeze =</span> <span class="dv">24</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="qicharts.html#cb64-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">freeze =</span> <span class="dv">24</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi1"></span>
 <img src="_main_files/figure-html/qicharts-cdi1-1.svg" alt="Infections before and after intervention" width="672" />
 <p class="caption">
-Figure 11.4: Infections before and after intervention
+Figure 10.4: Infections before and after intervention
 </p>
 </div>
-<p>In Figure <a href="qicharts.html#fig:qicharts-cdi1">11.4</a>, the centre line is calculated from the first 24 months (the baseline period) and applied to subsequent data. This makes it easier to detect sustained changes following the intervention.</p>
+<p>In Figure <a href="qicharts.html#fig:qicharts-cdi1">10.4</a>, the centre line is calculated from the first 24 months (the baseline period) and applied to subsequent data. This makes it easier to detect sustained changes following the intervention.</p>
 </div>
-<div id="splitting-chart-by-period" class="section level2 hasAnchor" number="11.5">
-<h2><span class="header-section-number">11.5</span> Splitting chart by period<a href="qicharts.html#splitting-chart-by-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When a sustained shift has been identified and its cause is understood, it may be appropriate to split the chart into distinct periods using the part argument (Figure <a href="qicharts.html#fig:qicharts-cdi2">11.5</a>):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="qicharts.html#cb6-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
+<div id="splitting-chart-by-period" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Splitting chart by period<a href="qicharts.html#splitting-chart-by-period" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When a sustained shift has been identified and its cause is understood, it may be appropriate to split the chart into distinct periods using the part argument (Figure <a href="qicharts.html#fig:qicharts-cdi2">10.5</a>):</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="qicharts.html#cb65-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> <span class="dv">24</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi2"></span>
 <img src="_main_files/figure-html/qicharts-cdi2-1.svg" alt="Splitting using index" width="672" />
 <p class="caption">
-Figure 11.5: Splitting using index
+Figure 10.5: Splitting using index
 </p>
 </div>
-<p>Alternatively, a categorical variable can be used to define periods(Figure <a href="qicharts.html#fig:qicharts-cdi3">11.6</a>):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="qicharts.html#cb7-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
+<p>Alternatively, a categorical variable can be used to define periods(Figure <a href="qicharts.html#fig:qicharts-cdi3">10.6</a>):</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="qicharts.html#cb66-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi3"></span>
 <img src="_main_files/figure-html/qicharts-cdi3-1.svg" alt="Splitting using a period variable" width="672" />
 <p class="caption">
-Figure 11.6: Splitting using a period variable
+Figure 10.6: Splitting using a period variable
 </p>
 </div>
 <p>Splitting should be done cautiously and only when justified. It is typically appropriate when:</p>
@@ -512,21 +526,21 @@ Figure 11.6: Splitting using a period variable
 <li>the new level is expected to persist</li>
 </ul>
 <p>If these conditions are not met, the focus should remain on understanding the underlying causes of variation.</p>
-<p>Once distinct stable periods have been identified, control limits may be added: (Figure <a href="qicharts.html#fig:qicharts-cdi4">11.7</a>).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="qicharts.html#cb8-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period, <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>)</span></code></pre></div>
+<p>Once distinct stable periods have been identified, control limits may be added: (Figure <a href="qicharts.html#fig:qicharts-cdi4">10.7</a>).</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="qicharts.html#cb67-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, <span class="at">data =</span> cdi, <span class="at">part =</span> period, <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-cdi4"></span>
 <img src="_main_files/figure-html/qicharts-cdi4-1.svg" alt="Splitting using a period variable" width="672" />
 <p class="caption">
-Figure 11.7: Splitting using a period variable
+Figure 10.7: Splitting using a period variable
 </p>
 </div>
 </div>
-<div id="small-multiple-plots-for-multivariate-data" class="section level2 hasAnchor" number="11.6">
-<h2><span class="header-section-number">11.6</span> Small multiple plots for multivariate data<a href="qicharts.html#small-multiple-plots-for-multivariate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="small-multiple-plots-for-multivariate-data" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Small multiple plots for multivariate data<a href="qicharts.html#small-multiple-plots-for-multivariate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While SPC charts are inherently time-based, many healthcare datasets include additional dimensions that are important for interpretation.</p>
 <p>The hospital_infections dataset, included in <em>qicharts2</em>, contains infection counts by hospital and infection type:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="qicharts.html#cb9-1" tabindex="-1"></a><span class="co"># show the first six rows of the hospitals_infections dataset</span></span>
-<span id="cb9-2"><a href="qicharts.html#cb9-2" tabindex="-1"></a><span class="fu">head</span>(hospital_infections)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="qicharts.html#cb68-1" tabindex="-1"></a><span class="co"># show the first six rows of the hospitals_infections dataset</span></span>
+<span id="cb68-2"><a href="qicharts.html#cb68-2" tabindex="-1"></a><span class="fu">head</span>(hospital_infections)</span></code></pre></div>
 <pre><code>##   hospital infection      month  n     days
 ## 1      AHH       BAC 2015-01-01 17 17233.67
 ## 2      AHH       BAC 2015-02-01 18 15308.25
@@ -535,99 +549,99 @@ Figure 11.7: Splitting using a period variable
 ## 5      AHH       BAC 2015-05-01 13 15788.96
 ## 6      AHH       BAC 2015-06-01 14 15660.04</code></pre>
 <p>In addition to time, the data vary by hospital and infection type.</p>
-<p>Figure <a href="qicharts.html#fig:qicharts-hais1">11.8</a> shows aggregated data for urinary tract infections across all hospitals:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="qicharts.html#cb11-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb11-2"><a href="qicharts.html#cb11-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections,</span>
-<span id="cb11-3"><a href="qicharts.html#cb11-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb11-4"><a href="qicharts.html#cb11-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb11-5"><a href="qicharts.html#cb11-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb11-6"><a href="qicharts.html#cb11-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
-<span id="cb11-7"><a href="qicharts.html#cb11-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb11-8"><a href="qicharts.html#cb11-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p>Figure <a href="qicharts.html#fig:qicharts-hais1">10.8</a> shows aggregated data for urinary tract infections across all hospitals:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="qicharts.html#cb70-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb70-2"><a href="qicharts.html#cb70-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections,</span>
+<span id="cb70-3"><a href="qicharts.html#cb70-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
+<span id="cb70-4"><a href="qicharts.html#cb70-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb70-5"><a href="qicharts.html#cb70-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb70-6"><a href="qicharts.html#cb70-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
+<span id="cb70-7"><a href="qicharts.html#cb70-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb70-8"><a href="qicharts.html#cb70-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais1"></span>
 <img src="_main_files/figure-html/qicharts-hais1-1.svg" alt="Aggregated U chart of urinary tract infections from six hospital" width="672" />
 <p class="caption">
-Figure 11.8: Aggregated U chart of urinary tract infections from six hospital
+Figure 10.8: Aggregated U chart of urinary tract infections from six hospital
 </p>
 </div>
-<p>The same data can be stratified into separate panels using the facets argument (Figure <a href="qicharts.html#fig:qicharts-hais2">11.9</a>):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="qicharts.html#cb12-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb12-2"><a href="qicharts.html#cb12-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
-<span id="cb12-3"><a href="qicharts.html#cb12-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
-<span id="cb12-4"><a href="qicharts.html#cb12-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb12-5"><a href="qicharts.html#cb12-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb12-6"><a href="qicharts.html#cb12-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,                     <span class="co"># stratify by hospital</span></span>
-<span id="cb12-7"><a href="qicharts.html#cb12-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,                             <span class="co"># two-column arrangement of plots</span></span>
-<span id="cb12-8"><a href="qicharts.html#cb12-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
-<span id="cb12-9"><a href="qicharts.html#cb12-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb12-10"><a href="qicharts.html#cb12-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p>The same data can be stratified into separate panels using the facets argument (Figure <a href="qicharts.html#fig:qicharts-hais2">10.9</a>):</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="qicharts.html#cb71-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb71-2"><a href="qicharts.html#cb71-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
+<span id="cb71-3"><a href="qicharts.html#cb71-3" tabindex="-1"></a>                      infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>),</span>
+<span id="cb71-4"><a href="qicharts.html#cb71-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb71-5"><a href="qicharts.html#cb71-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb71-6"><a href="qicharts.html#cb71-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,                     <span class="co"># stratify by hospital</span></span>
+<span id="cb71-7"><a href="qicharts.html#cb71-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,                             <span class="co"># two-column arrangement of plots</span></span>
+<span id="cb71-8"><a href="qicharts.html#cb71-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Urinary tract infections&#39;</span>,</span>
+<span id="cb71-9"><a href="qicharts.html#cb71-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb71-10"><a href="qicharts.html#cb71-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais2"></span>
 <img src="_main_files/figure-html/qicharts-hais2-1.svg" alt="Stratified (small multiple) U charts of urinary tract infections from six hospital" width="672" />
 <p class="caption">
-Figure 11.9: Stratified (small multiple) U charts of urinary tract infections from six hospital
+Figure 10.9: Stratified (small multiple) U charts of urinary tract infections from six hospital
 </p>
 </div>
 <p>These small multiple plots (also known as trellis or lattice plots) allow comparison across categories.</p>
-<p>Similarly, we can stratify by infection type within a single hospital: (Figure <a href="qicharts.html#fig:qicharts-hais3">11.10</a>).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="qicharts.html#cb13-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb13-2"><a href="qicharts.html#cb13-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
-<span id="cb13-3"><a href="qicharts.html#cb13-3" tabindex="-1"></a>                      hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
-<span id="cb13-4"><a href="qicharts.html#cb13-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb13-5"><a href="qicharts.html#cb13-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb13-6"><a href="qicharts.html#cb13-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,                   <span class="co"># stratify by infection type</span></span>
-<span id="cb13-7"><a href="qicharts.html#cb13-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
-<span id="cb13-8"><a href="qicharts.html#cb13-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb13-9"><a href="qicharts.html#cb13-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb13-10"><a href="qicharts.html#cb13-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p>Similarly, we can stratify by infection type within a single hospital: (Figure <a href="qicharts.html#fig:qicharts-hais3">10.10</a>).</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="qicharts.html#cb72-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb72-2"><a href="qicharts.html#cb72-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, </span>
+<span id="cb72-3"><a href="qicharts.html#cb72-3" tabindex="-1"></a>                      hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
+<span id="cb72-4"><a href="qicharts.html#cb72-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb72-5"><a href="qicharts.html#cb72-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb72-6"><a href="qicharts.html#cb72-6" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,                   <span class="co"># stratify by infection type</span></span>
+<span id="cb72-7"><a href="qicharts.html#cb72-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
+<span id="cb72-8"><a href="qicharts.html#cb72-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb72-9"><a href="qicharts.html#cb72-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb72-10"><a href="qicharts.html#cb72-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais3"></span>
 <img src="_main_files/figure-html/qicharts-hais3-1.svg" alt="U charts from one hospital stratified by infection type" width="672" />
 <p class="caption">
-Figure 11.10: U charts from one hospital stratified by infection type
+Figure 10.10: U charts from one hospital stratified by infection type
 </p>
 </div>
-<p>By default, all panels share the same axis scales. This facilitates comparison of levels and patterns. However, when indicators differ greatly in magnitude, it may be more useful to allow separate scales as in Figure <a href="qicharts.html#fig:qicharts-hais4">11.11</a>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="qicharts.html#cb14-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb14-2"><a href="qicharts.html#cb14-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
-<span id="cb14-3"><a href="qicharts.html#cb14-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb14-4"><a href="qicharts.html#cb14-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb14-5"><a href="qicharts.html#cb14-5" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,</span>
-<span id="cb14-6"><a href="qicharts.html#cb14-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,                      <span class="co"># free y-axes</span></span>
-<span id="cb14-7"><a href="qicharts.html#cb14-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
-<span id="cb14-8"><a href="qicharts.html#cb14-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb14-9"><a href="qicharts.html#cb14-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb14-10"><a href="qicharts.html#cb14-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p>By default, all panels share the same axis scales. This facilitates comparison of levels and patterns. However, when indicators differ greatly in magnitude, it may be more useful to allow separate scales as in Figure <a href="qicharts.html#fig:qicharts-hais4">10.11</a>:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="qicharts.html#cb73-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb73-2"><a href="qicharts.html#cb73-2" tabindex="-1"></a>    <span class="at">data     =</span> <span class="fu">subset</span>(hospital_infections, hospital <span class="sc">==</span> <span class="st">&#39;NOH&#39;</span>),</span>
+<span id="cb73-3"><a href="qicharts.html#cb73-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb73-4"><a href="qicharts.html#cb73-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb73-5"><a href="qicharts.html#cb73-5" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>infection,</span>
+<span id="cb73-6"><a href="qicharts.html#cb73-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,                      <span class="co"># free y-axes</span></span>
+<span id="cb73-7"><a href="qicharts.html#cb73-7" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">1</span>,</span>
+<span id="cb73-8"><a href="qicharts.html#cb73-8" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb73-9"><a href="qicharts.html#cb73-9" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb73-10"><a href="qicharts.html#cb73-10" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais4"></span>
 <img src="_main_files/figure-html/qicharts-hais4-1.svg" alt="Small multiples free y-axes" width="672" />
 <p class="caption">
-Figure 11.11: Small multiples free y-axes
+Figure 10.11: Small multiples free y-axes
 </p>
 </div>
-<p>Finally, both dimensions can be displayed simultaneously as in Figure <a href="qicharts.html#fig:qicharts-hais5">11.12</a>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="qicharts.html#cb15-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
-<span id="cb15-2"><a href="qicharts.html#cb15-2" tabindex="-1"></a>    <span class="at">data     =</span> hospital_infections,</span>
-<span id="cb15-3"><a href="qicharts.html#cb15-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb15-4"><a href="qicharts.html#cb15-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb15-5"><a href="qicharts.html#cb15-5" tabindex="-1"></a>    <span class="at">facets   =</span> infection <span class="sc">~</span> hospital,         <span class="co"># two-dimensional faceting</span></span>
-<span id="cb15-6"><a href="qicharts.html#cb15-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,</span>
-<span id="cb15-7"><a href="qicharts.html#cb15-7" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
-<span id="cb15-8"><a href="qicharts.html#cb15-8" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
-<span id="cb15-9"><a href="qicharts.html#cb15-9" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<p>Finally, both dimensions can be displayed simultaneously as in Figure <a href="qicharts.html#fig:qicharts-hais5">10.12</a>:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="qicharts.html#cb74-1" tabindex="-1"></a><span class="fu">qic</span>(month, n, days, </span>
+<span id="cb74-2"><a href="qicharts.html#cb74-2" tabindex="-1"></a>    <span class="at">data     =</span> hospital_infections,</span>
+<span id="cb74-3"><a href="qicharts.html#cb74-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb74-4"><a href="qicharts.html#cb74-4" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb74-5"><a href="qicharts.html#cb74-5" tabindex="-1"></a>    <span class="at">facets   =</span> infection <span class="sc">~</span> hospital,         <span class="co"># two-dimensional faceting</span></span>
+<span id="cb74-6"><a href="qicharts.html#cb74-6" tabindex="-1"></a>    <span class="at">scales   =</span> <span class="st">&#39;free_y&#39;</span>,</span>
+<span id="cb74-7"><a href="qicharts.html#cb74-7" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital infections&#39;</span>,</span>
+<span id="cb74-8"><a href="qicharts.html#cb74-8" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count per 10,000 risk days&#39;</span>,</span>
+<span id="cb74-9"><a href="qicharts.html#cb74-9" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qicharts-hais5"></span>
 <img src="_main_files/figure-html/qicharts-hais5-1.svg" alt="Hospital infections stratified by infection and hospital" width="672" />
 <p class="caption">
-Figure 11.12: Hospital infections stratified by infection and hospital
+Figure 10.12: Hospital infections stratified by infection and hospital
 </p>
 </div>
-<div id="to-aggregate-or-not-to-aggregate" class="section level3 hasAnchor" number="11.6.1">
-<h3><span class="header-section-number">11.6.1</span> To aggregate or not to aggregate<a href="qicharts.html#to-aggregate-or-not-to-aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="to-aggregate-or-not-to-aggregate" class="section level3 hasAnchor" number="10.6.1">
+<h3><span class="header-section-number">10.6.1</span> To aggregate or not to aggregate<a href="qicharts.html#to-aggregate-or-not-to-aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When working with data from multiple organisational units, a key decision is whether to aggregate or stratify.</p>
 <p>Aggregation can simplify interpretation but may mask important variation. In contrast, stratification can reveal differences between units that would otherwise be hidden. For example, aggregated data may appear stable even when individual units exhibit shifts in opposite directions.</p>
 <p>Conversely, small shifts occurring consistently across multiple units may become more visible when data are aggregated.</p>
 <p>The choice between aggregation and stratification should therefore be made deliberately, based on an understanding of the context and purpose of the analysis. In many cases, it is useful to examine the data at multiple levels.</p>
 </div>
 </div>
-<div id="qicharts2-in-short" class="section level2 hasAnchor" number="11.7">
-<h2><span class="header-section-number">11.7</span> <em>qicharts2</em> in short<a href="qicharts.html#qicharts2-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="qicharts2-in-short" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> <em>qicharts2</em> in short<a href="qicharts.html#qicharts2-in-short" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>qicharts2</em> is a flexible and powerful package for constructing SPC charts, particularly in healthcare settings. It builds on the same principles introduced in this book while providing additional functionality for automation, visualisation, and handling of complex data structures.</p>
 <p>In the following chapters, we will explore specialised chart types and further extensions of SPC methodology.</p>
 
@@ -705,6 +719,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
