@@ -1,4 +1,4 @@
-# SPC Charting with qicharts2 {#qicharts}
+# SPC Charting with *qicharts2* {#qicharts}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/6,
@@ -9,7 +9,7 @@ library(qicharts2)
 options(qic.clshade = T)
 ```
 
-qicharts2 (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for  statistical process control aimed primarily at healthcare data analysts. It is built on the same principles that we have developed throughout this book and provides functions for constructing run charts and all of the Magnificent Seven. In addition, it includes specialised charts such as Pareto charts and control charts for rare events data.
+*qicharts2* (Quality Improvement Charts, @qicharts2, @anhoej2018a) is an R package for  statistical process control aimed primarily at healthcare data analysts. It is built on the same principles that we have developed throughout this book and provides functions for constructing run charts and all of the Magnificent Seven. In addition, it includes specialised charts such as Pareto charts and control charts for rare events data.
 
 Full documentation and examples are available on the package website: https://anhoej.github.io/qicharts2/. In this chapter, we focus on a few key features that extend the functionality of the simple function library we developed earlier:
 
@@ -35,7 +35,7 @@ Alternatively, you can begin using the package immediately.
 
 ## A simple run chart
 
-The main function of qicharts2 is `qic()`. It accepts the same core arguments as the spc() function developed earlier, along with many additional options. For a full overview, consult the documentation: `?qic`.
+The main function of *qicharts2* is `qic()`. It accepts the same core arguments as the `spc()` function developed earlier, along with many additional options. For a full overview, consult the documentation: `?qic`.
 
 To reproduce our first run chart from Chapter \@ref(first-chart):
 
@@ -71,7 +71,7 @@ Such exclusions should be made deliberately and only when there is a clear under
 
 When a stable baseline has been established, it is often useful to “freeze” the centre line and control limits and apply them to future data. In industrial settings, this is known as phase I and phase II analysis.
 
-In healthcare, freezing is particularly useful when evaluating the impact of an intervention. The dataset cdi, included with qicharts2, contains monthly infection counts before and after an improvement programme:
+In healthcare, freezing is particularly useful when evaluating the impact of an intervention. The cdi dataset, included with *qicharts2*, contains monthly infection counts before and after an improvement programme:
 
 ```{r qicharts-cdi1, fig.cap='Infections before and after intervention'}
 qic(month, n, data = cdi, freeze = 24)
@@ -112,7 +112,7 @@ qic(month, n, data = cdi, part = period, chart = 'c')
 
 While SPC charts are inherently time-based, many healthcare datasets include additional dimensions that are important for interpretation.
 
-The hospital_infections dataset, included in qicharts2, contains infection counts by hospital and infection type:
+The hospital_infections dataset, included in *qicharts2*, contains infection counts by hospital and infection type:
 
 ```{r}
 # show the first six rows of the hospitals_infections dataset
@@ -205,8 +205,8 @@ Conversely, small shifts occurring consistently across multiple units may become
 
 The choice between aggregation and stratification should therefore be made deliberately, based on an understanding of the context and purpose of the analysis. In many cases, it is useful to examine the data at multiple levels.
 
-## qicharts2 in short
+## *qicharts2* in short
 
-qicharts2 is a flexible and powerful package for constructing SPC charts, particularly in healthcare settings. It builds on the same principles introduced in this book while providing additional functionality for automation, visualisation, and handling of complex data structures.
+*qicharts2* is a flexible and powerful package for constructing SPC charts, particularly in healthcare settings. It builds on the same principles introduced in this book while providing additional functionality for automation, visualisation, and handling of complex data structures.
 
 In the following chapters, we will explore specialised chart types and further extensions of SPC methodology.
