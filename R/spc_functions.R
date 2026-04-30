@@ -95,10 +95,6 @@ spc.aggregate <- function(x, y, n, chart) {
   # Get function to calculate centre line and control limits.
   chart.fun  <- get(paste('spc', chart, sep = '.'))
   
-  # Get function to restore the x variable to its original class after
-  # aggregation.
-  # subgrp.fun <- get(paste0('as.', class(x)))
-  
   # Split data frame by subgroups
   df <- split(df, df$x)
   
@@ -114,16 +110,12 @@ spc.aggregate <- function(x, y, n, chart) {
   
   # Put list elements back together in a data frame.
   df <- do.call(rbind, c(df, make.row.names = FALSE))
-  # df <- data.frame(x = rownames(df), df, chart, row.names = NULL)
 
   # Replace any zero length subgroups with NA.
   df$n[df$n == 0] <- NA
   
   # Calculate the weighted subgroup mean.
   df$ybar <- weighted.mean(df$mean, df$n, na.rm = TRUE)
-  
-  # Restore x variable to its original class.
-  # df$x <- subgrp.fun(df$x)
   
   # Calculate centre line and control limits.
   df <- chart.fun(df)
