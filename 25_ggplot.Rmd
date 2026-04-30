@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# SPC Charts with ggplot2 {#ggplot}
+# SPC Charts with *ggplot2* {#ggplot}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
@@ -15,11 +15,11 @@ source('R/load_data.R', local = knitr::knit_global())
 
 Armed with the set of functions developed in Chapter \@ref(r-functions) , we are now able to construct all of the most commonly used SPC charts using base R. Furthermore, the modular structure of the function library makes it straightforward to extend. To add a new type of chart, we simply need to write a corresponding spc.*() function to calculate the centre line and control limits, and then include this function in the chart argument of the main `spc()` function.
 
-Because we have separated the calculation of chart components from the plotting itself -- by introducing a dedicated plotting method, `plot.spc()` -- it is also easy to replace the base R graphics engine with an alternative.
+Because we have separated the calculation of chart components from the plotting itself -- by introducing a dedicated plotting method, `plot.spc()` -- it is also easy to replace the base R graphics engine with an alternative like *ggplot2* or *lattice*.
 
-In this chapter, we develop an alternative plotting function based on ggplot2. The advantage of ggplot2 is not that it can do things that base R cannot, but that it often makes common tasks simpler and more consistent.
+In this chapter, we develop an alternative plotting function based on *ggplot2*. The advantage of *ggplot2* is not that it can do things that base R cannot, but that it often makes common tasks simpler and more consistent.
 
-For example, ggplot2 automatically handles scaling of axes and layout of labels, so we do not need to adjust these manually when adding elements to a plot. In addition, ggplot2 provides a powerful theming system that makes it relatively easy to customise the non-data elements of a chart, such as colours, grid lines, and axis formatting.
+For example, *ggplot2* automatically handles scaling of axes and layout of labels, so we do not need to adjust these manually when adding elements to a plot. In addition, *ggplot2* provides a powerful theming system that makes it relatively easy to customise the non-data elements of a chart, such as colours, grid lines, and axis formatting.
 
 ## Creating an SPC object for later plotting
 
@@ -51,11 +51,11 @@ Because p is an object of class "spc" we simply call the generic `plot()` functi
 plot(p) # not necessary to call spc.plot(), just call the generic plot() function
 ```
 
-The generic `plot()` function automatically dispatches to the specialised `plot.spc()` method.
+The generic `plot()` function automatically dispatches to the specialised `plot.spc()` method (\@ref(fig:ggplot-fig1)).
 
-## Making a new plot function based on ggplot2
+## Making a new plot function based on *ggplot2*
 
-We can now define an alternative plotting function that uses ggplot2.
+We can now define an alternative plotting function that uses *ggplot2*.
 
 ```{r}
 # Load ggplot2
@@ -81,16 +81,16 @@ ggspc <- function(p) {
 }
 ```
 
-We can now use this function to plot the SPC object:
+We then use this function to plot the SPC object (Figure \@ref(fig:ggplot-fig2)).
 
 ```{r ggplot-fig2, fig.cap='SPC chart using the `ggspc()` function'}
 # Plot an spc object
 ggspc(p)
 ```
 
-This function produces a plot equivalent to the base R version, but using ggplot2’s grammar of graphics.
+This function produces a plot equivalent to the base R version, but using *ggplot2*’s grammar of graphics.
 
-We can also convert the SPC object into a ggplot object and then further customise it:
+We can also convert the SPC object into a ggplot object and then further customise it as in Figure \@ref(fig:ggplot-fig3).
 
 ```{r ggplot-fig3, fig.cap='SPC chart with modified theme'}
 # convert to ggplot2 object
@@ -108,11 +108,11 @@ p +
        x     = 'Month')
 ```
 
-At this point, we could replace the existing `plot.spc()` function with this new implementation if desired. The choice between base R and ggplot2 ultimately comes down to personal preference and use case.
+At this point, we could replace the existing `plot.spc()` function with this new implementation if desired. The choice between base R and *ggplot2* ultimately comes down to personal preference and use case.
 
 ## Customising the plotting theme
 
-The final example in this chapter shows how to define a custom theme and format the y-axis as percentages.
+The final example in this chapter shows how to define a custom theme and format the y-axis as percentages (Figure \@ref(fig:ggplot-fig4)).
 
 ```{r ggplot-fig4, fig.cap='SPC chart with labels and custom y-axis'}
 mytheme <- function() {
@@ -138,8 +138,8 @@ ggspc(p) +
 
 In practice, repeatedly defining themes and formatting axes for each plot can become tedious. Ideally, these elements would be handled automatically.
 
-## Preparing for qicharts2
+## Preparing for *qicharts2*
 
-This is precisely the aim of qicharts2, an R package for SPC charts that we introduce in the next chapter. The package builds on the same principles developed so far but provides additional functionality for customisation and automation.
+This is precisely the aim of *qicharts2*, an R package for SPC charts that we introduce in the next chapter. The package builds on the same principles developed so far but provides additional functionality for customisation and automation.
 
-In particular, qicharts2 makes it easy to create multidimensional plots using ggplot2’s faceting capabilities, allowing multiple related charts to be displayed together in a consistent and flexible way.
+In particular, qicharts2 makes it easy to create multidimensional plots using *ggplot2*’s faceting capabilities, allowing multiple related charts to be displayed together in a consistent and flexible way.
