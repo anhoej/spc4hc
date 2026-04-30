@@ -20,7 +20,7 @@ In this chapter, we will improve the `spc()` function so that it automatically h
 
 ## Introducing the cdiff data set
 
-The cdiff data set contains 24 monthly observations of hospital-acquired *Clostridioides difficile* infections from an acute care hospital.
+The [Clostridioides difficile infections] data set contains 24 monthly observations of hospital-acquired C. diff. infections from an acute care hospital.
 
 ```{r}
 # read data from file
@@ -49,7 +49,7 @@ with(cdiff, {
 })
 ```
 
-Notice that the lower control limit has been censored at zero, even though its exact value is negative ($\bar{c}-3\sqrt{\bar{c}}$).  This is done purely for cosmetic reasons. Since the data themselves cannot take negative values, it makes little sense to display negative control limits. For the same reason, P chart limits are often censored at 0 and 1 (or 100%).
+Notice that the lower control limit has been censored at zero, even though its exact value is negative.  This is done purely for cosmetic reasons. Since the data themselves cannot take negative values, it makes little sense to display negative control limits. For the same reason, P chart limits are often censored at 0 and 1 (or 100%).
 
 To help us identify special cause variation more easily, we now improve the `spc()` function.
 
@@ -57,7 +57,7 @@ To help us identify special cause variation more easily, we now improve the `spc
 
 The revised version of the `spc()` function includes a number of changes.
 
-First, it imports the function `runs.analysis()` from a separate R script in order to test for unusually long runs and unusually few crossings. This function at the end of this chapter.
+First, it imports the function `runs.analysis()` from a separate R script in order to test for unusually long runs and unusually few crossings. This function is displayed at the end of this chapter.
 
 Second, if no centre line is supplied, the function uses the median of the data.
 
