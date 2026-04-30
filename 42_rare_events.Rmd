@@ -14,7 +14,7 @@ library(qicharts2)
 
 When dealing with potentially serious or fatal events, the number of occurrences is often, fortunately, very low. This creates challenges for traditional SPC charts designed for count data.
 
-The difficulty arises because charts such as the P and U charts assume a sufficiently frequent and reasonably stable occurrence of events. When counts are low, the data become sparse and highly variable, which makes these charts less useful.
+The difficulty arises because charts such as the P, C, and U charts assume a sufficiently frequent and reasonably stable occurrence of events. When counts are low, the data become sparse and highly variable, which makes these charts less useful.
 
 Sparse data can produce lower control limits that are censored at zero, thereby invalidating the 3-sigma test in that direction. Run charts may also become problematic when more than half of the data points are zero, because the median then becomes zero as well. This undermines the runs analysis by producing one long run above the median.
 
@@ -62,7 +62,7 @@ qic(biweek, asphyxia,
     agg.fun = 'sum')  # use sum() function to aggregate data by subgroup
 ```
 
-Because more than half of the data points are zero, the centre line, that is, the median, is also zero. This invalidates the runs analysis, because the chart then contains only one very long run. As a result, the chart may falsely suggest one or more shifts in the data.
+Because more than half of the data points are zero, the centre line (the median) is also zero. This invalidates the runs analysis, because the chart then contains only one very long run. As a result, the chart may falsely suggest one or more shifts in the data.
 
 Figure \@ref(fig:rare-fig3) plots proportions rather than counts and leads to the same conclusion.
 
@@ -192,7 +192,7 @@ Conversely, when the target is set to 0.1%, the chart suggests that the process 
 bchart(births$asphyxia, target = 0.001)
 ```
 
-Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, which is suitable for detecting a doubling or halving of the event rate. Tighter limits increase sensitivity but may lead to more false alarms; wider limits reduce false alarms but may miss smaller shifts. The most appropriate choice depends on the context, including the amount of available data, the size of shift of interest, and the consequences of missing a signal or raising a false one.
+Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, which is suitable for detecting a doubling or halving of the event rate from a 1% baseline for roughly 2,000-10,000 observations. Tighter limits and more observations increase sensitivity but tend to raise the false-alarm rate, whereas wider limits and fewer observations reduce false alarms at the cost of missing smaller shifts. The most appropriate choice depends on the context, including the amount of available data, the size of shift of interest, and the consequences of missing a signal or raising a false one.
 
 In practice, limits are often chosen on the basis of simulation, historical data, and domain knowledge, especially in relation to the consequences of missed detections and false alerts. See @neuburger2017 for details on the selection of control limits.
 
