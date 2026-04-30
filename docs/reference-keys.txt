@@ -121,7 +121,7 @@ c-chart
 u-chart
 p-chart
 measurement-data-1
-i-chart-also-called-x-chart
+i-chart
 mr-chart
 x-bar-chart
 s-chart
@@ -226,5 +226,3 @@ cutting-dates-and-datetimes
 getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-i-chart

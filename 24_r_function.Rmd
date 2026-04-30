@@ -18,7 +18,7 @@ We will not go through each of these functions in detail, but we encourage you t
 
 In total, the library consists of 17 functions. However, the user only needs to interact directly with one of them: `spc()`. The source code for the full function library is provided in the section at the end of this chapter.
 
-The main function, `spc()`, is an extended version of the improved `spc()` function introduced in Chapter 7.
+The main function, `spc()`, is an extended version of the improved `spc()` function introduced in Chapter \@ref(highlighting).
 
 Most importantly, it is no longer necessary to calculate control limits manually. Instead, we provide a `chart` argument, which should be one of the following: 'run', 'xbar', 's', 'i', 'mr', 'c', 'u', or 'p'. If no chart argument is supplied, the function produces a run chart.
 
@@ -140,7 +140,6 @@ spc(month, deaths, patients,
 ## TODO
 
 One obvious shortcoming of this function library is that it lacks error checking. If you plan to use these functions in a production environment or as part of your own SPC package, you will need to add this yourself. At a minimum, you should check automatically that the inputs are of the expected types and that the x, y, and n arguments have the same lengths. As a starting point, see the `stopifnot()` function.
-
 
 ## Further up, further in
 

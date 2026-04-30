@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-29" />
+<meta name="date" content="2026-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -234,7 +234,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="limits.html"><a href="limits.html#measurement-data-1"><i class="fa fa-check"></i><b>6.4</b> Measurement data</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart-also-called-x-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart (also called X chart)</a></li>
+<li class="chapter" data-level="6.4.1" data-path="limits.html"><a href="limits.html#i-chart"><i class="fa fa-check"></i><b>6.4.1</b> I chart</a></li>
 <li class="chapter" data-level="6.4.2" data-path="limits.html"><a href="limits.html#mr-chart"><i class="fa fa-check"></i><b>6.4.2</b> MR chart</a></li>
 <li class="chapter" data-level="6.4.3" data-path="limits.html"><a href="limits.html#x-bar-chart"><i class="fa fa-check"></i><b>6.4.3</b> X-bar chart</a></li>
 <li class="chapter" data-level="6.4.4" data-path="limits.html"><a href="limits.html#s-chart"><i class="fa fa-check"></i><b>6.4.4</b> S chart</a></li>
@@ -446,18 +446,18 @@ div.csl-indent {
 <pre><code># A tibble: 12 × 3
    x              y     n
    &lt;date&gt;     &lt;int&gt; &lt;int&gt;
- 1 2026-04-17    13    32
- 2 2026-04-18    14    29
- 3 2026-04-19    16    33
- 4 2026-04-20    19    30
- 5 2026-04-21    13    32
- 6 2026-04-22    18    35
- 7 2026-04-23    19    29
- 8 2026-04-24    16    33
- 9 2026-04-25    16    34
-10 2026-04-26    11    27
-11 2026-04-27    13    32
-12 2026-04-28    12    26</code></pre>
+ 1 2026-04-18    13    32
+ 2 2026-04-19    14    29
+ 3 2026-04-20    16    33
+ 4 2026-04-21    19    30
+ 5 2026-04-22    13    32
+ 6 2026-04-23    18    35
+ 7 2026-04-24    19    29
+ 8 2026-04-25    16    33
+ 9 2026-04-26    16    34
+10 2026-04-27    11    27
+11 2026-04-28    13    32
+12 2026-04-29    12    26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-notes.html#cb131-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb131-2"><a href="r-notes.html#cb131-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
