@@ -12,7 +12,7 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 source('R/spc_functions.R', local = knitr::knit_global())
 ```
 
-Until now, we have calculated control limits manually before plotting. In this chapter, we introduce a small library of R functions that work together to automate the main steps involved in constructing SPC charts.
+Until now, we have calculated control limits manually before plotting. In this chapter, we introduce a library of R functions that work together to automate the main steps involved in constructing SPC charts.
 
 We will not go through each of these functions in detail, but we encourage you to study them carefully in order to understand how they work individually and how they work together. We also encourage you to adapt and improve them to suit your own needs.
 
@@ -37,7 +37,7 @@ This section gives examples of a run chart and each of the *Magnificent Seven*. 
 ```{r rfun-run, fig.cap='Run chart'}
 d <- read.csv('data/blood_pressure.csv',
               comment.char = '#',
-              colClasses = c(date = 'Date'))
+              colClasses   = c(date = 'Date'))
 
 head(d)
 
@@ -75,8 +75,8 @@ par(op)
 ```{r rfun-xbars, fig.asp=1, fig.cap='X-bar and S charts'}
 d <- read.csv('data/renography_doses.csv',
               comment.char = '#',
-              colClasses = c(date = 'Date',
-                             week = 'Date'))
+              colClasses   = c(date = 'Date',
+                               week = 'Date'))
 
 head(d)
 
@@ -102,7 +102,7 @@ par(op)
 ```{r rfun-cu, fig.asp=1, fig.cap='C and U charts'}
 d <- read.csv('data/bacteremia.csv',
          comment.char = '#',
-         colClasses = c(month = 'Date'))
+         colClasses   = c(month = 'Date'))
 
 head(d)
 
@@ -146,7 +146,7 @@ One obvious shortcoming of this function library is that it lacks error checking
 
 We now have a functioning library of R functions that automates most of the steps involved in constructing SPC charts. There is still plenty of room for improvement, but the library should be enough to get you started and, more importantly, to give you a deeper understanding of the considerations involved in plotting SPC charts.
 
-In the next chapter, we take a brief look at how to use `ggplot2()` for plotting instead of the `plot()` function from base R.
+In the next chapter, we take a brief look at how to use *ggplot2()* for plotting instead of the `plot()` function from base R.
 
 ----
 
