@@ -62,7 +62,7 @@ A useful rule of thumb is: Collect data at a resolution at least as fine as the 
 
 High-resolution data can always be aggregated later if needed. Low-resolution data cannot be disaggregated.
 
-Notice that the `qic()` function from qicharts2 includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure \@ref(fig:subgrouping-fig2).
+Notice that the `qic()` function from *qicharts2* includes an argument, x.period, which allows us to aggregate data into larger subgroups as demonstrated in the code producing Figure \@ref(fig:subgrouping-fig2).
 
 ## Too small subgroups  --  revealing unimportant noise
 
@@ -106,9 +106,7 @@ A practical guideline:
 
 ## Striking the balance
 
-Rational subgrouping is both an art and a science. It presents a fundamental challenge:
-
-To understand a process, we need rational subgroups -- but to form rational subgroups, we need to understand the process.
+Rational subgrouping is both an art and a science. It presents a fundamental challenge: To understand a process, we need rational subgroups -- but to form rational subgroups, we need to understand the process.
 
 In practice, subgrouping is often iterative. We experiment with different timeframes, organisational units, or groupings until the data begin to reflect meaningful process behaviour.
 
@@ -145,7 +143,7 @@ The following principles can guide your decisions:
   Sample more frequently than the rate at which change is expected.
 
 * Ensure sufficient data per subgroup<br>
-  Count data: aim for ≥5 events.<br>
+  Count data: aim for at least five events or cases.<br>
   Proportion data: ensure sufficient denominator.
 
 * Be prepared to adapt<br>
