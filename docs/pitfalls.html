@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-30" />
+<meta name="date" content="2026-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -489,13 +489,13 @@ The relationship between these two “voices” can be summarised as follows:</p
 <h2><span class="header-section-number">18.4</span> Automatic rephasing<a href="pitfalls.html#automatic-rephasing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rephasing involves splitting an SPC chart and recalculating the centre line and control limits after a sustained shift has been identified.</p>
 <p>When done deliberately and with understanding of the underlying process, rephasing can be useful. Figure <a href="pitfalls.html#fig:pitfalls-fig1">18.1</a>, for example, correctly separates two stable periods before and after an intervention.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="pitfalls.html#cb107-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
-<span id="cb107-2"><a href="pitfalls.html#cb107-2" tabindex="-1"></a>    <span class="at">data  =</span> cdi,</span>
-<span id="cb107-3"><a href="pitfalls.html#cb107-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb107-4"><a href="pitfalls.html#cb107-4" tabindex="-1"></a>    <span class="at">part  =</span> period,</span>
-<span id="cb107-5"><a href="pitfalls.html#cb107-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
-<span id="cb107-6"><a href="pitfalls.html#cb107-6" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb107-7"><a href="pitfalls.html#cb107-7" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="pitfalls.html#cb108-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
+<span id="cb108-2"><a href="pitfalls.html#cb108-2" tabindex="-1"></a>    <span class="at">data  =</span> cdi,</span>
+<span id="cb108-3"><a href="pitfalls.html#cb108-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb108-4"><a href="pitfalls.html#cb108-4" tabindex="-1"></a>    <span class="at">part  =</span> period,</span>
+<span id="cb108-5"><a href="pitfalls.html#cb108-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
+<span id="cb108-6"><a href="pitfalls.html#cb108-6" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb108-7"><a href="pitfalls.html#cb108-7" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pitfalls-fig1"></span>
 <img src="_main_files/figure-html/pitfalls-fig1-1.svg" alt="Hospital infections -- rephasing done right!" width="672" />
 <p class="caption">
@@ -504,14 +504,14 @@ Figure 18.1: Hospital infections – rephasing done right!
 </div>
 <p>However, some software systems perform automatic rephasing whenever a shift is detected. This can lead to misleading results.</p>
 <p>In Figure <a href="pitfalls.html#fig:pitfalls-fig2">18.2</a>, automatic rephasing occurs too early, incorrectly assigning data points to the post-intervention period. This distorts the centre lines and control limits and may even create false signals of instability.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="pitfalls.html#cb108-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
-<span id="cb108-2"><a href="pitfalls.html#cb108-2" tabindex="-1"></a>    <span class="at">data        =</span> cdi,</span>
-<span id="cb108-3"><a href="pitfalls.html#cb108-3" tabindex="-1"></a>    <span class="at">chart       =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb108-4"><a href="pitfalls.html#cb108-4" tabindex="-1"></a>    <span class="at">part        =</span> <span class="dv">22</span>,</span>
-<span id="cb108-5"><a href="pitfalls.html#cb108-5" tabindex="-1"></a>    <span class="at">part.labels =</span> <span class="fu">c</span>(<span class="st">&#39;pre&#39;</span>, <span class="st">&#39;post&#39;</span>),</span>
-<span id="cb108-6"><a href="pitfalls.html#cb108-6" tabindex="-1"></a>    <span class="at">title       =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
-<span id="cb108-7"><a href="pitfalls.html#cb108-7" tabindex="-1"></a>    <span class="at">ylab        =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb108-8"><a href="pitfalls.html#cb108-8" tabindex="-1"></a>    <span class="at">xlab        =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="pitfalls.html#cb109-1" tabindex="-1"></a><span class="fu">qic</span>(month, n,</span>
+<span id="cb109-2"><a href="pitfalls.html#cb109-2" tabindex="-1"></a>    <span class="at">data        =</span> cdi,</span>
+<span id="cb109-3"><a href="pitfalls.html#cb109-3" tabindex="-1"></a>    <span class="at">chart       =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb109-4"><a href="pitfalls.html#cb109-4" tabindex="-1"></a>    <span class="at">part        =</span> <span class="dv">22</span>,</span>
+<span id="cb109-5"><a href="pitfalls.html#cb109-5" tabindex="-1"></a>    <span class="at">part.labels =</span> <span class="fu">c</span>(<span class="st">&#39;pre&#39;</span>, <span class="st">&#39;post&#39;</span>),</span>
+<span id="cb109-6"><a href="pitfalls.html#cb109-6" tabindex="-1"></a>    <span class="at">title       =</span> <span class="st">&#39;Hospital associated C. diff.-infections&#39;</span>,</span>
+<span id="cb109-7"><a href="pitfalls.html#cb109-7" tabindex="-1"></a>    <span class="at">ylab        =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb109-8"><a href="pitfalls.html#cb109-8" tabindex="-1"></a>    <span class="at">xlab        =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pitfalls-fig2"></span>
 <img src="_main_files/figure-html/pitfalls-fig2-1.svg" alt="Hospital infections -- rephasing done wrong!" width="672" />
 <p class="caption">

@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-30" />
+<meta name="date" content="2026-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -443,19 +443,19 @@ Figure 15.1: Funnel plot
 </div>
 <p>Because funnel plots do not involve a natural time sequence, the data points are not connected, and run analysis is not applicable.</p>
 <p>To demonstrate the construction of funnel plots, we use data on urinary tract infections from the hospital_infections dataset included in qicharts2. We begin by plotting the data over time using a traditional U chart:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="funnel-plots-for-categorical-subgroups.html#cb95-1" tabindex="-1"></a><span class="co"># get urinary tract infections from hospital infections data</span></span>
-<span id="cb95-2"><a href="funnel-plots-for-categorical-subgroups.html#cb95-2" tabindex="-1"></a>uti <span class="ot">&lt;-</span> hospital_infections[hospital_infections<span class="sc">$</span>infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>,]</span>
-<span id="cb95-3"><a href="funnel-plots-for-categorical-subgroups.html#cb95-3" tabindex="-1"></a></span>
-<span id="cb95-4"><a href="funnel-plots-for-categorical-subgroups.html#cb95-4" tabindex="-1"></a><span class="co"># plot U chart</span></span>
-<span id="cb95-5"><a href="funnel-plots-for-categorical-subgroups.html#cb95-5" tabindex="-1"></a><span class="fu">qic</span>(month, n, days,</span>
-<span id="cb95-6"><a href="funnel-plots-for-categorical-subgroups.html#cb95-6" tabindex="-1"></a>    <span class="at">data     =</span> uti,</span>
-<span id="cb95-7"><a href="funnel-plots-for-categorical-subgroups.html#cb95-7" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb95-8"><a href="funnel-plots-for-categorical-subgroups.html#cb95-8" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb95-9"><a href="funnel-plots-for-categorical-subgroups.html#cb95-9" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,</span>
-<span id="cb95-10"><a href="funnel-plots-for-categorical-subgroups.html#cb95-10" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,</span>
-<span id="cb95-11"><a href="funnel-plots-for-categorical-subgroups.html#cb95-11" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
-<span id="cb95-12"><a href="funnel-plots-for-categorical-subgroups.html#cb95-12" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
-<span id="cb95-13"><a href="funnel-plots-for-categorical-subgroups.html#cb95-13" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="funnel-plots-for-categorical-subgroups.html#cb96-1" tabindex="-1"></a><span class="co"># get urinary tract infections from hospital infections data</span></span>
+<span id="cb96-2"><a href="funnel-plots-for-categorical-subgroups.html#cb96-2" tabindex="-1"></a>uti <span class="ot">&lt;-</span> hospital_infections[hospital_infections<span class="sc">$</span>infection <span class="sc">==</span> <span class="st">&#39;UTI&#39;</span>,]</span>
+<span id="cb96-3"><a href="funnel-plots-for-categorical-subgroups.html#cb96-3" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="funnel-plots-for-categorical-subgroups.html#cb96-4" tabindex="-1"></a><span class="co"># plot U chart</span></span>
+<span id="cb96-5"><a href="funnel-plots-for-categorical-subgroups.html#cb96-5" tabindex="-1"></a><span class="fu">qic</span>(month, n, days,</span>
+<span id="cb96-6"><a href="funnel-plots-for-categorical-subgroups.html#cb96-6" tabindex="-1"></a>    <span class="at">data     =</span> uti,</span>
+<span id="cb96-7"><a href="funnel-plots-for-categorical-subgroups.html#cb96-7" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb96-8"><a href="funnel-plots-for-categorical-subgroups.html#cb96-8" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb96-9"><a href="funnel-plots-for-categorical-subgroups.html#cb96-9" tabindex="-1"></a>    <span class="at">facets   =</span> <span class="sc">~</span>hospital,</span>
+<span id="cb96-10"><a href="funnel-plots-for-categorical-subgroups.html#cb96-10" tabindex="-1"></a>    <span class="at">ncol     =</span> <span class="dv">2</span>,</span>
+<span id="cb96-11"><a href="funnel-plots-for-categorical-subgroups.html#cb96-11" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
+<span id="cb96-12"><a href="funnel-plots-for-categorical-subgroups.html#cb96-12" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
+<span id="cb96-13"><a href="funnel-plots-for-categorical-subgroups.html#cb96-13" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:funnel-fig1"></span>
 <img src="_main_files/figure-html/funnel-fig1-1.svg" alt="U chart of urinary tract infections" width="672" />
 <p class="caption">
@@ -464,17 +464,17 @@ Figure 15.2: U chart of urinary tract infections
 </div>
 <p>Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig1">15.2</a> shows signals of special cause variation in two hospitals (BOH and NOH). In such cases, direct comparison of infection rates between hospitals is problematic, as it does not make sense to compare levels based on data that are changing over time.</p>
 <p>For this reason, we select data from a recent period before constructing the funnel plot. In Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig2">15.3</a>, the data are restricted to the most recent quarter and plotted using hospital, rather than time, as the subgrouping variable:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="funnel-plots-for-categorical-subgroups.html#cb96-1" tabindex="-1"></a><span class="co"># filter data to latest quarter</span></span>
-<span id="cb96-2"><a href="funnel-plots-for-categorical-subgroups.html#cb96-2" tabindex="-1"></a>uti_2016q4 <span class="ot">&lt;-</span> uti[uti<span class="sc">$</span>month <span class="sc">&gt;=</span> <span class="st">&#39;2016-10-01&#39;</span>, ]</span>
-<span id="cb96-3"><a href="funnel-plots-for-categorical-subgroups.html#cb96-3" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="funnel-plots-for-categorical-subgroups.html#cb96-4" tabindex="-1"></a><span class="co"># plot &quot;funnel&quot; plot</span></span>
-<span id="cb96-5"><a href="funnel-plots-for-categorical-subgroups.html#cb96-5" tabindex="-1"></a><span class="fu">qic</span>(hospital, n, days,</span>
-<span id="cb96-6"><a href="funnel-plots-for-categorical-subgroups.html#cb96-6" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
-<span id="cb96-7"><a href="funnel-plots-for-categorical-subgroups.html#cb96-7" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb96-8"><a href="funnel-plots-for-categorical-subgroups.html#cb96-8" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb96-9"><a href="funnel-plots-for-categorical-subgroups.html#cb96-9" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
-<span id="cb96-10"><a href="funnel-plots-for-categorical-subgroups.html#cb96-10" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
-<span id="cb96-11"><a href="funnel-plots-for-categorical-subgroups.html#cb96-11" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Hospital&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="funnel-plots-for-categorical-subgroups.html#cb97-1" tabindex="-1"></a><span class="co"># filter data to latest quarter</span></span>
+<span id="cb97-2"><a href="funnel-plots-for-categorical-subgroups.html#cb97-2" tabindex="-1"></a>uti_2016q4 <span class="ot">&lt;-</span> uti[uti<span class="sc">$</span>month <span class="sc">&gt;=</span> <span class="st">&#39;2016-10-01&#39;</span>, ]</span>
+<span id="cb97-3"><a href="funnel-plots-for-categorical-subgroups.html#cb97-3" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="funnel-plots-for-categorical-subgroups.html#cb97-4" tabindex="-1"></a><span class="co"># plot &quot;funnel&quot; plot</span></span>
+<span id="cb97-5"><a href="funnel-plots-for-categorical-subgroups.html#cb97-5" tabindex="-1"></a><span class="fu">qic</span>(hospital, n, days,</span>
+<span id="cb97-6"><a href="funnel-plots-for-categorical-subgroups.html#cb97-6" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
+<span id="cb97-7"><a href="funnel-plots-for-categorical-subgroups.html#cb97-7" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb97-8"><a href="funnel-plots-for-categorical-subgroups.html#cb97-8" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb97-9"><a href="funnel-plots-for-categorical-subgroups.html#cb97-9" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
+<span id="cb97-10"><a href="funnel-plots-for-categorical-subgroups.html#cb97-10" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
+<span id="cb97-11"><a href="funnel-plots-for-categorical-subgroups.html#cb97-11" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Hospital&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:funnel-fig2"></span>
 <img src="_main_files/figure-html/funnel-fig2-1.svg" alt="Unordered 'funnel' plot of urinary tract infections" width="672" />
 <p class="caption">
@@ -482,14 +482,14 @@ Figure 15.3: Unordered ‘funnel’ plot of urinary tract infections
 </p>
 </div>
 <p>By default, the subgroups are ordered alphabetically along the x-axis. To produce a funnel plot, the subgroups must be ordered by size, as shown in Figure <a href="funnel-plots-for-categorical-subgroups.html#fig:funnel-fig3">15.4</a>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="funnel-plots-for-categorical-subgroups.html#cb97-1" tabindex="-1"></a><span class="co"># order hospitals by denominator (risk days) to produce funnel</span></span>
-<span id="cb97-2"><a href="funnel-plots-for-categorical-subgroups.html#cb97-2" tabindex="-1"></a><span class="fu">qic</span>(<span class="fu">reorder</span>(hospital, days), n, days,</span>
-<span id="cb97-3"><a href="funnel-plots-for-categorical-subgroups.html#cb97-3" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
-<span id="cb97-4"><a href="funnel-plots-for-categorical-subgroups.html#cb97-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
-<span id="cb97-5"><a href="funnel-plots-for-categorical-subgroups.html#cb97-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
-<span id="cb97-6"><a href="funnel-plots-for-categorical-subgroups.html#cb97-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
-<span id="cb97-7"><a href="funnel-plots-for-categorical-subgroups.html#cb97-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
-<span id="cb97-8"><a href="funnel-plots-for-categorical-subgroups.html#cb97-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Hospital&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="funnel-plots-for-categorical-subgroups.html#cb98-1" tabindex="-1"></a><span class="co"># order hospitals by denominator (risk days) to produce funnel</span></span>
+<span id="cb98-2"><a href="funnel-plots-for-categorical-subgroups.html#cb98-2" tabindex="-1"></a><span class="fu">qic</span>(<span class="fu">reorder</span>(hospital, days), n, days,</span>
+<span id="cb98-3"><a href="funnel-plots-for-categorical-subgroups.html#cb98-3" tabindex="-1"></a>    <span class="at">data     =</span> uti_2016q4,</span>
+<span id="cb98-4"><a href="funnel-plots-for-categorical-subgroups.html#cb98-4" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;u&#39;</span>,</span>
+<span id="cb98-5"><a href="funnel-plots-for-categorical-subgroups.html#cb98-5" tabindex="-1"></a>    <span class="at">multiply =</span> <span class="dv">10000</span>,</span>
+<span id="cb98-6"><a href="funnel-plots-for-categorical-subgroups.html#cb98-6" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;Hospital acquired urinary tract infections in six hospitals&#39;</span>,</span>
+<span id="cb98-7"><a href="funnel-plots-for-categorical-subgroups.html#cb98-7" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Infections per 10,000 risk days&#39;</span>,</span>
+<span id="cb98-8"><a href="funnel-plots-for-categorical-subgroups.html#cb98-8" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Hospital&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:funnel-fig3"></span>
 <img src="_main_files/figure-html/funnel-fig3-1.svg" alt="Ordered funnel plot of urinary tract infections" width="672" />
 <p class="caption">

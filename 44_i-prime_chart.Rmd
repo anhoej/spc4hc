@@ -8,7 +8,7 @@ library(qicharts2)
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-The I chart is often regarded as the Swiss Army knife of SPC. It is useful in many situations and can often serve as a valid, or even superior, alternative to other Shewhart charts. One reason for this is that the I chart is based on the empirical variation in the data rather than on theoretical distributional assumptions, which may or may not hold.
+The I chart is often regarded as the *Swiss Army knife* of SPC. It is useful in many situations and can often serve as a valid, or even superior, alternative to other Shewhart charts. One reason for this is that the I chart is based on the empirical variation in the data rather than on theoretical distributional assumptions, which may or may not hold.
 
 However, the I chart does not account for variable subgroup sizes. In other words, it does not adjust when the area of opportunity varies between samples, for example when the number of patients fluctuates from month to month. This results in straight control limits, which in some situations may generate false signals or fail to detect true ones. When subgroup sizes vary only slightly, this may not matter. But often -- especially in healthcare -- size matters.
 
@@ -77,7 +77,7 @@ $CL \pm 2.66\overline{MR}$
 
 which is the same as for original I chart.
 
-As with the original I chart, qicharts2 screens the moving ranges of $s_i$, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating $\bar{s}$.
+As with the original I chart, *qicharts2* screens the moving ranges of $s_i$, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating $\bar{s}$.
 
 ## I' charts for measument data with variable subgroup sizes
 

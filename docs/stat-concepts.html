@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-30" />
+<meta name="date" content="2026-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -465,24 +465,24 @@ div.csl-indent {
 <h2><span class="header-section-number">B.2</span> Summarising categorical data<a href="stat-concepts.html#summarising-categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Categorical data are typically summarised using counts or proportions.
 Using the <a href="data-sets.html#adverse-events">Adverse events</a> dataset assigned to the variable ae:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="stat-concepts.html#cb114-1" tabindex="-1"></a><span class="co"># count number of adverse events in each category</span></span>
-<span id="cb114-2"><a href="stat-concepts.html#cb114-2" tabindex="-1"></a>(ae.tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(ae<span class="sc">$</span>category))</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="stat-concepts.html#cb115-1" tabindex="-1"></a><span class="co"># count number of adverse events in each category</span></span>
+<span id="cb115-2"><a href="stat-concepts.html#cb115-2" tabindex="-1"></a>(ae.tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(ae<span class="sc">$</span>category))</span></code></pre></div>
 <pre><code>## 
 ##             Fall Gastrointestinal        Infection       Medication 
 ##                1               40               34               18 
 ##            Other   Pressure ulcer        Procedure 
 ##                4                5               29</code></pre>
 <p>Visualisation of categorical data is often done using bar charts:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="stat-concepts.html#cb116-1" tabindex="-1"></a><span class="co"># plot frequencies</span></span>
-<span id="cb116-2"><a href="stat-concepts.html#cb116-2" tabindex="-1"></a><span class="fu">barplot</span>(ae.tbl)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="stat-concepts.html#cb117-1" tabindex="-1"></a><span class="co"># plot frequencies</span></span>
+<span id="cb117-2"><a href="stat-concepts.html#cb117-2" tabindex="-1"></a><span class="fu">barplot</span>(ae.tbl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-bar1"></span>
 <img src="_main_files/figure-html/stat-bar1-1.svg" alt="Bar chart of adverse event frequencies" width="960" />
 <p class="caption">
 Figure B.1: Bar chart of adverse event frequencies
 </p>
 </div>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="stat-concepts.html#cb117-1" tabindex="-1"></a><span class="co"># plot proportions</span></span>
-<span id="cb117-2"><a href="stat-concepts.html#cb117-2" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(ae.tbl))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stat-concepts.html#cb118-1" tabindex="-1"></a><span class="co"># plot proportions</span></span>
+<span id="cb118-2"><a href="stat-concepts.html#cb118-2" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(ae.tbl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-bar2"></span>
 <img src="_main_files/figure-html/stat-bar2-1.svg" alt="Bar chart of adverse event proportions." width="960" />
 <p class="caption">
@@ -491,8 +491,8 @@ Figure B.2: Bar chart of adverse event proportions.
 </div>
 <p>The only difference between figures <a href="stat-concepts.html#fig:stat-bar1">B.1</a> and <a href="stat-concepts.html#fig:stat-bar2">B.2</a> is the y-axis scale.</p>
 <p>For binary data, we often summarise using proportions:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stat-concepts.html#cb118-1" tabindex="-1"></a><span class="co"># proportion of fatal adverse events (severity = &#39;I&#39;).</span></span>
-<span id="cb118-2"><a href="stat-concepts.html#cb118-2" tabindex="-1"></a><span class="fu">mean</span>(ae<span class="sc">$</span>severity <span class="sc">==</span> <span class="st">&#39;I&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="stat-concepts.html#cb119-1" tabindex="-1"></a><span class="co"># proportion of fatal adverse events (severity = &#39;I&#39;).</span></span>
+<span id="cb119-2"><a href="stat-concepts.html#cb119-2" tabindex="-1"></a><span class="fu">mean</span>(ae<span class="sc">$</span>severity <span class="sc">==</span> <span class="st">&#39;I&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.007633588</code></pre>
 </div>
 <div id="summarising-numerical-data" class="section level2 hasAnchor" number="22.3">
@@ -504,9 +504,9 @@ Figure B.2: Bar chart of adverse event proportions.
 <li><strong>Spread</strong> (variation)</li>
 </ul>
 <p>A quick overview can be obtained using the <code>summary()</code> function:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="stat-concepts.html#cb120-1" tabindex="-1"></a><span class="co"># summarise the length of newborn babies</span></span>
-<span id="cb120-2"><a href="stat-concepts.html#cb120-2" tabindex="-1"></a><span class="fu">summary</span>(births<span class="sc">$</span>length)</span></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="stat-concepts.html#cb121-1" tabindex="-1"></a><span class="co"># summarise the length of newborn babies</span></span>
+<span id="cb121-2"><a href="stat-concepts.html#cb121-2" tabindex="-1"></a><span class="fu">summary</span>(births<span class="sc">$</span>length)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
 ##    35.0    50.0    52.0    51.7    53.0    60.0       3</code></pre>
 <div id="centre" class="section level3 hasAnchor" number="22.3.1">
 <h3><span class="header-section-number">B.3.1</span> Centre<a href="stat-concepts.html#centre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -546,7 +546,7 @@ Figure B.2: Bar chart of adverse event proportions.
 </ul></li>
 </ul>
 <p>Histograms provide a clear visualisation (Figure <a href="stat-concepts.html#fig:stat-hist1">B.3</a>):</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="stat-concepts.html#cb122-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>length)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="stat-concepts.html#cb123-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>length)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-hist1"></span>
 <img src="_main_files/figure-html/stat-hist1-1.svg" alt="Histogram of birth lengths." width="960" />
 <p class="caption">
@@ -565,7 +565,7 @@ Figure B.3: Histogram of birth lengths.
 <li><strong>Standard deviation</strong> (SD): average distance from the mean</li>
 </ul>
 <p>A useful visual summary of centre, shape, and spread is the boxplot (Figure <a href="stat-concepts.html#fig:stat-box1">B.4</a>):</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="stat-concepts.html#cb123-1" tabindex="-1"></a><span class="fu">boxplot</span>(births<span class="sc">$</span>length)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="stat-concepts.html#cb124-1" tabindex="-1"></a><span class="fu">boxplot</span>(births<span class="sc">$</span>length)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-box1"></span>
 <img src="_main_files/figure-html/stat-box1-1.svg" alt="Boxplot of birth lengths." width="960" />
 <p class="caption">
@@ -603,13 +603,13 @@ Figure B.4: Boxplot of birth lengths.
 <p><span class="math display">\[SD = \sqrt{\lambda / n_i}\]</span></p>
 <p>where n<sub>i</sub> is the size of i<sup>th</sup> time interval (the area of opportunity).</p>
 <p>To visualise discrete probability distributions, we use stick charts as demonstrated in Figure <a href="stat-concepts.html#fig:stat-dpois">B.5</a>.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="stat-concepts.html#cb124-1" tabindex="-1"></a><span class="co"># plot Poisson probability</span></span>
-<span id="cb124-2"><a href="stat-concepts.html#cb124-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span> <span class="co"># x-axis values</span></span>
-<span id="cb124-3"><a href="stat-concepts.html#cb124-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dpois</span>(x, <span class="at">lambda =</span> <span class="dv">6</span>), </span>
-<span id="cb124-4"><a href="stat-concepts.html#cb124-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>,</span>
-<span id="cb124-5"><a href="stat-concepts.html#cb124-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
-<span id="cb124-6"><a href="stat-concepts.html#cb124-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
-<span id="cb124-7"><a href="stat-concepts.html#cb124-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of births&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="stat-concepts.html#cb125-1" tabindex="-1"></a><span class="co"># plot Poisson probability</span></span>
+<span id="cb125-2"><a href="stat-concepts.html#cb125-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span> <span class="co"># x-axis values</span></span>
+<span id="cb125-3"><a href="stat-concepts.html#cb125-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dpois</span>(x, <span class="at">lambda =</span> <span class="dv">6</span>), </span>
+<span id="cb125-4"><a href="stat-concepts.html#cb125-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>,</span>
+<span id="cb125-5"><a href="stat-concepts.html#cb125-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
+<span id="cb125-6"><a href="stat-concepts.html#cb125-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
+<span id="cb125-7"><a href="stat-concepts.html#cb125-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of births&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-dpois"></span>
 <img src="_main_files/figure-html/stat-dpois-1.svg" alt="Poisson probability plot of the number of births in a day (mean = 6)." width="960" />
 <p class="caption">
@@ -631,13 +631,13 @@ Figure B.5: Poisson probability plot of the number of births in a day (mean = 6)
 <p>In R, the <code>dbinom()</code> function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of opportunities (sample size) and the average probability of a case.</p>
 <p>There are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use:
 <code>dbinom(6, size = 42, prob = 0.09) =</code> <code>0.093488</code>.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="stat-concepts.html#cb125-1" tabindex="-1"></a><span class="co"># plot binomial probability</span></span>
-<span id="cb125-2"><a href="stat-concepts.html#cb125-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">42</span></span>
-<span id="cb125-3"><a href="stat-concepts.html#cb125-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">42</span>, <span class="at">prob =</span> <span class="fl">0.09</span>), </span>
-<span id="cb125-4"><a href="stat-concepts.html#cb125-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>, </span>
-<span id="cb125-5"><a href="stat-concepts.html#cb125-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
-<span id="cb125-6"><a href="stat-concepts.html#cb125-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
-<span id="cb125-7"><a href="stat-concepts.html#cb125-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of C-sections&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="stat-concepts.html#cb126-1" tabindex="-1"></a><span class="co"># plot binomial probability</span></span>
+<span id="cb126-2"><a href="stat-concepts.html#cb126-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">42</span></span>
+<span id="cb126-3"><a href="stat-concepts.html#cb126-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">42</span>, <span class="at">prob =</span> <span class="fl">0.09</span>), </span>
+<span id="cb126-4"><a href="stat-concepts.html#cb126-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>, </span>
+<span id="cb126-5"><a href="stat-concepts.html#cb126-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
+<span id="cb126-6"><a href="stat-concepts.html#cb126-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
+<span id="cb126-7"><a href="stat-concepts.html#cb126-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of C-sections&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-dbinom1"></span>
 <img src="_main_files/figure-html/stat-dbinom1-1.svg" alt="Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09)." width="960" />
 <p class="caption">
@@ -657,7 +657,7 @@ SD = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2}
 \]</span></p>
 <p>where <span class="math inline">\(n\)</span> is the number of observations, <span class="math inline">\(x_i\)</span> is the i<sup>th</sup> observation, and <span class="math inline">\(\bar{x}\)</span> is the average of all observations.</p>
 <p>Figure <a href="stat-concepts.html#fig:stat-hist3">B.7</a> shows a histogram of birth weights, where each bin represents the number of weights that fall within a specific range.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="stat-concepts.html#cb126-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="stat-concepts.html#cb127-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-hist3"></span>
 <img src="_main_files/figure-html/stat-hist3-1.svg" alt="Histogram of birth weights" width="960" />
 <p class="caption">
@@ -665,13 +665,13 @@ Figure B.7: Histogram of birth weights
 </p>
 </div>
 <p>In Figure <a href="stat-concepts.html#fig:stat-hist4">B.8</a>, we have overlaid a curve representing the theoretical Gaussian distribution, using the empirical mean and standard deviation of the birth weights.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="stat-concepts.html#cb127-1" tabindex="-1"></a>avg_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(births<span class="sc">$</span>weight)</span>
-<span id="cb127-2"><a href="stat-concepts.html#cb127-2" tabindex="-1"></a>std_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(births<span class="sc">$</span>weight)</span>
-<span id="cb127-3"><a href="stat-concepts.html#cb127-3" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb127-4"><a href="stat-concepts.html#cb127-4" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, </span>
-<span id="cb127-5"><a href="stat-concepts.html#cb127-5" tabindex="-1"></a>            <span class="at">mean =</span> avg_w,</span>
-<span id="cb127-6"><a href="stat-concepts.html#cb127-6" tabindex="-1"></a>            <span class="at">sd   =</span> std_w),</span>
-<span id="cb127-7"><a href="stat-concepts.html#cb127-7" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="stat-concepts.html#cb128-1" tabindex="-1"></a>avg_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(births<span class="sc">$</span>weight)</span>
+<span id="cb128-2"><a href="stat-concepts.html#cb128-2" tabindex="-1"></a>std_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(births<span class="sc">$</span>weight)</span>
+<span id="cb128-3"><a href="stat-concepts.html#cb128-3" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb128-4"><a href="stat-concepts.html#cb128-4" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, </span>
+<span id="cb128-5"><a href="stat-concepts.html#cb128-5" tabindex="-1"></a>            <span class="at">mean =</span> avg_w,</span>
+<span id="cb128-6"><a href="stat-concepts.html#cb128-6" tabindex="-1"></a>            <span class="at">sd   =</span> std_w),</span>
+<span id="cb128-7"><a href="stat-concepts.html#cb128-7" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-hist4"></span>
 <img src="_main_files/figure-html/stat-hist4-1.svg" alt="Histogram of birth weights with overlayed Gaussian density curve." width="960" />
 <p class="caption">
@@ -680,12 +680,12 @@ Figure B.8: Histogram of birth weights with overlayed Gaussian density curve.
 </div>
 <p>Note that the y-axis now represents density rather than frequency. The density curve doesn’t assign probabilities to individual points – it represents the overall shape of the distribution – and probabilities are found by calculating the area under the curve over an interval. The total area under the curve – which, in theory ranges from minus infinity to plus infinity – also equals 1.</p>
 <p>Using the <code>pnorm()</code> function, we can calculate the probability of outcomes within any interval. To find the probability of data falling within ±3 SD from the mean, we calculate the area under the curve like this:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="stat-concepts.html#cb128-1" tabindex="-1"></a><span class="fu">pnorm</span>(avg_w <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> std_w,    <span class="co"># area below mean + 3 SD</span></span>
-<span id="cb128-2"><a href="stat-concepts.html#cb128-2" tabindex="-1"></a>      <span class="at">mean =</span> avg_w,</span>
-<span id="cb128-3"><a href="stat-concepts.html#cb128-3" tabindex="-1"></a>      <span class="at">sd   =</span> std_w) <span class="sc">-</span> </span>
-<span id="cb128-4"><a href="stat-concepts.html#cb128-4" tabindex="-1"></a>  <span class="fu">pnorm</span>(avg_w <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> std_w,  <span class="co"># aread below mean - 3 SD</span></span>
-<span id="cb128-5"><a href="stat-concepts.html#cb128-5" tabindex="-1"></a>        <span class="at">mean =</span> avg_w, </span>
-<span id="cb128-6"><a href="stat-concepts.html#cb128-6" tabindex="-1"></a>        <span class="at">sd   =</span> std_w)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="stat-concepts.html#cb129-1" tabindex="-1"></a><span class="fu">pnorm</span>(avg_w <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> std_w,    <span class="co"># area below mean + 3 SD</span></span>
+<span id="cb129-2"><a href="stat-concepts.html#cb129-2" tabindex="-1"></a>      <span class="at">mean =</span> avg_w,</span>
+<span id="cb129-3"><a href="stat-concepts.html#cb129-3" tabindex="-1"></a>      <span class="at">sd   =</span> std_w) <span class="sc">-</span> </span>
+<span id="cb129-4"><a href="stat-concepts.html#cb129-4" tabindex="-1"></a>  <span class="fu">pnorm</span>(avg_w <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> std_w,  <span class="co"># aread below mean - 3 SD</span></span>
+<span id="cb129-5"><a href="stat-concepts.html#cb129-5" tabindex="-1"></a>        <span class="at">mean =</span> avg_w, </span>
+<span id="cb129-6"><a href="stat-concepts.html#cb129-6" tabindex="-1"></a>        <span class="at">sd   =</span> std_w)</span></code></pre></div>
 <pre><code>## [1] 0.9973002</code></pre>
 </div>
 </div>

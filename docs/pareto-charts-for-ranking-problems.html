@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-04-30" />
+<meta name="date" content="2026-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -435,13 +435,13 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 16</span> Pareto Charts for Ranking Problems<a href="pareto-charts-for-ranking-problems.html#pareto-charts-for-ranking-problems" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The Pareto chart, named after <a href="https://en.wikipedia.org/wiki/Vilfredo_Pareto">Vilfred Pareto</a>, was invented by <a href="https://en.wikipedia.org/wiki/Joseph_M._Juran">Joseph M. Juran</a> as a practical tool for identifying the most important causes of a problem. It is widely used in quality improvement to prioritise efforts by highlighting the categories that contribute most to an outcome.</p>
 <p>In this example, we use the dataset on <a href="data-sets.html#adverse-events">adverse events</a> causing harm to patients, collected using the Global Trigger Tool method <span class="citation">(<a href="#ref-plessen2012">Plessen et al. 2012</a>)</span>.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="pareto-charts-for-ranking-problems.html#cb98-1" tabindex="-1"></a><span class="co"># print structure of ae data</span></span>
-<span id="cb98-2"><a href="pareto-charts-for-ranking-problems.html#cb98-2" tabindex="-1"></a><span class="fu">str</span>(ae)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="pareto-charts-for-ranking-problems.html#cb99-1" tabindex="-1"></a><span class="co"># print structure of ae data</span></span>
+<span id="cb99-2"><a href="pareto-charts-for-ranking-problems.html#cb99-2" tabindex="-1"></a><span class="fu">str</span>(ae)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    131 obs. of  2 variables:
 ##  $ severity: chr  &quot;E&quot; &quot;F&quot; &quot;E&quot; &quot;F&quot; ...
 ##  $ category: chr  &quot;Pressure ulcer&quot; &quot;Gastrointestinal&quot; &quot;Infection&quot; &quot;Infection&quot; ...</code></pre>
 <p>The <code>paretochart()</code> function from the qicharts2 package takes a categorical vector as input and produces a Pareto chart as shown in Figure <a href="pareto-charts-for-ranking-problems.html#fig:pareto-fig1">16.1</a>.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="pareto-charts-for-ranking-problems.html#cb100-1" tabindex="-1"></a><span class="fu">paretochart</span>(ae<span class="sc">$</span>category)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="pareto-charts-for-ranking-problems.html#cb101-1" tabindex="-1"></a><span class="fu">paretochart</span>(ae<span class="sc">$</span>category)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pareto-fig1"></span>
 <img src="_main_files/figure-html/pareto-fig1-1.svg" alt="Pareto chart of patient harm." width="672" />
 <p class="caption">
@@ -450,7 +450,7 @@ Figure 16.1: Pareto chart of patient harm.
 </div>
 <p>In a Pareto chart, the bars represent the counts in each category, while the curve shows the cumulative percentage across categories. In this example, almost 80% of harms arise from just three categories: gastrointestinal, infection, and procedure.</p>
 <p>Figure <a href="pareto-charts-for-ranking-problems.html#fig:pareto-fig2">16.2</a> shows a Pareto chart of harm severity. This chart illustrates that nearly all events resulted in temporary harm (categories E–F).</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="pareto-charts-for-ranking-problems.html#cb101-1" tabindex="-1"></a><span class="fu">paretochart</span>(ae<span class="sc">$</span>severity)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="pareto-charts-for-ranking-problems.html#cb102-1" tabindex="-1"></a><span class="fu">paretochart</span>(ae<span class="sc">$</span>severity)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pareto-fig2"></span>
 <img src="_main_files/figure-html/pareto-fig2-1.svg" alt="Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm." width="672" />
 <p class="caption">
@@ -458,7 +458,7 @@ Figure 16.2: Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H
 </p>
 </div>
 <p>The <code>paretochart()</code> function expects a character or factor vector as input. However, data are often already aggregated into tabular form:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="pareto-charts-for-ranking-problems.html#cb102-1" tabindex="-1"></a>ae.tbl</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="pareto-charts-for-ranking-problems.html#cb103-1" tabindex="-1"></a>ae.tbl</span></code></pre></div>
 <pre><code>          category count
 1             Fall     1
 2 Gastrointestinal    40
@@ -468,16 +468,16 @@ Figure 16.2: Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H
 6   Pressure ulcer     5
 7        Procedure    29</code></pre>
 <p>To construct a Pareto chart from tabulated data, we must first convert the counts back into a vector. This can be done using the <code>rep()</code> function, which repeats each category according to its frequency:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="pareto-charts-for-ranking-problems.html#cb104-1" tabindex="-1"></a><span class="co"># make vector from counts</span></span>
-<span id="cb104-2"><a href="pareto-charts-for-ranking-problems.html#cb104-2" tabindex="-1"></a>ae.cat <span class="ot">&lt;-</span> <span class="fu">rep</span>(ae.tbl<span class="sc">$</span>category, ae.tbl<span class="sc">$</span>count)</span>
-<span id="cb104-3"><a href="pareto-charts-for-ranking-problems.html#cb104-3" tabindex="-1"></a></span>
-<span id="cb104-4"><a href="pareto-charts-for-ranking-problems.html#cb104-4" tabindex="-1"></a><span class="co"># show first six rows of vector</span></span>
-<span id="cb104-5"><a href="pareto-charts-for-ranking-problems.html#cb104-5" tabindex="-1"></a><span class="fu">head</span>(ae.cat)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="pareto-charts-for-ranking-problems.html#cb105-1" tabindex="-1"></a><span class="co"># make vector from counts</span></span>
+<span id="cb105-2"><a href="pareto-charts-for-ranking-problems.html#cb105-2" tabindex="-1"></a>ae.cat <span class="ot">&lt;-</span> <span class="fu">rep</span>(ae.tbl<span class="sc">$</span>category, ae.tbl<span class="sc">$</span>count)</span>
+<span id="cb105-3"><a href="pareto-charts-for-ranking-problems.html#cb105-3" tabindex="-1"></a></span>
+<span id="cb105-4"><a href="pareto-charts-for-ranking-problems.html#cb105-4" tabindex="-1"></a><span class="co"># show first six rows of vector</span></span>
+<span id="cb105-5"><a href="pareto-charts-for-ranking-problems.html#cb105-5" tabindex="-1"></a><span class="fu">head</span>(ae.cat)</span></code></pre></div>
 <pre><code>## [1] Fall             Gastrointestinal Gastrointestinal Gastrointestinal
 ## [5] Gastrointestinal Gastrointestinal
 ## 7 Levels: Fall Gastrointestinal Infection Medication Other ... Procedure</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="pareto-charts-for-ranking-problems.html#cb106-1" tabindex="-1"></a><span class="co"># plot Pareto chart</span></span>
-<span id="cb106-2"><a href="pareto-charts-for-ranking-problems.html#cb106-2" tabindex="-1"></a><span class="fu">paretochart</span>(ae.cat)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="pareto-charts-for-ranking-problems.html#cb107-1" tabindex="-1"></a><span class="co"># plot Pareto chart</span></span>
+<span id="cb107-2"><a href="pareto-charts-for-ranking-problems.html#cb107-2" tabindex="-1"></a><span class="fu">paretochart</span>(ae.cat)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pareto-fig3"></span>
 <img src="_main_files/figure-html/pareto-fig3-1.svg" alt="Pareto chart constructed from tabular data." width="672" />
 <p class="caption">
