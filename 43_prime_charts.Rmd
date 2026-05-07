@@ -8,7 +8,7 @@ library(qicharts2)
 ```
 
 With count data involving very large subgroup sizes, SPC charts often produce very tight control limits with many data points falling outside the limits. 
-Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 included in qicharts2. The data are tabulated at the end of this chapter.
+Figure \@ref(fig:pcharts-fig1) demonstrates this phenomenon, known as overdispersion, using data from from @mohammed2013 included in *qicharts2*. The data are tabulated at the end of this chapter.
 
 ```{r pcharts-fig1, echo=FALSE, fig.cap='P chart of percent emergency attendances seen within 4 hours'}
 qic(i, r, n, 
@@ -98,7 +98,7 @@ and the moving ranges are computed from the standardised rates defined as
 
 $$z_i=(u_i-\bar{u})/\sigma_{ui}$$
 
-In qicharts2, the moving ranges of the standardised values are, by default, screened for extreme values, following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
+In *qicharts2*, the moving ranges of the standardised values are, by default, screened for extreme values, following the same approach used for I charts, as described in Chapter \@ref(screenedmr).
 
 ## When to use prime charts
 
