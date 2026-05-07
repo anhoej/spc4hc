@@ -26,7 +26,7 @@ In this example, we use the dataset on [adverse events](#adverse-events) causing
 str(ae)
 ```
 
-The `paretochart()` function from the qicharts2 package takes a categorical vector as input and produces a Pareto chart as shown in Figure \@ref(fig:pareto-fig1).
+The `paretochart()` function from the *qicharts2* package takes a categorical vector as input and produces a Pareto chart as shown in Figure \@ref(fig:pareto-fig1).
 
 ```{r pareto-fig1, fig.cap="Pareto chart of patient harm."}
 paretochart(ae$category)
@@ -34,7 +34,7 @@ paretochart(ae$category)
 
 In a Pareto chart, the bars represent the counts in each category, while the curve shows the cumulative percentage across categories. In this example, almost 80% of harms arise from just three categories: gastrointestinal, infection, and procedure.
 
-Figure \@ref(fig:pareto-fig2) shows a Pareto chart of harm severity. This chart illustrates that nearly all events resulted in temporary harm (categories E–F).
+Figure \@ref(fig:pareto-fig2) shows a Pareto chart of harm severity. This chart illustrates that nearly all events resulted in temporary harm (categories E-F).
 
 ```{r pareto-fig2, fig.cap="Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm."}
 paretochart(ae$severity)
@@ -52,7 +52,7 @@ To construct a Pareto chart from tabulated data, we must first convert the count
 # make vector from counts
 ae.cat <- rep(ae.tbl$category, ae.tbl$count)
 
-# show first six rows of vector
+# show first six elements of vector
 head(ae.cat)
 
 # plot Pareto chart
