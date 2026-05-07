@@ -50,12 +50,15 @@ In the longer term, it is beneficial to design information systems with SPC and 
 
 ### Charts, reports, and dashboards
 
-Individual SPC charts provide insight into specific processes or outcomes. However, understanding a system as a whole often requires examining multiple charts together.
-Reports and dashboards are useful for presenting such information.
+Individual SPC charts provide insight into specific processes or outcomes. However, understanding a system as a whole often requires examining multiple charts together. Reports and dashboards are useful for presenting such information.
+
 Reports are typically static and structured, for example monthly or quarterly summaries that combine SPC charts with explanatory text and interpretation. They are designed for formal review and communication and are usually shared as documents, either on paper or as PDFs.
+
 Dashboards, by contrast, are dynamic and interactive. They present multiple charts or indicators in real time or near real time and allow users to explore the data through filtering and drill-down functionality. Dashboards prioritise timeliness and accessibility, while interpretation is left to the user.
+
 In practice, both formats are valuable. Reports provide context and explanation, while dashboards support ongoing monitoring and rapid response. An effective SPC system often combines both.
-Although the design of reports and dashboards is beyond the scope of this book, R provides powerful tools for both. Using R Markdown [@xie2023] or Quarto [@allaire2025], possibly combined with Shiny, allows organisations to integrate data import, analysis, and presentation into a single, largely automated workflow.
+
+Although the design of reports and dashboards is beyond the scope of this book, R provides powerful tools for both. Using R Markdown [@xie2023] or Quarto [@allaire2025], possibly combined with Shiny[@shiny], allows organisations to integrate data import, analysis, and presentation into a single, largely automated workflow.
 
 ## Continuous evaluation and improvement
 
