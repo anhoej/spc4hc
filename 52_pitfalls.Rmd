@@ -29,7 +29,7 @@ Time spent developing clear operational definitions and rational subgrouping str
 
 Originally, control charts relied on a single rule: the 3-sigma rule. Over time, numerous supplementary rules have been developed to increase sensitivity to smaller shifts and other patterns of non-random variation. These include the Western Electric rules, Nelson rules, Westgard rules, and various sets of runs rules.
 
-While it may be tempting to apply many rules in order to detect every possible signal, this approach comes at a cost. Additional rules increase sensitivity, but they also increase the risk of false alarms. This trade-off is discussed in more detail in Appendix \@ref(diagnostics), [Two Types of Errors When Using SPC].
+While it may be tempting to apply many rules in order to detect every possible signal, this approach comes at a cost. Additional rules increase sensitivity, but they also increase the risk of false alarms.
 
 Some commonly used rule sets are particularly prone to false signals. For example, a widely used set of run chart rules -- including tests for trends, shifts, and run counts [@perla2011] -- has been shown to produce a very high false positive rate. In a run chart with 24 data points, the probability of at least one false signal may approach 50% [@anhoej2015]. A major contributor is the "trend rule", defined as five or more consecutive data points increasing or decreasesing. Such short trends are common even in random data and are therefore unreliable indicators of change [@davis1988].
 
@@ -48,14 +48,14 @@ For example, a target may specify that an emergency caesarean section should be 
 Unacceptable outcomes may arise from stable processes, and acceptable outcomes may occur in unstable ones. Before acting on individual observations, we must determine whether variation is due to common causes or special causes. This distinction is crucial, as the appropriate response differs fundamentally.
 
 Common cause variation requires changes to the system itself, while special cause variation requires investigation of specific events. The ultimate goal is to establish stable processes that consistently deliver acceptable outcomes.
-The relationship between these two "voices" can be summarised as follows:
+The relationship between these two "voices" can be summarised as in Table \@ref(tab:pitfalls-tab1).
 
 |                          | **Process Stable**   | **Process Unstable**   |
 | ------------------------ | -------------------- | ---------------------- |
 | **Customer Satisfied**   | Maintain and monitor | Stabilise the process  |
 | **Customer Unsatisfied** | Redesign the process | Redesign and stabilise |
 
-Table: The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.
+Table: (\#tab:pitfalls-tab1) The interplay between the voice of the customer and the voice of the process, with the four appropriate actions for each scenario.
 
 ## Automatic rephasing
 

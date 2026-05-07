@@ -71,6 +71,7 @@ fig:funnel-fig3
 fig:pareto-fig1
 fig:pareto-fig2
 fig:pareto-fig3
+tab:pitfalls-tab1
 fig:pitfalls-fig1
 fig:pitfalls-fig2
 fig:subgrouping-fig1
