@@ -34,7 +34,7 @@ qic(reorder(hospital, days), n, days,
 
 Because funnel plots do not involve a natural time sequence, the data points are not connected, and run analysis is not applicable.
 
-To demonstrate the construction of funnel plots, we use data on urinary tract infections from the hospital_infections dataset included in qicharts2. We begin by plotting the data over time using a traditional U chart:
+To demonstrate the construction of funnel plots, we use data on urinary tract infections from the hospital_infections dataset included in *qicharts2*. We begin by plotting the data over time using a traditional U chart:
 
 ```{r funnel-fig1, fig.asp=1, fig.cap='U chart of urinary tract infections'}
 # get urinary tract infections from hospital infections data
