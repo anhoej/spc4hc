@@ -1,5 +1,14 @@
 # Critical Values for Longest Runs and Number of Crossings {#runs-limits}
 
+In SPC charts, a **run** is one or more consecutive data points on the same side of the centre line. Data points that lie directly on the centre line are not counted, nor do they break a run if the next data point is on the same side as the previous one.
+
+A **crossing** occurs when two consecutive data points lie on opposite sides of the centre line, ignoring any data points directly on the centre line.
+
+To perform the runs analysis, first count the number of useful observations in the chart. Then count the number of data points in the longest run and the number of crossings, and compare these values with the critical values in the table.
+
+For example, in an SPC chart with 24 useful observations, a run of *more* than eight data points on the same side of the centre line or *fewer* than eight crossings of the centre line would suggest one or more sustained shifts in the data.
+
+In random data sequences, these two rules used together have a false signal rate of around 5%, regardless of the number of useful observations [@anhoej2014; @anhoej2015; @anhoej2018b].
 
 ```{r, results='asis', echo=FALSE}
 n <- 10:100
