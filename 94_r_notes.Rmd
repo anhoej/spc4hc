@@ -14,7 +14,7 @@ knitr::opts_chunk$set(fig.asp = 2/3,
 library(qicharts2)
 ```
 
-This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting using only base R functions. We are very well aware of new and modern approaches to data manipulation from the tidyverse and data.table packages -- we use these tool ourselves every day -- but we find it valuable to be able to handle data in base R. Especially when sharing code or building R packages it is generally a good strategy to avoid unnecessary dependencies on external packages.
+This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting using only base R functions. We are very well aware of new and modern approaches to data manipulation from the *tidyverse* and *data.table* packages -- we use these tool ourselves every day -- but we find it valuable to be able to handle data in base R. Especially when sharing code or building R packages it is generally a good strategy to avoid unnecessary dependencies on external packages.
 
 First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting. Finally, we give some useful tips and tricks
 
@@ -26,19 +26,17 @@ The **data frame** is (for our purpose) probably the most important data structu
 
 ## Plot-ready data frames
 
-When plotting time series data including spc data, R usually expects two vectors, one for the x axis representing the subgroups, which in its simplest form may be a sequence of numbers or dates and one for the y axis representing the indicator values to be plotted. To correctly calculate the control limits in spc charts, we often need a third variable representing the denominator of the count data in the y variable. Thus, a generic plot-ready data set for making an spc chart may look like this.
+When plotting time series data, we need two vectors, one for the x axis representing the subgroups, which in its simplest form may be a sequence of numbers or dates and one for the y axis representing the indicator values to be plotted. To correctly calculate the control limits in spc charts, we often need a third variable representing the denominator of the count data in the y variable. Thus, a generic plot-ready data set for making an spc chart may look like this:
 
 ```{r echo=FALSE, comment=''}
 set.seed(1)
 d <- data.frame(x = seq(Sys.Date() - 12, by = 'day', length.out = 12),
                 y = rbinom(12, 30, 0.5),
                 n = as.integer(round(runif(12, 25, 35))))
-
-tibble::tibble(d)
-# knitr::kable(d, booktabs = T)
+d
 ```
 
-To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where dta is the name of the data frame containing the three variables x, y, and n:
+To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where "d" is the name of the data frame containing the three variables x, y, and n:
 
 ```{r}
 qic(x, y, n, 
@@ -131,7 +129,7 @@ str(d2)
 
 The three functions split(), lapply(), and do.call() may be unfamiliar to many R users, but it pays to get to know them -- read the documentation.
 
-The split-apply-combine strategy may be performed a lot easier with functions from the tidyverse or data.table packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.
+The split-apply-combine strategy may be performed a lot easier with functions from the *tidyverse* or *data.table* packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.
 
 ## Tips and tricks
 
