@@ -13,9 +13,27 @@ knitr::opts_chunk$set(fig.asp = 3/5,
 source('R/load_data.R', local = knitr::knit_global())
 ```
 
-Understanding data is the foundation of effective decision-making in quality improvement. While this chapter is not intended as a comprehensive statistics course, it introduces key concepts related to data types, summarisation, and visualisation.
+Understanding data is the foundation of effective decision-making in quality improvement. While this chapter is not intended as a comprehensive statistics course, it introduces key concepts related to probability, data types, summarisation, and visualisation.
 
 These concepts are essential for selecting appropriate SPC charts, interpreting patterns correctly, and ensuring that conclusions drawn from data are valid.
+
+## Probability
+
+Probability is a measure of the likelihood of the occurrence of a given event and is central to statistics.
+
+Probabilities range from 0 to 1, where 0 means that the event cannot happen, and 1 means that the event is certain to happen. Any number between 0 and 1 represents the expected proportion of times the event would occur if the experiment were repeated indefinitely. For example, the probability of a fair coin landing on heads is $P(H) = 0.5$ or 50%. 
+
+Probabilities sum up to 1, such that the probability of a coin landing on *either* heads *or* tails is 
+
+$$P(H \text{ or } T) = P(H) + P(T) = 0.5 + 0.5 = 1$$
+
+The probability of multiple independent and mutually exclusive events happening is the product of their individual probabilities. For example, the probability of two coins both landing on heads is
+
+$$P(H \text{ and } H) = P(H) \times P(H) = 0.5 \times 0.5 = 0.25$$
+
+Probability is fundamental to SPC because *through the use of past experience, we can predict, within limits, how the phenomenon may be expected to vary in the future* [@shewhart1931, p. 6].
+
+In this context, *past experience* may derive from empirical observations, theoretical considerations, or both, regarding the distribution and variability of data collected over time. This is the topic for the rest of this chapter.
 
 ## Data types
 
@@ -98,7 +116,7 @@ summary(births$length)
 The centre describes the “typical” value in the data.
     
 * **Mean**: average of all values
-* **Median**: middle value
+* **Median**: middle value (after sorting)
 
 The mean is sensitive to extreme values, whereas the median is robust.
 
@@ -170,8 +188,8 @@ The method used to estimate SD depends on the type and the assumed theoretical d
 
 While SPC is primarily empirical, theoretical distributions help define expected variation. We focus on three:
 
-* Poisson (counts)
-* Binomial (proportions)
+* Poisson (event counts/rates)
+* Binomial (case counts/proportions)
 * Gaussian (continuous data)
 
 ### Poisson distribution -- predicting the number of events
@@ -210,7 +228,7 @@ For low values of lambda, the Poisson distribution is right-skewed; however, as 
 
 ### Binomial distribution -- predicting the number of cases of "success" or "failure"
 
-The binomial distribution describes the probability of obtaining a given number of cases -- often referred to as successes or failures -- in a fixed number of independent trials (or opportunities), each with two possible outcomes (such as yes/no or pass/fail), and a constant probability of success.
+The binomial distribution describes the probability of obtaining a given number of cases -- often referred to as successes or failures -- in a fixed number of independent trials (or opportunities), each with two possible outcomes (such as yes/no or pass/fail), and a constant probability of success/failure.
 
 The standard deviation of a binomial distribution (case counts) is:
 
