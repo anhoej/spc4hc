@@ -19,7 +19,7 @@ These concepts are essential for selecting appropriate SPC charts, interpreting 
 
 ## Probability
 
-Probability is a measure of the likelihood of the occurrence of a given event and is central to statistics.
+Probability is a measure of how likely a given event is to occur and is central to statistics.
 
 Probabilities range from 0 to 1, where 0 means that the event cannot happen, and 1 means that the event is certain to happen. Any number between 0 and 1 represents the expected proportion of times the event would occur if the experiment were repeated indefinitely. For example, the probability of a fair coin landing on heads is $P(H) = 0.5$ or 50%. 
 
@@ -31,9 +31,21 @@ The probability of multiple independent and mutually exclusive events happening 
 
 $$P(H \text{ and } H) = P(H) \times P(H) = 0.5 \times 0.5 = 0.25$$
 
-Probability is fundamental to SPC because *through the use of past experience, we can predict, within limits, how the phenomenon may be expected to vary in the future* [@shewhart1931, p. 6].
+Based on these principles, probability allows us to predict the likelihood of certain events — such as special cause patterns in an SPC chart — and thereby distinguish common cause from special cause variation.
 
-In this context, *past experience* may derive from empirical observations, theoretical considerations, or both, regarding the distribution and variability of data collected over time. This is the topic for the rest of this chapter.
+For example, if the probability that a single data point falls outside the three-sigma limits is 0.3% (see below), then the probability that all 20 data points in a control chart fall within the limits is
+
+$$P(\text{no signal}) = (1-0.003)^{20} = 0.94$$
+
+In other words, a control chart with no three-sigma signals is more likely to represent common cause variation than special cause variation.
+
+Most importantly, it follows that we can never be absolutely certain that signals always represent special causes, or that the absence of signals always represents common causes. Probability -- and statistics in general -- is therefore not a tool for certainty. Rather, it is a tool for making informed judgements under uncertainty by quantifying how likely different explanations are in light of the available data.
+
+>[...] prediction within limits means that we can state, at least approximately, the probability that the observed phonomenon will fall within the given limits.
+>
+>@shewhart1931, p. 6
+
+In this context, *past experience* may derive from empirical observations, theoretical considerations, or both, concerning the distribution and variability of data collected over time. The remainder of this chapter describes how such knowledge can be obtained and used in practice.
 
 ## Data types
 

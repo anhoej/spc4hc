@@ -197,6 +197,7 @@ scaling-spc-in-a-data-rich-world
 a-shared-future-principles-practice-and-community
 data-sets
 stat-concepts
+probability
 data-types
 categorical-data
 numerical-data
@@ -210,11 +211,6 @@ poisson-distribution-predicting-the-number-of-events
 binomial-distribution-predicting-the-number-of-cases-of-success-or-failure
 gaussian-distribution-predicting-the-probability-of-continuous-outcomes
 basic-statistical-concepts-in-summary
-diagnostics
-quantifying-the-diagnostic-error-of-spc-charts
-average-run-length
-likelihood-ratios
-conclusion-keeping-the-balance
 r-notes
 data-structures-and-classes
 plot-ready-data-frames
@@ -227,5 +223,3 @@ cutting-dates-and-datetimes
 getting-age-from-date-of-birth
 naming-files-and-variables
 runs-limits
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-probability

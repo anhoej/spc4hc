@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>D R Notes | Mastering Statistical Process Control Charts in Healthcare</title>
+  <title>C R Notes | Mastering Statistical Process Control Charts in Healthcare</title>
   <meta name="description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="D R Notes | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta property="og:title" content="C R Notes | Mastering Statistical Process Control Charts in Healthcare" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   <meta name="github-repo" content="anhoej/spc4hc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="D R Notes | Mastering Statistical Process Control Charts in Healthcare" />
+  <meta name="twitter:title" content="C R Notes | Mastering Statistical Process Control Charts in Healthcare" />
   
   <meta name="twitter:description" content="This is a book for data scientists about the practical application of statistical process control methodology in healthcare." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-05-08" />
+<meta name="date" content="2026-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="diagnostics.html"/>
+<link rel="prev" href="stat-concepts.html"/>
 <link rel="next" href="runs-limits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -360,53 +360,45 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="B" data-path="stat-concepts.html"><a href="stat-concepts.html"><i class="fa fa-check"></i><b>B</b> Basic Statistical Concepts</a>
 <ul>
-<li class="chapter" data-level="B.1" data-path="stat-concepts.html"><a href="stat-concepts.html#data-types"><i class="fa fa-check"></i><b>B.1</b> Data types</a>
+<li class="chapter" data-level="B.1" data-path="stat-concepts.html"><a href="stat-concepts.html#probability"><i class="fa fa-check"></i><b>B.1</b> Probability</a></li>
+<li class="chapter" data-level="B.2" data-path="stat-concepts.html"><a href="stat-concepts.html#data-types"><i class="fa fa-check"></i><b>B.2</b> Data types</a>
 <ul>
-<li class="chapter" data-level="B.1.1" data-path="stat-concepts.html"><a href="stat-concepts.html#categorical-data"><i class="fa fa-check"></i><b>B.1.1</b> Categorical data</a></li>
-<li class="chapter" data-level="B.1.2" data-path="stat-concepts.html"><a href="stat-concepts.html#numerical-data"><i class="fa fa-check"></i><b>B.1.2</b> Numerical data</a></li>
+<li class="chapter" data-level="B.2.1" data-path="stat-concepts.html"><a href="stat-concepts.html#categorical-data"><i class="fa fa-check"></i><b>B.2.1</b> Categorical data</a></li>
+<li class="chapter" data-level="B.2.2" data-path="stat-concepts.html"><a href="stat-concepts.html#numerical-data"><i class="fa fa-check"></i><b>B.2.2</b> Numerical data</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="stat-concepts.html"><a href="stat-concepts.html#summarising-categorical-data"><i class="fa fa-check"></i><b>B.2</b> Summarising categorical data</a></li>
-<li class="chapter" data-level="B.3" data-path="stat-concepts.html"><a href="stat-concepts.html#summarising-numerical-data"><i class="fa fa-check"></i><b>B.3</b> Summarising numerical data</a>
+<li class="chapter" data-level="B.3" data-path="stat-concepts.html"><a href="stat-concepts.html#summarising-categorical-data"><i class="fa fa-check"></i><b>B.3</b> Summarising categorical data</a></li>
+<li class="chapter" data-level="B.4" data-path="stat-concepts.html"><a href="stat-concepts.html#summarising-numerical-data"><i class="fa fa-check"></i><b>B.4</b> Summarising numerical data</a>
 <ul>
-<li class="chapter" data-level="B.3.1" data-path="stat-concepts.html"><a href="stat-concepts.html#centre"><i class="fa fa-check"></i><b>B.3.1</b> Centre</a></li>
-<li class="chapter" data-level="B.3.2" data-path="stat-concepts.html"><a href="stat-concepts.html#shape"><i class="fa fa-check"></i><b>B.3.2</b> Shape</a></li>
-<li class="chapter" data-level="B.3.3" data-path="stat-concepts.html"><a href="stat-concepts.html#spread"><i class="fa fa-check"></i><b>B.3.3</b> Spread</a></li>
+<li class="chapter" data-level="B.4.1" data-path="stat-concepts.html"><a href="stat-concepts.html#centre"><i class="fa fa-check"></i><b>B.4.1</b> Centre</a></li>
+<li class="chapter" data-level="B.4.2" data-path="stat-concepts.html"><a href="stat-concepts.html#shape"><i class="fa fa-check"></i><b>B.4.2</b> Shape</a></li>
+<li class="chapter" data-level="B.4.3" data-path="stat-concepts.html"><a href="stat-concepts.html#spread"><i class="fa fa-check"></i><b>B.4.3</b> Spread</a></li>
 </ul></li>
-<li class="chapter" data-level="B.4" data-path="stat-concepts.html"><a href="stat-concepts.html#theoretical-distributions"><i class="fa fa-check"></i><b>B.4</b> Theoretical distributions</a>
+<li class="chapter" data-level="B.5" data-path="stat-concepts.html"><a href="stat-concepts.html#theoretical-distributions"><i class="fa fa-check"></i><b>B.5</b> Theoretical distributions</a>
 <ul>
-<li class="chapter" data-level="B.4.1" data-path="stat-concepts.html"><a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events"><i class="fa fa-check"></i><b>B.4.1</b> Poisson distribution – predicting the number of events</a></li>
-<li class="chapter" data-level="B.4.2" data-path="stat-concepts.html"><a href="stat-concepts.html#binomial-distribution-predicting-the-number-of-cases-of-success-or-failure"><i class="fa fa-check"></i><b>B.4.2</b> Binomial distribution – predicting the number of cases of “success” or “failure”</a></li>
-<li class="chapter" data-level="B.4.3" data-path="stat-concepts.html"><a href="stat-concepts.html#gaussian-distribution-predicting-the-probability-of-continuous-outcomes"><i class="fa fa-check"></i><b>B.4.3</b> Gaussian distribution – predicting the probability of continuous outcomes</a></li>
+<li class="chapter" data-level="B.5.1" data-path="stat-concepts.html"><a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events"><i class="fa fa-check"></i><b>B.5.1</b> Poisson distribution – predicting the number of events</a></li>
+<li class="chapter" data-level="B.5.2" data-path="stat-concepts.html"><a href="stat-concepts.html#binomial-distribution-predicting-the-number-of-cases-of-success-or-failure"><i class="fa fa-check"></i><b>B.5.2</b> Binomial distribution – predicting the number of cases of “success” or “failure”</a></li>
+<li class="chapter" data-level="B.5.3" data-path="stat-concepts.html"><a href="stat-concepts.html#gaussian-distribution-predicting-the-probability-of-continuous-outcomes"><i class="fa fa-check"></i><b>B.5.3</b> Gaussian distribution – predicting the probability of continuous outcomes</a></li>
 </ul></li>
-<li class="chapter" data-level="B.5" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.5</b> Basic statistical concepts in summary</a></li>
+<li class="chapter" data-level="B.6" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.6</b> Basic statistical concepts in summary</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>C</b> Two Types of Errors When Using SPC</a>
+<li class="chapter" data-level="C" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>C</b> R Notes</a>
 <ul>
-<li class="chapter" data-level="C.1" data-path="diagnostics.html"><a href="diagnostics.html#quantifying-the-diagnostic-error-of-spc-charts"><i class="fa fa-check"></i><b>C.1</b> Quantifying the diagnostic error of SPC charts</a>
+<li class="chapter" data-level="C.1" data-path="r-notes.html"><a href="r-notes.html#data-structures-and-classes"><i class="fa fa-check"></i><b>C.1</b> Data structures and classes</a></li>
+<li class="chapter" data-level="C.2" data-path="r-notes.html"><a href="r-notes.html#plot-ready-data-frames"><i class="fa fa-check"></i><b>C.2</b> Plot-ready data frames</a></li>
+<li class="chapter" data-level="C.3" data-path="r-notes.html"><a href="r-notes.html#importing-data-from-text-files"><i class="fa fa-check"></i><b>C.3</b> Importing data from text files</a></li>
+<li class="chapter" data-level="C.4" data-path="r-notes.html"><a href="r-notes.html#manipulating-data-frames"><i class="fa fa-check"></i><b>C.4</b> Manipulating data frames</a>
 <ul>
-<li class="chapter" data-level="C.1.1" data-path="diagnostics.html"><a href="diagnostics.html#average-run-length"><i class="fa fa-check"></i><b>C.1.1</b> Average run length</a></li>
-<li class="chapter" data-level="C.1.2" data-path="diagnostics.html"><a href="diagnostics.html#likelihood-ratios"><i class="fa fa-check"></i><b>C.1.2</b> Likelihood ratios</a></li>
+<li class="chapter" data-level="C.4.1" data-path="r-notes.html"><a href="r-notes.html#adding-variables-to-data-frames"><i class="fa fa-check"></i><b>C.4.1</b> Adding variables to data frames</a></li>
+<li class="chapter" data-level="C.4.2" data-path="r-notes.html"><a href="r-notes.html#aggregating-data-frames"><i class="fa fa-check"></i><b>C.4.2</b> Aggregating data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="C.2" data-path="diagnostics.html"><a href="diagnostics.html#conclusion-keeping-the-balance"><i class="fa fa-check"></i><b>C.2</b> Conclusion: Keeping the balance</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="r-notes.html"><a href="r-notes.html"><i class="fa fa-check"></i><b>D</b> R Notes</a>
+<li class="chapter" data-level="C.5" data-path="r-notes.html"><a href="r-notes.html#tips-and-tricks"><i class="fa fa-check"></i><b>C.5</b> Tips and tricks</a>
 <ul>
-<li class="chapter" data-level="D.1" data-path="r-notes.html"><a href="r-notes.html#data-structures-and-classes"><i class="fa fa-check"></i><b>D.1</b> Data structures and classes</a></li>
-<li class="chapter" data-level="D.2" data-path="r-notes.html"><a href="r-notes.html#plot-ready-data-frames"><i class="fa fa-check"></i><b>D.2</b> Plot-ready data frames</a></li>
-<li class="chapter" data-level="D.3" data-path="r-notes.html"><a href="r-notes.html#importing-data-from-text-files"><i class="fa fa-check"></i><b>D.3</b> Importing data from text files</a></li>
-<li class="chapter" data-level="D.4" data-path="r-notes.html"><a href="r-notes.html#manipulating-data-frames"><i class="fa fa-check"></i><b>D.4</b> Manipulating data frames</a>
-<ul>
-<li class="chapter" data-level="D.4.1" data-path="r-notes.html"><a href="r-notes.html#adding-variables-to-data-frames"><i class="fa fa-check"></i><b>D.4.1</b> Adding variables to data frames</a></li>
-<li class="chapter" data-level="D.4.2" data-path="r-notes.html"><a href="r-notes.html#aggregating-data-frames"><i class="fa fa-check"></i><b>D.4.2</b> Aggregating data frames</a></li>
-</ul></li>
-<li class="chapter" data-level="D.5" data-path="r-notes.html"><a href="r-notes.html#tips-and-tricks"><i class="fa fa-check"></i><b>D.5</b> Tips and tricks</a>
-<ul>
-<li class="chapter" data-level="D.5.1" data-path="r-notes.html"><a href="r-notes.html#cutting-dates-and-datetimes"><i class="fa fa-check"></i><b>D.5.1</b> Cutting dates and datetimes</a></li>
-<li class="chapter" data-level="D.5.2" data-path="r-notes.html"><a href="r-notes.html#getting-age-from-date-of-birth"><i class="fa fa-check"></i><b>D.5.2</b> Getting age from date of birth</a></li>
-<li class="chapter" data-level="D.5.3" data-path="r-notes.html"><a href="r-notes.html#naming-files-and-variables"><i class="fa fa-check"></i><b>D.5.3</b> Naming files and variables</a></li>
+<li class="chapter" data-level="C.5.1" data-path="r-notes.html"><a href="r-notes.html#cutting-dates-and-datetimes"><i class="fa fa-check"></i><b>C.5.1</b> Cutting dates and datetimes</a></li>
+<li class="chapter" data-level="C.5.2" data-path="r-notes.html"><a href="r-notes.html#getting-age-from-date-of-birth"><i class="fa fa-check"></i><b>C.5.2</b> Getting age from date of birth</a></li>
+<li class="chapter" data-level="C.5.3" data-path="r-notes.html"><a href="r-notes.html#naming-files-and-variables"><i class="fa fa-check"></i><b>C.5.3</b> Naming files and variables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="E" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>E</b> Critical Values for Longest Runs and Number of Crossings</a></li>
+<li class="chapter" data-level="D" data-path="runs-limits.html"><a href="runs-limits.html"><i class="fa fa-check"></i><b>D</b> Critical Values for Longest Runs and Number of Crossings</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">
@@ -431,31 +423,31 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-notes" class="section level1 hasAnchor" number="24">
-<h1><span class="header-section-number">D</span> R Notes<a href="r-notes.html#r-notes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="r-notes" class="section level1 hasAnchor" number="23">
+<h1><span class="header-section-number">C</span> R Notes<a href="r-notes.html#r-notes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This is not an R tutorial. Rather, this appendix aims to explain and clarify some of the tools and techniques we use in this book to import and prepare data for plotting using only base R functions. We are very well aware of new and modern approaches to data manipulation from the <em>tidyverse</em> and <em>data.table</em> packages – we use these tool ourselves every day – but we find it valuable to be able to handle data in base R. Especially when sharing code or building R packages it is generally a good strategy to avoid unnecessary dependencies on external packages.</p>
 <p>First, we will look at some data structures and types that are essential to this book. Next, we will discuss some principles for importing data from text files into data frames and how to manipulate these to make data ready for plotting. Finally, we give some useful tips and tricks</p>
-<div id="data-structures-and-classes" class="section level2 hasAnchor" number="24.1">
-<h2><span class="header-section-number">D.1</span> Data structures and classes<a href="r-notes.html#data-structures-and-classes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-structures-and-classes" class="section level2 hasAnchor" number="23.1">
+<h2><span class="header-section-number">C.1</span> Data structures and classes<a href="r-notes.html#data-structures-and-classes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The simplest data structure in R is the <strong>vector</strong>: zero or more data elements of the same type. Data come in several basic types (<strong>classes</strong>). We are mainly concerned with logical, numeric and character values. Date and datetime values, which are especially important in SPC, are basically just numeric values representing the number of days (dates) or seconds (datetimes) since the beginning of the year 1970.</p>
 <p>The <strong>data frame</strong> is (for our purpose) probably the most important data structure in R. Data frames are collections of vectors that may be of different types but are all of the same length. Think matrix or table with rows and columns where each row represents an observation, each column represents a variable, and each cell represents a data value. All rows and all columns have the same length, and all cells have values (including NA for missing data).</p>
 </div>
-<div id="plot-ready-data-frames" class="section level2 hasAnchor" number="24.2">
-<h2><span class="header-section-number">D.2</span> Plot-ready data frames<a href="r-notes.html#plot-ready-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="plot-ready-data-frames" class="section level2 hasAnchor" number="23.2">
+<h2><span class="header-section-number">C.2</span> Plot-ready data frames<a href="r-notes.html#plot-ready-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When plotting time series data, we need two vectors, one for the x axis representing the subgroups, which in its simplest form may be a sequence of numbers or dates and one for the y axis representing the indicator values to be plotted. To correctly calculate the control limits in spc charts, we often need a third variable representing the denominator of the count data in the y variable. Thus, a generic plot-ready data set for making an spc chart may look like this:</p>
 <pre><code>            x  y  n
-1  2026-04-26 13 32
-2  2026-04-27 14 29
-3  2026-04-28 16 33
-4  2026-04-29 19 30
-5  2026-04-30 13 32
-6  2026-05-01 18 35
-7  2026-05-02 19 29
-8  2026-05-03 16 33
-9  2026-05-04 16 34
-10 2026-05-05 11 27
-11 2026-05-06 13 32
-12 2026-05-07 12 26</code></pre>
+1  2026-05-09 13 32
+2  2026-05-10 14 29
+3  2026-05-11 16 33
+4  2026-05-12 19 30
+5  2026-05-13 13 32
+6  2026-05-14 18 35
+7  2026-05-15 19 29
+8  2026-05-16 16 33
+9  2026-05-17 16 34
+10 2026-05-18 11 27
+11 2026-05-19 13 32
+12 2026-05-20 12 26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where “d” is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="r-notes.html#cb132-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb132-2"><a href="r-notes.html#cb132-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
@@ -463,8 +455,8 @@ div.csl-indent {
 <p><img src="_main_files/figure-html/unnamed-chunk-45-1.svg" alt="" width="960" /></p>
 <p>Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).</p>
 </div>
-<div id="importing-data-from-text-files" class="section level2 hasAnchor" number="24.3">
-<h2><span class="header-section-number">D.3</span> Importing data from text files<a href="r-notes.html#importing-data-from-text-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importing-data-from-text-files" class="section level2 hasAnchor" number="23.3">
+<h2><span class="header-section-number">C.3</span> Importing data from text files<a href="r-notes.html#importing-data-from-text-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When importing data from a text file into R using one of the base R read.*() functions, data are returned as a data frame.</p>
 <p>For this book, we provide all data sets as comma separated values (csv) in text files that can be read using the read.csv() function. Each data file begins with a number of commented lines that explains the content and the variables in data. For example, the first 18 lines of the “bacteremia.csv” file looks like this:</p>
 <pre><code># Bacteremia
@@ -517,8 +509,8 @@ month,ha_infections,risk_days,deaths,patients
  $ deaths       : int  23 22 13 14 17 15 15 25 21 24 ...
  $ patients     : int  100 105 99 85 98 85 89 99 103 86 ...</code></pre>
 </div>
-<div id="manipulating-data-frames" class="section level2 hasAnchor" number="24.4">
-<h2><span class="header-section-number">D.4</span> Manipulating data frames<a href="r-notes.html#manipulating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="manipulating-data-frames" class="section level2 hasAnchor" number="23.4">
+<h2><span class="header-section-number">C.4</span> Manipulating data frames<a href="r-notes.html#manipulating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will import the <a href="data-sets.html#ceasearian-section-delay">C-section</a> data set to demonstrate adding variables and aggregating data.</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-notes.html#cb138-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/csection_delay.csv&#39;</span>,</span>
 <span id="cb138-2"><a href="r-notes.html#cb138-2" tabindex="-1"></a>              <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
@@ -535,8 +527,8 @@ month,ha_infections,risk_days,deaths,patients
 5 2016-01-09 14:56:09 2016-01-01    22
 6 2016-01-09 21:21:24 2016-01-01    20</code></pre>
 <p>The C-section data contains 208 rows representing individual C-sections. Our aim for this exercise is to reduce data to a plot ready data frame with one row per month and the number of C-section that were on target and the total number of C-sections.</p>
-<div id="adding-variables-to-data-frames" class="section level3 hasAnchor" number="24.4.1">
-<h3><span class="header-section-number">D.4.1</span> Adding variables to data frames<a href="r-notes.html#adding-variables-to-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="adding-variables-to-data-frames" class="section level3 hasAnchor" number="23.4.1">
+<h3><span class="header-section-number">C.4.1</span> Adding variables to data frames<a href="r-notes.html#adding-variables-to-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The delay variable is the number of minutes from decision to perform a C-section to delivery of the baby. The standard target value for grade 2 C-sections is less than 30 minutes. If we want to plot the proportion of C-sections that are on time (i.e. less than 30 min.), we first need to dichotomise the delay variable into a logical variable, ontime, that is TRUE when delay is less than 30. We add this new variable to the data frame using the $-notation.</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="r-notes.html#cb140-1" tabindex="-1"></a>d<span class="sc">$</span>ontime <span class="ot">&lt;-</span> d<span class="sc">$</span>delay <span class="sc">&lt;</span> <span class="dv">30</span>  <span class="co"># Dichotomise delays.</span></span>
 <span id="cb140-2"><a href="r-notes.html#cb140-2" tabindex="-1"></a></span>
@@ -549,8 +541,8 @@ month,ha_infections,risk_days,deaths,patients
 5 2016-01-09 14:56:09 2016-01-01    22   TRUE
 6 2016-01-09 21:21:24 2016-01-01    20   TRUE</code></pre>
 </div>
-<div id="aggregating-data-frames" class="section level3 hasAnchor" number="24.4.2">
-<h3><span class="header-section-number">D.4.2</span> Aggregating data frames<a href="r-notes.html#aggregating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="aggregating-data-frames" class="section level3 hasAnchor" number="23.4.2">
+<h3><span class="header-section-number">C.4.2</span> Aggregating data frames<a href="r-notes.html#aggregating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Then we aggregate data to one row per month. For this, we use the split-apply-combine strategy by first splitting the data frame into a list of data frames, one per month. Next, we apply the same summary function to all elements (months) of this list collapsing into a one-row data frame. Finally, we combine the elements back into a data frame again.</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="r-notes.html#cb142-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">split</span>(d, d<span class="sc">$</span>month)                      <span class="co"># Split data frame by month.</span></span>
 <span id="cb142-2"><a href="r-notes.html#cb142-2" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(d2, <span class="cf">function</span>(x) {               <span class="co"># Apply summaries to each group.</span></span>
@@ -580,10 +572,10 @@ month,ha_infections,risk_days,deaths,patients
 <p>The split-apply-combine strategy may be performed a lot easier with functions from the <em>tidyverse</em> or <em>data.table</em> packages. But, as mentioned, we find it useful to know the base R ways of doing things, not the least to maintain independence from external packages when creating our own functions.</p>
 </div>
 </div>
-<div id="tips-and-tricks" class="section level2 hasAnchor" number="24.5">
-<h2><span class="header-section-number">D.5</span> Tips and tricks<a href="r-notes.html#tips-and-tricks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="cutting-dates-and-datetimes" class="section level3 hasAnchor" number="24.5.1">
-<h3><span class="header-section-number">D.5.1</span> Cutting dates and datetimes<a href="r-notes.html#cutting-dates-and-datetimes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tips-and-tricks" class="section level2 hasAnchor" number="23.5">
+<h2><span class="header-section-number">C.5</span> Tips and tricks<a href="r-notes.html#tips-and-tricks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cutting-dates-and-datetimes" class="section level3 hasAnchor" number="23.5.1">
+<h3><span class="header-section-number">C.5.1</span> Cutting dates and datetimes<a href="r-notes.html#cutting-dates-and-datetimes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the C-section data set the month variable represents the time period of each delivery used for subgrouping data, that is counting events and cases per month. The month variable was created by “cutting” the datetime variable into monthly chunks.</p>
 <p>Converting dates and datetimes into time period – for example weeks, months or quarters – is a common task, not the least in SPC. It is easily done using the cut() function, which is a generic function with many uses. However, the syntax for cutting dates is poorly documented. To cut dates we use two arguments: first, the vector of date(time)s to be cut; second, the interval we want.</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="r-notes.html#cb146-1" tabindex="-1"></a><span class="co"># R&#39;s date of birth (using parentheses to print the result)</span></span>
@@ -619,8 +611,8 @@ Levels: 2000-02-01</code></pre>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="r-notes.html#cb162-1" tabindex="-1"></a><span class="fu">cutdate</span>(x, <span class="st">&#39;quarter&#39;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;2000-01-01&quot;</code></pre>
 </div>
-<div id="getting-age-from-date-of-birth" class="section level3 hasAnchor" number="24.5.2">
-<h3><span class="header-section-number">D.5.2</span> Getting age from date of birth<a href="r-notes.html#getting-age-from-date-of-birth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="getting-age-from-date-of-birth" class="section level3 hasAnchor" number="23.5.2">
+<h3><span class="header-section-number">C.5.2</span> Getting age from date of birth<a href="r-notes.html#getting-age-from-date-of-birth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In healthcare we often need to know the patient’s age on a certain date. By “age” we usually mean a whole number of years since the patient’s date of birth. However, year is not a well defined unit of time, and age is really a continuous variable. Therefore, we are usually better off knowing the patient’s age in days, which in turn can always be converted to decimal or integer years if necessary.</p>
 <p>How old is R today?</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="r-notes.html#cb164-1" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2025-04-24&#39;</span>)</span>
@@ -641,8 +633,8 @@ Levels: 2000-02-01</code></pre>
 <pre><code>[1] 25.1499</code></pre>
 <p>Notice that this calculation may be off by up to one day depending on the number and position of leap years. However, this is far better than relying on age expressed in whole years.</p>
 </div>
-<div id="naming-files-and-variables" class="section level3 hasAnchor" number="24.5.3">
-<h3><span class="header-section-number">D.5.3</span> Naming files and variables<a href="r-notes.html#naming-files-and-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="naming-files-and-variables" class="section level3 hasAnchor" number="23.5.3">
+<h3><span class="header-section-number">C.5.3</span> Naming files and variables<a href="r-notes.html#naming-files-and-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Book have been written about how to and how not to name variables and files. Here is our take on a minimal list of dos and don’ts. Feel free to make your own naming style – and stick to it. Mixing styles is a source of confusion not only for others but also for your future self.</p>
 <p><strong>Always</strong>:</p>
 <ul>
@@ -665,7 +657,7 @@ Levels: 2000-02-01</code></pre>
           </div>
         </div>
       </div>
-<a href="diagnostics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stat-concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="runs-limits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
