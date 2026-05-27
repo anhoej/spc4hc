@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-05-21" />
+<meta name="date" content="2026-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,6 +378,7 @@ div.csl-indent {
 <li class="chapter" data-level="B.5.1" data-path="stat-concepts.html"><a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events"><i class="fa fa-check"></i><b>B.5.1</b> Poisson distribution – predicting the number of events</a></li>
 <li class="chapter" data-level="B.5.2" data-path="stat-concepts.html"><a href="stat-concepts.html#binomial-distribution-predicting-the-number-of-cases-of-success-or-failure"><i class="fa fa-check"></i><b>B.5.2</b> Binomial distribution – predicting the number of cases of “success” or “failure”</a></li>
 <li class="chapter" data-level="B.5.3" data-path="stat-concepts.html"><a href="stat-concepts.html#gaussian-distribution-predicting-the-probability-of-continuous-outcomes"><i class="fa fa-check"></i><b>B.5.3</b> Gaussian distribution – predicting the probability of continuous outcomes</a></li>
+<li class="chapter" data-level="B.5.4" data-path="stat-concepts.html"><a href="stat-concepts.html#a-word-of-caution"><i class="fa fa-check"></i><b>B.5.4</b> A word of caution</a></li>
 </ul></li>
 <li class="chapter" data-level="B.6" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.6</b> Basic statistical concepts in summary</a></li>
 </ul></li>
@@ -430,18 +431,18 @@ div.csl-indent {
 <p>Several solutions to this problem have been proposed. Here we present the normalised I chart, or, as we prefer to call it, the I prime (I’) chart, suggested by <span class="citation">Taylor (<a href="#ref-taylor2018">2018</a>)</span>.</p>
 <p>In summary, the I’ chart accounts for variable subgroup sizes by adjusting the within-subgroup standard deviation using a factor that depends on the size of each subgroup. This produces wavy control limits when subgroup sizes vary. The I’ chart is useful for both measurement and count data, with or without denominators. When subgroup sizes are constant, the I’ chart is identical to the original I chart. For rates and proportions, the I’ chart produces control limits that match those of the U’ and P’ charts.</p>
 <p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> shows an I’ and a P’ chart side-by-side illustrating how similar their results are.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-1" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
-<span id="cb93-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-2" tabindex="-1"></a>    <span class="at">data      =</span> admis, </span>
-<span id="cb93-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-3" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;ip&#39;</span>, </span>
-<span id="cb93-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-4" tabindex="-1"></a>    <span class="at">y.percent =</span> T,</span>
-<span id="cb93-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-5" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;I&#39; chart of hospital mortality&quot;</span>,</span>
-<span id="cb93-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-6" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&#39;Month&#39;</span>)</span>
-<span id="cb93-7"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-7" tabindex="-1"></a></span>
-<span id="cb93-8"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-8" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
-<span id="cb93-9"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-9" tabindex="-1"></a>    <span class="at">data  =</span> admis, </span>
-<span id="cb93-10"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-10" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;pp&#39;</span>,</span>
-<span id="cb93-11"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;P&#39; chart of hospital mortality&quot;</span>,</span>
-<span id="cb93-12"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-12" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-1" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
+<span id="cb92-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-2" tabindex="-1"></a>    <span class="at">data      =</span> admis, </span>
+<span id="cb92-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-3" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;ip&#39;</span>, </span>
+<span id="cb92-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-4" tabindex="-1"></a>    <span class="at">y.percent =</span> T,</span>
+<span id="cb92-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-5" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;I&#39; chart of hospital mortality&quot;</span>,</span>
+<span id="cb92-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-6" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&#39;Month&#39;</span>)</span>
+<span id="cb92-7"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-7" tabindex="-1"></a></span>
+<span id="cb92-8"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-8" tabindex="-1"></a><span class="fu">qic</span>(month, deaths, admissions, </span>
+<span id="cb92-9"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-9" tabindex="-1"></a>    <span class="at">data  =</span> admis, </span>
+<span id="cb92-10"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-10" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;pp&#39;</span>,</span>
+<span id="cb92-11"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;P&#39; chart of hospital mortality&quot;</span>,</span>
+<span id="cb92-12"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb92-12" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:iprime-fig1"></span>
 <img src="_main_files/figure-html/iprime-fig1-1.svg" alt="Comparing I' and P' charts" width="50%" /><img src="_main_files/figure-html/iprime-fig1-2.svg" alt="Comparing I' and P' charts" width="50%" />
 <p class="caption">
@@ -486,12 +487,12 @@ s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\
 <h2><span class="header-section-number">14.1</span> I’ charts for measument data with variable subgroup sizes<a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#i-charts-for-measument-data-with-variable-subgroup-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig1">14.1</a> demonstrates the use of an I’ chart with count data. However, the I’ chart was originally intended for measurement data with variable subgroup sizes. One example is when, for reasons of privacy, only aggregated patient data are available rather than individual measurements. Traditionally, such data would be plotted on an ordinary I chart. But if the number of patients in each subgroup varies substantially, straight control limits may be inappropriate.</p>
 <p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig2">14.2</a> shows an I chart of the monthly HbA1c averages from the <a href="data-sets.html#diabetes-hba1c">Diabetes HbA1c</a> dataset. In April 2020, one data point lies above the upper control limit, suggesting a special cause. However, the ordinary I chart does not take subgroup size into account.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c, </span>
-<span id="cb94-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
-<span id="cb94-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
-<span id="cb94-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
-<span id="cb94-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
-<span id="cb94-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c, </span>
+<span id="cb93-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
+<span id="cb93-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>,</span>
+<span id="cb93-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb93-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
+<span id="cb93-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb93-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:iprime-fig2"></span>
 <img src="_main_files/figure-html/iprime-fig2-1.svg" alt="I chart of average HbA1c without denominator" width="672" />
 <p class="caption">
@@ -499,12 +500,12 @@ Figure 14.2: I chart of average HbA1c without denominator
 </p>
 </div>
 <p>Figure <a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#fig:iprime-fig3">14.3</a> shows the corresponding I’ chart, which incorporates subgroup size, that is, the number of patients, and adjusts the control limits accordingly.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb95-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c <span class="sc">*</span> n, n, </span>
-<span id="cb95-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb95-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
-<span id="cb95-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb95-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;ip&#39;</span>,</span>
-<span id="cb95-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb95-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
-<span id="cb95-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb95-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
-<span id="cb95-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb95-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-1" tabindex="-1"></a><span class="fu">qic</span>(month, avg_hba1c <span class="sc">*</span> n, n, </span>
+<span id="cb94-2"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-2" tabindex="-1"></a>    <span class="at">data  =</span> diabetes, </span>
+<span id="cb94-3"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;ip&#39;</span>,</span>
+<span id="cb94-4"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb94-5"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;mmol / mol&#39;</span>,</span>
+<span id="cb94-6"><a href="i-prime-charts-for-measurement-data-with-variable-subgroup-sizes-and-more.html#cb94-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Month&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:iprime-fig3"></span>
 <img src="_main_files/figure-html/iprime-fig3-1.svg" alt="I prime chart of average HbA1c with denominator" width="672" />
 <p class="caption">

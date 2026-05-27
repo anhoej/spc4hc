@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-05-21" />
+<meta name="date" content="2026-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,6 +378,7 @@ div.csl-indent {
 <li class="chapter" data-level="B.5.1" data-path="stat-concepts.html"><a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events"><i class="fa fa-check"></i><b>B.5.1</b> Poisson distribution – predicting the number of events</a></li>
 <li class="chapter" data-level="B.5.2" data-path="stat-concepts.html"><a href="stat-concepts.html#binomial-distribution-predicting-the-number-of-cases-of-success-or-failure"><i class="fa fa-check"></i><b>B.5.2</b> Binomial distribution – predicting the number of cases of “success” or “failure”</a></li>
 <li class="chapter" data-level="B.5.3" data-path="stat-concepts.html"><a href="stat-concepts.html#gaussian-distribution-predicting-the-probability-of-continuous-outcomes"><i class="fa fa-check"></i><b>B.5.3</b> Gaussian distribution – predicting the probability of continuous outcomes</a></li>
+<li class="chapter" data-level="B.5.4" data-path="stat-concepts.html"><a href="stat-concepts.html#a-word-of-caution"><i class="fa fa-check"></i><b>B.5.4</b> A word of caution</a></li>
 </ul></li>
 <li class="chapter" data-level="B.6" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.6</b> Basic statistical concepts in summary</a></li>
 </ul></li>
@@ -434,26 +435,26 @@ div.csl-indent {
 <div id="introducing-the-birth-dataset" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> Introducing the birth dataset<a href="spc-charts-for-rare-events.html#introducing-the-birth-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <a href="data-sets.html#robson-group-1-births">Robson group 1 births</a> dataset is a data frame containing 2193 observations from Robson group 1 deliveries, that is, first pregnancy, single baby, head first, and gestational age of at least 37 weeks.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="spc-charts-for-rare-events.html#cb81-1" tabindex="-1"></a><span class="co"># import data</span></span>
-<span id="cb81-2"><a href="spc-charts-for-rare-events.html#cb81-2" tabindex="-1"></a>births <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/robson1_births.csv&#39;</span>,</span>
-<span id="cb81-3"><a href="spc-charts-for-rare-events.html#cb81-3" tabindex="-1"></a>                   <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
-<span id="cb81-4"><a href="spc-charts-for-rare-events.html#cb81-4" tabindex="-1"></a>                   <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="st">&#39;POSIXct&#39;</span>,</span>
-<span id="cb81-5"><a href="spc-charts-for-rare-events.html#cb81-5" tabindex="-1"></a>                                    <span class="st">&#39;Date&#39;</span>,</span>
-<span id="cb81-6"><a href="spc-charts-for-rare-events.html#cb81-6" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>,</span>
-<span id="cb81-7"><a href="spc-charts-for-rare-events.html#cb81-7" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>,</span>
-<span id="cb81-8"><a href="spc-charts-for-rare-events.html#cb81-8" tabindex="-1"></a>                                    <span class="st">&#39;factor&#39;</span>,</span>
-<span id="cb81-9"><a href="spc-charts-for-rare-events.html#cb81-9" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb81-10"><a href="spc-charts-for-rare-events.html#cb81-10" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb81-11"><a href="spc-charts-for-rare-events.html#cb81-11" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb81-12"><a href="spc-charts-for-rare-events.html#cb81-12" tabindex="-1"></a>                                    <span class="st">&#39;double&#39;</span>,</span>
-<span id="cb81-13"><a href="spc-charts-for-rare-events.html#cb81-13" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>))</span>
-<span id="cb81-14"><a href="spc-charts-for-rare-events.html#cb81-14" tabindex="-1"></a></span>
-<span id="cb81-15"><a href="spc-charts-for-rare-events.html#cb81-15" tabindex="-1"></a><span class="co"># make sure the rows are sorted in time order</span></span>
-<span id="cb81-16"><a href="spc-charts-for-rare-events.html#cb81-16" tabindex="-1"></a>births <span class="ot">&lt;-</span> births[<span class="fu">order</span>(births<span class="sc">$</span>datetime), ]</span>
-<span id="cb81-17"><a href="spc-charts-for-rare-events.html#cb81-17" tabindex="-1"></a><span class="co"># add dummy variable, case, for counting the denominator for the proportion charts</span></span>
-<span id="cb81-18"><a href="spc-charts-for-rare-events.html#cb81-18" tabindex="-1"></a>births<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb81-19"><a href="spc-charts-for-rare-events.html#cb81-19" tabindex="-1"></a><span class="co"># show data structure</span></span>
-<span id="cb81-20"><a href="spc-charts-for-rare-events.html#cb81-20" tabindex="-1"></a><span class="fu">str</span>(births)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="spc-charts-for-rare-events.html#cb80-1" tabindex="-1"></a><span class="co"># import data</span></span>
+<span id="cb80-2"><a href="spc-charts-for-rare-events.html#cb80-2" tabindex="-1"></a>births <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/robson1_births.csv&#39;</span>,</span>
+<span id="cb80-3"><a href="spc-charts-for-rare-events.html#cb80-3" tabindex="-1"></a>                   <span class="at">comment.char =</span> <span class="st">&#39;#&#39;</span>,</span>
+<span id="cb80-4"><a href="spc-charts-for-rare-events.html#cb80-4" tabindex="-1"></a>                   <span class="at">colClasses   =</span> <span class="fu">c</span>(<span class="st">&#39;POSIXct&#39;</span>,</span>
+<span id="cb80-5"><a href="spc-charts-for-rare-events.html#cb80-5" tabindex="-1"></a>                                    <span class="st">&#39;Date&#39;</span>,</span>
+<span id="cb80-6"><a href="spc-charts-for-rare-events.html#cb80-6" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>,</span>
+<span id="cb80-7"><a href="spc-charts-for-rare-events.html#cb80-7" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>,</span>
+<span id="cb80-8"><a href="spc-charts-for-rare-events.html#cb80-8" tabindex="-1"></a>                                    <span class="st">&#39;factor&#39;</span>,</span>
+<span id="cb80-9"><a href="spc-charts-for-rare-events.html#cb80-9" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb80-10"><a href="spc-charts-for-rare-events.html#cb80-10" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb80-11"><a href="spc-charts-for-rare-events.html#cb80-11" tabindex="-1"></a>                                    <span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb80-12"><a href="spc-charts-for-rare-events.html#cb80-12" tabindex="-1"></a>                                    <span class="st">&#39;double&#39;</span>,</span>
+<span id="cb80-13"><a href="spc-charts-for-rare-events.html#cb80-13" tabindex="-1"></a>                                    <span class="st">&#39;logical&#39;</span>))</span>
+<span id="cb80-14"><a href="spc-charts-for-rare-events.html#cb80-14" tabindex="-1"></a></span>
+<span id="cb80-15"><a href="spc-charts-for-rare-events.html#cb80-15" tabindex="-1"></a><span class="co"># make sure the rows are sorted in time order</span></span>
+<span id="cb80-16"><a href="spc-charts-for-rare-events.html#cb80-16" tabindex="-1"></a>births <span class="ot">&lt;-</span> births[<span class="fu">order</span>(births<span class="sc">$</span>datetime), ]</span>
+<span id="cb80-17"><a href="spc-charts-for-rare-events.html#cb80-17" tabindex="-1"></a><span class="co"># add dummy variable, case, for counting the denominator for the proportion charts</span></span>
+<span id="cb80-18"><a href="spc-charts-for-rare-events.html#cb80-18" tabindex="-1"></a>births<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb80-19"><a href="spc-charts-for-rare-events.html#cb80-19" tabindex="-1"></a><span class="co"># show data structure</span></span>
+<span id="cb80-20"><a href="spc-charts-for-rare-events.html#cb80-20" tabindex="-1"></a><span class="fu">str</span>(births)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    2193 obs. of  11 variables:
 ##  $ datetime: POSIXct, format: &quot;2016-01-04 06:13:00&quot; &quot;2016-01-04 07:20:00&quot; ...
 ##  $ biweek  : Date, format: &quot;2016-01-04&quot; &quot;2016-01-04&quot; ...
@@ -468,10 +469,10 @@ div.csl-indent {
 ##  $ case    : num  1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>In this chapter, we are interested in the asphyxia variable, which is a logical vector that is TRUE when the baby had either a low Apgar score or a low umbilical cord pH, suggesting lack of oxygen during delivery. Asphyxia is a very serious condition that may result in permanent brain damage or death. In total, there are 16 cases corresponding to 0.7%.</p>
 <p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig1">12.1</a> is a run chart of the biweekly counts.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="spc-charts-for-rare-events.html#cb83-1" tabindex="-1"></a><span class="co"># run chart of counts</span></span>
-<span id="cb83-2"><a href="spc-charts-for-rare-events.html#cb83-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, </span>
-<span id="cb83-3"><a href="spc-charts-for-rare-events.html#cb83-3" tabindex="-1"></a>    <span class="at">data    =</span> births, </span>
-<span id="cb83-4"><a href="spc-charts-for-rare-events.html#cb83-4" tabindex="-1"></a>    <span class="at">agg.fun =</span> <span class="st">&#39;sum&#39;</span>)  <span class="co"># use sum() function to aggregate data by subgroup</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="spc-charts-for-rare-events.html#cb82-1" tabindex="-1"></a><span class="co"># run chart of counts</span></span>
+<span id="cb82-2"><a href="spc-charts-for-rare-events.html#cb82-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, </span>
+<span id="cb82-3"><a href="spc-charts-for-rare-events.html#cb82-3" tabindex="-1"></a>    <span class="at">data    =</span> births, </span>
+<span id="cb82-4"><a href="spc-charts-for-rare-events.html#cb82-4" tabindex="-1"></a>    <span class="at">agg.fun =</span> <span class="st">&#39;sum&#39;</span>)  <span class="co"># use sum() function to aggregate data by subgroup</span></span></code></pre></div>
 <pre><code>## Subgroup size &gt; 1. Data have been aggregated using sum().</code></pre>
 <div class="figure"><span style="display:block;" id="fig:rare-fig1"></span>
 <img src="_main_files/figure-html/rare-fig1-1.svg" alt="Run chart of number of deliveries with neonatal asphyxia" width="672" />
@@ -481,9 +482,9 @@ Figure 12.1: Run chart of number of deliveries with neonatal asphyxia
 </div>
 <p>Because more than half of the data points are zero, the centre line (the median) is also zero. This invalidates the runs analysis, because the chart then contains only one very long run. As a result, the chart may falsely suggest one or more shifts in the data.</p>
 <p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a> plots proportions rather than counts and leads to the same conclusion.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="spc-charts-for-rare-events.html#cb85-1" tabindex="-1"></a><span class="co"># run chart of proportions</span></span>
-<span id="cb85-2"><a href="spc-charts-for-rare-events.html#cb85-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case,  <span class="co"># use the case variable for denominators</span></span>
-<span id="cb85-3"><a href="spc-charts-for-rare-events.html#cb85-3" tabindex="-1"></a>    <span class="at">data =</span> births)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="spc-charts-for-rare-events.html#cb84-1" tabindex="-1"></a><span class="co"># run chart of proportions</span></span>
+<span id="cb84-2"><a href="spc-charts-for-rare-events.html#cb84-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case,  <span class="co"># use the case variable for denominators</span></span>
+<span id="cb84-3"><a href="spc-charts-for-rare-events.html#cb84-3" tabindex="-1"></a>    <span class="at">data =</span> births)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig2"></span>
 <img src="_main_files/figure-html/rare-fig2-1.svg" alt="Run chart of proportion deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
@@ -491,10 +492,10 @@ Figure 12.2: Run chart of proportion deliveries with neonatal asphyxia
 </p>
 </div>
 <p>Plotting the data on a P chart provides control limits and allows for a more meaningful runs analysis, because in this case the average is a better representation of the process centre (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig3">12.3</a>).</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="spc-charts-for-rare-events.html#cb86-1" tabindex="-1"></a><span class="co"># P chart</span></span>
-<span id="cb86-2"><a href="spc-charts-for-rare-events.html#cb86-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case, </span>
-<span id="cb86-3"><a href="spc-charts-for-rare-events.html#cb86-3" tabindex="-1"></a>    <span class="at">data  =</span> births, </span>
-<span id="cb86-4"><a href="spc-charts-for-rare-events.html#cb86-4" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="spc-charts-for-rare-events.html#cb85-1" tabindex="-1"></a><span class="co"># P chart</span></span>
+<span id="cb85-2"><a href="spc-charts-for-rare-events.html#cb85-2" tabindex="-1"></a><span class="fu">qic</span>(biweek, asphyxia, case, </span>
+<span id="cb85-3"><a href="spc-charts-for-rare-events.html#cb85-3" tabindex="-1"></a>    <span class="at">data  =</span> births, </span>
+<span id="cb85-4"><a href="spc-charts-for-rare-events.html#cb85-4" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig3"></span>
 <img src="_main_files/figure-html/rare-fig3-1.svg" alt="P chart of percent deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
@@ -513,14 +514,14 @@ Figure 12.3: P chart of percent deliveries with neonatal asphyxia
 <p><span class="math display">\[\bar{x}\pm3\sqrt{\bar{x}(\bar{x}+1)}\]</span></p>
 <p>where <span class="math inline">\(\bar{x}\)</span> is the average number of opportunities between cases.</p>
 <p>To obtain the number-between variable, we calculate the differences between the indices of the cases. As always, the data must first be sorted in time order.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="spc-charts-for-rare-events.html#cb87-1" tabindex="-1"></a><span class="co"># get indices of asphyxia cases</span></span>
-<span id="cb87-2"><a href="spc-charts-for-rare-events.html#cb87-2" tabindex="-1"></a>asph_cases <span class="ot">&lt;-</span> <span class="fu">which</span>(births<span class="sc">$</span>asphyxia)</span>
-<span id="cb87-3"><a href="spc-charts-for-rare-events.html#cb87-3" tabindex="-1"></a></span>
-<span id="cb87-4"><a href="spc-charts-for-rare-events.html#cb87-4" tabindex="-1"></a><span class="co"># calculate the number of deliveries between cases</span></span>
-<span id="cb87-5"><a href="spc-charts-for-rare-events.html#cb87-5" tabindex="-1"></a>asph_g <span class="ot">&lt;-</span> <span class="fu">diff</span>(asph_cases)</span>
-<span id="cb87-6"><a href="spc-charts-for-rare-events.html#cb87-6" tabindex="-1"></a></span>
-<span id="cb87-7"><a href="spc-charts-for-rare-events.html#cb87-7" tabindex="-1"></a><span class="co"># plot G chart</span></span>
-<span id="cb87-8"><a href="spc-charts-for-rare-events.html#cb87-8" tabindex="-1"></a><span class="fu">qic</span>(asph_g, <span class="at">chart =</span> <span class="st">&#39;g&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="spc-charts-for-rare-events.html#cb86-1" tabindex="-1"></a><span class="co"># get indices of asphyxia cases</span></span>
+<span id="cb86-2"><a href="spc-charts-for-rare-events.html#cb86-2" tabindex="-1"></a>asph_cases <span class="ot">&lt;-</span> <span class="fu">which</span>(births<span class="sc">$</span>asphyxia)</span>
+<span id="cb86-3"><a href="spc-charts-for-rare-events.html#cb86-3" tabindex="-1"></a></span>
+<span id="cb86-4"><a href="spc-charts-for-rare-events.html#cb86-4" tabindex="-1"></a><span class="co"># calculate the number of deliveries between cases</span></span>
+<span id="cb86-5"><a href="spc-charts-for-rare-events.html#cb86-5" tabindex="-1"></a>asph_g <span class="ot">&lt;-</span> <span class="fu">diff</span>(asph_cases)</span>
+<span id="cb86-6"><a href="spc-charts-for-rare-events.html#cb86-6" tabindex="-1"></a></span>
+<span id="cb86-7"><a href="spc-charts-for-rare-events.html#cb86-7" tabindex="-1"></a><span class="co"># plot G chart</span></span>
+<span id="cb86-8"><a href="spc-charts-for-rare-events.html#cb86-8" tabindex="-1"></a><span class="fu">qic</span>(asph_g, <span class="at">chart =</span> <span class="st">&#39;g&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig4"></span>
 <img src="_main_files/figure-html/rare-fig4-1.svg" alt="G chart of deliveries between neonatal asphyxia" width="672" />
 <p class="caption">
@@ -540,10 +541,10 @@ One way to deal with this is to transform the data before plotting them on an I 
 <p>where <span class="math inline">\(x\)</span> is the transformed variable and <span class="math inline">\(y\)</span> is the original time-between-events variable.</p>
 <p>Control limits can then be calculated for the transformed data in the usual way. Because transformed values are difficult to interpret, it is often preferable to plot the original values together with back-transformed centre and control lines. The back-transformation is</p>
 <p><span class="math display">\[y=x^{3.6}\]</span>.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="spc-charts-for-rare-events.html#cb88-1" tabindex="-1"></a><span class="co"># get time between events</span></span>
-<span id="cb88-2"><a href="spc-charts-for-rare-events.html#cb88-2" tabindex="-1"></a>asph_t <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">c</span>(births<span class="sc">$</span>datetime[asph_cases]))</span>
-<span id="cb88-3"><a href="spc-charts-for-rare-events.html#cb88-3" tabindex="-1"></a><span class="co"># plot T chart</span></span>
-<span id="cb88-4"><a href="spc-charts-for-rare-events.html#cb88-4" tabindex="-1"></a><span class="fu">qic</span>(asph_t, <span class="at">chart =</span> <span class="st">&#39;t&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="spc-charts-for-rare-events.html#cb87-1" tabindex="-1"></a><span class="co"># get time between events</span></span>
+<span id="cb87-2"><a href="spc-charts-for-rare-events.html#cb87-2" tabindex="-1"></a>asph_t <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">c</span>(births<span class="sc">$</span>datetime[asph_cases]))</span>
+<span id="cb87-3"><a href="spc-charts-for-rare-events.html#cb87-3" tabindex="-1"></a><span class="co"># plot T chart</span></span>
+<span id="cb87-4"><a href="spc-charts-for-rare-events.html#cb87-4" tabindex="-1"></a><span class="fu">qic</span>(asph_t, <span class="at">chart =</span> <span class="st">&#39;t&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig5"></span>
 <img src="_main_files/figure-html/rare-fig5-1.svg" alt="T chart of time (days) between deliveries with neonatal asphyxia" width="672" />
 <p class="caption">
@@ -563,7 +564,7 @@ Figure 12.5: T chart of time (days) between deliveries with neonatal asphyxia
 <p><span class="math display">\[s_i=s_{i-1}-log(1-p_0(OR-1))\]</span></p>
 <p>Here, <span class="math inline">\(s_i\)</span> is the CUSUM statistic at time i, <span class="math inline">\(p_0\)</span> is the target or baseline proportion, and <span class="math inline">\(OR\)</span> is the odds ratio representing the smallest shift the chart is designed to detect. For example, setting OR = 2 configures the chart to detect a doubling of the target proportion.</p>
 <p>If the trace remains close to zero, the process is operating near target.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="spc-charts-for-rare-events.html#cb89-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">or =</span> <span class="dv">2</span>, <span class="at">limit =</span> <span class="fl">3.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="spc-charts-for-rare-events.html#cb88-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">or =</span> <span class="dv">2</span>, <span class="at">limit =</span> <span class="fl">3.5</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig6"></span>
 <img src="_main_files/figure-html/rare-fig6-1.svg" alt="B chart of newborns with asphyxia" width="672" />
 <p class="caption">
@@ -577,7 +578,7 @@ Figure 12.6: B chart of newborns with asphyxia
 <p>The traces are reset to zero whenever they cross the horizontal axis or a control limit, so that the chart remains responsive to new patterns of deviation.</p>
 <p>The control limits are user-defined rather than statistically derived. Their placement therefore reflects a compromise between sensitivity, that is, the ability to detect true shifts, and specificity, that is, resistance to false alarms. By default, the limits are set at ±3.5.</p>
 <p>Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig8">12.7</a> compares the data with a target proportion of 2%.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="spc-charts-for-rare-events.html#cb90-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.02</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="spc-charts-for-rare-events.html#cb89-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.02</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig8"></span>
 <img src="_main_files/figure-html/rare-fig8-1.svg" alt="B chart of newborns with asphyxia, target = 0.2%" width="672" />
 <p class="caption">
@@ -586,7 +587,7 @@ Figure 12.7: B chart of newborns with asphyxia, target = 0.2%
 </div>
 <p>Here, the lower trace signals repeatedly, suggesting that the process is not centred around a target of 2%. More specifically, the chart suggests that the current process is performing better than that target.</p>
 <p>Conversely, when the target is set to 0.1%, the chart suggests that the process is performing worse than the target (Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig9">12.8</a>).</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="spc-charts-for-rare-events.html#cb91-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.001</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="spc-charts-for-rare-events.html#cb90-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.001</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig9"></span>
 <img src="_main_files/figure-html/rare-fig9-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
 <p class="caption">
@@ -596,7 +597,7 @@ Figure 12.8: B chart of newborns with asphyxia, target = 0.01%
 <p>Control limits for B charts are user-defined and reflect a trade-off between sensitivity and specificity. A common default is ±3.5, which is suitable for detecting a doubling or halving of the event rate from a 1% baseline for roughly 2,000-10,000 observations. Tighter limits and more observations increase sensitivity but tend to raise the false-alarm rate, whereas wider limits and fewer observations reduce false alarms at the cost of missing smaller shifts. The most appropriate choice depends on the context, including the amount of available data, the size of shift of interest, and the consequences of missing a signal or raising a false one.</p>
 <p>In practice, limits are often chosen on the basis of simulation, historical data, and domain knowledge, especially in relation to the consequences of missed detections and false alerts. See <span class="citation">Neuburger et al. (<a href="#ref-neuburger2017">2017</a>)</span> for details on the selection of control limits.</p>
 <p>Looking at Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig6">12.6</a>, which shows a historically stable process based on more than 2000 observations, with most data points clustered around the centre line, one might judge it reasonable to tighten the control limits to ±3 or even ±2.5, as shown in Figure <a href="spc-charts-for-rare-events.html#fig:rare-fig10">12.9</a>.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="spc-charts-for-rare-events.html#cb92-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">limit =</span> <span class="fl">2.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="spc-charts-for-rare-events.html#cb91-1" tabindex="-1"></a><span class="fu">bchart</span>(births<span class="sc">$</span>asphyxia, <span class="at">target =</span> <span class="fl">0.007</span>, <span class="at">limit =</span> <span class="fl">2.5</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:rare-fig10"></span>
 <img src="_main_files/figure-html/rare-fig10-1.svg" alt="B chart of newborns with asphyxia, target = 0.01%" width="672" />
 <p class="caption">

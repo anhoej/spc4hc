@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-05-21" />
+<meta name="date" content="2026-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,6 +378,7 @@ div.csl-indent {
 <li class="chapter" data-level="B.5.1" data-path="stat-concepts.html"><a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events"><i class="fa fa-check"></i><b>B.5.1</b> Poisson distribution – predicting the number of events</a></li>
 <li class="chapter" data-level="B.5.2" data-path="stat-concepts.html"><a href="stat-concepts.html#binomial-distribution-predicting-the-number-of-cases-of-success-or-failure"><i class="fa fa-check"></i><b>B.5.2</b> Binomial distribution – predicting the number of cases of “success” or “failure”</a></li>
 <li class="chapter" data-level="B.5.3" data-path="stat-concepts.html"><a href="stat-concepts.html#gaussian-distribution-predicting-the-probability-of-continuous-outcomes"><i class="fa fa-check"></i><b>B.5.3</b> Gaussian distribution – predicting the probability of continuous outcomes</a></li>
+<li class="chapter" data-level="B.5.4" data-path="stat-concepts.html"><a href="stat-concepts.html#a-word-of-caution"><i class="fa fa-check"></i><b>B.5.4</b> A word of caution</a></li>
 </ul></li>
 <li class="chapter" data-level="B.6" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.6</b> Basic statistical concepts in summary</a></li>
 </ul></li>
@@ -435,16 +436,17 @@ div.csl-indent {
 <p><span class="math display">\[P(H \text{ or } T) = P(H) + P(T) = 0.5 + 0.5 = 1\]</span></p>
 <p>The probability of multiple independent and mutually exclusive events happening is the product of their individual probabilities. For example, the probability of two coins both landing on heads is</p>
 <p><span class="math display">\[P(H \text{ and } H) = P(H) \times P(H) = 0.5 \times 0.5 = 0.25\]</span></p>
-<p>Based on these principles, probability allows us to predict the likelihood of certain events — such as special cause patterns in an SPC chart — and thereby distinguish common cause from special cause variation.</p>
-<p>For example, if the probability that a single data point falls outside the three-sigma limits is 0.3% (see below), then the probability that all 20 data points in a control chart fall within the limits is</p>
+<p>Based on these principles, probability allows us to predict the likelihood of certain events – such as special cause patterns in an SPC chart – and thereby distinguish common cause from special cause variation.</p>
+<p>For example, if the probability that a single data point falls outside the three-sigma limits is <span class="math inline">\(P(\text{signal}) = 0.003\)</span>, then the probability that all 20 data points in a control chart fall within the limits is</p>
 <p><span class="math display">\[P(\text{no signal}) = (1-0.003)^{20} = 0.94\]</span></p>
 <p>In other words, a control chart with no three-sigma signals is more likely to represent common cause variation than special cause variation.</p>
-<p>Most importantly, it follows that we can never be absolutely certain that signals always represent special causes, or that the absence of signals always represents common causes. Probability – and statistics in general – is therefore not a tool for certainty. Rather, it is a tool for making informed judgements under uncertainty by quantifying how likely different explanations are in light of the available data.</p>
+<p>Most importantly, it follows that we can never be absolutely certain that signals always represent special causes, or that the absence of signals always represents common causes. Statistics is therefore not a tool for certainty. Rather, it is a tool for making informed judgements under uncertainty by quantifying how likely different explanations are in light of the available data.</p>
+<p>SPC is fundamentally concerned with prediction rather than hypothesis testing, p-values and retrospective description alone. A stable process allows us to make probabilistic statements about the range within which future observations are likely to fall if the underlying system remains unchanged. Control limits therefore represent operational expectations about future process behaviour, not merely summaries of past data.</p>
 <blockquote>
 <p>[…] prediction within limits means that we can state, at least approximately, the probability that the observed phonomenon will fall within the given limits.</p>
 <p><span class="citation">Shewhart (<a href="#ref-shewhart1931">1931</a>)</span>, p. 6</p>
 </blockquote>
-<p>In this context, <em>past experience</em> may derive from empirical observations, theoretical considerations, or both, concerning the distribution and variability of data collected over time. The remainder of this chapter describes how such knowledge can be obtained and used in practice.</p>
+<p>In this context, <em>prediction within limits</em> may be informed by empirical observations, theoretical considerations, or both, regarding the distribution and variability of data collected over time. The remainder of this chapter describes how such knowledge can be obtained and used in practice.</p>
 </div>
 <div id="data-types" class="section level2 hasAnchor" number="22.2">
 <h2><span class="header-section-number">B.2</span> Data types<a href="stat-concepts.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -476,24 +478,24 @@ div.csl-indent {
 <h2><span class="header-section-number">B.3</span> Summarising categorical data<a href="stat-concepts.html#summarising-categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Categorical data are typically summarised using counts or proportions.
 Using the <a href="data-sets.html#adverse-events">Adverse events</a> dataset assigned to the variable ae:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="stat-concepts.html#cb115-1" tabindex="-1"></a><span class="co"># count number of adverse events in each category</span></span>
-<span id="cb115-2"><a href="stat-concepts.html#cb115-2" tabindex="-1"></a>(ae.tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(ae<span class="sc">$</span>category))</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="stat-concepts.html#cb114-1" tabindex="-1"></a><span class="co"># count number of adverse events in each category</span></span>
+<span id="cb114-2"><a href="stat-concepts.html#cb114-2" tabindex="-1"></a>(ae.tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(ae<span class="sc">$</span>category))</span></code></pre></div>
 <pre><code>## 
 ##             Fall Gastrointestinal        Infection       Medication 
 ##                1               40               34               18 
 ##            Other   Pressure ulcer        Procedure 
 ##                4                5               29</code></pre>
 <p>Visualisation of categorical data is often done using bar charts:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="stat-concepts.html#cb117-1" tabindex="-1"></a><span class="co"># plot frequencies</span></span>
-<span id="cb117-2"><a href="stat-concepts.html#cb117-2" tabindex="-1"></a><span class="fu">barplot</span>(ae.tbl)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="stat-concepts.html#cb116-1" tabindex="-1"></a><span class="co"># plot frequencies</span></span>
+<span id="cb116-2"><a href="stat-concepts.html#cb116-2" tabindex="-1"></a><span class="fu">barplot</span>(ae.tbl)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-bar1"></span>
 <img src="_main_files/figure-html/stat-bar1-1.svg" alt="Bar chart of adverse event frequencies" width="960" />
 <p class="caption">
 Figure B.1: Bar chart of adverse event frequencies
 </p>
 </div>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stat-concepts.html#cb118-1" tabindex="-1"></a><span class="co"># plot proportions</span></span>
-<span id="cb118-2"><a href="stat-concepts.html#cb118-2" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(ae.tbl))</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="stat-concepts.html#cb117-1" tabindex="-1"></a><span class="co"># plot proportions</span></span>
+<span id="cb117-2"><a href="stat-concepts.html#cb117-2" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">prop.table</span>(ae.tbl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-bar2"></span>
 <img src="_main_files/figure-html/stat-bar2-1.svg" alt="Bar chart of adverse event proportions." width="960" />
 <p class="caption">
@@ -502,8 +504,8 @@ Figure B.2: Bar chart of adverse event proportions.
 </div>
 <p>The only difference between figures <a href="stat-concepts.html#fig:stat-bar1">B.1</a> and <a href="stat-concepts.html#fig:stat-bar2">B.2</a> is the y-axis scale.</p>
 <p>For binary data, we often summarise using proportions:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="stat-concepts.html#cb119-1" tabindex="-1"></a><span class="co"># proportion of fatal adverse events (severity = &#39;I&#39;).</span></span>
-<span id="cb119-2"><a href="stat-concepts.html#cb119-2" tabindex="-1"></a><span class="fu">mean</span>(ae<span class="sc">$</span>severity <span class="sc">==</span> <span class="st">&#39;I&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stat-concepts.html#cb118-1" tabindex="-1"></a><span class="co"># proportion of fatal adverse events (severity = &#39;I&#39;).</span></span>
+<span id="cb118-2"><a href="stat-concepts.html#cb118-2" tabindex="-1"></a><span class="fu">mean</span>(ae<span class="sc">$</span>severity <span class="sc">==</span> <span class="st">&#39;I&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.007633588</code></pre>
 </div>
 <div id="summarising-numerical-data" class="section level2 hasAnchor" number="22.4">
@@ -515,8 +517,8 @@ Figure B.2: Bar chart of adverse event proportions.
 <li><strong>Spread</strong> (variation)</li>
 </ul>
 <p>A quick overview can be obtained using the <code>summary()</code> function:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="stat-concepts.html#cb121-1" tabindex="-1"></a><span class="co"># summarise the length of newborn babies</span></span>
-<span id="cb121-2"><a href="stat-concepts.html#cb121-2" tabindex="-1"></a><span class="fu">summary</span>(births<span class="sc">$</span>length)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="stat-concepts.html#cb120-1" tabindex="-1"></a><span class="co"># summarise the length of newborn babies</span></span>
+<span id="cb120-2"><a href="stat-concepts.html#cb120-2" tabindex="-1"></a><span class="fu">summary</span>(births<span class="sc">$</span>length)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
 ##    35.0    50.0    52.0    51.7    53.0    60.0       3</code></pre>
 <div id="centre" class="section level3 hasAnchor" number="22.4.1">
@@ -532,12 +534,8 @@ Figure B.2: Bar chart of adverse event proportions.
 <li>[1, 2, 3]: mean = 2, median = 2</li>
 <li>[1, 2, 999]: mean = 334, median = 2</li>
 </ul>
-<p>In SPC:</p>
-<ul>
-<li>Mean is used for control charts</li>
-<li>Median is used for run charts</li>
-</ul>
-<p>The median is particularly useful for runs analysis because it splits the data into two equal halves, ensuring balanced probabilities.</p>
+<p>The median is preferred in run charts because it divides the observations into two equally probable halves, which is essential for probability-based runs analysis.</p>
+<p>The mean is usually used in control charts – particularly when the data are approximately symmetric (see below). Because the mean reflects the value of all observations, it may better reflect the overall level of the process and may be more sensitive to sustained shifts in the data.</p>
 </div>
 <div id="shape" class="section level3 hasAnchor" number="22.4.2">
 <h3><span class="header-section-number">B.4.2</span> Shape<a href="stat-concepts.html#shape" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -557,7 +555,7 @@ Figure B.2: Bar chart of adverse event proportions.
 </ul></li>
 </ul>
 <p>Histograms provide a clear visualisation (Figure <a href="stat-concepts.html#fig:stat-hist1">B.3</a>):</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="stat-concepts.html#cb123-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>length)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="stat-concepts.html#cb122-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>length)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-hist1"></span>
 <img src="_main_files/figure-html/stat-hist1-1.svg" alt="Histogram of birth lengths." width="960" />
 <p class="caption">
@@ -576,7 +574,7 @@ Figure B.3: Histogram of birth lengths.
 <li><strong>Standard deviation</strong> (SD): average distance from the mean</li>
 </ul>
 <p>A useful visual summary of centre, shape, and spread is the boxplot (Figure <a href="stat-concepts.html#fig:stat-box1">B.4</a>):</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="stat-concepts.html#cb124-1" tabindex="-1"></a><span class="fu">boxplot</span>(births<span class="sc">$</span>length)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="stat-concepts.html#cb123-1" tabindex="-1"></a><span class="fu">boxplot</span>(births<span class="sc">$</span>length)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-box1"></span>
 <img src="_main_files/figure-html/stat-box1-1.svg" alt="Boxplot of birth lengths." width="960" />
 <p class="caption">
@@ -599,9 +597,9 @@ Figure B.4: Boxplot of birth lengths.
 <h2><span class="header-section-number">B.5</span> Theoretical distributions<a href="stat-concepts.html#theoretical-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While SPC is primarily empirical, theoretical distributions help define expected variation. We focus on three:</p>
 <ul>
-<li>Poisson (event counts/rates)</li>
-<li>Binomial (case counts/proportions)</li>
-<li>Gaussian (continuous data)</li>
+<li>Poisson (event counts/rates), e.g. daily emergency department arrivals</li>
+<li>Binomial (case counts/proportions), e.g. proportion of patients receiving treatment within a target time</li>
+<li>Gaussian (continuous data), e.g. patient blood pressure measurements</li>
 </ul>
 <div id="poisson-distribution-predicting-the-number-of-events" class="section level3 hasAnchor" number="22.5.1">
 <h3><span class="header-section-number">B.5.1</span> Poisson distribution – predicting the number of events<a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -614,13 +612,13 @@ Figure B.4: Boxplot of birth lengths.
 <p><span class="math display">\[SD = \sqrt{\lambda / n_i}\]</span></p>
 <p>where n<sub>i</sub> is the size of i<sup>th</sup> time interval (the area of opportunity).</p>
 <p>To visualise discrete probability distributions, we use stick charts as demonstrated in Figure <a href="stat-concepts.html#fig:stat-dpois">B.5</a>.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="stat-concepts.html#cb125-1" tabindex="-1"></a><span class="co"># plot Poisson probability</span></span>
-<span id="cb125-2"><a href="stat-concepts.html#cb125-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span> <span class="co"># x-axis values</span></span>
-<span id="cb125-3"><a href="stat-concepts.html#cb125-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dpois</span>(x, <span class="at">lambda =</span> <span class="dv">6</span>), </span>
-<span id="cb125-4"><a href="stat-concepts.html#cb125-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>,</span>
-<span id="cb125-5"><a href="stat-concepts.html#cb125-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
-<span id="cb125-6"><a href="stat-concepts.html#cb125-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
-<span id="cb125-7"><a href="stat-concepts.html#cb125-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of births&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="stat-concepts.html#cb124-1" tabindex="-1"></a><span class="co"># plot Poisson probability</span></span>
+<span id="cb124-2"><a href="stat-concepts.html#cb124-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span> <span class="co"># x-axis values</span></span>
+<span id="cb124-3"><a href="stat-concepts.html#cb124-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dpois</span>(x, <span class="at">lambda =</span> <span class="dv">6</span>), </span>
+<span id="cb124-4"><a href="stat-concepts.html#cb124-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>,</span>
+<span id="cb124-5"><a href="stat-concepts.html#cb124-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
+<span id="cb124-6"><a href="stat-concepts.html#cb124-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
+<span id="cb124-7"><a href="stat-concepts.html#cb124-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of births&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-dpois"></span>
 <img src="_main_files/figure-html/stat-dpois-1.svg" alt="Poisson probability plot of the number of births in a day (mean = 6)." width="960" />
 <p class="caption">
@@ -642,13 +640,13 @@ Figure B.5: Poisson probability plot of the number of births in a day (mean = 6)
 <p>In R, the <code>dbinom()</code> function is used to calculate binomial probabilities. In addition to the number of cases of interest, the function requires the total number of opportunities (sample size) and the average probability of a case.</p>
 <p>There are approximately 42 births per week, with about 9% resulting in a C-section. To calculate the probability of observing exactly 6 C-sections in a given week, we use:
 <code>dbinom(6, size = 42, prob = 0.09) =</code> <code>0.093488</code>.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="stat-concepts.html#cb126-1" tabindex="-1"></a><span class="co"># plot binomial probability</span></span>
-<span id="cb126-2"><a href="stat-concepts.html#cb126-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">42</span></span>
-<span id="cb126-3"><a href="stat-concepts.html#cb126-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">42</span>, <span class="at">prob =</span> <span class="fl">0.09</span>), </span>
-<span id="cb126-4"><a href="stat-concepts.html#cb126-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>, </span>
-<span id="cb126-5"><a href="stat-concepts.html#cb126-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
-<span id="cb126-6"><a href="stat-concepts.html#cb126-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
-<span id="cb126-7"><a href="stat-concepts.html#cb126-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of C-sections&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="stat-concepts.html#cb125-1" tabindex="-1"></a><span class="co"># plot binomial probability</span></span>
+<span id="cb125-2"><a href="stat-concepts.html#cb125-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">42</span></span>
+<span id="cb125-3"><a href="stat-concepts.html#cb125-3" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">42</span>, <span class="at">prob =</span> <span class="fl">0.09</span>), </span>
+<span id="cb125-4"><a href="stat-concepts.html#cb125-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;h&#39;</span>, </span>
+<span id="cb125-5"><a href="stat-concepts.html#cb125-5" tabindex="-1"></a>     <span class="at">lwd  =</span> <span class="dv">2</span>,</span>
+<span id="cb125-6"><a href="stat-concepts.html#cb125-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Probability&#39;</span>,</span>
+<span id="cb125-7"><a href="stat-concepts.html#cb125-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Number of C-sections&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-dbinom1"></span>
 <img src="_main_files/figure-html/stat-dbinom1-1.svg" alt="Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09)." width="960" />
 <p class="caption">
@@ -668,7 +666,7 @@ SD = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2}
 \]</span></p>
 <p>where <span class="math inline">\(n\)</span> is the number of observations, <span class="math inline">\(x_i\)</span> is the i<sup>th</sup> observation, and <span class="math inline">\(\bar{x}\)</span> is the average of all observations.</p>
 <p>Figure <a href="stat-concepts.html#fig:stat-hist3">B.7</a> shows a histogram of birth weights, where each bin represents the number of weights that fall within a specific range.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="stat-concepts.html#cb127-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="stat-concepts.html#cb126-1" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-hist3"></span>
 <img src="_main_files/figure-html/stat-hist3-1.svg" alt="Histogram of birth weights" width="960" />
 <p class="caption">
@@ -676,13 +674,13 @@ Figure B.7: Histogram of birth weights
 </p>
 </div>
 <p>In Figure <a href="stat-concepts.html#fig:stat-hist4">B.8</a>, we have overlaid a curve representing the theoretical Gaussian distribution, using the empirical mean and standard deviation of the birth weights.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="stat-concepts.html#cb128-1" tabindex="-1"></a>avg_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(births<span class="sc">$</span>weight)</span>
-<span id="cb128-2"><a href="stat-concepts.html#cb128-2" tabindex="-1"></a>std_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(births<span class="sc">$</span>weight)</span>
-<span id="cb128-3"><a href="stat-concepts.html#cb128-3" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb128-4"><a href="stat-concepts.html#cb128-4" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, </span>
-<span id="cb128-5"><a href="stat-concepts.html#cb128-5" tabindex="-1"></a>            <span class="at">mean =</span> avg_w,</span>
-<span id="cb128-6"><a href="stat-concepts.html#cb128-6" tabindex="-1"></a>            <span class="at">sd   =</span> std_w),</span>
-<span id="cb128-7"><a href="stat-concepts.html#cb128-7" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="stat-concepts.html#cb127-1" tabindex="-1"></a>avg_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(births<span class="sc">$</span>weight)</span>
+<span id="cb127-2"><a href="stat-concepts.html#cb127-2" tabindex="-1"></a>std_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(births<span class="sc">$</span>weight)</span>
+<span id="cb127-3"><a href="stat-concepts.html#cb127-3" tabindex="-1"></a><span class="fu">hist</span>(births<span class="sc">$</span>weight, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb127-4"><a href="stat-concepts.html#cb127-4" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, </span>
+<span id="cb127-5"><a href="stat-concepts.html#cb127-5" tabindex="-1"></a>            <span class="at">mean =</span> avg_w,</span>
+<span id="cb127-6"><a href="stat-concepts.html#cb127-6" tabindex="-1"></a>            <span class="at">sd   =</span> std_w),</span>
+<span id="cb127-7"><a href="stat-concepts.html#cb127-7" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:stat-hist4"></span>
 <img src="_main_files/figure-html/stat-hist4-1.svg" alt="Histogram of birth weights with overlayed Gaussian density curve." width="960" />
 <p class="caption">
@@ -691,13 +689,18 @@ Figure B.8: Histogram of birth weights with overlayed Gaussian density curve.
 </div>
 <p>Note that the y-axis now represents density rather than frequency. The density curve doesn’t assign probabilities to individual points – it represents the overall shape of the distribution – and probabilities are found by calculating the area under the curve over an interval. The total area under the curve – which, in theory ranges from minus infinity to plus infinity – also equals 1.</p>
 <p>Using the <code>pnorm()</code> function, we can calculate the probability of outcomes within any interval. To find the probability of data falling within ±3 SD from the mean, we calculate the area under the curve like this:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="stat-concepts.html#cb129-1" tabindex="-1"></a><span class="fu">pnorm</span>(avg_w <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> std_w,    <span class="co"># area below mean + 3 SD</span></span>
-<span id="cb129-2"><a href="stat-concepts.html#cb129-2" tabindex="-1"></a>      <span class="at">mean =</span> avg_w,</span>
-<span id="cb129-3"><a href="stat-concepts.html#cb129-3" tabindex="-1"></a>      <span class="at">sd   =</span> std_w) <span class="sc">-</span> </span>
-<span id="cb129-4"><a href="stat-concepts.html#cb129-4" tabindex="-1"></a>  <span class="fu">pnorm</span>(avg_w <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> std_w,  <span class="co"># aread below mean - 3 SD</span></span>
-<span id="cb129-5"><a href="stat-concepts.html#cb129-5" tabindex="-1"></a>        <span class="at">mean =</span> avg_w, </span>
-<span id="cb129-6"><a href="stat-concepts.html#cb129-6" tabindex="-1"></a>        <span class="at">sd   =</span> std_w)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="stat-concepts.html#cb128-1" tabindex="-1"></a><span class="fu">pnorm</span>(avg_w <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> std_w,    <span class="co"># area below mean + 3 SD</span></span>
+<span id="cb128-2"><a href="stat-concepts.html#cb128-2" tabindex="-1"></a>      <span class="at">mean =</span> avg_w,</span>
+<span id="cb128-3"><a href="stat-concepts.html#cb128-3" tabindex="-1"></a>      <span class="at">sd   =</span> std_w) <span class="sc">-</span> </span>
+<span id="cb128-4"><a href="stat-concepts.html#cb128-4" tabindex="-1"></a>  <span class="fu">pnorm</span>(avg_w <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> std_w,  <span class="co"># aread below mean - 3 SD</span></span>
+<span id="cb128-5"><a href="stat-concepts.html#cb128-5" tabindex="-1"></a>        <span class="at">mean =</span> avg_w, </span>
+<span id="cb128-6"><a href="stat-concepts.html#cb128-6" tabindex="-1"></a>        <span class="at">sd   =</span> std_w)</span></code></pre></div>
 <pre><code>## [1] 0.9973002</code></pre>
+</div>
+<div id="a-word-of-caution" class="section level3 hasAnchor" number="22.5.4">
+<h3><span class="header-section-number">B.5.4</span> A word of caution<a href="stat-concepts.html#a-word-of-caution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In practice, healthcare data rarely fit theoretical statistical distributions perfectly. Processes may show extra variation, seasonal patterns, changing definitions or mixtures of different patient groups and pathways.</p>
+<p>However, SPC remains useful because its main purpose is to support operational learning and understanding of processes rather than perfect statistical modelling.</p>
 </div>
 </div>
 <div id="basic-statistical-concepts-in-summary" class="section level2 hasAnchor" number="22.6">

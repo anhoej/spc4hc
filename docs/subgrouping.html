@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-05-21" />
+<meta name="date" content="2026-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,6 +378,7 @@ div.csl-indent {
 <li class="chapter" data-level="B.5.1" data-path="stat-concepts.html"><a href="stat-concepts.html#poisson-distribution-predicting-the-number-of-events"><i class="fa fa-check"></i><b>B.5.1</b> Poisson distribution – predicting the number of events</a></li>
 <li class="chapter" data-level="B.5.2" data-path="stat-concepts.html"><a href="stat-concepts.html#binomial-distribution-predicting-the-number-of-cases-of-success-or-failure"><i class="fa fa-check"></i><b>B.5.2</b> Binomial distribution – predicting the number of cases of “success” or “failure”</a></li>
 <li class="chapter" data-level="B.5.3" data-path="stat-concepts.html"><a href="stat-concepts.html#gaussian-distribution-predicting-the-probability-of-continuous-outcomes"><i class="fa fa-check"></i><b>B.5.3</b> Gaussian distribution – predicting the probability of continuous outcomes</a></li>
+<li class="chapter" data-level="B.5.4" data-path="stat-concepts.html"><a href="stat-concepts.html#a-word-of-caution"><i class="fa fa-check"></i><b>B.5.4</b> A word of caution</a></li>
 </ul></li>
 <li class="chapter" data-level="B.6" data-path="stat-concepts.html"><a href="stat-concepts.html#basic-statistical-concepts-in-summary"><i class="fa fa-check"></i><b>B.6</b> Basic statistical concepts in summary</a></li>
 </ul></li>
@@ -440,25 +441,25 @@ div.csl-indent {
 <h2><span class="header-section-number">19.1</span> Too large subgroups – masking meaningful signals<a href="subgrouping.html#too-large-subgroups-masking-meaningful-signals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A common mistake is to form subgroups across overly broad spans of time or space (e.g. large organisational units). This blends common and special cause variation and effectively hides the latter.</p>
 <p>As an example, figures <a href="subgrouping.html#fig:subgrouping-fig1">19.1</a> and <a href="subgrouping.html#fig:subgrouping-fig2">19.2</a> display the number of C. diff. infections subgrouped by monthly and two-monthly periods respectively.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="subgrouping.html#cb110-1" tabindex="-1"></a><span class="fu">qic</span>(month, infections, </span>
-<span id="cb110-2"><a href="subgrouping.html#cb110-2" tabindex="-1"></a>    <span class="at">data  =</span> cdiff, </span>
-<span id="cb110-3"><a href="subgrouping.html#cb110-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb110-4"><a href="subgrouping.html#cb110-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;C. diff. infections&#39;</span>,</span>
-<span id="cb110-5"><a href="subgrouping.html#cb110-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb110-6"><a href="subgrouping.html#cb110-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Months&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="subgrouping.html#cb109-1" tabindex="-1"></a><span class="fu">qic</span>(month, infections, </span>
+<span id="cb109-2"><a href="subgrouping.html#cb109-2" tabindex="-1"></a>    <span class="at">data  =</span> cdiff, </span>
+<span id="cb109-3"><a href="subgrouping.html#cb109-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb109-4"><a href="subgrouping.html#cb109-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&#39;C. diff. infections&#39;</span>,</span>
+<span id="cb109-5"><a href="subgrouping.html#cb109-5" tabindex="-1"></a>    <span class="at">ylab  =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb109-6"><a href="subgrouping.html#cb109-6" tabindex="-1"></a>    <span class="at">xlab  =</span> <span class="st">&#39;Months&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:subgrouping-fig1"></span>
 <img src="_main_files/figure-html/subgrouping-fig1-1.svg" alt="Monthly C. diff. infections." width="672" />
 <p class="caption">
 Figure 19.1: Monthly C. diff. infections.
 </p>
 </div>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="subgrouping.html#cb111-1" tabindex="-1"></a><span class="fu">qic</span>(month, infections, </span>
-<span id="cb111-2"><a href="subgrouping.html#cb111-2" tabindex="-1"></a>    <span class="at">data     =</span> cdiff, </span>
-<span id="cb111-3"><a href="subgrouping.html#cb111-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;c&#39;</span>,</span>
-<span id="cb111-4"><a href="subgrouping.html#cb111-4" tabindex="-1"></a>    <span class="at">x.period =</span> <span class="st">&#39;2 months&#39;</span>,</span>
-<span id="cb111-5"><a href="subgrouping.html#cb111-5" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;C. diff. infections&#39;</span>,</span>
-<span id="cb111-6"><a href="subgrouping.html#cb111-6" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb111-7"><a href="subgrouping.html#cb111-7" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Two-months&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="subgrouping.html#cb110-1" tabindex="-1"></a><span class="fu">qic</span>(month, infections, </span>
+<span id="cb110-2"><a href="subgrouping.html#cb110-2" tabindex="-1"></a>    <span class="at">data     =</span> cdiff, </span>
+<span id="cb110-3"><a href="subgrouping.html#cb110-3" tabindex="-1"></a>    <span class="at">chart    =</span> <span class="st">&#39;c&#39;</span>,</span>
+<span id="cb110-4"><a href="subgrouping.html#cb110-4" tabindex="-1"></a>    <span class="at">x.period =</span> <span class="st">&#39;2 months&#39;</span>,</span>
+<span id="cb110-5"><a href="subgrouping.html#cb110-5" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">&#39;C. diff. infections&#39;</span>,</span>
+<span id="cb110-6"><a href="subgrouping.html#cb110-6" tabindex="-1"></a>    <span class="at">ylab     =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb110-7"><a href="subgrouping.html#cb110-7" tabindex="-1"></a>    <span class="at">xlab     =</span> <span class="st">&#39;Two-months&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:subgrouping-fig2"></span>
 <img src="_main_files/figure-html/subgrouping-fig2-1.svg" alt="Two-monthly C. diff. infections." width="672" />
 <p class="caption">
@@ -475,20 +476,20 @@ Figure 19.2: Two-monthly C. diff. infections.
 <p>A less common – but equally important – mistake is to use subgroups that are too small. In this case, natural process variation may be misinterpreted as special cause variation.</p>
 <p>Imagine weighing yourself three times each morning for a couple of weeks and plotting the results on an X-bar chart, using within-day variation to calculate control limits.</p>
 <p>Figure <a href="subgrouping.html#fig:subgroups-fig3">19.3</a> illustrates this with simulated data.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="subgrouping.html#cb112-1" tabindex="-1"></a><span class="co"># lock random number generator for reproducibility</span></span>
-<span id="cb112-2"><a href="subgrouping.html#cb112-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb112-3"><a href="subgrouping.html#cb112-3" tabindex="-1"></a></span>
-<span id="cb112-4"><a href="subgrouping.html#cb112-4" tabindex="-1"></a><span class="co"># subgroups, 12 subgroups of three values</span></span>
-<span id="cb112-5"><a href="subgrouping.html#cb112-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
-<span id="cb112-6"><a href="subgrouping.html#cb112-6" tabindex="-1"></a></span>
-<span id="cb112-7"><a href="subgrouping.html#cb112-7" tabindex="-1"></a><span class="co"># random values, each repeated three times</span></span>
-<span id="cb112-8"><a href="subgrouping.html#cb112-8" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="fl">0.5</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
-<span id="cb112-9"><a href="subgrouping.html#cb112-9" tabindex="-1"></a></span>
-<span id="cb112-10"><a href="subgrouping.html#cb112-10" tabindex="-1"></a><span class="co"># add a bit of random noise within subgroups</span></span>
-<span id="cb112-11"><a href="subgrouping.html#cb112-11" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">jitter</span>(y, <span class="at">amount =</span> <span class="fl">0.2</span>)</span>
-<span id="cb112-12"><a href="subgrouping.html#cb112-12" tabindex="-1"></a></span>
-<span id="cb112-13"><a href="subgrouping.html#cb112-13" tabindex="-1"></a><span class="co"># plot Xbar-chart</span></span>
-<span id="cb112-14"><a href="subgrouping.html#cb112-14" tabindex="-1"></a><span class="fu">qic</span>(x, y, <span class="at">chart =</span> <span class="st">&#39;xbar&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="subgrouping.html#cb111-1" tabindex="-1"></a><span class="co"># lock random number generator for reproducibility</span></span>
+<span id="cb111-2"><a href="subgrouping.html#cb111-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb111-3"><a href="subgrouping.html#cb111-3" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="subgrouping.html#cb111-4" tabindex="-1"></a><span class="co"># subgroups, 12 subgroups of three values</span></span>
+<span id="cb111-5"><a href="subgrouping.html#cb111-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb111-6"><a href="subgrouping.html#cb111-6" tabindex="-1"></a></span>
+<span id="cb111-7"><a href="subgrouping.html#cb111-7" tabindex="-1"></a><span class="co"># random values, each repeated three times</span></span>
+<span id="cb111-8"><a href="subgrouping.html#cb111-8" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="fl">0.5</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb111-9"><a href="subgrouping.html#cb111-9" tabindex="-1"></a></span>
+<span id="cb111-10"><a href="subgrouping.html#cb111-10" tabindex="-1"></a><span class="co"># add a bit of random noise within subgroups</span></span>
+<span id="cb111-11"><a href="subgrouping.html#cb111-11" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">jitter</span>(y, <span class="at">amount =</span> <span class="fl">0.2</span>)</span>
+<span id="cb111-12"><a href="subgrouping.html#cb111-12" tabindex="-1"></a></span>
+<span id="cb111-13"><a href="subgrouping.html#cb111-13" tabindex="-1"></a><span class="co"># plot Xbar-chart</span></span>
+<span id="cb111-14"><a href="subgrouping.html#cb111-14" tabindex="-1"></a><span class="fu">qic</span>(x, y, <span class="at">chart =</span> <span class="st">&#39;xbar&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:subgroups-fig3"></span>
 <img src="_main_files/figure-html/subgroups-fig3-1.svg" alt="Xbar-chart from too small subgroups." width="672" />
 <p class="caption">
@@ -497,7 +498,7 @@ Figure 19.3: Xbar-chart from too small subgroups.
 </div>
 <p>Here, within-subgroup variation is very small, while between-subgroup variation appears large – suggesting instability. In reality, this reflects normal day-to-day physiological variation, not a meaningful signal.</p>
 <p>A better approach is to use an I chart of daily averages as in Figure <a href="subgrouping.html#fig:subgroups-fig4">19.4</a>:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="subgrouping.html#cb113-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="subgrouping.html#cb112-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, <span class="at">chart =</span> <span class="st">&#39;i&#39;</span>)</span></code></pre></div>
 <pre><code>## Subgroup size &gt; 1. Data have been aggregated using mean().</code></pre>
 <div class="figure"><span style="display:block;" id="fig:subgroups-fig4"></span>
 <img src="_main_files/figure-html/subgroups-fig4-1.svg" alt="I-chart of average daily body weight." width="672" />

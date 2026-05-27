@@ -31,21 +31,23 @@ The probability of multiple independent and mutually exclusive events happening 
 
 $$P(H \text{ and } H) = P(H) \times P(H) = 0.5 \times 0.5 = 0.25$$
 
-Based on these principles, probability allows us to predict the likelihood of certain events — such as special cause patterns in an SPC chart — and thereby distinguish common cause from special cause variation.
+Based on these principles, probability allows us to predict the likelihood of certain events -- such as special cause patterns in an SPC chart -- and thereby distinguish common cause from special cause variation.
 
-For example, if the probability that a single data point falls outside the three-sigma limits is 0.3% (see below), then the probability that all 20 data points in a control chart fall within the limits is
+For example, if the probability that a single data point falls outside the three-sigma limits is $P(\text{signal}) = 0.003$, then the probability that all 20 data points in a control chart fall within the limits is
 
 $$P(\text{no signal}) = (1-0.003)^{20} = 0.94$$
 
 In other words, a control chart with no three-sigma signals is more likely to represent common cause variation than special cause variation.
 
-Most importantly, it follows that we can never be absolutely certain that signals always represent special causes, or that the absence of signals always represents common causes. Probability -- and statistics in general -- is therefore not a tool for certainty. Rather, it is a tool for making informed judgements under uncertainty by quantifying how likely different explanations are in light of the available data.
+Most importantly, it follows that we can never be absolutely certain that signals always represent special causes, or that the absence of signals always represents common causes. Statistics is therefore not a tool for certainty. Rather, it is a tool for making informed judgements under uncertainty by quantifying how likely different explanations are in light of the available data.
+
+SPC is fundamentally concerned with prediction rather than hypothesis testing, p-values and retrospective description alone. A stable process allows us to make probabilistic statements about the range within which future observations are likely to fall if the underlying system remains unchanged. Control limits therefore represent operational expectations about future process behaviour, not merely summaries of past data.
 
 >[...] prediction within limits means that we can state, at least approximately, the probability that the observed phonomenon will fall within the given limits.
 >
 >@shewhart1931, p. 6
 
-In this context, *past experience* may derive from empirical observations, theoretical considerations, or both, concerning the distribution and variability of data collected over time. The remainder of this chapter describes how such knowledge can be obtained and used in practice.
+In this context, *prediction within limits* may be informed by empirical observations, theoretical considerations, or both, regarding the distribution and variability of data collected over time. The remainder of this chapter describes how such knowledge can be obtained and used in practice.
 
 ## Data types
 
@@ -137,12 +139,9 @@ Example:
 * [1, 2, 3]\: mean = 2, median = 2
 * [1, 2, 999]\: mean = 334, median = 2
 
-In SPC:
+The median is preferred in run charts because it divides the observations into two equally probable halves, which is essential for probability-based runs analysis.
 
-* Mean is used for control charts
-* Median is used for run charts
-
-The median is particularly useful for runs analysis because it splits the data into two equal halves, ensuring balanced probabilities.
+The mean is usually used in control charts -- particularly when the data are approximately symmetric (see below). Because the mean reflects the value of all observations, it may better reflect the overall level of the process and may be more sensitive to sustained shifts in the data.
 
 ### Shape
 
@@ -200,9 +199,9 @@ The method used to estimate SD depends on the type and the assumed theoretical d
 
 While SPC is primarily empirical, theoretical distributions help define expected variation. We focus on three:
 
-* Poisson (event counts/rates)
-* Binomial (case counts/proportions)
-* Gaussian (continuous data)
+* Poisson (event counts/rates), e.g. daily emergency department arrivals
+* Binomial (case counts/proportions), e.g. proportion of patients receiving treatment within a target time
+* Gaussian (continuous data), e.g. patient blood pressure measurements
 
 ### Poisson distribution -- predicting the number of events
 
@@ -317,6 +316,12 @@ pnorm(avg_w + 3 * std_w,    # area below mean + 3 SD
         mean = avg_w, 
         sd   = std_w)
 ```
+
+### A word of caution
+
+In practice, healthcare data rarely fit theoretical statistical distributions perfectly. Processes may show extra variation, seasonal patterns, changing definitions or mixtures of different patient groups and pathways.
+
+However, SPC remains useful because its main purpose is to support operational learning and understanding of processes rather than perfect statistical modelling.
 
 ## Basic statistical concepts in summary
 
