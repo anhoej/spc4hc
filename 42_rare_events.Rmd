@@ -106,13 +106,13 @@ To obtain the number-between variable, we calculate the differences between the 
 asph_cases <- which(births$asphyxia)
 
 # calculate the number of deliveries between cases
-asph_g <- diff(asph_cases)
+asph_g <- c(NA, diff(asph_cases) - 1)
 
 # plot G chart
 qic(asph_g, chart = 'g')
 ```
 
-Because the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes that the data are distributed symmetrically around the centre. For this reason, qicharts2 uses the median by default in the runs analysis for G charts (Figure \@ref(fig:rare-fig4)).
+Because the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes that the data are distributed symmetrically around the centre. For this reason, *qicharts2* uses the median by default in the runs analysis for G charts (Figure \@ref(fig:rare-fig4)).
 
 As with other count charts, negative lower control limits are rounded up to zero, since values below zero are not possible.
 
