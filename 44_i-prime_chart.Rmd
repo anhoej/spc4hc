@@ -62,7 +62,7 @@ $$
 The average standard deviation is
 
 $$
-\bar{s} = \frac{\sum{s}}{o}
+\bar{s} = \frac{\sum{s}}{o-1}
 $$
 
 The control limits are then
