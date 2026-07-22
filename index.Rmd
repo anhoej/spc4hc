@@ -15,9 +15,22 @@ description: This is a book for data scientists about the practical application 
 
 # What is Statistical Process Control? {-#what}
 
->This is the online version of *Mastering Statistical Process Control Charts in Healthcare*, a book under continuous development.
+```{=html}
+<div class="note">
+<blockquote>
+This is the online version of <strong>Mastering Statistical Process Control Charts in Healthcare</strong>, a book under continuous development.
+</blockquote>
+</div>
+<hr>
+```
 
----
+```{=latex}
+\begin{quote}
+This is the PDF version of \textbf{Mastering Statistical Process Control Charts in Healthcare}, a book under continuous development.
+
+The latest online version is available at \url{https://spc4hc.org/book/}.
+\end{quote}
+```
 
 The ultimate purpose of collecting and analysing data is to support better decision-making and actions that will lead to improvement. Statistical Process Control (SPC) is a proven methodology for doing just that. 
 
