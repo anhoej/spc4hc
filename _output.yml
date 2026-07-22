@@ -1,3 +1,9 @@
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  keep_tex: true
+  
 bookdown::gitbook:
   css: style.css
   split_bib: yes
@@ -15,6 +21,4 @@ bookdown::gitbook:
             Published with bookdown
           </a>
         </li>
-# bookdown::pdf_book:
-#   keep_tex: false
-# bookdown::epub_book
+

@@ -1,6 +1,8 @@
 ---
-output: html_document
-editor_options: 
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
   chunk_output_type: console
 ---
 
@@ -10,7 +12,7 @@ editor_options:
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
                       echo = FALSE,
-                      dev     = 'svg')
+                      dev     = 'png')
 library(kableExtra)
 library(qicharts2)
 

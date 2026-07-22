@@ -15,7 +15,7 @@ As @rogers2004 noted:
 To address this need, @mohammed2004 proposed the **Pyramid Model for Investigation of Special Cause Variation in healthcare**, a systematic approach of hypothesis generation and testing based on five a priori candidate explanations for special cause variation: data, patient casemix, structure or resources, process of care, and carers (Figure \@ref(fig:responding-fig1)).
 
 ```{r responding-fig1, fig.cap='Pyramid Model for Investigation', echo=FALSE}
-knitr::include_graphics('figures/pyramid_model.svg')
+knitr::include_graphics('figures/pyramid_model.png')
 ```
 
 These broad categories are arranged from the most likely explanation at the base of the pyramid to the least likely at the top. In this way, the model provides a roadmap for investigation, beginning with the simplest and most plausible explanations and progressing only as needed. The first two layers, data and casemix, focus on the validity of the data and the adequacy of any casemix adjustment. The upper three layers focus more directly on aspects of care delivery and professional practice.

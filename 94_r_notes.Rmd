@@ -6,10 +6,10 @@ editor_options:
 # R Notes {#r-notes}
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.asp = 2/3,
+knitr::opts_chunk$set(fig.asp = 3/2,
                       echo    = TRUE,
                       comment = '',
-                      dev     = 'svg')
+                      dev     = 'png')
 
 library(qicharts2)
 ```

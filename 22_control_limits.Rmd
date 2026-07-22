@@ -8,7 +8,7 @@ editor_options:
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,
                       echo = TRUE,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 library(knitr)
 library(kableExtra)
@@ -53,10 +53,17 @@ With this function in hand, we are now able to construct many different kinds of
 The formulas for calculation control limits for The Magnificent Seven introduced in Chapter \@ref(charts-intro) are shown in Table \@ref(tab:limits-tab1). Do not be alarmed by the number of strange symbols. We will translate the formulas to R code one by one as we move through the chapter.
 
 ```{r limits-tab1, echo=FALSE}
-read.delim('input/limit_formulas.tsv', check.names = F) |> 
-  kbl(caption = 'Formulas for calculating control limits') |> 
-  pack_rows('Count data', 1, 3) |> 
-  pack_rows('Measurement data', 4, 7)
+read.delim("input/limit_formulas.tsv", check.names = FALSE) |>
+  kbl(
+    caption = "Formulas for calculating control limits",
+    booktabs = TRUE,
+    escape = FALSE
+  ) |>
+  pack_rows("Count data", 1, 3) |>
+  pack_rows("Measurement data", 4, 7) |>
+  kable_styling(
+    latex_options = c("hold_position", "scale_down")
+  )
 ```
 
 As discussed in Chapter \@ref(charts-intro), data come in two broad forms: count data and measurement data. Counts are non-negative integers representing events or cases, for example patient falls, surgical complications, or healthy babies. Measurements are values on a continuous scale and may include decimals, such as blood pressure, height, weight, or waiting times.

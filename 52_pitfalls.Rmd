@@ -8,7 +8,7 @@ editor_options:
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 library(qicharts2)
 ```
@@ -31,7 +31,7 @@ Originally, control charts relied on a single rule: the 3-sigma rule. Over time,
 
 While it may be tempting to apply many rules in order to detect every possible signal, this approach comes at a cost. Additional rules increase sensitivity, but they also increase the risk of false alarms.
 
-Some commonly used rule sets are particularly prone to false signals. For example, a widely used set of run chart rules -- including tests for trends, shifts, and run counts [@perla2011] -- has been shown to produce a very high false positive rate. In a run chart with 24 data points, the probability of at least one false signal may approach 50% [@anhoej2015]. A major contributor is the "trend rule", defined as five or more consecutive data points increasing or decreasesing. Such short trends are common even in random data and are therefore unreliable indicators of change [@davis1988].
+Some commonly used rule sets are particularly prone to false signals. For example, a widely used set of run chart rules -- including tests for trends, shifts, and run counts [@perla2011] -- has been shown to produce a very high false positive rate. In a run chart with 24 data points, the probability of at least one false signal may approach 50% [@anhoej2015]. A major contributor is the "trend rule", defined as five or more consecutive data points increasing or decreasing. Such short trends are common even in random data and are therefore unreliable indicators of change [@davis1988].
 
 Another related pitfall is the deliberate tightening of control limits in an attempt to increase sensitivity. This often arises from an incorrect use of the overall standard deviation when calculating limits [@wheeler2010; @wheeler2016]. As emphasised throughout this book, control limits should be based on within-subgroup variation, not overall variation. Using the overall standard deviation incorporates special cause variation and inflates the limits, which may then prompt misguided attempts to narrow them artificially.
 

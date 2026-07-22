@@ -1,4 +1,4 @@
-# Critical Values for Longest Runs and Number of Crossings {#runs-limits}
+# Critical Values for Runs and Crossings {#runs-limits}
 
 In SPC charts, a **run** is one or more consecutive data points on the same side of the centre line. Data points that lie directly on the centre line are not counted, nor do they break a run if the next data point is on the same side as the previous one.
 
@@ -13,10 +13,20 @@ In random data sequences, these two rules used together have a false signal rate
 ```{r, results='asis', echo=FALSE}
 n <- 10:100
 x <- data.frame(
-  `Number of useful observations`       = n,
-  `Upper limit for longest run`         = round(log2(n) + 3),
-  `Lower limit for number of crossings` = qbinom(0.05, n - 1, 0.5),
-  check.names                           = FALSE)
+  `Useful\nobservations`               = n,
+  `Longest run\n(upper limit)`         = round(log2(n) + 3),
+  `Number of crossings\n(lower limit)` = qbinom(0.05, n - 1, 0.5),
+  check.names                          = FALSE)
 
-knitr::kable(x)
+names(x) <- lapply(names(x), kableExtra::linebreak)
+
+kbl(
+  x,
+  booktabs = TRUE,
+  longtable = TRUE,
+  escape = FALSE
+) |>
+  kable_styling(
+    latex_options = c("repeat_header")
+  )
 ```

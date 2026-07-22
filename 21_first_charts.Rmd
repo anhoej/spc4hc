@@ -5,7 +5,7 @@
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,
                       echo    = TRUE,
-                      dev     = 'svg')
+                      dev     = 'png')
 ```
 
 From Part 1 of this book, we now have a good understanding of what SPC is and how SPC charts work. In this chapter, we begin constructing SPC charts using functions from base R. In later chapters, we will introduce functions from *ggplot2* and *qicharts2* (an R package developed by JA).
@@ -31,7 +31,7 @@ We begin by plotting a simple point-and-line chart without any additional refere
 plot(systolic, type = 'o')
 ```
 
-(As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time." &#128513;)
+(As a side note, this reminds me (JA) of a manager, who once said to me: "You make such beautiful graphs, but can't you stop them from going up and down all the time.")
 
 To support runs analysis, we add a horizontal centre line. In a run chart, this is typically the median of the data (Figure \@ref(fig:first-chart-run2)):
 

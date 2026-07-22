@@ -7,7 +7,7 @@ editor_options:
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/3,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 source('R/spc_functions.R', local = knitr::knit_global())
 ```

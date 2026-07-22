@@ -2,7 +2,7 @@
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/6,
-                      dev     = 'svg')
+                      dev     = 'png')
 source('R/load_data.R', local = knitr::knit_global())
 library(qicharts2)
 

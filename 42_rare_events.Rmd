@@ -7,7 +7,7 @@ editor_options:
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 library(qicharts2)
 ```
@@ -112,7 +112,7 @@ asph_g <- c(NA, diff(asph_cases) - 1)
 qic(asph_g, chart = 'g')
 ```
 
-Because the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes that the data are distributed symmetrically around the centre. For this reason, *qicharts2* uses the median by default in the runs analysis for G charts (Figure \@ref(fig:rare-fig4)).
+Because the geometric distribution is highly skewed, the average is not ideal for runs analysis, which assumes that the data are distributed symmetrically around the centre. For this reason, qicharts2 uses the median by default in the runs analysis for G charts (Figure \@ref(fig:rare-fig4)).
 
 As with other count charts, negative lower control limits are rounded up to zero, since values below zero are not possible.
 
@@ -202,7 +202,7 @@ Looking at Figure \@ref(fig:rare-fig6), which shows a historically stable proces
 bchart(births$asphyxia, target = 0.007, limit = 2.5)
 ```
 
-## Selecting the rigth chart for rare events
+## Selecting the right chart for rare events
 
 Having reviewed several alternatives for rare events data -- U and T charts for low event rates, and P, G, and B charts for low case proportions -- we may ask which chart should be preferred. The answer is that it depends. No single chart is universally best, and in many situations two or more charts provide complementary insights.
 

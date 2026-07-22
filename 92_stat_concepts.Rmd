@@ -8,7 +8,7 @@ editor_options:
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 3/5,
                       fig.width = 10,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 source('R/load_data.R', local = knitr::knit_global())
 ```
@@ -43,7 +43,7 @@ Most importantly, it follows that we can never be absolutely certain that signal
 
 SPC is fundamentally concerned with prediction rather than hypothesis testing, p-values and retrospective description alone. A stable process allows us to make probabilistic statements about the range within which future observations are likely to fall if the underlying system remains unchanged. Control limits therefore represent operational expectations about future process behaviour, not merely summaries of past data.
 
->[...] prediction within limits means that we can state, at least approximately, the probability that the observed phonomenon will fall within the given limits.
+>[...] prediction within limits means that we can state, at least approximately, the probability that the observed phenomenon will fall within the given limits.
 >
 >@shewhart1931, p. 6
 
@@ -150,7 +150,7 @@ The shape describes how values are distributed.
 Key features include:
 
 * **Symmetry / skewness**
-  - symmetric: mean ≈ median
+  - symmetric: mean $\approx$ median
   - right-skewed: long tail to the right, mean > median
   - left-skewed: long tail to the left, mean < median
 * **Modality**
@@ -171,7 +171,7 @@ Spread describes how much the data vary.
 
 Common measures:
 
-* **Range**: max − min
+* **Range**: max -- min
 * **Interquartile range** (IQR): middle 50%
 * **Standard deviation** (SD): average distance from the mean
 
@@ -205,7 +205,7 @@ While SPC is primarily empirical, theoretical distributions help define expected
 
 ### Poisson distribution -- predicting the number of events
 
-The Poisson distribution -- named after the French mathematician [Siméon Poisson](https://en.wikipedia.org/wiki/Sim%C3%A9on_Denis_Poisson) -- describes the probability of a given number of events occurring within a fixed time interval, assuming that the events happen independently of one another and at a constant average rate, commonly denoted by lambda (λ). It is used to estimate the control limits for C- and U-charts.
+The Poisson distribution -- named after the French mathematician [Siméon Poisson](https://en.wikipedia.org/wiki/Sim%C3%A9on_Denis_Poisson) -- describes the probability of a given number of events occurring within a fixed time interval, assuming that the events happen independently of one another and at a constant average rate, commonly denoted by lambda ($\lambda$). It is used to estimate the control limits for C- and U-charts.
 
 Based on the birth data, we estimate the expected birth rate to be about 6 births per day. 
 

@@ -7,7 +7,7 @@ site: bookdown::bookdown_site
 documentclass: book
 bibliography: [references.bib, packages.bib]
 url: https://anhoej.github.io/spc4hc/
-# cover-image: path to the social sharing image like images/cover.jpg
+cover-image: figures/spc4hc_cover.png #path to the social sharing image like images/cover.jpg
 link-citations: yes
 github-repo: anhoej/spc4hc
 description: This is a book for data scientists about the practical application of statistical process control methodology in healthcare.
@@ -15,7 +15,7 @@ description: This is a book for data scientists about the practical application 
 
 # What is Statistical Process Control? {-#what}
 
->This is the online version of *Mastering Statistical Process Control Charts in Healthcare*, a book under continous development.
+>This is the online version of *Mastering Statistical Process Control Charts in Healthcare*, a book under continuous development.
 
 ---
 

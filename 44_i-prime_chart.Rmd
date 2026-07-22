@@ -1,8 +1,8 @@
-# I Prime Charts for Measurement Data With Variable Subgroup Sizes (and more)
+# I Prime Charts for Variable Subgroup Sizes
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 library(qicharts2)
 source('R/load_data.R', local = knitr::knit_global())
@@ -79,7 +79,7 @@ which is the same as for original I chart.
 
 As with the original I chart, *qicharts2* screens the moving ranges of $s_i$, removing ranges greater than the theoretical upper natural limit (= 3.2665) before calculating $\bar{s}$.
 
-## I' charts for measument data with variable subgroup sizes
+## I' charts for variable subgroup sizes
 
 Figure \@ref(fig:iprime-fig1) demonstrates the use of an I' chart with count data. However, the I' chart was originally intended for measurement data with variable subgroup sizes. One example is when, for reasons of privacy, only aggregated patient data are available rather than individual measurements. Traditionally, such data would be plotted on an ordinary I chart. But if the number of patients in each subgroup varies substantially, straight control limits may be inappropriate.
 

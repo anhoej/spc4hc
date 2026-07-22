@@ -1,10 +1,10 @@
 # (PART\*) Part 3: Advanced SPC Techniques {-}
 
-# Screened I Chart -- eliminating freak moving ranges before calculating limits {#screenedmr}
+# Screening I Charts for Freak Moving Ranges {#screenedmr}
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.asp = 2/4,
-                      dev     = 'svg')
+                      dev     = 'png')
 
 library(qicharts2)
 
@@ -31,7 +31,7 @@ To illustrate, consider the following 24 values:
 cat(y)
 ```
 
-The average moving range (AMR) is `r amr`. From Table \@ref(tab:limits-tab1), the natural upper limit for moving ranges is 3.267 x AMR (= `r round(3.267 * amr, 1)`). The moving range between observations 14 and 15 is |28 − 11| = 17, which exceeds this limit and is therefore unusually large, as shown in Figure \@ref(fig:screened-mr1).
+The average moving range (AMR) is `r amr`. From Table \@ref(tab:limits-tab1), the natural upper limit for moving ranges is 3.267 x AMR (= `r round(3.267 * amr, 1)`). The moving range between observations 14 and 15 is |28 -- 11| = 17, which exceeds this limit and is therefore unusually large, as shown in Figure \@ref(fig:screened-mr1).
 
 ```{r screened-mr1, fig.cap='Moving range chart with one range above the control limit'}
 
