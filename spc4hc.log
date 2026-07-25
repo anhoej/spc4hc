@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.2)  22 JUL 2026 08:31
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.2)  25 JUL 2026 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -686,40 +686,40 @@ File: bkm-xetex.def 2026-05-21 v1.32 bookmark driver for xetex (HO)
 )) (./spc4hc.aux)
 \openout1 = `spc4hc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 192.
+LaTeX Font Info:    ... okay on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 188.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 188.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 188.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 188.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 188.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 188.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 192.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 188.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 192.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -747,7 +747,7 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 188.
+(Font)              scaled to size 10.0pt on input line 192.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -783,15 +783,15 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 188.
+(Font)              scaled to size 10.0pt on input line 192.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 188.
+(Font)              `operators' in the math version `normal' on input line 192.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 188.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 192.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 188.
+(Font)              `operators' in the math version `bold' on input line 192.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 188.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 192.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -857,13 +857,13 @@ Package fontspec Info:
 (fontspec)             <->s*[1.000096459334209]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 188.
+(Font)              `symbols' in the math version `normal' on input line 192.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 188.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 192.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 188.
+(Font)              `symbols' in the math version `bold' on input line 192.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 188.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 192.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -923,17 +923,17 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9998964600422715]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 188.
+(Font)              `largesymbols' in the math version `normal' on input line 192.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 188.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 192.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 188.
+(Font)              `largesymbols' in the math version `bold' on input line 192.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 188.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 192.
 
 Package hyperref Warning: Draft mode on.
 
-Package hyperref Info: Link coloring OFF on input line 188.
+Package hyperref Info: Link coloring OFF on input line 192.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1058,7 +1058,7 @@ File: spc4hc_files/figures/pyramid_model.png Graphic file (type bmp)
 ] [41] [42]
 Chapter 5.
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <7> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 858.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 862.
 [43
 
 ]
@@ -1119,7 +1119,7 @@ Chapter 7.
 File: spc4hc_files/spc4hc_files/figure-latex/highlighting-spc1-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/highlighting-spc1-1.png>
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1593.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1597.
 [66] [67]
 File: spc4hc_files/spc4hc_files/figure-latex/highlighting-spc2-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/highlighting-spc2-1.png>
@@ -1173,11 +1173,11 @@ Overfull \hbox (2.17842pt too wide) has occurred while \output is active
  []
 
 [78] [79]
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 
@@ -1186,19 +1186,19 @@ Overfull \hbox (2.17842pt too wide) has occurred while \output is active
  []
 
 [80]
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 [81]
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 
@@ -1207,11 +1207,11 @@ Overfull \hbox (2.17842pt too wide) has occurred while \output is active
  []
 
 [82]
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2349
+Underfull \vbox (badness 10000) detected at line 2353
  []
 
 [83]
@@ -1336,6 +1336,10 @@ File: spc4hc_files/spc4hc_files/figure-latex/rare-fig3-1.png Graphic file (type 
 File: spc4hc_files/spc4hc_files/figure-latex/rare-fig4-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/rare-fig4-1.png>
 [113]
+Overfull \hbox (1.02501pt too wide) in paragraph at lines 3127--3128
+[]\TU/lmr/m/n/10 where $[]$ is the transformed variable and $[]$ is the original time-between-events
+ []
+
 File: spc4hc_files/spc4hc_files/figure-latex/rare-fig5-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/rare-fig5-1.png>
 [114] [115]
@@ -1368,7 +1372,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: spc4hc_files/spc4hc_files/figure-latex/pcharts-fig3-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/pcharts-fig3-1.png>
 [123] [124]
-Overfull \hbox (24.945pt too wide) in paragraph at lines 3349--3394
+Overfull \hbox (24.945pt too wide) in paragraph at lines 3353--3398
  [][] 
  []
 
@@ -1382,7 +1386,7 @@ File: spc4hc_files/figure-latex/iprime-fig1-1.png Graphic file (type bmp)
 File: spc4hc_files/figure-latex/iprime-fig1-2.png Graphic file (type bmp)
 <spc4hc_files/figure-latex/iprime-fig1-2.png>
 
-Overfull \hbox (2.22pt too wide) in paragraph at lines 3426--3426
+Overfull \hbox (2.22pt too wide) in paragraph at lines 3430--3430
 [][] []
  []
 
@@ -1454,7 +1458,12 @@ File: spc4hc_files/spc4hc_files/figure-latex/pareto-fig3-1.png Graphic file (typ
 Chapter 17.
 [145
 
-] [146] [147] [148]
+]
+Underfull \hbox (badness 1231) in paragraph at lines 3789--3790
+\TU/lmr/m/n/10 While small-scale or temporary projects can be managed manually,
+ []
+
+[146] [147] [148]
 Chapter 18.
 [149
 
@@ -1465,12 +1474,17 @@ File: spc4hc_files/spc4hc_files/figure-latex/pitfalls-fig1-1.png Graphic file (t
 File: spc4hc_files/spc4hc_files/figure-latex/pitfalls-fig2-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/pitfalls-fig2-1.png>
 [152]
-Underfull \hbox (badness 1215) in paragraph at lines 3979--3979
+Underfull \hbox (badness 1215) in paragraph at lines 3983--3983
 []\TU/lmr/bx/n/14.4 Assuming a one-to-one link between
  []
 
 [153] [154]
 Chapter 19.
+
+Underfull \hbox (badness 1389) in paragraph at lines 4013--4014
+\TU/lmr/m/n/10 formed, variation \TU/lmr/m/it/10 within subgroups \TU/lmr/m/n/10 reflects common cause variation,
+ []
+
 [155
 
 ]
@@ -1484,6 +1498,11 @@ Overfull \hbox (25.17953pt too wide) has occurred while \output is active
  []
 
 [156]
+Underfull \hbox (badness 6016) in paragraph at lines 4062--4063
+[]\TU/lmr/m/n/10 High-resolution data can always be aggregated later if needed.
+ []
+
+
 Overfull \hbox (25.13953pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/10 19.2.  TOO SMALL SUBGROUPS – REVEALING UNIMPORTANT NOISE \TU/lmr/m/n/10 157
  []
@@ -1509,7 +1528,12 @@ Overfull \hbox (25.17953pt too wide) has occurred while \output is active
 Chapter 20.
 [163
 
-] [164] [165] [166]
+] [164]
+Underfull \hbox (badness 2635) in paragraph at lines 4261--4262
+\TU/lmr/m/n/10 high-frequency, high-volume data, we must reconsider fundamental
+ []
+
+[165] [166]
 Overfull \hbox (35.40172pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/10 20.5.  A SHARED FUTURE: PRINCIPLES, PRACTICE, AND COMMUNITY \TU/lmr/m/n/10 167
  []
@@ -1523,7 +1547,7 @@ Appendix B.
 [173
 
 ] [174]
-Underfull \hbox (badness 1117) in paragraph at lines 4604--4605
+Underfull \hbox (badness 1117) in paragraph at lines 4608--4609
 []\TU/lmr/bx/n/10 Continuous \TU/lmr/m/n/10 data: measurements (any value within a range),
  []
 
@@ -1568,45 +1592,50 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[189] [190] [191] [192] [193] [194] [195] [196]
+[189] [190] [191] [192] [193] [194]
+Underfull \hbox (badness 4899) in paragraph at lines 5441--5443
+[]\TU/lmr/m/n/10 separate words with “-”, “_“, or”.”, e.g.: “my_variable”,
+ []
+
+[195] [196]
 Appendix D.
 [197
 
 ] [198] [199] [200] [201
 
 ]
-Underfull \hbox (badness 3861) in paragraph at lines 5644--5645
+Underfull \hbox (badness 3861) in paragraph at lines 5648--5649
 []\TU/lmr/m/n/10 Lilford, Richard, Mohammed A Mohammed, David Spiegelhalter,
  []
 
 
-Underfull \hbox (badness 2359) in paragraph at lines 5644--5645
+Underfull \hbox (badness 2359) in paragraph at lines 5648--5649
 \TU/lmr/m/n/10 and Richard Thomson. 2004. “Use and Misuse of Process
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 5644--5645
+Underfull \hbox (badness 1472) in paragraph at lines 5648--5649
 \TU/lmr/m/n/10 and Outcome Data in Managing Performance of Acute Medical
  []
 
 
-Underfull \hbox (badness 1466) in paragraph at lines 5650--5651
+Underfull \hbox (badness 1466) in paragraph at lines 5654--5655
 []\TU/lmr/m/n/10 Mohammed, M A, Anthony Rathbone, Paulette Myers, Divya Pa-
  []
 
 
-Underfull \hbox (badness 1430) in paragraph at lines 5650--5651
-\TU/lmr/m/n/10 tel, Helen Onions, and Andrew Stevens. 2004. “An Investi-
+Underfull \hbox (badness 3826) in paragraph at lines 5654--5655
+\TU/lmr/m/n/10 into General Practitioners Associated with High Patient Mor-
  []
 
 
-Underfull \hbox (badness 2368) in paragraph at lines 5650--5651
-\TU/lmr/m/n/10 gation into General Practitioners Associated with High Patient
+Underfull \hbox (badness 4001) in paragraph at lines 5654--5655
+\TU/lmr/m/n/10 tality Flagged up Through the Shipman Inquiry: Retrospec-
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 5650--5651
-\TU/lmr/m/n/10 Mortality Flagged up Through the Shipman Inquiry: Retro-
+Underfull \hbox (badness 2368) in paragraph at lines 5654--5655
+\TU/lmr/m/n/10 tive Analysis of Routine Data.” \TU/lmr/m/it/10 BMJ \TU/lmr/m/n/10 328 (7454): 1474–77.
  []
 
 
@@ -1628,12 +1657,12 @@ L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21522 strings out of 469836
- 422552 string characters out of 5469409
+ 21525 strings out of 469836
+ 422587 string characters out of 5469409
  1016913 words of memory out of 5000000
  50079 multiletter control sequences out of 15000+600000
  631476 words of font info for 87 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 17 hyphenation exceptions out of 8191
  90i,13n,114p,742b,703s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on spc4hc.pdf (204 pages).
