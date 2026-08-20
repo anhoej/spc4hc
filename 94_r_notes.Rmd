@@ -36,9 +36,9 @@ d <- data.frame(x = seq(Sys.Date() - 12, by = 'day', length.out = 12),
 d
 ```
 
-To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where "d" is the name of the data frame containing the three variables x, y, and n:
+To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where "d" is the name of the data frame containing the three variables x, y, and n (Figure \@ref(fig:r-notes-fig1)):
 
-```{r}
+```{r r-notes-fig1, fig.cap='P chart from data frame'}
 qic(x, y, n, 
     data  = d, 
     chart = 'p')

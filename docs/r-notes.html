@@ -449,11 +449,16 @@ div.csl-indent {
 10 2026-08-17 11 27
 11 2026-08-18 13 32
 12 2026-08-19 12 26</code></pre>
-<p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where “d” is the name of the data frame containing the three variables x, y, and n:</p>
+<p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where “d” is the name of the data frame containing the three variables x, y, and n (Figure <a href="r-notes.html#fig:r-notes-fig1">C.1</a>):</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-notes.html#cb131-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb131-2"><a href="r-notes.html#cb131-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>
 <span id="cb131-3"><a href="r-notes.html#cb131-3" tabindex="-1"></a>    <span class="at">chart =</span> <span class="st">&#39;p&#39;</span>)</span></code></pre></div>
-<p><img src="spc4hc_files/figure-html/unnamed-chunk-45-1.png" alt="" width="960" /></p>
+<div class="figure"><span style="display:block;" id="fig:r-notes-fig1"></span>
+<img src="spc4hc_files/figure-html/r-notes-fig1-1.png" alt="P chart from data frame" width="960" />
+<p class="caption">
+Figure C.1: P chart from data frame
+</p>
+</div>
 <p>Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).</p>
 </div>
 <div id="importing-data-from-text-files" class="section level2 hasAnchor" number="23.3">

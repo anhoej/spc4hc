@@ -86,6 +86,7 @@ fig:stat-dpois
 fig:stat-dbinom1
 fig:stat-hist3
 fig:stat-hist4
+fig:r-notes-fig1
 variation
 charts-intro
 anatomy-and-physiology-of-spc-charts

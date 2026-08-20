@@ -5063,7 +5063,7 @@ When plotting time series data, we need two vectors, one for the x axis represen
 12 2026-08-19 12 26
 \end{verbatim}
 
-To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where ``d'' is the name of the data frame containing the three variables x, y, and n:
+To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where ``d'' is the name of the data frame containing the three variables x, y, and n (Figure \ref{fig:r-notes-fig1}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5073,7 +5073,11 @@ To plot a P chart from these data with the qic() function from the qicharts2 pac
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{spc4hc_files/spc4hc_files/figure-latex/unnamed-chunk-45-1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:r-notes-fig1}P chart from data frame}]{spc4hc_files/spc4hc_files/figure-latex/r-notes-fig1-1.png}}
+\caption{\label{fig:r-notes-fig1}P chart from data frame}
+\end{figure}
 
 Notice that to correctly plot dates or datetimes on the x axis, it is important that the x variable is of the correct class (Date for dates or POSIXct for datetimes).
 
