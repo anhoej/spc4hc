@@ -23,7 +23,7 @@
 <meta name="author" content="Jacob Anhøj &amp; Mohammed Amin Mohammed" />
 
 
-<meta name="date" content="2026-07-25" />
+<meta name="date" content="2026-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -437,18 +437,18 @@ div.csl-indent {
 <h2><span class="header-section-number">C.2</span> Plot-ready data frames<a href="r-notes.html#plot-ready-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When plotting time series data, we need two vectors, one for the x axis representing the subgroups, which in its simplest form may be a sequence of numbers or dates and one for the y axis representing the indicator values to be plotted. To correctly calculate the control limits in spc charts, we often need a third variable representing the denominator of the count data in the y variable. Thus, a generic plot-ready data set for making an spc chart may look like this:</p>
 <pre><code>            x  y  n
-1  2026-07-13 13 32
-2  2026-07-14 14 29
-3  2026-07-15 16 33
-4  2026-07-16 19 30
-5  2026-07-17 13 32
-6  2026-07-18 18 35
-7  2026-07-19 19 29
-8  2026-07-20 16 33
-9  2026-07-21 16 34
-10 2026-07-22 11 27
-11 2026-07-23 13 32
-12 2026-07-24 12 26</code></pre>
+1  2026-08-08 13 32
+2  2026-08-09 14 29
+3  2026-08-10 16 33
+4  2026-08-11 19 30
+5  2026-08-12 13 32
+6  2026-08-13 18 35
+7  2026-08-14 19 29
+8  2026-08-15 16 33
+9  2026-08-16 16 34
+10 2026-08-17 11 27
+11 2026-08-18 13 32
+12 2026-08-19 12 26</code></pre>
 <p>To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where “d” is the name of the data frame containing the three variables x, y, and n:</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-notes.html#cb131-1" tabindex="-1"></a><span class="fu">qic</span>(x, y, n, </span>
 <span id="cb131-2"><a href="r-notes.html#cb131-2" tabindex="-1"></a>    <span class="at">data  =</span> d, </span>

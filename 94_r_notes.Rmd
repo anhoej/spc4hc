@@ -6,7 +6,7 @@ editor_options:
 # R Notes {#r-notes}
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(fig.asp = 3/2,
+knitr::opts_chunk$set(fig.asp = 3/6,
                       echo    = TRUE,
                       comment = '',
                       dev     = 'png')

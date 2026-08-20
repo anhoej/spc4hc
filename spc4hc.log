@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.2)  25 JUL 2026 16:50
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.2)  20 AUG 2026 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1580,28 +1580,16 @@ Appendix C.
 ]
 File: spc4hc_files/spc4hc_files/figure-latex/unnamed-chunk-45-1.png Graphic file (type bmp)
 <spc4hc_files/spc4hc_files/figure-latex/unnamed-chunk-45-1.png>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[188]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[189] [190] [191] [192] [193] [194]
+[188] [189] [190] [191] [192] [193]
 Underfull \hbox (badness 4899) in paragraph at lines 5441--5443
 []\TU/lmr/m/n/10 separate words with “-”, “_“, or”.”, e.g.: “my_variable”,
  []
 
-[195] [196]
-Appendix D.
-[197
+[194] [195] [196
 
-] [198] [199] [200] [201
+]
+Appendix D.
+[197] [198] [199] [200] [201
 
 ]
 Underfull \hbox (badness 3861) in paragraph at lines 5648--5649
