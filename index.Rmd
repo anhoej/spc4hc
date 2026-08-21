@@ -1,16 +1,19 @@
 --- 
 title: "Mastering Statistical Process Control Charts in Healthcare"
-subtitle: "A practical, hands-on, step-by-step guide for data scientists using R"
 author: "Jacob Anhøj & Mohammed Amin Mohammed"
 date: "`r Sys.Date()`"
+subtitle: "A practical, hands-on, step-by-step guide for data scientists using R"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [references.bib, packages.bib]
+bibliography:
+- references.bib
+- packages.bib
 url: https://anhoej.github.io/spc4hc/
-cover-image: figures/spc4hc_cover.png #path to the social sharing image like images/cover.jpg
-link-citations: yes
+cover-image: figures/spc4hc_cover.png
+link-citations: true
 github-repo: anhoej/spc4hc
-description: This is a book for data scientists about the practical application of statistical process control methodology in healthcare.
+description: This is a book for data scientists about the practical application of
+  statistical process control methodology in healthcare.
 ---
 
 # What is Statistical Process Control? {-#what}
@@ -19,6 +22,8 @@ description: This is a book for data scientists about the practical application 
 <div class="note">
 <blockquote>
 This is the online version of <strong>Mastering Statistical Process Control Charts in Healthcare</strong>, a book under continuous development.
+<br>
+The book is also available in both paperback and Kindle editions on <a href=https://amzn.eu/d/00RI5hJu>Amazon</a>.
 </blockquote>
 </div>
 <hr>
