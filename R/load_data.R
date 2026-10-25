@@ -31,7 +31,7 @@ cdiff <- read.csv('data/cdiff.csv',
                   colClasses = c('Date',
                                  'integer',
                                  'integer')
-                  )
+)
 
 # csections ----
 csect <- read.csv('data/csection_delay.csv',
