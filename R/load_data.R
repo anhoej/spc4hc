@@ -1,3 +1,10 @@
+# systolic blood pressure (MAM) ----
+systolic <- c(169, 172, 175, 174, 161, 142,
+              174, 171, 168, 174, 180, 194,
+              161, 181, 175, 176, 186, 166,
+              157, 183, 177, 171, 185, 176,
+              181, 174)
+
 # bacteremias ----
 bact <- read.csv('data/bacteremia.csv',
                  comment.char = '#',
@@ -8,13 +15,6 @@ bact <- read.csv('data/bacteremia.csv',
                    'integer',
                    'integer'
                  ))
-
-# systolic blood pressure (MAM) ----
-systolic <- c(169, 172, 175, 174, 161, 142,
-              174, 171, 168, 174, 180, 194,
-              161, 181, 175, 176, 186, 166,
-              157, 183, 177, 171, 185, 176,
-              181, 174)
 
 # blood pressure (JA) ----
 blood_pressure <- read.csv('data/blood_pressure.csv',
@@ -47,12 +47,12 @@ admis <- read.csv('data/emergency_admission.csv',
                                  'integer',
                                  'integer'))
 
-# on-time CT ----
-ct <- read.csv('data/ontime_ct.csv',
-               comment.char = '#',
-               colClasses = c('Date',
-                              'integer',
-                              'integer'))
+# # on-time CT ----
+# ct <- read.csv('data/ontime_ct.csv',
+#                comment.char = '#',
+#                colClasses = c('Date',
+#                               'integer',
+#                               'integer'))
 
 # renography doses ----
 reno <- read.csv('data/renography_doses.csv',
@@ -75,21 +75,14 @@ births <- read.csv('data/robson1_births.csv',
                                     'double',
                                     'logical'))
 
-# systolic blood pressure ----
-systolic <- c(169, 172, 175, 174, 161, 142,
-              174, 171, 168, 174, 180, 194,
-              161, 181, 175, 176, 186, 166,
-              157, 183, 177, 171, 185, 176,
-              181, 174)
-
-# HbA1c data from children with diabetes
+# HbA1c data from children with diabetes ----
 diabetes <- read.csv('data/diabetes_hba1c.csv',
                      comment.char = '#',
                      colClasses = c('Date',
                                     'double',
                                     'integer'))
 
-# Adverse events ----
+# adverse events ----
 ae <- read.csv('data/adverse_events.csv',
                comment.char = '#',
                colClasses = c('character',

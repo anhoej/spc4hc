@@ -163,7 +163,8 @@
 \usepackage{float}
 \usepackage{colortbl}
 \usepackage{pdflscape}
-\usepackage{tabu}
+\usepackage{tabularx}
+\usepackage{xltabular}
 \usepackage{threeparttable}
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
@@ -172,6 +173,10 @@
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Mastering Statistical Process Control Charts in Healthcare},
   pdfauthor={Jacob Anhøj \& Mohammed Amin Mohammed},
@@ -187,7 +192,7 @@
 \makeatother
 \subtitle{A practical, hands-on, step-by-step guide for data scientists using R}
 \author{Jacob Anhøj \& Mohammed Amin Mohammed}
-\date{2026-08-21}
+\date{2026-10-25}
 
 \begin{document}
 \maketitle
@@ -341,7 +346,7 @@ Imagine writing the letter `a' by hand using pen and paper. Figure \ref{fig:vari
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:variation-fig1}Handwritten a's}]{spc4hc_files/figures/handwritten1.jpg}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:variation-fig1}Handwritten a's}]{figures/handwritten1.jpg}}
 \caption{\label{fig:variation-fig1}Handwritten a's}
 \end{figure}
 
@@ -425,7 +430,7 @@ SPC charts are point-and-line plots of data collected sequentially over time. Th
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:spc-fig0}Control chart of systolic blood pressure}]{spc4hc_files/spc4hc_files/figure-latex/spc-fig0-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:spc-fig0}Control chart of systolic blood pressure}]{spc4hc_files/figure-latex/spc-fig0-1.png}}
 \caption{\label{fig:spc-fig0}Control chart of systolic blood pressure}
 \end{figure}
 
@@ -443,7 +448,7 @@ A key innovation introduced by Shewhart was the concept of control limits, which
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:spc-fig1}Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit}]{spc4hc_files/spc4hc_files/figure-latex/spc-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:spc-fig1}Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit}]{spc4hc_files/figure-latex/spc-fig1-1.png}}
 \caption{\label{fig:spc-fig1}Standardised control chart. SD = standard deviation; CL = centre line; LCL = lower control limit; UCL = upper control limit}
 \end{figure}
 
@@ -571,7 +576,7 @@ The strength of the 3-sigma rule lies in its ability to detect large and clearly
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig1}Control chart with progressive shifts in data}]{spc4hc_files/spc4hc_files/figure-latex/testing-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig1}Control chart with progressive shifts in data}]{spc4hc_files/figure-latex/testing-fig1-1.png}}
 \caption{\label{fig:testing-fig1}Control chart with progressive shifts in data}
 \end{figure}
 
@@ -589,7 +594,7 @@ A freak is a data point, or a small number of data points, that are distinctly d
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig2}Control chart with a large (2 SD) transient shift in data}]{spc4hc_files/spc4hc_files/figure-latex/testing-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig2}Control chart with a large (2 SD) transient shift in data}]{spc4hc_files/figure-latex/testing-fig2-1.png}}
 \caption{\label{fig:testing-fig2}Control chart with a large (2 SD) transient shift in data}
 \end{figure}
 
@@ -601,7 +606,7 @@ Shifts represent sudden and sustained changes in process behaviour (Figure \ref{
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig3}Control chart with a minor (1 SD) sustained shift in data introduced at data point \#16}]{spc4hc_files/spc4hc_files/figure-latex/testing-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig3}Control chart with a minor (1 SD) sustained shift in data introduced at data point \#16}]{spc4hc_files/figure-latex/testing-fig3-1.png}}
 \caption{\label{fig:testing-fig3}Control chart with a minor (1 SD) sustained shift in data introduced at data point \#16}
 \end{figure}
 
@@ -613,7 +618,7 @@ A trend is a gradual change in the process level over time (Figure \ref{fig:test
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig4}Control chart with a trend in data}]{spc4hc_files/spc4hc_files/figure-latex/testing-fig4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig4}Control chart with a trend in data}]{spc4hc_files/figure-latex/testing-fig4-1.png}}
 \caption{\label{fig:testing-fig4}Control chart with a trend in data}
 \end{figure}
 
@@ -691,7 +696,7 @@ Some SPC rules rely only on a centre line. If we remove the control limits and u
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig5}Run chart}]{spc4hc_files/spc4hc_files/figure-latex/testing-fig5-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig5}Run chart}]{spc4hc_files/figure-latex/testing-fig5-1.png}}
 \caption{\label{fig:testing-fig5}Run chart}
 \end{figure}
 
@@ -701,7 +706,7 @@ Figure \ref{fig:testing-fig6} shows a run chart with a trend. The runs analysis 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig6}Run chart with a trend}]{spc4hc_files/spc4hc_files/figure-latex/testing-fig6-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:testing-fig6}Run chart with a trend}]{spc4hc_files/figure-latex/testing-fig6-1.png}}
 \caption{\label{fig:testing-fig6}Run chart with a trend}
 \end{figure}
 
@@ -746,7 +751,7 @@ To address this need, Mohammed et al. (\citeproc{ref-mohammed2004}{2004}) propos
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:responding-fig1}Pyramid Model for Investigation}]{spc4hc_files/figures/pyramid_model.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:responding-fig1}Pyramid Model for Investigation}]{figures/pyramid_model.png}}
 \caption{\label{fig:responding-fig1}Pyramid Model for Investigation}
 \end{figure}
 
@@ -878,7 +883,7 @@ We begin by plotting a simple point-and-line chart without any additional refere
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:first-chart-run1}Simple run chart}]{spc4hc_files/spc4hc_files/figure-latex/first-chart-run1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:first-chart-run1}Simple run chart}]{spc4hc_files/figure-latex/first-chart-run1-1.png}}
 \caption{\label{fig:first-chart-run1}Simple run chart}
 \end{figure}
 
@@ -900,7 +905,7 @@ To support runs analysis, we add a horizontal centre line. In a run chart, this 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:first-chart-run2}Run chart with centre line}]{spc4hc_files/spc4hc_files/figure-latex/first-chart-run2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:first-chart-run2}Run chart with centre line}]{spc4hc_files/figure-latex/first-chart-run2-1.png}}
 \caption{\label{fig:first-chart-run2}Run chart with centre line}
 \end{figure}
 
@@ -961,7 +966,7 @@ When plotting the chart, we must ensure that the y-axis accommodates both the da
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:first-chart-ctrl1}Standardised control chart}]{spc4hc_files/spc4hc_files/figure-latex/first-chart-ctrl1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:first-chart-ctrl1}Standardised control chart}]{spc4hc_files/figure-latex/first-chart-ctrl1-1.png}}
 \caption{\label{fig:first-chart-ctrl1}Standardised control chart}
 \end{figure}
 
@@ -1039,7 +1044,7 @@ Let us test the function using the blood pressure data from Chapter \ref{first-c
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-fig1}Control chart of systolic blood pressure}]{spc4hc_files/spc4hc_files/figure-latex/limits-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-fig1}Control chart of systolic blood pressure}]{spc4hc_files/figure-latex/limits-fig1-1.png}}
 \caption{\label{fig:limits-fig1}Control chart of systolic blood pressure}
 \end{figure}
 
@@ -1146,7 +1151,7 @@ Figure \ref{fig:limits-c} shows a C chart of the monthly number of hospital-acqu
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-c}C chart of monthly numbers of hospital-acquired bacteremias}]{spc4hc_files/spc4hc_files/figure-latex/limits-c-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-c}C chart of monthly numbers of hospital-acquired bacteremias}]{spc4hc_files/figure-latex/limits-c-1.png}}
 \caption{\label{fig:limits-c}C chart of monthly numbers of hospital-acquired bacteremias}
 \end{figure}
 
@@ -1183,7 +1188,7 @@ Because events are often rare relative to the area of opportunity, the resulting
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-u}U chart of monthly number of infections per 10,000 risk days}]{spc4hc_files/spc4hc_files/figure-latex/limits-u-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-u}U chart of monthly number of infections per 10,000 risk days}]{spc4hc_files/figure-latex/limits-u-1.png}}
 \caption{\label{fig:limits-u}U chart of monthly number of infections per 10,000 risk days}
 \end{figure}
 
@@ -1220,7 +1225,7 @@ P charts are used for proportions or percentages. Figure \ref{fig:limits-p} show
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-p}P chart of monthly 30-day mortality rates}]{spc4hc_files/spc4hc_files/figure-latex/limits-p-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-p}P chart of monthly 30-day mortality rates}]{spc4hc_files/figure-latex/limits-p-1.png}}
 \caption{\label{fig:limits-p}P chart of monthly 30-day mortality rates}
 \end{figure}
 
@@ -1286,7 +1291,7 @@ Let us look at the delay times for the most recent 60 caesarean sections (Figure
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-i}I-chart}]{spc4hc_files/spc4hc_files/figure-latex/limits-i-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-i}I-chart}]{spc4hc_files/figure-latex/limits-i-1.png}}
 \caption{\label{fig:limits-i}I-chart}
 \end{figure}
 
@@ -1311,7 +1316,7 @@ The MR chart plots the moving ranges, that is, the absolute pairwise differences
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-mr}MR-chart}]{spc4hc_files/spc4hc_files/figure-latex/limits-mr-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-mr}MR-chart}]{spc4hc_files/figure-latex/limits-mr-1.png}}
 \caption{\label{fig:limits-mr}MR-chart}
 \end{figure}
 
@@ -1349,7 +1354,7 @@ The two charts may also be plotted together (Figure \ref{fig:limits-imr}):
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-imr}I- and MR-charts}]{spc4hc_files/spc4hc_files/figure-latex/limits-imr-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-imr}I- and MR-charts}]{spc4hc_files/figure-latex/limits-imr-1.png}}
 \caption{\label{fig:limits-imr}I- and MR-charts}
 \end{figure}
 
@@ -1416,7 +1421,7 @@ With the aggregated data we can now construct the X-bar chart (Figure \ref{fig:l
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-xbar}X bar chart}]{spc4hc_files/spc4hc_files/figure-latex/limits-xbar-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-xbar}X bar chart}]{spc4hc_files/figure-latex/limits-xbar-1.png}}
 \caption{\label{fig:limits-xbar}X bar chart}
 \end{figure}
 
@@ -1450,7 +1455,7 @@ To calculate the centre line and control limits for the S chart, we need the pro
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-s}S chart}]{spc4hc_files/spc4hc_files/figure-latex/limits-s-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-s}S chart}]{spc4hc_files/figure-latex/limits-s-1.png}}
 \caption{\label{fig:limits-s}S chart}
 \end{figure}
 
@@ -1489,7 +1494,7 @@ We may also plot the X-bar and S charts together (Figure \ref{fig:limits-xbarand
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-xbarands}X-bar and S charts}]{spc4hc_files/spc4hc_files/figure-latex/limits-xbarands-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:limits-xbarands}X-bar and S charts}]{spc4hc_files/figure-latex/limits-xbarands-1.png}}
 \caption{\label{fig:limits-xbarands}X-bar and S charts}
 \end{figure}
 
@@ -1586,7 +1591,7 @@ Figure \ref{fig:highlighting-spc1} shows these data plotted with the \texttt{spc
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:highlighting-spc1}C control chart of Clostrioides difficile infections}]{spc4hc_files/spc4hc_files/figure-latex/highlighting-spc1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:highlighting-spc1}C control chart of Clostrioides difficile infections}]{spc4hc_files/figure-latex/highlighting-spc1-1.png}}
 \caption{\label{fig:highlighting-spc1}C control chart of Clostrioides difficile infections}
 \end{figure}
 
@@ -1683,7 +1688,7 @@ Finally, it changes the plotting so that the plot is first created empty, after 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:highlighting-spc2}Improved control chart with visual clues to highlight special cause variation}]{spc4hc_files/spc4hc_files/figure-latex/highlighting-spc2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:highlighting-spc2}Improved control chart with visual clues to highlight special cause variation}]{spc4hc_files/figure-latex/highlighting-spc2-1.png}}
 \caption{\label{fig:highlighting-spc2}Improved control chart with visual clues to highlight special cause variation}
 \end{figure}
 
@@ -1792,7 +1797,7 @@ This section gives examples of a run chart and each of the \emph{Magnificent Sev
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-run}Run chart}]{spc4hc_files/spc4hc_files/figure-latex/rfun-run-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-run}Run chart}]{spc4hc_files/figure-latex/rfun-run-1.png}}
 \caption{\label{fig:rfun-run}Run chart}
 \end{figure}
 
@@ -1820,7 +1825,7 @@ This section gives examples of a run chart and each of the \emph{Magnificent Sev
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-imr}I and MR charts}]{spc4hc_files/spc4hc_files/figure-latex/rfun-imr-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-imr}I and MR charts}]{spc4hc_files/figure-latex/rfun-imr-1.png}}
 \caption{\label{fig:rfun-imr}I and MR charts}
 \end{figure}
 
@@ -1875,7 +1880,7 @@ This section gives examples of a run chart and each of the \emph{Magnificent Sev
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-xbars}X-bar and S charts}]{spc4hc_files/spc4hc_files/figure-latex/rfun-xbars-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-xbars}X-bar and S charts}]{spc4hc_files/figure-latex/rfun-xbars-1.png}}
 \caption{\label{fig:rfun-xbars}X-bar and S charts}
 \end{figure}
 
@@ -1929,7 +1934,7 @@ This section gives examples of a run chart and each of the \emph{Magnificent Sev
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-cu}C and U charts}]{spc4hc_files/spc4hc_files/figure-latex/rfun-cu-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-cu}C and U charts}]{spc4hc_files/figure-latex/rfun-cu-1.png}}
 \caption{\label{fig:rfun-cu}C and U charts}
 \end{figure}
 
@@ -1955,7 +1960,7 @@ This section gives examples of a run chart and each of the \emph{Magnificent Sev
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-p}P chart}]{spc4hc_files/spc4hc_files/figure-latex/rfun-p-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rfun-p}P chart}]{spc4hc_files/figure-latex/rfun-p-1.png}}
 \caption{\label{fig:rfun-p}P chart}
 \end{figure}
 
@@ -2417,7 +2422,7 @@ Because p is an object of class ``spc'' we simply call the generic \texttt{plot(
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig1}SPC chart}]{spc4hc_files/spc4hc_files/figure-latex/ggplot-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig1}SPC chart}]{spc4hc_files/figure-latex/ggplot-fig1-1.png}}
 \caption{\label{fig:ggplot-fig1}SPC chart}
 \end{figure}
 
@@ -2464,7 +2469,7 @@ We then use this function to plot the SPC object (Figure \ref{fig:ggplot-fig2}).
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig2}SPC chart using the ggspc() function}]{spc4hc_files/spc4hc_files/figure-latex/ggplot-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig2}SPC chart using the ggspc() function}]{spc4hc_files/figure-latex/ggplot-fig2-1.png}}
 \caption{\label{fig:ggplot-fig2}SPC chart using the \protect\texttt{ggspc()} function}
 \end{figure}
 
@@ -2501,7 +2506,7 @@ We can also convert the SPC object into a ggplot object and then further customi
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig3}SPC chart with modified theme}]{spc4hc_files/spc4hc_files/figure-latex/ggplot-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig3}SPC chart with modified theme}]{spc4hc_files/figure-latex/ggplot-fig3-1.png}}
 \caption{\label{fig:ggplot-fig3}SPC chart with modified theme}
 \end{figure}
 
@@ -2536,7 +2541,7 @@ The final example in this chapter shows how to define a custom theme and format 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig4}SPC chart with labels and custom y-axis}]{spc4hc_files/spc4hc_files/figure-latex/ggplot-fig4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:ggplot-fig4}SPC chart with labels and custom y-axis}]{spc4hc_files/figure-latex/ggplot-fig4-1.png}}
 \caption{\label{fig:ggplot-fig4}SPC chart with labels and custom y-axis}
 \end{figure}
 
@@ -2596,7 +2601,7 @@ To reproduce our first run chart from Chapter \ref{first-chart}:
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-qic1}Run chart produced with the qic() function from the qicharts2 package}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-qic1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-qic1}Run chart produced with the qic() function from the qicharts2 package}]{spc4hc_files/figure-latex/qicharts-qic1-1.png}}
 \caption{\label{fig:qicharts-qic1}Run chart produced with the \protect\texttt{qic()} function from the qicharts2 package}
 \end{figure}
 
@@ -2614,7 +2619,7 @@ To produce a control chart, we simply specify the chart type (Figure \ref{fig:qi
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-qic2}I chart produced with qic()}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-qic2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-qic2}I chart produced with qic()}]{spc4hc_files/figure-latex/qicharts-qic2-1.png}}
 \caption{\label{fig:qicharts-qic2}I chart produced with \protect\texttt{qic()}}
 \end{figure}
 
@@ -2632,7 +2637,7 @@ In some situations, it may be appropriate to exclude specific data points from t
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-qic3}I chart with one data point excluded from calculations}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-qic3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-qic3}I chart with one data point excluded from calculations}]{spc4hc_files/figure-latex/qicharts-qic3-1.png}}
 \caption{\label{fig:qicharts-qic3}I chart with one data point excluded from calculations}
 \end{figure}
 
@@ -2654,7 +2659,7 @@ In healthcare, freezing is particularly useful when evaluating the impact of an 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi1}Infections before and after intervention}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-cdi1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi1}Infections before and after intervention}]{spc4hc_files/figure-latex/qicharts-cdi1-1.png}}
 \caption{\label{fig:qicharts-cdi1}Infections before and after intervention}
 \end{figure}
 
@@ -2672,7 +2677,7 @@ When a sustained shift has been identified and its cause is understood, it may b
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi2}Splitting using index}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-cdi2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi2}Splitting using index}]{spc4hc_files/figure-latex/qicharts-cdi2-1.png}}
 \caption{\label{fig:qicharts-cdi2}Splitting using index}
 \end{figure}
 
@@ -2686,7 +2691,7 @@ Alternatively, a categorical variable can be used to define periods(Figure \ref{
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi3}Splitting using a period variable}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-cdi3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi3}Splitting using a period variable}]{spc4hc_files/figure-latex/qicharts-cdi3-1.png}}
 \caption{\label{fig:qicharts-cdi3}Splitting using a period variable}
 \end{figure}
 
@@ -2716,7 +2721,7 @@ Once distinct stable periods have been identified, control limits may be added: 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi4}Splitting using a period variable}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-cdi4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-cdi4}Splitting using a period variable}]{spc4hc_files/figure-latex/qicharts-cdi4-1.png}}
 \caption{\label{fig:qicharts-cdi4}Splitting using a period variable}
 \end{figure}
 
@@ -2762,7 +2767,7 @@ Figure \ref{fig:qicharts-hais1} shows aggregated data for urinary tract infectio
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais1}Aggregated U chart of urinary tract infections from six hospital}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-hais1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais1}Aggregated U chart of urinary tract infections from six hospital}]{spc4hc_files/figure-latex/qicharts-hais1-1.png}}
 \caption{\label{fig:qicharts-hais1}Aggregated U chart of urinary tract infections from six hospital}
 \end{figure}
 
@@ -2785,7 +2790,7 @@ The same data can be stratified into separate panels using the facets argument (
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais2}Stratified (small multiple) U charts of urinary tract infections from six hospital}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-hais2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais2}Stratified (small multiple) U charts of urinary tract infections from six hospital}]{spc4hc_files/figure-latex/qicharts-hais2-1.png}}
 \caption{\label{fig:qicharts-hais2}Stratified (small multiple) U charts of urinary tract infections from six hospital}
 \end{figure}
 
@@ -2810,7 +2815,7 @@ Similarly, we can stratify by infection type within a single hospital: (Figure \
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais3}U charts from one hospital stratified by infection type}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-hais3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais3}U charts from one hospital stratified by infection type}]{spc4hc_files/figure-latex/qicharts-hais3-1.png}}
 \caption{\label{fig:qicharts-hais3}U charts from one hospital stratified by infection type}
 \end{figure}
 
@@ -2833,7 +2838,7 @@ By default, all panels share the same axis scales. This facilitates comparison o
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais4}Small multiples free y-axes}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-hais4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais4}Small multiples free y-axes}]{spc4hc_files/figure-latex/qicharts-hais4-1.png}}
 \caption{\label{fig:qicharts-hais4}Small multiples free y-axes}
 \end{figure}
 
@@ -2855,7 +2860,7 @@ Finally, both dimensions can be displayed simultaneously as in Figure \ref{fig:q
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais5}Hospital infections stratified by infection and hospital}]{spc4hc_files/spc4hc_files/figure-latex/qicharts-hais5-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:qicharts-hais5}Hospital infections stratified by infection and hospital}]{spc4hc_files/figure-latex/qicharts-hais5-1.png}}
 \caption{\label{fig:qicharts-hais5}Hospital infections stratified by infection and hospital}
 \end{figure}
 
@@ -2902,7 +2907,7 @@ The average moving range (AMR) is 5. From Table \ref{tab:limits-tab1}, the natur
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:screened-mr1}Moving range chart with one range above the control limit}]{spc4hc_files/spc4hc_files/figure-latex/screened-mr1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:screened-mr1}Moving range chart with one range above the control limit}]{spc4hc_files/figure-latex/screened-mr1-1.png}}
 \caption{\label{fig:screened-mr1}Moving range chart with one range above the control limit}
 \end{figure}
 
@@ -2919,7 +2924,7 @@ Some authors recommend removing such extreme moving ranges before calculating th
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:screened-mr2}I chart with control limits calculated after removing freak moving ranges}]{spc4hc_files/spc4hc_files/figure-latex/screened-mr2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:screened-mr2}I chart with control limits calculated after removing freak moving ranges}]{spc4hc_files/figure-latex/screened-mr2-1.png}}
 \caption{\label{fig:screened-mr2}I chart with control limits calculated after removing freak moving ranges}
 \end{figure}
 
@@ -2939,7 +2944,7 @@ To suppress this screening step in qicharts2, the qic.screenedmr option can be s
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:screened-mr3}I chart with control limits calculated without removing extreme ranges}]{spc4hc_files/spc4hc_files/figure-latex/screened-mr3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:screened-mr3}I chart with control limits calculated without removing extreme ranges}]{spc4hc_files/figure-latex/screened-mr3-1.png}}
 \caption{\label{fig:screened-mr3}I chart with control limits calculated without removing extreme ranges}
 \end{figure}
 
@@ -3031,7 +3036,7 @@ Figure \ref{fig:rare-fig1} is a run chart of the biweekly counts.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig1}Run chart of number of deliveries with neonatal asphyxia}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig1}Run chart of number of deliveries with neonatal asphyxia}]{spc4hc_files/figure-latex/rare-fig1-1.png}}
 \caption{\label{fig:rare-fig1}Run chart of number of deliveries with neonatal asphyxia}
 \end{figure}
 
@@ -3049,7 +3054,7 @@ Figure \ref{fig:rare-fig3} plots proportions rather than counts and leads to the
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig2}Run chart of proportion deliveries with neonatal asphyxia}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig2}Run chart of proportion deliveries with neonatal asphyxia}]{spc4hc_files/figure-latex/rare-fig2-1.png}}
 \caption{\label{fig:rare-fig2}Run chart of proportion deliveries with neonatal asphyxia}
 \end{figure}
 
@@ -3066,7 +3071,7 @@ Plotting the data on a P chart provides control limits and allows for a more mea
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig3}P chart of percent deliveries with neonatal asphyxia}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig3}P chart of percent deliveries with neonatal asphyxia}]{spc4hc_files/figure-latex/rare-fig3-1.png}}
 \caption{\label{fig:rare-fig3}P chart of percent deliveries with neonatal asphyxia}
 \end{figure}
 
@@ -3105,7 +3110,7 @@ To obtain the number-between variable, we calculate the differences between the 
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig4}G chart of deliveries between neonatal asphyxia}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig4}G chart of deliveries between neonatal asphyxia}]{spc4hc_files/figure-latex/rare-fig4-1.png}}
 \caption{\label{fig:rare-fig4}G chart of deliveries between neonatal asphyxia}
 \end{figure}
 
@@ -3141,7 +3146,7 @@ Control limits can then be calculated for the transformed data in the usual way.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig5}T chart of time (days) between deliveries with neonatal asphyxia}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig5-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig5}T chart of time (days) between deliveries with neonatal asphyxia}]{spc4hc_files/figure-latex/rare-fig5-1.png}}
 \caption{\label{fig:rare-fig5}T chart of time (days) between deliveries with neonatal asphyxia}
 \end{figure}
 
@@ -3175,7 +3180,7 @@ If the trace remains close to zero, the process is operating near target.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig6}B chart of newborns with asphyxia}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig6-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig6}B chart of newborns with asphyxia}]{spc4hc_files/figure-latex/rare-fig6-1.png}}
 \caption{\label{fig:rare-fig6}B chart of newborns with asphyxia}
 \end{figure}
 
@@ -3201,7 +3206,7 @@ Figure \ref{fig:rare-fig8} compares the data with a target proportion of 2\%.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig8}B chart of newborns with asphyxia, target = 0.2\%}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig8-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig8}B chart of newborns with asphyxia, target = 0.2\%}]{spc4hc_files/figure-latex/rare-fig8-1.png}}
 \caption{\label{fig:rare-fig8}B chart of newborns with asphyxia, target = 0.2\%}
 \end{figure}
 
@@ -3217,7 +3222,7 @@ Conversely, when the target is set to 0.1\%, the chart suggests that the process
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig9}B chart of newborns with asphyxia, target = 0.01\%}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig9-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig9}B chart of newborns with asphyxia, target = 0.01\%}]{spc4hc_files/figure-latex/rare-fig9-1.png}}
 \caption{\label{fig:rare-fig9}B chart of newborns with asphyxia, target = 0.01\%}
 \end{figure}
 
@@ -3235,7 +3240,7 @@ Looking at Figure \ref{fig:rare-fig6}, which shows a historically stable process
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig10}B chart of newborns with asphyxia, target = 0.01\%}]{spc4hc_files/spc4hc_files/figure-latex/rare-fig10-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:rare-fig10}B chart of newborns with asphyxia, target = 0.01\%}]{spc4hc_files/figure-latex/rare-fig10-1.png}}
 \caption{\label{fig:rare-fig10}B chart of newborns with asphyxia, target = 0.01\%}
 \end{figure}
 
@@ -3254,7 +3259,7 @@ Figure \ref{fig:pcharts-fig1} demonstrates this phenomenon, known as overdispers
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pcharts-fig1}P chart of percent emergency attendances seen within 4 hours}]{spc4hc_files/spc4hc_files/figure-latex/pcharts-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pcharts-fig1}P chart of percent emergency attendances seen within 4 hours}]{spc4hc_files/figure-latex/pcharts-fig1-1.png}}
 \caption{\label{fig:pcharts-fig1}P chart of percent emergency attendances seen within 4 hours}
 \end{figure}
 
@@ -3264,7 +3269,7 @@ One way to diagnose this problem is to plot the same data on an I chart, which b
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pcharts-fig2}I chart of percent emergency attendances seen within 4 hours}]{spc4hc_files/spc4hc_files/figure-latex/pcharts-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pcharts-fig2}I chart of percent emergency attendances seen within 4 hours}]{spc4hc_files/figure-latex/pcharts-fig2-1.png}}
 \caption{\label{fig:pcharts-fig2}I chart of percent emergency attendances seen within 4 hours}
 \end{figure}
 
@@ -3307,7 +3312,7 @@ Thus, the control limits for the P' chart become:
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pcharts-fig3}P' chart of percent emergency attendances seen within 4 hours}]{spc4hc_files/spc4hc_files/figure-latex/pcharts-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pcharts-fig3}P' chart of percent emergency attendances seen within 4 hours}]{spc4hc_files/figure-latex/pcharts-fig3-1.png}}
 \caption{\label{fig:pcharts-fig3}P' chart of percent emergency attendances seen within 4 hours}
 \end{figure}
 
@@ -3502,7 +3507,7 @@ Figure \ref{fig:iprime-fig2} shows an I chart of the monthly HbA1c averages from
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:iprime-fig2}I chart of average HbA1c without denominator}]{spc4hc_files/spc4hc_files/figure-latex/iprime-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:iprime-fig2}I chart of average HbA1c without denominator}]{spc4hc_files/figure-latex/iprime-fig2-1.png}}
 \caption{\label{fig:iprime-fig2}I chart of average HbA1c without denominator}
 \end{figure}
 
@@ -3521,7 +3526,7 @@ Figure \ref{fig:iprime-fig3} shows the corresponding I' chart, which incorporate
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:iprime-fig3}I prime chart of average HbA1c with denominator}]{spc4hc_files/spc4hc_files/figure-latex/iprime-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:iprime-fig3}I prime chart of average HbA1c with denominator}]{spc4hc_files/figure-latex/iprime-fig3-1.png}}
 \caption{\label{fig:iprime-fig3}I prime chart of average HbA1c with denominator}
 \end{figure}
 
@@ -3547,7 +3552,7 @@ Figure \ref{fig:funnel-fig0} compares the level of an indicator across six organ
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig0}Funnel plot}]{spc4hc_files/spc4hc_files/figure-latex/funnel-fig0-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig0}Funnel plot}]{spc4hc_files/figure-latex/funnel-fig0-1.png}}
 \caption{\label{fig:funnel-fig0}Funnel plot}
 \end{figure}
 
@@ -3575,7 +3580,7 @@ To demonstrate the construction of funnel plots, we use data on urinary tract in
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig1}U chart of urinary tract infections}]{spc4hc_files/spc4hc_files/figure-latex/funnel-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig1}U chart of urinary tract infections}]{spc4hc_files/figure-latex/funnel-fig1-1.png}}
 \caption{\label{fig:funnel-fig1}U chart of urinary tract infections}
 \end{figure}
 
@@ -3601,7 +3606,7 @@ For this reason, we select data from a recent period before constructing the fun
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig2}Unordered `funnel' plot of urinary tract infections}]{spc4hc_files/spc4hc_files/figure-latex/funnel-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig2}Unordered `funnel' plot of urinary tract infections}]{spc4hc_files/figure-latex/funnel-fig2-1.png}}
 \caption{\label{fig:funnel-fig2}Unordered `funnel' plot of urinary tract infections}
 \end{figure}
 
@@ -3622,7 +3627,7 @@ By default, the subgroups are ordered alphabetically along the x-axis. To produc
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig3}Ordered funnel plot of urinary tract infections}]{spc4hc_files/spc4hc_files/figure-latex/funnel-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:funnel-fig3}Ordered funnel plot of urinary tract infections}]{spc4hc_files/figure-latex/funnel-fig3-1.png}}
 \caption{\label{fig:funnel-fig3}Ordered funnel plot of urinary tract infections}
 \end{figure}
 
@@ -3657,7 +3662,7 @@ The \texttt{paretochart()} function from the \emph{qicharts2} package takes a ca
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pareto-fig1}Pareto chart of patient harm.}]{spc4hc_files/spc4hc_files/figure-latex/pareto-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pareto-fig1}Pareto chart of patient harm.}]{spc4hc_files/figure-latex/pareto-fig1-1.png}}
 \caption{\label{fig:pareto-fig1}Pareto chart of patient harm.}
 \end{figure}
 
@@ -3673,7 +3678,7 @@ Figure \ref{fig:pareto-fig2} shows a Pareto chart of harm severity. This chart i
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pareto-fig2}Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm.}]{spc4hc_files/spc4hc_files/figure-latex/pareto-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pareto-fig2}Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm.}]{spc4hc_files/figure-latex/pareto-fig2-1.png}}
 \caption{\label{fig:pareto-fig2}Pareto chart of harm severity: E-I, where E-F = temporary harm, G-H = permanent harm, and I = fatal harm.}
 \end{figure}
 
@@ -3723,7 +3728,7 @@ To construct a Pareto chart from tabulated data, we must first convert the count
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pareto-fig3}Pareto chart constructed from tabular data.}]{spc4hc_files/spc4hc_files/figure-latex/pareto-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pareto-fig3}Pareto chart constructed from tabular data.}]{spc4hc_files/figure-latex/pareto-fig3-1.png}}
 \caption{\label{fig:pareto-fig3}Pareto chart constructed from tabular data.}
 \end{figure}
 
@@ -3921,7 +3926,7 @@ When done deliberately and with understanding of the underlying process, rephasi
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pitfalls-fig1}Hospital infections -- rephasing done right!}]{spc4hc_files/spc4hc_files/figure-latex/pitfalls-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pitfalls-fig1}Hospital infections -- rephasing done right!}]{spc4hc_files/figure-latex/pitfalls-fig1-1.png}}
 \caption{\label{fig:pitfalls-fig1}Hospital infections -- rephasing done right!}
 \end{figure}
 
@@ -3944,7 +3949,7 @@ In Figure \ref{fig:pitfalls-fig2}, automatic rephasing occurs too early, incorre
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pitfalls-fig2}Hospital infections -- rephasing done wrong!}]{spc4hc_files/spc4hc_files/figure-latex/pitfalls-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:pitfalls-fig2}Hospital infections -- rephasing done wrong!}]{spc4hc_files/figure-latex/pitfalls-fig2-1.png}}
 \caption{\label{fig:pitfalls-fig2}Hospital infections -- rephasing done wrong!}
 \end{figure}
 
@@ -4033,7 +4038,7 @@ As an example, figures \ref{fig:subgrouping-fig1} and \ref{fig:subgrouping-fig2}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgrouping-fig1}Monthly C. diff. infections.}]{spc4hc_files/spc4hc_files/figure-latex/subgrouping-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgrouping-fig1}Monthly C. diff. infections.}]{spc4hc_files/figure-latex/subgrouping-fig1-1.png}}
 \caption{\label{fig:subgrouping-fig1}Monthly C. diff. infections.}
 \end{figure}
 
@@ -4051,7 +4056,7 @@ As an example, figures \ref{fig:subgrouping-fig1} and \ref{fig:subgrouping-fig2}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgrouping-fig2}Two-monthly C. diff. infections.}]{spc4hc_files/spc4hc_files/figure-latex/subgrouping-fig2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgrouping-fig2}Two-monthly C. diff. infections.}]{spc4hc_files/figure-latex/subgrouping-fig2-1.png}}
 \caption{\label{fig:subgrouping-fig2}Two-monthly C. diff. infections.}
 \end{figure}
 
@@ -4092,7 +4097,7 @@ Figure \ref{fig:subgroups-fig3} illustrates this with simulated data.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgroups-fig3}Xbar-chart from too small subgroups.}]{spc4hc_files/spc4hc_files/figure-latex/subgroups-fig3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgroups-fig3}Xbar-chart from too small subgroups.}]{spc4hc_files/figure-latex/subgroups-fig3-1.png}}
 \caption{\label{fig:subgroups-fig3}Xbar-chart from too small subgroups.}
 \end{figure}
 
@@ -4112,7 +4117,7 @@ A better approach is to use an I chart of daily averages as in Figure \ref{fig:s
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgroups-fig4}I-chart of average daily body weight.}]{spc4hc_files/spc4hc_files/figure-latex/subgroups-fig4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:subgroups-fig4}I-chart of average daily body weight.}]{spc4hc_files/figure-latex/subgroups-fig4-1.png}}
 \caption{\label{fig:subgroups-fig4}I-chart of average daily body weight.}
 \end{figure}
 
@@ -4641,7 +4646,7 @@ Visualisation of categorical data is often done using bar charts:
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-bar1}Bar chart of adverse event frequencies}]{spc4hc_files/spc4hc_files/figure-latex/stat-bar1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-bar1}Bar chart of adverse event frequencies}]{spc4hc_files/figure-latex/stat-bar1-1.png}}
 \caption{\label{fig:stat-bar1}Bar chart of adverse event frequencies}
 \end{figure}
 
@@ -4654,7 +4659,7 @@ Visualisation of categorical data is often done using bar charts:
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-bar2}Bar chart of adverse event proportions.}]{spc4hc_files/spc4hc_files/figure-latex/stat-bar2-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-bar2}Bar chart of adverse event proportions.}]{spc4hc_files/figure-latex/stat-bar2-1.png}}
 \caption{\label{fig:stat-bar2}Bar chart of adverse event proportions.}
 \end{figure}
 
@@ -4771,7 +4776,7 @@ Histograms provide a clear visualisation (Figure \ref{fig:stat-hist1}):
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-hist1}Histogram of birth lengths.}]{spc4hc_files/spc4hc_files/figure-latex/stat-hist1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-hist1}Histogram of birth lengths.}]{spc4hc_files/figure-latex/stat-hist1-1.png}}
 \caption{\label{fig:stat-hist1}Histogram of birth lengths.}
 \end{figure}
 
@@ -4803,7 +4808,7 @@ A useful visual summary of centre, shape, and spread is the boxplot (Figure \ref
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-box1}Boxplot of birth lengths.}]{spc4hc_files/spc4hc_files/figure-latex/stat-box1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-box1}Boxplot of birth lengths.}]{spc4hc_files/figure-latex/stat-box1-1.png}}
 \caption{\label{fig:stat-box1}Boxplot of birth lengths.}
 \end{figure}
 
@@ -4875,7 +4880,7 @@ To visualise discrete probability distributions, we use stick charts as demonstr
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-dpois}Poisson probability plot of the number of births in a day (mean = 6).}]{spc4hc_files/spc4hc_files/figure-latex/stat-dpois-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-dpois}Poisson probability plot of the number of births in a day (mean = 6).}]{spc4hc_files/figure-latex/stat-dpois-1.png}}
 \caption{\label{fig:stat-dpois}Poisson probability plot of the number of births in a day (mean = 6).}
 \end{figure}
 
@@ -4918,7 +4923,7 @@ There are approximately 42 births per week, with about 9\% resulting in a C-sect
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-dbinom1}Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09).}]{spc4hc_files/spc4hc_files/figure-latex/stat-dbinom1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-dbinom1}Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09).}]{spc4hc_files/figure-latex/stat-dbinom1-1.png}}
 \caption{\label{fig:stat-dbinom1}Binomial probability plot of the number of C-sections in a week (size = 42, prob = 0.09).}
 \end{figure}
 
@@ -4950,7 +4955,7 @@ Figure \ref{fig:stat-hist3} shows a histogram of birth weights, where each bin r
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-hist3}Histogram of birth weights}]{spc4hc_files/spc4hc_files/figure-latex/stat-hist3-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-hist3}Histogram of birth weights}]{spc4hc_files/figure-latex/stat-hist3-1.png}}
 \caption{\label{fig:stat-hist3}Histogram of birth weights}
 \end{figure}
 
@@ -4970,7 +4975,7 @@ In Figure \ref{fig:stat-hist4}, we have overlaid a curve representing the theore
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-hist4}Histogram of birth weights with overlayed Gaussian density curve.}]{spc4hc_files/spc4hc_files/figure-latex/stat-hist4-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:stat-hist4}Histogram of birth weights with overlayed Gaussian density curve.}]{spc4hc_files/figure-latex/stat-hist4-1.png}}
 \caption{\label{fig:stat-hist4}Histogram of birth weights with overlayed Gaussian density curve.}
 \end{figure}
 
@@ -5049,18 +5054,18 @@ When plotting time series data, we need two vectors, one for the x axis represen
 
 \begin{verbatim}
             x  y  n
-1  2026-08-09 13 32
-2  2026-08-10 14 29
-3  2026-08-11 16 33
-4  2026-08-12 19 30
-5  2026-08-13 13 32
-6  2026-08-14 18 35
-7  2026-08-15 19 29
-8  2026-08-16 16 33
-9  2026-08-17 16 34
-10 2026-08-18 11 27
-11 2026-08-19 13 32
-12 2026-08-20 12 26
+1  2026-10-13 13 32
+2  2026-10-14 14 29
+3  2026-10-15 16 33
+4  2026-10-16 19 30
+5  2026-10-17 13 32
+6  2026-10-18 18 35
+7  2026-10-19 19 29
+8  2026-10-20 16 33
+9  2026-10-21 16 34
+10 2026-10-22 11 27
+11 2026-10-23 13 32
+12 2026-10-24 12 26
 \end{verbatim}
 
 To plot a P chart from these data with the qic() function from the qicharts2 package, we may do this, where ``d'' is the name of the data frame containing the three variables x, y, and n (Figure \ref{fig:r-notes-fig1}):
@@ -5075,7 +5080,7 @@ To plot a P chart from these data with the qic() function from the qicharts2 pac
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:r-notes-fig1}P chart from data frame}]{spc4hc_files/spc4hc_files/figure-latex/r-notes-fig1-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:r-notes-fig1}P chart from data frame}]{spc4hc_files/figure-latex/r-notes-fig1-1.png}}
 \caption{\label{fig:r-notes-fig1}P chart from data frame}
 \end{figure}
 
